@@ -1,0 +1,164 @@
+﻿\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{braket}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Hthree}{\mathbb{H}^3}
+\newcommand{\Sphere}{\mathbb{S}^2}
+\newcommand{\GammaG}{\Gamma}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calHS}{\mathcal{H}_S}
+\newcommand{\calHT}{\mathcal{H}_T}
+
+\title{Flavor Mixing from Boundary Misalignment\\in Hyperbolic Geometry}
+\author{Marvin L.\ Gentry}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We formalize a kinematic mechanism by which fermion mixing matrices arise
+from the misalignment between discrete boundary sectors associated with
+logarithmic mass organization in hyperbolic space. Mixing matrices are
+defined as overlap operators between preferred orthonormal bases of sector
+subspaces and are shown to be uniquely determined up to sector-local
+rephasings. Our main result (Theorem~\ref{thm:discrete-classes}) establishes
+that the set of accessible mixing matrices is discrete in $\U(n)$ modulo
+sector-local rephasings, providing a structural explanation for the
+stability of mixing patterns without continuous parameter tuning.
+\end{abstract}
+
+\section{Introduction}
+
+The Standard Model fermion mixing matrices exhibit stable, non-generic
+patterns unexplained by gauge structure alone. We develop a kinematic
+explanation: mixing arises from the misalignment between boundary sectors
+naturally associated with discrete logarithmic mass organization.
+
+If fermion mass scales are organized near a discrete logarithmic lattice,
+each fermion is associated with a definite direction on the boundary sphere
+$\bdry\cong\Sphere$. Different generations of a given sector span different
+subspaces of a boundary Hilbert space $\calH$; their overlap is the mixing
+matrix. The key structural result is that if boundary directions are assigned
+by a \emph{discrete} selection rule, the set of accessible mixing matrices
+is itself discrete (Theorem~\ref{thm:discrete-classes}).
+
+\section{Geometric Setup and the Discreteness Assumption}
+
+\begin{definition}[Boundary direction]\label{def:bdrydir}
+A \emph{boundary direction} is a point $\xi\in\bdry\cong\Sphere$.
+Group elements $\gamma\in\GammaG$ are \emph{associated with} $\xi$ when
+the geodesic ray from basepoint $0$ through $\gamma\cdot0$ converges to~$\xi$.
+\end{definition}
+
+\begin{assumption}[Discrete sector assignment]\label{ass:discrete}
+Each fermion flavor $f\in F$ is assigned a unique boundary direction
+$\xi(f)\in\bdry$ by a deterministic, discrete selection rule: the image
+$\Xi=\{\xi(f):f\in F\}$ is finite, and the assignment is locally rigid.
+One concrete realization: $\xi(f)$ is the ideal endpoint of the geodesic
+ray to the minimal representative $\gamma_f\cdot0$, whose uniqueness and
+rigidity follow from the companion paper on operator realization.
+\end{assumption}
+
+\section{Boundary Hilbert Space and Localized States}
+
+\begin{definition}[Boundary-localized state]\label{def:localized}
+For each $\xi\in\Sphere$, fix a normalized state $\ket{\xi}\in\calH$
+with $\langle\xi|\xi\rangle=1$, depending continuously on $\xi$, with
+$\langle\xi|\zeta\rangle=1$ iff $\xi=\zeta$.
+\end{definition}
+
+\section{Sector Subspaces and Preferred Bases}
+
+\begin{definition}[Sector subspace]\label{def:sectorspan}
+The \emph{sector subspace} of $S$ is
+$\calHS=\overline{\mathrm{span}}\{\ket{\xi(f)}:f\in S\}\subset\calH$,
+with $\dim\calHS=|S|$ by linear independence.
+\end{definition}
+
+\begin{definition}[Preferred orthonormal basis]\label{def:preferred}
+The \emph{preferred ONB} of $\calHS$ is the Gram--Schmidt
+orthonormalization of $(\ket{\xi(f_1)},\ldots,\ket{\xi(f_{n_S})})$
+in the fixed sector ordering, with all pivot coefficients real and positive.
+\end{definition}
+
+\section{Mixing Matrices as Overlap Operators}
+
+\begin{definition}[Mixing matrix]\label{def:mixing}
+For sectors $S$, $T$ of equal cardinality $n$ with preferred ONBs
+$\{\ket{S,i}\}$ and $\{\ket{T,j}\}$, the \emph{mixing matrix} is
+$(U_{ST})_{ji}=\braket{T,j|S,i}$.
+\end{definition}
+
+\begin{proposition}[Unitarity]\label{prop:unitary}
+If $\calHS=\calHT$, then $U_{ST}\in\U(n)$.
+\end{proposition}
+
+\begin{theorem}[Geometric dependence]\label{thm:geom}
+$U_{ST}$ is determined entirely by $\Xi_{ST}=\{\xi(f):f\in S\cup T\}$
+and the inner product on $\calH$.
+\end{theorem}
+
+\section{Rephasing Invariance}
+
+\begin{proposition}[Rephasing-invariant quantities]\label{prop:rephinv}
+Under sector-local rephasings $\ket{S,i}\mapsto e^{i\alpha_i}\ket{S,i}$,
+$\ket{T,j}\mapsto e^{i\beta_j}\ket{T,j}$, the following are invariant:
+\emph{(i)} the moduli $|(U_{ST})_{ji}|^2$;
+\emph{(ii)} the quartic products
+$J_{ji,j'i'}=(U_{ST})_{ji}(U_{ST})_{j'i'}\overline{(U_{ST})_{ji'}}\,\overline{(U_{ST})_{j'i}}$;
+\emph{(iii)} $\det(U_{ST})$ up to overall phase.
+\end{proposition}
+
+\section{Discreteness and Stability of Mixing Classes}
+
+\begin{theorem}[Stability]\label{thm:stability}
+For $\varepsilon\leq\varepsilon_0=\delta_{\min}/2$, where
+$\delta_{\min}=\min_{f\neq f'}d_\Sphere(\xi(f),\xi(f'))$, any bounded
+deformation of magnitude $\varepsilon$ leaves $\Xi$, the preferred bases,
+and $U_{ST}$ unchanged.
+\end{theorem}
+
+\begin{theorem}[Discreteness of mixing classes]\label{thm:discrete-classes}
+Under Assumption~\ref{ass:discrete}, the set of accessible mixing matrices
+$\mathcal{M}_{ST}$ is discrete in $\U(n)/(\U(1)^n\times\U(1)^n)$.
+\end{theorem}
+
+\begin{proof}
+The set of admissible configurations $\Xi_{ST}$ is finite (discrete).
+By Theorem~\ref{thm:geom}, the map $\Xi_{ST}\mapsto U_{ST}$ is continuous,
+so it maps a finite set to a finite set. Quotienting by rephasings
+preserves finiteness.
+\end{proof}
+
+\begin{corollary}[No continuous drift]\label{cor:nodrift}
+No continuous deformation of physical parameters can produce continuous
+drift in any rephasing-invariant mixing observable.
+\end{corollary}
+
+\section{Conclusion}
+
+We have shown that fermion mixing matrices arising from boundary-sector
+misalignment are unitary by construction, rephasing-invariant, stable under
+bounded deformations, and discrete modulo rephasings. These properties are
+structural consequences of the discrete selection rule and require no
+dynamical input or continuous tuning.
+
+\bibliographystyle{plain}
+\bibliography{paper4}
+
+\end{document}

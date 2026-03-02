@@ -1,0 +1,169 @@
+﻿\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\Endzero}{\mathrm{End}^{\,\mathrm{tr}=0}}
+\renewcommand{\varphi}{\varphi}
+
+\title{Discrete Shape Space and Integer Logarithmic Lattices}
+\author{Marvin L.\ Gentry}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Many physical and geometric observables are inherently multiplicative:
+their ratios, not their absolute values, carry intrinsic meaning. When
+expressed in logarithmic coordinates, an overall additive shift is
+physically redundant. Removing this redundancy defines a quotient space
+we call \emph{shape space}. We show that for quadratic descriptions of
+rank~$n$, the number of independent scale-free deformation directions
+is exactly $n^2-1$, the dimension of the traceless endomorphism space
+$\mathrm{End}^{\,\mathrm{tr}=0}(V)$. For $n=3,4,5$ this yields $8,15,24$.
+We establish this as a formal proposition with proof, note its coincidence
+with adjoint representation dimensions of $\mathrm{SU}(n)$, and discuss
+how golden-ratio-saturated geometries provide examples in which quadratic
+invariants remain within the rank-2 integer module $\Z[\varphi]$.
+\end{abstract}
+
+\section{Introduction}
+
+Many quantities of physical and geometric interest span many orders of
+magnitude. Their ratios, not their absolute values, carry the meaningful
+information. This suggests working in logarithmic coordinates, where
+multiplicative relationships become additive. The space of logarithmic
+coordinates carries a redundancy: an overall additive constant corresponds
+to a simultaneous rescaling of all quantities. Factoring out this redundancy
+leads to \emph{shape space}.
+
+In this paper we study the structure of shape space for quadratic data.
+Our central result (Proposition~\ref{prop:dim}) is that the space of
+independent scale-free deformation directions for a rank-$n$ quadratic
+description has dimension $n^2-1$, following from the rank-nullity theorem
+applied to the trace map on endomorphisms.
+
+\section{Logarithmic Coordinates and Shape Space}
+
+\begin{definition}[Shape space]\label{def:shapespace}
+The \emph{shape space} associated with $N$ positive quantities is the
+quotient $\mathcal{S}_N=\R^N/\R\mathbf{1}$, where
+$\R\mathbf{1}=\{(t,\ldots,t):t\in\R\}$. It has dimension $N-1$.
+\end{definition}
+
+\section{The $n^2-1$ Count}
+
+Infinitesimal deformations of quadratic data on an $n$-dimensional space
+are represented by endomorphisms $T\colon V\to V$. Uniform rescalings
+$T=\lambda I$ are shape-redundant and must be quotiented out.
+
+\begin{proposition}[Dimension of shape-space deformations]
+\label{prop:dim}
+The space of independent scale-free deformation directions of a rank-$n$
+quadratic description is
+\[
+\dim\Endzero(V)=n^2-1,
+\]
+where $\Endzero(V)=\{T\in\End(V):\operatorname{tr}T=0\}$.
+\end{proposition}
+
+\begin{proof}
+The trace map $\operatorname{tr}\colon\End(V)\to k$ is surjective with
+kernel $\Endzero(V)$. By the rank-nullity theorem,
+$\dim\Endzero(V)=\dim\End(V)-1=n^2-1$.
+The canonical splitting $\End(V)=\Endzero(V)\oplus k\cdot I$ confirms
+that $\Endzero(V)$ is exactly the scale-free quotient.
+\end{proof}
+
+\begin{corollary}
+For ranks $n=3,4,5$ the independent deformation count is $8,15,24$.
+\end{corollary}
+
+\begin{remark}[Relation to $\mathrm{SU}(n)$ adjoint representations]
+\label{rem:sun}
+The integers $n^2-1$ are also the dimensions of the adjoint representations
+of $\mathrm{SU}(n)$: $\dim\mathfrak{su}(3)=8$, $\dim\mathfrak{su}(4)=15$,
+$\dim\mathfrak{su}(5)=24$. The Lie algebra $\mathfrak{su}(n)$ consists of
+skew-Hermitian traceless $n\times n$ matrices, the complex analogue of the
+real traceless endomorphisms here. The present derivation reaches the same
+count from scale-free shape space without invoking any symmetry assumption.
+\end{remark}
+
+\section{Golden-Ratio Closure and Quadratic Invariants}
+
+Many discrete geometries involve the golden ratio $\varphi=(1+\sqrt5)/2$,
+which satisfies $\varphi^2=\varphi+1$. The set
+$\Z[\varphi]=\{a+b\varphi:a,b\in\Z\}$ is a commutative ring (the ring
+of integers of $\Q(\sqrt5)$~\cite{neukirch}).
+
+\begin{proposition}[Quadratic closure of $\Z[\varphi]$]
+\label{prop:closure}
+Let $T\in M_n(\Z[\varphi])$. Then $\operatorname{tr}(T^2)\in\Z[\varphi]$.
+More generally, all polynomial invariants of $T$ with integer coefficients
+lie in $\Z[\varphi]$.
+\end{proposition}
+
+\begin{proof}
+$\Z[\varphi]$ is a commutative ring closed under addition and multiplication.
+The $(i,j)$ entry of $T^2$ is $\sum_k T_{ik}T_{kj}\in\Z[\varphi]$, and
+$\operatorname{tr}(T^2)=\sum_i(T^2)_{ii}\in\Z[\varphi]$. The argument
+for general polynomial invariants is identical.
+\end{proof}
+
+\begin{remark}[Scope of Proposition~\ref{prop:closure}]
+Proposition~\ref{prop:closure} establishes that if deformation data lies
+in $\Z[\varphi]$, then quadratic invariants also lie in $\Z[\varphi]$.
+It does not select the values $n=3,4,5$; those come from
+Proposition~\ref{prop:dim}. The role of $\Z[\varphi]$ is algebraic
+closure, not geometric selection.
+\end{remark}
+
+\section{Orientation and Signed Directions}
+
+\begin{definition}[Orientation-reversed deformation]
+Let $T\in\Endzero(V)$. The \emph{orientation-reversed} deformation is
+$-T\in\Endzero(V)$. In a Hermitian setting one may use the adjoint $T^\dagger$,
+which reverses orientation while preserving norm.
+\end{definition}
+
+Signed integer coefficients in logarithmic coordinates have direct geometric
+meaning: $+k$ represents $k$ steps forward along a deformation axis,
+$-k$ represents $k$ steps in reverse.
+
+\section{Scope and Generalization}
+
+The derivation in Section~3 uses only finite dimensionality of $\End(V)$
+and surjectivity of the trace map. It does not depend on any specific group,
+representation, or geometric realization. For other discrete geometries
+the role of $\Z[\varphi]$ in Proposition~\ref{prop:closure} is replaced by
+the appropriate ring of integers of the relevant quadratic field; the
+formula $n^2-1$ remains universal.
+
+\section{Conclusion}
+
+We have shown that $n^2-1$ arises as the dimension of the space of
+independent scale-free deformation directions for a rank-$n$ quadratic
+description, proved by rank-nullity alone. For $n=3,4,5$ this gives
+$8,15,24$. Golden-ratio-saturated geometries provide examples where all
+quadratic invariants remain within $\Z[\varphi]$ by ring closure. The
+construction is independent of any specific physical model.
+
+\bibliographystyle{plain}
+\bibliography{paper6}
+
+\end{document}
