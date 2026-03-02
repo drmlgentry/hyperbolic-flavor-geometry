@@ -1,4 +1,4 @@
-﻿\documentclass[12pt]{article}
+\documentclass[12pt]{article}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{hyperref}
 \usepackage{geometry}
@@ -18,7 +18,6 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\End}{\mathrm{End}}
 \newcommand{\Endzero}{\mathrm{End}^{\,\mathrm{tr}=0}}
-\renewcommand{\varphi}{\varphi}
 
 \title{Discrete Shape Space and Integer Logarithmic Lattices}
 \author{Marvin L.\ Gentry}
@@ -111,7 +110,7 @@ which satisfies $\varphi^2=\varphi+1$. The set
 $\Z[\varphi]=\{a+b\varphi:a,b\in\Z\}$ is a commutative ring (the ring
 of integers of $\Q(\sqrt5)$~\cite{neukirch}).
 
-\begin{proposition}[Quadratic closure of $\Z[\varphi]$]
+\begin{proposition}[Quadratic closure of \texorpdfstring{$\Z[\varphi]$}{Z[phi]}]
 \label{prop:closure}
 Let $T\in M_n(\Z[\varphi])$. Then $\operatorname{tr}(T^2)\in\Z[\varphi]$.
 More generally, all polynomial invariants of $T$ with integer coefficients

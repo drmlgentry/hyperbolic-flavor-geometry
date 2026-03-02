@@ -1328,7 +1328,7 @@ Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
 Write-Host "  1. Create repo on GitHub named: hyperbolic-flavor-geometry"
 Write-Host "  2. Run from C:\dev\framework\:"
-Write-Host "       git remote add origin https://github.com/YOUR_USERNAME/hyperbolic-flavor-geometry.git"
+Write-Host "       git remote add origin https://github.com/drmlgentry/hyperbolic-flavor-geometry.git"
 Write-Host "       git branch -M main"
 Write-Host "       git push -u origin main"
 Write-Host ""
