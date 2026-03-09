@@ -374,8 +374,9 @@ curvature of $\calM_n$ in the plane spanned by $X$ and $Y$ is
 \[
   K(X,Y) = -\frac{\|[X,Y]\|^2}{\|X\|^2\|Y\|^2 - \langle X,Y\rangle^2},
 \]
-where $\|[X,Y]\|^2 = \tr([X,Y]^2) \cdot (-1)$ and norms are taken
-with respect to $\langle\cdot,\cdot\rangle$.
+and norms are taken with respect to $\langle\cdot,\cdot\rangle$.
+Since $[X,Y] \in \mathfrak{so}(n)$ is skew-symmetric,
+$\tr([X,Y]^2) \leq 0$, so $\|[X,Y]\|^2 := -\tr([X,Y]^2) \geq 0$.
 In particular, $K(X,Y) \leq 0$ with equality if and only if
 $[X,Y] = 0$.
 \end{proposition}
@@ -569,9 +570,14 @@ of $\mathfrak{p} = \Symz(r,\R)$
 under the $\SO(r)$-action.
 If $F_1$ and $F_2$ share an open subset,
 their tangent spaces coincide at some interior point.
-Since maximal abelian subspaces of $\mathfrak{p}$
-are uniquely determined by their tangent spaces,
-the corresponding flats coincide globally.
+Two maximal abelian subspaces of $\mathfrak{p}$ that agree on
+an open set in their exponential images must coincide:
+any element of a maximal abelian subspace $\mathfrak{a}$
+is determined by its action on a neighborhood of the identity
+via the exponential map, and a maximal abelian subspace containing
+a given regular element is unique~\cite[Ch.~V, Thm.~6.2]{Helgason}.
+Hence the tangent subspaces of $F_1$ and $F_2$ agree globally,
+so $F_1 = F_2$.
 \end{proof}
 
 \begin{remark}
