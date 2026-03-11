@@ -35,7 +35,7 @@ and Arithmetic Logarithmic Lattices}
 \author[1]{Marvin L.\ Gentry}
 \affil[1]{Independent Researcher\\
   \texttt{drmlgentry@protonmail.com}\\
-  ORCID: 0009-0006-4550-2663}
+  ORCID: \href{https://orcid.org/0009-0006-4550-2663}{0009-0006-4550-2663}}
 \date{}
 
 \begin{document}
@@ -307,9 +307,11 @@ where
     = \{A : A = A^T,\; \tr A = 0\}.
 \]
 This decomposition satisfies
-$[\mathfrak{k},\mathfrak{k}] \subset \mathfrak{k}$,
-$[\mathfrak{k},\mathfrak{p}] \subset \mathfrak{p}$,
-$[\mathfrak{p},\mathfrak{p}] \subset \mathfrak{k}$,
+\[
+  [\mathfrak{k},\mathfrak{k}] \subset \mathfrak{k},\quad
+  [\mathfrak{k},\mathfrak{p}] \subset \mathfrak{p},\quad
+  [\mathfrak{p},\mathfrak{p}] \subset \mathfrak{k},
+\]
 confirming that $\SL(n,\R)/\SO(n)$ is a symmetric space.
 The tangent space $T_{[I]}\calM_n$ is identified with $\mathfrak{p}$.
 
@@ -536,7 +538,8 @@ The \emph{arithmetic lattice} associated with $K$ is
 \label{thm:flatembedding}
 $\Gamma_K$ is a discrete subset of the maximal flat
 $F_0 = \exp(\Diagz(r,\R)) \subset \calM_r$.
-The flat $F_0$ is isometric to $(\R^{r-1}, \tr(\cdot\,\cdot))$,
+The flat $F_0$ is isometric to $\bigl(\R^{r-1},\,\langle\cdot,\cdot\rangle\bigr)$
+where $\langle X,Y\rangle = \tr(XY)$,
 and under this isometry the regulator satisfies
 \[
   R_K = \mathrm{vol}(\Lambda_K) = \mathrm{covol}(\Gamma_K \text{ in } F_0).
