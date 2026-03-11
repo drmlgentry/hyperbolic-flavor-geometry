@@ -13,8 +13,6 @@ hyperbolic 3-manifolds, Coxeter group actions, and arithmetic unit lattices.
 | 6 | Discrete Shape Space and Integer Logarithmic Lattices | Ready for submission |
 | 7 | Uniqueness-First EFT Framework: Framework, Feasibility, and the Spectrum Obstruction | Held |
 
-Recommended submission order: 3, 6, 2, 4, 7.
-
 ## Compilation
 ```powershell
 cd papers\paper3-holonomy
