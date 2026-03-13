@@ -52,8 +52,8 @@ from manifold $m006$ (vol $= 2.029$, $H_1 = \Zfive$); the $N$-factor
 (unipotent lower-triangular) construction yields the PMNS matrix from
 manifold $m003$ (vol $= 0.981$, $H_1 = \Zfive$), achieving Frobenius
 fitness $0.019$ matching the theoretical minimum for this construction.
-Both manifolds share $H_1 = \Zfive$, suggesting that 5-torsion in the
-first homology group is a geometric selection principle for three-generation
+Both manifolds share $H_1 = \Zfive$, suggesting a possible correlation with odd-prime torsion in the
+first homology group as a successful geometric fit for three-generation
 flavor structure. The diagonal $A$-factor remains unassigned and is
 conjectured to encode fermion mass ratios or CP-violating phases.
 \end{abstract}
@@ -97,6 +97,9 @@ and QR extraction procedure. Section~\ref{sec:results} presents the
 numerical results from the census scan. Section~\ref{sec:homology} discusses
 the $H_1 = \Zfive$ selection principle. Section~\ref{sec:discussion}
 discusses open questions including the $A$-factor and CP violation.
+The construction does not derive neutrino masses or dynamics and should be regarded as a phenomenological geometric model.
+
+All computations were performed using SnapPy~\cite{snappy}; scripts used for the census scan are available at \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
 
 % ============================================================
 \section{The Symmetric QR Obstruction}
@@ -279,8 +282,8 @@ The scale $\lambda$ and signs $s_{ij}$ are optimized over a grid
 $\lambda \in [0.1, 5.0]$ (50 values) and $s_{ij} \in \{+1,-1\}^3$ (8 combinations).
 The fitness function is the permutation-minimized Frobenius norm:
 \begin{equation}
-  \mathcal{F}(L) = \min_{\pi \in S_3} \frob{|Q(L)|_\pi - U_\mathrm{PMNS}},
-  \label{eq:fitness_perm}
+\label{eq:fitness}
+\mathcal{F}(L) = \min_{\pi \in S_3} \||Q(L)|_\pi - U_{\mathrm{PMNS}}\|_F,
 \end{equation}
 where $|Q(L)|_\pi$ denotes the QR factor with columns permuted by $\pi$.
 
@@ -307,14 +310,15 @@ reproducing the PMNS pattern to the same precision.
 \subsection{Census scan}
 
 We scan the SnapPy \texttt{OrientableClosedCensus}~\cite{snappy},
-evaluating word triples of length 2 and 3 from the first 100 manifolds.
+evaluating word triples of length 2 and 3 from the first 100 manifolds. 
+Figure~\ref{fig:geodesic} shows the geodesic axis configurations on $S^2$ for three representative manifolds spanning both regimes.
 For each manifold we retain the optimal triple across all scales,
 sign patterns, and column permutations.
 
 \begin{table}[!t]
 \centering
 \caption{Top results from the Borel construction PMNS scan.
-Fitness is permutation-minimized Frobenius norm~\eqref{eq:fitness_perm}.
+Fitness is permutation-minimized Frobenius norm~\eqref{eq:fitness}.
 All leading manifolds have $H_1 = \Zfive$.}
 \label{tab:pmns_results}
 \begin{tabular}{llccl}
@@ -466,6 +470,7 @@ r^2 - \Bigl[\tfrac{\cot\theta_{12} - \cos\theta_{23}}{2}
      + \Bigl[\tfrac{\cot\theta_{12} - \cos\theta_{23}}{2}
              \cdot \tan\theta_{23}\Bigr] = 0.
 \end{equation}
+
 By Vieta's formulas, the two roots satisfy
 \begin{align}
 l_{32}^{(\mathrm{c})} + l_{32}^{(\mathrm{e})}
@@ -506,7 +511,6 @@ the degeneracy between $\delta_{\mathrm{CP}} = 0$ and the physical
 case at the level of the quadratic discriminant.
 
 % ============================================================
-﻿% ============================================================
 \section{Odd-Torsion Homology as a Selection Principle}
 \label{sec:homology}
 % ============================================================
@@ -528,16 +532,16 @@ has $H_1$ containing odd-prime torsion.}
 \toprule
 Manifold & $H_1(M)$ & vol & $\mathcal{F}$ & Odd prime \\
 \midrule
-m003 (idx~1)  & $\mathbb{Z}/5$                     & 0.981 & \textbf{0.01897} & 5 \\
-m007 (idx~15) & $\mathbb{Z}/3\oplus\mathbb{Z}/9$   & 1.583 & 0.01935 & 3 \\
-m007 (idx~29) & $\mathbb{Z}/24$                    & 1.885 & 0.01950 & 3 \\
-m010 (idx~47) & $\mathbb{Z}/2\oplus\mathbb{Z}/6$   & 2.030 & 0.01974 & 3 \\
-m023 (idx~41) & $\mathbb{Z}/3\oplus\mathbb{Z}/3$   & 2.014 & 0.01978 & 3 \\
-m016 (idx~28) & $\mathbb{Z}/39$                    & 1.885 & 0.01981 & 3 \\
-m009 (idx~55) & $\mathbb{Z}/14$                    & 2.063 & 0.01987 & 7 \\
-m006 (idx~16) & $\mathbb{Z}/30$                    & 1.589 & 0.02023 & 3,5 \\
-m004 (idx~11) & $\mathbb{Z}/5$                     & 1.529 & 0.02100 & 5 \\
-m010 (idx~33) & $\mathbb{Z}/30$                    & 1.911 & 0.02142 & 3,5 \\
+m003 (idx~1)  & $\mathbb{Z}/5$                          & 0.981 & \textbf{0.01897} & 5 \\
+m007 (idx~15) & $\mathbb{Z}/3\oplus\mathbb{Z}/9$        & 1.583 & 0.01935 & 3 \\
+m015 (idx~19) & $\mathbb{Z}/7$                          & 1.757 & 0.01937 & 7 \\
+m034 (idx~73) & $\mathbb{Z}/30$                         & 2.208 & 0.01943 & 3, 5 \\
+m007 (idx~29) & $\mathbb{Z}/24$                         & 1.885 & 0.01950 & 3 \\
+m026 (idx~82) & $\mathbb{Z}/13$                         & 2.273 & 0.01953 & 13 \\
+m011 (idx~85) & $\mathbb{Z}/49$                         & 2.276 & 0.01956 & 7 \\
+m010 (idx~47) & $\mathbb{Z}/2\oplus\mathbb{Z}/6$        & 2.030 & 0.01974 & 3 \\
+m023 (idx~41) & $\mathbb{Z}/3\oplus\mathbb{Z}/3$        & 2.014 & 0.01978 & 3 \\
+m016 (idx~28) & $\mathbb{Z}/39$                         & 1.885 & 0.01981 & 3 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -555,14 +559,14 @@ constraint is an open question.
 
 \subsection{Comparison of CKM and PMNS manifolds}
 
-Table~III compares the optimal manifolds.
+Table~\ref{tab:ckm_pmns} compares the optimal manifolds.
 Both the CKM manifold m006 (\texttt{OrientableClosedCensus}[43])
 and the PMNS manifold m003 (\texttt{OrientableClosedCensus}[1])
 have $H_1 = \mathbb{Z}/5$.
 
 
 \begin{center}
-\textit{Table~III: CKM and PMNS optimal manifolds compared.}\\
+\textit{Table~\ref{tab:ckm_pmns}: CKM and PMNS optimal manifolds compared.}\label{tab:ckm_pmns}\\
 \smallskip
 \begin{tabular}{lllccc}
 \toprule
@@ -596,7 +600,7 @@ a necessary empirical condition for achieving Frobenius fitness
 $\mathcal{F} < 0.020$ via either the symmetric QR \emph{(CKM)} or
 Borel QR \emph{(PMNS)} construction is that $H_1(M;\mathbb{Z})$
 contains $p$-torsion for some odd prime $p$.
-The primes observed are $p \in \{3, 5, 7\}$, satisfying
+The primes observed are $p \in \{3, 5, 7, 13\}$, satisfying
 $p \leq 2N_g + 1$ for $N_g = 3$ generations.
 \end{proposition}
 
@@ -742,7 +746,7 @@ scale $\lambda = 1.0$, and signs $(+1, -1, +1)$.
 
 \item A census scan of 100 manifolds shows that all manifolds
 achieving $\mathcal{F} < 0.020$ have $H_1$ containing odd-prime
-torsion ($p \in \{3, 5, 7\}$), while no purely 2-primary manifold
+torsion ($p \in \{3, 5, 7, 13\}$), while no purely 2-primary manifold
 appears in the top results.
 
 \item The CKM and PMNS constructions are unified by the Iwasawa
@@ -755,8 +759,7 @@ the twist angles $\phi(\gamma)$ of loxodromic holonomy elements---to
 address CP violation and fermion mass ratios is the immediate next step.
 
 These results suggest that the flavor structure of the Standard Model
-is encoded in the topology of compact hyperbolic 3-manifolds, with
-distinct Iwasawa components responsible for distinct physical sectors.
+is encoded in the topology of compact hyperbolic 3-manifolds, withdistinct Iwasawa components responsible for distinct physical sectors.
 
 \begin{acknowledgments}
 The author thanks the developers of SnapPy~\cite{snappy} for
