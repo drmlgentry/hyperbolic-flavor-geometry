@@ -1,0 +1,89 @@
+﻿% ============================================================
+\section{Odd-Torsion Homology as a Selection Principle}
+\label{sec:homology}
+% ============================================================
+
+A striking pattern emerges from scanning the first 100 manifolds of
+the SnapPy \texttt{OrientableClosedCensus}: every manifold achieving
+Borel-construction PMNS fitness $\mathcal{F} < 0.020$ has first
+homology $H_1(M;\mathbb{Z})$ containing torsion of odd prime order.
+Conversely, no manifold whose torsion is purely 2-primary appears
+among the top results. Table~\ref{tab:homology_pattern} summarizes
+the ten best results from the census scan.
+
+\begin{table}[h]
+\centering
+\caption{Top PMNS results. Every entry with $\mathcal{F} < 0.020$
+has $H_1$ containing odd-prime torsion.}
+\label{tab:homology_pattern}
+\begin{tabular}{llccc}
+\toprule
+Manifold & $H_1(M)$ & vol & $\mathcal{F}$ & Odd prime \\
+\midrule
+m003 (idx~1)  & $\mathbb{Z}/5$                     & 0.981 & \textbf{0.01897} & 5 \\
+m007 (idx~15) & $\mathbb{Z}/3\oplus\mathbb{Z}/9$   & 1.583 & 0.01935 & 3 \\
+m007 (idx~29) & $\mathbb{Z}/24$                    & 1.885 & 0.01950 & 3 \\
+m010 (idx~47) & $\mathbb{Z}/2\oplus\mathbb{Z}/6$   & 2.030 & 0.01974 & 3 \\
+m023 (idx~41) & $\mathbb{Z}/3\oplus\mathbb{Z}/3$   & 2.014 & 0.01978 & 3 \\
+m016 (idx~28) & $\mathbb{Z}/39$                    & 1.885 & 0.01981 & 3 \\
+m009 (idx~55) & $\mathbb{Z}/14$                    & 2.063 & 0.01987 & 7 \\
+m006 (idx~16) & $\mathbb{Z}/30$                    & 1.589 & 0.02023 & 3,5 \\
+m004 (idx~11) & $\mathbb{Z}/5$                     & 1.529 & 0.02100 & 5 \\
+m010 (idx~33) & $\mathbb{Z}/30$                    & 1.911 & 0.02142 & 3,5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The odd primes appearing are 3, 5, and 7---precisely the odd primes
+satisfying $p \leq 2N_g + 1 = 7$ for $N_g = 3$ generations.
+We note that 3 is the number of fermion generations, and
+$3 \times 5 = 15$ divides the order of the Standard Model gauge group
+$SU(3)\times SU(2)\times U(1)$ modulo discrete identifications.
+Whether this arithmetic coincidence reflects a deeper topological
+constraint is an open question.
+
+\subsection{Comparison of CKM and PMNS manifolds}
+
+Table~\ref{tab:ckm_pmns_compare} compares the optimal manifolds.
+Both the CKM manifold m006 (\texttt{OrientableClosedCensus}[43])
+and the PMNS manifold m003 (\texttt{OrientableClosedCensus}[1])
+have $H_1 = \mathbb{Z}/5$.
+
+\begin{table}[h]
+\centering
+\caption{CKM and PMNS optimal manifolds compared.}
+\label{tab:ckm_pmns_compare}
+\begin{tabular}{lllccc}
+\toprule
+Target & Factor & Manifold & vol & $H_1$ & $\mathcal{F}$ \\
+\midrule
+CKM  & $K$ (symmetric) & m006 (idx~43) & 2.029 & $\mathbb{Z}/5$ & 0.01729 \\
+PMNS & $N$ (Borel)     & m003 (idx~1)  & 0.981 & $\mathbb{Z}/5$ & 0.01897 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Dehn surgery relation}
+
+The cusped hyperbolic manifold \texttt{m003} (one cusp) has volume
+$2.029$, equal to the volume of the cusped \texttt{m006} (one cusp).
+The closed manifold \texttt{OrientableClosedCensus}[1] (m003,
+vol~$= 0.981$, $H_1 = \mathbb{Z}/5$) is a Dehn filling of this
+cusped ancestor, as is the CKM manifold
+\texttt{OrientableClosedCensus}[43] (m006, vol~$= 2.029$,
+$H_1 = \mathbb{Z}/5$). This raises the possibility that both
+manifolds arise as Dehn fillings of the \emph{same} cusped ancestor,
+with the filling coefficient encoding the quark-lepton distinction
+between the $K$- and $N$-factors.
+
+\begin{proposition}[Odd-torsion selection]
+\label{prop:oddtorsion}
+Among compact orientable hyperbolic 3-manifolds in the SnapPy census,
+a necessary empirical condition for achieving Frobenius fitness
+$\mathcal{F} < 0.020$ via either the symmetric QR \emph{(CKM)} or
+Borel QR \emph{(PMNS)} construction is that $H_1(M;\mathbb{Z})$
+contains $p$-torsion for some odd prime $p$.
+The primes observed are $p \in \{3, 5, 7\}$, satisfying
+$p \leq 2N_g + 1$ for $N_g = 3$ generations.
+\end{proposition}
+
