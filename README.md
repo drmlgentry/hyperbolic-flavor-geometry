@@ -26,7 +26,7 @@ CP phase prediction: phi_aa - phi_ab + phi_aB = 203.5 deg vs PDG delta_CP = 197 
 | 4 | Scale-Free Quadratic Forms, Symmetric Space Geometry, and Arithmetic Logarithmic Lattices | Nuclear Physics B | Submitted | NPB-S-26-00538 |
 | 5 | CKM Quark Mixing from Geodesic Axes of Hyperbolic 3-Manifold Holonomy | Phys. Rev. D | Submitted Mar 2026 | es2026mar11_966 |
 | 6 | Lepton Mixing from Borel Structure of Hyperbolic Holonomy | Phys. Rev. D | Submitted Mar 2026 | es2026mar13_942 |
-| 7 | CP Violation from A-Factor Twist Angles of Hyperbolic Holonomy | Phys. Rev. D | In preparation | — |
+| 7 | CP Violation from A-Factor Twist Angles of Hyperbolic Holonomy | Phys. Rev. D | Draft complete, in preparation | — |
 
 ## Construction Pipeline
 ```
