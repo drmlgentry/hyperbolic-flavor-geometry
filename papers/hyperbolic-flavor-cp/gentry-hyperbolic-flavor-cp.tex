@@ -43,7 +43,7 @@ the twist angles of the optimal word triple \texttt{aa}, \texttt{ab},
 $\delta_{\mathrm{CP}} = \phi_{aa} - \phi_{ab} + \phi_{aB} = 203.5^\circ$,
 within $3.3\%$ of the PDG 2024 value of $197^\circ$ with no free parameters.
 We prove that the real Borel construction produces $J = 0$ identically,
-identify the obstruction as a row-phase invariance theorem,
+identify the obstruction as the row-phase invariance theorem,
 and demonstrate that the full complex construction using imaginary
 Pauli components of $\log\rho(\gamma)$ generates $J \neq 0$.
 A census scan identifies the optimal complex word triple and
@@ -84,8 +84,8 @@ $\lambda(\gamma) = e^{t(\gamma) + i\phi(\gamma)}$, where
 $t(\gamma) = \ell(\gamma)/2$ is half the translation length and
 $\phi(\gamma)$ is the twist angle. The $A$-factor in the Iwasawa
 decomposition of $\rho(\gamma)$ encodes precisely the modulus
-$e^{t(\gamma)}$, while the full complex eigenvalue
-$\lambda(\gamma)$ carries both $t$ and $\phi$.
+decomposition of \$\\rho(\\gamma)\$ encodes precisely the modulus
+\^{|t(\\gamma)|}\$, while the full complex eigenvalue
 
 The main results are:
 \begin{enumerate}
@@ -155,7 +155,7 @@ $\lambda = e^{t+i\phi}$.}
 \label{tab:afactor}
 \begin{tabular}{lccc}
 \toprule
-Word & $t$ & $\phi$ (deg) & $e^{|t|}$ \\
+Word & $t$ & $\phi$ (deg) & $|\lambda| = e^{|t|}$ \\
 \midrule
 \texttt{aa} & $-0.8894$ & $-168.6^\circ$ & $2.4338$ \\
 \texttt{ab} & $-0.4992$ & $+83.7^\circ$ & $1.6473$ \\
@@ -271,9 +271,14 @@ The \emph{complex axis} incorporates the imaginary Pauli components:
 {\|\hat{n}^{(\mathrm{Re})} + i\alpha\,\hat{n}^{(\mathrm{Im})}\|},
 \label{eq:complex_axis}
 \end{equation}
-where $\alpha \in [0,1]$ interpolates between the real ($\alpha=0$)
-and fully complex ($\alpha=1$) constructions, and
-$\hat{n}^{(\mathrm{Im})}$ is the normalized imaginary part.
+where $\alpha \geq 0$ is the imaginary weight (values $\alpha > 1$ are
+permitted; the denominator remains well-defined for all $\alpha$),
+$\hat{n}^{(\mathrm{Re})}$ is the unit vector from the real Pauli
+components of $\log\rho(w)$ (as in the real construction), and
+$\hat{n}^{(\mathrm{Im})}$ is the unit vector from the imaginary Pauli
+components: $\mathbf{n}^{(\mathrm{Im})} = (\mathrm{Im}[L_{01}+L_{10}],
+\mathrm{Im}[i(L_{10}-L_{01})], \mathrm{Im}[L_{00}-L_{11}])$,
+normalized to unit length.
 
 \subsection{Complex L-entries and Jarlskog generation}
 
@@ -298,7 +303,9 @@ achieves $\mathcal{F} = 0.019$ with $J = 0$. Increasing $\alpha$
 continuously trades fitness for CP phase: at $\alpha = 0.9$ the fitness
 remains $0.020$ while $|J| = 0.013$; at $\alpha = 1.125$ the Jarlskog
 invariant matches the PDG value $|J_{\rm PDG}| = 0.00966$ (red dashed line)
-exactly. Color encodes $\alpha$.}
+exactly. Color encodes $\alpha$. Values $\alpha > 1$ are geometrically
+permitted since the norm in~\eqref{eq:complex_axis} is well-defined
+for all $\alpha \geq 0$.}
 \label{fig:pareto}
 \end{figure*}
 
@@ -382,8 +389,13 @@ $\ell(aa) = 2\ell(a)$ and therefore:
 \label{cor:isospectral}
 On manifold $m003$, the words $a$ and $aB$ have equal
 translation length: $\ell(a) = \ell(aB)$.
-This is a non-trivial constraint on the length spectrum of $m003$,
-reflecting the arithmetic structure of its fundamental group.
+This is a non-trivial constraint on the length spectrum of $m003$.
+Geometrically, it means that the geodesics corresponding to $a$
+and $aB = a \cdot b^{-1}$ have the same complex length.
+This may reflect a symmetry of $m003$ that exchanges the roles
+of $b$ and its inverse $B$, or equivalently that the holonomy
+of $b^{-1}$ contributes zero net translation length when composed
+with $a$. The precise group-theoretic reason is an open question.
 \end{corollary}
 
 % ============================================================
@@ -471,7 +483,7 @@ length $t$ and twist angle $\phi$.}
 \label{tab:ckm_afactor}
 \begin{tabular}{lccc}
 \toprule
-Word & $t$ & $\phi$ (deg) & $e^{|t|}$ \\
+Word & $t$ & $\phi$ (deg) & $|\lambda| = e^{|t|}$ \\
 \midrule
 \texttt{aaB} & $+0.8859$ & $92.49^\circ$ & $2.425$ \\
 \texttt{AbA} & $+0.8859$ & $92.49^\circ$ & $2.425$ \\
@@ -511,7 +523,7 @@ twist angles.
 \end{corollary}
 
 The common twist angle $\phi \approx 92.49^\circ \approx \pi/2$
-is notable: $e^{i\phi} \approx i$, so the holonomy eigenvalue
+is notable: \^{i\\phi} \\approx i\$, so the holonomy eigenvalue
 is nearly purely imaginary. We observe that
 $7\theta_{12}^{\mathrm{CKM}} = 7 \times 13.04^\circ = 91.28^\circ$,
 within $1.2^\circ$ of $\phi$, suggesting a possible connection
@@ -521,7 +533,7 @@ geometric structure of $m006$ is an open question.
 
 \subsection{Mass ratios and the A-factor spectrum}
 
-The translation lengths $e^{|t|}$ of the three optimal PMNS words
+The translation lengths \^{|t|}\$ of the three optimal PMNS words
 are $2.434$, $1.647$, $1.560$. These are not in the ratio of
 lepton masses ($m_\tau/m_\mu \approx 16.8$), indicating that
 mass ratios require either higher-length words or a different
