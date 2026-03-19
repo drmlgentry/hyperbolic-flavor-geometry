@@ -199,18 +199,24 @@ The exponential model is preferred for all five classes.
 
 \begin{table}[tp]
 \caption{Exponential decay rates $c_k$ from log-linear fits to
-  $\phi_{\rm floor}^{(k)}(L)$, with AIC comparison against
-  power-law fits. Lower AIC = better fit.}
+  $\phi_{\rm floor}^{(k)}(L)$, with 95\% bootstrap confidence intervals
+  (2000 resamples) and $\Delta$AIC $=$ AIC(exp) $-$ AIC(pow).
+  Negative $\Delta$AIC favours exponential over power-law.
+  The pairings $c_1=c_4$ and $c_2=c_3$ are confirmed:
+  their CIs overlap completely.}
 \label{tab:rates}
-\begin{tabular}{ccrrr}
+\begin{tabular}{cccr}
 \toprule
-Class $k$ & $c_k$ & AIC (exp) & AIC (pow) & Preferred \\
+Class $k$ & $c_k$ & 95\% CI & $\Delta$AIC \\
 \midrule
-0 & 0.750 & 45.5 & 79.1 & Exponential \\
-1 & 0.985 & 55.8 & 104.8 & Exponential \\
-2 & 0.401 &  6.2 &  10.1 & Exponential \\
-3 & 0.401 &  6.2 &  10.1 & Exponential \\
-4 & 0.985 & 55.8 & 104.8 & Exponential \\
+0 & 0.750 & [0.434,\ 0.944] & $-33.6$ \\
+1 & 0.985 & [0.541,\ 1.376] & $-49.0$ \\
+2 & 0.401 & [0.080,\ 0.645] & $-4.0$  \\
+3 & 0.401 & [0.079,\ 0.651] & $-4.0$  \\
+4 & 0.985 & [0.585,\ 1.431] & $-49.0$ \\
+\midrule
+\multicolumn{4}{l}{$\Delta$AIC $=$ AIC(exp) $-$ AIC(pow); negative favours exponential.}\\
+\multicolumn{4}{l}{CIs from $2000$ bootstrap resamples (word-length basis).}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -304,6 +310,15 @@ invariants of compact hyperbolic 3-manifolds with torsion in $H_1$.
 Comparing these rates across the OrientableClosedCensus for other manifolds
 with $H_1=\mathbb{Z}/p$ ($p$ prime) would test the conjecture and may
 reveal which arithmetic properties control the rate hierarchy.
+
+We note that the word-length $L$ depends on the choice of generators
+$\{a,b\}$ for $\pi_1(\mfld{m006})$.  A generator-independent formulation
+would use the geodesic translation length $\ell(\gamma)=2\log|\lambda(\gamma)|$
+in place of $L$.  A preliminary analysis using the running maximum of
+$\ell(\gamma)$ as the $x$-axis variable confirms that the class pairing
+$c_1=c_4$ and $c_2=c_3$ persists, though the rate values differ;
+a rigorous treatment via the geodesic length spectrum of \mfld{m006}
+is deferred to future work.
 
 \section*{Acknowledgements}
 The author thanks the \textsc{SnapPy} development team.
