@@ -14,7 +14,7 @@ Both optimal manifolds have H1=Z/5 (odd-torsion conjecture).
 m003 is the **Meyerhoff manifold** (OrientableClosedCensus[1]); distinct from the
 Weeks manifold (OrientableClosedCensus[0], vol=0.9427).
 
-## Submission Portfolio (8 papers)
+## Submission Portfolio (9 papers)
 
 | # | Title | Journal | Status | ID |
 |---|---|---|---|---|
@@ -60,3 +60,4 @@ Scan scripts and census data: https://github.com/drmlgentry/hyperbolic-flavor-sc
 ## Author
 
 Marvin L. Gentry | drmlgentry@protonmail.com | ORCID: 0009-0006-4550-2663
+
