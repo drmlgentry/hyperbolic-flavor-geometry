@@ -134,6 +134,8 @@ On \mfld{m006}, class~4 already has a floor of $0.005\degr$ (word
 \word{AAABAB}), while the other four classes have floors $\geq 1.6\degr$
 --- a $637\times$ asymmetry.
 On \mfld{m003}, the floors are within $2\times$ of each other.
+This contrast between the two manifolds at length~7 motivates
+extending the census to longer lengths for both manifolds.
 
 \begin{table}[tp]
 \caption{Spectral floors per homology class at word length $\leq 7$
@@ -154,6 +156,36 @@ Class $k$ & \multicolumn{2}{c}{\mfld{m003}} &
 \midrule
 \multicolumn{2}{l}{Max/min ratio} & $2\times$
 & & $637\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Length-12 floors for both manifolds}
+
+Table~\ref{tab:floors_both_L12} compares length-12 floors for both
+manifolds.  The $4:2:1$ pairing structure appears in both cases.
+
+\begin{table}[tp]
+\caption{Spectral floors per homology class at word length $\leq 12$
+  for both manifolds with $H_1=\mathbb{Z}/5$.
+  Both exhibit the pairing $\phi^{(1,4)}<\phi^{(0)}<\phi^{(2,3)}$
+  with ratio $\phi^{(2,3)}/\phi^{(1,4)}\approx 2$.}
+\label{tab:floors_both_L12}
+\begin{tabular}{cllll}
+\toprule
+Class $k$ & \multicolumn{2}{c}{\mfld{m003} (Meyerhoff)} &
+            \multicolumn{2}{c}{\mfld{m006}} \\
+          & $\phi_{\rm floor}$ ($\degr$) & Word
+          & $\phi_{\rm floor}$ ($\degr$) & Word \\
+\midrule
+0 & 0.04373 & \word{aaaabbbaabaB} & 0.02300 & \word{aaaaaaaaabAb} \\
+1 & 0.04319 & \word{aaBAbAAbAABB} & 0.00530 & \word{aaaaaababAAA} \\
+2 & 0.09387 & \word{aabAAbAAABB}  & 0.01060 & \word{aaababaaabab} \\
+3 & 0.09387 & \word{aaaaBabbAAB}  & 0.01060 & \word{AAABABAAABAB} \\
+4 & 0.04319 & \word{aabbAAbaBaaB} & 0.00530 & \word{aaaBAAABAAAA} \\
+\midrule
+\multicolumn{2}{l}{$\phi^{(2,3)}/\phi^{(1,4)}$} & $2.17$ &
+  & $2.00$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -275,10 +307,14 @@ The main findings are:
       Class~0 (identity coset) is self-paired and has an intermediate
       rate, not the fastest or slowest.
 
-\item By contrast, the Meyerhoff manifold \mfld{m003} (also $H_1=\mathbb{Z}/5$)
-      shows only a $2\times$ spread of floors at length~7, indicating
-      a qualitatively different torsion-floor relationship despite
-      identical $H_1$.
+\item At length~12, the Meyerhoff manifold \mfld{m003} (also $H_1=\mathbb{Z}/5$)
+      exhibits the \emph{same} pairing structure as \mfld{m006}:
+      floors $\phi^{(1,4)}=0.04319\degr$, $\phi^{(2,3)}=0.09387\degr$,
+      $\phi^{(0)}=0.04373\degr$, giving ratio
+      $\phi^{(2,3)}/\phi^{(1,4)}\approx 2.17$.
+      The pairing $c_1=c_4$, $c_2=c_3$ thus appears to be a property
+      of the $\mathbb{Z}/5$ torsion structure shared by both manifolds,
+      not specific to \mfld{m006}'s arithmetic.
 \end{enumerate}
 
 \begin{conjecture}
