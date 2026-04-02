@@ -1,6 +1,8 @@
-\documentclass[12pt,prd,superscriptaddress,nofootinbib]{revtex4-2}
+\documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amssymb,amsfonts}
+\usepackage{authblk}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{booktabs}
@@ -19,11 +21,10 @@
 \title{Quark Mixing from Hyperbolic Geometry:\\
 The CKM Matrix from Geodesics on a Compact 3-Manifold}
 
-\author{Marvin L.\ Gentry}
-\email{drmlgentry@protonmail.com}
-\affiliation{Independent Researcher}
-
+\author[1]{Marvin L. Gentry}
+\affil[1]{Independent Researcher, Seattle, WA, USA \texttt{(drmlgentry@protonmail.com)}}
 \date{\today}
+
 
 \begin{abstract}
 We present numerical evidence that the Cabibbo-Kobayashi-Maskawa (CKM)
@@ -446,76 +447,7 @@ respectively. The Gaussian kernel naturally translates these angular differences
 into the observed mixing hierarchy: smaller angles produce larger
 overlaps, driving the pattern $|V_{ud}| \gg |V_{us}| \gg |V_{ub}|$.
 
-\subsection{CP Violation: Current Status}
-\label{subsec:cp}
 
-The Jarlskog invariant~\cite{Jarlskog1985},
-\begin{equation}
-J = \mathrm{Im}(V_{us} V_{cb} V_{ub}^* V_{cs}^*),
-\end{equation}
-measures CP violation in the quark sector. The PDG value is 
-$J \approx 3 \times 10^{-5}$.
-
-In our current construction, $J = 0$ to numerical precision. This 
-arises because:
-\begin{enumerate}
-\item The overlap kernel~\eqref{eq:kernel} is purely real.
-\item The QR decomposition of a real positive matrix yields a real
-orthogonal matrix with $J = 0$.
-\end{enumerate}
-
-To generate CP violation, one must introduce complex phases into the 
-overlap matrix. A natural source is the first homology 
-$H_1(M) = \mathbb{Z}/5$: flat $\U(1)$ connections on $M$ are classified 
-by characters $\chi: H_1 \to \U(1)$, which assign phases to closed loops. 
-Each geodesic $\gamma$ maps to a homology class $[\gamma] \in H_1$, and 
-a character $\chi$ contributes a phase $\chi([\gamma])$ to the overlap.
-
-However, for $H_1 = \mathbb{Z}/5$ (pure torsion), the characters are 
-discrete: $\chi([\gamma]) = e^{2\pi i k/5}$ for $k \in \{0,1,2,3,4\}$. 
-Numerical exploration found that these discrete phases do not 
-produce $J \neq 0$ for the word triples considered, due to 
-algebraic cancellations among the homology images $[2,-1]$, $[0,0]$, 
-$[-2,1]$: the trivial image of \texttt{AbA} forces certain phase 
-differences to vanish.
-
-Resolving the CP puzzle may require:
-\begin{itemize}
-\item A manifold with free homology ($H_1 \supset \mathbb{Z}$), 
-allowing continuous phases.
-\item Incorporation of the complex structure of fixed points on 
-$\partial \Hthree \cong \mathbb{CP}^1$.
-\item Additional geometric data beyond the axis overlaps.
-\end{itemize}
-
-We verified this obstruction numerically by scanning all phase pairs
-$(\varphi_1, \varphi_3) \in [-\pi,\pi]^2$ with $\varphi_2 = 0$ fixed
-(forced by the trivial homology image of \texttt{AbA}).
-No assignment yields both fitness below $0.10$ and $|J| > 10^{-6}$:
-every nonzero phase combination destroys the CKM structure,
-driving the Frobenius error from $0.017$ to $\approx 1.43$.
-This confirms that the obstruction is geometric, not merely numerical.
-
-Resolving CP violation may require:
-\begin{itemize}
-\item A manifold with free homology ($H_1 \supset \mathbb{Z}$),
-permitting continuous phases without the torsion cancellation.
-\item Use of the complex fixed-point coordinates $z_\pm \in \mathbb{CP}^1$
-of each loxodromic element as a source of geometric phase, rather
-than flat $\mathrm{U}(1)$ connections.
-\item A two-manifold construction in which flavor mixing and
-the CP phase arise from separate geometric sectors.
-\end{itemize}
-
-We leave the resolution to future work, noting that the obstruction
-itself---a consequence of the trivial homology image of \texttt{AbA}
-in $H_1(\mathrm{m006};\mathbb{Z}) = \mathbb{Z}/5$---is a precise,
-falsifiable statement about the geometry.
-
-%======================================================================
-\section{Discussion}
-\label{sec:discussion}
-%======================================================================
 
 \subsection{Comparison with Other Approaches}
 \label{subsec:comparison_other}
@@ -584,8 +516,7 @@ lower than every one of the $50{,}000$ Haar-random matrices.
 The one-sided $p$-value is $p < 10^{-4}$ (more than $4.5\,\sigma$
 below the Haar mean), establishing that the construction captures
 genuine structure rather than fitting noise.
-Code: \url{https://github.com/drmlgentry/hyperbolic-flavor-scan},
-\texttt{analysis/stronger\_null\_tests.py}.
+Null tests were run using the open-source \texttt{LatticeFit} package~\cite{Gentry:LatticeFit} (Zenodo DOI: \href{https://doi.org/10.5281/zenodo.19225731}{10.5281/zenodo.19225731}).
 
 \subsection{Predictions and Falsifiability}
 \label{subsec:predictions}
@@ -628,10 +559,7 @@ and $\theta_{23} = 68.4^\circ$. These geometric invariants, combined
 with a single Gaussian localization parameter $\sigma = 0.49$,
 suffice to reproduce the dominant structure of the CKM matrix.
 
-The framework currently predicts $J = 0$ (no CP violation), 
-representing the primary open problem. Possible resolutions include 
-manifolds with free homology, complex overlap kernels, or additional 
-geometric structure beyond axis overlaps.
+The framework predicts $J = 0$ for the CKM sector, explained by the homology classes of the optimal word triple: $[\texttt{AbA}] = [\texttt{AAb}] = 2$ in $H_1(m006)=\mathbb{Z}/5$, so two columns of the overlap matrix are identical and $J=0$ (see companion paper~\cite{Gentry:CP}). Note: $m006$ is chiral (\texttt{is\_amphicheiral: False}, \texttt{is\_full\_group: True} in SnapPy).
 
 This work suggests that the flavor puzzle may have a geometric 
 solution: the apparently arbitrary parameters of the Standard Model 
@@ -640,12 +568,22 @@ manifold, fixed by topology in the same sense that Mostow rigidity
 fixes the geometry.
 
 %======================================================================
-\begin{acknowledgments}
+\subsection*{Homological origin of $J=0$}
+\label{subsec:hom_cp}
+The abelianization map $\pi_1(m006)\twoheadrightarrow H_1(m006)=\mathbb{Z}/5$
+gives $[a]=2$, $[b]=1$. For the optimal triple:
+$[\texttt{aaB}]=3$, $[\texttt{AbA}]=2$, $[\texttt{AAb}]=2$.
+Since $[\texttt{AbA}]=[\texttt{AAb}]$, the flat holonomies
+$\chi_k(\texttt{AbA})=\chi_k(\texttt{AAb})$ for all $k$,
+two columns of the overlap matrix coincide, and $J=0$.
+This does not require amphicheirality; $m006$ is chiral.
+
+\section*{Acknowledgements}
 The author (ORCID: \href{https://orcid.org/0009-0006-4550-2663}{0009-0006-4550-2663})
 thanks the developers of SnapPy for their indispensable
 software, and the mathematical community for creating the census of
 hyperbolic 3-manifolds that made this search possible.
-\end{acknowledgments}
+
 
 %======================================================================
 \begin{thebibliography}{99}
@@ -748,4 +686,5 @@ preprint (2026), EPJC-26-03-407.
 \end{thebibliography}
 
 \end{document}
+
 
