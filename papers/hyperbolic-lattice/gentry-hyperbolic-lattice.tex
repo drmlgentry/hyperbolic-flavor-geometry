@@ -170,21 +170,29 @@ The \emph{systole} of $\Gamma$ is
 $\mathrm{sys}(\Gamma)=\min_{\gamma\neq\mathrm{id}}d(0,\gamma\cdot0)>0$.
 \end{definition}
 
-\begin{lemma}[Uniform gap]\label{lem:gap}
-$|q(\gamma)-q(\gamma')|\geq\Delta:=\kappa\,\mathrm{sys}(\Gamma)>0$
-for all distinct $\gamma,\gamma'\in\Gamma$.
+\begin{lemma}[Positive minimum weight]\label{lem:gap}
+The weight spectrum $\mathcal{W}(\Gamma,\kappa)$ has a positive minimum
+value $\Delta:=\kappa\,\mathrm{sys}(\Gamma)>0$, where
+$\mathrm{sys}(\Gamma)=\min_{\gamma\neq\mathrm{id}}d(0,\gamma\cdot0)$.
+For any $R>0$, the set $\{\gamma\in\Gamma:q(\gamma)\le R\}$ is finite.
 \end{lemma}
 
 \begin{proof}
-The orbit $\Gamma\cdot0$ is discrete by proper discontinuity, so
-$\mathrm{sys}(\Gamma)>0$, and $\Delta=\kappa\,\mathrm{sys}(\Gamma)$.
+The orbit $\Gamma\cdot0$ is discrete by proper discontinuity and
+$\Gamma$ has no fixed points in $\Hthree$ (torsion-free), so
+$\mathrm{sys}(\Gamma)>0$.  Every group element satisfies
+$q(\gamma)\ge\Delta$.  Finiteness follows because
+$\{q(\gamma)\le R\}=\Gamma\cap\overline{B}(0,R/\kappa)$, which is
+finite by proper discontinuity.
 \end{proof}
 
-\begin{corollary}[Uniform suppression]\label{cor:supp}
-Every subleading contribution satisfies
-$q(\gamma')\geq q(\gamma_\mathrm{min})+\Delta$, where
-$\gamma_\mathrm{min}$ is the minimal representative.
-\end{corollary}
+\begin{remark}
+Two distinct elements may have the same weight (e.g.\ $\gamma$ and
+$\gamma^{-1}$ have the same displacement from $0$).
+The lemma asserts only that the \emph{minimum} positive weight is
+$\Delta$, not that all weights are distinct.  For the mass lattice
+application we need only this minimum.
+\end{remark}
 
 \section{Coordinate Rigidity}
 \label{sec:rigidity}
@@ -295,11 +303,11 @@ The Mahler measure bridges these two subfields:
 $\log M(\Delta)=2\log\vp\in\Q(\sqrt{5})\subset\Q(\zeta_{15})$.
 \end{remark}
 
-\section{The Algebraic Bridge: Gap Equals Half the Mahler Logarithm}
+\section{The Algebraic Bridge: Lattice Spacing and Mahler Measure}
 \label{sec:gap}
 
-We now connect the abstract gap $\Delta$ of
-Lemma~\ref{lem:gap} to the Mahler measure.
+We now establish the algebraic connection between the mass lattice
+spacing and the Mahler measure of the Alexander polynomial.
 
 \begin{definition}[Mass lattice]
 The \emph{Standard Model mass lattice} is
@@ -309,30 +317,38 @@ giving a full-step spacing of $\log\vp=\mathrm{Reg}(\Q(\sqrt5))$.
 \end{definition}
 
 \begin{theorem}[Algebraic Bridge]\label{thm:bridge}
-Let $\kappa=1/(4\log\vp)$ in the weight function $q(\gamma)=\kappa\,d(0,\gamma\cdot0)$.
-Then the uniform gap of Lemma~\ref{lem:gap} satisfies
+Let the mass lattice $\mathcal{L}=\{m_e\cdot\vp^{q/4}:q\in\Z\}$ be
+given.  Its full logarithmic step spacing is
+$\sigma:=\log\vp=\mathrm{Reg}(\Q(\sqrt5))$.
+The Alexander polynomial of the cusped ancestor \textup{\texttt{m003}}
+satisfies
 \[
-\Delta = \frac{\log M(\Delta_{M_\mathrm{PMNS}})}{2}
-       = \log\vp
-       = \mathrm{Reg}(\Q(\sqrt{5})).
+\tfrac{1}{2}\log M(\Delta_{\textup{\texttt{m003}}}) = \log\vp = \sigma.
 \]
+Hence the logarithmic spacing of the mass lattice equals half the
+logarithm of the Mahler measure of the Alexander polynomial of the
+cusped ancestor of $M_\mathrm{PMNS}$.
 \end{theorem}
 
 \begin{proof}
-By Corollary~\ref{cor:mahler}, $\log M(\Delta)=2\log\vp$.
-With $\kappa=1/(4\log\vp)$ and the shortest geodesic of \texttt{m003}
-having length $\ell_1=0.578082$ (computed via \texttt{SnapPy}), the
-systole of the corresponding covering manifold determines $\Delta$.
-Setting $\Delta=\log\vp$ fixes $\kappa=\log\vp/(\kappa\cdot\mathrm{sys})$
-uniquely.  The identification $\Delta=\log M(\Delta)/2$ then follows
-from Corollary~\ref{cor:mahler}.
+By Corollary~\ref{cor:mahler}, $M(\Delta)=\vp^2$, so
+$\log M(\Delta)=2\log\vp$.  The mass lattice spacing is
+$\sigma=\log\vp$ by definition.  Hence
+$\sigma=\tfrac12\log M(\Delta)$.
+The identification $\log\vp=\mathrm{Reg}(\Q(\sqrt5))$ holds because
+$\vp$ is the fundamental unit of $\Q(\sqrt5)$ and the regulator equals
+$\log|\vp|=\log\vp$.
 \end{proof}
 
 \begin{remark}
-The normalization $\kappa=1/(4\log\vp)$ is the same as the
-quarter-integer spacing of the mass formula: the factor $1/4$ arises
-from the metric normalization of the maximal flat in
-$\mathrm{SL}(2,\R)/\mathrm{SO}(2)$~\cite{Gentry2026masses}.
+This theorem does not claim that the systole of $M_\mathrm{PMNS}$
+equals $\log\vp$; the systole and the lattice spacing are different
+quantities.  What the theorem asserts is a purely algebraic identity:
+the lattice spacing (defined geometrically from the symmetric space
+$\mathrm{SL}(2,\R)/\mathrm{SO}(2)$) coincides with half the log-Mahler
+measure of the Alexander polynomial of the topological ancestor of the
+manifold used to encode the lepton sector.  This coincidence is exact
+and independent of any numerical fit or free parameter.
 \end{remark}
 
 \begin{corollary}[Topological origin of the golden ratio]
@@ -364,17 +380,24 @@ Alexander polynomial (Theorem~\ref{thm:bridge}), which exploits the
 arithmeticity of $\pi_1(M_\mathrm{PMNS})$ and the specific form
 $\Delta(t)=t^2+3t+1$.
 
-The Weeks manifold $M_\mathrm{Weeks}$ (volume $0.9427$, $H_1=\Z/5\oplus\Z/5$)
-is the $(2,1)$ Dehn filling of the same cusped ancestor \texttt{m003}
-and shares the same Alexander polynomial.  It therefore has the same
-Mahler measure $\vp^2$ and the same gap $\log\vp$.
-The Dehn surgery hierarchy
+The Weeks manifold $M_\mathrm{Weeks}$ (volume $0.9427$,
+$H_1=\Z/5\oplus\Z/5$, isometry group $D_6$) is the $(2,1)$ Dehn
+filling of the same cusped ancestor \texttt{m003}.  The Alexander
+polynomial $\Delta(t)=t^2+3t+1$ and its Mahler measure $\vp^2$ are
+invariants of the \emph{cusped} manifold \texttt{m003}, not of the
+closed fillings.  Closed 3-manifolds do not have Alexander polynomials.
+What the Weeks manifold inherits from \texttt{m003} is the arithmetic
+structure: $\mathrm{CS}(\texttt{m003})=1/4$, and both the $(2,1)$ and
+$(-2,3)$ fillings are arithmetic closed manifolds.
+The volume hierarchy
 \[
 M_\mathrm{Weeks}\;(0.9427)\;<\;M_\mathrm{PMNS}\;(0.9814)\;<\;M_\mathrm{CKM}\;(2.0289)
 \]
-suggests that the golden ratio is a topological invariant of the
-entire family of closed manifolds arising from the cusped ancestor
-\texttt{m003}, not a coincidental feature of a single filling.
+places all three flavor manifolds at the bottom of the volume spectrum,
+with two of them (Weeks and PMNS) arising as Dehn fillings of the
+single cusped ancestor whose Alexander polynomial has Mahler measure
+$\vp^2$.  Whether the Weeks manifold plays a role in the flavor
+framework beyond this arithmetic relationship is an open question.
 
 \section{Conclusion}
 
@@ -382,9 +405,9 @@ We have proved three structural properties of logarithmic weight
 spectra arising from cocompact torsion-free lattice actions on
 $\Hthree$: uniqueness of minimal representatives, a uniform
 suppression gap, and stability under bounded deformations.
-For the arithmetic lattice $\pi_1(M_\mathrm{PMNS})$ we have computed
-the gap explicitly and shown it equals
-$\log\vp=\mathrm{Reg}(\Q(\sqrt5))=\tfrac12\log M(\Delta_{M_\mathrm{PMNS}})$.
+For the arithmetic lattice $\pi_1(M_\mathrm{PMNS})$ we have identified
+the logarithmic spacing of the associated mass lattice with
+$\tfrac12\log M(\Delta_{\texttt{m003}})=\log\vp=\mathrm{Reg}(\Q(\sqrt5))$.
 This provides a purely topological origin for the golden ratio in the
 weight spectrum of the Standard Model mass lattice, independent of
 any phenomenological fitting.
