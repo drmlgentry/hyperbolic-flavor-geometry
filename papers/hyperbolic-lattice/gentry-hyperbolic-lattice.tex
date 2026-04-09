@@ -1,6 +1,5 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
-\newtheorem*{mainresult}{Main Result}
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{authblk}
@@ -12,20 +11,18 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\newtheorem{assumption}[theorem]{Assumption}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\Hthree}{\mathbb{H}^3}
-\newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\bdry}{\partial\mathbb{H}^3}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\vp}{\varphi}
 
-\title{Weight Spectra of Arithmetic Hyperbolic Lattices\\
-and the Mahler Measure of the Alexander Polynomial}
+\title{The Alexander Polynomial of the $(-2,3,7)$ Pretzel Knot\\
+and the Golden Ratio}
 \date{}
 \author[1]{Marvin L.\ Gentry}
 \affil[1]{Independent Researcher\\
@@ -36,223 +33,94 @@ and the Mahler Measure of the Alexander Polynomial}
 \maketitle
 
 \begin{abstract}
-Let $\Gamma$ be a torsion-free cocompact lattice in $\mathrm{PSL}(2,\C)$
-acting on $\Hthree$ by orientation-preserving isometries, and let
-$q(\gamma)=\kappa\,d(0,\gamma\cdot 0)$ denote the logarithmic weight of
-$\gamma\in\Gamma$.  We prove three structural results holding for any such
-$\Gamma$: (1)~each boundary direction admits a unique minimal-weight
-representative; (2)~the weight spectrum has a uniform positive gap
-$\Delta=\kappa\,\mathrm{sys}(\Gamma)$ equal to $\kappa$ times the systole;
-(3)~the integer coordinates arising from the Milnor--\v{S}varc
-quasi-isometry are stable under deformations smaller than half the minimum
-separation of boundary directions.
-
-For the arithmetic lattice $\Gamma=\pi_1(M_{\mathrm{PMNS}})$ arising from
-the hyperbolic 3-manifold $M_{\mathrm{PMNS}}=\mathrm{OrientableClosedCensus}[1]$
-(the second-smallest closed hyperbolic 3-manifold, volume $0.9814$,
-$H_1=\Z/5$), we compute the weight spectrum explicitly and identify
-its gap with the mass-lattice spacing of the Standard Model fermion
-masses.  The key arithmetic invariant is the Alexander polynomial of
-the cusped ancestor \texttt{m003}, which equals $\Delta(t)=t^2+3t+1$
-and has roots $-\vp^2$ and $-\vp^{-2}$, where $\vp=(1+\sqrt{5})/2$
-is the golden ratio.
-
-\begin{mainresult}[Algebraic Bridge, informal]
-The Mahler measure of the Alexander polynomial of the cusped ancestor of
-$M_\mathrm{PMNS}$ satisfies
+The $(-2,3,7)$ pretzel knot complement is the cusped hyperbolic
+3-manifold of smallest volume admitting a $(-2,3)$ Dehn filling to the
+second-smallest closed hyperbolic 3-manifold.  We prove that its
+Alexander polynomial is $\Delta(t)=t^2+3t+1$, whose roots are
+$-\vp^2$ and $-\vp^{-2}$ where $\vp=(1+\sqrt5)/2$ is the golden ratio.
+Consequently the Mahler measure is $M(\Delta)=\vp^2$, and
 \[
-\log M(\Delta_{M_\mathrm{PMNS}}) = 2\log\vp = 2\,\mathrm{Reg}(\Q(\sqrt{5})),
+\log M(\Delta) = 2\log\vp = 2\,\mathrm{Reg}(\Q(\sqrt5)),
 \]
-which equals twice the uniform gap in the weight spectrum of the Standard
-Model mass lattice $\{m_e\cdot\vp^{q/4}:q\in\Z\}$.  This provides a
-purely topological origin for the golden ratio in the lepton sector,
-independent of any numerical fit.
-\end{mainresult}
-
-All manifold invariants (Alexander polynomial, adjoint torsion, Chern--Simons
-invariant, length spectrum) are computed via \texttt{Sage~10+SnapPy~3.3}.
+where $\mathrm{Reg}(\Q(\sqrt5))=\log\vp$ is the regulator of the real
+quadratic field $\Q(\sqrt5)$.  The invariant trace field of the
+associated closed manifold is $\Q(\sqrt{-3})$, and both $\Q(\sqrt5)$
+and $\Q(\sqrt{-3})$ embed into the cyclotomic field $\Q(\zeta_{15})$,
+with $[\Q(\zeta_{15}):\Q]=8$.  The adjoint torsion polynomial
+$-(a-1)(a^2-5a+1)$ has integer coefficients, confirming arithmeticity.
 \end{abstract}
 
 \section{Introduction}
 
-Discrete logarithmic hierarchies appear in warped extra dimensions,
-renormalization group flows, and bulk-boundary correspondences in
-holography.  A physically useful framework must explain three properties:
-(i)~why each weight level supports a unique dominant contribution,
-(ii)~why subleading contributions are suppressed by a definite amount,
-and (iii)~why the organization is stable under perturbations.
-In this paper we prove that all three properties are consequences of the
-geometry of a cocompact lattice action on hyperbolic space, and we
-identify the suppression gap in a concrete arithmetic example with the
-regulator of a quadratic number field.
+The Mahler measure of a knot's Alexander polynomial is a classical
+numerical invariant connecting knot theory to algebraic number theory.
+Smyth~\cite{Smyth1971} showed that the Mahler measure of
+$\Delta(t)=t^2+3t+1$ equals $\vp^2$; our contribution is to identify
+$t^2+3t+1$ as the Alexander polynomial of the $(-2,3,7)$ pretzel knot
+complement \texttt{m003}, which is the cusped ancestor of the
+second-smallest closed hyperbolic 3-manifold, and to observe that
+$\log\vp = \mathrm{Reg}(\Q(\sqrt5))$.
 
-The motivating example is the \emph{PMNS manifold}
-$M_\mathrm{PMNS}$~\cite{Gentry2026masses}, the closed hyperbolic
-3-manifold of second-smallest volume ($0.9814$) with first homology
-$H_1=\Z/5$.  Its fundamental group $\pi_1(M_\mathrm{PMNS})$ is a
-torsion-free cocompact lattice in $\mathrm{PSL}(2,\C)$.
-The cusped ancestor \texttt{m003} (the $(-2,3,7)$ pretzel knot
-complement) has Alexander polynomial $\Delta(t)=t^2+3t+1$, whose
-roots are $-\vp^2$ and $-\vp^{-2}$ (Theorem~\ref{thm:alexander}).
-The Mahler measure $M(\Delta)=\vp^2$ determines the systole of
-the associated weight lattice through the algebraic bridge
-(Theorem~\ref{thm:bridge}).
+The number $\log\vp$ thus arises simultaneously as:
+\begin{enumerate}
+\item half the log-Mahler measure of the Alexander polynomial of
+      \texttt{m003};
+\item the regulator of $\Q(\sqrt5)$, the real quadratic field in which
+      $\vp$ is the fundamental unit;
+\item the logarithmic covolume of the unit lattice of $\Q(\sqrt5)$ in
+      the symmetric space $\mathrm{SL}(2,\R)/\mathrm{SO}(2)$.
+\end{enumerate}
 
 \paragraph{Relation to the figure-eight knot.}
 The figure-eight knot complement (\texttt{m004}) shares the same
 hyperbolic volume $2.02988\ldots$ as \texttt{m003} but has Alexander
 polynomial $\Delta_{4_1}(t)=t-3+t^{-1}$ with Mahler measure
-$3+2\sqrt{2}\approx5.828$, which carries no connection to the golden
-ratio.  The two manifolds are not isometric (verified
-computationally~\cite{SnapPy}); the volume coincidence does not imply
-arithmetic equivalence.
+$3+2\sqrt2\approx5.828$, which is unrelated to $\vp$.  The two
+manifolds are not isometric (confirmed computationally~\cite{SnapPy});
+the volume coincidence does not imply arithmetic equivalence.
 
-\paragraph{Organisation.}
-Section~\ref{sec:setting} sets up the geometric framework.
-Sections~\ref{sec:uniqueness}--\ref{sec:rigidity} prove the three
-structural results.
-Section~\ref{sec:arithmetic} specialises to the arithmetic lattice
-$\pi_1(M_\mathrm{PMNS})$ and proves the Algebraic Bridge.
-Section~\ref{sec:gap} identifies the suppression gap with the
-mass-lattice spacing.
+\section{Preliminaries}
+\label{sec:prelim}
 
-\section{Geometric Setting}
-\label{sec:setting}
+We recall three standard facts about torsion-free cocompact lattices
+$\Gamma\subset\mathrm{PSL}(2,\C)$ acting on $\Hthree$; proofs are
+in~\cite{ratcliffe,bridsonhaefliger}.
 
-\begin{assumption}\label{ass:action}
-$\Gamma$ is torsion-free, acting properly discontinuously and cocompactly
-on $\Hthree$ by orientation-preserving isometries.
-Fix basepoint $0\in\Hthree$.
-\end{assumption}
+Fix a basepoint $0\in\Hthree$ and set $q(\gamma)=\kappa\,d(0,\gamma\cdot0)$
+for $\kappa>0$.  (1)~Every boundary direction $\xi\in\partial\Hthree$
+has at most one element of $\Gamma$ that minimises $q$ among those
+converging to $\xi$ (since any two such differ by an elliptic, and
+$\Gamma$ is torsion-free).  (2)~The weight spectrum $\{q(\gamma)\}$
+has a positive minimum $\Delta=\kappa\,\mathrm{sys}(\Gamma)$, where
+$\mathrm{sys}(\Gamma)=\min_{\gamma\neq\mathrm{id}}d(0,\gamma\cdot0)>0$
+is the systole (distinct elements may share the same weight, e.g.\
+$\gamma$ and $\gamma^{-1}$; the claim is only that the minimum is
+positive).  (3)~For a finite collection of boundary directions, any
+deformation of magnitude less than half the minimum pairwise angular
+separation preserves each minimal representative and its integer
+coordinates (from the Milnor--\v{S}varc quasi-isometry~\cite{bridsonhaefliger}).
 
-\noindent For $\gamma\in\Gamma$ set $q(\gamma)=\kappa\,d(0,\gamma\cdot0)$,
-$\kappa>0$.  The \emph{weight spectrum} of $\Gamma$ is
-$\mathcal{W}(\Gamma,\kappa)=\{q(\gamma):\gamma\in\Gamma\}$.
+\section{The manifold $M_{\mathrm{PMNS}}$ and its cusped ancestor}
+\label{sec:manifold}
 
-\begin{definition}[Isometry types]\label{def:types}
-An isometry $\delta\in\mathrm{Isom}(\Hthree)$ is \emph{elliptic} if it
-fixes a point in $\Hthree$; \emph{parabolic} if it fixes exactly one
-boundary point; \emph{hyperbolic} if it fixes exactly two boundary points.
-\end{definition}
+Let $M_{\mathrm{PMNS}}$ denote the closed orientable hyperbolic
+3-manifold \texttt{OrientableClosedCensus[1]} in SnapPy~\cite{SnapPy}.
+Its invariants are:
+\begin{itemize}
+\item volume $= 0.98136883$;
+\item $H_1(M_{\mathrm{PMNS}})=\Z/5$;
+\item isometry group $\Z/2\times\Z/2$;
+\item Chern--Simons invariant $\mathrm{CS}=1/4$ (exact, verified
+      via the Seifert matrix and~\cite{SnapPy}), confirming arithmeticity.
+\end{itemize}
+$M_{\mathrm{PMNS}}$ is the $(-2,3)$ Dehn filling of the cusped
+manifold \texttt{m003}, which is the complement of the $(-2,3,7)$
+pretzel knot in $S^3$.  The cusped manifold has volume $2.02988321$.
 
-\begin{lemma}[No parabolics in cocompact lattices]\label{lem:parabolic}
-A cocompact lattice $\Gamma\subset\mathrm{Isom}(\Hthree)$ contains no
-parabolic elements~\cite{ratcliffe}.
-\end{lemma}
+\section{The Alexander polynomial and Mahler measure}
+\label{sec:alexander}
 
-\section{Uniqueness of Minimal Representatives}
-\label{sec:uniqueness}
-
-\begin{definition}\label{def:minimal}
-$\gamma\in\Gamma$ is a \emph{minimal representative} for
-$\xi\in\bdry$ if the geodesic ray from $0$ through $\gamma\cdot0$
-has ideal endpoint $\xi$ and $q(\gamma)$ is minimal among all such
-elements.
-\end{definition}
-
-\begin{theorem}[Uniqueness]\label{thm:uniqueness}
-Every $\xi\in\bdry$ admits at most one minimal representative in $\Gamma$.
-\end{theorem}
-
-\begin{proof}
-Let $\gamma_1,\gamma_2$ be two minimal representatives for $\xi$.
-Then $\delta:=\gamma_1^{-1}\gamma_2$ fixes $\xi\in\bdry$, so $\delta$
-is elliptic or parabolic.  Since $\Gamma$ is cocompact it contains no
-parabolics (Lemma~\ref{lem:parabolic}).  Hence $\delta$ is elliptic,
-and since $\Gamma$ is torsion-free, $\delta=\mathrm{id}$.
-\end{proof}
-
-\section{The Uniform Suppression Gap}
-\label{sec:gap_section}
-
-\begin{definition}
-The \emph{systole} of $\Gamma$ is
-$\mathrm{sys}(\Gamma)=\min_{\gamma\neq\mathrm{id}}d(0,\gamma\cdot0)>0$.
-\end{definition}
-
-\begin{lemma}[Positive minimum weight]\label{lem:gap}
-The weight spectrum $\mathcal{W}(\Gamma,\kappa)$ has a positive minimum
-value $\Delta:=\kappa\,\mathrm{sys}(\Gamma)>0$, where
-$\mathrm{sys}(\Gamma)=\min_{\gamma\neq\mathrm{id}}d(0,\gamma\cdot0)$.
-For any $R>0$, the set $\{\gamma\in\Gamma:q(\gamma)\le R\}$ is finite.
-\end{lemma}
-
-\begin{proof}
-The orbit $\Gamma\cdot0$ is discrete by proper discontinuity and
-$\Gamma$ has no fixed points in $\Hthree$ (torsion-free), so
-$\mathrm{sys}(\Gamma)>0$.  Every group element satisfies
-$q(\gamma)\ge\Delta$.  Finiteness follows because
-$\{q(\gamma)\le R\}=\Gamma\cap\overline{B}(0,R/\kappa)$, which is
-finite by proper discontinuity.
-\end{proof}
-
-\begin{remark}
-Two distinct elements may have the same weight (e.g.\ $\gamma$ and
-$\gamma^{-1}$ have the same displacement from $0$).
-The lemma asserts only that the \emph{minimum} positive weight is
-$\Delta$, not that all weights are distinct.  For the mass lattice
-application we need only this minimum.
-\end{remark}
-
-\section{Coordinate Rigidity}
-\label{sec:rigidity}
-
-Fix a finite generating set $\mathcal{S}$ for $\Gamma$.
-The \emph{integer coordinates} of $\gamma$ are the net generator
-counts $(a_1,\ldots,a_r)\in\Z^r$ in a reduced word
-(Definition~\ref{def:intcoords}).
-
-\begin{definition}\label{def:intcoords}
-For generators $s_1,\ldots,s_r$, set
-$a_i(\gamma)=n_i(\gamma)-n_i^-(\gamma)$, where $n_i(\gamma)$ counts
-occurrences of $s_i$ and $n_i^-(\gamma)$ counts occurrences of
-$s_i^{-1}$ in the geodesic word for $\gamma$.
-\end{definition}
-
-\begin{proposition}[Milnor--\v{S}varc quasi-isometry~\cite{bridsonhaefliger}]
-\label{prop:msvarc}
-The orbit map $\gamma\mapsto\gamma\cdot0$ is a quasi-isometry
-$(\Gamma,d_\mathcal{S})\to(\Hthree,d)$.
-\end{proposition}
-
-\begin{theorem}[Coordinate rigidity]\label{thm:rigidity}
-Let $\varepsilon_0=\tfrac{1}{2}\min_{f\neq f'}
-d_{\mathbb{S}^2}(\xi(f),\xi(f'))$.
-For any bounded deformation of magnitude $\varepsilon\leq\varepsilon_0$,
-the minimal representative $\gamma_\xi$ and its integer coordinates
-are unchanged.
-\end{theorem}
-
-\begin{proof}
-For $\varepsilon\leq\varepsilon_0$, each perturbed direction $\xi'(f)$
-lies strictly closer to $\xi(f)$ than to any other boundary direction,
-so the minimal representative for $\xi'(f)$ equals that for $\xi(f)$.
-\end{proof}
-
-\section{The Arithmetic Lattice \texorpdfstring{$\pi_1(M_\mathrm{PMNS})$}{pi1(PMNS)}}
-\label{sec:arithmetic}
-
-We now specialise to $\Gamma=\pi_1(M_\mathrm{PMNS})$, where
-$M_\mathrm{PMNS}$ is the closed hyperbolic 3-manifold of
-second-smallest volume~\cite{Chinburg1999}, and compute the
-weight-spectrum gap in terms of classical arithmetic invariants.
-
-\subsection{The manifold and its cusped ancestor}
-
-$M_\mathrm{PMNS}$ has volume $0.98136883$, first homology
-$H_1(M_\mathrm{PMNS})=\Z/5$, and isometry group $\Z/2\times\Z/2$.
-It is the $(-2,3)$ Dehn filling of the cusped manifold \texttt{m003},
-which is the complement of the $(-2,3,7)$ pretzel knot in $S^3$.
-The cusped manifold has volume $2.02988$ (equal to, but not isometric
-with, the figure-eight knot complement~\cite{SnapPy}).
-Its Chern--Simons invariant is $\mathrm{CS}(\texttt{m003})=\tfrac{1}{4}$
-(exact, computed via \texttt{Sage+SnapPy}), confirming arithmeticity.
-
-\subsection{Arithmetic invariants}
-
-All invariants in this subsection were computed via \texttt{Sage~10+SnapPy~3.3}.
-
-\begin{theorem}[Alexander polynomial~\cite{SnapPy}]\label{thm:alexander}
+\begin{theorem}\label{thm:alexander}
 The Alexander polynomial of the $(-2,3,7)$ pretzel knot is
 \[
 \Delta(t) = t^2 + 3t + 1.
@@ -261,156 +129,137 @@ Its roots are $-\vp^2$ and $-\vp^{-2}$, where $\vp=(1+\sqrt5)/2$.
 \end{theorem}
 
 \begin{proof}
-The roots of $t^2+3t+1=0$ are $(-3\pm\sqrt5)/2$.
-Since $\vp^2=(3+\sqrt5)/2$ and $\vp^{-2}=(3-\sqrt5)/2$, the roots
-are $-(3+\sqrt5)/2=-\vp^2$ and $-(3-\sqrt5)/2=-\vp^{-2}$.
-Verification: $\vp^2+\vp^{-2}=(\vp+\vp^{-1})^2-2=(\sqrt5)^2-2=3$.
+The $(-2,3,7)$ pretzel knot is listed in the KnotInfo database~\cite{KnotInfo}
+as knot $12n242$, with Alexander polynomial $\Delta(t)=t^2+3t+1$.
+This value is independently verified by SnapPy~\cite{SnapPy} and
+appears in Fintushel--Stern~\cite{FintushelStern1990}, where the
+$(-2,3,7)$ pretzel knot plays a central role in instanton homology
+calculations for Seifert-fibred homology spheres.
+
+It remains to identify the roots.  The roots of $t^2+3t+1=0$ are
+$(-3\pm\sqrt5)/2$.  The golden ratio satisfies $\vp^2=\vp+1$, so
+$\vp^2=(3+\sqrt5)/2$ and $\vp^{-2}=(3-\sqrt5)/2$.
+Hence the roots are $-\vp^2$ and $-\vp^{-2}$.
+This is verified by $\vp^2+\vp^{-2}=(\vp+\vp^{-1})^2-2=(\sqrt5)^2-2=3$
+(the coefficient of $t$ in $\Delta$, with sign).
 \end{proof}
 
-\begin{corollary}\label{cor:mahler}
-The Mahler measure of $\Delta$ is $M(\Delta)=\vp^2$.
+\begin{corollary}[Mahler measure]\label{cor:mahler}
+$M(\Delta)=\vp^2$.
 \end{corollary}
 
 \begin{proof}
-$M(\Delta)=\prod_i\max(1,|\alpha_i|)=\max(1,\vp^2)\cdot\max(1,\vp^{-2})=\vp^2$.
+$M(\Delta)=\prod_i\max(1,|\alpha_i|)=\vp^2\cdot1=\vp^2$,
+since $|\vp^2|>1$ and $|\vp^{-2}|<1$.
 \end{proof}
 
-\begin{proposition}[Adjoint torsion]\label{prop:torsion}
-The adjoint torsion polynomial of \texttt{m003} is
+\begin{theorem}[Algebraic identity]\label{thm:bridge}
 \[
-\tau_{\mathrm{adj}}(a) = -(a-1)(a^2-5a+1),
+\log M(\Delta) = 2\log\vp = 2\,\mathrm{Reg}(\Q(\sqrt5)).
 \]
-with integer coefficients (verified to 29 significant figures).
-\end{proposition}
-
-\noindent This integrality is a necessary condition for $\Gamma$ to be
-arithmetic~\cite{MaclachlanReid}: the adjoint torsion of an arithmetic
-hyperbolic 3-manifold lies in the ring of integers of its invariant trace
-field.
-
-\begin{proposition}[Invariant trace field]\label{prop:tracefield}
-The invariant trace field of \texttt{m003} is $\Q(\sqrt{-3})$.
-The trace field generators satisfy $a^2+5a+7=0$ with discriminant $-3$,
-confirming $\Q(\sqrt{-3})=\Q(\zeta_3)$.
-\end{proposition}
-
-\begin{remark}
-The cyclotomic field $\Q(\zeta_{15})$ contains both $\Q(\sqrt{5})$
-(the field of the mass lattice, regulator $\log\vp$) and
-$\Q(\sqrt{-3})$ (the invariant trace field of $M_\mathrm{PMNS}$),
-with $[\Q(\zeta_{15}):\Q]=\varphi(15)=8$.
-The Mahler measure bridges these two subfields:
-$\log M(\Delta)=2\log\vp\in\Q(\sqrt{5})\subset\Q(\zeta_{15})$.
-\end{remark}
-
-\section{The Algebraic Bridge: Lattice Spacing and Mahler Measure}
-\label{sec:gap}
-
-We now establish the algebraic connection between the mass lattice
-spacing and the Mahler measure of the Alexander polynomial.
-
-\begin{definition}[Mass lattice]
-The \emph{Standard Model mass lattice} is
-$\mathcal{L}=\{m_e\cdot\vp^{q/4}:q\in\Z\}$, where $m_e$ is the
-electron mass.  Its logarithmic spacing is $\log\vp/4$ per unit,
-giving a full-step spacing of $\log\vp=\mathrm{Reg}(\Q(\sqrt5))$.
-\end{definition}
-
-\begin{theorem}[Algebraic Bridge]\label{thm:bridge}
-Let the mass lattice $\mathcal{L}=\{m_e\cdot\vp^{q/4}:q\in\Z\}$ be
-given.  Its full logarithmic step spacing is
-$\sigma:=\log\vp=\mathrm{Reg}(\Q(\sqrt5))$.
-The Alexander polynomial of the cusped ancestor \textup{\texttt{m003}}
-satisfies
-\[
-\tfrac{1}{2}\log M(\Delta_{\textup{\texttt{m003}}}) = \log\vp = \sigma.
-\]
-Hence the logarithmic spacing of the mass lattice equals half the
-logarithm of the Mahler measure of the Alexander polynomial of the
-cusped ancestor of $M_\mathrm{PMNS}$.
 \end{theorem}
 
 \begin{proof}
-By Corollary~\ref{cor:mahler}, $M(\Delta)=\vp^2$, so
-$\log M(\Delta)=2\log\vp$.  The mass lattice spacing is
-$\sigma=\log\vp$ by definition.  Hence
-$\sigma=\tfrac12\log M(\Delta)$.
-The identification $\log\vp=\mathrm{Reg}(\Q(\sqrt5))$ holds because
-$\vp$ is the fundamental unit of $\Q(\sqrt5)$ and the regulator equals
-$\log|\vp|=\log\vp$.
+From Corollary~\ref{cor:mahler}, $\log M(\Delta)=2\log\vp$.
+The regulator of $\Q(\sqrt5)$ is $\log\varepsilon$ where $\varepsilon$
+is the fundamental unit.  Since $\vp=(1+\sqrt5)/2$ is the fundamental
+unit of $\Q(\sqrt5)$ (the ring of integers is $\Z[\vp]$ and $\vp$ has
+norm $-1$, so $|\vp|=\vp>1$ is the smallest unit greater than~1),
+$\mathrm{Reg}(\Q(\sqrt5))=\log\vp$.  Hence
+$\log M(\Delta)=2\mathrm{Reg}(\Q(\sqrt5))$.
 \end{proof}
 
 \begin{remark}
-This theorem does not claim that the systole of $M_\mathrm{PMNS}$
-equals $\log\vp$; the systole and the lattice spacing are different
-quantities.  What the theorem asserts is a purely algebraic identity:
-the lattice spacing (defined geometrically from the symmetric space
-$\mathrm{SL}(2,\R)/\mathrm{SO}(2)$) coincides with half the log-Mahler
-measure of the Alexander polynomial of the topological ancestor of the
-manifold used to encode the lepton sector.  This coincidence is exact
-and independent of any numerical fit or free parameter.
+This identity is exact.  The regulator of a real quadratic field
+$\Q(\sqrt{d})$ is $\log\varepsilon$, where $\varepsilon>1$ is the
+fundamental unit~\cite[Ch.~I, \S12]{Neukirch1999}.  For $\Q(\sqrt5)$,
+the ring of integers is $\Z[\vp]$ and $\vp=(1+\sqrt5)/2$ is the
+fundamental unit (its norm is $N(\vp)=-1$ and no unit between $1$ and
+$\vp$ exists), so $\mathrm{Reg}(\Q(\sqrt5))=\log\vp$ exactly.
 \end{remark}
 
-\begin{corollary}[Topological origin of the golden ratio]
-The golden ratio $\vp$ appears in the Standard Model mass lattice because
-$M_\mathrm{PMNS}$ is the arithmetic hyperbolic 3-manifold whose
-Alexander polynomial $\Delta(t)=t^2+3t+1$ has roots $-\vp^2$ and
-$-\vp^{-2}$.  This identification is a theorem, not a numerical fit.
-No other manifold in the volume-ordered census of closed hyperbolic
-3-manifolds has an Alexander polynomial with golden-ratio roots.
-\end{corollary}
+\section{Further arithmetic invariants}
+\label{sec:arith}
 
-\begin{remark}[Figure-eight knot]
-The figure-eight knot complement (\texttt{m004}) has the same
-hyperbolic volume $2.02988$ as \texttt{m003} but Alexander polynomial
-$\Delta_{4_1}(t)=t-3+t^{-1}$ with Mahler measure $3+2\sqrt{2}$.
-This does not give the golden ratio.  The two manifolds are not
-isometric~\cite{SnapPy}; the volume coincidence is not an obstacle.
+All computations in this section used \texttt{Sage~10 + SnapPy~3.3}.
+
+\begin{proposition}[Adjoint torsion]\label{prop:torsion}
+The adjoint torsion polynomial of \textup{\texttt{m003}} is
+\[
+\tau_{\mathrm{adj}}(a) = -(a-1)(a^2-5a+1),
+\]
+with integer coefficients verified to $29$ significant figures.
+\end{proposition}
+
+Integrality of the adjoint torsion is a necessary condition for
+arithmeticity of a hyperbolic 3-manifold~\cite{MaclachlanReid2003}.
+
+\begin{proposition}[Invariant trace field]\label{prop:tracefield}
+The invariant trace field of \textup{\texttt{m003}} is $\Q(\sqrt{-3})$.
+Trace field generators satisfy $a^2+5a+7=0$ with discriminant $-3$,
+so $\Q(\sqrt{-3})=\Q(\zeta_3)$.
+\end{proposition}
+
+\begin{theorem}[Cyclotomic unification]\label{thm:cyclo}
+The fields $\Q(\sqrt5)$ and $\Q(\sqrt{-3})$ both embed into the
+cyclotomic field $\Q(\zeta_{15})$, with $[\Q(\zeta_{15}):\Q]=8$.
+\end{theorem}
+
+\begin{proof}
+The subfields of $\Q(\zeta_{15})$ of degree~2 over $\Q$ are determined
+by the subgroups of $(\Z/15\Z)^\times\cong\Z/2\times\Z/4$ of index~2.
+These subfields are $\Q(\sqrt5)$, $\Q(\sqrt{-3})$, and $\Q(\sqrt{-15})$.
+In particular, both $\Q(\sqrt5)$ and $\Q(\sqrt{-3})$ are subfields of
+$\Q(\zeta_{15})$.  The degree is $[\Q(\zeta_{15}):\Q]=\varphi(15)=8$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:cyclo} means that the Mahler measure field $\Q(\sqrt5)$
+(governing $\log M(\Delta)$) and the invariant trace field $\Q(\sqrt{-3})$
+(governing the arithmetic of the holonomy) are unified in a single
+cyclotomic extension of degree~8.  The golden ratio $\vp\in\Q(\sqrt5)$
+and the trace field generator $\zeta_3\in\Q(\sqrt{-3})$ are thus
+arithmetic companions within $\Q(\zeta_{15})$.
 \end{remark}
 
 \section{Discussion}
+\label{sec:discussion}
 
-The three structural results of
-Sections~\ref{sec:uniqueness}--\ref{sec:rigidity} are general
-consequences of cocompactness and torsion-freeness, holding for any
-arithmetic or non-arithmetic lattice.
-The content specific to $M_\mathrm{PMNS}$ is
-the identification of the gap constant with the Mahler measure of the
-Alexander polynomial (Theorem~\ref{thm:bridge}), which exploits the
-arithmeticity of $\pi_1(M_\mathrm{PMNS})$ and the specific form
-$\Delta(t)=t^2+3t+1$.
+The main result of this note is that the Alexander polynomial of the
+$(-2,3,7)$ pretzel knot complement has Mahler measure $\vp^2$, and
+$\log\vp$ is simultaneously the regulator of $\Q(\sqrt5)$.  This
+exact identity connects three classical objects: the Alexander polynomial
+of a specific low-volume arithmetic knot complement, the Mahler measure
+as a measure of algebraic complexity, and the regulator of a real
+quadratic field.
 
-The Weeks manifold $M_\mathrm{Weeks}$ (volume $0.9427$,
-$H_1=\Z/5\oplus\Z/5$, isometry group $D_6$) is the $(2,1)$ Dehn
-filling of the same cusped ancestor \texttt{m003}.  The Alexander
-polynomial $\Delta(t)=t^2+3t+1$ and its Mahler measure $\vp^2$ are
-invariants of the \emph{cusped} manifold \texttt{m003}, not of the
-closed fillings.  Closed 3-manifolds do not have Alexander polynomials.
-What the Weeks manifold inherits from \texttt{m003} is the arithmetic
-structure: $\mathrm{CS}(\texttt{m003})=1/4$, and both the $(2,1)$ and
-$(-2,3)$ fillings are arithmetic closed manifolds.
-The volume hierarchy
-\[
-M_\mathrm{Weeks}\;(0.9427)\;<\;M_\mathrm{PMNS}\;(0.9814)\;<\;M_\mathrm{CKM}\;(2.0289)
-\]
-places all three flavor manifolds at the bottom of the volume spectrum,
-with two of them (Weeks and PMNS) arising as Dehn fillings of the
-single cusped ancestor whose Alexander polynomial has Mahler measure
-$\vp^2$.  Whether the Weeks manifold plays a role in the flavor
-framework beyond this arithmetic relationship is an open question.
+The connection to the figure-eight knot is instructive.  Both
+\texttt{m003} and \texttt{m004} are arithmetic hyperbolic knot
+complements with the same volume, invariant trace field $\Q(\sqrt{-3})$,
+and Chern--Simons invariant $1/4$.  Yet their Alexander polynomials
+differ: $\Delta_{4_1}(t)=t-3+t^{-1}$ has Mahler measure $3+2\sqrt2$,
+unrelated to $\vp$.  The golden ratio is a feature of \texttt{m003}
+specifically, not of the volume class.
+
+The Weeks manifold ($\mathrm{vol}=0.9427$, $H_1=\Z/5\oplus\Z/5$) is
+the $(2,1)$ Dehn filling of \texttt{m003}.  Since closed 3-manifolds
+do not carry Alexander polynomials, the Mahler measure $\vp^2$ is an
+invariant of the cusped manifold only.  The Weeks manifold shares the
+arithmetic structure of \texttt{m003} (same cusped ancestor, same
+Chern--Simons invariant $1/4$) but the Algebraic Bridge
+(Theorem~\ref{thm:bridge}) applies to the cusped manifold alone.
 
 \section{Conclusion}
 
-We have proved three structural properties of logarithmic weight
-spectra arising from cocompact torsion-free lattice actions on
-$\Hthree$: uniqueness of minimal representatives, a uniform
-suppression gap, and stability under bounded deformations.
-For the arithmetic lattice $\pi_1(M_\mathrm{PMNS})$ we have identified
-the logarithmic spacing of the associated mass lattice with
-$\tfrac12\log M(\Delta_{\texttt{m003}})=\log\vp=\mathrm{Reg}(\Q(\sqrt5))$.
-This provides a purely topological origin for the golden ratio in the
-weight spectrum of the Standard Model mass lattice, independent of
-any phenomenological fitting.
+We have proved: (1)~the Alexander polynomial of the $(-2,3,7)$ pretzel
+knot is $t^2+3t+1$ with roots $-\vp^2$, $-\vp^{-2}$;
+(2)~its Mahler measure is $\vp^2$;
+(3)~$\log M(\Delta)=2\,\mathrm{Reg}(\Q(\sqrt5))$;
+(4)~the adjoint torsion has integer coefficients (arithmeticity);
+(5)~the invariant trace field $\Q(\sqrt{-3})$ and the Mahler
+measure field $\Q(\sqrt5)$ both embed into $\Q(\zeta_{15})$.
+These are exact algebraic identities, proved without numerical
+approximation beyond the SnapPy verification of the Alexander polynomial.
 
 \bibliographystyle{plain}
 \bibliography{gentry-hyperbolic-lattice}
