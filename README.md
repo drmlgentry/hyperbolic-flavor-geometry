@@ -1,66 +1,63 @@
-﻿# Hyperbolic Flavor Geometry
+# Hyperbolic Flavor Geometry
 
-A research program deriving Standard Model flavor parameters from the geometry
-of compact hyperbolic 3-manifolds via the Iwasawa decomposition PSL(2,C) = KAN.
+A research program deriving Standard Model flavor parameters from the geometry of compact hyperbolic 3-manifolds via the Iwasawa decomposition PSL(2,C) = KAN.
 
 ## Core Result
 
 The Iwasawa decomposition distributes SM flavor structure across two manifolds:
-- **K-factor** → CKM quark mixing | manifold **m006** (vol=2.029, H1=Z/5) | fitness F=0.01729
-- **N-factor** → PMNS lepton mixing | manifold **m003** (Meyerhoff, vol=0.981, H1=Z/5) | fitness F=0.01897
-- **A-factor** → CP phases and full flavor spectrum from loxodromic twist angles φ(γ)
 
-Both optimal manifolds have H1=Z/5 (odd-torsion conjecture).
-m003 is the **Meyerhoff manifold** (OrientableClosedCensus[1]); distinct from the
-Weeks manifold (OrientableClosedCensus[0], vol=0.9427).
+- **K-factor** -> CKM quark mixing | manifold m006 (OrientableClosedCensus[43], vol=2.029, H1=Z/5) | fitness F=0.01729
+- **N-factor** -> PMNS lepton mixing | manifold m003 (Meyerhoff, OrientableClosedCensus[1], vol=0.981, H1=Z/5) | fitness F=0.01897
+- **A-factor** -> CP phases from loxodromic twist angles, quantized by Z/5 torsion
 
-## Submission Portfolio (9 papers)
+Both optimal manifolds have H1=Z/5 (odd-torsion selection principle).
+
+## Submission Portfolio (April 2026)
 
 | # | Title | Journal | Status | ID |
 |---|---|---|---|---|
-| 1 | CP Phases from Holonomy | Nuclear Physics B | Under review | NPB-S-26-00539 |
-| 2 | Hyperbolic Log Lattices | Geometriae Dedicata | Under review | rs-9071491 |
-| 3 | Discrete Mixing Operators | Nuclear Physics B | Under review | NPB-S-26-00540 |
-| 4 | Scale-Free Quadratic Forms | Nuclear Physics B | Under review | NPB-S-26-00538 |
-| 5 | CKM from Geodesic Axes | Physical Review D | Under review | es2026mar11_966 |
-| 6 | PMNS from Borel Structure | Physical Review D | Under review | es2026mar13_942 |
-| 7 | CP Violation from A-Factor | Physical Review D | Under review | es2026mar14_722 |
-| 8 | Twist Angle Spectrum | JHEP | Resubmitting (NPB desk-rejected: out of scope) | — |
+| 1 | CKM from Geodesic Axes | Results in Physics | With editor | RINP-D-26-00327 |
+| 2 | PMNS from Borel Structure | Results in Physics | With editor | RINP-D-26-00328 |
+| 3 | CP Violation from A-Factor | Results in Physics | With editor | RINP-D-26-00329 |
+| 4 | Twist Angle Spectrum | Results in Physics | With editor | RINP-D-26-00330 |
+| 5 | Discrete Mixing Operators | Letters Math. Physics | Peer review | - |
+| 6 | Geometric Origin of CP Phases | Letters Math. Physics | Peer review | - |
+| 7 | Homology Class Asymmetry | Annales Inst. Fourier | With editor | 2026120 |
+| 8 | Alexander Polynomial & Golden Ratio | J. Knot Theory Ramif. | With editor | JKTR-S-26-00044 |
 
 ## Key Numerical Results
 
-### CKM (m006)
-- Words: aaB/AbA/AAb | fitness=0.01729 | J=0
-- Axis angles: θ12=48.2°, θ13=77.5°, θ23=68.4°
-- Triple isospectrality: φ≈92.49° for all three words → explains J_CKM≈0
+**CKM (m006, OrientableClosedCensus[43])**
+- Words: {aaB, AbA, AAb} | fitness=0.01729 | J=0 (topologically forced)
+- All three words in same SU(2) conjugacy class
+- Gaussian coherence length sigma=0.488 ~ l2(m006)=0.491 (0.5% match)
 
-### PMNS (m003 = Meyerhoff manifold)
-- Words: aa/ab/aB | column perm (0,2,1) | fitness=0.01897
-- CP phase: φ_aa − φ_ab + φ_aB = 203.5° vs PDG 197° (3.3% error, 0 free params)
+**PMNS (m003, OrientableClosedCensus[1])**
+- Borel lower-triangular construction | fitness=0.01897 = theoretical minimum
+- Symmetric QR floor theorem: no symmetric kernel can reach PMNS (floor=0.300)
 
-### Twist Angle Spectrum (Paper 8)
-- m006 word aa: 180°−φ = 67.65° ~ δ_CKM=68.0° (0.51% error)
-- m006 word abbAB: 180°−φ = 33.62° ~ θ12_ν=33.41° (0.63% error)
-- m003 ratio |λ(bbbb)|/|λ(bAbA)| = 3.2910 ~ m̄_b/m̄_c = 3.2913 (0.01%, MS-bar)
-- Length-7 census: spectral gap [0.005°, 1.61°] on m006; θ13_CKM sits inside gap
-- Selberg estimates: λ1(m003)≈2.48, λ1(m006)≈2.82 (first for these manifolds)
+**Alexander Polynomial / Mahler Measure**
+- Alex(m003 cusped) = t^2+3t+1, roots -phi^2, -phi^{-2}
+- Mahler measure = phi^2, log M = 2*Reg(Q(sqrt(5))) = 2*log(phi)
+
+## New Results (April 2026)
+
+- sigma = l2(m006): Gaussian coherence length = second geodesic of CKM manifold (0.5%)
+- Conjugacy class theorem: J=0 in CKM sector is topologically forced
+- PMNS Borel confirmed: fitness=0.01897 reproduced independently
 
 ## Repository Structure
-```
-papers/
-  hyperbolic-flavor-ckm/      # Paper 5 (PRD) - CKM from geodesic axes
-  hyperbolic-flavor-pmns/     # Paper 6 (PRD) - PMNS from Borel structure
-  hyperbolic-flavor-cp/       # Paper 7 (PRD) - CP violation from A-factor
-  hyperbolic-flavor-twist/    # Paper 8 (JHEP) - Twist angle spectrum
-code/                         # Utility scripts
-```
 
-Scan scripts and census data: https://github.com/drmlgentry/hyperbolic-flavor-scan
+    papers/
+      hyperbolic-flavor-ckm/       CKM from geodesic axes (RINP-D-26-00327)
+      hyperbolic-flavor-pmns/      PMNS from Borel structure (RINP-D-26-00328)
+      hyperbolic-flavor-cp/        CP violation from A-factor (RINP-D-26-00329)
+      hyperbolic-flavor-torsion/   Homology class asymmetry (AIF 2026120)
+      hyperbolic-lattice/          Alexander polynomial (JKTR-S-26-00044)
+    code/                          Utility scripts
+
+Scan scripts: https://github.com/drmlgentry/hyperbolic-flavor-scan
 
 ## Author
 
 Marvin L. Gentry | drmlgentry@protonmail.com | ORCID: 0009-0006-4550-2663
-
-
-
-
