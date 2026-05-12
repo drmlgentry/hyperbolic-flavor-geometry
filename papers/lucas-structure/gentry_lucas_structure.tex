@@ -41,7 +41,7 @@ arithmetic bridge connecting two apparently unrelated structures
 in hyperbolic flavor geometry: the trace field $\Q(\sqrt{-3})$ of
 the flavor manifolds and the golden ratio field $\Q(\sqrt{5})$ of
 the fermion mass lattice. The central identity
-$\ell = k\logph \Leftrightarrow |\mathrm{tr}(\gamma)| = L_k$
+$\ell = 2k\logph \Leftrightarrow |\mathrm{tr}(\gamma)| = L_k$
 is proved exactly from the hyperbolic distance formula. Applied to
 the Standard Model flavor manifolds $M_{\mathrm{PMNS}} =
 \texttt{OrientableClosedCensus[1]}$ and $M_{\mathrm{CKM}} =
@@ -112,7 +112,7 @@ Let $M$ be a hyperbolic 3-manifold and $\gamma \in \pi_1(M)$ a
 loxodromic element with complex translation length $\ell + i\theta$.
 Then
 \begin{equation}
-  \ell = k \logph
+  \ell = 2k\logph
   \quad \Longleftrightarrow \quad
   |\mathrm{tr}(\rho(\gamma))| = L_k = \ph^k + \ph^{-k}.
   \label{eq:bridge}
@@ -121,13 +121,23 @@ Then
 
 \begin{proof}
 For a loxodromic element, $|\mathrm{tr}(\gamma)| = 2\cosh(\ell/2)$.
-Substituting $\ell = k\logph$ gives
-$2\cosh(k\logph/2) = \ph^k + \ph^{-k} = L_k$
+Substituting $\ell = 2k\logph$ gives
+$2\cosh(k\logph) = \ph^k + \ph^{-k} = L_k$
 by the Binet formula~\eqref{eq:lucas-binet}.
 Conversely, $|\mathrm{tr}| = L_k$ implies $\cosh(\ell/2) = L_k/2
-= \cosh(k\logph/2)$, so $\ell = k\logph$.
+= \cosh(k\logph)$, so $\ell = 2k\logph$.
 The algebra is exact, not approximate.
 \end{proof}
+\begin{remark}[Geodesic spectrum of $]
+\label{rem:spectrum}
+The bridge theorem guarantees that \emph{if} $\ell = 2k\logph$ then
+$|\mathrm{tr}| = L_k$. For  = \texttt{m003}(-2,3)$, the first
+twelve geodesics have $\ell/(2\logph)$ ranging from .60$ to .48$
+-- not integers. The Lucas-purity of the covering tower (Conjecture~1)
+is therefore an independent topological phenomenon, not a direct corollary
+of the bridge theorem applied to short geodesics.
+\end{remark}
+
 
 \begin{remark}[Quarter-integer extension]
 For $k \in \frac{1}{4}\Z$, the identity~\eqref{eq:bridge} still holds,
@@ -320,7 +330,7 @@ regulator of $\Q(\sqrt{5})$.
 Direct from Theorem~\ref{thm:lucas-geodesic}. The Lucas numbers $L_k$
 for $k \in \Z$ are rational integers; for $k \in \frac{1}{4}\Z
 \setminus \Z$ they are algebraic numbers in $\Q(\ph^{1/4})$. In
-both cases, the geodesic length formula gives $\ell = k\logph$
+both cases, the geodesic length formula gives $\ell = 2k\logph$
 regardless of the trace field of the holonomy representation.
 \end{proof}
 
