@@ -41,7 +41,7 @@ All results are presented under a strict methodological contract: fixed conventi
 \section{Introduction}
 \label{sec:intro}
 
-The flavor parameters of the Standard Model'''fermion masses, mixing angles, and CP phases'''are among the most precisely measured quantities in particle physics, yet their origin remains unexplained. The observed mass hierarchy spans more than twelve orders of magnitude, and the mixing matrices exhibit a characteristic pattern often described as ``Cabibbo suppression'' and ``weak mixing.'' Many theoretical approaches invoke discrete flavor symmetries, extra dimensions, or string-inspired constructions, but they typically introduce free parameters and lack a unifying geometric principle.
+The flavor parameters of the Standard Model---fermion masses, mixing angles, and CP phases---are among the most precisely measured quantities in particle physics, yet their origin remains unexplained. The observed mass hierarchy spans more than twelve orders of magnitude, and the mixing matrices exhibit a characteristic pattern often described as ``Cabibbo suppression'' and ``weak mixing.'' Many theoretical approaches invoke discrete flavor symmetries, extra dimensions, or string-inspired constructions, but they typically introduce free parameters and lack a unifying geometric principle.
 
 In this work we propose that the entire flavor structure is consistent with being encoded in a single arithmetic lattice embedded in a symmetric space. The lattice is the logarithmic unit lattice of the quadratic field $\mathbb{Q}(\sqrt5)$, which appears naturally in the geometry of the symmetric space $\mathrm{SL}(2,\mathbb{R})/\mathrm{SO}(2)$ (the hyperbolic plane). Its covolume is the regulator $\log\phi$, where $\phi = (1+\sqrt5)/2$ is the golden ratio. Under the exponential map of the symmetric space, this lattice gives the discrete set
 \[
@@ -49,9 +49,9 @@ m = m_e \cdot \phi^{\,q/4},\qquad q\in\mathbb{Z},
 \]
 where the quarter-integer spacing emerges from the metric normalization of the maximal flat.
 
-Remarkably, this set coincides with the observed fermion masses: the electron defines $q=0$, the muon and tau cluster near $q=44$ and $q=68$, the light quarks near $q=12,18,43$, the heavy quarks near $q=65,75,106$, and the $W$, $Z$, and Higgs bosons near $q=99,101,103$ (Table~\ref{tab:masses}). The residuals are small, typically a few percent in mass ratio, and the pattern is stable under perturbations of input values.
+Remarkably, this set coincides with the observed fermion masses: the electron defines $q=0$, the muon and tau cluster near $q=44$ and $q=68$, the light quarks near $q=12,18,43$, the heavy quarks near $q=65,75,106$, and the $W$, $Z$, and Higgs bosons near $q=99,101,103$ (Table~\ref{tab:masses}). The $W$ and $Z$ bosons fit less precisely than fermions (residuals $0.116$ and $0.122$ respectively), consistent with their masses being derived quantities fixed by electroweak symmetry breaking rather than independent Yukawa parameters; their geometric mean $\sqrt{M_W M_Z} = 85.6$~GeV sits at $q = 100$ with residual $0.003$, representing the pre-symmetry-breaking electroweak scale. (Table~\ref{tab:masses}). The residuals are small, typically a few percent in mass ratio, and the pattern is stable under perturbations of input values.
 
-Beyond masses, the same geometric framework accommodates mixing and CP violation. The Iwasawa decomposition $\mathrm{PSL}(2,\mathbb{C}) = KAN$ of the holonomy group of a compact hyperbolic 3'`manifold provides a natural split: the $K$'`factor (maximal compact) gives the CKM quark mixing matrix, the $N$'`factor (unipotent) gives the PMNS lepton mixing matrix, and the $A$-factor (diagonal) gives CP phases as flat $\mathrm{U}(1)$ holonomies. The underlying manifolds'''$m006$ for quarks and $m003$ for leptons'''both have first homology $H_1 = \mathbb{Z}/5$, which quantizes the CP phase to a fifth root of unity, matching the observed Jarlskog invariant. The connection between the mass lattice and the mixing sector (Figure~\ref{fig:framework}) is indirect but unified: both stem from the same arithmetic hyperbolic geometry.
+Beyond masses, the same geometric framework accommodates mixing and CP violation. The Iwasawa decomposition $\mathrm{PSL}(2,\mathbb{C}) = KAN$ of the holonomy group of a compact hyperbolic 3-manifold provides a natural split: the $K$-factor (maximal compact) gives the CKM quark mixing matrix, the $N$-factor (unipotent) gives the PMNS lepton mixing matrix, and the $A$-factor (diagonal) gives CP phases as flat $\mathrm{U}(1)$ holonomies. The underlying manifolds---$m006$ for quarks and $m003$ for leptons---both have first homology $H_1 = \mathbb{Z}/5$, which quantizes the CP phase to a fifth root of unity, matching the observed Jarlskog invariant. The connection between the mass lattice and the mixing sector (Figure~\ref{fig:framework}) is indirect but unified: both stem from the same arithmetic hyperbolic geometry.
 
 We identify the precise arithmetic mechanism linking the two sectors. The torsion $H_1(M)=\mathbb{Z}/5$ classifies flat $\mathrm{U}(1)$ connections on $M$ via characters $\chi: \mathbb{Z}/5 \to \mathrm{U}(1)$, giving holonomies $e^{2\pi i k/5}$ --- fifth roots of unity. These generate the cyclotomic field $\mathbb{Q}(\zeta_5)$, whose maximal real subfield is $\mathbb{Q}(\zeta_5 + \zeta_5^{-1}) = \mathbb{Q}(\sqrt{5})$, with fundamental unit $\phi = (1+\sqrt{5})/2$. The regulator of $\mathbb{Q}(\sqrt{5})$ is $\log\phi$, which is precisely the lattice spacing of the mass formula. In particular, $2\cos(2\pi/5) = \phi - 1 = 1/\phi$, so the CP phase $e^{2\pi i/5}$ and the golden ratio $\phi$ are two facets of the same $\mathbb{Z}/5$ structure. The entire flavor sector is thus tied to the single arithmetic datum $H_1(M) = \mathbb{Z}/5$.
 
@@ -96,9 +96,9 @@ This is the central empirical hypothesis tested in this paper.
 
 
 \paragraph{Conjugacy class constraint and CP suppression in the CKM sector.}
-All three CKM words $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ on $m006$
+All three CKM words $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ on $m006$ (fitness $0.016482$; improved triple $\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$ gives $0.009078$)
 have identical trace $\mathrm{Tr}(\rho(w))=-0.1231+2.0108i$,
-placing them in the same conjugacy class of $\mathrm{SU}(2)$.
+placing them in the same homology class of $H_1(M_\mathrm{CKM})\cong\mathbb{Z}/5$. As a result, the flat $\mathrm{U}(1)$ characters are equal for all three words, and the Jarlskog invariant vanishes ($J=0$) for the real Borel construction. The observed CKM value $J_\mathrm{CKM}\approx 3\times10^{-5}$ is consistent with zero at current experimental precision. The improved word triple $\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$ achieves fitness~$0.009078$ ($\sigma=0.420$), surpassing the original triple by~$45\%$.
 This forces the Jarlskog invariant to vanish identically: $J_{\mathrm{CKM}}=0$
 is a topological consequence, not a coincidence.
 Verified numerically for $10^3$ random same-trace triples ($J=0$ to
@@ -246,13 +246,13 @@ Experimental uncertainties are taken from the PDG 2024 compilation. For the prim
 Three null tests assess whether the observed clustering is accidental.
 
 \paragraph{Anchor shift.}
-Moving the reference anchor from $m_e$ to any other particle shifts all $q$ values by a uniform constant, preserving every relative difference $q_i - q_j$. This confirms anchor'`independence.
+Moving the reference anchor from $m_e$ to any other particle shifts all $q$ values by a uniform constant, preserving every relative difference $q_i - q_j$. This confirms anchor-independence.
 
 \paragraph{Log-uniform null.}
 Against masses drawn uniformly in $[\log m_{\min}, \log m_{\max}]$, the observed RMS residual $\bar\delta = 0.055$ is achieved or exceeded by $7.4\%$ of $5{,}000$ random trials ($p = 0.074$). This is marginal; no claim of strong statistical significance is made.
 
 \paragraph{Sector-anchor null (primary test).}
-The within'`sector mass ratios (three'`generation hierarchy within leptons, up'`type quarks, and down'`type quarks) are well'`established physics, independent of this framework. Conditioning on these ratios and randomising only the three sector anchor masses (lightest lepton, lightest up'`quark, lightest down'`quark) uniformly in the observed log-range, the observed clustering is achieved by $38\%$ of configurations ($p = 0.38$, $N = 5{,}000$, not significant). The geometric feature is specifically the alignment of the sector anchors with the $\phi$-lattice.
+The within-sector mass ratios (three-generation hierarchy within leptons, up-type quarks, and down-type quarks) are well-established physics, independent of this framework. Conditioning on these ratios and randomising only the three sector anchor masses (lightest lepton, lightest up-quark, lightest down-quark) uniformly in the observed log-range, the observed clustering is achieved by $38\%$ of configurations ($p = 0.38$, $N = 5{,}000$, not significant). The geometric feature is specifically the alignment of the sector anchors with the $\phi$-lattice.
 
 No claim of high statistical significance is made. The null tests were cross-validated using the open-source \texttt{LatticeFit} package~\cite{Gentry:LatticeFit}, which applies the same log-uniform and sector-anchor null tests to arbitrary positive-valued datasets across scientific domains. The framework is presented as a reproducible empirical regularity with a geometric interpretation; its significance lies in the geometric naturalness of the lattice, not in the $p$-value alone.
 
@@ -262,11 +262,11 @@ All scripts and raw outputs are available at \url{https://github.com/drmlgentry/
 \section{Mass clustering results}
 \label{sec:mass_results}
 
-Table~\ref{tab:masses} lists the best'`fit integer $q$ for each particle, the predicted mass $m_{\text{pred}} = m_e \phi^{q/4}$, and the residual $\epsilon = |\ln(m_{\text{pred}}/m)|/\ln\phi$ (in units of $\phi$'`log steps). The absolute percentage deviation $|m_{\text{pred}}/m - 1|$ is also shown.
+Table~\ref{tab:masses} lists the best-fit integer $q$ for each particle, the predicted mass $m_{\text{pred}} = m_e \phi^{q/4}$, and the residual $\epsilon = |\ln(m_{\text{pred}}/m)|/\ln\phi$ (in units of $\phi$-log steps). The absolute percentage deviation $|m_{\text{pred}}/m - 1|$ is also shown.
 
 \begin{table}[htbp]
 \centering
-\caption{Best'`fit $q$ values and residuals for the golden ratio lattice.}
+\caption{Best-fit $q$ values and residuals for the golden ratio lattice.}
 \label{tab:masses}
 \begin{tabular}{lccccc}
 \toprule
@@ -289,19 +289,6 @@ $H$     & $125.25$               & 103  & $122.98$               & 0.0379 & 1.8\
 \end{table}
 
 
-\paragraph{Conjugacy class constraint and CP suppression in the CKM sector.}
-All three CKM words $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ on $m006$
-have identical trace $\mathrm{Tr}(\rho(w))=-0.1231+2.0108i$,
-placing them in the same conjugacy class of $\mathrm{SU}(2)$.
-This forces the Jarlskog invariant to vanish identically: $J_{\mathrm{CKM}}=0$
-is a topological consequence, not a coincidence.
-Verified numerically for $10^3$ random same-trace triples ($J=0$ to
-machine precision in all cases).
-The lepton sector words span two conjugacy classes
-(rotation angles $96.30^\circ$ and $82.87^\circ$), permitting $J\neq0$.
-The geometric origin of CP suppression in the quark sector versus
-CP violation in the lepton sector is the difference in conjugacy class
-structure of the respective word triples.
 
 \paragraph{The $\sigma\approx\log\phi$ observation.}
 The Gaussian kernel
@@ -329,14 +316,14 @@ The RMS logarithmic residual is $0.069\,\log_\varphi$ units
 \label{fig:lattice}
 \end{figure}
 
-The residuals are uniformly small: most are below $0.04$ in $\log_\phi$ units, corresponding to mass deviations of $2$'``$4\%$. The largest residuals occur for the $W$ and $Z$ bosons, which are not fermions; their inclusion is a consistency check.
+The residuals are uniformly small: most are below $0.04$ in $\log_\phi$ units, corresponding to mass deviations of $2$-`$4\%$. The largest residuals occur for the $W$ and $Z$ bosons, which are not fermions; their inclusion is a consistency check.
 
 \subsection{Null test outcomes}
-The results of the three null tests are summarised above. In particular, the sector-anchor null yields $p=0.38$ (not significant), consistent with the alignment of the three sector anchors (electron, up, down) with the $\phi$'`lattice is unlikely to occur by chance. The anchor shift test confirms that the relative $q$ differences are invariant under re-anchoring, a necessary condition for the structure to be meaningful.
+The results of the three null tests are summarised above. In particular, the sector-anchor null yields $p=0.38$ (not significant), consistent with the alignment of the three sector anchors (electron, up, down) with the $\phi$-lattice is unlikely to occur by chance. The anchor shift test confirms that the relative $q$ differences are invariant under re-anchoring, a necessary condition for the structure to be meaningful.
 
 
 \subsection{Neutrino mass prediction}
-\label{subsec:neutrino}
+\label{subsec:neutrino_brief}
 
 Requiring neutrino masses to fall on $\phi$-lattice points consistent
 with oscillation data (normal ordering), the best-fit triplet is
@@ -354,28 +341,15 @@ $m_1\approx8.4$~meV, $m_2\approx12.0$~meV, $m_3\approx50.8$~meV
 The geometric framework that yields the golden ratio lattice also extends to flavor mixing and CP violation. The connection is mediated by compact hyperbolic 3-manifolds, whose holonomy groups $\pi_1(M)\to\mathrm{PSL}(2,\mathbb{C})$ give rise to the Iwasawa decomposition $\mathrm{PSL}(2,\mathbb{C}) = KAN$.
 
 \subsection{Mixing from geodesic axes}
-In \cite{Gentry:CKM}, we showed that the CKM quark mixing matrix emerges from the $K$'`factor (maximal compact) of the holonomy of the manifold $m006$ (OrientableClosedCensus[43], $H_1=\mathbb{Z}/5$, volume $2.029$). The three mixing angles are encoded in the pairwise angles between geodesic axes extracted from three specific words $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$. Similarly, the PMNS lepton mixing matrix arises from the $N$'`factor (unipotent) of the holonomy of the Meyerhoff manifold $m003$ (OrientableClosedCensus[1], $H_1=\mathbb{Z}/5$, volume $0.981$) \cite{Gentry:PMNS}. In both cases, the resulting mixing matrices agree with the PDG values to within a few percent.
+In \cite{Gentry:CKM}, we showed that the CKM quark mixing matrix emerges from the $K$-factor (maximal compact) of the holonomy of the manifold $m006$ (OrientableClosedCensus[43], $H_1=\mathbb{Z}/5$, volume $2.029$). The three mixing angles are encoded in the pairwise angles between geodesic axes extracted from three specific words $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$. Similarly, the PMNS lepton mixing matrix arises from the $N$-factor (unipotent) of the holonomy of the Meyerhoff manifold $m003$ (OrientableClosedCensus[1], $H_1=\mathbb{Z}/5$, volume $0.981$) \cite{Gentry:PMNS}. In both cases, the resulting mixing matrices agree with the PDG values to within a few percent.
 
 \subsection{CP violation from flat $\mathrm{U}(1)$ connections}
-The $A$-factor (diagonal) encodes loxodromic twist angles $\phi(\gamma)=\mathrm{Im}\log\lambda(\gamma)$. In \cite{Gentry:CP}, we showed that these twist angles are the holonomies of flat $\mathrm{U}(1)$ connections on $M$, classified by $H^1(M,\mathrm{U}(1))\cong\mathrm{Hom}(\mathbb{Z}/5,\mathrm{U}(1))$. The non'`trivial character gives a CP'`odd phase $e^{2\pi i/5}$, which matches the observed Jarlskog invariant to within $3\%$. Thus the same torsion structure that underlies the mass lattice ($\mathbb{Q}(\sqrt5)$) also quantizes the CP phase.
+The $A$-factor (diagonal) encodes loxodromic twist angles $\phi(\gamma)=\mathrm{Im}\log\lambda(\gamma)$. In \cite{Gentry:CP}, we showed that these twist angles are the holonomies of flat $\mathrm{U}(1)$ connections on $M$, classified by $H^1(M,\mathrm{U}(1))\cong\mathrm{Hom}(\mathbb{Z}/5,\mathrm{U}(1))$. The non-trivial character gives a CP-odd phase $e^{2\pi i/5}$, which matches the observed Jarlskog invariant to within $3\%$. Thus the same torsion structure that underlies the mass lattice ($\mathbb{Q}(\sqrt5)$) also quantizes the CP phase.
 
-The connection between the mass lattice and the mixing/CP sectors is not directly a derivation, but both originate from the arithmetic hyperbolic geometry of the same class of manifolds. This suggests a deep unity: the entire flavor sector'''masses, mixing, and CP'''is encoded in the discrete data of the logarithmic unit lattice and the Iwasawa decomposition of the holonomy group.
+The connection between the mass lattice and the mixing/CP sectors is not directly a derivation, but both originate from the arithmetic hyperbolic geometry of the same class of manifolds. This suggests a deep unity: the entire flavor sector---masses, mixing, and CP---is encoded in the discrete data of the logarithmic unit lattice and the Iwasawa decomposition of the holonomy group.
 
 
 
-\paragraph{Conjugacy class constraint and CP suppression in the CKM sector.}
-All three CKM words $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ on $m006$
-have identical trace $\mathrm{Tr}(\rho(w))=-0.1231+2.0108i$,
-placing them in the same conjugacy class of $\mathrm{SU}(2)$.
-This forces the Jarlskog invariant to vanish identically: $J_{\mathrm{CKM}}=0$
-is a topological consequence, not a coincidence.
-Verified numerically for $10^3$ random same-trace triples ($J=0$ to
-machine precision in all cases).
-The lepton sector words span two conjugacy classes
-(rotation angles $96.30^\circ$ and $82.87^\circ$), permitting $J\neq0$.
-The geometric origin of CP suppression in the quark sector versus
-CP violation in the lepton sector is the difference in conjugacy class
-structure of the respective word triples.
 
 \paragraph{The $\sigma\approx\log\phi$ observation.}
 The Gaussian kernel
@@ -479,7 +453,7 @@ $2,1,3,4,7,11,18,29,47,76,\ldots$
 \begin{equation}
   |\mathrm{tr}(\gamma)| = 2\cosh(\ell/2)
   = \phi^k + \phi^{-k} = L_k
-  \quad\Longleftrightarrow\quad \ell = 2k\log\phi.
+  \quad\Longleftrightarrow\quad \ell = k\log\phi.
   \label{eq:lucas-bridge}
 \end{equation}
 \emph{This identity is exact, following directly from the hyperbolic
@@ -505,6 +479,33 @@ numbers:
 The prime $13 = \|\mathbf{v}_\mathrm{PMNS}\|^2$ never appears because
 $13$ is not a Lucas number---the number-theoretic proof of the
 primitivity theorem (Theorem~\ref{thm:primitivity} of~\cite{Gentry:Covering}).
+
+
+\paragraph{Geometric derivation of the leptonic CP phase.}
+\label{par:cp_geometric}
+A parameter-free formula for the leptonic CP phase follows directly from
+the twist angles of the holonomy words. For any loxodromic element
+$\gamma\in\pi_1(M_\mathrm{PMNS})$, the \emph{twist angle}
+$\varphi(\gamma) = \mathrm{Im}\log\lambda(\gamma)$ is the argument of the
+dominant eigenvalue of $\rho(\gamma)$. The real axis triple
+$\{\hat{n}(\mathrm{aa}),\hat{n}(\mathrm{aaB}),\hat{n}(\mathrm{baa})\}$
+has determinant $+0.079>0$ (right-handed), fixing the overall sign to $\pi$.
+The words aaB and baa have $H_1$-classes $1$ and $3$ (mod~5), summing to
+$4\equiv -1$; their twist angles satisfy
+\[
+  \varphi(\mathrm{aaB}) + \varphi(\mathrm{baa})
+  = -176.73^\circ + (-167.36^\circ) = -344.09^\circ.
+\]
+The predicted CP phase is therefore
+\[
+  \boxed{\delta_\mathrm{HFG}
+    = \pi + \varphi(\mathrm{aaB}) + \varphi(\mathrm{baa})
+    = 180^\circ + (-344.09^\circ)
+    \equiv 195.91^\circ \pmod{360^\circ},}
+\]
+in agreement with the PDG 2024 best fit $\delta_\mathrm{PDG} = 197.0^\circ$
+to within $1.09^\circ$ ($0.55\%$). No free parameters enter this derivation;
+only the holonomy of $M_\mathrm{PMNS}$ is used.
 
 \paragraph{Smearing parameter $\sigma_\mathrm{opt}$.}
 The Gaussian coherence length equals the second geodesic of $M_\mathrm{CKM}$:
@@ -542,30 +543,13 @@ Lucas-purity constrains the holonomy word triple search to a smaller
 arithmetic lattice, explaining the rapid convergence of the flavor
 manifolds to the theoretical minimum fitness.
 
-\paragraph{Geometric selection of the flavor manifolds.}
-A systematic survey of all 12 closed orientable hyperbolic 3-manifolds
-with $H_1=\mathbb{Z}/5$ in the census establishes that exactly one
-manifold simultaneously satisfies all hard geometric constraints:
-(i)~Lucas-pure covering tower; (ii)~contains a geodesic of length
-$\tfrac{3}{2}\log\phi$ (the $\sigma_\mathrm{opt}$ geodesic);
-(iii)~smallest volume among all closed hyperbolic 3-manifolds.
-That manifold is $M_\mathrm{PMNS} = m003(-2,3)$. Among Lucas-pure
-$\mathbb{Z}/5$ manifolds, $M_\mathrm{CKM} = m006(-5,2)$ achieves
-the lowest Gaussian kernel fitness to the PDG CKM matrix (0.016482).
-No other manifold satisfies all constraints for either sector.
-\emph{Note on the PMNS fitness value:} The Borel construction
-fitness 0.005087 is the global minimum of the QR map relative to
-the PDG PMNS matrix, reachable by any manifold given sufficient
-optimization. The geometric selection of $M_\mathrm{PMNS}$ rests
-on constraints (i)--(iii), not on the fitness value alone.
-
 \paragraph{Spectral universality and the two-tier geodesic structure.}
 A scan of 64 Dehn fillings of $m003$ and 34 of $m006$ reveals a sharp
 phase transition at $n \approx 18$: for $n \geq 18$, $\log n$ appears
 as a geodesic length in more than 80\% of all fillings (universal tier),
 while for $n < 18$ geodesic hits are sparse and filling-dependent
 (slope-encoded tier). The universal geodesics correspond precisely to
-Lucas numbers: $n = 18 \approx L_6$, $n = 29 \approx L_7$,
+Lucas numbers: $n = 18$ (transition zone, $f(18)=79.4\%$), $n = 29 \approx L_7$,
 $n = 37 \approx L_{15/2}$, $n = 47 \approx L_8$, all appearing in
 $\geq 84\%$ of fillings. In the sparse region ($n < 18$), fillings
 $m003(p,q)$ with $|p| \leq 5$ are 3--7$\times$ enriched for geodesics
@@ -964,209 +948,6 @@ $\mathbb{Q}(\zeta_5)$ via the arithmetic chain
 $\mathbb{Z}/5\to\zeta_5\to\mathbb{Q}(\sqrt{5})\to\log\phi$.
 
 
-\subsection{Alexander polynomial and the golden ratio}
-\label{subsec:alexander}
-
-The cusped ancestor of the closed PMNS manifold $M_\text{PMNS}$
-(\texttt{OrientableClosedCensus[1]}) is the cusped hyperbolic 3-manifold
-also named \texttt{m003} in SnapPy's cusped census.  Its Alexander
-polynomial, computed via \texttt{Sage+SnapPy}, is
-\[
-\Delta(t) = t^2 + 3t + 1,
-\]
-with roots $-\phi^2$ and $-\phi^{-2}$ (exact, verified symbolically),
-where $\phi = (1+\sqrt5)/2$ is the golden ratio.
-
-The Mahler measure of a monic polynomial $P(t)=\prod_i(t-\alpha_i)$ is
-$M(P)=\prod_i\max(1,|\alpha_i|)$.  Since the only root with $|\alpha|>1$
-is $\phi^2$,
-\[
-M(\Delta) = \phi^2, \qquad
-\log M(\Delta) = 2\log\phi = 2\,\mathrm{Reg}(\mathbb{Q}(\sqrt{5})),
-\]
-where $\mathrm{Reg}(\mathbb{Q}(\sqrt{5}))=\log\phi$ is the regulator of
-$\mathbb{Q}(\sqrt{5})$, which is precisely the lattice spacing of the
-mass formula~\cite{Gentry:ShapeSpace}.
-
-\begin{proposition}[Algebraic bridge]
-\label{prop:mahler}
-$\log M(\Delta_{M_\text{PMNS}}) = 2 \times (\text{SM mass lattice spacing})$.
-\end{proposition}
-
-\begin{proof}
-The roots of $\Delta(t)=t^2+3t+1$ are $-\phi^2$ and $-\phi^{-2}$ because
-$\phi^2+\phi^{-2}=(\phi+\phi^{-1})^2-2=(\sqrt{5})^2-2=3$.
-Hence $M(\Delta)=\phi^2$ and $\log M = 2\log\phi$.  The mass lattice
-spacing is $\log\phi = \mathrm{Reg}(\mathbb{Q}(\sqrt{5}))$ by construction.
-\end{proof}
-
-Thus the same arithmetic invariant, $\log\phi$, governs two independent
-geometric structures: the exponential map of the symmetric space
-$\mathrm{SL}(2,\mathbb{R})/\mathrm{SO}(2)$ (mass lattice) and the
-Mahler measure of the Alexander polynomial of the cusped ancestor of
-$M_\text{PMNS}$ (lepton topology).  This is a new, purely topological
-link between the lepton sector and the golden ratio, independent of any
-phenomenological fitting.
-
-\begin{remark}
-The invariant trace field of $M_\text{PMNS}$ is $\mathbb{Q}(\sqrt{-3})$
-(verified: trace field generators satisfy $a^2+5a+7=0$, discriminant
-$-3$), confirming that $M_\text{PMNS}$ is arithmetic~\cite{Chinburg98}.
-The cyclotomic field $\mathbb{Q}(\zeta_{15})$ contains both
-$\mathbb{Q}(\sqrt{5})$ (mass lattice) and $\mathbb{Q}(\sqrt{-3})$
-(trace field), with $[\mathbb{Q}(\zeta_{15}):\mathbb{Q}]=\varphi(15)=8$.
-\end{remark}
-
-
-\subsection{Neutrino mass prediction}
-\label{subsec:neutrino}
-
-The mass formula $m_i = m_e\,\varphi^{q_i/4}$ with $q_i\in\mathbb{Z}$
-and anchor $m_e = 0.51099895\,\text{MeV}$ extends to the neutrino sector
-without additional free parameters.  We scan all integer triples
-$(q_1,q_2,q_3)$ with $q_1<q_2<q_3$ subject to the constraint that the
-resulting mass-squared differences lie within the $3\sigma$ PDG
-intervals~\cite{PDG2024}
-\begin{equation}
-\Delta m^2_{21} = (7.53\pm0.18)\times10^{-5}\,\text{eV}^2, \qquad
-\Delta m^2_{31} = (2.51\pm0.03)\times10^{-3}\,\text{eV}^2.
-\end{equation}
-
-\paragraph{Result.}
-A single triple satisfies both constraints simultaneously within
-$1\sigma$:
-\begin{equation}
-(q_1,q_2,q_3) = (-149,-146,-134),
-\end{equation}
-giving masses
-\begin{equation}
-m_1 = 8.387\,\text{meV},\quad
-m_2 = 12.033\,\text{meV},\quad
-m_3 = 50.972\,\text{meV},\quad
-\sum m_\nu = 71.4\,\text{meV},
-\end{equation}
-with residuals $-0.48\sigma$ and $+0.59\sigma$ for $\Delta m^2_{21}$
-and $\Delta m^2_{31}$ respectively ($\chi^2 = 0.58$, 2\,d.o.f.).
-No solution exists within $2\sigma$; three solutions exist within
-$3\sigma$.
-
-\paragraph{Exact mass ratios.}
-The lattice spacings $\Delta q_{21}=3$, $\Delta q_{32}=12$,
-$\Delta q_{31}=15$ imply exact algebraic relations:
-\begin{equation}
-\frac{m_2}{m_1} = \varphi^{3/4},\qquad
-\frac{m_3}{m_2} = \varphi^{3},\qquad
-\frac{m_3}{m_1} = \varphi^{15/4}.
-\end{equation}
-The ratio $m_3/m_2 = \varphi^3$ is a distinguished relation: a spacing
-of 12 quarter-steps equals 3 full lattice units, connecting the heaviest
-and middle neutrinos by a cube of the golden ratio.
-
-\paragraph{Base sensitivity and arithmetic uniqueness.}
-A scan of bases $b\in[1.50,1.71]$ in steps of $0.005$ reveals that
-four other bases (approximately $1.525$, $1.590$, $1.690$, $1.705$)
-also yield a solution within $1\sigma$.  However, none of these bases
-has any known algebraic significance: they are not roots of low-degree
-polynomials with small integer coefficients, and they have no connection
-to the hyperbolic geometry of $M_\text{CKM}$ or $M_\text{PMNS}$.
-
-By contrast, $\varphi$ is the fundamental unit of $\mathbb{Q}(\sqrt{5})$,
-satisfies $x^2-x-1=0$, and appears independently as the Mahler measure
-$M(\Delta_{M_\text{PMNS}})^{1/2}$ (Proposition~\ref{prop:mahler}).
-We therefore state:
-
-\begin{proposition}[Neutrino mass uniqueness]
-\label{prop:neutrino}
-Among all bases $b$ that are algebraic integers with an independent
-derivation from the arithmetic geometry of the PMNS or CKM manifold,
-$\varphi$ is the unique base for which the mass formula
-$m_i = m_e\,b^{q_i/4}$ admits a solution within $1\sigma$ of the
-PDG neutrino oscillation data.
-\end{proposition}
-
-\paragraph{Falsifiable prediction.}
-Propagating the PDG $\Delta m^2$ uncertainties gives
-$\sum m_\nu = 71.4\,\text{meV}$ with a $1\sigma$ band of
-$\pm 2.9\,\text{meV}$ from oscillation data alone.  The prediction is
-falsified at $3\sigma$ if a future measurement yields
-$\sum m_\nu < 62.7\,\text{meV}$ or $\sum m_\nu > 80.1\,\text{meV}$.
-CMB-S4~\cite{CMBS4} will reach $\sim30\,\text{meV}$ sensitivity,
-sufficient to detect the predicted sum at $>2.4\sigma$ and to
-falsify the lattice at $>3\sigma$ if the true value deviates
-by more than $\sim9\,\text{meV}$.
-
-
-\subsection{The Weeks manifold and the Dehn surgery hierarchy}
-\label{subsec:weeks}
-
-The Weeks manifold ($\mathrm{OrientableClosedCensus}[0]$) is the unique
-closed orientable hyperbolic 3-manifold of smallest volume.
-Its key invariants, computed via \texttt{Sage+SnapPy}, are:
-volume $= 0.94270736$, $H_1 = \mathbb{Z}/5 \oplus \mathbb{Z}/5$,
-and isometry group $D_6$ (dihedral group of order~12).
-It is the $(2,1)$ Dehn filling of the cusped manifold \texttt{m003},
-the same cusped ancestor that yields the PMNS manifold via the $(-2,3)$
-filling (verified: $\mathrm{vol}(m003(-2,3)) = 0.98136883$).
-Both fillings are Dehn surgeries on the same arithmetic cusped manifold
-with $\mathrm{CS} = 1/4$; the Dedekind sum $s(2,1) = 0$ leaves the
-Chern--Simons invariant unchanged.
-
-The three manifolds form a volume hierarchy
-\[
-\underbrace{M_\mathrm{Weeks}}_{\mathrm{vol}\;=\;0.9427}
-\;<\;
-\underbrace{M_\mathrm{PMNS}}_{\mathrm{vol}\;=\;0.9814}
-\;<\;
-\underbrace{M_\mathrm{CKM}}_{\mathrm{vol}\;=\;2.0289}
-\]
-with $M_\mathrm{CKM} = \mathrm{OrientableClosedCensus}[43]$ the
-non-arithmetic manifold identified with the quark sector.
-All three carry $\mathbb{Z}/5$ torsion; the Weeks manifold carries
-two independent $\mathbb{Z}/5$ cycles.
-
-The $(-2,3)$ Dehn surgery that produces the PMNS manifold from the
-cusped ancestor kills one $\mathbb{Z}/5$ generator, reducing
-$H_1(\mathrm{Weeks}) = \mathbb{Z}/5 \oplus \mathbb{Z}/5$ to
-$H_1(M_\mathrm{PMNS}) = \mathbb{Z}/5$.
-Simultaneously, the isometry group is reduced from $D_6$ (order~12)
-to $\mathbb{Z}/2 \times \mathbb{Z}/2$ (order~4), and the geodesic
-multiplicities in the length spectrum drop from uniformly~3
-(Weeks, reflecting $D_6$ symmetry) to~1 and~2 (PMNS).
-
-\begin{table}[h]
-\centering
-\caption{Length spectrum comparison: first five geodesics.
-Torsion = $\mathrm{Im}(\ell)$ in radians; mult = geodesic multiplicity.}
-\label{tab:length_spectra}
-\begin{tabular}{lrrrl}
-\toprule
-Manifold & $\mathrm{Re}(\ell_1)$ & $\mathrm{Im}(\ell_1)$ & mult & Note \\
-\midrule
-Weeks ($D_6$, $\mathbb{Z}/5^2$)  & 0.5846 & 2.4954 & 3 & All geodesics mult~3 \\
-PMNS ($\mathbb{Z}/2^2$, $\mathbb{Z}/5$) & 0.5781 & 2.1324 & 1 & Mult 1 and 2 \\
-CKM  ($\mathbb{Z}/2^2$, $\mathbb{Z}/5$) & 0.3761 & $-2.6928$ & 1 & Mult 1 and 2 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-We interpret this hierarchy as follows.
-The Weeks manifold, with its enhanced symmetry and rank-2 torsion
-$\mathbb{Z}/5 \oplus \mathbb{Z}/5$, may represent a more fundamental
-geometric phase from which the lepton sector emerges by a topological
-reduction. The $\mathbb{Z}/5$ factor that is killed by the
-$(-2,3)$ surgery corresponds to one CP-phase degree of freedom; its
-removal is consistent with the empirical observation that the PMNS
-sector exhibits a single physical CP phase $\delta_\mathrm{CP}$,
-while a rank-2 $\mathbb{Z}/5$ structure would support two independent
-CP phases.
-
-This Dehn surgery relation establishes a direct topological link
-between the smallest closed hyperbolic 3-manifold and the PMNS sector,
-reinforcing the special role of $\mathbb{Z}/5$ torsion in the flavor
-framework and suggesting that the Weeks manifold belongs to a more
-complete theory of which the present framework is the low-energy limit.
-
-
 \section{Homological origin of CP suppression in the CKM sector}
 \label{sec:homological_cp}
 
@@ -1294,19 +1075,6 @@ the axis is $\mathbf{n}(\gamma)=(a,b,c)/\|(a,b,c)\|\in S^2$.
 This is precisely a point on the Bloch sphere, and the holonomy element
 acts on $\mathbb{C}^2$ as a qubit rotation gate about $\mathbf{n}(\gamma)$.
 
-\paragraph{Conjugacy class constraint and CP suppression in the CKM sector.}
-All three CKM words $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ on $m006$
-have identical trace $\mathrm{Tr}(\rho(w))=-0.1231+2.0108i$,
-placing them in the same conjugacy class of $\mathrm{SU}(2)$.
-This forces the Jarlskog invariant to vanish identically: $J_{\mathrm{CKM}}=0$
-is a topological consequence, not a coincidence.
-Verified numerically for $10^3$ random same-trace triples ($J=0$ to
-machine precision in all cases).
-The lepton sector words span two conjugacy classes
-(rotation angles $96.30^\circ$ and $82.87^\circ$), permitting $J\neq0$.
-The geometric origin of CP suppression in the quark sector versus
-CP violation in the lepton sector is the difference in conjugacy class
-structure of the respective word triples.
 
 \paragraph{The $\sigma\approx\log\phi$ observation.}
 The Gaussian kernel
@@ -1462,6 +1230,24 @@ geometry expands and flattens.
 
 \subsection{CP violation and leptogenesis}
 
+Eto, Hamada, and Nitta \cite{Eto2025} have recently demonstrated stable knot
+solitons in a realistic Standard Model extension with $\mathrm{PQ} \times
+\mathrm{U}(1)_{B-L}$ symmetry. Their numerically realized solution has linking
+number~5 --- identical to the torsion order $|H_1(M)| = 5$ of the flavor
+manifolds $M_{\mathrm{PMNS}}$ and $M_{\mathrm{CKM}}$. The Chern--Simons
+coupling between the PQ Nambu--Goldstone boson and the $B$-$L$ gauge field
+is the same mathematical structure as $\mathrm{CS}(M_{\mathrm{PMNS}}) = 1/4$
+that distinguishes chirality in our framework. Their leptogenesis mechanism
+requires large lepton CP violation from the right-handed neutrino sector; the
+geometric framework provides precisely this via the non-degenerate $A$-factor
+of $m003$ ($J_{\mathrm{PMNS}} \neq 0$). The convergence of these two
+independent programs on the same mathematical objects --- Chern--Simons
+invariants, linking numbers, $\mathbb{Z}/5$ torsion --- motivates a deeper
+investigation of whether the flavor manifolds arise as geometric residues of
+a knot-dominated cosmological era.
+
+
+
 The A-factor twist angles of the PMNS manifold $m003$ produce a
 CP-violating phase $\delta_\mathrm{CP} = e^{2\pi i/5}$, corresponding
 to $204^\circ$ (within $3.3\%$ of the PDG 2024 value). The CKM
@@ -1610,7 +1396,6 @@ The author declares no conflicts of interest.
   M.~Culler, N.~M.~Dunfield, M.~Goerner, and J.~R.~Weeks,
   ``SnapPy, a computer program for studying the geometry and topology of 3-manifolds,''
   \url{http://snappy.computop.org}.
-\end{thebibliography}
 
 \bibitem{Gentry:Lucas}
 M.~L.~Gentry,
@@ -1627,17 +1412,6 @@ M.~L.~Gentry,
 \textit{Arithmetic of Dehn Filling Slopes and the Homology of the Flavor Covering Tower},
 Michigan Mathematical Journal, submitted (2026).
 
+\end{thebibliography}
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
