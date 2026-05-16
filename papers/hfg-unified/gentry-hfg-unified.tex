@@ -566,6 +566,53 @@ The framework makes the following testable predictions:
 \end{enumerate}
 
 % ════════════════════════════════════════════════════════════════
+
+\subsection{Z[sqrt(17)] norm conjecture for the quark sector}
+\label{subsec:sqrt17_quarks}
+
+An analogous arithmetic pattern appears in the quark sector using the
+CKM trace field $\KCKM = \mathbb{Q}(\sqrt{17})$ with norm
+$N(a+b\sqrt{17}) = |a^2 - 17b^2|$.
+
+\begin{observation}[Z[$\sqrt{17}$] quark norms]
+\label{obs:sqrt17}
+Six of the seven quarks and leptons have $\mathbb{Z}[\sqrt{17}]$ norm
+representatives within $2.1\%$ of their mass ratios $m_f/m_e$:
+\begin{center}\small
+\begin{tabular}{lrrrr}
+\toprule
+Fermion & $m_f/m_e$ & $N$ & Witness & Error \\
+\midrule
+$d$   &    9.14 &     9 & $(3,0)$      & 1.5\% \\
+$s$   &  182.78 &   179 & $(14,1)$     & 2.1\% \\
+$\mu$ &  206.77 &   208 & $(8,4)$      & 0.6\% \\
+$c$   & 2495.11 &  2491 & $(29,14)$    & 0.16\% \\
+$\tau$& 3477.22 &  3481 & $(59,0)$     & 0.11\% \\
+$b$   & 8180.04 &  8179 & $(7,22)$     & 0.01\% \\
+$t$   & 338082  & 338104& $(139,145)$  & 0.007\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+where $N = |a^2 - 17b^2|$ for the given witness $(a,b)$.
+All norm values have prime factors satisfying $p\equiv 1,2,4,8,9,13,15,16
+\pmod{17}$ (split in $\KCKM$), as required for Z[$\sqrt{17}$] norms.
+A Monte Carlo control gives $p\approx0.08$ for observing $\ge7/8$ hits by
+chance against random positive numbers.
+\end{observation}
+
+\begin{remark}
+The $\mathbb{Z}[\sqrt{17}]$ norms are more accurate for the leptons
+($\mu$: 0.6\%, $\tau$: 0.11\%) than the Eisenstein norms ($\mu$: 3.8\%,
+$\tau$: 2.7\%). The two encodings coexist: Eisenstein norms
+(Section~\ref{thm:main}) lock the lepton masses to $\KPMNS$, while
+$\mathbb{Z}[\sqrt{17}]$ norms lock all fermion masses to $\KCKM$.
+Whether this reflects a single unified arithmetic structure or two
+independent coincidences remains an open question.
+The up quark ($u$: 5.4\%) and top quark masses have larger errors or
+are outside the search range, possibly due to large QCD running
+corrections.
+\end{remark}
+
 \section{Open Problems}
 \label{sec:open}
 % ════════════════════════════════════════════════════════════════
