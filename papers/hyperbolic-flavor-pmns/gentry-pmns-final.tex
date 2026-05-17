@@ -5,14 +5,15 @@
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage{enumerate}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{definition}
 \newtheorem{observation}[theorem]{Observation}
-\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
 
 \newcommand{\MPMNS}{M_{\mathrm{PMNS}}}
 \newcommand{\KPMNS}{K_{\mathrm{PMNS}}}
@@ -33,16 +34,15 @@ ORCID: 0009-0006-4550-2663}
 \begin{abstract}
 We show that the PMNS lepton mixing matrix and the leptonic
 CP-violating phase are encoded in the holonomy geometry of the compact
-hyperbolic 3-manifold
-$\MPMNS = m003(-2,3)$
+hyperbolic 3-manifold $\MPMNS = m003(-2,3)$
 (\texttt{OrientableClosedCensus[1]}, volume $0.9814$,
 $H_1=\Zfive$).
 The construction has three independent results.
 First, the PMNS matrix requires the \emph{Borel} (lower-triangular
 Iwasawa $N$-factor) rather than the symmetric overlap used for the CKM
-matrix: we prove that no positive-definite symmetric overlap matrix can
-reproduce the PMNS pattern, establishing a kernel-independent Frobenius
-floor of $0.300$.
+matrix: we show computationally that no positive-definite symmetric
+overlap matrix can reproduce the PMNS pattern, establishing a
+kernel-independent Frobenius floor of $0.300$.
 The Borel construction achieves fitness $0.005087$---the global
 minimum of the construction, with $p<10^{-4}$ against
 $50{,}000$ Haar-random unitary matrices.
@@ -68,7 +68,6 @@ $\mathbb{Q}(\sqrt{17})$.
 \end{abstract}
 
 \maketitle
-
 \tableofcontents
 
 \section{Introduction}
@@ -87,19 +86,21 @@ Gaussian overlap construction. In the present paper we show that the
 PMNS matrix requires a fundamentally different construction---the Borel
 (lower-triangular) factor of the Iwasawa decomposition---and that this
 distinction is forced by the geometry: the symmetric construction has a
-Frobenius floor of $0.300$ for any PMNS-like target, a theorem
-independent of the choice of manifold or overlap kernel.
+Frobenius floor of $0.300$ for any PMNS-like target, independent of
+the choice of manifold or overlap kernel.
 
-The construction is applied to $\MPMNS=m003(-2,3)$, which is
-selected by three independent geometric criteria. All numerical
-values are verified using SnapPy~\cite{SnapPy} at 150-bit precision.
+The construction is applied to $\MPMNS=m003(-2,3)$, selected by
+three independent geometric criteria. All numerical values are
+verified using SnapPy~\cite{SnapPy} at 150-bit precision.
 
 \section{The Manifold}
 \label{sec:manifold}
 
 \subsection{Basic invariants}
 
-\begin{center}
+\begin{table}[htbp]
+\centering
+\caption{Basic invariants of $\MPMNS$.}
 \begin{tabular}{ll}
 \toprule
 Invariant & Value \\
@@ -112,26 +113,26 @@ Chern-Simons & $1/4$ \\
 Symmetry & $\mathbb{Z}/2\times\mathbb{Z}/2$ \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table}
 
 $\MPMNS$ is the second-smallest known closed orientable hyperbolic
 3-manifold, adjacent to the Weeks manifold in Dehn surgery space.
 
-\subsection{Trace field and arithmetic structure}
+\subsection{Trace field}
 
 \begin{proposition}[PMNS trace field]
 The invariant trace field of $\MPMNS$ is
 $\KPMNS = \mathbb{Q}(\sqrt{-3})$,
 an imaginary quadratic field with ring of integers
-$\mathcal{O}_K = \Zom$ where $\omega = e^{2\pi i/3}$,
+$\mathcal{O}_K = \Zom$, $\omega = e^{2\pi i/3}$,
 norm form $N(a+b\omega) = a^2-ab+b^2$.
 \end{proposition}
 
 \begin{proof}[Verification]
-The trace field $\mathbb{Q}(\sqrt{-3})$ for the cusped ancestor $m003$
-is established in~\cite{Chinburg98}.
-The closed manifold $m003(-2,3)$ is an arithmetic Dehn filling and
-inherits the same trace field.
+The trace field $\mathbb{Q}(\sqrt{-3})$ for the cusped ancestor
+$m003$ is established in~\cite{Chinburg98}.
+The closed manifold $m003(-2,3)$ is an arithmetic Dehn filling
+inheriting the same trace field.
 \end{proof}
 
 \subsection{Geometric selection of $\MPMNS$}
@@ -139,47 +140,35 @@ inherits the same trace field.
 Among all closed orientable hyperbolic 3-manifolds with $H_1=\Zfive$
 in the SnapPy census, $\MPMNS$ is the unique element satisfying three
 independent criteria:
-\begin{enumerate}
+\begin{enumerate}[(1)]
 \item \textbf{Minimal volume.} Volume $0.9814$, the smallest of any
   closed orientable hyperbolic 3-manifold~\cite{GMM}.
 \item \textbf{Lucas-pure covering tower.} Through degree~9, every new
   torsion prime in $H_1$ of finite covers is a prime Lucas number:
   $\{2,3,7,11,29\}=\{L_0,L_2,L_4,L_5,L_7\}$;
-  the prime $13$ never appears~\cite{Gentry:Lucas}.
+  the prime $13$ never appears~\cite{Gentry:Lucas,Gentry:Covering}.
 \item \textbf{Quarter-Lucas geodesic.} $\MPMNS$ contains a geodesic
   of length $\frac{3}{2}\log\varphi=0.7218$ (second shortest, to
-  $0.03\%$)---the same parameter $\sigma$ that minimises the CKM
-  construction fitness.
+  $0.03\%$)---the same $\sigma$ that minimises the CKM fitness.
 \end{enumerate}
 
-\section{The Symmetric QR Obstruction}
+\section{Symmetric QR Obstruction}
 \label{sec:obstruction}
 
-\begin{theorem}[Frobenius floor]
-\label{thm:floor}
+\begin{observation}[Frobenius floor]
+\label{obs:floor}
 For any positive-definite symmetric overlap matrix $O$ and any
 $\sigma>0$, the Frobenius distance between $|Q|$ (from QR of $O$)
-and the PDG PMNS absolute values satisfies
-\[
-  \mathcal{F}_{\mathrm{sym}} \geq 0.300.
-\]
-This bound is kernel-independent: it holds for Gaussian, Lorentzian,
-or any other positive-definite symmetric kernel.
-\end{theorem}
+and the PDG PMNS absolute values is observed to be at least $0.300$.
+This bound is kernel-independent and is supported by a numerical
+scan over $10^5$ random symmetric positive matrices~\cite{Gentry:PMNS_arxiv}.
+\end{observation}
 
-\begin{proof}[Outline]
-The PMNS matrix has a near-maximal $\theta_{23}\approx45^\circ$
-and large $\theta_{12}\approx33^\circ$.
-Any symmetric positive-definite $3\times3$ matrix $O$ has
-real non-negative eigenvalues $\lambda_1\geq\lambda_2\geq\lambda_3>0$,
-and QR orthogonalization produces a real orthogonal $Q$.
-A real orthogonal matrix $U$ satisfying $|U|\approx|U_{\mathrm{PMNS}}|$
-must have large off-diagonal entries in multiple rows and columns
-simultaneously.
-Direct computation (carried out over $10^5$ random symmetric positive
-matrices) establishes the floor $0.300$ as a tight lower bound.
-The full proof appears in~\cite{Gentry:PMNS_arxiv}.
-\end{proof}
+The geometric explanation is that the three PMNS axis vectors are
+nearly collinear ($\theta_{ij}\in[5^\circ,10^\circ]$), producing
+a nearly-degenerate symmetric overlap matrix whose QR factorisation
+cannot generate the large off-diagonal structure of PMNS.
+The Borel (lower-triangular) construction bypasses this obstruction.
 
 \section{Borel Construction}
 \label{sec:borel}
@@ -187,10 +176,9 @@ The full proof appears in~\cite{Gentry:PMNS_arxiv}.
 \subsection{Iwasawa decomposition}
 
 For $g\in\PSL$, the Iwasawa decomposition gives $g=KAN$, where
-$K\in\mathrm{SU}(2)$ (rotation), $A$ diagonal, and $N$
-lower-triangular unipotent.
+$K\in\mathrm{SU}(2)$, $A$ diagonal, $N$ lower-triangular unipotent.
 The CKM construction uses the $K$-factor~\cite{Gentry:CKM}.
-The PMNS construction uses the $N$-factor (Borel subgroup):
+The PMNS construction uses the $N$-factor:
 \[
   N(g) = \begin{pmatrix} 1 & 0 \\ z & 1 \end{pmatrix},
   \quad z\in\mathbb{C}.
@@ -202,35 +190,31 @@ For a word triple $\{\gamma_1,\gamma_2,\gamma_3\}$ in
 $\pi_1(\MPMNS)$, we extract axis directions $\hat{n}(\gamma_i)\in S^2$
 from $\log\rho(\gamma_i)$ via Pauli decomposition, form the Gaussian
 overlap matrix $O_{ij}=\exp(-\theta_{ij}^2/(2\sigma^2))$, and apply
-lower-triangular (Borel) QR orthogonalization rather than full QR.
-This produces a unitary matrix $Q_B$ whose absolute values are
-compared to $|U_{\mathrm{PMNS}}|_{\mathrm{PDG}}$.
+QR to the \emph{transpose} of $O$ (equivalently, QR with a
+lower-triangular factor). This produces a unitary matrix $Q_B$
+whose absolute values are compared to $|U_{\mathrm{PMNS}}|_{\mathrm{PDG}}$.
 
 \section{Results}
 \label{sec:results}
 
 \subsection{Canonical triple and fitness}
 
-The canonical word triple $\{\mathrm{aa},\mathrm{aaB},\mathrm{baa}\}$
-in $\pi_1(\MPMNS)$ gives axis vectors (verified from SnapPy):
+The word triple $\{\mathrm{aa},\mathrm{aaB},\mathrm{baa}\}$
+in $\pi_1(\MPMNS)$ gives axis vectors (SnapPy, 150-bit):
 \begin{align*}
   \hat{n}_{\mathrm{aa}}  &= [\phantom{-}0.0955,\phantom{-}0.7039,-0.7039],\\
   \hat{n}_{\mathrm{aaB}} &= [\phantom{-}0.0000,-0.7071,\phantom{-}0.7071],\\
   \hat{n}_{\mathrm{baa}} &= [-0.1757,-0.6961,\phantom{-}0.6961].
 \end{align*}
-The pairwise axis angles are small:
-$\theta_{12}=5.48^\circ$, $\theta_{13}=4.64^\circ$,
-$\theta_{23}=10.12^\circ$.
-This near-degeneracy is precisely what necessitates the Borel
-construction: a symmetric overlap matrix with such small angles
-produces a nearly-degenerate $Q$, explaining the floor of Theorem~\ref{thm:floor}.
+Pairwise angles: $\theta_{12}=5.48^\circ$, $\theta_{13}=4.64^\circ$,
+$\theta_{23}=10.12^\circ$ (all small, explaining the obstruction).
 
-The Borel construction at the optimal $\sigma$ achieves:
+The Borel construction at optimal $\sigma$ achieves:
 \[
   \mathcal{F}_{\mathrm{PMNS}} = 0.005087,
 \]
-the global minimum of the Borel construction over all unitary
-matrices ($p<10^{-4}$ vs.\ $50{,}000$ Haar-random unitaries).
+the global minimum of the Borel construction
+($p<10^{-4}$ vs.\ $50{,}000$ Haar-random unitaries).
 
 \subsection{Leptonic CP-violating phase}
 \label{subsec:cp}
@@ -245,40 +229,39 @@ matrices ($p<10^{-4}$ vs.\ $50{,}000$ Haar-random unitaries).
     = 195.91^\circ.
   }
 \]
-The PDG~2024 best fit is $\delta_{\mathrm{PDG}}=197.0^\circ$;
-the difference is $1.09^\circ$ ($0.55\%$, zero free parameters).
+PDG~2024: $197.0^\circ$; difference $1.09^\circ$ ($0.55\%$,
+zero free parameters).
 \end{theorem}
 
 \begin{proof}[Computational verification]
-The twist angles from the SnapPy polished holonomy at 150-bit
-precision are:
+From SnapPy polished holonomy at 150-bit precision:
+$\varphi(\gamma)=\mathrm{Im}\log\lambda(\gamma)$,
+$\lambda(\gamma)$ the dominant eigenvalue of $\rho(\gamma)$:
 \[
   \varphi(\mathrm{aaB}) = -176.73^\circ,
   \qquad
-  \varphi(\mathrm{baa}) = -167.36^\circ,
+  \varphi(\mathrm{baa}) = -167.36^\circ.
 \]
-where $\varphi(\gamma)=\mathrm{Im}\log\lambda(\gamma)$
-and $\lambda(\gamma)$ is the dominant eigenvalue of $\rho(\gamma)$.
-Then:
-\[
-  \pi + (-176.73^\circ) + (-167.36^\circ) = -164.09^\circ
-  \equiv 195.91^\circ \pmod{360^\circ}.
-\]
+Then $180^\circ + (-176.73^\circ) + (-167.36^\circ)
+= -164.09^\circ \equiv 195.91^\circ \pmod{360^\circ}$.
 \end{proof}
 
 \begin{remark}
-The H1 classes of the canonical triple are
+The $H_1$ classes of the canonical triple are
 $[\mathrm{aa}]=1$, $[\mathrm{aaB}]=4$, $[\mathrm{baa}]=3$
-(all distinct in $\Zfive$), ensuring no column collision and hence
-$J\neq0$ for PMNS---the correct behavior in contrast to the CKM
-sector where $[\mathrm{AbA}]=[\mathrm{AAb}]=2$ forces $J=0$.
+(all distinct in $\Zfive$), ensuring no column collision
+and $J\neq0$---correct for the PMNS sector.
+Contrast the CKM sector: $[\mathrm{AbA}]=[\mathrm{AAb}]=2$
+forces $J=0$.
 \end{remark}
 
 \section{Lepton Mass Encoding}
 \label{sec:masses}
 
-\begin{observation}[Eisenstein norm encoding of lepton masses]
-The charged lepton mass ratios are approximated by norms in $\Zom$:
+\begin{observation}[Eisenstein norm encoding]
+The charged lepton mass ratios are approximated by norms
+$N(a+b\omega)=a^2-ab+b^2$ in $\Zom$:
+
 \begin{center}
 \begin{tabular}{lcccc}
 \toprule
@@ -289,20 +272,21 @@ $\tau$ & $3477.22$ & $3477$ & $(-68,-37)$ & $0.006\%$ \\
 \bottomrule
 \end{tabular}
 \end{center}
-where $N(a+b\omega)=a^2-ab+b^2$, verified:
-$(-16)^2-(-16)(-12)+(-12)^2=256-192+144=208$ \checkmark;
-$(-68)^2-(-68)(-37)+(-37)^2=4624-2516+1369=3477$ \checkmark.
+
+Verified: $(-16)^2-(-16)(-12)+(-12)^2=208$\,\checkmark;
+$(-68)^2-(-68)(-37)+(-37)^2=3477$\,\checkmark.
+Witnesses are nearest integer norms within search radius $R=150$.
 \end{observation}
 
 \begin{remark}
-The prime Lucas numbers $L_{11}=199=N(-15-13\omega)$ and
-$L_{17}=3571=N(-69-34\omega)$ are exact Eisenstein norms with errors
-$3.8\%$ and $2.7\%$, respectively.
+The Lucas primes $L_{11}=199=N(-15-13\omega)$ and
+$L_{17}=3571=N(-69-34\omega)$ are exact Eisenstein norms
+(errors $3.8\%$, $2.7\%$).
 Both satisfy $\equiv3\pmod4$ (not Gaussian norms) and
-$\equiv1\pmod3$ (split in $\KPMNS$), arithmetically locking them to
-$\KPMNS$.
-The witnesses in the table are the nearest integer norms within
-search radius $R=150$.
+$\equiv1\pmod3$ (split in $\KPMNS$), arithmetically locking
+them to $\KPMNS$.
+They are slightly further from the PDG values than the
+table witnesses but carry additional number-theoretic significance.
 \end{remark}
 
 \section{CP Asymmetry from Trace Fields}
@@ -313,79 +297,66 @@ search radius $R=150$.
 \begin{enumerate}[(i)]
 \item $\KPMNS=\mathbb{Q}(\sqrt{-3})$ is imaginary.
   Holonomy elements are loxodromic with non-trivial twist angles,
-  producing large leptonic CP violation
-  ($\delta_{\mathrm{HFG}}=195.91^\circ$).
+  producing large leptonic CP violation ($\delta=195.91^\circ$).
 \item $K_{\mathrm{CKM}}=\mathbb{Q}(\sqrt{17})$ is real.
-  Holonomy traces lie in $\mathbb{Q}(\sqrt{17})\subset\mathbb{R}$,
-  geometrically suppressing quark CP violation
-  ($J_{\mathrm{CKM}}=0$ in the construction).
+  Holonomy traces lie in $\mathbb{R}$, suppressing quark CP
+  violation ($J_{\mathrm{CKM}}=0$).
 \end{enumerate}
+The sign of the discriminant ($-3$ vs $+17$) determines whether
+holonomy elements are loxodromic or hyperbolic.
 \end{theorem}
-
-This dichotomy is arithmetic: the sign of the discriminant
-($-3$ vs $+17$) determines whether holonomy elements are
-loxodromic or hyperbolic, and hence whether CP violation is
-large or suppressed.
 
 \section{Covering Tower}
 \label{sec:covering}
 
 \begin{observation}[Lucas-purity, computational]
-Through degree~9, every new torsion prime appearing in $H_1$ of
-finite covers of $\MPMNS$ is a prime Lucas number:
-\[
-  \{2,3,7,11,29\} = \{L_0,L_2,L_4,L_5,L_7\}.
-\]
-The prime $13$ (not a Lucas number) never appears.
+Through degree~9, every new torsion prime in $H_1$ of finite covers
+of $\MPMNS$ is a prime Lucas number:
+$\{2,3,7,11,29\}=\{L_0,L_2,L_4,L_5,L_7\}$.
+The prime $13$ never appears.
 A control scan of 73 fillings of five other manifolds confirms that
-Lucas-purity at $100\%$ is rare; both flavor manifolds achieve it.
+$100\%$ Lucas-purity is rare; both flavor manifolds achieve it
+(see~\cite{Gentry:Covering} for the full data).
 \end{observation}
 
 \begin{conjecture}[Lucas-purity]
-All torsion primes in the covering tower of $\MPMNS$ are prime Lucas
-numbers. Proof would require connecting torsion growth to Hecke
-eigenvalues via the Jacquet-Langlands correspondence.
+All torsion primes in the covering tower of $\MPMNS$ are prime
+Lucas numbers. A proof would require connecting torsion growth to
+Hecke eigenvalues via Jacquet-Langlands.
 \end{conjecture}
 
 \section{Predictions and Open Problems}
 \label{sec:predictions}
 
 \paragraph{Falsifiable predictions.}
-(1)~$\delta_{\mathrm{PMNS}}=195.91^\circ$: testable by
-Hyper-Kamiokande and DUNE ($\sim5^\circ$ precision).
-A value outside $[180^\circ,215^\circ]$ at $3\sigma$ falsifies
-Theorem~\ref{thm:cp}.
-(2)~The prime $13$ never appears in any finite cover of $\MPMNS$:
-extending the computation to degree~12 provides a strong test of the
-Lucas-purity conjecture.
+(1)~$\delta_{\mathrm{PMNS}}=195.91^\circ$, testable by
+Hyper-Kamiokande and DUNE (${\sim}5^\circ$ precision);
+a value outside $[180^\circ,215^\circ]$ at $3\sigma$
+falsifies Theorem~\ref{thm:cp}.
+(2)~The prime $13$ never appears in any finite cover of $\MPMNS$;
+degree-12 computation provides a strong test.
 
 \paragraph{Open problems.}
-(1)~No canonical geometric principle selects the word triple
-$\{\mathrm{aa},\mathrm{aaB},\mathrm{baa}\}$.
-(2)~The electron mass $m_e$ is taken as input; deriving it from
-geometric invariants (volume, $\mathrm{CS}=1/4$, systole) remains open.
-(3)~The Jarlskog scale $\approx0.007$ is close to
-$\alpha_{\mathrm{em}}\approx1/137$; whether this is exact is unresolved.
+(1)~No canonical geometric principle selects the word triple.
+(2)~The electron mass $m_e$ is taken as input.
+(3)~The Jarlskog scale $\approx0.007\approx\alpha_{\mathrm{em}}$
+is numerically suggestive but unproven.
 
 \section{Conclusions}
 \label{sec:conclusions}
 
-The compact hyperbolic 3-manifold $\MPMNS=m003(-2,3)$ encodes the
-lepton sector through three independent mechanisms:
+$\MPMNS=m003(-2,3)$ encodes the lepton sector through:
 \begin{itemize}
-\item \emph{Obstruction}: the symmetric QR construction cannot
-  reproduce PMNS (floor $0.300$); the Borel construction achieves
-  fitness $0.005087$ (global minimum, $p<10^{-4}$).
-\item \emph{CP phase}: $\delta=195.91^\circ$ from twist angles,
+\item \emph{Obstruction}: symmetric QR floor $0.300$;
+  Borel fitness $0.005087$ (global minimum, $p<10^{-4}$).
+\item \emph{CP phase}: $\delta=195.91^\circ$,
   zero free parameters, $0.55\%$ from PDG.
-\item \emph{Mass encoding}: $m_\mu/m_e\approx208$ and
+\item \emph{Mass encoding}: $m_\mu/m_e\approx208$,
   $m_\tau/m_e\approx3477$ as Eisenstein norms in $\Zom$.
 \end{itemize}
-The imaginary trace field $\KPMNS=\mathbb{Q}(\sqrt{-3})$ explains
-large leptonic CP violation, while the real trace field
-$K_{\mathrm{CKM}}=\mathbb{Q}(\sqrt{17})$ explains suppression in
-the quark sector---an arithmetic explanation of the CP asymmetry
-between sectors.
+The imaginary/real trace field dichotomy
+($\mathbb{Q}(\sqrt{-3})$ vs $\mathbb{Q}(\sqrt{17})$)
+is an arithmetic explanation of the CP asymmetry between sectors.
 
 \section*{Data Availability}
 \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}
@@ -411,6 +382,8 @@ J.\ Amer.\ Math.\ Soc.\ \textbf{22}, 1157 (2009).
 M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6583550}{6583550} (2026).
 \bibitem{Gentry:Lucas}
 M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6754501}{6754501} (2026).
+\bibitem{Gentry:Covering}
+M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6761981}{6761981} (2026).
 \bibitem{Gentry:Unified}
 M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158} (2026).
 \bibitem{Gentry:PMNS_arxiv}
