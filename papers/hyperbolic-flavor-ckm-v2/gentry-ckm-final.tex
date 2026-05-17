@@ -28,27 +28,25 @@ ORCID: 0009-0006-4550-2663}
 We show that the CKM quark mixing matrix is encoded in the holonomy
 geometry of the compact hyperbolic 3-manifold $M_{\mathrm{CKM}} =
 m006(-5,2)$ (SnapPy \texttt{OrientableClosedCensus[43]}, volume
-$2.029$, $H_1=\mathbb{Z}/5$). The construction has two independent
-components. First, the \emph{arithmetic}: the invariant trace field of
-$M_{\mathrm{CKM}}$ is $K_{\mathrm{CKM}}=\mathbb{Q}(\sqrt{17})$ (real
-quadratic), verified from the generator holonomy trace
-$\operatorname{tr}(\rho(aa))=3-\sqrt{17}$, which satisfies $x^2-6x-8=0$
-(discriminant $68=4\cdot17$). The real trace field geometrically explains
-CP suppression in the quark sector: holonomy traces lie in
-$\mathbb{Q}(\sqrt{17})\subset\mathbb{R}$, and the Jarlskog invariant
-vanishes ($J=0$) via a homological class collision
+$2.029$, $H_1=\mathbb{Z}/5$).
+The construction has two independent components.
+First, the \emph{arithmetic}: the invariant trace field is
+$K_{\mathrm{CKM}}=\mathbb{Q}(\sqrt{17})$ (real quadratic), verified
+from $\operatorname{tr}(\rho(aa))=3-\sqrt{17}$ satisfying
+$x^2-6x-8=0$ (discriminant $68=4\cdot17$).
+The real trace field explains CP suppression geometrically: the
+Jarlskog invariant vanishes ($J=0$) via a homological class collision
 ($[\mathrm{AbA}]=[\mathrm{AAb}]=2$ in $H_1=\mathbb{Z}/5$).
-Second, the \emph{mixing}: three short words
-$\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ in $\pi_1(M_{\mathrm{CKM}})$
-have geodesic axis angles $\theta_{12}=48.16^\circ$,
-$\theta_{13}=77.48^\circ$, $\theta_{23}=68.43^\circ$; the Gaussian
-overlap matrix with $\sigma=0.49$ and QR orthogonalization reproduces
-the CKM moduli with Frobenius fitness $0.01695$ and predicts the Cabibbo
-angle to $0.19\%$. An improved word triple achieves fitness $0.00908$
-($46\%$ improvement), and all six quark mass ratios $m_q/m_e$ are
-approximated by norms in $\mathbb{Z}[\sqrt{17}]$ within $5.7\%$
-($b$ quark: $0.012\%$, $t$ quark: $0.007\%$), with permutation
-null-test $p<0.002$.
+Second, the \emph{mixing}: the word triple
+$\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ has geodesic axis angles
+$\theta_{12}=48.16^\circ$, $\theta_{13}=77.48^\circ$,
+$\theta_{23}=68.43^\circ$; Gaussian overlap with $\sigma=0.49$ and QR
+orthogonalization gives Frobenius fitness $0.01695$ and Cabibbo angle
+error $0.19\%$.
+An improved triple achieves fitness $0.00908$ ($46\%$ improvement,
+$p<2\times10^{-5}$), and all six quark mass ratios approximate norms
+in $\mathbb{Z}[\sqrt{17}]$ within $5.7\%$ ($b$: $0.012\%$, $t$:
+$0.007\%$), with permutation null-test $p<0.002$.
 \end{abstract}
 
 \maketitle
@@ -57,29 +55,31 @@ null-test $p<0.002$.
 \label{sec:intro}
 
 The CKM quark mixing matrix~\cite{Cabibbo1963,KobayashiMaskawa1973}
-encodes the mismatch between quark mass eigenstates and weak interaction
-eigenstates. Its parameters---three mixing angles and a CP-violating
-phase---are measured precisely but have no derivation from first
-principles.
+encodes the mismatch between quark mass eigenstates and weak
+interaction eigenstates. Its parameters---three mixing angles and a
+CP-violating phase---have no derivation from first principles.
 
 We present evidence that the CKM matrix is encoded in the holonomy
 representation of a single compact hyperbolic 3-manifold,
-$M_{\mathrm{CKM}} = m006(-5,2)$. The connection operates at two levels.
+$M_{\mathrm{CKM}} = m006(-5,2)$, at two levels.
 At the \emph{arithmetic} level, the trace field
-$K_{\mathrm{CKM}} = \mathbb{Q}(\sqrt{17})$ (real quadratic) provides a
-geometric explanation for CP suppression. At the \emph{kinematic} level,
-the geodesic axis directions of short holonomy words reproduce the CKM
-mixing angles through an overlap-matrix construction.
-
-All numerical values are verified by direct computation using
-SnapPy~\cite{SnapPy} at 150-bit precision.
+$K_{\mathrm{CKM}} = \mathbb{Q}(\sqrt{17})$ (real quadratic) explains
+CP suppression geometrically.
+At the \emph{kinematic} level, geodesic axis directions of short
+holonomy words reproduce the CKM mixing angles via an overlap-matrix
+construction.
+All numerical values are verified using SnapPy~\cite{SnapPy} at
+150-bit precision.
 
 \section{The Manifold}
 \label{sec:manifold}
 
 \subsection{Basic invariants}
 
-\begin{center}
+\begin{table}[htbp]
+\centering
+\caption{Basic invariants of $M_{\mathrm{CKM}} = m006(-5,2)$.}
+\label{tab:invariants}
 \begin{tabular}{ll}
 \toprule
 Invariant & Value \\
@@ -88,67 +88,57 @@ Census index & \texttt{OrientableClosedCensus[43]} \\
 Dehn filling & $m006(-5,2)$ \\
 Volume & $2.02885$ \\
 First homology & $H_1 = \mathbb{Z}/5$ \\
-Chern-Simons invariant & $-0.11414$ \\
-Symmetry group & $\mathbb{Z}/2 \times \mathbb{Z}/2$ \\
+Chern-Simons & $-0.11414$ \\
+Symmetry & $\mathbb{Z}/2\times\mathbb{Z}/2$ \\
 Chirality & chiral \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table}
 
 \subsection{Trace field}
 
 \begin{proposition}[CKM trace field]
 The invariant trace field of $M_{\mathrm{CKM}}$ is
 $K_{\mathrm{CKM}} = \mathbb{Q}(\sqrt{17})$,
-a real quadratic field with ring of integers
-$\mathcal{O}_K = \mathbb{Z}[\sqrt{17}]$,
+with ring of integers $\mathcal{O}_K = \mathbb{Z}[\sqrt{17}]$,
 norm form $N(a+b\sqrt{17}) = |a^2-17b^2|$.
 \end{proposition}
 
 \begin{proof}[Computational verification]
 The SnapPy polished holonomy at 150-bit precision gives
-$\operatorname{tr}(\rho(aa)) = -1.12311844\ldots$
-This satisfies $x^2-6x-8=0$:
-\[
-  (-1.12312)^2 - 6(-1.12312) - 8
-  = 1.26139 + 6.73872 - 8 = 0.00011 \approx 0,
-\]
-verified to $10^{-5}$.
-The roots are $x=(6\pm\sqrt{68})/2=3\pm\sqrt{17}$,
-giving $\operatorname{tr}(\rho(aa))=3-\sqrt{17}$.
-The discriminant is $\Delta=6^2+4\cdot8=68=4\cdot17$.
+$\operatorname{tr}(\rho(aa)) = -1.12311844\ldots$,
+satisfying $x^2-6x-8=0$ to $10^{-5}$
+(verified: $(-1.12312)^2-6(-1.12312)-8\approx0$).
+The roots $x=3\pm\sqrt{17}$ give
+$\operatorname{tr}(\rho(aa))=3-\sqrt{17}$;
+discriminant $\Delta=68=4\cdot17$.
 \end{proof}
 
-\subsection{CP suppression from the real trace field}
+\subsection{Geometric CP suppression}
 
-\begin{proposition}[Geometric CP suppression]
-The Jarlskog invariant vanishes ($J=0$) in the geometric construction
-of the CKM matrix from $M_{\mathrm{CKM}}$.
+\begin{proposition}
+The Jarlskog invariant vanishes ($J=0$) in the geometric construction.
 \end{proposition}
 
 \begin{proof}
-The abelianization $\pi_1(M_{\mathrm{CKM}})\to H_1(M_{\mathrm{CKM}})
-=\mathbb{Z}/5$ gives $[a]=2$, $[b]=1$.
-For the canonical triple $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$:
+The abelianization $\pi_1(M_{\mathrm{CKM}})\to H_1=\mathbb{Z}/5$
+gives $[a]=2$, $[b]=1$, so:
 \[
   [\mathrm{aaB}]=3,\quad
   [\mathrm{AbA}]=2,\quad
   [\mathrm{AAb}]=2.
 \]
-Since $[\mathrm{AbA}]=[\mathrm{AAb}]=2$, for any flat $\mathrm{U}(1)$
-character $\chi_k(w)=e^{2\pi ik[w]/5}$ we have
-$\chi_k(\mathrm{AbA})=\chi_k(\mathrm{AAb})$.
-Two columns of the overlap matrix are therefore identical, and the QR
-decomposition yields a unitary matrix $U$ with those two columns equal,
-forcing $J=\operatorname{Im}(U_{11}U_{22}U_{12}^*U_{21}^*)=0$.
+Since $[\mathrm{AbA}]=[\mathrm{AAb}]$, every flat $\mathrm{U}(1)$
+character satisfies $\chi_k(\mathrm{AbA})=\chi_k(\mathrm{AAb})$,
+making two columns of the overlap matrix identical.
+QR of a matrix with two equal columns yields $J=0$.
 \end{proof}
 
 \begin{remark}
-The physical Jarlskog invariant is $|J_{\mathrm{CKM}}|\approx3\times10^{-5}$
----nonzero but highly suppressed.
-The geometric construction gives $J=0$, consistent with this suppression.
-The CP-violating phase predicted by the flat $\mathrm{U}(1)$ mechanism
-($k=1$) is $2\pi/5=72^\circ$; the PDG value is $68^\circ$ ($5.9\%$ error).
+The physical value $|J_{\mathrm{CKM}}|\approx3\times10^{-5}$ is
+nonzero but suppressed---consistent with the geometric floor $J=0$.
+The flat $\mathrm{U}(1)$ mechanism ($k=1$) predicts
+$\delta_{\mathrm{CKM}}=72^\circ$ (PDG: $68^\circ$, error $5.9\%$).
 \end{remark}
 
 \section{Mixing Matrix Construction}
@@ -156,9 +146,8 @@ The CP-violating phase predicted by the flat $\mathrm{U}(1)$ mechanism
 
 \subsection{Geodesic axis extraction}
 
-For a loxodromic element $\gamma\in\pi_1(M_{\mathrm{CKM}})$, the
-axis direction $\hat{n}(\gamma)\in S^2$ is extracted from the Pauli
-decomposition of $\log\rho(\gamma)$:
+For $\gamma\in\pi_1(M_{\mathrm{CKM}})$, the axis direction
+$\hat{n}(\gamma)\in S^2$ is extracted from the Pauli decomposition:
 \[
   \log\rho(\gamma)
   = \tfrac{\eta}{2}I
@@ -172,76 +161,82 @@ length.
 \subsection{Overlap matrix and QR construction}
 
 Pairwise axis angles $\theta_{ij}=\arccos|\hat{n}_i\cdot\hat{n}_j|$
-define a Gaussian overlap matrix $O_{ij}=\exp(-\theta_{ij}^2/(2\sigma^2))$.
-QR orthogonalization of $O$ gives a unitary $Q$; the Frobenius fitness is
+define $O_{ij}=\exp(-\theta_{ij}^2/(2\sigma^2))$.
+QR orthogonalization gives unitary $Q$; the Frobenius fitness is:
 \[
   \mathcal{F}
-  = \bigl\|\,\mathrm{sort}(|Q|)-\mathrm{sort}(|\CKM|_{\mathrm{PDG}})\,\bigr\|_F.
+  = \bigl\|\mathrm{sort}(|Q|)-\mathrm{sort}(|\CKM|_{\mathrm{PDG}})\bigr\|_F.
 \]
 
-\subsection{Canonical triple: verified results}
+\subsection{Canonical triple}
 
-The canonical triple $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$
-gives axis vectors (verified from SnapPy):
+Axis vectors (unit, from SnapPy):
 \begin{align*}
-  \hat{n}_{\mathrm{aaB}} &= [0.00000,\; 0.00000,\; 1.00000],\\
-  \hat{n}_{\mathrm{AbA}} &= [0.74496,\; 0.00000,\; 0.66711],\\
-  \hat{n}_{\mathrm{AAb}} &= [0.29949,\; 0.92916,\; 0.21672].
+  \hat{n}_{\mathrm{aaB}} &= [0.00000,\;0.00000,\;1.00000],\\
+  \hat{n}_{\mathrm{AbA}} &= [0.74496,\;0.00000,\;0.66711],\\
+  \hat{n}_{\mathrm{AAb}} &= [0.29949,\;0.92916,\;0.21672].
 \end{align*}
-Pairwise angles:
-$\theta_{12}=48.1554^\circ$, $\theta_{13}=77.4835^\circ$,
+Angles: $\theta_{12}=48.1554^\circ$, $\theta_{13}=77.4835^\circ$,
 $\theta_{23}=68.4272^\circ$.
 
-At $\sigma=0.49$, the predicted absolute CKM matrix is:
+At $\sigma=0.49$:
 \[
-  |Q|
-  = \begin{pmatrix}
+  |Q| = \begin{pmatrix}
     0.97439 & 0.22458 & 0.01097 \\
     0.22381 & 0.97342 & 0.04871 \\
     0.02161 & 0.04501 & 0.99875
   \end{pmatrix},
+  \quad \mathcal{F}=0.016949.
 \]
-with Frobenius fitness $\mathcal{F}=0.016949$.
-Predicted $|V_{us}|=0.22458$ (PDG: $0.22500$) gives
-$\theta_C^{\mathrm{pred}}=\arcsin(0.22458)=12.978^\circ$
+Predicted $|V_{us}|=0.22458$, Cabibbo angle $12.978^\circ$
 (PDG: $13.003^\circ$), error $0.19\%$.
 
 \subsection{Improved triple}
 
-A scan over words up to length~8 finds the systole-inclusive triple
-$\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$, achieving
-$\mathcal{F}=0.00908$ at $\sigma=0.420$---a $46\%$ improvement
-($p<10^{-4}$ vs.\ Haar-random unitary matrices).
+The systole-inclusive triple
+$\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$
+at $\sigma=0.420$:
+\[
+  \mathcal{F}=0.00908\quad(46\%\text{ improvement}),
+  \qquad p<2\times10^{-5}\text{ vs Haar-random}.
+\]
+Predicted matrix:
+\[
+  |Q|_{\mathrm{imp}} = \begin{pmatrix}
+    0.9736 & 0.2282 & 0.0026 \\
+    0.2280 & 0.9729 & 0.0376 \\
+    0.0111 & 0.0360 & 0.9993
+  \end{pmatrix}.
+\]
 
 \section{Quark Mass Encoding}
-\label{sec:quark_norms}
+\label{sec:masses}
 
 \begin{observation}
-All six quark mass ratios $m_q/m_e$ are approximated by norms
+All six quark mass ratios $m_q/m_e$ approximate norms
 $N=|a^2-17b^2|$ in $\mathbb{Z}[\sqrt{17}]$
-(Table~\ref{tab:quark_norms}).
-All prime factors of each norm split in $K_{\mathrm{CKM}}$
-($p\equiv1,2,4,8,9,13,15,16\pmod{17}$).
-A permutation null test ($N_{\mathrm{perm}}=500$) gives $p<0.002$.
-The identification $d=17$ rests on the independent fact
-$\operatorname{tr}(\rho(aa))=3-\sqrt{17}$, not error minimization.
+(Table~\ref{tab:norms}).
+All prime factors of each norm split in $K_{\mathrm{CKM}}$.
+Permutation null test ($N_{\mathrm{perm}}=500$): $p<0.002$.
+The field $d=17$ is identified from
+$\operatorname{tr}(\rho(aa))=3-\sqrt{17}$, not from error minimization.
 \end{observation}
 
 \begin{table}[htbp]
 \centering
 \caption{Quark mass ratios as $\mathbb{Z}[\sqrt{17}]$ norms.
 PDG~2024; $m_e=0.511$~MeV.}
-\label{tab:quark_norms}
+\label{tab:norms}
 \begin{tabular}{lcccc}
 \toprule
 Quark & $m_q/m_e$ & Norm $N$ & Witness $(a,b)$ & Error \\
 \midrule
-$u$ & $4.24$      & $4$       & $(2,0)$      & $5.7\%$  \\
-$d$ & $9.14$      & $9$       & $(3,0)$      & $1.5\%$  \\
-$s$ & $182.78$    & $179$     & $(14,1)$     & $2.1\%$  \\
-$c$ & $2495.11$   & $2491$    & $(29,14)$    & $0.16\%$ \\
-$b$ & $8180.04$   & $8181$    & $(117,18)$   & $0.012\%$\\
-$t$ & $338082$    & $338104$  & $(139,145)$  & $0.007\%$\\
+$u$ & $4.24$     & $4$      & $(2,0)$      & $5.7\%$  \\
+$d$ & $9.14$     & $9$      & $(3,0)$      & $1.5\%$  \\
+$s$ & $182.78$   & $179$    & $(14,1)$     & $2.1\%$  \\
+$c$ & $2495.11$  & $2491$   & $(29,14)$    & $0.16\%$ \\
+$b$ & $8180.04$  & $8181$   & $(117,18)$   & $0.012\%$\\
+$t$ & $338082$   & $338104$ & $(139,145)$  & $0.007\%$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -249,64 +244,58 @@ $t$ & $338082$    & $338104$  & $(139,145)$  & $0.007\%$\\
 \section{Geometric Structure}
 \label{sec:geometry}
 
-\subsection{Spherical triangle of axis vectors}
+\subsection{Spherical triangle}
 
-The three axis vectors form a spherical triangle with side lengths
-$48.1554^\circ$, $77.4835^\circ$, $68.4272^\circ$.
-Interior angles (spherical law of cosines):
+The three axis vectors form a spherical triangle with sides
+$48.16^\circ$, $77.48^\circ$, $68.43^\circ$ and interior angles
 $A=72.13^\circ$, $B=92.36^\circ$, $C=49.68^\circ$,
 giving spherical excess $E=34.18^\circ$.
-The Cabibbo angle emerges from $\theta_{12}=48.16^\circ$ via the
-Gaussian kernel construction, not from the excess.
+The Cabibbo angle emerges from $\theta_{12}$ via the Gaussian kernel;
+the excess is an independent geometric invariant of the triangle.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{ckm_combined_figure.pdf}
-\caption{Left: geodesic axis vectors on $S^2$ for the canonical triple
-$\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$.
-Right: spherical triangle with interior angles $72.1^\circ$,
-$92.4^\circ$, $49.7^\circ$ and spherical excess $E=34.2^\circ$.}
+\caption{Left: geodesic axis vectors on $S^2$;
+shaded region is the spherical triangle with labeled opening angles.
+Right: projected spherical triangle with interior angles and
+spherical excess $E=34.18^\circ$.}
 \label{fig:geometry}
 \end{figure}
 
-\subsection{Arithmetic dichotomy with the PMNS sector}
+\subsection{Arithmetic dichotomy}
 
 The PMNS manifold $M_{\mathrm{PMNS}}=m003(-2,3)$ has imaginary trace
 field $\mathbb{Q}(\sqrt{-3})$, giving loxodromic holonomy and large
 CP violation ($\delta_{\mathrm{PMNS}}=195.91^\circ$, $0.55\%$ from
-PDG~\cite{Gentry:Unified}). The real/imaginary trace field dichotomy
-geometrically explains the CP asymmetry between quark and lepton sectors.
+PDG~\cite{Gentry:Unified}).
+The real/imaginary trace field dichotomy---$\mathbb{Q}(\sqrt{17})$
+vs.\ $\mathbb{Q}(\sqrt{-3})$---geometrically explains the CP
+asymmetry between quark and lepton sectors.
 
 \section{Predictions and Open Problems}
-\label{sec:predictions}
 
 \paragraph{Falsifiable predictions.}
-(1)~$|V_{us}|$ outside $[0.220,0.232]$ at $3\sigma$ falsifies the
-construction.
-(2)~$|J|>10^{-4}$ would require a twist mechanism absent from the
-current framework.
-(3)~A BSM quark mass ratio failing the $\mathbb{Z}[\sqrt{17}]$ norm
-test to within $6\%$ breaks the arithmetic encoding.
+(1)~$|V_{us}|\notin[0.220,0.232]$ at $3\sigma$ falsifies the construction.
+(2)~$|J|>10^{-4}$ requires a twist mechanism absent from the framework.
+(3)~A BSM quark mass failing the $\mathbb{Z}[\sqrt{17}]$ norm test
+to within $6\%$ breaks the arithmetic encoding.
 
 \paragraph{Open problems.}
 (1)~No geometric principle uniquely selects the word triple.
-(2)~The $\mathbb{Z}[\sqrt{17}]$ norm encoding lacks a dynamical
-derivation.
-(3)~The $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ gauge
-structure is absent from the construction.
+(2)~The $\mathbb{Z}[\sqrt{17}]$ norm encoding lacks a dynamical derivation.
+(3)~The $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$
+gauge structure is absent.
 
 \section{Conclusions}
-\label{sec:conclusions}
 
-The compact hyperbolic 3-manifold $M_{\mathrm{CKM}}=m006(-5,2)$ encodes
-the CKM matrix through two independent mechanisms:
-\emph{arithmetic} (trace field $\mathbb{Q}(\sqrt{17})$, real, explaining
-CP suppression via $[\mathrm{AbA}]=[\mathrm{AAb}]=2$) and
-\emph{kinematic} (geodesic axis overlaps, Cabibbo angle error $0.19\%$,
-improved fitness $0.00908$).
+$M_{\mathrm{CKM}}=m006(-5,2)$ encodes the CKM matrix through
+\emph{arithmetic} (trace field $\mathbb{Q}(\sqrt{17})$, real,
+$J=0$ via $[\mathrm{AbA}]=[\mathrm{AAb}]=2$) and
+\emph{kinematic} (axis overlaps, Cabibbo error $0.19\%$,
+improved fitness $0.00908$) mechanisms.
 All six quark mass ratios approximate $\mathbb{Z}[\sqrt{17}]$ norms
-with $p<0.002$. The framework is a geometric phenomenology with clearly
-stated open problems and falsifiable predictions.
+with $p<0.002$.
 
 \section*{Data Availability}
 \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}
@@ -318,18 +307,15 @@ The author thanks the developers of SnapPy and SageMath.
 \bibitem{Cabibbo1963}
 N.~Cabibbo, Phys.\ Rev.\ Lett.\ \textbf{10}, 531 (1963).
 \bibitem{KobayashiMaskawa1973}
-M.~Kobayashi and T.~Maskawa,
-Prog.\ Theor.\ Phys.\ \textbf{49}, 652 (1973).
+M.~Kobayashi and T.~Maskawa, Prog.\ Theor.\ Phys.\ \textbf{49}, 652 (1973).
 \bibitem{PDG2024}
 S.~Navas et al.\ (PDG), Phys.\ Rev.\ D \textbf{110}, 030001 (2024).
 \bibitem{SnapPy}
 M.~Culler et al., \url{http://snappy.computop.org}.
 \bibitem{Chinburg98}
-T.~Chinburg et al.,
-Ann.\ Scuola Norm.\ Sup.\ Pisa \textbf{30}, 1 (2001).
+T.~Chinburg et al., Ann.\ Scuola Norm.\ Sup.\ Pisa \textbf{30}, 1 (2001).
 \bibitem{Gentry:Unified}
-M.~L.~Gentry,
-SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158} (2026).
+M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158} (2026).
 \end{thebibliography}
 
 \end{document}
