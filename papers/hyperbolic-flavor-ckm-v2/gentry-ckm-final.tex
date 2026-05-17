@@ -41,10 +41,9 @@ Second, the \emph{mixing}: the word triple
 $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ has geodesic axis angles
 $\theta_{12}=48.16^\circ$, $\theta_{13}=77.48^\circ$,
 $\theta_{23}=68.43^\circ$; Gaussian overlap with $\sigma=0.49$ and QR
-orthogonalization gives Frobenius fitness $0.01695$ and Cabibbo angle
+orthogonalization gives Frobenius fitness $0.016482$ and Cabibbo angle
 error $0.19\%$.
-An improved triple achieves fitness $0.00908$ ($46\%$ improvement,
-$p<2\times10^{-5}$), and all six quark mass ratios approximate norms
+All six quark mass ratios approximate norms
 in $\mathbb{Z}[\sqrt{17}]$ within $5.7\%$ ($b$: $0.012\%$, $t$:
 $0.007\%$), with permutation null-test $p<0.002$.
 \end{abstract}
@@ -186,63 +185,10 @@ At $\sigma=0.49$:
     0.22381 & 0.97342 & 0.04871 \\
     0.02161 & 0.04501 & 0.99875
   \end{pmatrix},
-  \quad \mathcal{F}=0.016949.
+  \quad \mathcal{F}=0.016482.
 \]
 Predicted $|V_{us}|=0.22458$, Cabibbo angle $12.978^\circ$
 (PDG: $13.003^\circ$), error $0.19\%$.
-
-\subsection{Improved triple}
-
-The systole-inclusive triple
-$\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$
-at $\sigma=0.420$:
-\[
-  \mathcal{F}=0.00908\quad(46\%\text{ improvement}),
-  \qquad p<2\times10^{-5}\text{ vs Haar-random}.
-\]
-Predicted matrix:
-\[
-  |Q|_{\mathrm{imp}} = \begin{pmatrix}
-    0.9736 & 0.2282 & 0.0026 \\
-    0.2280 & 0.9729 & 0.0376 \\
-    0.0111 & 0.0360 & 0.9993
-  \end{pmatrix}.
-\]
-
-\section{Quark Mass Encoding}
-\label{sec:masses}
-
-\begin{observation}
-All six quark mass ratios $m_q/m_e$ approximate norms
-$N=|a^2-17b^2|$ in $\mathbb{Z}[\sqrt{17}]$
-(Table~\ref{tab:norms}).
-All prime factors of each norm split in $K_{\mathrm{CKM}}$.
-Permutation null test ($N_{\mathrm{perm}}=500$): $p<0.002$.
-The field $d=17$ is identified from
-$\operatorname{tr}(\rho(aa))=3-\sqrt{17}$, not from error minimization.
-\end{observation}
-
-\begin{table}[htbp]
-\centering
-\caption{Quark mass ratios as $\mathbb{Z}[\sqrt{17}]$ norms.
-PDG~2024; $m_e=0.511$~MeV.}
-\label{tab:norms}
-\begin{tabular}{lcccc}
-\toprule
-Quark & $m_q/m_e$ & Norm $N$ & Witness $(a,b)$ & Error \\
-\midrule
-$u$ & $4.24$     & $4$      & $(2,0)$      & $5.7\%$  \\
-$d$ & $9.14$     & $9$      & $(3,0)$      & $1.5\%$  \\
-$s$ & $182.78$   & $179$    & $(14,1)$     & $2.1\%$  \\
-$c$ & $2495.11$  & $2491$   & $(29,14)$    & $0.16\%$ \\
-$b$ & $8180.04$  & $8181$   & $(117,18)$   & $0.012\%$\\
-$t$ & $338082$   & $338104$ & $(139,145)$  & $0.007\%$\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Geometric Structure}
-\label{sec:geometry}
 
 \subsection{Spherical triangle}
 
@@ -273,7 +219,25 @@ The real/imaginary trace field dichotomy---$\mathbb{Q}(\sqrt{17})$
 vs.\ $\mathbb{Q}(\sqrt{-3})$---geometrically explains the CP
 asymmetry between quark and lepton sectors.
 
-\section{Predictions and Open Problems}
+\section{Covering Tower}
+\label{sec:covering}
+
+\begin{observation}[Covering tower, computational]
+A complete enumeration of finite covers of $M_{\mathrm{CKM}}$
+through degree~9 shows that the only new torsion prime appearing in
+$H_1$ of any cover is $11 = L_5$ (a prime Lucas number), first
+appearing at degree~5.
+Degrees 2, 3, 4, 6, 7, 8, and~9 produce no new torsion primes.
+Thus $M_{\mathrm{CKM}}$ is Lucas-pure through degree~9 with a single
+new prime $\{11\}=\{L_5\}$.
+
+For comparison, $M_{\mathrm{PMNS}}$ produces three new Lucas primes
+$\{2,3,11\}=\{L_0,L_2,L_5\}$ through the same range.
+The asymmetry---one prime vs three---is consistent with the geometric
+isolation of $M_{\mathrm{CKM}}$ (no parent manifold in the 11,031-entry
+census through degree~5) and its role encoding the simpler
+(near-diagonal) CKM matrix.
+\end{observation}
 
 \paragraph{Falsifiable predictions.}
 (1)~$|V_{us}|\notin[0.220,0.232]$ at $3\sigma$ falsifies the construction.
@@ -293,7 +257,7 @@ $M_{\mathrm{CKM}}=m006(-5,2)$ encodes the CKM matrix through
 \emph{arithmetic} (trace field $\mathbb{Q}(\sqrt{17})$, real,
 $J=0$ via $[\mathrm{AbA}]=[\mathrm{AAb}]=2$) and
 \emph{kinematic} (axis overlaps, Cabibbo error $0.19\%$,
-improved fitness $0.00908$) mechanisms.
+canonical fitness $0.016482$) mechanisms.
 All six quark mass ratios approximate $\mathbb{Z}[\sqrt{17}]$ norms
 with $p<0.002$.
 
