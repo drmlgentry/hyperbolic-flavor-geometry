@@ -57,31 +57,34 @@ $\MCKM = m006(-5,2)$ (\texttt{OrientableClosedCensus[43]},
 volume $2.0289$, $H_1=\Zfive$).
 $\MPMNS$ is the Meyerhoff manifold, the unique minimum-volume
 closed orientable hyperbolic 3-manifold~\cite{GMM}.
-We establish three geometric results.
+
+We prove three geometric theorems independent of any physical
+interpretation.
 (I)~The cusp of the ancestor $m003$ has shape exactly
-$\tau = e^{i\pi/3} = \omega$ (the Eisenstein unit); the surgery
-formula $|H_1(m003(p,q))| = 5|2p+q|$, proved from the fundamental
-group presentation, gives $H_1(\MPMNS) = \ZZ/5$ as a theorem.
+$\tau = e^{i\pi/3} = \omega$ (the Eisenstein unit), as a
+consequence of the trace field $\QQ(\sqrt{-3})$.
+The surgery formula $|H_1(m003(p,q))| = 5|2p+q|$,
+proved from the fundamental group presentation, gives
+$H_1(\MPMNS) = \ZZ/5$ as a theorem.
 (II)~The invariant trace fields $\KPMNS = \QQ(\sqrt{-3})$
 (imaginary) and $\KCKM = \QQ(\sqrt{17})$ (real) place the
-manifolds in distinct commensurability classes; the sign of the
-discriminant distinguishes twisted loxodromic from purely
-hyperbolic holonomy and, within the HFG construction, explains
-the qualitative CP asymmetry between sectors.
+manifolds in distinct commensurability classes; the discriminant
+sign distinguishes twisted loxodromic from purely hyperbolic
+holonomy.
 (III)~The unique connected degree-5 covering space of $\MPMNS$
-detected by SnapPy subgroup enumeration introduces new torsion
-prime $11 = L_5$ (fifth Lucas number), equal to the Farey
-intersection $\det[(-2,3),(-5,2)] = 11$ of the two filling slopes.
+introduces new torsion prime $11 = L_5$
+(fifth Lucas number), equal to the Farey intersection
+$\det[(-2,3),(-5,2)] = 11$ of the two filling slopes.
 
-We then present computational observations suggesting that the
-holonomy representations of these manifolds produce nontrivial
-numerical correspondences with Standard Model flavor parameters.
+Guided by these rigid geometric results, we then present
+computational observations suggesting nontrivial numerical
+correspondences with Standard Model flavor parameters.
 No continuously tuned physical fit parameters enter once the
 word triples are fixed:
 the PMNS mixing matrix arises from the Borel factor of the
-Iwasawa decomposition (Frobenius fitness $0.005087$, minimum of the
-construction within the scanned word ensemble, $p<10^{-4}$ against
-$50{,}000$ Haar-random unitaries);
+Iwasawa decomposition (Frobenius fitness $0.005087$, minimum of
+the construction within the scanned word ensemble, $p<10^{-4}$
+against $50{,}000$ Haar-random unitaries);
 the leptonic CP phase is $\delta = \pi + \varphi(\mathrm{aaB})
 + \varphi(\mathrm{baa}) = 195.91^\circ$ ($0.55\%$ from PDG~2024);
 and charged fermion mass ratios are approximated by Eisenstein and
@@ -362,17 +365,15 @@ independent geometric arguments.
 \subsection{CKM matrix}
 
 \paragraph{Word triple.}
-We use the triple
-$\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$
-in $\pi_1(\MCKM)$.\footnote{The companion paper~\cite{Gentry:CKM}
-used the earlier canonical triple
-$\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$
-with fitness $\mathcal{F}=0.016482$ ($\sigma=0.49$).
-The triple used here was found in a subsequent extended scan
-and achieves $\mathcal{F}=0.009078$ ($\sigma=0.420$),
-a $45\%$ improvement.
-The current paper reports the best available result;
-companion paper~\cite{Gentry:CKM} will be updated at revision.}
+Two triples have been studied on $\pi_1(\MCKM)$.
+The canonical triple $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$
+gives Frobenius fitness $\mathcal{F}=0.016482$ ($\sigma=0.49$),
+reported in the companion paper~\cite{Gentry:CKM}.
+A subsequent extended scan found the improved triple
+$\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$, which achieves
+$\mathcal{F}=0.009078$ ($\sigma=0.420$), a $45\%$ improvement.
+This paper reports the improved result; companion
+paper~\cite{Gentry:CKM} will be updated at revision.
 
 \paragraph{Results.}
 Frobenius fitness $\mathcal{F}=0.009078$ ($\sigma=0.420$);
@@ -393,10 +394,12 @@ forces exact cancellation at the level of the holonomy geometry.
 Observed quark CP violation would therefore require
 symmetry-breaking corrections beyond the present zeroth-order
 construction---analogous to the role of radiative corrections
-in other geometric or extra-dimensional approaches to flavor.
-The scale $J_\mathrm{exp}\approx 0.007/\sin\theta_{12}\approx
-3\times10^{-5}$ is listed as an open problem in
-Section~\ref{sec:predictions}.
+in other geometric approaches to flavor.
+We note that $J_\mathrm{exp} \approx 0.007/\sin\theta_{12}$
+and that $0.007 \approx \alpha_\mathrm{em} \approx 1/137$
+is numerically close to the fine-structure constant;
+whether this is a clue to the missing scale is an open question
+listed in Section~\ref{sec:predictions}.
 \end{remark}
 
 \subsection{PMNS matrix}
@@ -412,9 +415,9 @@ nearly-degenerate symmetric overlap matrix.
 \label{obs:obstruction}
 For any positive-definite symmetric overlap matrix and any
 $\sigma>0$, the Frobenius distance to the PDG PMNS matrix is
-numerically bounded below by approximately $0.300$ throughout
-the scanned parameter region ($10^5$ random symmetric positive
-matrices).
+numerically bounded below by $0.300$ (minimum over $10^5$ random
+symmetric positive-definite matrices; no configuration yielded
+below $0.295$).
 The lower-triangular Borel QR construction bypasses this obstruction.
 \end{observation}
 
@@ -507,9 +510,9 @@ $d$ & $\Zsev$ & $9.14$
 $s$ & $\Zsev$ & $182.78$
   & $N(14,1)=179$               & $2.1\%$ \\
 $c$ & $\Zsev$ & $2495.11$
-  & $N(29,22)=2491$             & $0.16\%$ \\
+  & $N(29,14)=2491$             & $0.17\%$ \\
 $b$ & $\Zsev$ & $8180.04$
-  & $N(7,22)=8181$              & $0.012\%$ \\
+  & $N(117,18)=8181$              & $0.012\%$ \\
 $t$ & $\Zsev$ & $338082$
   & $N(139,145)=338104$         & $0.0065\%$ \\
 \bottomrule
@@ -670,13 +673,14 @@ the dynamical foundation awaits discovery.
 \section*{Data Availability}
 Scripts and data at
 \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
-Canonical reproduction:
+Canonical reproduction commands:
 \begin{verbatim}
 conda activate sage
 cd hyperbolic-flavor-scan
-python reproduce/hfg_reproduce.py   # fitness values
-python reproduce/cp_reproduce.py    # CP phase
-python reproduce/twist_reproduce.py # twist census
+python reproduce/hfg_reproduce.py   # CKM and PMNS fitness
+python reproduce/cp_reproduce.py    # CP phase 195.91 degrees
+python cover_prime_verify.py        # degree-5 cover prime formula
+python linking_form.py              # surgery formula verification
 \end{verbatim}
 
 \section*{Acknowledgments}
