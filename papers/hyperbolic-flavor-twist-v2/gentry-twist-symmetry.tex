@@ -14,6 +14,8 @@
 \usepackage{array}
 \usepackage{microtype}
 \usepackage{enumerate}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -206,6 +208,24 @@ The correct formula uses the PMNS mixing triple
 $\{\mathrm{aa},\mathrm{aaB},\mathrm{baa}\}$ and gives $195.91\degr$.
 \end{remark}
 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig2_cp_geometry}
+\caption{Geometry of the leptonic CP phase.
+\textbf{Left:} Axis vectors
+$\hat{n}(\mathrm{aa})$, $\hat{n}(\mathrm{aaB})$, $\hat{n}(\mathrm{baa})$
+on $S^2$; pairwise angles in degrees.
+The determinant $\det[\hat{n}_1,\hat{n}_2,\hat{n}_3] = +0.52 > 0$
+(right-handed) fixes the $+\pi$ branch.
+\textbf{Right:} Polar phase wheel showing accumulation
+$\pi + \varphi(\mathrm{aaB}) + \varphi(\mathrm{baa}) = 195.91^\circ$
+(green circle) vs.~PDG $197.0^\circ$ (red square).
+The word triple was fixed by the PMNS mixing construction
+before this formula was evaluated.}
+\label{fig:cp_geometry}
+\end{figure}
+
 \subsection{Gauge boson mass ratio $M_Z/M_W$}
 \label{sec:mzmw}
 
@@ -287,6 +307,21 @@ $m_b/m_c$ & $3.291$ & bbbb/bAbA & $\MPMNS$ & $3.290$ & $0.01\%$ \\
 \end{tabular}
 \end{table}
 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig1_twist_census}
+\caption{Twist angle census for $\MPMNS$ (blue, above axis) and
+$\MCKM$ (red, below axis).
+\textbf{Top:} Raw twist angles $|\varphi(\gamma)|$ for all words up to length 5.
+\textbf{Middle:} Folded angles $\varphi^* = \min(|\varphi|,180^\circ-|\varphi|)$
+with gold $\pm3\%$ tolerance bands at SM target values.
+\textbf{Bottom:} Null model histogram --- distribution of matches
+by a uniformly random spectrum of the same size ($n=10{,}000$ trials);
+observed count (5 Tier-1 targets matched) is marked in green.}
+\label{fig:census}
+\end{figure}
+
 \begin{remark}[Jarlskog invariant]
 The CKM Jarlskog invariant $J_\mathrm{CKM}=0$ in the HFG construction
 at zeroth order (forced by the isospectral CKM axis triple).
@@ -337,6 +372,19 @@ uniform null). For $M_Z/M_W$ and $\theta_{13}^\nu$: precision $<0.1\%$
 corresponds to $p < 0.002$ under uniform null on a $[1,1.5]$ and
 $[0\degr,45\degr]$ range respectively.
 All three pass the corrected threshold.
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig3_precision}
+\caption{Relative errors of HFG predictions for SM flavor observables
+(log scale, sorted by precision).
+Tier~1 (green): geometrically motivated, $<1\%$ error.
+Tier~2 (blue): census matches, $<1\%$ error.
+Tier~3 (red): $1$--$4\%$ error.
+Dashed and dotted lines mark the $1\%$ and $0.1\%$ thresholds.}
+\label{fig:precision}
+\end{figure}
 
 %---------------------------------------------------------------
 \section{Selberg Zeta Function and Spectral Gap}
