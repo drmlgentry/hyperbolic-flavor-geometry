@@ -70,7 +70,7 @@ PMNS mixing construction~\cite{Gentry:CP});
 on $\MCKM$ gives $M_Z/M_W = 1.1348$ ($0.024\%$ from PDG);
 (iii) the reactor angle is $\theta_{13}^\nu = 180\degr -
 \varphi(\mathrm{BaBBBBB}) = 8.546\degr$ on $\MCKM$ ($0.07\%$ from PDG).
-The census enrichment factor is $1.27\times$ over random baseline
+The census enrichment factor is $1.24\times$ over random baseline
 ($p \approx 0.04$ by permutation test).
 We compute the first Laplace eigenvalue via the Selberg zeta function,
 finding $\lambda_1(\MPMNS) = 2.480$ and $\lambda_1(\MCKM) = 2.821$,
@@ -298,7 +298,7 @@ $\delta_{\mathrm{CKM}}$ & $68.0\degr$ & aa & $\MCKM$ & $67.66\degr$ & $0.5\%$ \\
 $\theta_{23}^\nu$ (atm) & $49.1\degr$ & baa & $\MPMNS$ & $49.24\degr$ & $0.3\%$ \\
 \midrule
 \multicolumn{6}{l}{\textit{Tier 3 — $1$--$3\%$ error}} \\
-$\theta_{12}^q$ (Cabibbo) & $13.04\degr$ & aB & $\MCKM$ & $12.75\degr$ & $2.2\%$ \\
+$\theta_{12}^q$ & $13.04\degr$ & aB & $\MCKM$ & $12.75\degr$ & $2.2\%$ \\
 $\theta_{23}^q$ & $2.37\degr$ & b & $\MPMNS$ & $2.46\degr$ & $3.8\%$ \\
 \midrule
 \multicolumn{6}{l}{\textit{Mass ratios from geodesic lengths}} \\
@@ -401,7 +401,16 @@ We compute $\lambda_1$ for both manifolds via the Selberg zeta function
 \end{equation}
 whose zeros on $\mathrm{Re}(s)=1$ correspond to Laplace eigenvalues
 $\lambda = s(2-s)$.
-Using the first 200 primitive geodesics and scanning the critical line:
+Using the length spectrum up to $\ell = 5$ (approximately 200 primitive
+geodesics, where a primitive geodesic is one not a proper power of another),
+we evaluate $Z_M(s)$ numerically on the critical line $\mathrm{Re}(s) = 1$
+and locate the first zero by sign changes of $\mathrm{Re}[Z_M(1+it)]$,
+giving $\lambda_1 = 1\cdot(2-1) + t_1^2/(...)$; more precisely,
+$\lambda_1 = s_1(2-s_1)$ where $s_1 = 1 + ir_1$ and $r_1$ is the first
+positive zero of the real part. These values should be regarded as
+computational estimates; a rigorous determination would require a
+complete length spectrum and certified zero-finding.
+The values obtained are:
 \begin{align}
   \lambda_1(\MPMNS) &= 2.480 \quad (r_1 = 1.493), \\
   \lambda_1(\MCKM)  &= 2.821 \quad (r_1 = 1.604).
