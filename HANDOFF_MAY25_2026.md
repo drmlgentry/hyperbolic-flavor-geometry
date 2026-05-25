@@ -122,3 +122,31 @@ the QA of M_PMNS is unramified at all finite primes.
 ## Git Status
 - Need to commit: gentry-wrt-x011.tex, updated figures, this handoff
 - Repos: hyperbolic-flavor-geometry, hyperbolic-flavor-scan
+
+## Late Addition: m006 and M_CKM Confirmed Invariants (May 25 evening)
+
+m006 CUSPED TRACE FIELD CONFIRMED:
+  x^3 - 2x^2 - 1, disc = -59, sig=(1,1)
+  Generator g1 = -0.1028 + 0.6655i satisfies x^3-2x^2-1=0 to 1e-16
+  This is the cubic field from Long-Reid (ucsb.edu/long/pubpdf/commensfinal.pdf)
+
+m006(-5,2) = M_CKM FAST INVARIANTS CONFIRMED:
+  vol = 2.02885309147492
+  H_1 = Z/5
+  solution_type = all tetrahedra positively oriented
+
+NEW FINDING — Z/5 ASYMMETRY:
+  m003 cusped: H_1 = Z  (no torsion); Z/5 CREATED by (-2,3) surgery
+  m006 cusped: H_1 = Z/5 + Z (torsion pre-exists); Z/5 INHERITED by (-5,2) surgery
+  
+  This explains the WRT asymmetry:
+    M_PMNS WRT encodes slope norm 13 (creation mechanism)
+    M_CKM  WRT encodes |H_1|=5 (inheritance mechanism)
+  
+  M_CKM Z/5 is 'always there'; M_PMNS Z/5 emerges from surgery.
+
+Q(sqrt(17)) STATUS: CONFIRMED INCORRECT
+  Real quadratic fields have 0 complex places.
+  Arithmetic Kleinian groups require exactly 1 complex place.
+  Q(sqrt(17)) cannot be the ITF of any arithmetic hyperbolic 3-manifold.
+  The correct ITF of M_CKM remains unknown.
