@@ -150,3 +150,29 @@ Q(sqrt(17)) STATUS: CONFIRMED INCORRECT
   Arithmetic Kleinian groups require exactly 1 complex place.
   Q(sqrt(17)) cannot be the ITF of any arithmetic hyperbolic 3-manifold.
   The correct ITF of M_CKM remains unknown.
+
+## FINAL RESULT: ITF of M_CKM CONFIRMED (May 25 evening)
+
+ITF(M_CKM = m006(-5,2)):
+  Minimal polynomial: x^10 + 6x^9 + 11x^8 - 18x^7 - 143x^6
+                      - 342x^5 - 422x^4 - 282x^3 - 100x^2 - 17x - 1
+  Degree: 10
+  Irreducible: YES (Sage verified)
+  Discriminant: -271488204251 = -11 * 239 * 103266719
+  Signature: (8,1) — 8 real places, 1 complex place
+  Valid arithmetic Kleinian ITF: YES (exactly 1 complex place)
+
+KEY: 11 divides disc(ITF(M_CKM)) — the cover prime L_5=11 appears!
+
+Computed via: snappy.Manifold('m006(-5,2)').high_precision()
+              .polished_holonomy(bits_prec=800)
+              -> tr(a^2), then pari.algdep(10) with monic output
+              
+Degree table:
+  m003 cusped:     deg 2, disc=-3
+  m003(-2,3) PMNS: deg 4, disc=-283         (degree doubled)
+  m006 cusped:     deg 3, disc=-59
+  m006(-5,2) CKM:  deg 10, disc=-271488204251 (degree more than tripled)
+
+Note: Q(sqrt(17)) CONFIRMED INCORRECT as ITF of M_CKM.
+The true ITF has degree 10, not degree 2.
