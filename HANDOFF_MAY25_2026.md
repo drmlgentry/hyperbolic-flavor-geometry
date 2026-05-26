@@ -176,3 +176,33 @@ Degree table:
 
 Note: Q(sqrt(17)) CONFIRMED INCORRECT as ITF of M_CKM.
 The true ITF has degree 10, not degree 2.
+
+## DEFINITIVE: ITF(M_CKM) confirmed by find_field() (May 25 late)
+
+METHOD: snappy.Manifold('m006(-5,2)').invariant_trace_field_gens()
+        .find_field(200, 20, optimize=True)
+        -> Same result from trace_field_gens() -> ITF = trace field
+
+RESULT:
+  p(x) = x^10 - 7x^8 - 4x^7 + 17x^6 + 14x^5 - 18x^4 - 14x^3 + 8x^2 + 3x - 1
+  Degree: 10, irreducible
+  Signature: (8,1) — valid arithmetic Kleinian group ITF
+  Discriminant: -271488204251 = -11 * 239 * 103266719
+  11 = L_5 appears in discriminant (cover prime confirmed arithmetically)
+
+SPLITTING OF 11 IN ITF(M_CKM):
+  (11, z+3): norm 11, degree 1
+  (11, z^2+3z-5): norm 121, degree 2  
+  (11, z^2-5z-1): norm 121, degree 2
+  (11, z^2+4z-4): norm 121, degree 2
+  (11, z^2+3z+3): norm 121, degree 2
+  Mixed splitting (1+2+2+2+2) — complex JL structure
+
+ALGDEP RESULT WAS UNRELIABLE: different polynomial, same degree.
+The float truncation in 'float(nums[0])' invalidated that computation.
+
+CORRECTIONS NEEDED IN PAPERS:
+- All claims of Q(sqrt(17)) as ITF(M_CKM) are WRONG
+- X_0(11) Hilbert bridge via Q(sqrt(17)) is WRONG
+- The correct automorphic form for M_CKM lives over the degree-10 field
+  -> this is a GL(2)/degree-10 field problem, much harder than before
