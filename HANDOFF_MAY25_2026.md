@@ -243,3 +243,28 @@ This strongly supports its uniqueness as the CKM manifold.
 
 class_number(ITF_CKM) = 1  [unit class group]
 regulator = 602.394...
+
+## ADDITIONAL CONFIRMING DATA (unit group, subfields, family scan)
+
+ITF(M_CKM) UNIT GROUP (directly computed this session):
+  Structure: C2 x Z^8
+  -> rank = 8 = r1+r2-1 = 8+1-1 -> INDEPENDENTLY CONFIRMS sig=(8,1) ?
+  -> z itself is a unit (N(z) = -(-1)^10 = -1, |N(z)|=1 ?)
+  
+  Generators include: -1, z, z+1, and 6 more complex units
+
+ITF(M_CKM) SUBFIELDS:
+  K.subfields() -> only [trivial field {0}, K itself]
+  NO proper subfields over Q
+  Consistent with Galois group S_10 (few normal subgroups)
+  Q(sqrt(-3)) does NOT embed in ITF(M_CKM) [confirmed by polynomial division]
+
+GALOIS CLOSURE:
+  Attempted K.galois_closure() -> KILLED (would be degree 10! = 3,628,800)
+  Do not attempt this computation.
+
+VARIABLE CONFUSION WARNING:
+  K.class_number()=1 and K.regulator()=602.394 were for m006(-6,1),
+  NOT for M_CKM. The loop variable K was overwritten.
+  These values do NOT belong to M_CKM.
+  Class number and regulator of M_CKM ITF: NOT YET COMPUTED.
