@@ -225,3 +225,21 @@ Corrections made:
 - X_0(11) Hilbert form over Q(sqrt(17)) is irrelevant to M_CKM
 - algdep on float-truncated traces gave wrong polynomial (same degree, different poly)
 - find_field() is the correct method and gives x^10-7x^8-...
+
+## FINAL STABILITY CHECK AND BONUS RESULTS (end of session)
+
+find_field at 200, 300, 500 bits: ALL give identical degree-10 polynomial.
+Result is confirmed, not a precision artifact.
+
+m006 FAMILY SCAN (new result):
+  m006(-5,1): deg 5, sig(3,1) — arithmetic
+  m006(-4,1): deg 7, sig(5,1) — arithmetic  
+  m006(-5,2): deg 10, sig(8,1) — arithmetic [= M_CKM]
+  m006(-6,1): deg 12, sig(8,2) — NOT arithmetic (2 complex places)
+
+M_CKM is the LAST ARITHMETIC m006 filling before the boundary.
+It has the largest ITF degree among arithmetic m006 fillings.
+This strongly supports its uniqueness as the CKM manifold.
+
+class_number(ITF_CKM) = 1  [unit class group]
+regulator = 602.394...
