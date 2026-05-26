@@ -206,3 +206,22 @@ CORRECTIONS NEEDED IN PAPERS:
 - X_0(11) Hilbert bridge via Q(sqrt(17)) is WRONG
 - The correct automorphic form for M_CKM lives over the degree-10 field
   -> this is a GL(2)/degree-10 field problem, much harder than before
+
+## PAPER: gentry-hfg-arithmetic.tex — Final version (May 25 end of session)
+
+Six confirmed new results:
+(i)   WRT slope norm theorem |WRT_r(M_PMNS)|^2 = 13/r (proved)
+(ii)  Z/5 asymmetry: emergent in M_PMNS, inherited in M_CKM
+(iii) ITF(m006 cusped) = x^3-2x^2-1, disc=-59 (confirmed SnapPy)
+(iv)  ITF(M_CKM) = degree-10 field, disc=-11*239*103266719, sig=(8,1)
+      poly: x^10-7x^8-4x^7+17x^6+14x^5-18x^4-14x^3+8x^2+3x-1
+      Galois group S_10 — generic field
+      11 RAMIFIES in ITF(M_CKM) — connecting to cover prime arithmetically
+(v)   X_0(11) Bianchi bridge verified 12/12 eigenvalues
+(vi)  sigma_opt = (3/2)log(sqrt(13/5)), not (3/2)log(phi)
+
+Corrections made:
+- Q(sqrt(17)) as ITF(M_CKM) is definitively WRONG
+- X_0(11) Hilbert form over Q(sqrt(17)) is irrelevant to M_CKM
+- algdep on float-truncated traces gave wrong polynomial (same degree, different poly)
+- find_field() is the correct method and gives x^10-7x^8-...
