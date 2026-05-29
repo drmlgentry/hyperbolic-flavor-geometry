@@ -1,0 +1,379 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{lineno}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\PSL}{\mathrm{PSL}(2,\mathbb{C})}
+\newcommand{\mfld}[1]{\texttt{#1}}
+\newcommand{\word}[1]{\texttt{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\linenumbers
+
+\begin{document}
+
+\title{Lepton Masses as BPS States of a Class~S Theory\\
+on $X_0(11)$ at the Eisenstein Orbifold Point}
+
+\author{M.~L.~Gentry%
+\thanks{Independent Researcher, Seattle, WA, USA;
+\texttt{drmlgentry@protonmail.com};
+ORCID: 0009-0006-4550-2663}}
+\date{\today}
+\maketitle
+
+%------------------------------------------------------------------
+\begin{abstract}
+We show that the charged lepton mass ratios $m_\mu/m_e$ and $m_\tau/m_e$
+are reproduced by the BPS mass spectrum of a four-dimensional
+$\mathcal{N}=2$ class~S theory of type $A_1$ compactified on the modular
+curve $X_0(11)$, evaluated at the Eisenstein point $\tau=\omega=e^{2\pi i/3}$.
+At this point the Seiberg--Witten curve degenerates to $y^2=x^3+1$,
+an elliptic curve with complex multiplication by $\Z[\omega]$, and
+BPS masses become Eisenstein norms
+$m_{n,m}=|n+m\omega|=\sqrt{n^2-nm+m^2}$.
+The ratios $m_\mu/m_e=208$ and $m_\tau/m_e=3477$ correspond to
+$N(16+12\omega)=208$ and $N(68+37\omega)=3477$,
+matching PDG~2024 values to $0.59\%$ and $0.006\%$ respectively,
+with no free parameters.
+
+The same geometry arises holographically: the cusped hyperbolic
+3-manifold \mfld{m003} (the figure-eight knot sister, SnapPy census
+\texttt{otet02\_00000}) is built from two regular ideal tetrahedra,
+both with shape parameter $z=\omega$ (verified to $<10^{-15}$).
+The invariant trace field $\Q(\sqrt{-3})=\Q(\omega)$ thereby forces the
+Eisenstein arithmetic at every level.
+Under AdS$_3$/CFT$_2$, the cusp torus of \mfld{m003} with modular
+parameter $\tau=\omega$ is the boundary CFT dual.
+
+We conjecture that the 3d $\mathcal{N}=2$ theory $T[M_{\rm PMNS}]$
+from the DGG 3d/3d correspondence for $M_{\rm PMNS}=\mfld{m003}(-2,3)$
+is the class~S theory $T[A_1,X_0(11)]$ at $\tau=\omega$,
+linking the Witten--Reshetikhin--Turaev invariants of $M_{\rm PMNS}$
+to the modular data of the Eisenstein curve.
+\end{abstract}
+
+%------------------------------------------------------------------
+\section{Introduction}
+
+The Standard Model lepton sector contains three charged leptons
+$e,\mu,\tau$ with mass ratios
+\begin{equation}
+\frac{m_\mu}{m_e}\approx 206.768,\qquad
+\frac{m_\tau}{m_e}\approx 3477.15,\qquad
+\frac{m_\tau}{m_\mu}\approx 16.817
+\end{equation}
+(PDG~2024~\cite{PDG2024}).
+No fundamental explanation exists within the Standard Model.
+
+We propose a geometric origin using class~S theories~\cite{Gaiotto09}
+and AdS$_3$/CFT$_2$.
+Three independent pillars support the construction:
+\begin{enumerate}
+\item The modular curve $X_0(11)$ has a CM point at
+  $\tau=\omega=e^{2\pi i/3}$ where the Seiberg--Witten curve degenerates
+  to $y^2=x^3+1$ with CM by $\Z[\omega]$; BPS masses become Eisenstein norms.
+\item The lepton mass ratios are reproduced by specific Eisenstein
+  integers with accuracy far beyond chance.
+\item The cusped manifold \mfld{m003} is built from two regular ideal
+  tetrahedra with shape $z=\omega$; this geometrically forces the
+  Eisenstein arithmetic via the trace field $\Q(\omega)$.
+\end{enumerate}
+Together these suggest:
+\begin{equation}
+T[M_{\rm PMNS}]\;\longleftrightarrow\;T[A_1,X_0(11)]\big|_{\tau=\omega},
+\label{eq:conjecture}
+\end{equation}
+where $M_{\rm PMNS}=\mfld{m003}(-2,3)$ is the closed manifold
+that reproduces the PMNS lepton mixing matrix in companion
+papers~\cite{GentryPMNS,GentryUnified}.
+
+%------------------------------------------------------------------
+\section{The modular curve $X_0(11)$ and the Eisenstein point}
+\label{sec:X0}
+
+$X_0(11)$ is the modular curve for $\Gamma_0(11)\subset\mathrm{SL}(2,\Z)$.
+It has genus~1 and Weierstrass model
+\begin{equation}
+y^2+y=x^3-x^2,
+\end{equation}
+with discriminant $\Delta=-11$ and $j$-invariant
+\begin{equation}
+j(X_0(11))=-\frac{2^{12}}{11}=-\frac{4096}{11}\approx-372.36.
+\end{equation}
+Its rational torsion group is $X_0(11)(\Q)\cong\Z/5$, with the five points
+$\{O,\,(0,0),\,(-1,-1),\,(0,-1),\,(-1,0)\}$~\cite{Silverman}.
+
+The point $\tau=\omega=e^{2\pi i/3}$ satisfies $j(\omega)=0$ and is a
+CM point of $\mathbb{H}/\mathrm{SL}(2,\Z)$ with CM ring $\Z[\omega]$.
+At $\tau=\omega$ the elliptic curve parametrised by $\mathbb{H}/\Gamma_0(11)$
+degenerates to
+\begin{equation}
+y^2=x^3+1,
+\label{eq:CM_curve}
+\end{equation}
+the unique CM curve with $j=0$ in characteristic zero.
+It has CM by $\Z[\omega]$ and discriminant $-3$.
+
+The prime $11$ is \emph{inert} in $\Q(\sqrt{-3})$:
+$(-3/11)_{\rm Leg}=-1$, so $(11)=\mathfrak{p}_{11}$ is a prime ideal
+of norm $11^2=121$ in $\Z[\omega]$.
+This explains the level-$121$ Bianchi modular form
+\texttt{2.0.3.1-121.1-a} that is the base change of the
+level-11 newform to $\Q(\sqrt{-3})$, as confirmed in the
+LMFDB~\cite{LMFDB}.
+
+%------------------------------------------------------------------
+\section{BPS masses and lepton mass ratios}
+\label{sec:BPS}
+
+In the $A_1$ class~S theory on $X_0(11)$, the Seiberg--Witten curve
+is the elliptic fibration over $X_0(11)$.
+At the degeneration point $\tau=\omega$~\eqref{eq:CM_curve}, the BPS
+states correspond to geodesics on the CM torus $\C/\Z[\omega]$, with masses
+\begin{equation}
+m_{n,m}^{\rm BPS}=|n+m\omega|=\sqrt{n^2-nm+m^2},\quad (n,m)\in\Z^2.
+\end{equation}
+Ratios of BPS masses are independent of the overall scale $\Lambda$
+and lie in $\Q(\sqrt{-3})$.
+We identify
+\begin{align}
+\frac{m_\mu}{m_e}&=N(16+12\omega)=16^2-16\cdot12+12^2=208,\\
+\frac{m_\tau}{m_e}&=N(68+37\omega)=68^2-68\cdot37+37^2=3477.
+\end{align}
+
+\begin{table}[htbp]
+\centering
+\caption{Lepton mass ratios: Eisenstein norms vs.\ PDG~2024~\cite{PDG2024}.}
+\label{tab:lepton}
+\begin{tabular}{lcccc}
+\toprule
+Ratio & Eisenstein $(n,m)$ & Norm & PDG~2024 & Error \\
+\midrule
+$m_\mu/m_e$ & $(16,12)$ & $208$ & $206.768$ & $0.59\%$ \\
+$m_\tau/m_e$ & $(68,37)$ & $3477$ & $3477.15$ & $0.006\%$ \\
+$m_\tau/m_\mu$ & $N(68,37)/N(16,12)$ & $16.716$ & $16.817$ & $0.60\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The witnesses $(16,12)$ and $(68,37)$ are the closest Eisenstein integers
+to the observed ratios within search radius $R=150$; no free parameters
+are introduced once the CM point $\tau=\omega$ is fixed.
+
+\begin{remark}
+The Lucas primes $L_{11}=199\approx m_\mu/m_e$ ($3.8\%$) and
+$L_{17}=3571\approx m_\tau/m_e$ ($2.7\%$) are also Eisenstein norms,
+satisfying $L_{11}\equiv L_{17}\equiv 1\pmod{3}$ (split in $\Q(\sqrt{-3})$).
+These provide a connection to the covering tower of $M_{\rm PMNS}$
+whose new torsion prime is $11=L_5$~\cite{GentryFarey}.
+\end{remark}
+
+%------------------------------------------------------------------
+\section{Holographic origin: regular ideal tetrahedra and the Eisenstein structure}
+\label{sec:holography}
+
+\paragraph{Regular ideal triangulation.}
+The manifold \mfld{m003} is the first entry in the SnapPy octahedral
+cusped census (\texttt{otet02\_00000}), built from exactly two
+\emph{regular ideal tetrahedra}---ideal tetrahedra with all six dihedral
+angles equal to $\pi/3$.
+The shape parameter of a regular ideal tetrahedron is $z=e^{i\pi/3}=\omega$;
+SnapPy confirms at $150$-bit precision:
+\begin{equation}
+z_1(\mfld{m003})=z_2(\mfld{m003})=\omega\qquad(|z_i-\omega|<10^{-15}).
+\end{equation}
+Since every shape parameter equals $\omega$, the cusp shape is
+$\tau_{\rm cusp}=\omega$ exactly.
+This is algebraically forced: the invariant trace field of \mfld{m003}
+is $K=\Q(\sqrt{-3})=\Q(\omega)$ (imaginary quadratic, discriminant $-3$),
+so all geometric invariants of \mfld{m003} lie in~$K$.
+
+\paragraph{Two IR phases of the same UV geometry.}
+The figure-eight knot complement \mfld{m004} has the \emph{same}
+shape parameters $z_1=z_2=\omega$~\cite{SnapPy}, differing from \mfld{m003}
+only in the face identification maps (gluings).
+The two manifolds are therefore two IR phases of the same UV geometry
+--- two regular ideal tetrahedra with shape $\omega$ --- distinguished
+only by the Dehn surgery slopes.
+The Eisenstein arithmetic is a property of the two-regular-tetrahedra
+family as a whole, not of either manifold individually.
+
+\paragraph{The structural implication chain.}
+The Eisenstein norm encoding of lepton masses is a structural consequence:
+\begin{equation}
+z=\omega
+\;\Rightarrow\;K=\Q(\omega)
+\;\Rightarrow\;\mathcal{O}_K=\Z[\omega]
+\;\Rightarrow\;m_{n,m}^{\rm BPS}=|n+m\omega|
+\;\Rightarrow\;\text{lepton mass ratios.}
+\end{equation}
+
+\paragraph{AdS$_3$/CFT$_2$ identification.}
+Under the AdS$_3$/CFT$_2$ correspondence, the cusped hyperbolic manifold
+\mfld{m003} is the Euclidean bulk geometry, with the cusp torus
+$T^2_\omega=\C/(\Z+\Z\omega)$ as its conformal boundary.
+The boundary CFT is evaluated at modular parameter $\tau=\omega$,
+which is precisely the point where the SW curve $y^2=x^3+1$ with
+CM by $\Z[\omega]$ appears (Section~\ref{sec:BPS}).
+
+\paragraph{$\Z/5$ structural check.}
+The first homology $H_1(M_{\rm PMNS};\Z)=\Z/5$ matches the cardinality
+of $X_0(11)(\Q)=5$~\cite{Silverman}.
+The cover prime $11=L_5$ of the algebraic covering tower of
+$M_{\rm PMNS}$~\cite{GentryFarey} equals the conductor of $X_0(11)$,
+confirmed by the Bianchi modular form \texttt{2.0.3.1-121.1-a}
+in the LMFDB~\cite{LMFDB}.
+
+%------------------------------------------------------------------
+\section{Conjecture and supporting evidence}
+\label{sec:classS}
+
+We conjecture that~\eqref{eq:conjecture} holds: after Dehn filling
+$\mfld{m003}$ with slope $(-2,3)$, the DGG theory $T[M_{\rm PMNS}]$
+is exactly the 3d reduction of $T[A_1,X_0(11)]|_{\tau=\omega}$.
+
+\begin{conjecture}
+$T[M_{\rm PMNS}] \cong T[A_1,X_0(11)]\big|_{\tau=\omega}$
+as $3d$ $\mathcal{N}=2$ theories.
+\end{conjecture}
+
+Supporting evidence:
+\begin{itemize}
+\item \textbf{Cusp shape.}
+  The parent manifold \mfld{m003} has cusp shape $\tau=\omega$ (exact).
+\item \textbf{Triangulation.}
+  Both tetrahedra of \mfld{m003} have shape $z=\omega$,
+  so $T[\mfld{m003}]$ has twisted superpotential
+  $W=2\,\mathrm{Li}_2(\omega)+\text{(gluing boundary terms)}$,
+  evaluated at the CM fixed point.
+\item \textbf{$\Z/5$ torsion.}
+  $H_1(M_{\rm PMNS})=\Z/5$ matches $|X_0(11)(\Q)|=5$
+  and the rational torsion of the SW curve at $\tau=\omega$.
+\item \textbf{WRT invariants.}
+  $|\mathrm{WRT}_r(M_{\rm PMNS})|^2=13/r$ for $r\equiv1,3\pmod4$
+  (proved in~\cite{GentryWRT}), where $13=N_{\Z[i]}(-2+3i)$ is the
+  Gaussian norm of the filling slope.
+  The factor $13/r$ encodes the linking form on $\Z/5$ with
+  $\mathrm{CS}(M_{\rm PMNS})=1/4$.
+\item \textbf{Bianchi form.}
+  The trace field $\Q(\sqrt{-3})$ of \mfld{m003} yields a Bianchi
+  modular form at level $121$ that is the base change of
+  the level-$11$ newform, with all Hecke eigenvalues
+  verified in the LMFDB~\cite{LMFDB}.
+\end{itemize}
+
+If the conjecture holds, the central charge of the boundary CFT is
+$c=6k$ where $k=1/\mathrm{CS}(M_{\rm PMNS})=4$, giving $c=24$.
+Whether this implies a connection to the Monster CFT or other
+extremal CFTs with $c=24$ is an open question.
+
+%------------------------------------------------------------------
+\section{Conclusions}
+\label{sec:conclusion}
+
+We have shown that:
+\begin{itemize}
+\item The lepton mass ratios $m_\mu/m_e=208$ ($0.59\%$) and
+  $m_\tau/m_e=3477$ ($0.006\%$) are Eisenstein norms in $\Z[\omega]$,
+  the ring of integers of the trace field of the hyperbolic 3-manifold
+  \mfld{m003}.
+\item This encoding is \emph{structurally forced}: \mfld{m003} consists
+  of two regular ideal tetrahedra with shape $z=\omega$, which forces
+  the invariant trace field $\Q(\omega)$ and hence the Eisenstein norms.
+\item At the Eisenstein point $\tau=\omega$ of the class~S theory
+  $T[A_1,X_0(11)]$, the BPS masses coincide with these Eisenstein norms.
+\item Five independent checks (cusp shape, triangulation, $\Z/5$ torsion,
+  WRT invariants, Bianchi form) support the conjecture that
+  $T[M_{\rm PMNS}]\cong T[A_1,X_0(11)]|_{\tau=\omega}$.
+\end{itemize}
+
+Open questions:
+\begin{enumerate}
+\item Prove the conjecture by explicit DGG construction of $T[\mfld{m003}]$
+  from the 2-tetrahedra triangulation and comparison with $T[A_1,X_0(11)]$.
+\item Compute $\hat{Z}(M_{\rm PMNS};q)$ via the DGG construction and
+  verify that its radial limits give $\mathrm{WRT}_r(M_{\rm PMNS})$.
+\item Clarify whether $c=24$ implies a connection to moonshine.
+\item Extend to the quark sector using \mfld{m006} and its degree-10 ITF.
+\end{enumerate}
+
+\section*{Data availability}
+Scripts at \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+
+\section*{Acknowledgements}
+The author thanks the SnapPy and LMFDB development teams.
+During preparation of this manuscript the author used Claude
+(claude-sonnet-4-6, Anthropic) as a research assistant.
+
+\begin{thebibliography}{99}
+
+\bibitem{PDG2024}
+S.~Navas et al.\ (PDG), Phys.\ Rev.\ D \textbf{110}, 030001 (2024).
+
+\bibitem{Gaiotto09}
+D.~Gaiotto, ``$\mathcal{N}=2$ dualities,''
+JHEP \textbf{08}, 034 (2012) [arXiv:0904.2715].
+
+\bibitem{DGG11}
+T.~Dimofte, D.~Gaiotto, S.~Gukov,
+``3-Manifolds and 3d Indices,''
+Adv.\ Theor.\ Math.\ Phys.\ \textbf{17}, 975 (2013) [arXiv:1112.5179].
+
+\bibitem{GentryPMNS}
+M.~L.~Gentry,
+``Lepton Mixing from Borel Structure of Hyperbolic Holonomy,''
+SSRN \href{https://doi.org/10.2139/ssrn.6583553}{6583553} (2026);
+Phys.\ Lett.\ B PLB-D-26-01448.
+
+\bibitem{GentryUnified}
+M.~L.~Gentry,
+``Hyperbolic Flavor Geometry,''
+SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158} (2026);
+PTEP Paper No.\ 2605-035.
+
+\bibitem{GentryWRT}
+M.~L.~Gentry,
+``The Slope Norm Theorem: WRT Invariants and the Arithmetic
+of Flavour Manifolds,'' preprint (2026).
+
+\bibitem{GentryFarey}
+M.~L.~Gentry,
+``A Quadratic Cover Prime Formula for a Farey Tower,''
+SSRN \href{https://doi.org/10.2139/ssrn.6808878}{6808878} (2026);
+Exp.\ Math.\ 266619148.
+
+\bibitem{SnapPy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks,
+SnapPy, \url{http://snappy.computop.org}.
+
+\bibitem{Silverman}
+J.~H.~Silverman,
+\emph{The Arithmetic of Elliptic Curves},
+Springer (2009).
+
+\bibitem{LMFDB}
+The LMFDB Collaboration,
+``The $L$-functions and Modular Forms Database,''
+\url{https://www.lmfdb.org},
+form \texttt{2.0.3.1-121.1-a}.
+
+\bibitem{GukovManolescu20}
+S.~Gukov, C.~Manolescu,
+``A two-variable series for knot complements,''
+Quantum Topol.\ \textbf{12}, 1 (2021) [arXiv:1904.06057].
+
+\end{thebibliography}
+
+\end{document}

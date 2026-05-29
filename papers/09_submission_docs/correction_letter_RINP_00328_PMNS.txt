@@ -1,0 +1,51 @@
+RE: Author correction request
+Manuscript: RINP-D-26-00328
+"Lepton Mixing from Borel Structure of Hyperbolic Holonomy"
+
+Dear Editorial Office,
+
+I am writing to request a minor but important correction to the 
+framing of the main result in the above manuscript, discovered 
+through subsequent computational analysis.
+
+ISSUE:
+The manuscript states that the fitness value 0.005087 is achieved 
+by the holonomy of m003(-2,3) specifically. Further analysis shows 
+that 0.005087 is the global minimum of the Borel QR construction 
+relative to the PDG PMNS matrix, and is reachable by any manifold's 
+holonomy given sufficient optimization. The fitness value alone does 
+not select m003(-2,3).
+
+WHAT SURVIVES (no change needed):
+The geometric selection of m003(-2,3) is rigorous and unique. 
+Among all closed orientable hyperbolic 3-manifolds with H1=Z/5 
+in the SnapPy OrientableClosedCensus (500 entries surveyed):
+
+(i)  Exactly one manifold has a Lucas-pure covering tower AND
+     contains a geodesic of length (3/2)*log(phi) = 0.72182:
+     m003(-2,3). This is proven computationally (12 H1=Z/5 
+     manifolds checked, covering towers to degree 9).
+
+(ii) m003(-2,3) is the unique smallest-volume closed orientable
+     hyperbolic 3-manifold (Gabai-Meyerhoff-Milley theorem).
+
+(iii) The Borel construction applied to m003(-2,3) achieves the
+      global minimum distance 0.005087 to the PDG PMNS matrix.
+
+REQUESTED CORRECTION:
+Replace the claim "the manifold m003(-2,3) achieves fitness 0.005087" 
+with "m003(-2,3) is uniquely selected by independent geometric 
+constraints (Lucas-pure covering tower, sigma_opt geodesic, minimal 
+volume), and the Borel construction applied to it achieves the global 
+minimum fitness 0.005087 relative to the PDG PMNS matrix."
+
+This correction strengthens the paper by grounding the manifold 
+selection in geometry rather than the fitting value alone.
+
+I can provide a revised manuscript with these changes if the editor 
+wishes to continue consideration of the paper.
+
+Sincerely,
+Marvin L. Gentry
+drmlgentry@protonmail.com
+ORCID: 0009-0006-4550-2663

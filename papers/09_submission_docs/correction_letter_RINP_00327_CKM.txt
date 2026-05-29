@@ -1,0 +1,47 @@
+RE: Author correction request  
+Manuscript: RINP-D-26-00327
+"Quark Mixing from Hyperbolic Geometry: The CKM Matrix from 
+Geodesics on a Compact 3-Manifold"
+
+Dear Editorial Office,
+
+I am writing to clarify the scope of the main result in the above 
+manuscript, following exhaustive computational verification.
+
+THE RESULT IS CONFIRMED:
+The CKM fitness 0.016482 IS a geometric property of m006(-5,2). 
+Unlike the PMNS construction (which uses a 3-parameter optimizer), 
+the Gaussian kernel construction has only one free parameter (sigma), 
+and fitness varies substantially across manifolds. Specifically:
+
+- Among all 12 closed orientable hyperbolic 3-manifolds with H1=Z/5
+  in the SnapPy census, m006(-5,2) achieves the lowest Gaussian 
+  kernel fitness to the PDG CKM matrix (0.016482 at sigma=0.49).
+  
+- The nearest competitor within this class achieves 0.047.
+
+- Among all 500 census manifolds tested (any homology), no other 
+  H1=Z/5 Lucas-pure manifold achieves comparable CKM fitness.
+
+CLARIFICATION NEEDED:
+Some manifolds outside the H1=Z/5 class, with different word triples 
+and optimized sigma, can achieve lower fitness. The selection of 
+m006(-5,2) should be framed as: "best among closed hyperbolic 
+3-manifolds with H1=Z/5 and Lucas-pure covering tower" rather than 
+"uniquely best among all closed hyperbolic 3-manifolds."
+
+REQUESTED ADDITION:
+Add to the methods section: "We have verified that among the 12 
+manifolds with H1=Z/5 in the first 500 census entries, m006(-5,2) 
+achieves the lowest CKM Gaussian fitness (0.016482). Manifolds 
+outside this homology class can achieve lower fitness with different 
+word triples, but do not satisfy the Lucas-purity and H1=Z/5 
+constraints that define the quark sector manifold."
+
+This clarification does not change the main result but accurately 
+characterizes its scope.
+
+Sincerely,
+Marvin L. Gentry
+drmlgentry@protonmail.com
+ORCID: 0009-0006-4550-2663

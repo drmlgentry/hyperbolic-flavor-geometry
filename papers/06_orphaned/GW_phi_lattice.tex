@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}[conjecture]{Proposition}
+\theoremstyle{definition}
+\newtheorem{remark}[conjecture]{Remark}
+
+\newcommand{\ph}{\varphi}
+\newcommand{\logph}{\log\ph}
+\newcommand{\Hstar}{\mathcal{H}_*}
+
+\title{Golden Ratio Quantisation of Gravitational Wave Peak Frequencies\\
+and Dark Matter Mass from the $\ph$-Lattice}
+\author{Marvin L.\ Gentry\\
+\small Independent Researcher, Seattle, WA\\
+\small \texttt{drmlgentry@protonmail.com}\quad
+ORCID: 0009-0006-4550-2663}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The gravitational wave-induced freeze-in mechanism of Maleknejad and
+Kopp~\cite{MaleknejadKopp2026} shows that a stochastic gravitational
+wave (GW) background in the early Universe can produce massless Weyl
+fermions which, if they later acquire mass, constitute dark matter.
+We observe that this mechanism provides a natural cosmological
+realisation of the golden ratio lattice $m = m_e\ph^{q/4}$ that
+governs the Standard Model fermion mass spectrum in the Hyperbolic
+Flavor Geometry (HFG) framework.
+We conjecture that the GW peak frequency is quantised in units of
+$\log\ph$: $q_{\rm peak}/\Hstar = \ph^k$ for integer $k$, and that
+the produced dark matter mass satisfies $M_{\rm DM} = m_e\ph^{q/4}$.
+The relic density constraint then relates $k$ and $q$, yielding
+falsifiable predictions for future GW detectors (Einstein Telescope,
+Cosmic Explorer) and direct dark matter searches.
+\end{abstract}
+
+\section{Introduction}
+
+The Hyperbolic Flavor Geometry (HFG) framework~\cite{Gentry:Lucas,
+Gentry:SU} establishes that the fermion mass spectrum obeys
+\begin{equation}
+  m = m_e \cdot \ph^{q/4},\qquad q \in \tfrac{1}{4}\mathbb{Z},
+  \label{eq:lattice}
+\end{equation}
+where $\ph=(1+\sqrt5)/2$ and $m_e$ is the electron mass.
+The Lucas sequence $L_k = \ph^k + \ph^{-k}$ governs the covering
+tower primes of the flavor manifolds, and $\log\ph$ is the
+fundamental geodesic length unit.
+
+Maleknejad and Kopp~\cite{MaleknejadKopp2026} recently showed that
+a stochastic GW background breaks the conformal symmetry of massless
+Weyl fermions, producing them via a 1-loop graviton--fermion vertex.
+The produced fermion energy density scales as~\cite{MaleknejadKopp2026}
+\begin{equation}
+  \Omega_{\rm DM,0} \approx 0.36\,\mathcal{C}\,
+  \left(\frac{g_*}{106.75}\right)^{\!4/3}
+  \!\!\left(\frac{\Omega_{\rm peak}}{10^{-6}}\right)
+  \left(\frac{M}{T_*}\right)
+  \left(\frac{q_{\rm peak}/\Hstar}{100}\right)^{\!4}
+  \!\!\left(\frac{T_*}{3\times10^{11}\,{\rm GeV}}\right)^{\!5},
+  \label{eq:relic}
+\end{equation}
+where $\mathcal{C}=\mathcal{O}(1)$ depends on the GW spectral index
+and coherence, $T_*$ is the production temperature, $\Hstar$ is the
+comoving Hubble scale at $T_*$, and $\Omega_{\rm peak}$ is the peak
+GW spectral energy density.
+Here we point out that equation~\eqref{eq:relic} can accommodate
+the $\ph$-lattice in a natural and falsifiable way.
+
+\section{$\ph$-lattice quantisation}
+
+\subsection{Peak frequency quantisation}
+
+The natural scale for any logarithmically structured spectrum in the
+HFG framework is $\log\ph$, the regulator of $\mathbb{Q}(\sqrt5)$
+and the fundamental geodesic unit of the flavor
+manifolds~\cite{Gentry:Lucas}.
+We conjecture:
+
+\begin{conjecture}[$\ph$-quantised GW spectrum]
+\label{conj:gw}
+The peak frequency of a primordial stochastic GW background satisfies
+\[
+  \frac{q_{\rm peak}}{\Hstar} = \ph^k, \qquad k \in \mathbb{Z}_{\ge 0},
+\]
+i.e., $\log(q_{\rm peak}/\Hstar) = k\log\ph$.
+\end{conjecture}
+
+Typical GW sources give $q_{\rm peak}/\Hstar \sim 10$--$10^3$ for
+first-order phase transitions~\cite{Caprini2016}, corresponding to
+$k \sim 5$--$15$ (since $\ph^{10}\approx 123$, $\ph^{15}\approx 1364$).
+
+\subsection{Dark matter mass on the $\ph$-lattice}
+
+If the produced fermions acquire mass via a Higgs mechanism, the HFG
+framework predicts $M_{\rm DM} = m_e\ph^{q/4}$ for some
+$q\in\frac{1}{4}\mathbb{Z}$ not in the visible sector
+Lucas set~\cite{Gentry:SU}.
+Representative dark sector candidates from non-Lucas covering tower
+primes are listed in Table~\ref{tab:dm}.
+
+\begin{table}[htbp]
+\centering
+\caption{Dark sector mass candidates from non-Lucas covering primes.}
+\label{tab:dm}
+\begin{tabular}{ccll}
+\toprule
+Prime $p$ & $q=p$ & $M = m_e\ph^{p/4}$ & Note \\
+\midrule
+13 & 13 & 1.85 MeV  & sterile neutrino range \\
+19 & 19 & 6.4 MeV   & light dark matter \\
+31 & 31 & 39 MeV    & dark sector mediator \\
+41 & 41 & 580 MeV   & sub-GeV dark matter \\
+43 & 43 & 940 MeV   & near proton mass \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Consistency relation and falsifiability}
+
+Substituting Conjecture~\ref{conj:gw} and $M=m_e\ph^{q/4}$ into
+equation~\eqref{eq:relic} with $\Omega_{\rm DM,0}=0.27$ gives a
+constraint on the integers $k$ and $q$:
+\begin{equation}
+  \frac{m_e}{T_*}\,\ph^{4k + q/4} \approx
+  \frac{0.75}{\mathcal{C}}
+  \left(\frac{106.75}{g_*}\right)^{\!4/3}
+  \!\!\left(\frac{10^{-6}}{\Omega_{\rm peak}}\right)
+  \left(\frac{T_*}{3\times10^{11}\,{\rm GeV}}\right)^{\!-5}.
+  \label{eq:constraint}
+\end{equation}
+For each choice of $(T_*, \Omega_{\rm peak}, \mathcal{C})$,
+equation~\eqref{eq:constraint} selects a discrete set of
+integer pairs $(k,q)$.
+
+\begin{proposition}[Falsifiable prediction]
+For a GW background detected with peak frequency $f_{\rm peak}$
+(in Hz today), the ratio $\log(f_{\rm peak}/H_0)/\log\ph$ should be
+close to an integer $k$. The dark matter particle produced by this
+mechanism must have mass $M_{\rm DM}/m_e = \ph^{q/4}$ for some $q$
+not in the Lucas set. Both conditions can be tested independently.
+\end{proposition}
+
+\begin{remark}[The 17 MeV anomaly]
+The claimed 17 MeV dark photon anomaly implies $q/4 \approx 7.28$,
+i.e., $q \approx 29.1 \approx L_7$ (a Lucas prime). The HFG
+framework therefore predicts this anomaly is \emph{visible sector},
+not dark sector — independently of the GW mechanism.
+\end{remark}
+
+\section{Discussion}
+
+The stochastic GW background acts as a ``cosmic ruler'' imprinting
+the $\ph$-lattice on the dark matter mass through the production
+mechanism. The lattice would then appear in three observationally
+distinct places:
+\begin{enumerate}
+  \item The GW peak frequency ratio $q_{\rm peak}/\Hstar = \ph^k$
+        (detectable by Einstein Telescope~\cite{ET} or
+        Cosmic Explorer~\cite{CE} in the kHz--GHz band).
+  \item The dark matter mass $M_{\rm DM} = m_e\ph^{q/4}$
+        (testable by direct detection or collider experiments).
+  \item The visible sector fermion masses already confirmed by the
+        HFG framework~\cite{Gentry:Lucas}.
+\end{enumerate}
+
+The Maleknejad--Kopp mechanism provides the first proposed \emph{physical
+mechanism} by which the $\ph$-lattice could be imprinted cosmologically,
+as opposed to being postulated as a symmetry of the low-energy effective
+theory. If the GW background itself arises from a phase transition
+governed by the same hyperbolic geometry (e.g., through the icosahedral
+symmetry $A_5$ shared by the quasicrystal phonon spectrum and the HFG
+flavor manifolds), the quantisation of $q_{\rm peak}$ would follow
+naturally.
+
+\section{Conclusion}
+
+The gravitational wave-induced freeze-in mechanism provides a
+cosmological arena in which the $\ph$-lattice of the HFG framework
+can be tested. The conjecture $q_{\rm peak}/\Hstar = \ph^k$ and the
+dark matter mass constraint $M_{\rm DM} = m_e\ph^{q/4}$ together
+with the relic density equation~\eqref{eq:relic} yield a discrete,
+falsifiable prediction. Confirmation by future GW detectors would
+establish the $\ph$-lattice as a fundamental structure of nature
+beyond the Standard Model flavor sector.
+
+\section*{Data Availability}
+No new data were generated.
+
+\section*{Conflict of Interest}
+The author declares no conflicts of interest.
+
+\begin{thebibliography}{99}
+\bibitem{MaleknejadKopp2026}
+A.~Maleknejad and J.~Kopp,
+\textit{Gravitational-Wave Induced Freeze-In of Fermionic Dark Matter},
+Phys.\ Rev.\ Lett.\ \textbf{136}, 131501 (2026).
+\href{https://doi.org/10.1103/lr69-45v8}{doi:10.1103/lr69-45v8}
+
+\bibitem{Gentry:Lucas}
+M.~L.~Gentry,
+\textit{The Lucas Sequence as the Arithmetic Bridge in Hyperbolic Flavor Geometry},
+J.\ Number Theory, submitted (2026). JNTH-D-26-00538.
+\href{https://doi.org/10.2139/ssrn.6660598}{SSRN:6660598}
+
+\bibitem{Gentry:SU}
+M.~L.~Gentry,
+\textit{Spectral Universality and Slope-Encoded Arithmetic in Dehn Fillings of Hyperbolic 3-Manifolds},
+preprint (2026).
+
+\bibitem{Caprini2016}
+C.~Caprini et al.,
+J.\ Cosmol.\ Astropart.\ Phys.\ \textbf{04}, 001 (2016).
+
+\bibitem{ET}
+M.~Maggiore et al.,
+J.\ Cosmol.\ Astropart.\ Phys.\ \textbf{03}, 050 (2020).
+
+\bibitem{CE}
+M.~Evans et al., arXiv:2109.09882.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,349 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{authblk}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{enumerate}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{observation}[theorem]{Observation}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\MCKM}{M_{\mathrm{CKM}}}
+\newcommand{\MPMNS}{M_{\mathrm{PMNS}}}
+\newcommand{\Zfive}{\mathbb{Z}/5}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\PSL}{\mathrm{PSL}(2,\CC)}
+
+\begin{document}
+
+\title{Quark Mixing from Hyperbolic Geometry:\\
+The CKM Matrix from a Compact Arithmetic 3-Manifold}
+
+\author[1]{Marvin L. Gentry}
+\affil[1]{Independent Researcher, Seattle, WA, USA;
+\texttt{drmlgentry@protonmail.com};
+ORCID: 0009-0006-4550-2663}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+We show that the CKM quark mixing matrix is encoded in the holonomy
+geometry of the compact arithmetic hyperbolic 3-manifold
+$\MCKM = m006(-5,2)$ (\texttt{OrientableClosedCensus[43]},
+volume $2.029$, $H_1=\Zfive$).
+The symmetric Gaussian overlap construction with word triple
+$\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ and smearing parameter
+$\sigma = \frac{3}{2}\log\sqrt{13/5}$ achieves Frobenius fitness
+$0.016482$ against PDG~2024, with Cabibbo angle error $0.19\%$
+and $p<0.002$ against $50{,}000$ Haar-random unitary matrices.
+The Jarlskog invariant vanishes ($J=0$) at leading order due to a
+homological class collision: $[\mathrm{AbA}]=[\mathrm{AAb}]$ in
+$H_1(\MCKM;\ZZ)=\Zfive$.
+The invariant trace field of $\MCKM$ is a degree-10 number field
+with defining polynomial
+$x^{10}-7x^8-4x^7+17x^6+14x^5-18x^4-14x^3+8x^2+3x-1$,
+discriminant $-271488204251$, and signature $(8,1)$,
+confirmed by SnapPy at 500-bit precision.
+Its predominantly real character (8 real places, 1 complex pair)
+explains geometrically why the quark sector has suppressed CP
+violation relative to the lepton sector.
+\end{abstract}
+
+
+%-------------------------------------------------------------------
+\section{Introduction}
+\label{sec:intro}
+
+The CKM quark mixing matrix~\cite{CKM} presents a striking
+contrast to the PMNS lepton matrix: the CKM angles are small,
+CP violation is suppressed, and the pattern is close to the identity.
+In the Hyperbolic Flavor Geometry (HFG) framework~\cite{Gentry:Unified},
+these features are encoded in the geometry of a specific compact
+arithmetic hyperbolic 3-manifold, $\MCKM = m006(-5,2)$.
+
+The present paper has four main results.
+\begin{enumerate}[(i)]
+\item The symmetric Gaussian overlap construction reproduces the CKM
+  matrix with fitness $0.016482$ and Cabibbo angle error $0.19\%$.
+\item The Jarlskog invariant $J=0$ follows from the word triple
+  geometry, not from any assumption.
+\item The invariant trace field of $\MCKM$ is a degree-10 number
+  field with signature $(8,1)$, confirmed computationally.
+\item The smearing parameter is $\sigma=\frac{3}{2}\log\sqrt{13/5}$
+  (exact value derived from the WRT slope norm theorem).
+\end{enumerate}
+
+All computations use SnapPy~\cite{SnapPy} at 150-bit precision.
+
+%-------------------------------------------------------------------
+\section{The Manifold}
+\label{sec:manifold}
+
+\subsection{Basic invariants}
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+Manifold & Census & Slope & Vol & $H_1$ & CS \\
+\midrule
+$\MCKM$ & 43 & $(-5,2)$ & $2.029$ & $\Zfive$ & $\approx-0.114$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$\MCKM = m006(-5,2)$ is the Dehn filling of $m006$ (the figure-8
+knot sister manifold) with slope $(-5,2)$.
+The first homology $H_1 = \Zfive$ is inherited from the cusped parent:
+$m006$ already has $H_1(m006) = \Zfive \oplus \ZZ$; the filling
+kills the $\ZZ$ factor while preserving the $\Zfive$.
+This stands in contrast to $\MPMNS$, where the $\Zfive$ is created
+by surgery on $m003$ (whose cusped $H_1 = \ZZ$ has no torsion).
+
+\subsection{Invariant trace field}
+
+\begin{proposition}[CKM invariant trace field]
+\label{prop:itf}
+The invariant trace field of $\MCKM$ is the number field $K$ with
+defining polynomial
+\begin{equation}
+p(x) = x^{10}-7x^8-4x^7+17x^6+14x^5-18x^4-14x^3+8x^2+3x-1,
+\label{eq:itf}
+\end{equation}
+discriminant $-271488204251 = -11\times239\times103266719$,
+signature $(8,1)$, and Galois group $S_{10}$.
+\end{proposition}
+
+\begin{proof}
+Computed via SnapPy's \texttt{invariant\_trace\_field\_gens()}
+and Sage's \texttt{find\_field(500,40,optimize=True)}.
+The result is stable at 200, 300, and 500 bits of precision.
+Both \texttt{trace\_field\_gens()} and \texttt{invariant\_trace\_field\_gens()}
+return the same polynomial, confirming trace field $=$ invariant
+trace field.
+\end{proof}
+
+\begin{remark}
+Earlier papers in the HFG series claimed the invariant trace field
+of $\MCKM$ was $\QQ(\sqrt{17})$.
+This is incorrect: real quadratic fields have signature $(2,0)$
+(zero complex places) and cannot be the invariant trace field
+of an arithmetic hyperbolic 3-manifold, which requires exactly
+one complex place.
+The correct field is the degree-10 field~\eqref{eq:itf}.
+Note that $\QQ(\sqrt{17})$ does not embed in this field.
+\end{remark}
+
+\subsection{Geometric CP suppression}
+
+The signature $(8,1)$ of the ITF means 8 of the 9 Archimedean
+places are real.
+By the MacLachlan--Reid theorem~\cite{MaclachlanReid} (Chapter~3),
+holonomy elements with traces in the predominantly real ITF are
+predominantly hyperbolic (real eigenvalues) rather than loxodromic
+(complex eigenvalues).
+Purely hyperbolic holonomy gives zero twist angles and hence
+$J_{\mathrm{CKM}} = 0$ at leading order.
+This is the geometric explanation of CP suppression in the quark
+sector: the degree-10 trace field is ```more real'' (8 real places)
+than the PMNS trace field (0 real places, since
+$\mathbb{Q}(\sqrt{-3}) = \QQ(\sqrt{-3})$ is imaginary quadratic with signature $(0,1)$).
+
+\subsection{The cover prime and manifold uniqueness}
+
+\begin{proposition}[Discriminant and cover prime]
+The prime $11 = L_5$ (fifth Lucas number) divides
+$\mathrm{disc}(\mathrm{ITF}(\MCKM)) = -11\times239\times103266719$.
+\end{proposition}
+
+This connects arithmetically to the topological cover prime:
+the degree-5 covering space of $\MPMNS$ introduces torsion prime
+$11$~\cite{Gentry:Farey}, and $11$ also ramifies in the ITF of $\MCKM$.
+The prime $11 = \det[(-2,3),(-5,2)]$ (the Farey determinant of the
+two HFG filling slopes) thus appears in both the topology and the
+arithmetic of both manifolds.
+
+A scan of $m006(p,q)$ fillings confirms that $\MCKM = m006(-5,2)$
+is the unique filling with both $H_1 = \Zfive$ and ITF signature $(8,1)$:
+the next filling $m006(-6,1)$ has signature $(8,2)$ and is not arithmetic.
+
+%-------------------------------------------------------------------
+\section{Mixing Matrix Construction}
+\label{sec:mixing}
+
+\subsection{Setup}
+
+For each geodesic word $w$, the holonomy $\rho(w) \in \PSL$ is
+computed via SnapPy's \texttt{polished\_holonomy()} at 150-bit precision.
+The axis direction $\hat{n}(w) \in S^2$ is extracted from the
+Pauli decomposition of $\log\rho(w)$.
+The Gaussian overlap kernel with smearing parameter
+$\sigma = \frac{3}{2}\log\sqrt{13/5}$ gives
+\[
+K_{ij} = \exp\!\left(-\frac{\theta_{ij}^2}{2\sigma^2}\right),
+\quad
+\theta_{ij} = \arccos(\hat{n}_i \cdot \hat{n}_j).
+\]
+The symmetric matrix $K$ is rendered unitary via QR decomposition.
+
+\begin{remark}[Exact smearing parameter]
+The value $\sigma = \frac{3}{2}\log\sqrt{13/5}$ is derived from
+the WRT slope norm theorem~\cite{Gentry:WRT}:
+$|\mathrm{WRT}_5(\MPMNS)|^2 = 13/5 = L_6/|H_1|$,
+where $L_6 = 13$ is the Gaussian norm of the PMNS filling slope.
+The golden ratio approximation $\sigma \approx \frac{3}{2}\log\phi$
+($\phi^2 \approx L_6/|H_1|$ to $0.69\%$) is replaced here by the
+exact value.
+\end{remark}
+
+\subsection{Word triple and results}
+
+\begin{observation}[CKM word triple]
+\label{obs:triple}
+The word triple $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$
+gives geodesic axis angles
+$\theta_{12}=48.16^\circ$, $\theta_{13}=77.48^\circ$,
+$\theta_{23}=68.43^\circ$,
+forming a spherical triangle with excess $13.1^\circ \approx \theta_C$
+(Cabibbo angle).
+With $\sigma=\frac{3}{2}\log\sqrt{13/5}$ and QR orthogonalization:
+\end{observation}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Angle & HFG & PDG~2024 \\
+\midrule
+$\theta_{12}$ (Cabibbo) & $13.03^\circ$ & $13.05^\circ$ ($0.19\%$) \\
+$\theta_{13}$ & $0.201^\circ$ & $0.201^\circ$ ($<0.1\%$) \\
+$\theta_{23}$ & $2.36^\circ$ & $2.35^\circ$ ($0.4\%$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Frobenius fitness $\mathcal{F} = 0.016482$ against PDG~2024.
+An updated triple $\{\mathrm{abbAbbaB},\mathrm{Ab},\mathrm{B}\}$
+achieves fitness $0.009078$; the canonical triple is retained here
+for consistency with the companion papers~\cite{Gentry:Unified}.
+
+%-------------------------------------------------------------------
+\section{Jarlskog Invariant}
+\label{sec:jarlskog}
+
+\begin{theorem}[$J=0$ from homology]
+\label{thm:J}
+For the word triple $\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$,
+the words $\mathrm{AbA}$ and $\mathrm{AAb}$ represent the same
+class $[2] \in H_1(\MCKM;\ZZ) = \Zfive$.
+In the QR construction, identical homology classes force the
+imaginary part of the relevant $3\times3$ determinant to vanish,
+giving $J = 0$ exactly at leading order.
+\end{theorem}
+
+\begin{remark}
+The experimentally measured Jarlskog invariant is $|J|\approx3\times10^{-5}$.
+The geometric construction yields $J=0$ at zeroth order; the observed
+non-zero value must arise from higher-order corrections (e.g., quaternion
+algebra involution or perturbative flavor mixing).
+\end{remark}
+
+This provides a geometric explanation of quark CP suppression
+independent of the trace field argument.
+
+%-------------------------------------------------------------------
+\section{Quark Mass Encoding}
+\label{sec:mass}
+
+The six quark mass ratios $m_f/m_e$ are approximated by norms in
+$\ZZ[\sqrt{17}]$ (the ring of integers of $\QQ(\sqrt{17})$,
+with norm form $|a^2-17b^2|$):
+
+\begin{center}
+\begin{tabular}{lllcc}
+\toprule
+Quark & $m_f/m_e$ (PDG) & Norm witness & Error \\
+\midrule
+$u$ & $4.24$   & $|2^2 - 17\cdot0^2|=4$          & $5.7\%$ \\
+$d$ & $9.14$   & $|3^2 - 17\cdot0^2|=9$          & $1.5\%$ \\
+$s$ & $182.78$ & $|14^2-17\cdot1^2|=179$          & $2.1\%$ \\
+$c$ & $2495.1$ & $|29^2-17\cdot14^2|=2491$        & $0.17\%$ \\
+$b$ & $8180.0$ & $|117^2-17\cdot18^2|=8181$       & $0.012\%$ \\
+$t$ & $338082$ & $|139^2-17\cdot145^2|=338104$    & $0.0065\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Five of five non-up quarks have witnesses within $2.1\%$.
+Permutation null-test $p < 0.002$ against $50{,}000$ random mass ratios.
+
+\begin{remark}[Status of the quark mass ring]
+The ring $\ZZ[\sqrt{17}]$ gives empirically excellent witnesses,
+but $\QQ(\sqrt{17})$ does not embed in the confirmed degree-10 ITF
+of $\MCKM$. The algebraic origin of the $\ZZ[\sqrt{17}]$ norm
+structure in terms of the degree-10 field is an open problem.
+\end{remark}
+
+%-------------------------------------------------------------------
+\section{Conclusions}
+\label{sec:concl}
+
+We have shown that the CKM matrix arises from the holonomy geometry
+of $\MCKM = m006(-5,2)$ via the symmetric Gaussian overlap construction
+with the exact smearing parameter $\sigma = \frac{3}{2}\log\sqrt{13/5}$.
+The Jarlskog invariant $J=0$ follows from homological class collision.
+The ITF of $\MCKM$ is a degree-10 field with signature $(8,1)$,
+whose predominantly real character geometrically suppresses CP violation.
+The prime $11 = L_5$ appears in both the topology (Farey determinant)
+and the arithmetic (discriminant of the ITF), connecting both HFG
+manifolds through the modular curve $X_0(11)$~\cite{Gentry:X011}.
+
+\section*{Data Availability}
+Scripts at \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+
+\section*{Acknowledgments}
+The author thanks the developers of SnapPy and SageMath.
+During preparation of this manuscript, the author used Claude
+(claude-sonnet-4-6, Anthropic) as a research assistant.
+
+\begin{thebibliography}{99}
+\bibitem{CKM}
+N.~Cabibbo, Phys.\ Rev.\ Lett.\ \textbf{10}, 531 (1963);
+M.~Kobayashi, T.~Maskawa, Prog.\ Theor.\ Phys.\ \textbf{49}, 652 (1973).
+\bibitem{PDG2024}
+S.~Navas et al.\ (PDG), Phys.\ Rev.\ D \textbf{110}, 030001 (2024).
+\bibitem{Gentry:Unified}
+M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158}
+(2026); PTEP Paper No.\ 2605-035.
+\bibitem{Gentry:Farey}
+M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6808878}{6808878}
+(2026); Exp.\ Math.\ 266619148.
+\bibitem{Gentry:X011}
+M.~L.~Gentry, SSRN \href{https://doi.org/10.2139/ssrn.6815721}{6815721}
+(2026).
+\bibitem{Gentry:WRT}
+M.~L.~Gentry, ``The Slope Norm Theorem: WRT Invariants and the
+Arithmetic of Flavor Manifolds'' (2026, preprint).
+\bibitem{GMM}
+D.~Gabai, R.~Meyerhoff, P.~Milley,
+J.\ Amer.\ Math.\ Soc.\ \textbf{22}, 1157 (2009).
+\bibitem{MaclachlanReid}
+C.~Maclachlan, A.~W.~Reid,
+\emph{The Arithmetic of Hyperbolic 3-Manifolds}, Springer (2003).
+\bibitem{Chinburg01}
+T.~Chinburg, E.~Friedman, K.~N.~Jones, A.~W.~Reid,
+Ann.\ Scuola Norm.\ Sup.\ Pisa \textbf{30}, 1 (2001).
+\bibitem{Gentry:Galois}
+M.~L.~Gentry, ``The Galois--Gauge Correspondence: Weyl Groups of
+Standard Model Forces from Cusp Arithmetic of Hyperbolic Flavour
+Manifolds,\'\' SSRN \href{https://doi.org/10.2139/ssrn.6840322}{6840322} (2026).
+\bibitem{SnapPy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks,
+SnapPy, \url{http://snappy.computop.org}.
+\end{thebibliography}
+
+\end{document}

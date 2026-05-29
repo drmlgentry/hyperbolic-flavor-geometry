@@ -1,0 +1,342 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{authblk}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\ph}{\varphi}
+\newcommand{\Lk}{L_k}
+\newcommand{\logph}{\log\ph}
+
+\title{Lucas Numbers in the Geodesic Length Spectrum and\\
+Covering Tower Homology of a Compact Hyperbolic 3-Manifold}
+\author[1]{Marvin L.\ Gentry}
+\affil[1]{Independent Researcher, Seattle, WA\\
+\texttt{drmlgentry@protonmail.com} \quad ORCID: 0009-0006-4550-2663}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that the Lucas sequence $L_k = \ph^k + \ph^{-k}$,
+where $\ph = (1+\sqrt{5})/2$, governs two independent geometric
+structures of the closed hyperbolic 3-manifold
+$M = \texttt{m003}(-2,3)$ (\texttt{OrientableClosedCensus[1]},
+$\mathrm{vol} \approx 0.9814$, $H_1 \cong \mathbb{Z}/5$).
+
+\textbf{Theorem~1} (Lucas-geodesic bridge, proved exactly).
+For any loxodromic element $\gamma \in \pi_1(M)$,
+\[
+  \ell(\gamma) = 2k\log\varphi \;\Longleftrightarrow\;
+  |\mathrm{tr}(\rho(\gamma))| = L_k = \varphi^k + \varphi^{-k},
+\]
+where $\rho$ is the holonomy representation. This follows exactly
+from $|\mathrm{tr}| = 2\cosh(\ell/2)$ and the Binet formula.
+
+\textbf{Computational observation} (Primitivity obstruction).
+Up to degree~9, the prime $p=13$ does not appear as a torsion prime
+in any finite cover of $M$. The only observed torsion primes are
+$\{2,3,7,11,29\}$, all prime Lucas numbers. We conjecture this holds
+for all finite covers.
+
+\textbf{Conjecture} (Lucas-purity of the covering tower).
+Every prime dividing $|H_1(\tilde{M};\mathbb{Z})_{\mathrm{tors}}|$
+for any finite-sheeted orientable cover $\tilde{M} \to M$ is either
+$5$ or a prime Lucas number $\{2, 3, 7, 11, 29, 47, \ldots\}$.
+Verified computationally for all 24 covers up to degree~9.
+
+Secondary results: the companion manifold $\texttt{m006}(-5,2)$
+($H_1 \cong \mathbb{Z}/5$) contains geodesics of length $2k\log\varphi$
+for $k=1,2,3$ within $2\%$; Lucas-purity fails for control manifolds
+with $H_1 \not\cong \mathbb{Z}/5$.
+\end{abstract}
+
+\section{Introduction}
+
+The arithmetic topology program studied in
+\cite{gentry-ckm,gentry-pmns,gentry-cp,gentry-twist}
+proposes that Standard Model flavor parameters arise from the geometry
+of two compact hyperbolic 3-manifolds:
+\begin{align*}
+M_{\mathrm{PMNS}} &= \texttt{OrientableClosedCensus[1]},\quad
+  \mathrm{vol} = 0.98137,\quad H_1 \cong \mathbb{Z}/5,\\
+M_{\mathrm{CKM}}  &= \texttt{OrientableClosedCensus[43]},\quad
+  \mathrm{vol} = 2.02885,\quad H_1 \cong \mathbb{Z}/5.
+\end{align*}
+Both are Dehn fillings of the two smallest-volume cusped orientable
+hyperbolic 3-manifolds $m003(-2,3)$ and $m006(-5,2)$. Their
+holonomy representations $\rho\colon \pi_1(M) \to \mathrm{PSL}(2,\C)$
+have invariant trace field $\Q(\sqrt{-3})$~\cite{maclachlan-reid}.
+
+The fermion mass lattice~\cite{gentry-core} postulates that Standard
+Model fermion masses satisfy $m = m_e \cdot \ph^{q/4}$ for $q \in \Z$.
+The base $\ph$ is independently derived from the Mahler measure identity
+$\log M(\Delta_{m003}) = 2\logph$~\cite{gentry-jktr}.
+
+This raises a mystery: the trace field is $\Q(\sqrt{-3})$, yet the
+mass lattice involves $\ph \in \Q(\sqrt{5})$. How does $\Q(\sqrt{5})$
+appear in the geometry of $\Q(\sqrt{-3})$ manifolds?
+We resolve this through the Lucas sequence.
+
+\section{The Lucas Sequence and Geodesic Lengths}
+
+\begin{definition}[Lucas sequence]
+The \emph{Lucas sequence} is defined by $L_0 = 2$, $L_1 = 1$, and
+$L_k = L_{k-1} + L_{k-2}$ for $k \geq 2$. Equivalently,
+\begin{equation}
+  L_k = \ph^k + \ph^{-k}
+  \label{eq:lucas-binet}
+\end{equation}
+for all $k \in \Z$. The first values are
+$2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, \ldots$
+\end{definition}
+
+\begin{theorem}[Lucas--geodesic correspondence]
+\label{thm:lucas-geodesic}
+Let $M$ be a hyperbolic 3-manifold and $\gamma \in \pi_1(M)$ a
+loxodromic element with translation length $\ell > 0$. Then
+\begin{equation}
+  \ell = 2k\logph
+  \quad \Longleftrightarrow \quad
+  |\mathrm{tr}(\rho(\gamma))| = L_k = \ph^k + \ph^{-k}.
+  \label{eq:bridge}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For a loxodromic element, $|\mathrm{tr}(\gamma)| = 2\cosh(\ell/2)$.
+Substituting $\ell = 2k\logph$ gives
+$2\cosh(k\logph) = \ph^k + \ph^{-k} = L_k$
+by~\eqref{eq:lucas-binet}.
+Conversely, $|\mathrm{tr}| = L_k$ implies
+$\cosh(\ell/2) = L_k/2 = \cosh(k\logph)$,
+so $\ell = 2k\logph$. The algebra is exact.
+\end{proof}
+
+\begin{remark}[Geodesic spectrum of $M_{\mathrm{PMNS}}$]
+\label{rem:spectrum}
+The bridge theorem guarantees that \emph{if} $\ell = 2k\logph$ then
+$|\mathrm{tr}| = L_k$. For $M_{\mathrm{PMNS}} = \texttt{m003}(-2,3)$,
+the first twelve geodesic lengths satisfy
+$\ell/(2\logph) \in [0.60, 2.48]$ -- none are integers.
+The Lucas-purity of the covering tower (Conjecture~\ref{conj:lucas-purity})
+is therefore an independent topological phenomenon, not a direct
+corollary of the bridge theorem applied to short geodesics.
+\end{remark}
+
+\begin{remark}[Quarter-integer extension and unified notation]
+\label{rem:quarter}
+For $k \in \frac{1}{4}\Z$, the identity~\eqref{eq:bridge} still holds,
+with $L_k = \ph^k + \ph^{-k} \in \Q(\ph^{1/4})$.
+A geodesic with $\ell = (m/2)\logph$ ($m \in \Z$) has
+$|\mathrm{tr}| = L_{m/4}$.
+For the mass lattice $m = m_e \cdot \ph^{q/4}$, the corresponding
+geodesic length $\ell = (q/4)\logph$ gives $k = q/8$, so
+$|\mathrm{tr}| = L_{q/8}$ (an eighth-Lucas index).
+\end{remark}
+
+\section{The Prime Dictionary as Prime Lucas Numbers}
+
+\begin{theorem}[Prime dictionary $=$ prime Lucas numbers]
+\label{thm:lucas-dict}
+The prime torsion of the covering tower of $M_{\mathrm{PMNS}}$
+through degree~$9$ consists exactly of
+$\mathcal{P}' = \{2,3,7,11,29\} = \{L_0, L_2, L_4, L_5, L_7\}$.
+The prime $5$ enters via a distinct mechanism.
+The prime $13 = \|\mathbf{v}_{\mathrm{PMNS}}\|^2$ is not a Lucas number
+and does not appear in any cover up to degree~9.
+\end{theorem}
+
+\begin{proof}
+Computational verification through degree~9: 24 covers, 47 torsion
+group computations, zero violations. The identification follows from
+the Binet formula: $L_0=2$, $L_2=3$, $L_4=7$, $L_5=11$, $L_7=29$
+are all prime, and $13 \neq L_k$ for all $k \in \Z$.
+\end{proof}
+
+\begin{conjecture}[Lucas-purity]
+\label{conj:lucas-purity}
+Every prime dividing $|H_1(\tilde{M};\Z)_{\mathrm{tors}}|$ for any
+finite-sheeted orientable cover $\tilde{M} \to M_{\mathrm{PMNS}}$
+is either $5$ or a prime Lucas number.
+\end{conjecture}
+
+\begin{corollary}[Primitivity obstruction -- computational observation]
+\label{cor:primitivity}
+The prime $p = 13 = 2^2+3^2$ does not appear in any cover of
+$M_{\mathrm{PMNS}}$ up to degree~9, consistent with $13$ not being
+a Lucas number. A rigorous proof that this holds for all finite covers
+would require showing that every torsion prime equals $L_k$ for some
+closed geodesic; this connection is plausible but remains open.
+\end{corollary}
+
+\begin{remark}[Quantitative control computation]
+Lucas-purity is not generic. A scan of 73 fillings across 5 cusped
+manifolds (degree $\leq 6$) shows:
+\begin{center}
+\begin{tabular}{lrrc}
+\toprule
+Manifold & $N$ & mean max $p$ & \% Lucas-only \\
+\midrule
+$m003(-2,3)$ [deg.~9] & 1 & 29 & \textbf{100\%} \\
+$m006(-5,2)$ [deg.~7] & 1 & 11 & \textbf{100\%} \\
+$m004$  & 12 & 14.7 & 83\% \\
+$m007$  & 15 &  9.5 & 40\% \\
+$m009$  & 14 & 10.0 &  7\% \\
+$m010$  & 16 &  8.5 & 56\% \\
+$m015$  & 16 &  6.7 & 63\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+Non-Lucas primes $13, 17, 19, 23, 31$ appear in control fillings.
+Both flavor manifolds achieve 100\% Lucas-purity; no control exceeds
+83\% at degree~6.
+\end{remark}
+
+\section{Resolution of the Number Field Mystery}
+
+\begin{theorem}[Lucas bridge between $\Q(\sqrt{-3})$ and $\Q(\sqrt{5})$]
+\label{thm:bridge}
+Let $M$ be an arithmetic hyperbolic 3-manifold with invariant trace
+field $\Q(\sqrt{-3})$. If $\gamma \in \pi_1(M)$ is loxodromic with
+$|\mathrm{tr}(\rho(\gamma))| = L_k$ for some $k \in \frac{1}{4}\Z$,
+then
+\[
+  \ell(\gamma) = 2k\logph,
+\]
+a rational multiple of $\logph = \mathrm{Reg}(\Q(\sqrt{5}))$.
+\end{theorem}
+
+\begin{proof}
+Direct from Theorem~\ref{thm:lucas-geodesic}. The Lucas numbers
+$L_k$ are rational integers for $k \in \Z$ and algebraic integers
+in $\Q(\ph^{1/4})$ for $k \in \frac{1}{4}\Z \setminus \Z$.
+The inverse hyperbolic cosine forces $\ell = 2k\logph$ regardless
+of the trace field.
+\end{proof}
+
+\section{The Unified Framework}
+
+\begin{table}[h]
+\centering
+\caption{Lucas structure of the HFG framework.}
+\label{tab:unified}
+\begin{tabular}{lll}
+\toprule
+Object & Lucas expression & Role \\
+\midrule
+Fermion mass & $m = m_e\ph^{q/4}$, trace $L_{q/8}$ & Mass spectrum \\
+$\sigma_{\mathrm{opt}}$ & $\ell = \tfrac{3}{2}\logph$, $L_{3/4}=2.132$ & Gaussian width \\
+Prime dictionary & $\{L_0,L_2,L_4,L_5,L_7\}=\{2,3,7,11,29\}$ & Covering tower \\
+Geodesic spectrum & $\ell = \tfrac{m}{2}\logph$, $|\mathrm{tr}|=L_{m/4}$ & Length spectrum \\
+Mahler measure & $\log M(\Delta) = 2\logph$ & Knot invariant \\
+Regulator & $\mathrm{Reg}(\Q(\sqrt{5})) = \logph$ & Arithmetic \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+
+The Lucas sequence resolves the number-field mystery: absolute values
+of traces in the $\Q(\sqrt{-3})$ trace field land on Lucas integers
+in $\Z[\ph] \subset \Q(\sqrt{5})$, connecting the two fields via
+the arccosh formula without requiring their intersection.
+
+Three open directions: (1) a representation-theoretic proof that
+$\Q(\sqrt{-3})$ holonomy traces have Lucas absolute values; (2) an
+Ihara zeta function connection, since geodesic lengths $2k\logph$
+appear as zeros at $u = \ph^{-k}$; (3) the dynamical origin of the
+mass lattice.
+
+\paragraph{TQFT remark.}
+The identity $L_k = 2\cosh(k\logph)$ relates Lucas numbers to
+hyperbolic cosines and to Chebyshev polynomials of the first kind.
+In $\mathrm{SU}(2)$ Chern--Simons theory at level $r=3$ (Fibonacci
+anyons), $q = e^{2\pi i/5}$ gives $[2]_q = 2\cos(2\pi/5) = \ph-1$,
+not a Lucas number. The quantum dimensions involve trigonometric
+(not hyperbolic) cosines, so the analogy is formal rather than exact.
+Whether the Lucas-pure covering towers have a deeper connection to
+WRT invariants remains speculative and open.
+
+\section*{Data Availability}
+All computations use SnapPy~\cite{snappy} v3.3.2.
+Scripts: \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+
+\section*{Funding}
+This research received no external funding.
+
+\section*{Conflict of Interest}
+The author declares no conflicts of interest.
+
+\section*{Generative AI Disclosure}
+Claude and DeepSeek were used for \LaTeX{} formatting assistance
+and code debugging. All mathematical results were conceived, proved,
+and verified by the author.
+
+\begin{thebibliography}{99}
+
+\bibitem{gentry-ckm}
+M.~L.~Gentry,
+\textit{Quark Mixing from Hyperbolic Geometry},
+Results in Physics, submitted (2026). SSRN:10.2139/ssrn.6583550.
+
+\bibitem{gentry-pmns}
+M.~L.~Gentry,
+\textit{Lepton Mixing from the Borel Structure of Hyperbolic Holonomy},
+Results in Physics, submitted (2026). SSRN:10.2139/ssrn.6583553.
+
+\bibitem{gentry-cp}
+M.~L.~Gentry,
+\textit{CP Violation from A-Factor Twist Angles},
+Results in Physics, submitted (2026).
+
+\bibitem{gentry-twist}
+M.~L.~Gentry,
+\textit{Twist Angle Spectrum of Hyperbolic Holonomy},
+Nuclear Physics B, submitted (2026).
+
+\bibitem{gentry-core}
+M.~L.~Gentry,
+\textit{Hyperbolic Flavor Geometry: A Unified Framework},
+preprint (2026).
+
+\bibitem{gentry-jktr}
+M.~L.~Gentry,
+\textit{The Alexander Polynomial of the $(-2,3,7)$ Pretzel Knot
+and the Golden Ratio}, JKTR, submitted (2026).
+SSRN:10.2139/ssrn.6583549.
+
+\bibitem{gentry-covering}
+M.~L.~Gentry,
+\textit{Arithmetic of Dehn Filling Slopes and the Homology of
+the Flavor Covering Tower}, preprint (2026).
+
+\bibitem{maclachlan-reid}
+C.~Maclachlan and A.~W.~Reid,
+\textit{The Arithmetic of Hyperbolic 3-Manifolds},
+Springer (2003).
+
+\bibitem{snappy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks,
+\textit{SnapPy}, \url{http://snappy.computop.org}.
+
+\end{thebibliography}
+
+\end{document}

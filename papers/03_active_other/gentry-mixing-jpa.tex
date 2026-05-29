@@ -1,0 +1,361 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{authblk}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+
+\title{Discrete Mixing Operators from Boundary Sector Geometry}
+
+\author[1]{Marvin L. Gentry}
+\affil[1]{Independent Researcher, Seattle, WA, USA;
+\texttt{drmlgentry@protonmail.com};
+ORCID: 0009-0006-4550-2663}
+\date{\today}
+
+\begin{abstract}
+The CKM and PMNS flavor mixing matrices of the Standard Model
+lack a first-principles geometric origin.
+We show that if fermion flavors are associated with distinct boundary
+directions of a compact hyperbolic 3-manifold, the resulting mixing
+matrices are uniquely determined --- up to sector-local rephasings ---
+by the boundary configuration alone, and form a \emph{discrete} set
+in $\mathrm{U}(n)/(\mathrm{U}(1)^n\times\mathrm{U}(1)^n)$.
+Our main result (Theorem~\ref{thm:discrete}) establishes that no
+continuous deformation of physical parameters can produce continuous
+drift in any rephasing-invariant mixing observable.
+The construction is purely kinematic, requiring no dynamical input,
+and provides a model-independent structural constraint on any geometric
+theory of flavor mixing.
+In companion papers~\cite{Gentry:CKM,Gentry:PMNS}, this framework
+is applied to two specific arithmetic hyperbolic 3-manifolds,
+reproducing the observed CKM and PMNS mixing matrices with
+Frobenius fitness $0.016482$ and $0.005087$ respectively.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+The CKM quark mixing matrix~\cite{Cabibbo,KM} and the PMNS lepton
+mixing matrix~\cite{Maki,Pontecorvo} encode the mismatch between
+flavor and mass eigenstates. Despite their precise experimental
+determination~\cite{PDG2024}, their values have no derivation from
+the gauge structure of the Standard Model. Discrete flavor
+symmetries~\cite{AltarelliFeruglio}, extra dimensions, and
+string-inspired constructions~\cite{KingLuhn} have all been proposed,
+but a kinematic, model-independent explanation has been lacking.
+
+In this paper we take a minimal perspective: fermions are assigned
+to distinct boundary directions $\xi(f)\in S^2=\partial\mathbb{H}^3$
+of a compact hyperbolic 3-manifold $M=\mathbb{H}^3/\Gamma$.
+The mixing matrix between any two sectors arises as the overlap
+operator between the corresponding boundary-localized Hilbert
+subspaces. We prove that under a discrete assignment rule, the set
+of admissible mixing matrices is finite modulo rephasings ---
+so continuous drift in any rephasing-invariant observable is
+geometrically forbidden.
+
+This result is the kinematic foundation for the Hyperbolic Flavor
+Geometry (HFG) programme~\cite{Gentry:Unified}.
+In the companion CKM paper~\cite{Gentry:CKM}, the K-factor of the
+Iwasawa decomposition $\mathrm{PSL}(2,\mathbb{C})=KAN$ applied to
+the holonomy of $M_{\mathrm{CKM}}=m006(-5,2)$ gives Frobenius
+fitness $0.016482$ against PDG~2024 values.
+In the companion PMNS paper~\cite{Gentry:PMNS}, the N-factor (Borel)
+applied to $M_{\mathrm{PMNS}}=m003(-2,3)$ gives fitness $0.005087$
+--- the global minimum of the construction.
+The present paper provides the mathematical guarantee that these
+results are not accidents of continuous parameter tuning: the
+admissible mixing matrices form a discrete set.
+
+\section{Geometric Setup}
+
+Let $\Gamma$ be a torsion-free discrete group acting properly
+discontinuously and cocompactly on $\mathbb{H}^3$ by
+orientation-preserving isometries. The quotient $M=\mathbb{H}^3/\Gamma$
+is a compact oriented hyperbolic 3-manifold with boundary at
+infinity $S^2=\partial\mathbb{H}^3$.
+
+\begin{definition}[Boundary direction]
+A \emph{boundary direction} is a point $\xi\in S^2$.
+For $\gamma\in\Gamma$, the associated boundary direction is the
+ideal endpoint of the geodesic ray from a fixed basepoint $o\in\mathbb{H}^3$
+through $\gamma\cdot o$.
+\end{definition}
+
+\begin{assumption}[Discrete sector assignment]
+\label{ass:discrete}
+Each fermion flavor $f\in\mathcal{F}$ is assigned a unique boundary
+direction $\xi(f)\in S^2$ by a deterministic, discrete selection rule.
+The image $\Xi=\{\xi(f):f\in\mathcal{F}\}$ is finite, and the
+assignment is locally rigid: distinct flavors map to distinct
+directions, and small perturbations of the basepoint do not change
+the assignment class.
+\end{assumption}
+
+\begin{remark}[Geometric realization]
+A natural realization: for each flavor $f$, let $\gamma_f\in\Gamma$
+be the unique element minimizing $d(o,\gamma\cdot o)$ in the
+assignment class of $f$. Proper discontinuity of the action implies
+the orbit $\Gamma\cdot o$ is discrete, so the minimizer exists;
+torsion-freeness forces uniqueness. The boundary direction $\xi(f)$
+is then the ideal endpoint of the geodesic from $o$ through
+$\gamma_f\cdot o$. In the HFG application, $\gamma_f$ is a short
+word in $\pi_1(M)$ and $\xi(f)=\hat{n}(\gamma_f)$ is the
+geodesic axis direction extracted via the Pauli decomposition of
+$\log\rho(\gamma_f)$.
+\end{remark}
+
+\section{Boundary Hilbert Space and Sector Subspaces}
+
+Let $\mathcal{H}$ be a separable complex Hilbert space carrying
+boundary data (concretely, $L^2(S^2)$).
+
+\begin{definition}[Boundary-localized state]
+For each $\xi\in S^2$, fix a normalized vector $|\xi\rangle\in\mathcal{H}$
+such that $\xi\mapsto|\xi\rangle$ is continuous, $\langle\xi|\xi\rangle=1$,
+and $|\langle\xi|\zeta\rangle|<1$ for $\xi\neq\zeta$.
+An explicit family is the Poisson kernel:
+$|\xi\rangle\propto P(\cdot,\xi)$ normalized in $L^2(S^2)$,
+which satisfies all three conditions~\cite{Ratcliffe}.
+\end{definition}
+
+\begin{definition}[Sector and sector subspace]
+A \emph{sector} $S$ is a finite ordered subset of $\mathcal{F}$.
+The \emph{sector subspace} is
+$\mathcal{H}_S = \mathrm{span}\{|\xi(f)\rangle : f\in S\}\subset\mathcal{H}$,
+with $\dim\mathcal{H}_S=|S|$ (since distinct boundary directions give
+linearly independent states).
+The \emph{preferred ONB} $\{|S,1\rangle,\ldots,|S,n\rangle\}$ of
+$\mathcal{H}_S$ is the Gram-Schmidt orthonormalization of
+$(|\xi(f_1)\rangle,\ldots,|\xi(f_n)\rangle)$ with all pivot
+coefficients real and positive, removing the $\mathrm{U}(1)^n$
+phase ambiguity.
+\end{definition}
+
+\section{Mixing Matrices as Overlap Operators}
+
+\begin{definition}[Mixing matrix]
+For sectors $S$, $T$ of equal cardinality $n$, the
+\emph{mixing matrix} $U_{ST}$ is the $n\times n$ matrix with
+entries $(U_{ST})_{ji}=\langle T,j|S,i\rangle$.
+\end{definition}
+
+\begin{proposition}[Unitarity and geometric dependence]
+\label{prop:unitary}
+When $\mathcal{H}_S=\mathcal{H}_T$, $U_{ST}\in\mathrm{U}(n)$.
+In general it is a partial isometry.
+$U_{ST}$ is determined entirely by the finite boundary
+configuration $\Xi_{ST}=\{\xi(f):f\in S\cup T\}$ and the inner
+product on $\mathcal{H}$: all Gram-Schmidt coefficients are
+algebraic expressions in the inner products
+$\langle\xi(f)|\xi(g)\rangle$, $f,g\in S\cup T$.
+\end{proposition}
+
+\section{Rephasing Invariance}
+
+Physical observables are invariant under sector-local rephasings:
+$U_{ST}\to D_T U_{ST} D_S^\dagger$, where $D_S,D_T\in\mathrm{U}(1)^n$.
+The physical content is the equivalence class of $U_{ST}$ in
+$\mathrm{U}(n)/(\mathrm{U}(1)^n\times\mathrm{U}(1)^n)$.
+
+\begin{proposition}[Rephasing-invariant quantities]
+The following are invariant under sector-local rephasings:
+(i)~the moduli $|(U_{ST})_{ji}|^2$ (mixing probabilities);
+(ii)~the quartic products
+$J_{ji,j'i'}=(U_{ST})_{ji}(U_{ST})_{j'i'}(U_{ST})^*_{ji'}(U_{ST})^*_{j'i}$
+(generalizing the Jarlskog invariant~\cite{Jarlskog});
+(iii)~$\det(U_{ST})$ up to an overall phase.
+For $n=3$ and the standard CKM/PMNS conventions, $\mathrm{Im}(J_{ji,j'i'})$
+reduces to the standard Jarlskog invariant $J_{\mathrm{CP}}$.
+\end{proposition}
+
+\section{Discreteness and Stability}
+
+\begin{theorem}[Stability under deformations]
+\label{thm:stable}
+Let $\delta_{\min}=\min_{f\neq f'}d_{S^2}(\xi(f),\xi(f'))$ be the
+minimal pairwise separation of boundary directions, and set
+$\varepsilon_0=\delta_{\min}/2$.
+For any deformation of magnitude $\varepsilon\leq\varepsilon_0$
+(each $\xi(f)$ moved by at most $\varepsilon$ in the round metric
+on $S^2$), the perturbed configuration determines the same preferred
+bases and the same mixing matrix $U_{ST}$.
+\end{theorem}
+
+\begin{proof}
+For $\varepsilon\leq\varepsilon_0$, each perturbed point $\xi'(f)$
+remains closer to $\xi(f)$ than to any other $\xi(g)$, $g\neq f$,
+so the points remain distinct and carry the same labels.
+Linear independence is therefore preserved.
+The Gram-Schmidt coefficients depend continuously on the inner
+products $\langle\xi'(f)|\xi'(g)\rangle$, which vary continuously
+with $\varepsilon$; but the discrete assignment rule
+(Assumption~\ref{ass:discrete}) is unchanged since each $\xi'(f)$
+belongs to the same assignment class as $\xi(f)$.
+By Proposition~\ref{prop:unitary}, $U_{ST}$ depends only on the
+configuration class, which is unchanged.
+\end{proof}
+
+\begin{theorem}[Discreteness of mixing classes]
+\label{thm:discrete}
+Under Assumption~\ref{ass:discrete}, the set of accessible mixing
+matrices
+\[
+  \mathcal{M}_{ST}
+  = \{U_{ST} : \Xi_{ST}\ \text{admissible}\}
+\]
+is discrete (in fact finite) in
+$\mathrm{U}(n)/(\mathrm{U}(1)^n\times\mathrm{U}(1)^n)$.
+\end{theorem}
+
+\begin{proof}
+The set of admissible configurations $\Xi_{ST}$ is finite by
+Assumption~\ref{ass:discrete}.
+By Proposition~\ref{prop:unitary}, the map $\Xi_{ST}\mapsto U_{ST}$
+is continuous, hence maps a finite set to a finite set.
+Quotienting by the rephasing action (a continuous group action on a
+finite set) preserves finiteness.
+Thus $\mathcal{M}_{ST}$ is a finite, hence discrete, subset of
+$\mathrm{U}(n)/(\mathrm{U}(1)^n\times\mathrm{U}(1)^n)$.
+\end{proof}
+
+\begin{corollary}[No continuous drift]
+\label{cor:nodrift}
+For any continuous deformation of boundary directions of magnitude
+$\varepsilon\leq\varepsilon_0$, no continuous drift occurs in any
+rephasing-invariant mixing observable.
+For larger deformations that change the configuration class, the
+mixing matrix can change, but only by a discrete jump to another
+element of $\mathcal{M}_{ST}$.
+\end{corollary}
+
+\begin{proof}
+Rephasing-invariant observables are continuous functions on
+$\mathrm{U}(n)/(\mathrm{U}(1)^n\times\mathrm{U}(1)^n)$.
+Their restriction to the finite set $\mathcal{M}_{ST}$ takes only
+finitely many values; continuous drift is therefore impossible.
+\end{proof}
+
+\section{Connection to Hyperbolic Flavor Geometry}
+
+The abstract framework above is concretely realized in the HFG
+programme~\cite{Gentry:Unified} as follows.
+The group $\Gamma=\pi_1(M)$ acts on $\mathbb{H}^3$ via the
+holonomy representation $\rho:\pi_1(M)\to\mathrm{PSL}(2,\mathbb{C})$.
+For a loxodromic element $\gamma$, the boundary direction
+$\xi(\gamma)=\hat{n}(\gamma)\in S^2$ is the geodesic axis,
+extracted via the Pauli decomposition of $\log\rho(\gamma)$.
+The inner product $\langle\xi(f)|\xi(g)\rangle$ becomes the
+Gaussian kernel $\exp(-\theta_{fg}^2/(2\sigma^2))$, where
+$\theta_{fg}=\arccos|\hat{n}(f)\cdot\hat{n}(g)|$.
+
+For $M_{\mathrm{CKM}}=m006(-5,2)$ (OrientableClosedCensus[43],
+$H_1=\mathbb{Z}/5$, vol $=2.029$), the three-word sector
+$\{\mathrm{aaB},\mathrm{AbA},\mathrm{AAb}\}$ gives a mixing matrix
+with Frobenius fitness $0.016482$ against PDG~2024 CKM values,
+and Cabibbo angle error $0.19\%$.
+The homological class collision $[\mathrm{AbA}]=[\mathrm{AAb}]=2$
+in $H_1=\mathbb{Z}/5$ forces $J_{\mathrm{CP}}=0$ via
+Corollary~\ref{cor:nodrift} --- consistent with the observed
+suppression $|J_{\mathrm{CKM}}|\approx3\times10^{-5}$.
+
+For $M_{\mathrm{PMNS}}=m003(-2,3)$ (OrientableClosedCensus[1],
+$H_1=\mathbb{Z}/5$, vol $=0.981$), the Borel (lower-triangular)
+construction on the sector $\{\mathrm{aa},\mathrm{aaB},\mathrm{baa}\}$
+gives fitness $0.005087$ --- the global minimum of the construction,
+with $p<10^{-4}$ against $50{,}000$ Haar-random unitary matrices.
+The distinct homology classes $[\mathrm{aa}]=1$,
+$[\mathrm{aaB}]=4$, $[\mathrm{baa}]=3$ (all distinct mod~5)
+ensure $J_{\mathrm{CP}}\neq0$, consistent with the large leptonic
+CP violation observed.
+
+\section{Conclusions}
+
+We have shown that the discreteness of boundary directions in a
+compact hyperbolic 3-manifold implies the discreteness of all
+admissible mixing matrices modulo rephasings (Theorem~\ref{thm:discrete}),
+and that bounded deformations cannot produce continuous drift in
+physical observables (Theorem~\ref{thm:stable}, Corollary~\ref{cor:nodrift}).
+This provides a model-independent kinematic explanation for why
+the CKM and PMNS mixing matrices cannot vary continuously: they
+are selected from a discrete geometric set determined by the
+topology of the underlying manifold.
+
+\section*{Data Availability}
+No data were generated. Companion computational scripts are at
+\url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+
+\section*{Acknowledgments}
+The author thanks the developers of SnapPy and SageMath.
+
+\begin{thebibliography}{99}
+
+\bibitem{Cabibbo}
+N.~Cabibbo, Phys.\ Rev.\ Lett.\ \textbf{10}, 531 (1963).
+
+\bibitem{KM}
+M.~Kobayashi, T.~Maskawa,
+Prog.\ Theor.\ Phys.\ \textbf{49}, 652 (1973).
+
+\bibitem{Pontecorvo}
+B.~Pontecorvo, Sov.\ Phys.\ JETP \textbf{6}, 429 (1957).
+
+\bibitem{Maki}
+Z.~Maki, M.~Nakagawa, S.~Sakata,
+Prog.\ Theor.\ Phys.\ \textbf{28}, 870 (1962).
+
+\bibitem{PDG2024}
+S.~Navas et al.\ (PDG),
+Phys.\ Rev.\ D \textbf{110}, 030001 (2024).
+
+\bibitem{AltarelliFeruglio}
+G.~Altarelli, F.~Feruglio,
+Rev.\ Mod.\ Phys.\ \textbf{82}, 2701 (2010).
+
+\bibitem{KingLuhn}
+S.~F.~King, C.~Luhn,
+Rept.\ Prog.\ Phys.\ \textbf{76}, 056201 (2013).
+
+\bibitem{Jarlskog}
+C.~Jarlskog,
+Z.\ Phys.\ C \textbf{29}, 491 (1985).
+
+\bibitem{Ratcliffe}
+J.~G.~Ratcliffe,
+\textit{Foundations of Hyperbolic Manifolds}, Springer (2006).
+
+\bibitem{Gentry:CKM}
+M.~L.~Gentry,
+\textit{Quark Mixing from Hyperbolic Geometry},
+SSRN \href{https://doi.org/10.2139/ssrn.6583550}{6583550} (2026);
+submitted to J.\ Geom.\ Phys.\ (JGP13076).
+
+\bibitem{Gentry:PMNS}
+M.~L.~Gentry,
+\textit{Lepton Mixing from Borel Structure of Hyperbolic Holonomy},
+SSRN \href{https://doi.org/10.2139/ssrn.6583549}{6583549} (2026);
+submitted to Ann.\ Henri Poincar\'e (AHPO-D-26-00255).
+
+\bibitem{Gentry:Unified}
+M.~L.~Gentry,
+\textit{Hyperbolic Flavor Geometry},
+SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158} (2026);
+submitted to Phys.\ Rev.\ D (DS14327).
+
+\end{thebibliography}
+
+\end{document}
