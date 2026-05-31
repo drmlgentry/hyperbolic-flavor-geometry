@@ -1,84 +1,72 @@
-# Hyperbolic Flavor Geometry — Papers
+# Hyperbolic Flavor Geometry
 
-**Author:** Marvin L. Gentry  
-**Email:** drmlgentry@protonmail.com  
-**ORCID:** 0009-0006-4550-2663  
-**Last updated:** May 17, 2026
+Computational framework for the **Hyperbolic Flavour Geometry (HFG)** programme — deriving Standard Model flavor parameters (CKM/PMNS mixing matrices, CP violation, fermion masses) from the arithmetic geometry of compact hyperbolic 3-manifolds.
 
-## Active Submission Portfolio
+## Key Results
 
-| ID | Journal | Title | Status |
-|---|---|---|---|
-| DS14327 | PRD | Unified HFG | With editors |
-| PLB-D-26-01341 | PLB | CP phase (twist angles) | With editor |
-| PLB-D-26-01006 | PLB | Charge conjugation | Under review |
-| AHPO-D-26-00255 | AHP | PMNS mixing | New submission |
-| AHPO-D-26-00231 | AHP | CP holonomy | New submission |
-| JGP13076 | JGP | CKM mixing | Submitted |
-| TRGR-D-26-00059 | Trieste | Discrete mixing | Editor assigned |
-| JMP26-AR-01272 | JMP | Qubit gates | Active |
-
-## Final Paper Files (May 17, 2026)
-
-### Core HFG Papers
-
-| File | Description | Submitted to |
+| Result | Manifold | Accuracy |
 |---|---|---|
-| `hfg-unified/gentry-hfg-unified.tex` | Unified HFG (all 4 pillars) | PRD DS14327 |
-| `hyperbolic-flavor-ckm-v2/gentry-ckm-final.tex` | CKM matrix from m006 | JGP JGP13076 |
-| `hyperbolic-flavor-pmns/gentry-pmns-final.tex` | PMNS matrix from m003 | AHP AHPO-D-26-00255 |
-| `hyperbolic-flavor-cp-v2/gentry-cp-final.tex` | CP phase from twist angles | PLB PLB-D-26-01341 |
+| PMNS lepton mixing | m003(-2,3) = Meyerhoff manifold | fitness 0.005087 |
+| CKM quark mixing | m006(-5,2) | fitness 0.016482 |
+| CP phase δ = 195.91° | holonomy of m003 | 0.55% vs PDG 197.0° |
+| m_μ/m_e = 208 | Eisenstein norm N(16+12ω) | 0.59% |
+| m_τ/m_e = 3477 | Eisenstein norm N(68+37ω) | 0.006% |
+| Galois–Weyl: Gal(m003)=Z/2=Weyl(SU(2)) | cusp field x²-x+1 | exact |
+| Galois–Weyl: Gal(m006)=S3=Weyl(SU(3)) | cusp field x³+2x+1 | exact |
+| Galois–Weyl: Gal(m019)=S4=Weyl(SU(4)) | cusp field x⁴-x-1 | exact |
+| Dual surgery: m003(-2,3) = m019(2,1) | Meyerhoff manifold | 15 sig. figs. |
+| Delta invariant δ(m019)=12, δ(m178)=34 | disc=-283 cusp field | exact |
+| Lucas trace: 2cosh(2m·log φ) = L_{2m} | golden ratio identity | exact |
 
-### Figures
+## Canonical Manifolds
 
-| File | Description |
-|---|---|
-| `hyperbolic-flavor-ckm-v2/ckm_combined_figure.pdf` | CKM sphere + triangle |
+- **m003** — SU(2) cusped parent, trace field Q(√-3), cusp shape e^{iπ/3}
+- **m006** — SU(3) cusped parent, trace field Q(√-59), cusp shape satisfies x³+2x+1
+- **m019** — SU(4) cusped parent, trace field Q(√-283), cusp shape satisfies x⁴-x-1
+- **m003(-2,3)** = **m019(2,1)** — Meyerhoff manifold M_PMNS (minimum-volume closed hyperbolic 3-manifold)
+- **m006(-5,2)** — M_CKM
 
-## Canonical Numerical Values
+## Reproduction
 
-All values verified against `hfg_reproduce.py` ground truth output.
+Requires [SnapPy](http://snappy.computop.org) and [SageMath](https://www.sagemath.org).
 
-**PMNS (m003(-2,3), OrientableClosedCensus[1]):**
-- Borel fitness: **0.005087** (global minimum, 15 word triples all agree)
-- CP phase: **195.91°** (PDG 197.0°, 0.55% error, zero free parameters)
-- Trace field: **ℚ(√−3)** imaginary quadratic
-- Lepton norms: μ→208 (0.59%), τ→3477 (0.006%) in ℤ[ω]
-- Tower: {2,3,11} = {L₀,L₂,L₅} through degree 19
-
-**CKM (m006(-5,2), OrientableClosedCensus[43]):**
-- Gaussian fitness: **0.016482** (σ=0.49 fixed)
-- Cabibbo angle error: **0.19%**
-- Trace field: **ℚ(√17)** real quadratic, tr(ρ(aa))=3−√17
-- Quark norms: all 6 in ℤ[√17], p<0.002
-- Tower: {11} = {L₅} through degree 19
-
-**Note on covering tower:** The earlier claim {2,3,7,11,29} was a
-conflation with the geodesic length spectrum (SU paper). Verified
-covering tower torsion primes through degree 19: {2,3,11} (PMNS)
-and {11} (CKM). Primes 7 and 29 do not appear through degree 19.
-
-## Reproducibility
-
-All results reproducible via:
-```bash
-conda run -n sage python hfg_reproduce.py
+```python
+# Verify dual surgery
+import snappy
+M1 = snappy.Manifold("m003(-2,3)")
+M2 = snappy.Manifold("m019(2,1)")
+print(M1.volume())   # 0.9813688289...
+print(M2.volume())   # 0.9813688289...
+print(M1.is_isometric_to(M2))  # True
 ```
 
-Full verification suite in `hyperbolic-flavor-scan` repository.
+Canonical reproduction script: `hyperbolic-flavor-scan/hfg_reproduce.py`
 
-## SSRN Preprints
+**Note:** Always use `OrientableClosedCensus[1]` (PMNS) and `OrientableClosedCensus[43]` (CKM) by index in SnapPy. Do not load by name string "m006" (two distinct census manifolds share that name).
 
-| SSRN ID | Title |
+## Papers (preprints on SSRN)
+
+| SSRN | Title |
 |---|---|
-| 6775158 | Unified HFG (submitted May 16 2026) |
-| 6583550 | CKM mixing |
-| 6583549 | PMNS mixing |
-| 6583553 | CP A-factor |
-| 6754501 | Lucas structure (needs correction: tower primes) |
-| 6761981 | Covering tower |
+| [6775158](https://ssrn.com/abstract=6775158) | Unified HFG framework |
+| [6840322](https://ssrn.com/abstract=6840322) | Galois–Gauge correspondence (SU(2), SU(3), SU(4)) |
+| [6840418](https://ssrn.com/abstract=6840418) | Lepton masses as BPS states on X₀(11) |
+| [6845778](https://ssrn.com/abstract=6845778) | Dual surgery / Pati-Salam (Proc. AMS submitted) |
+| [6851440](https://ssrn.com/abstract=6851440) | Delta invariant for disc=-283 manifolds (AGT submitted) |
+| [6854378](https://ssrn.com/abstract=6854378) | Lucas trace identity (MRL submitted) |
 
-## arXiv
+## Python Package
 
-Endorsement code obtained (SIQ). Endorsement request sent to Kofman
-(May 2026). Second endorsement request pending.
+[![PyPI](https://img.shields.io/pypi/v/latticefit)](https://pypi.org/project/latticefit/)
+
+```bash
+pip install latticefit
+```
+
+LatticeFit v0.2.0: scan hyperbolic manifold holonomy for flavor parameter fitness.
+
+## Author
+
+Marvin L. Gentry — Independent Researcher, Seattle WA  
+ORCID: [0009-0006-4550-2663](https://orcid.org/0009-0006-4550-2663)  
+Email: drmlgentry@protonmail.com
