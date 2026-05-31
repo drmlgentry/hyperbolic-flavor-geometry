@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyperbolic Flavour Geometry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #f7f4ef;
+  --accent: #8b2020;
+  --muted: #6b6460;
+  --rule: #d4cfc8;
+  --code-bg: #eeebe4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ── Header ── */
+header {
+  border-bottom: 2px solid var(--ink);
+  padding: 2.5rem 0 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+header::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0 auto 1.5rem;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+}
+
+nav {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+nav a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── Layout ── */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+section:last-child { border-bottom: none; }
+
+h2 {
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 1.5rem 0 0.5rem;
+}
+
+p { margin-bottom: 1rem; }
+
+/* ── Hero ── */
+.hero {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero-statement {
+  font-size: 1.45rem;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--ink);
+  border-left: 3px solid var(--accent);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* ── Results table ── */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin: 1.5rem 0;
+}
+
+.results-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.results-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.results-table tr:hover td { background: var(--code-bg); }
+
+.acc { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+.exact { color: #2a5e2a; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+
+/* ── Manifold cards ── */
+.manifold-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.manifold-card {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  padding: 1.2rem;
+  border-top: 3px solid var(--accent);
+}
+
+.manifold-card .name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.manifold-card .role {
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.manifold-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+  color: var(--ink);
+}
+
+/* ── Papers ── */
+.paper-list { list-style: none; }
+
+.paper-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.paper-list li:last-child { border-bottom: none; }
+
+.paper-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding-top: 0.15rem;
+}
+
+.paper-title {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.paper-title a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.2s;
+}
+
+.paper-title a:hover { border-color: var(--accent); color: var(--accent); }
+
+.paper-venue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.paper-status {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.25rem;
+}
+
+.status-review { background: #e8f0e8; color: #2a5e2a; }
+.status-check  { background: #f0ece8; color: #8b4010; }
+.status-preprint { background: var(--code-bg); color: var(--muted); }
+
+/* ── Code block ── */
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 1.2rem 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 1.2rem 0;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 2rem 0 3rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+footer a { color: var(--muted); }
+
+/* ── Theorem box ── */
+.theorem {
+  border: 1px solid var(--ink);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.theorem::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -0.6rem;
+  left: 1rem;
+  background: var(--paper);
+  padding: 0 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.math {
+  font-style: italic;
+  font-family: 'EB Garamond', serif;
+}
+
+@media (max-width: 600px) {
+  .manifold-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.9rem; }
+  .paper-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .paper-venue { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Hyperbolic Flavour Geometry</h1>
+    <p class="subtitle">Standard Model flavor parameters from arithmetic hyperbolic 3-manifolds</p>
+    <nav>
+      <a href="#results">Results</a>
+      <a href="#manifolds">Manifolds</a>
+      <a href="#theorems">Theorems</a>
+      <a href="#papers">Papers</a>
+      <a href="#reproduce">Reproduce</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero" id="about">
+    <p>
+      The <strong>Hyperbolic Flavour Geometry (HFG)</strong> programme proposes that the
+      flavor structure of the Standard Model — the mixing matrices, CP phases, and mass
+      hierarchies of quarks and leptons — arises from the arithmetic geometry of compact
+      hyperbolic 3-manifolds.
+    </p>
+    <p class="hero-statement">
+      The unique minimum-volume closed hyperbolic 3-manifold encodes the PMNS lepton
+      mixing matrix. Its volume is 0.9814. It is the most rigid geometric object of its
+      kind. It is not adjusted to fit the data.
+    </p>
+    <p>
+      Three cusped manifolds — <span class="math">m003</span>, <span class="math">m006</span>,
+      <span class="math">m019</span> — have cusp-shape Galois groups isomorphic to the Weyl
+      groups of SU(2), SU(3), and SU(4): the gauge groups of the Standard Model.
+      This identification is exact and requires no free parameters.
+    </p>
+  </section>
+
+  <!-- Key Results -->
+  <section id="results">
+    <h2>Key Numerical Results</h2>
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Result</th>
+          <th>Manifold</th>
+          <th>Value</th>
+          <th>Accuracy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PMNS lepton mixing</td>
+          <td><span class="acc">m003(-2,3)</span></td>
+          <td>fitness 0.005087</td>
+          <td><span class="exact">global min</span></td>
+        </tr>
+        <tr>
+          <td>CKM quark mixing</td>
+          <td><span class="acc">m006(-5,2)</span></td>
+          <td>fitness 0.016482</td>
+          <td><span class="acc">0 free params</span></td>
+        </tr>
+        <tr>
+          <td>CP phase δ = 195.91°</td>
+          <td><span class="acc">m003</span> holonomy</td>
+          <td>PDG: 197.0°</td>
+          <td><span class="acc">0.55%</span></td>
+        </tr>
+        <tr>
+          <td>m<sub>μ</sub>/m<sub>e</sub> = 206.77</td>
+          <td>N(16+12ω) = 208</td>
+          <td>Eisenstein norm</td>
+          <td><span class="acc">0.59%</span></td>
+        </tr>
+        <tr>
+          <td>m<sub>τ</sub>/m<sub>e</sub> = 3477</td>
+          <td>N(68+37ω) = 3477</td>
+          <td>Eisenstein norm</td>
+          <td><span class="exact">0.006%</span></td>
+        </tr>
+        <tr>
+          <td>Gal(m003) = Z/2 = Weyl(SU(2))</td>
+          <td>cusp field x²−x+1</td>
+          <td>disc = −3</td>
+          <td><span class="exact">exact</span></td>
+        </tr>
+        <tr>
+          <td>Gal(m006) = S₃ = Weyl(SU(3))</td>
+          <td>cusp field x³+2x+1</td>
+          <td>disc = −59</td>
+          <td><span class="exact">exact</span></td>
+        </tr>
+        <tr>
+          <td>Gal(m019) = S₄ = Weyl(SU(4))</td>
+          <td>cusp field x⁴−x−1</td>
+          <td>disc = −283</td>
+          <td><span class="exact">exact</span></td>
+        </tr>
+        <tr>
+          <td>Dual surgery identity</td>
+          <td>m003(−2,3) = m019(2,1)</td>
+          <td>M<sub>PMNS</sub></td>
+          <td><span class="exact">15 sig. figs.</span></td>
+        </tr>
+        <tr>
+          <td>Delta invariant δ(m019) = 12</td>
+          <td>disc=−283 cusp field</td>
+          <td>|H₁(M(π*))| = δ(M)</td>
+          <td><span class="exact">exact</span></td>
+        </tr>
+        <tr>
+          <td>Lucas trace: 2cosh(2m·log φ) = L<sub>2m</sub></td>
+          <td>golden ratio identity</td>
+          <td>integer Wilson loops</td>
+          <td><span class="exact">exact</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Canonical Manifolds -->
+  <section id="manifolds">
+    <h2>Canonical Manifolds</h2>
+    <div class="manifold-grid">
+      <div class="manifold-card">
+        <div class="name">m003</div>
+        <div class="role">SU(2) parent</div>
+        <p>Cusp shape τ = e<sup>iπ/3</sup></p>
+        <p>Trace field ℚ(√−3)</p>
+        <p>Gal ≅ ℤ/2 = Weyl(SU(2))</p>
+        <p>Filling m003(−2,3) = M<sub>PMNS</sub></p>
+      </div>
+      <div class="manifold-card">
+        <div class="name">m006</div>
+        <div class="role">SU(3) parent</div>
+        <p>Cusp shape satisfies x³+2x+1</p>
+        <p>Disc = −59 (inert in ℤ[ω])</p>
+        <p>Gal ≅ S₃ = Weyl(SU(3))</p>
+        <p>Filling m006(−5,2) = M<sub>CKM</sub></p>
+      </div>
+      <div class="manifold-card">
+        <div class="name">m019</div>
+        <div class="role">SU(4) parent</div>
+        <p>Cusp shape satisfies x⁴−x−1</p>
+        <p>Disc = −283 (splits in ℤ[ω])</p>
+        <p>Gal ≅ S₄ = Weyl(SU(4))</p>
+        <p>Filling m019(2,1) = M<sub>PMNS</sub></p>
+      </div>
+    </div>
+    <p>
+      The dual surgery identity <span class="math">m003(−2,3) = m019(2,1)</span> means
+      the Meyerhoff manifold M<sub>PMNS</sub> is the unique closed hyperbolic 3-manifold
+      arising as a Dehn filling of two arithmetically independent cusped parents. Their
+      compositum has Galois group S₄ × ℤ/2 = Weyl(SU(4) × SU(2)<sub>L</sub>),
+      the Weyl group of the left-handed Pati–Salam gauge sector.
+    </p>
+  </section>
+
+  <!-- Theorems -->
+  <section id="theorems">
+    <h2>Proved Results</h2>
+
+    <div class="theorem" data-label="Theorem — Galois–Weyl Trichotomy">
+      The cusp-shape Galois groups of m003, m006, m019 are isomorphic to
+      Weyl(SU(2)), Weyl(SU(3)), Weyl(SU(4)) respectively. All computations
+      performed at 300-bit precision in SnapPy and Sage; residuals below 10<sup>−85</sup>.
+    </div>
+
+    <div class="theorem" data-label="Theorem — Dual Surgery">
+      m003(−2,3) = m019(2,1) = M<sub>PMNS</sub>.
+      Verified by SnapPy to 15 significant figures via volume identity and
+      explicit isometry check.
+    </div>
+
+    <div class="theorem" data-label="Theorem — Peripheral Determinant Invariant">
+      For a one-cusped manifold M with cusp field disc = −283 and longitude (a,b),
+      define δ(M) = min(|6a−19b|, |13a+6b|, |13b−19a|). If H₁(M;ℤ) ≅ ℤ
+      (torsion-free), then |H₁(M(π*);ℤ)| = δ(M) exactly, where π* is the
+      minimising Eisenstein orbit element.
+    </div>
+
+    <div class="theorem" data-label="Theorem — Lucas Trace Identity">
+      2·cosh(2m·log φ) = L<sub>2m</sub> for all integers m ≥ 1,
+      where φ = (1+√5)/2 and L<sub>k</sub> is the k-th Lucas number.
+      Closed geodesics of length 4m·log φ have integer holonomy traces
+      equal to Lucas numbers, contributing integer Wilson loops in
+      Chern–Simons theory.
+    </div>
+  </section>
+
+  <!-- Papers -->
+  <section id="papers">
+    <h2>Publications &amp; Preprints</h2>
+    <ul class="paper-list">
+      <li>
+        <span class="paper-num">01</span>
+        <span class="paper-title">
+          <a href="https://ssrn.com/abstract=6845778">The Meyerhoff Manifold as a Dehn Filling of Two Arithmetically Independent Cusped Parents</a>
+          <br><span class="paper-status status-review">Proc. AMS — under review</span>
+        </span>
+        <span class="paper-venue">SSRN 6845778</span>
+      </li>
+      <li>
+        <span class="paper-num">02</span>
+        <span class="paper-title">
+          <a href="https://ssrn.com/abstract=6851440">A Peripheral Determinant Invariant for Hyperbolic 3-Manifolds with Quartic Cusp Field of Discriminant −283</a>
+          <br><span class="paper-status status-review">AGT — under review</span>
+        </span>
+        <span class="paper-venue">SSRN 6851440</span>
+      </li>
+      <li>
+        <span class="paper-num">03</span>
+        <span class="paper-title">
+          <a href="https://ssrn.com/abstract=6854378">Lucas Numbers as Geodesic Holonomy Traces in Hyperbolic 3-Manifolds</a>
+          <br><span class="paper-status status-review">MRL — under review</span>
+        </span>
+        <span class="paper-venue">SSRN 6854378</span>
+      </li>
+      <li>
+        <span class="paper-num">04</span>
+        <span class="paper-title">
+          <a href="https://ssrn.com/abstract=6840322">Galois Groups of Cusp Shapes and Weyl Groups of SU(2), SU(3), SU(4)</a>
+          <br><span class="paper-status status-check">CNTP — pending submission</span>
+        </span>
+        <span class="paper-venue">SSRN 6840322</span>
+      </li>
+      <li>
+        <span class="paper-num">05</span>
+        <span class="paper-title">
+          <a href="https://ssrn.com/abstract=6840418">Lepton Masses as BPS States of a Class S Theory on X₀(11)</a>
+          <br><span class="paper-status status-review">LMP — under review</span>
+        </span>
+        <span class="paper-venue">SSRN 6840418</span>
+      </li>
+      <li>
+        <span class="paper-num">06</span>
+        <span class="paper-title">
+          <a href="https://submission.springernature.com">A Quadratic Cover Prime Formula for a Farey Tower of Arithmetic Hyperbolic 3-Manifolds</a>
+          <br><span class="paper-status status-check">Geometriae Dedicata — technical check</span>
+        </span>
+        <span class="paper-venue">GD submission</span>
+      </li>
+      <li>
+        <span class="paper-num">07</span>
+        <span class="paper-title">
+          <a href="https://ssrn.com/abstract=6775158">Hyperbolic Flavour Geometry — Unified Framework</a>
+          <br><span class="paper-status status-preprint">Preprint</span>
+        </span>
+        <span class="paper-venue">SSRN 6775158</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Reproduce -->
+  <section id="reproduce">
+    <h2>Reproduce</h2>
+    <p>
+      All results are reproducible using
+      <a href="http://snappy.computop.org">SnapPy</a> and
+      <a href="https://www.sagemath.org">SageMath</a>.
+      Source code and scan data are available on GitHub.
+    </p>
+    <pre>
+import snappy
+
+# Verify dual surgery identity
+M1 = snappy.Manifold("m003(-2,3)")
+M2 = snappy.Manifold("m019(2,1)")
+print(M1.volume())              # 0.9813688289...
+print(M2.volume())              # 0.9813688289...
+print(M1.is_isometric_to(M2))   # True
+
+# Verify Galois–Weyl correspondence
+# m003: cusp poly x^2 - x + 1, disc = -3, Gal = Z/2
+# m006: cusp poly x^3 + 2x + 1, disc = -59, Gal = S3
+# m019: cusp poly x^4 - x - 1, disc = -283, Gal = S4</pre>
+    <p>
+      <strong>Note:</strong> Always use <code>OrientableClosedCensus[1]</code> (M<sub>PMNS</sub>)
+      and <code>OrientableClosedCensus[43]</code> (M<sub>CKM</sub>) by index in SnapPy.
+      Two distinct census manifolds share the name "m006".
+    </p>
+    <p style="margin-top:1.5rem;">
+      → <a href="https://github.com/drmlgentry/hyperbolic-flavor-scan">github.com/drmlgentry/hyperbolic-flavor-scan</a><br>
+      → <a href="https://github.com/drmlgentry/hyperbolic-flavor-geometry">github.com/drmlgentry/hyperbolic-flavor-geometry</a><br>
+      → <a href="https://pypi.org/project/latticefit/">PyPI: latticefit</a>
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    Marvin L. Gentry — Independent Researcher, Seattle WA —
+    <a href="mailto:drmlgentry@protonmail.com">drmlgentry@protonmail.com</a> —
+    ORCID <a href="https://orcid.org/0009-0006-4550-2663">0009-0006-4550-2663</a>
+  </div>
+</footer>
+
+</body>
+</html>
