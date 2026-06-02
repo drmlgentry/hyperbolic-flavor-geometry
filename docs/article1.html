@@ -128,9 +128,9 @@ canvas{display:block;}
 .manifold-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2.5rem 0;}
 .mf-card{background:var(--deep);border:1px solid var(--rule);overflow:hidden;border-top:2px solid var(--gold);}
 .mf-card canvas{display:block;width:100%;}
-.mf-info{padding:1rem 1.2rem;border-top:1px solid var(--rule);}
-.mf-name{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--gold);}
-.mf-data{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);line-height:2;margin-top:.4rem;}
+.mf-info{padding:1.6rem 1.6rem;border-top:1px solid var(--rule);min-height:160px;}
+.mf-name{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--gold);margin-bottom:.6rem;}
+.mf-data{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);line-height:2.1;margin-top:.5rem;}
 
 /* DIVIDER */
 hr{border:none;border-top:1px solid var(--rule);margin:4rem 0;}
@@ -656,7 +656,7 @@ drawManifold('mfCanvas2','#4ecdc4','M_CKM');
   function draw(){
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle='#0d0d1a';ctx.fillRect(0,0,W,H);
-    const cx=W*.38,cy=H*.5,scale=Math.min(W,H)*.26;
+    const cx=W*.18,cy=H*.78,scale=Math.min(W,H)*.42;
 
     // Grid
     ctx.strokeStyle='rgba(255,255,255,.04)';ctx.lineWidth=.5;
@@ -730,31 +730,31 @@ drawManifold('mfCanvas2','#4ecdc4','M_CKM');
     ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
 
     // Right panel info
-    const px2=W*.72,py2=H*.08,pw=W*.26,ph=H*.84;
+    const px2=W*.66,py2=H*.05,pw=W*.32,ph=H*.9;
     ctx.fillStyle='rgba(201,168,76,.06)';ctx.fillRect(px2,py2,pw,ph);
     ctx.strokeStyle='rgba(201,168,76,.25)';ctx.lineWidth=1;ctx.strokeRect(px2,py2,pw,ph);
 
     const lines=[
-      ['rgba(201,168,76,1)','12px','K = ℚ(w)'],
-      ['rgba(255,255,255,.4)','10px','w⁴ = w + 1'],
+      ['rgba(201,168,76,1)','14px','K = ℚ(w)'],
+      ['rgba(255,255,255,.4)','12px','w⁴ = w + 1'],
       ['','',''],
-      ['rgba(201,168,76,.8)','10px','u₁ = 1 − w³'],
-      ['rgba(255,255,255,.5)','10px','fundamental unit'],
-      ['rgba(255,255,255,.3)','9px','norm(u₁) = −1'],
+      ['rgba(201,168,76,.8)','12px','u₁ = 1 − w³'],
+      ['rgba(255,255,255,.5)','12px','fundamental unit'],
+      ['rgba(255,255,255,.3)','11px','norm(u₁) = −1'],
       ['','',''],
-      ['#4ecdc4','11px','D(w³)·=·D(−w)·=·D(w⁻⁴)'],
-      ['rgba(255,255,255,.8)','13px','= vol(M_PMNS)'],
-      ['rgba(201,168,76,.7)','9px','verified to 2×10⁻⁵¹'],
+      ['#4ecdc4','13px','D(w³)·=·D(−w)·=·D(w⁻⁴)'],
+      ['rgba(255,255,255,.8)','16px','= vol(M_PMNS)'],
+      ['rgba(201,168,76,.7)','11px','verified to 2×10⁻⁵¹'],
       ['','',''],
-      ['rgba(232,67,147,.9)','10px','w³·(−w)·w⁻⁴ = −1'],
-      ['rgba(255,255,255,.4)','9px','exact product identity'],
+      ['rgba(232,67,147,.9)','13px','w³·(−w)·w⁻⁴ = −1'],
+      ['rgba(255,255,255,.4)','11px','exact product identity'],
     ];
     let ly=py2+22;
     lines.forEach(([color,size,text])=>{
       if(!text){ly+=10;return;}
       ctx.fillStyle=color;ctx.font=`${size} JetBrains Mono`;
       ctx.fillText(text,px2+12,ly);
-      ly+=parseInt(size)+8;
+      ly+=parseInt(size)+11;
     });
 
     t++;requestAnimationFrame(draw);
