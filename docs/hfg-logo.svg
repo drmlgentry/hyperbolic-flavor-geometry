@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+<defs>
+  <clipPath id="disk"><circle cx="200" cy="185" r="155"/></clipPath>
+</defs>
+
+<!-- Dark background -->
+<rect width="400" height="400" rx="12" fill="#07070f"/>
+<circle cx="200" cy="185" r="155" fill="#0d0d1a"/>
+
+<!-- Geodesic arcs — gold family 1 -->
+<g clip-path="url(#disk)" stroke="#c9a84c" stroke-width="1.4" fill="none">
+  <path d="M 77 107 Q 200 178 323 107" opacity="0.65"/>
+  <path d="M 77 263 Q 200 192 323 263" opacity="0.65"/>
+  <path d="M 107 54 Q 178 185 107 316" opacity="0.55"/>
+  <path d="M 293 54 Q 222 185 293 316" opacity="0.55"/>
+  <path d="M 45 185 Q 168 158 200 30" opacity="0.5"/>
+  <path d="M 355 185 Q 232 212 200 340" opacity="0.5"/>
+  <path d="M 45 185 Q 168 212 200 340" opacity="0.45"/>
+  <path d="M 355 185 Q 232 158 200 30" opacity="0.45"/>
+</g>
+
+<!-- Geodesic arcs — cyan family 2 -->
+<g clip-path="url(#disk)" stroke="#4ecdc4" stroke-width="0.9" fill="none" opacity="0.35">
+  <path d="M 90 120 Q 200 182 310 250"/>
+  <path d="M 90 250 Q 200 188 310 120"/>
+  <path d="M 120 90 Q 182 200 250 310"/>
+  <path d="M 120 310 Q 182 200 250 90"/>
+</g>
+
+<!-- φ-spaced orbit dots: positions at angles 90°, 210°, 330° radius φ×60 ≈ 97 -->
+<!-- z_A = w^3: angle 90°+18° = 108° from center -->
+<circle cx="230" cy="124" r="7" fill="#c9a84c"/>
+<!-- z_B = -w: angle 108°+137.5° (golden angle) = 245.5° -->
+<circle cx="155" cy="235" r="7" fill="#ffd700"/>
+<!-- z_S = w^-4: angle 245.5°+137.5° = 383° = 23° -->
+<circle cx="253" cy="175" r="7" fill="#c9a84c" opacity="0.85"/>
+
+<!-- Orbit triangle arcs -->
+<g stroke="#c9a84c" stroke-width="1.1" fill="none" opacity="0.55">
+  <path d="M 230 124 Q 192 148 155 235"/>
+  <path d="M 155 235 Q 204 205 253 175"/>
+  <path d="M 253 175 Q 241 149 230 124"/>
+</g>
+
+<!-- Boundary circle -->
+<circle cx="200" cy="185" r="155" stroke="#c9a84c" stroke-width="1.8" fill="none" opacity="0.55"/>
+
+<!-- Wordmark -->
+<text x="200" y="364" text-anchor="middle"
+  font-family="JetBrains Mono, Courier New, monospace"
+  font-size="22" font-weight="500" fill="#c9a84c" letter-spacing="8">HFG</text>
+<text x="200" y="383" text-anchor="middle"
+  font-family="JetBrains Mono, Courier New, monospace"
+  font-size="9" fill="#7a7570" letter-spacing="3">HYPERBOLIC FLAVOR GEOMETRY</text>
+
+<!-- v0 -->
+<text x="200" y="350" text-anchor="middle"
+  font-family="JetBrains Mono, Courier New, monospace"
+  font-size="9" fill="#c9a84c" opacity="0.55">v₀ = 0.9813688289...</text>
+</svg>
