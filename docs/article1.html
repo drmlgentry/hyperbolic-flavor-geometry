@@ -707,12 +707,12 @@ drawManifold('mfCanvas2','#4ecdc4','M_CKM');
       // Point
       ctx.beginPath();ctx.arc(s.x,s.y,7,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
       // Labels
-      ctx.fillStyle=p.color;ctx.font='bold 15px JetBrains Mono';
-      ctx.fillText(p.label,s.x+12,s.y-8);
-      ctx.fillStyle='rgba(255,255,255,.45)';ctx.font='11px JetBrains Mono';
-      ctx.fillText(p.unit,s.x+12,s.y+8);
-      ctx.fillStyle=p.color+'c0';ctx.font='11px JetBrains Mono';
-      ctx.fillText('D = v₀',s.x+12,s.y+22);
+      ctx.fillStyle=p.color;ctx.font='bold 26px JetBrains Mono';
+      ctx.fillText(p.label,s.x+14,s.y-12);
+      ctx.fillStyle='rgba(255,255,255,.55)';ctx.font='19px JetBrains Mono';
+      ctx.fillText(p.unit,s.x+14,s.y+12);
+      ctx.fillStyle=p.color+'c0';ctx.font='19px JetBrains Mono';
+      ctx.fillText('D = v₀',s.x+14,s.y+34);
     });
 
     // Traveling particle
@@ -735,26 +735,26 @@ drawManifold('mfCanvas2','#4ecdc4','M_CKM');
     ctx.strokeStyle='rgba(201,168,76,.25)';ctx.lineWidth=1;ctx.strokeRect(px2,py2,pw,ph);
 
     const lines=[
-      ['rgba(201,168,76,1)','14px','K = ℚ(w)'],
-      ['rgba(255,255,255,.4)','12px','w⁴ = w + 1'],
+      ['rgba(201,168,76,1)','26px','K = ℚ(w)'],
+      ['rgba(255,255,255,.4)','22px','w⁴ = w + 1'],
       ['','',''],
-      ['rgba(201,168,76,.8)','12px','u₁ = 1 − w³'],
-      ['rgba(255,255,255,.5)','12px','fundamental unit'],
-      ['rgba(255,255,255,.3)','11px','norm(u₁) = −1'],
+      ['rgba(201,168,76,.8)','22px','u₁ = 1 − w³'],
+      ['rgba(255,255,255,.5)','18px','fundamental unit'],
+      ['rgba(255,255,255,.3)','18px','norm(u₁) = −1'],
       ['','',''],
-      ['#4ecdc4','13px','D(w³)·=·D(−w)·=·D(w⁻⁴)'],
-      ['rgba(255,255,255,.8)','16px','= vol(M_PMNS)'],
-      ['rgba(201,168,76,.7)','11px','verified to 2×10⁻⁵¹'],
+      ['#4ecdc4','20px','D(w³) = D(−w) = D(w⁻⁴)'],
+      ['rgba(255,255,255,.8)','26px','= vol(M_PMNS)'],
+      ['rgba(201,168,76,.7)','17px','verified to 2×10⁻⁵¹'],
       ['','',''],
-      ['rgba(232,67,147,.9)','13px','w³·(−w)·w⁻⁴ = −1'],
-      ['rgba(255,255,255,.4)','11px','exact product identity'],
+      ['rgba(232,67,147,.9)','22px','w³·(−w)·w⁻⁴ = −1'],
+      ['rgba(255,255,255,.4)','17px','exact product identity'],
     ];
     let ly=py2+22;
     lines.forEach(([color,size,text])=>{
       if(!text){ly+=10;return;}
       ctx.fillStyle=color;ctx.font=`${size} JetBrains Mono`;
       ctx.fillText(text,px2+12,ly);
-      ly+=parseInt(size)+11;
+      ly+=parseInt(size)+14;
     });
 
     t++;requestAnimationFrame(draw);
