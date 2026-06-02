@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Hyperbolic Space Looks Impossible — HFG</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#07070f;--deep:#0d0d1a;--surface:#131325;
+  --gold:#c9a84c;--cyan:#4ecdc4;--rose:#e84393;--green:#50fa7b;
+  --text:#ece8df;--muted:#7a7570;--rule:rgba(201,168,76,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--void);color:var(--text);font-family:'Source Serif 4',Georgia,serif;font-size:19px;line-height:1.8;overflow-x:hidden;}
+#prog{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--cyan));width:0%;z-index:200;}
+nav{position:fixed;top:0;left:0;right:0;padding:.8rem 2rem;background:rgba(7,7,15,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);z-index:199;display:flex;justify-content:space-between;align-items:center;transform:translateY(-100%);transition:transform .3s;}
+nav.show{transform:translateY(0);}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--gold);text-decoration:none;text-transform:uppercase;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:4rem 2rem;overflow:hidden;background:var(--void);}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;}
+.hero-inner{position:relative;z-index:2;max-width:820px;}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0;animation:up .8s .2s forwards;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem;opacity:0;animation:up .8s .4s forwards;}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 auto 3rem;opacity:0;animation:up .8s .6s forwards;}
+.scroll-cue{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:0;animation:up .8s 1.2s forwards;}
+.scroll-cue::after{content:'';display:block;width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);margin:.8rem auto 0;animation:blink 2s infinite;}
+@keyframes up{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes blink{0%,100%{opacity:.2;}50%{opacity:1;}}
+
+/* LAYOUT */
+.col{max-width:740px;margin:0 auto;padding:0 2rem;}
+.wide{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.sec{padding:5rem 0;}
+.sec-dark{background:var(--deep);}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;display:flex;align-items:center;gap:.8rem;}
+.sec-label::before{content:'';width:2rem;height:1px;background:var(--gold);flex-shrink:0;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:700;line-height:1.2;margin-bottom:1.4rem;}
+h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;font-style:italic;color:var(--gold);margin:2.5rem 0 .8rem;}
+p{margin-bottom:1.3rem;}
+.pq{border-left:3px solid var(--gold);padding:1.2rem 2rem;margin:2.5rem 0;background:rgba(201,168,76,.07);font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;line-height:1.55;}
+
+/* VIZ */
+.viz{background:var(--deep);border:1px solid var(--rule);margin:2.5rem 0;overflow:hidden;}
+.viz-head{padding:.9rem 1.4rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.viz-title{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);}
+.viz-hint{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);}
+.viz-cap{padding:.9rem 1.4rem;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);line-height:1.6;}
+
+/* SPLIT SCREEN */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2.5rem 0;border:1px solid var(--rule);overflow:hidden;}
+.split-panel{position:relative;overflow:hidden;}
+.split-label{position:absolute;top:1rem;left:1rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid;z-index:10;}
+.split-label.euclid{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.1);}
+.split-label.hyper{color:var(--cyan);border-color:var(--cyan);background:rgba(78,205,196,.1);}
+.split-info{position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);border-top:1px solid var(--rule);z-index:10;}
+.split-info p{margin:0;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);line-height:1.7;}
+.split-info strong{color:var(--text);}
+
+/* GAME */
+.game-box{background:var(--deep);border:2px solid var(--rule);margin:2.5rem 0;overflow:hidden;}
+.game-head{padding:1rem 1.5rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+.game-title{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);}
+.game-score{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--gold);}
+.game-cap{padding:.8rem 1.5rem;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);}
+.game-btn{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.2rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .2s;}
+.game-btn:hover{background:var(--gold);color:var(--void);}
+
+/* FORMULA */
+.formula{background:var(--surface);border:1px solid var(--rule);padding:1.6rem 2rem;margin:1.8rem 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--cyan);}
+.formula span{display:block;font-size:.65rem;color:var(--muted);margin-top:.6rem;text-transform:uppercase;letter-spacing:.12em;}
+
+/* FISH TANK */
+.fish-tank{position:relative;overflow:hidden;background:#07070f;cursor:pointer;}
+
+/* TESSELLATION */
+.tess-wrap{position:relative;overflow:hidden;}
+
+/* FACTS */
+.fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.5rem 0;}
+.fact-card{background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--gold);padding:1.5rem 1.2rem;}
+.fact-card .big{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--gold);display:block;line-height:1;}
+.fact-card .lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;display:block;}
+
+hr{border:none;border-top:1px solid var(--rule);margin:4rem 0;}
+.fn{font-size:.88rem;color:var(--muted);font-style:italic;border-top:1px solid var(--rule);padding-top:2rem;margin-top:4rem;}
+.fn a{color:var(--gold);}
+.thm{border:1px solid var(--cyan);padding:1.4rem 1.8rem;margin:2.2rem 0;position:relative;background:rgba(78,205,196,.04);}
+.thm::before{content:attr(data-l);position:absolute;top:-.6rem;left:1.2rem;background:var(--void);padding:0 .4rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);}
+
+@media(max-width:600px){
+  .split{grid-template-columns:1fr;}
+  .fact-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<nav id="nav">
+  <a href="https://hyperbolicflavorgeometry.org" class="nav-logo">HFG</a>
+  <ul class="nav-links">
+    <li><a href="https://hyperbolicflavorgeometry.org">Home</a></li>
+    <li><a href="article1.html">Article I</a></li>
+    <li><a href="article2.html" class="active">Article II</a></li>
+    <li><a href="https://hyperbolicflavorgeometry.org#papers">Papers</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-inner">
+    <div class="kicker">Hyperbolic Flavor Geometry · Article II</div>
+    <h1>Why Hyperbolic Space<br>Looks <em>Impossible</em></h1>
+    <p class="hero-sub">A visual tour of a geometry where parallel lines diverge, triangles have angles less than 180°, and space expands faster than you can imagine.</p>
+    <div class="scroll-cue">Explore below</div>
+  </div>
+</section>
+
+<!-- SECTION 1: THE TWO GEOMETRIES -->
+<section class="sec">
+  <div class="col">
+    <div class="sec-label">The Setup</div>
+    <h2>Two ways space can be</h2>
+    <p>For two thousand years, Euclid's geometry was the only geometry. Space was flat, parallel lines stayed parallel forever, and the angles of any triangle added up to exactly 180°. These weren't just facts about geometry — they seemed like facts about reality itself.</p>
+    <p>Then in the 1820s, three mathematicians working independently — Gauss, Bolyai, and Lobachevsky — proved that a completely different, internally consistent geometry existed. In this new geometry, usually called hyperbolic geometry, parallel lines <em>diverge</em>. Triangles have angle sums <em>less</em> than 180°. And space expands exponentially as you move outward rather than quadratically.</p>
+    <p>The difference isn't subtle. Below, both geometries are shown side by side. Watch what happens to the grid lines.</p>
+  </div>
+
+  <!-- SPLIT SCREEN: EUCLID VS HYPERBOLIC -->
+  <div class="wide">
+    <div class="split">
+      <div class="split-panel">
+        <div class="split-label euclid">Euclidean</div>
+        <canvas id="euclidSplit" width="550" height="380" style="width:100%;display:block;"></canvas>
+        <div class="split-info">
+          <p><strong>Parallel lines:</strong> stay parallel forever<br>
+          <strong>Triangle angles:</strong> always sum to 180°<br>
+          <strong>Area of circle:</strong> πr² (quadratic growth)<br>
+          <strong>Curvature:</strong> K = 0 everywhere</p>
+        </div>
+      </div>
+      <div class="split-panel" style="border-left:1px solid var(--rule);">
+        <div class="split-label hyper">Hyperbolic</div>
+        <canvas id="hyperSplit" width="550" height="380" style="width:100%;display:block;"></canvas>
+        <div class="split-info">
+          <p><strong>Parallel lines:</strong> diverge exponentially<br>
+          <strong>Triangle angles:</strong> always sum to <strong style="color:var(--cyan);">less than</strong> 180°<br>
+          <strong>Area of circle:</strong> 2π(cosh r − 1) (exponential growth)<br>
+          <strong>Curvature:</strong> K = −1 everywhere</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="pq">"The discovery of hyperbolic geometry was one of the most consequential moments in the history of mathematics — it proved that Euclid's parallel postulate was not a logical necessity, but a choice."</div>
+  </div>
+</section>
+
+<!-- SECTION 2: THE FISH TANK -->
+<section class="sec sec-dark">
+  <div class="col">
+    <div class="sec-label">The Intuition</div>
+    <h2>The fish that can't reach the edge</h2>
+    <p>The best way to visualize the hyperbolic plane is the Poincaré disk model. The entire infinite hyperbolic plane is compressed into the interior of a circle. The boundary of the circle represents infinity — it is infinitely far away from every interior point.</p>
+    <p>Imagine fish living in this disk. From their perspective, they are all the same size and space is infinite in every direction. From our outside perspective, fish near the edge look tiny — but that's our Euclidean bias. In their geometry, they are no smaller than fish at the center.</p>
+    <p><strong>Click anywhere in the disk</strong> to add a fish and watch it swim toward the edge — approaching infinity but never arriving.</p>
+  </div>
+
+  <div class="wide">
+    <div class="viz">
+      <div class="viz-head">
+        <span class="viz-title">Interactive — Poincaré Disk: The Infinite Plane in a Circle</span>
+        <span class="viz-hint">Click to add fish · watch them approach infinity</span>
+      </div>
+      <canvas id="fishCanvas" width="800" height="500" style="width:100%;cursor:crosshair;" class="fish-tank"></canvas>
+      <div class="viz-cap">Every "fish" is the same size in hyperbolic geometry. Near the boundary they appear smaller only because we are viewing through Euclidean eyes. The boundary circle is infinitely far from every interior point.</div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="fact-grid">
+      <div class="fact-card">
+        <span class="big">&lt;180°</span>
+        <span class="lbl">Sum of triangle angles in hyperbolic space</span>
+      </div>
+      <div class="fact-card">
+        <span class="big">e^r</span>
+        <span class="lbl">How area grows with radius (vs r² Euclidean)</span>
+      </div>
+      <div class="fact-card">
+        <span class="big">∞</span>
+        <span class="lbl">How far away the Poincaré disk boundary is</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: GEODESICS -->
+<section class="sec">
+  <div class="col">
+    <div class="sec-label">Straight Lines</div>
+    <h2>What does "straight" mean here?</h2>
+    <p>In Euclidean geometry, straight lines are straight. In hyperbolic geometry, the "straight lines" — called geodesics — are circular arcs that meet the boundary of the Poincaré disk at right angles. They look curved to us, but from the perspective of someone living inside the disk, they are the shortest paths between two points.</p>
+    <p>This is not a matter of appearances. A geodesic in hyperbolic space genuinely <em>is</em> straight — a particle moving freely under no forces follows a geodesic. What looks curved to our Euclidean eyes is straight in the intrinsic geometry of the space.</p>
+  </div>
+
+  <div class="wide">
+    <div class="viz">
+      <div class="viz-head">
+        <span class="viz-title">Interactive — Geodesic Explorer</span>
+        <span class="viz-hint">Click two points to draw the shortest path between them</span>
+      </div>
+      <canvas id="geodesicCanvas" width="800" height="460" style="width:100%;cursor:crosshair;"></canvas>
+      <div class="viz-cap">Click any two points inside the disk. The arc drawn is the geodesic — the shortest path between them in hyperbolic geometry. Notice how geodesics always meet the boundary circle at 90°.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: GEODESIC GAME -->
+<section class="sec sec-dark">
+  <div class="col">
+    <div class="sec-label">Test Yourself</div>
+    <h2>Can you find the shortest path?</h2>
+    <p>Your Euclidean intuition will mislead you. In hyperbolic space, the shortest path between two points is not a straight line across — it curves toward the center of the disk. Try to guess where the geodesic will go before clicking.</p>
+  </div>
+  <div class="wide">
+    <div class="game-box">
+      <div class="game-head">
+        <span class="game-title">Geodesic Challenge</span>
+        <span class="game-score">Score: <span id="gameScore">0</span> / <span id="gameTotal">0</span></span>
+        <button class="game-btn" id="newRound">New Round</button>
+      </div>
+      <canvas id="gameCanvas" width="800" height="460" style="width:100%;cursor:crosshair;"></canvas>
+      <div class="game-cap" id="gameCap">Click where you think the geodesic will pass through — then click "Show Answer" to reveal the true shortest path.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: TESSELLATION -->
+<section class="sec">
+  <div class="col">
+    <div class="sec-label">Infinite Patterns</div>
+    <h2>Tessellations that never end</h2>
+    <p>In Euclidean geometry, only three regular polygons tile the plane: triangles, squares, and hexagons. In hyperbolic geometry, <em>infinitely many</em> do — because hyperbolic space has more room than Euclidean space. Regular pentagons, heptagons, octagons all tile the hyperbolic plane perfectly.</p>
+    <p>M.C. Escher was fascinated by these tilings. His "Circle Limit" series depicts hyperbolic tessellations — repeated patterns that shrink toward the boundary but never reach it. The pattern continues forever, compressed into a finite disk.</p>
+    <p>The tessellation below is generated by the same type of symmetry groups that appear in the holonomy of hyperbolic 3-manifolds. These are not just pretty patterns — they are the fingerprints of the geometry.</p>
+  </div>
+
+  <div class="wide">
+    <div class="viz">
+      <div class="viz-head">
+        <span class="viz-title">Animated — Hyperbolic Tessellation</span>
+        <span class="viz-hint">Rotating · infinite depth</span>
+      </div>
+      <canvas id="tessCanvas" width="800" height="500" style="width:100%;"></canvas>
+      <div class="viz-cap">A {4,5} tessellation of the hyperbolic plane — squares meeting five at each vertex. This is impossible in Euclidean geometry (where only four squares can meet at a vertex) but natural in hyperbolic space. The pattern extends to infinity inside the disk.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: AREA GROWTH INTERACTIVE -->
+<section class="sec sec-dark">
+  <div class="col">
+    <div class="sec-label">The Key Difference</div>
+    <h2>How fast does space grow?</h2>
+    <p>The most important quantitative difference between Euclidean and hyperbolic geometry is how area scales with radius. In Euclidean geometry, area grows as πr² — doubling the radius quadruples the area. In hyperbolic geometry, area grows as 2π(cosh r − 1), which for large r behaves like πe^r — exponentially.</p>
+    <p>This exponential growth is what makes hyperbolic manifolds so information-rich. A small amount of hyperbolic space contains vastly more "room" than the same amount of Euclidean space. It is also what makes hyperbolic 3-manifolds rigid: there is so much structure that the geometry is uniquely pinned down by the topology.</p>
+  </div>
+
+  <div class="col">
+    <div class="viz">
+      <div class="viz-head">
+        <span class="viz-title">Interactive — Area Growth Comparison</span>
+        <span class="viz-hint">Drag slider to change radius</span>
+      </div>
+      <div style="padding:1.5rem 2rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);min-width:3rem;">r =</span>
+          <input type="range" min="0" max="4" value="1" step="0.01" id="areaSlider" style="flex:1;accent-color:var(--gold);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--gold);min-width:3rem;" id="areaR">1.00</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+          <div style="background:var(--surface);padding:1.2rem;text-align:center;border:1px solid var(--rule);border-top:2px solid var(--gold);">
+            <div style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);" id="eucArea2">3.14</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);">Euclidean πr²</div>
+          </div>
+          <div style="background:var(--surface);padding:1.2rem;text-align:center;border:1px solid var(--rule);border-top:2px solid var(--cyan);">
+            <div style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--cyan);" id="hypArea2">3.51</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);">Hyperbolic 2π(cosh r−1)</div>
+          </div>
+        </div>
+      </div>
+      <canvas id="areaCanvas" width="800" height="240" style="width:100%;border-top:1px solid var(--rule);"></canvas>
+      <div class="viz-cap">Gold curve: Euclidean area πr². Cyan curve: Hyperbolic area 2π(cosh r−1). At r=1 they are nearly equal. By r=4 the hyperbolic area is <span id="ratioSpan" style="color:var(--cyan);">×18</span> larger. At r=10 it would be larger by a factor of 10⁶.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: THE MEYERHOFF CONNECTION -->
+<section class="sec">
+  <div class="col">
+    <div class="sec-label">Why It Matters</div>
+    <h2>From geometry to physics</h2>
+    <p>Compact hyperbolic 3-manifolds — finite chunks of hyperbolic 3-space closed on themselves — inherit all of this richness. Their exponentially growing geometry means they pack an enormous amount of structure into a small volume. And the Mostow rigidity theorem means that every geometric invariant is completely fixed by topology: no free parameters.</p>
+    <p>This is why, when a systematic search of compact hyperbolic 3-manifolds found that the smallest one — the Meyerhoff manifold, volume 0.9814 — reproduces the PMNS lepton mixing matrix with zero adjustable parameters, it was not a complete surprise. The geometry was always going to be rigid. The question was whether the specific rigid geometry corresponded to physical data.</p>
+    <p>It appears to.</p>
+
+    <div class="thm" data-l="The Meyerhoff Manifold">
+      The unique minimum-volume compact hyperbolic 3-manifold has volume v₀ = 0.9813688289... It is constructed from the cusped manifold m003 by Dehn surgery along slope (−2,3), and is also a Dehn filling of m019 along slope (2,1). Its tetrahedral shape parameters are units w³, −w, w⁻⁴ in the quartic field K = ℚ(w), w⁴ = w+1, discriminant −283.
+    </div>
+
+    <div class="formula">
+      vol(m019) = 3·v₀ &nbsp;&nbsp; vol(m178) = 4·v₀ &nbsp;&nbsp; vol(v1024) = 5·v₀
+      <span>Every disc=−283 cusped manifold has volume a rational multiple of v₀ · proved</span>
+    </div>
+
+    <p>The hyperbolic geometry you have just explored — the diverging parallel lines, the exponentially growing area, the infinite tessellations — is the same geometry that appears to encode the masses and mixings of elementary particles. The connection between the mathematics and the physics is the subject of the ongoing HFG research programme.</p>
+
+    <hr>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;">
+      <a href="article1.html" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--gold);padding:.6rem 1.2rem;transition:all .2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--void)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">← Article I: The Smallest Universe</a>
+      <a href="https://hyperbolicflavorgeometry.org" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--rule);padding:.6rem 1.2rem;">Home</a>
+    </div>
+
+    <p class="fn">Marvin L. Gentry · Independent Researcher · Seattle WA<br>
+    <a href="https://ssrn.com/author=11170302">SSRN preprints</a> ·
+    <a href="https://github.com/drmlgentry/hyperbolic-flavor-scan">GitHub</a> ·
+    <a href="https://hyperbolicflavorgeometry.org">hyperbolicflavorgeometry.org</a></p>
+  </div>
+</section>
+
+<script>
+// SCROLL
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  document.getElementById('nav').classList.toggle('show',h.scrollTop>200);
+});
+
+// ── HERO CANVAS: Tessellation-like background ──
+(()=>{
+  const c=document.getElementById('heroCanvas'),ctx=c.getContext('2d');
+  let W,H,t=0;
+  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.46;
+    // Draw multiple geodesic families
+    for(let f=0;f<3;f++){
+      for(let i=0;i<8;i++){
+        const a=(i/8)*Math.PI+f*Math.PI/3+t*(f===0?.0004:f===1?.0006:.0003);
+        const r=.15+.7*((i*.41+f*.27)%1);
+        const p1x=cx+R*.97*Math.cos(a),p1y=cy+R*.97*Math.sin(a);
+        const p2x=cx+R*.97*Math.cos(a+Math.PI*(.35+r*.3)),p2y=cy+R*.97*Math.sin(a+Math.PI*(.35+r*.3));
+        const cpx=cx+R*r*.22*Math.cos(a+Math.PI/2),cpy=cy+R*r*.22*Math.sin(a+Math.PI/2);
+        ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.quadraticCurveTo(cpx,cpy,p2x,p2y);
+        const cols=['rgba(201,168,76,.2)','rgba(78,205,196,.12)','rgba(232,67,147,.1)'];
+        ctx.strokeStyle=cols[f];ctx.lineWidth=.8;ctx.stroke();
+      }
+    }
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(201,168,76,.2)';ctx.lineWidth=1;ctx.stroke();
+    t++;requestAnimationFrame(draw);
+  }
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+// ── SPLIT SCREEN: EUCLID vs HYPERBOLIC ──
+(()=>{
+  function drawEuclid(){
+    const c=document.getElementById('euclidSplit'),ctx=c.getContext('2d');
+    const W=c.width,H=c.height;
+    let t=0;
+    function draw(){
+      ctx.clearRect(0,0,W,H);ctx.fillStyle='#07070f';ctx.fillRect(0,0,W,H);
+      const cx=W/2,cy=H/2,spacing=40;
+      // Flat grid - perfectly parallel
+      ctx.strokeStyle='rgba(201,168,76,.25)';ctx.lineWidth=1;
+      for(let x=cx%spacing;x<W;x+=spacing){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+      for(let y=cy%spacing;y<H;y+=spacing){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+      // Highlight a few parallel lines
+      ctx.strokeStyle='rgba(201,168,76,.8)';ctx.lineWidth=2;
+      const lines=[-80,0,80];
+      lines.forEach(off=>{
+        ctx.beginPath();ctx.moveTo(0,cy+off);ctx.lineTo(W,cy+off);ctx.stroke();
+      });
+      // Arrow labels
+      ctx.fillStyle='rgba(201,168,76,.6)';ctx.font='11px JetBrains Mono';
+      ctx.fillText('parallel →',W-100,cy-80-8);
+      ctx.fillText('parallel →',W-100,cy-8);
+      ctx.fillText('parallel →',W-100,cy+80-8);
+      // Triangle
+      const tx=W*.25,ty=H*.35,ts=80;
+      ctx.beginPath();
+      ctx.moveTo(tx,ty+ts);ctx.lineTo(tx+ts,ty+ts);ctx.lineTo(tx+ts/2,ty);ctx.closePath();
+      ctx.strokeStyle='rgba(201,168,76,.5)';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.fillStyle='rgba(201,168,76,.1)';ctx.fill();
+      ctx.fillStyle='rgba(201,168,76,.7)';ctx.font='11px JetBrains Mono';
+      ctx.fillText('60°',tx+ts/2-8,ty+15);ctx.fillText('60°',tx-5,ty+ts+15);ctx.fillText('60°',tx+ts+3,ty+ts+15);
+      ctx.fillText('= 180°',tx+ts*.5-18,ty+ts+32);
+      t++;requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  function drawHyper(){
+    const c=document.getElementById('hyperSplit'),ctx=c.getContext('2d');
+    const W=c.width,H=c.height;
+    let t=0;
+    function draw(){
+      ctx.clearRect(0,0,W,H);ctx.fillStyle='#07070f';ctx.fillRect(0,0,W,H);
+      const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+      // Background
+      const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+      g.addColorStop(0,'rgba(15,15,35,1)');g.addColorStop(1,'rgba(5,5,12,1)');
+      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+      // Geodesic grid
+      for(let i=0;i<12;i++){
+        const a=(i/12)*Math.PI+t*.001;
+        const r=.2+.6*Math.abs(Math.sin(i*.9));
+        const p1x=cx+R*.97*Math.cos(a),p1y=cy+R*.97*Math.sin(a);
+        const p2x=cx+R*.97*Math.cos(a+Math.PI*.45),p2y=cy+R*.97*Math.sin(a+Math.PI*.45);
+        const cpx=cx+R*r*.2*Math.cos(a+Math.PI/2),cpy=cy+R*r*.2*Math.sin(a+Math.PI/2);
+        ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.quadraticCurveTo(cpx,cpy,p2x,p2y);
+        ctx.strokeStyle='rgba(78,205,196,.3)';ctx.lineWidth=.8;ctx.stroke();
+      }
+      // Three "parallel" geodesics that diverge
+      const parallelAngles=[-.15,0,.15];
+      parallelAngles.forEach((off,i)=>{
+        const a=Math.PI/4+off+t*.0005;
+        const p1x=cx+R*.97*Math.cos(a),p1y=cy+R*.97*Math.sin(a);
+        const p2x=cx+R*.97*Math.cos(a+Math.PI*.55),p2y=cy+R*.97*Math.sin(a+Math.PI*.55);
+        const cpx=cx+R*.1*Math.cos(a+Math.PI/2+off*2),cpy=cy+R*.1*Math.sin(a+Math.PI/2+off*2);
+        ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.quadraticCurveTo(cpx,cpy,p2x,p2y);
+        ctx.strokeStyle='rgba(78,205,196,.9)';ctx.lineWidth=2;ctx.stroke();
+      });
+      ctx.fillStyle='rgba(78,205,196,.7)';ctx.font='11px JetBrains Mono';
+      ctx.fillText('diverging →',cx+60,cy-60);
+      ctx.fillText('diverging →',cx+60,cy);
+      ctx.fillText('diverging →',cx+60,cy+60);
+      // Boundary
+      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+      ctx.strokeStyle='rgba(78,205,196,.4)';ctx.lineWidth=1.5;ctx.stroke();
+      // Triangle with small angle sum
+      const ang=t*.002;
+      const p1={x:cx+R*.2*Math.cos(ang),y:cy+R*.2*Math.sin(ang)};
+      const p2={x:cx+R*.5*Math.cos(ang+2.2),y:cy+R*.5*Math.sin(ang+2.2)};
+      const p3={x:cx+R*.4*Math.cos(ang+4.2),y:cy+R*.4*Math.sin(ang+4.2)};
+      ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.lineTo(p3.x,p3.y);ctx.closePath();
+      ctx.strokeStyle='rgba(78,205,196,.6)';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.fillStyle='rgba(78,205,196,.08)';ctx.fill();
+      ctx.fillStyle='rgba(78,205,196,.8)';ctx.font='11px JetBrains Mono';
+      ctx.fillText('< 180°',p2.x+5,p2.y-5);
+      t++;requestAnimationFrame(draw);
+    }
+    draw();
+  }
+  drawEuclid();drawHyper();
+})();
+
+// ── FISH TANK ──
+(()=>{
+  const c=document.getElementById('fishCanvas'),ctx=c.getContext('2d');
+  let W,H,fishes=[],t=0;
+  function resize(){W=c.width=c.offsetWidth;H=parseInt(c.getAttribute('height'));}
+
+  function Fish(x,y,cx,cy,R){
+    const dx=x-cx,dy=y-cy;
+    const d=Math.sqrt(dx*dx+dy*dy)/R; // normalized 0-1
+    this.r=d; // distance from center in Poincaré coords
+    this.a=Math.atan2(dy,dx);
+    this.speed=0.003+Math.random()*.002;
+    this.size=0.06*(1-d*d); // hyperbolic size (same intrinsically)
+    this.color=`hsl(${160+Math.random()*60},70%,60%)`;
+    this.wobble=Math.random()*Math.PI*2;
+  }
+
+  c.addEventListener('click',e=>{
+    const rect=c.getBoundingClientRect();
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+    const mx=(e.clientX-rect.left)*(W/rect.width);
+    const my=(e.clientY-rect.top)*(H/rect.height);
+    const d=Math.sqrt((mx-cx)**2+(my-cy)**2);
+    if(d<R*.95) fishes.push(new Fish(mx,my,cx,cy,R));
+    if(fishes.length>12) fishes.shift();
+  });
+
+  // Add some initial fish
+  setTimeout(()=>{
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+    [[.3,.2],[-.2,.4],[.4,-.3],[-.3,-.2],[.1,.5]].forEach(([dx,dy])=>{
+      fishes.push(new Fish(cx+dx*R,cy+dy*R,cx,cy,R));
+    });
+  },500);
+
+  function drawFish(ctx,x,y,size,angle,color,wobble){
+    ctx.save();ctx.translate(x,y);ctx.rotate(angle+Math.sin(wobble)*.15);
+    const s=size;
+    // Body
+    ctx.beginPath();ctx.ellipse(0,0,s,s*.55,0,0,Math.PI*2);
+    ctx.fillStyle=color+'c0';ctx.fill();
+    ctx.strokeStyle=color;ctx.lineWidth=1;ctx.stroke();
+    // Tail
+    ctx.beginPath();ctx.moveTo(-s*.6,0);ctx.lineTo(-s*1.1,-s*.4);ctx.lineTo(-s*1.1,s*.4);ctx.closePath();
+    ctx.fillStyle=color+'80';ctx.fill();
+    // Eye
+    ctx.beginPath();ctx.arc(s*.3,-s*.1,s*.1,0,Math.PI*2);
+    ctx.fillStyle='rgba(0,0,0,.8)';ctx.fill();
+    ctx.restore();
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+    // Background
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+    g.addColorStop(0,'rgba(10,15,35,1)');g.addColorStop(0.8,'rgba(5,8,20,1)');g.addColorStop(1,'rgba(2,3,8,1)');
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    // Geodesic grid faint
+    for(let i=0;i<8;i++){
+      const a=i*Math.PI/4+t*.001;
+      const p1x=cx+R*.98*Math.cos(a),p1y=cy+R*.98*Math.sin(a);
+      const p2x=cx+R*.98*Math.cos(a+Math.PI*.6),p2y=cy+R*.98*Math.sin(a+Math.PI*.6);
+      const cpx=cx+R*.08*Math.cos(a+Math.PI/2),cpy=cy+R*.08*Math.sin(a+Math.PI/2);
+      ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.quadraticCurveTo(cpx,cpy,p2x,p2y);
+      ctx.strokeStyle='rgba(78,205,196,.06)';ctx.lineWidth=.5;ctx.stroke();
+    }
+    // Boundary
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(78,205,196,.3)';ctx.lineWidth=1.5;ctx.stroke();
+    ctx.beginPath();ctx.arc(cx,cy,R*1.002,0,Math.PI*2);
+    ctx.strokeStyle='rgba(78,205,196,.1)';ctx.lineWidth=4;ctx.stroke();
+    // Boundary label
+    ctx.fillStyle='rgba(78,205,196,.4)';ctx.font='11px JetBrains Mono';
+    ctx.fillText('∞  boundary  ∞',cx-55,cy-R+16);
+    // Fish
+    fishes.forEach(f=>{
+      f.r+=f.speed*(1-f.r*.8); // accelerate toward boundary
+      f.wobble+=.08;
+      if(f.r>=.97){f.r=.97;} // clamp
+      const px=cx+f.r*R*Math.cos(f.a);
+      const py=cy+f.r*R*Math.sin(f.a);
+      const screenSize=R*(1-f.r*f.r)*.12; // smaller near boundary
+      drawFish(ctx,px,py,Math.max(screenSize,4),f.a,f.color,f.wobble);
+    });
+    // Click hint if no fish
+    if(fishes.length===0){
+      ctx.fillStyle='rgba(255,255,255,.2)';ctx.font='14px JetBrains Mono';
+      ctx.textAlign='center';ctx.fillText('Click to add fish',cx,cy);ctx.textAlign='left';
+    }
+    t++;requestAnimationFrame(draw);
+  }
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+// ── GEODESIC EXPLORER ──
+(()=>{
+  const c=document.getElementById('geodesicCanvas'),ctx=c.getContext('2d');
+  let W,H,points=[],t=0;
+  function resize(){W=c.width=c.offsetWidth;H=parseInt(c.getAttribute('height'));}
+
+  function drawGeodesic(ctx,cx,cy,R,p1,p2){
+    // Compute geodesic arc between two Poincaré disk points
+    const [x1,y1]=p1,[x2,y2]=p2;
+    // Both points on boundary: special case
+    const d1=Math.sqrt(x1*x1+y1*y1),d2=Math.sqrt(x2*x2+y2*y2);
+    // Convert to actual coords
+    const ax=cx+x1*R,ay=cy+y1*R;
+    const bx=cx+x2*R,by=cy+y2*R;
+    // Midpoint control: push toward center
+    const mx=(ax+bx)/2,my=(ay+by)/2;
+    const mdx=mx-cx,mdy=my-cy;
+    const mlen=Math.sqrt(mdx*mdx+mdy*mdy);
+    const pull=.35;
+    const cpx=mx-mdx*pull,cpy=my-mdy*pull;
+    ctx.beginPath();ctx.moveTo(ax,ay);ctx.quadraticCurveTo(cpx,cpy,bx,by);
+    ctx.strokeStyle='rgba(201,168,76,.9)';ctx.lineWidth=2;ctx.stroke();
+    // Points
+    [p1,p2].forEach(p=>{
+      ctx.beginPath();ctx.arc(cx+p[0]*R,cy+p[1]*R,7,0,Math.PI*2);
+      ctx.fillStyle='#c9a84c';ctx.fill();
+    });
+  }
+
+  c.addEventListener('click',e=>{
+    const rect=c.getBoundingClientRect();
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+    const mx=((e.clientX-rect.left)*(W/rect.width)-cx)/R;
+    const my=((e.clientY-rect.top)*(H/rect.height)-cy)/R;
+    if(mx*mx+my*my<.94){
+      points.push([mx,my]);
+      if(points.length>2) points=[points[points.length-1]];
+    }
+  });
+
+  // Seed some points
+  points=[[-.3,.4],[.5,-.2]];
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+    g.addColorStop(0,'rgba(12,12,28,1)');g.addColorStop(1,'rgba(4,4,10,1)');
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    // Grid geodesics
+    for(let i=0;i<10;i++){
+      const a=(i/10)*Math.PI+t*.0008;
+      const r=.15+.65*((i*.53)%1);
+      const p1x=cx+R*.97*Math.cos(a),p1y=cy+R*.97*Math.sin(a);
+      const p2x=cx+R*.97*Math.cos(a+Math.PI*(.4+r*.25)),p2y=cy+R*.97*Math.sin(a+Math.PI*(.4+r*.25));
+      const cpx=cx+R*r*.18*Math.cos(a+Math.PI/2),cpy=cy+R*r*.18*Math.sin(a+Math.PI/2);
+      ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.quadraticCurveTo(cpx,cpy,p2x,p2y);
+      ctx.strokeStyle='rgba(78,205,196,.1)';ctx.lineWidth=.6;ctx.stroke();
+    }
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(201,168,76,.4)';ctx.lineWidth=1.5;ctx.stroke();
+    // User geodesic
+    if(points.length===2) drawGeodesic(ctx,cx,cy,R,points[0],points[1]);
+    else if(points.length===1){
+      ctx.beginPath();ctx.arc(cx+points[0][0]*R,cy+points[0][1]*R,7,0,Math.PI*2);
+      ctx.fillStyle='#c9a84c';ctx.fill();
+      ctx.fillStyle='rgba(255,255,255,.3)';ctx.font='12px JetBrains Mono';
+      ctx.fillText('Click a second point',cx+points[0][0]*R+12,cy+points[0][1]*R);
+    }
+    // Instruction
+    if(points.length===0||points.length===2){
+      ctx.fillStyle='rgba(255,255,255,.2)';ctx.font='12px JetBrains Mono';
+      ctx.textAlign='center';ctx.fillText('Click to place first point',cx,cy+R+0);ctx.textAlign='left';
+    }
+    t++;requestAnimationFrame(draw);
+  }
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+// ── GEODESIC GAME ──
+(()=>{
+  const c=document.getElementById('gameCanvas'),ctx=c.getContext('2d');
+  let W,H,t=0,state='guess',gameP1=null,gameP2=null,guess=null,score=0,total=0;
+  function resize(){W=c.width=c.offsetWidth;H=parseInt(c.getAttribute('height'));}
+
+  function newRound(){
+    state='guess';guess=null;
+    const a1=Math.random()*Math.PI*2,r1=.3+Math.random()*.5;
+    const a2=Math.random()*Math.PI*2,r2=.3+Math.random()*.5;
+    gameP1=[r1*Math.cos(a1),r1*Math.sin(a1)];
+    gameP2=[r2*Math.cos(a2),r2*Math.sin(a2)];
+    document.getElementById('gameCap').textContent='Click where you think the geodesic will pass through — then the true shortest path will be revealed.';
+  }
+  newRound();
+  document.getElementById('newRound').addEventListener('click',newRound);
+
+  c.addEventListener('click',e=>{
+    if(state!=='guess') return;
+    const rect=c.getBoundingClientRect();
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+    const mx=((e.clientX-rect.left)*(W/rect.width)-cx)/R;
+    const my=((e.clientY-rect.top)*(H/rect.height)-cy)/R;
+    if(mx*mx+my*my<.94){
+      guess=[mx,my];state='reveal';total++;
+      // Check if guess is near geodesic midpoint
+      const gm=[(gameP1[0]+gameP2[0])/2,(gameP1[1]+gameP2[1])/2];
+      const dist=Math.sqrt((mx-gm[0])**2+(my-gm[1])**2);
+      const correct=dist<.2;
+      if(correct) score++;
+      document.getElementById('gameScore').textContent=score+' / '+total;
+      document.getElementById('gameCap').textContent=correct?'✓ Good instinct! The geodesic passes near your guess. Click "New Round" to continue.':'The true geodesic curves toward the center more than Euclidean intuition suggests. Click "New Round" to try again.';
+    }
+  });
+
+  function drawGeoArc(ctx,cx,cy,R,p1,p2,color,width){
+    const ax=cx+p1[0]*R,ay=cy+p1[1]*R;
+    const bx=cx+p2[0]*R,by=cy+p2[1]*R;
+    const mx=(ax+bx)/2,my=(ay+by)/2;
+    const mdx=mx-cx,mdy=my-cy;
+    const cpx=mx-mdx*.38,cpy=my-mdy*.38;
+    ctx.beginPath();ctx.moveTo(ax,ay);ctx.quadraticCurveTo(cpx,cpy,bx,by);
+    ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+    g.addColorStop(0,'rgba(10,10,22,1)');g.addColorStop(1,'rgba(4,4,10,1)');
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(201,168,76,.35)';ctx.lineWidth=1.5;ctx.stroke();
+    // Show the two points
+    if(gameP1&&gameP2){
+      [gameP1,gameP2].forEach(p=>{
+        ctx.beginPath();ctx.arc(cx+p[0]*R,cy+p[1]*R,9,0,Math.PI*2);
+        ctx.fillStyle='#c9a84c';ctx.fill();
+        ctx.strokeStyle='#ffd700';ctx.lineWidth=2;ctx.stroke();
+      });
+      // Euclidean straight line (faint)
+      ctx.beginPath();ctx.moveTo(cx+gameP1[0]*R,cy+gameP1[1]*R);ctx.lineTo(cx+gameP2[0]*R,cy+gameP2[1]*R);
+      ctx.strokeStyle='rgba(255,255,255,.15)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle='rgba(255,255,255,.15)';ctx.font='10px JetBrains Mono';
+      ctx.fillText('Euclidean line',cx+(gameP1[0]+gameP2[0])/2*R+5,cy+(gameP1[1]+gameP2[1])/2*R-6);
+      // Reveal geodesic
+      if(state==='reveal'){
+        drawGeoArc(ctx,cx,cy,R,gameP1,gameP2,'rgba(78,205,196,.9)',2.5);
+        ctx.fillStyle='rgba(78,205,196,.7)';ctx.font='11px JetBrains Mono';
+        ctx.fillText('← true geodesic',cx+(gameP1[0]+gameP2[0])/2*R+5,cy+(gameP1[1]+gameP2[1])/2*R+16);
+        // Guess point
+        if(guess){
+          ctx.beginPath();ctx.arc(cx+guess[0]*R,cy+guess[1]*R,6,0,Math.PI*2);
+          ctx.fillStyle='#e84393';ctx.fill();
+          ctx.fillStyle='#e84393';ctx.font='10px JetBrains Mono';
+          ctx.fillText('your guess',cx+guess[0]*R+8,cy+guess[1]*R-4);
+        }
+      }
+    }
+    // Instruction
+    if(state==='guess'){
+      ctx.fillStyle='rgba(255,255,255,.25)';ctx.font='13px JetBrains Mono';
+      ctx.textAlign='center';ctx.fillText('Where does the shortest path go?',cx,H-20);ctx.textAlign='left';
+    }
+    t++;requestAnimationFrame(draw);
+  }
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+// ── TESSELLATION ──
+(()=>{
+  const c=document.getElementById('tessCanvas'),ctx=c.getContext('2d');
+  let W,H,t=0;
+  function resize(){W=c.width=c.offsetWidth;H=parseInt(c.getAttribute('height'));}
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2,cy=H/2,R=Math.min(W,H)*.46;
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+    g.addColorStop(0,'rgba(8,8,20,1)');g.addColorStop(1,'rgba(3,3,8,1)');
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+
+    // Draw hyperbolic tessellation approximation
+    // Multiple "layers" of geodesics in symmetric pattern
+    const layers=5;
+    for(let layer=0;layer<layers;layer++){
+      const n=5+layer*5;
+      for(let i=0;i<n;i++){
+        const a=(i/n)*Math.PI*2+t*(layer%2===0?.0004:-.0003)+layer*.3;
+        const layerR=.08+layer*.17;
+        const p1x=cx+R*.97*Math.cos(a),p1y=cy+R*.97*Math.sin(a);
+        const p2x=cx+R*.97*Math.cos(a+Math.PI*2/n*2.1),p2y=cy+R*.97*Math.sin(a+Math.PI*2/n*2.1);
+        const cpx=cx+R*layerR*Math.cos(a+Math.PI/n),cpy=cy+R*layerR*Math.sin(a+Math.PI/n);
+        ctx.beginPath();ctx.moveTo(p1x,p1y);ctx.quadraticCurveTo(cpx,cpy,p2x,p2y);
+        const alpha=0.6-layer*.1;
+        const hue=layer*60;
+        ctx.strokeStyle=`hsla(${hue+180},60%,60%,${alpha})`;
+        ctx.lineWidth=1-layer*.12;ctx.stroke();
+      }
+    }
+    // Boundary
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(201,168,76,.5)';ctx.lineWidth=2;ctx.stroke();
+    t++;requestAnimationFrame(draw);
+  }
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+// ── AREA COMPARISON ──
+(()=>{
+  const slider=document.getElementById('areaSlider');
+  const c=document.getElementById('areaCanvas'),ctx=c.getContext('2d');
+
+  function update(){
+    const r=parseFloat(slider.value);
+    const eA=Math.PI*r*r;
+    const hA=2*Math.PI*(Math.cosh(r)-1);
+    document.getElementById('areaR').textContent=r.toFixed(2);
+    document.getElementById('eucArea2').textContent=eA.toFixed(2);
+    document.getElementById('hypArea2').textContent=hA.toFixed(2);
+    const ratio=r>0.1?hA/eA:1;
+    document.getElementById('ratioSpan').textContent='×'+ratio.toFixed(1);
+
+    const W=c.offsetWidth,H=220;
+    c.width=W;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0d0d1a';ctx.fillRect(0,0,W,H);
+    const pad=40,maxR=4;
+    const maxA=2*Math.PI*(Math.cosh(maxR)-1);
+    // Grid
+    ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=.5;
+    for(let i=0;i<=4;i++){
+      const x=pad+i*(W-2*pad)/4;ctx.beginPath();ctx.moveTo(x,pad);ctx.lineTo(x,H-pad);ctx.stroke();
+    }
+    // Axes
+    ctx.strokeStyle='rgba(255,255,255,.2)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(pad,H-pad);ctx.lineTo(W-pad,H-pad);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(pad,pad);ctx.lineTo(pad,H-pad);ctx.stroke();
+    // Axis labels
+    ctx.fillStyle='rgba(255,255,255,.3)';ctx.font='10px JetBrains Mono';
+    ctx.fillText('r',W-pad+4,H-pad+4);ctx.fillText('A',pad-12,pad+4);
+    // Euclidean curve
+    ctx.beginPath();
+    for(let i=0;i<=100;i++){
+      const rr=i/100*maxR;
+      const x=pad+rr/maxR*(W-2*pad);
+      const y=H-pad-Math.PI*rr*rr/maxA*(H-2*pad);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle='rgba(201,168,76,.8)';ctx.lineWidth=2;ctx.stroke();
+    // Hyperbolic curve
+    ctx.beginPath();
+    for(let i=0;i<=100;i++){
+      const rr=i/100*maxR;
+      const x=pad+rr/maxR*(W-2*pad);
+      const y=H-pad-Math.min(2*Math.PI*(Math.cosh(rr)-1)/maxA,1)*(H-2*pad);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle='rgba(78,205,196,.8)';ctx.lineWidth=2;ctx.stroke();
+    // Current r marker
+    const rx=pad+r/maxR*(W-2*pad);
+    const ey=H-pad-Math.PI*r*r/maxA*(H-2*pad);
+    const hy=H-pad-Math.min(2*Math.PI*(Math.cosh(r)-1)/maxA,1)*(H-2*pad);
+    // Vertical line at r
+    ctx.beginPath();ctx.moveTo(rx,H-pad);ctx.lineTo(rx,Math.min(ey,hy)-10);
+    ctx.strokeStyle='rgba(255,255,255,.15)';ctx.lineWidth=1;ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+    ctx.beginPath();ctx.arc(rx,ey,5,0,Math.PI*2);ctx.fillStyle='#c9a84c';ctx.fill();
+    ctx.beginPath();ctx.arc(rx,hy,5,0,Math.PI*2);ctx.fillStyle='#4ecdc4';ctx.fill();
+    // Labels
+    ctx.fillStyle='rgba(201,168,76,.8)';ctx.font='11px JetBrains Mono';ctx.textAlign='right';
+    ctx.fillText('Euclidean πr²',W-pad-5,H-pad-8);
+    ctx.fillStyle='rgba(78,205,196,.8)';ctx.textAlign='left';
+    ctx.fillText('Hyperbolic 2π(cosh r−1)',pad+5,pad+14);
+    ctx.textAlign='left';
+  }
+
+  slider.addEventListener('input',update);
+  window.addEventListener('resize',update);
+  update();
+})();
+</script>
+</body>
+</html>
