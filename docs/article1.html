@@ -712,11 +712,11 @@ drawManifold('mfCanvas2','#4ecdc4','M_CKM');
       // Point
       ctx.beginPath();ctx.arc(s.x,s.y,7,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
       // Labels
-      ctx.fillStyle=p.color;ctx.font='bold 26px JetBrains Mono';
+      ctx.fillStyle=p.color;ctx.font='bold 20px JetBrains Mono';
       ctx.fillText(p.label,s.x+14,s.y-12);
-      ctx.fillStyle='rgba(255,255,255,.55)';ctx.font='19px JetBrains Mono';
+      ctx.fillStyle='rgba(255,255,255,.55)';ctx.font='15px JetBrains Mono';
       ctx.fillText(p.unit,s.x+14,s.y+12);
-      ctx.fillStyle=p.color+'c0';ctx.font='19px JetBrains Mono';
+      ctx.fillStyle=p.color+'c0';ctx.font='15px JetBrains Mono';
       ctx.fillText('D = v₀',s.x+14,s.y+34);
     });
 
@@ -740,26 +740,26 @@ drawManifold('mfCanvas2','#4ecdc4','M_CKM');
     ctx.strokeStyle='rgba(201,168,76,.25)';ctx.lineWidth=1;ctx.strokeRect(px2,py2,pw,ph);
 
     const lines=[
-      ['rgba(201,168,76,1)','26px','K = ℚ(w)'],
-      ['rgba(255,255,255,.4)','22px','w⁴ = w + 1'],
+      ['rgba(201,168,76,1)','20px','K = ℚ(w)'],
+      ['rgba(255,255,255,.4)','17px','w⁴ = w + 1'],
       ['','',''],
-      ['rgba(201,168,76,.8)','22px','u₁ = 1 − w³'],
-      ['rgba(255,255,255,.5)','18px','fundamental unit'],
-      ['rgba(255,255,255,.3)','18px','norm(u₁) = −1'],
+      ['rgba(201,168,76,.8)','17px','u₁ = 1 − w³'],
+      ['rgba(255,255,255,.5)','14px','fundamental unit'],
+      ['rgba(255,255,255,.3)','14px','norm(u₁) = −1'],
       ['','',''],
-      ['#4ecdc4','20px','D(w³) = D(−w) = D(w⁻⁴)'],
-      ['rgba(255,255,255,.8)','26px','= vol(M_PMNS)'],
-      ['rgba(201,168,76,.7)','17px','verified to 2×10⁻⁵¹'],
+      ['#4ecdc4','16px','D(w³) = D(−w) = D(w⁻⁴)'],
+      ['rgba(255,255,255,.8)','14px','= vol(M_PMNS)'],
+      ['rgba(201,168,76,.7)','13px','verified to 2×10⁻⁵¹'],
       ['','',''],
-      ['rgba(232,67,147,.9)','22px','w³·(−w)·w⁻⁴ = −1'],
-      ['rgba(255,255,255,.4)','17px','exact product identity'],
+      ['rgba(232,67,147,.9)','17px','w³·(−w)·w⁻⁴ = −1'],
+      ['rgba(255,255,255,.4)','13px','exact product identity'],
     ];
     let ly=py2+22;
     lines.forEach(([color,size,text])=>{
       if(!text){ly+=10;return;}
       ctx.fillStyle=color;ctx.font=`${size} JetBrains Mono`;
       ctx.fillText(text,px2+12,ly);
-      ly+=parseInt(size)+14;
+      ly+=parseInt(size)+10;
     });
 
     t++;requestAnimationFrame(draw);
