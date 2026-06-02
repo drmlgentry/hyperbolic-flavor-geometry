@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyperbolic Art Generator — HFG</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#07070f;--deep:#0d0d1a;--surface:#131325;
+  --gold:#c9a84c;--gold2:#ffd700;--cyan:#4ecdc4;--rose:#e84393;
+  --text:#ece8df;--muted:#7a7570;--rule:rgba(201,168,76,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--void);color:var(--text);font-family:'JetBrains Mono',monospace;overflow-x:hidden;}
+
+/* TOP BAR */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:.9rem 2rem;background:rgba(7,7,15,.95);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100;}
+.topbar-logo{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+.topbar-title{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.topbar-nav{display:flex;gap:1.5rem;}
+.topbar-nav a{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.topbar-nav a:hover{color:var(--gold);}
+
+/* LAYOUT */
+.app{display:grid;grid-template-columns:320px 1fr;min-height:calc(100vh - 48px);}
+
+/* CONTROLS PANEL */
+.controls{background:var(--deep);border-right:1px solid var(--rule);padding:1.5rem;overflow-y:auto;max-height:calc(100vh - 48px);position:sticky;top:48px;}
+
+.ctrl-section{margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid var(--rule);}
+.ctrl-section:last-child{border-bottom:none;}
+.ctrl-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+
+/* STYLE PRESETS */
+.presets{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.5rem;}
+.preset-btn{padding:.6rem .5rem;border:1px solid var(--rule);background:var(--surface);color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:center;}
+.preset-btn:hover{border-color:var(--gold);color:var(--gold);}
+.preset-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.1);}
+
+/* SLIDERS */
+.ctrl-row{margin-bottom:1rem;}
+.ctrl-row-head{display:flex;justify-content:space-between;margin-bottom:.35rem;}
+.ctrl-row-head label{font-size:.62rem;color:var(--muted);}
+.ctrl-row-head .val{font-size:.62rem;color:var(--gold);}
+input[type=range]{width:100%;accent-color:var(--gold);height:2px;}
+
+/* COLOR PALETTES */
+.palettes{display:flex;flex-wrap:wrap;gap:.5rem;}
+.palette-btn{width:32px;height:32px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:border-color .2s;}
+.palette-btn.active{border-color:var(--gold);}
+
+/* SELECT */
+select{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--rule);padding:.5rem .7rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;outline:none;}
+select:focus{border-color:var(--gold);}
+
+/* CANVAS AREA */
+.canvas-area{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem;background:var(--void);gap:1.5rem;}
+
+.canvas-wrap{position:relative;box-shadow:0 0 60px rgba(0,0,0,.8),0 0 120px rgba(201,168,76,.05);}
+.canvas-wrap canvas{display:block;}
+
+/* PRINT OVERLAY */
+.print-badge{position:absolute;bottom:12px;right:12px;font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);pointer-events:none;}
+
+/* ACTION BUTTONS */
+.actions{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.65rem 1.4rem;border:1px solid;cursor:pointer;transition:all .2s;}
+.btn-gold{border-color:var(--gold);color:var(--gold);background:transparent;}
+.btn-gold:hover{background:var(--gold);color:var(--void);}
+.btn-cyan{border-color:var(--cyan);color:var(--cyan);background:transparent;}
+.btn-cyan:hover{background:var(--cyan);color:var(--void);}
+.btn-rose{border-color:var(--rose);color:var(--rose);background:transparent;}
+.btn-rose:hover{background:var(--rose);color:var(--void);}
+.btn-lg{padding:.9rem 2.5rem;font-size:.75rem;}
+
+/* SIZE SELECTOR */
+.sizes{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;}
+.size-btn{padding:.4rem .9rem;border:1px solid var(--rule);color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.6rem;cursor:pointer;transition:all .2s;}
+.size-btn:hover{border-color:var(--gold);color:var(--gold);}
+.size-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.1);}
+
+/* PRICE TAG */
+.price-display{text-align:center;padding:1rem 2rem;background:var(--surface);border:1px solid var(--rule);min-width:280px;}
+.price-name{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+.price-val{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--gold);}
+.price-sub{font-size:.6rem;color:var(--muted);margin-top:.3rem;}
+
+/* SHOP MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--deep);border:1px solid var(--rule);max-width:560px;width:100%;padding:2.5rem;}
+.modal h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:1rem;color:var(--gold);}
+.modal p{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;}
+.modal-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;}
+
+/* GENERATING OVERLAY */
+.gen-overlay{position:absolute;inset:0;background:rgba(7,7,15,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:1rem;}
+.gen-overlay.show{display:flex;}
+.gen-spinner{width:40px;height:40px;border:2px solid var(--rule);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.gen-text{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);}
+
+/* INFO STRIP */
+.info-strip{background:var(--surface);border:1px solid var(--rule);padding:1rem 1.5rem;max-width:700px;width:100%;}
+.info-strip p{font-size:.7rem;color:var(--muted);line-height:1.7;margin:0;}
+.info-strip strong{color:var(--text);}
+
+@media(max-width:768px){
+  .app{grid-template-columns:1fr;}
+  .controls{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--rule);}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="https://hyperbolicflavorgeometry.org" class="topbar-logo">HFG</a>
+  <span class="topbar-title">Hyperbolic Art Generator</span>
+  <nav class="topbar-nav">
+    <a href="https://hyperbolicflavorgeometry.org">Home</a>
+    <a href="article1.html">Articles</a>
+    <a href="#shop">Shop</a>
+  </nav>
+</div>
+
+<div class="app">
+
+  <!-- ═══ CONTROLS ═══ -->
+  <div class="controls">
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">Style Preset</span>
+      <div class="presets">
+        <button class="preset-btn active" data-preset="meyerhoff">Meyerhoff</button>
+        <button class="preset-btn" data-preset="orbit">Unit Orbit</button>
+        <button class="preset-btn" data-preset="geodesic">Geodesic Web</button>
+        <button class="preset-btn" data-preset="farey">Farey Tower</button>
+        <button class="preset-btn" data-preset="escher">Escher Mode</button>
+        <button class="preset-btn" data-preset="bloch">Bloch Family</button>
+        <button class="preset-btn" data-preset="galois">Galois Field</button>
+        <button class="preset-btn" data-preset="custom">Custom</button>
+      </div>
+    </div>
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">Transform Type</span>
+      <select id="transformType">
+        <option value="poincare">Poincaré Disk</option>
+        <option value="klein">Beltrami–Klein</option>
+        <option value="halfplane">Upper Half-Plane</option>
+        <option value="orbit">Möbius Orbit</option>
+      </select>
+    </div>
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">Geodesic Structure</span>
+      <div class="ctrl-row">
+        <div class="ctrl-row-head"><label>Families</label><span class="val" id="familiesVal">3</span></div>
+        <input type="range" min="1" max="8" value="3" id="families">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-row-head"><label>Density</label><span class="val" id="densityVal">12</span></div>
+        <input type="range" min="4" max="40" value="12" id="density">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-row-head"><label>Depth</label><span class="val" id="depthVal">6</span></div>
+        <input type="range" min="2" max="12" value="6" id="depth">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-row-head"><label>Rotation</label><span class="val" id="rotationVal">0°</span></div>
+        <input type="range" min="0" max="360" value="0" id="rotation">
+      </div>
+    </div>
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">Color Palette</span>
+      <div class="palettes" id="palettes">
+        <div class="palette-btn active" data-pal="gold" style="background:linear-gradient(135deg,#c9a84c,#ffd700,#8b5e00);" title="Gold (Meyerhoff)"></div>
+        <div class="palette-btn" data-pal="ocean" style="background:linear-gradient(135deg,#0a4060,#4ecdc4,#00f5ff);" title="Ocean"></div>
+        <div class="palette-btn" data-pal="rose" style="background:linear-gradient(135deg,#3a0020,#e84393,#ff9de2);" title="Rose"></div>
+        <div class="palette-btn" data-pal="void" style="background:linear-gradient(135deg,#1a1a2e,#e0e0e0,#ffffff);" title="Void (B&W)"></div>
+        <div class="palette-btn" data-pal="forest" style="background:linear-gradient(135deg,#0d2818,#50fa7b,#c8ffbc);" title="Forest"></div>
+        <div class="palette-btn" data-pal="fire" style="background:linear-gradient(135deg,#1a0000,#ff4500,#ffd700);" title="Fire"></div>
+        <div class="palette-btn" data-pal="cosmic" style="background:linear-gradient(135deg,#0a0020,#9b59b6,#e056ef);" title="Cosmic"></div>
+        <div class="palette-btn" data-pal="ice" style="background:linear-gradient(135deg,#001133,#4488ff,#aaddff);" title="Ice</div>
+      </div>
+    </div>
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">Background</span>
+      <select id="bgType">
+        <option value="void">Deep Void</option>
+        <option value="gradient">Radial Gradient</option>
+        <option value="nebula">Nebula</option>
+        <option value="white">Gallery White</option>
+        <option value="black">Gallery Black</option>
+      </select>
+    </div>
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">Fine Tuning</span>
+      <div class="ctrl-row">
+        <div class="ctrl-row-head"><label>Line Weight</label><span class="val" id="weightVal">1.0</span></div>
+        <input type="range" min="2" max="30" value="10" id="weight">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-row-head"><label>Glow</label><span class="val" id="glowVal">Medium</span></div>
+        <input type="range" min="0" max="4" value="2" id="glow">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-row-head"><label>Symmetry</label><span class="val" id="symmetryVal">None</span></div>
+        <input type="range" min="0" max="4" value="0" id="symmetry">
+      </div>
+    </div>
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">HFG Overlay</span>
+      <div class="ctrl-row" style="display:flex;align-items:center;gap:.8rem;">
+        <input type="checkbox" id="showTitle" style="accent-color:var(--gold);">
+        <label for="showTitle" style="font-size:.68rem;color:var(--muted);cursor:pointer;">Show title & v₀</label>
+      </div>
+      <div class="ctrl-row" style="display:flex;align-items:center;gap:.8rem;">
+        <input type="checkbox" id="showOrbit" style="accent-color:var(--gold);">
+        <label for="showOrbit" style="font-size:.68rem;color:var(--muted);cursor:pointer;">Show orbit labels</label>
+      </div>
+      <div class="ctrl-row" style="display:flex;align-items:center;gap:.8rem;">
+        <input type="checkbox" id="showBoundary" checked style="accent-color:var(--gold);">
+        <label for="showBoundary" style="font-size:.68rem;color:var(--muted);cursor:pointer;">Show boundary circle</label>
+      </div>
+    </div>
+
+    <div class="ctrl-section">
+      <span class="ctrl-label">Randomize</span>
+      <button class="btn btn-cyan" style="width:100%;" id="randomBtn">✦ Random Composition</button>
+    </div>
+
+  </div>
+
+  <!-- ═══ CANVAS AREA ═══ -->
+  <div class="canvas-area">
+
+    <!-- SIZE SELECTOR -->
+    <div class="sizes">
+      <div class="size-btn" data-size="8x10">8×10"</div>
+      <div class="size-btn active" data-size="12x12">12×12"</div>
+      <div class="size-btn" data-size="16x20">16×20"</div>
+      <div class="size-btn" data-size="18x24">18×24"</div>
+      <div class="size-btn" data-size="24x36">24×36"</div>
+    </div>
+
+    <!-- CANVAS -->
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="artCanvas"></canvas>
+      <div class="print-badge">hyperbolicflavorgeometry.org</div>
+      <div class="gen-overlay" id="genOverlay">
+        <div class="gen-spinner"></div>
+        <div class="gen-text">Rendering geometry...</div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+      <button class="btn btn-gold" id="regenerateBtn">↺ Regenerate</button>
+      <button class="btn btn-gold" id="downloadBtn">↓ Download PNG</button>
+      <button class="btn btn-cyan btn-lg" id="orderBtn">Order Print →</button>
+    </div>
+
+    <!-- PRICE -->
+    <div class="price-display" id="priceDisplay">
+      <div class="price-name">12×12" Fine Art Print</div>
+      <div class="price-val">$48</div>
+      <div class="price-sub">Archival pigment ink · gallery-quality paper · ships in 5-7 days</div>
+    </div>
+
+    <!-- INFO -->
+    <div class="info-strip">
+      <p>
+        <strong>Every piece is mathematically exact.</strong>
+        The geodesics, tessellations, and orbital structures are computed directly from the arithmetic of compact hyperbolic 3-manifolds — the same geometry that appears to encode the masses and mixing angles of elementary particles. Your print is a window into the smallest possible curved universe.
+        <br><br>
+        Printed on heavyweight 300gsm archival paper with pigment inks rated for 100+ years. Available framed or unframed. Each order fulfilled by Printful and ships worldwide.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-bg" id="orderModal">
+  <div class="modal" style="position:relative;">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h3>Order Your Print</h3>
+    <p>Your custom hyperbolic artwork is ready to print. We use Printful for archival-quality fulfillment — your design will be sent directly to their print lab.</p>
+
+    <div style="background:var(--surface);border:1px solid var(--rule);padding:1rem;margin:1rem 0;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:.5rem;">
+        <span style="font-size:.7rem;color:var(--muted);">Selected size</span>
+        <span style="font-size:.7rem;color:var(--gold);" id="modalSize">12×12"</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:.5rem;">
+        <span style="font-size:.7rem;color:var(--muted);">Style</span>
+        <span style="font-size:.7rem;color:var(--gold);" id="modalStyle">Meyerhoff · Gold</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="font-size:.7rem;color:var(--muted);">Price</span>
+        <span style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);" id="modalPrice">$48</span>
+      </div>
+    </div>
+
+    <p style="font-size:.75rem;">To complete your order, click below to open our Etsy shop. Paste your download code at checkout to receive your custom design. <br><br><em>Coming soon: one-click direct ordering. For now, download your image and order via Etsy.</em></p>
+
+    <div class="modal-btns">
+      <button class="btn btn-gold btn-lg" id="downloadFromModal">↓ Download Your Design</button>
+      <a href="https://www.etsy.com/shop/HyperbolicFlavorArt" target="_blank" class="btn btn-cyan btn-lg" style="text-decoration:none;display:inline-block;">Open Etsy Shop →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══ STATE ══
+const state = {
+  preset: 'meyerhoff',
+  transform: 'poincare',
+  families: 3,
+  density: 12,
+  depth: 6,
+  rotation: 0,
+  palette: 'gold',
+  bg: 'void',
+  weight: 1.0,
+  glow: 2,
+  symmetry: 0,
+  showTitle: false,
+  showOrbit: false,
+  showBoundary: true,
+  size: '12x12',
+  seed: Math.random() * 10000,
+};
+
+// ══ PALETTES ══
+const PALETTES = {
+  gold:   ['#c9a84c','#ffd700','#b8860b','#f0c040','#8b6914','#ffe066'],
+  ocean:  ['#4ecdc4','#00b4d8','#0077b6','#48cae4','#ade8f4','#023e8a'],
+  rose:   ['#e84393','#ff6eb4','#c9184a','#ff85a1','#ff4d6d','#ffb3c1'],
+  void:   ['#ffffff','#cccccc','#888888','#e0e0e0','#f5f5f5','#aaaaaa'],
+  forest: ['#50fa7b','#2dc653','#0a7c3e','#9ef01a','#70e000','#38b000'],
+  fire:   ['#ff4500','#ff6b35','#ffd700','#ff8c00','#dc143c','#ff9500'],
+  cosmic: ['#9b59b6','#e056ef','#c084fc','#a855f7','#7c3aed','#ddd6fe'],
+  ice:    ['#4488ff','#aaddff','#88ccff','#2255cc','#66aaff','#cce5ff'],
+};
+
+const SIZES = {
+  '8x10':  {w:480,h:600,label:'8×10"',price:35},
+  '12x12': {w:600,h:600,label:'12×12"',price:48},
+  '16x20': {w:640,h:800,label:'16×20"',price:68},
+  '18x24': {w:540,h:720,label:'18×24"',price:85},
+  '24x36': {w:600,h:900,label:'24×36"',price:125},
+};
+
+const PRESETS = {
+  meyerhoff: {families:3,density:14,depth:7,rotation:0,palette:'gold',bg:'void',weight:1.0,glow:2,symmetry:0},
+  orbit:     {families:3,density:8,depth:5,rotation:60,palette:'cosmic',bg:'void',weight:1.2,glow:3,symmetry:3},
+  geodesic:  {families:5,density:20,depth:8,rotation:15,palette:'ocean',bg:'gradient',weight:0.8,glow:2,symmetry:0},
+  farey:     {families:6,density:18,depth:9,rotation:0,palette:'gold',bg:'nebula',weight:0.7,glow:1,symmetry:0},
+  escher:    {families:4,density:24,depth:10,rotation:30,palette:'void',bg:'white',weight:0.9,glow:0,symmetry:4},
+  bloch:     {families:3,density:10,depth:6,rotation:0,palette:'fire',bg:'void',weight:1.4,glow:3,symmetry:3},
+  galois:    {families:4,density:16,depth:7,rotation:45,palette:'forest',bg:'void',weight:1.0,glow:2,symmetry:4},
+  custom:    {families:3,density:12,depth:6,rotation:0,palette:'gold',bg:'void',weight:1.0,glow:2,symmetry:0},
+};
+
+// ══ CANVAS ══
+const canvas = document.getElementById('artCanvas');
+const ctx = canvas.getContext('2d');
+
+function setCanvasSize(){
+  const sz = SIZES[state.size];
+  const maxW = Math.min(sz.w, window.innerWidth - 380);
+  const scale = maxW / sz.w;
+  canvas.width = sz.w;
+  canvas.height = sz.h;
+  canvas.style.width = (sz.w * scale) + 'px';
+  canvas.style.height = (sz.h * scale) + 'px';
+}
+
+// ══ SEEDED RANDOM ══
+function seededRand(seed){
+  let s = seed;
+  return function(){
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+}
+
+// ══ RENDER ══
+function render(){
+  const sz = SIZES[state.size];
+  const W = canvas.width, H = canvas.height;
+  const cx = W/2, cy = H/2;
+  const R = Math.min(W,H) * 0.44;
+  const pal = PALETTES[state.palette];
+  const rand = seededRand(state.seed + state.preset.length * 37);
+
+  ctx.clearRect(0,0,W,H);
+
+  // ── BACKGROUND ──
+  switch(state.bg){
+    case 'void':
+      ctx.fillStyle = '#07070f'; ctx.fillRect(0,0,W,H); break;
+    case 'gradient': {
+      const g = ctx.createRadialGradient(cx,cy,0,cx,cy,R*1.4);
+      g.addColorStop(0, hexToRgba(pal[0],.15));
+      g.addColorStop(.6, '#0a0a14');
+      g.addColorStop(1, '#04040a');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H); break;
+    }
+    case 'nebula': {
+      ctx.fillStyle = '#05050f'; ctx.fillRect(0,0,W,H);
+      for(let i=0;i<6;i++){
+        const nx=cx+(rand()-.5)*W*.8, ny=cy+(rand()-.5)*H*.8;
+        const nr=R*(rand()*.5+.3);
+        const ng=ctx.createRadialGradient(nx,ny,0,nx,ny,nr);
+        ng.addColorStop(0,hexToRgba(pal[i%pal.length],.08));
+        ng.addColorStop(1,'transparent');
+        ctx.beginPath();ctx.arc(nx,ny,nr,0,Math.PI*2);
+        ctx.fillStyle=ng;ctx.fill();
+      }
+      break;
+    }
+    case 'white': ctx.fillStyle='#f8f5ef'; ctx.fillRect(0,0,W,H); break;
+    case 'black': ctx.fillStyle='#000000'; ctx.fillRect(0,0,W,H); break;
+  }
+
+  // ── GEODESIC FAMILIES ──
+  const glowLevels = [0, 4, 8, 14, 20, 0][state.glow] || 0;
+  const rotRad = state.rotation * Math.PI / 180;
+  const symCount = [1,2,3,4,6][state.symmetry] || 1;
+
+  for(let sym=0; sym<symCount; sym++){
+    const symAngle = (sym/symCount) * Math.PI * 2;
+    ctx.save();
+    ctx.translate(cx,cy);ctx.rotate(symAngle);ctx.translate(-cx,-cy);
+
+    for(let fam=0; fam<state.families; fam++){
+      const famAngleOffset = (fam/state.families)*Math.PI + rotRad;
+      const color = pal[fam % pal.length];
+
+      for(let i=0; i<state.density; i++){
+        const t = i/state.density;
+        const a = famAngleOffset + t*Math.PI;
+        const r = 0.1 + rand()*0.7;
+        const spread = rand()*0.4 + 0.2;
+
+        const p1x = cx + R*.97*Math.cos(a);
+        const p1y = cy + R*.97*Math.sin(a);
+        const p2x = cx + R*.97*Math.cos(a + Math.PI*spread);
+        const p2y = cy + R*.97*Math.sin(a + Math.PI*spread);
+        const cpx = cx + R*r*0.25*Math.cos(a + Math.PI*spread/2);
+        const cpy = cy + R*r*0.25*Math.sin(a + Math.PI*spread/2);
+
+        // Depth layers (closer to center = brighter)
+        for(let d=0; d<state.depth; d++){
+          const depthR = 0.05 + d/state.depth * 0.85;
+          const lx = cx + (p1x-cx)*depthR;
+          const ly = cy + (p1y-cy)*depthR;
+          const rx2 = cx + (p2x-cx)*depthR;
+          const ry2 = cy + (p2y-cy)*depthR;
+          const cx2 = cx + (cpx-cx)*depthR;
+          const cy2 = cy + (cpy-cy)*depthR;
+          const alpha = (d/state.depth)*(0.3 + fam*0.1) * (1/symCount*1.5);
+
+          if(glowLevels > 0){
+            ctx.shadowColor = color;
+            ctx.shadowBlur = glowLevels * (1-d/state.depth);
+          }
+          ctx.beginPath();ctx.moveTo(lx,ly);ctx.quadraticCurveTo(cx2,cy2,rx2,ry2);
+          ctx.strokeStyle = hexToRgba(color, alpha);
+          ctx.lineWidth = state.weight * (0.5 + d/state.depth*1.5);
+          ctx.stroke();
+        }
+        ctx.shadowBlur = 0;
+      }
+    }
+    ctx.restore();
+  }
+
+  // ── ORBIT MARKERS ══ (if preset is orbit or unit orbit shown)
+  if(state.preset === 'orbit' || state.showOrbit){
+    const orbPts = [
+      {re:.781,im:.914,label:'w³',color:pal[0]},
+      {re:.248,im:1.034,label:'−w',color:pal[1]||pal[0]},
+      {re:.460,im:.633,label:'w⁻⁴',color:pal[2]||pal[0]},
+    ];
+    orbPts.forEach(p=>{
+      const px=cx+p.re*R, py=cy-p.im*R;
+      const grd=ctx.createRadialGradient(px,py,0,px,py,18);
+      grd.addColorStop(0,p.color+'e0');grd.addColorStop(1,'transparent');
+      ctx.beginPath();ctx.arc(px,py,18,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();
+      ctx.beginPath();ctx.arc(px,py,6,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
+      if(state.showOrbit){
+        ctx.fillStyle=p.color;ctx.font=`bold ${Math.round(R*.045)}px JetBrains Mono`;
+        ctx.fillText(p.label,px+10,py-6);
+      }
+    });
+    // Orbit triangle
+    const [a,b,c] = orbPts.map(p=>({x:cx+p.re*R,y:cy-p.im*R}));
+    [[a,b],[b,c],[c,a]].forEach(([s,e])=>{
+      const mx=(s.x+e.x)/2,my=(s.y+e.y)/2;
+      const dx=mx-cx,dy=my-cy;
+      ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.quadraticCurveTo(mx-dx*.3,my-dy*.3,e.x,e.y);
+      ctx.strokeStyle=pal[0]+'90';ctx.lineWidth=1;ctx.stroke();
+    });
+  }
+
+  // ── BOUNDARY ──
+  if(state.showBoundary){
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    const isDark = state.bg==='white'?false:true;
+    ctx.strokeStyle = isDark ? hexToRgba(pal[0],.5) : 'rgba(0,0,0,.3)';
+    ctx.lineWidth = 1.5; ctx.stroke();
+  }
+
+  // ── TITLE OVERLAY ──
+  if(state.showTitle){
+    const isDark = state.bg==='white'||state.bg==='black'?false:true;
+    const tc = isDark ? 'rgba(255,255,255,.6)' : 'rgba(0,0,0,.5)';
+    ctx.fillStyle = tc;
+    ctx.font = `${Math.round(R*.04)}px JetBrains Mono`;
+    ctx.textAlign='center';
+    ctx.fillText('HYPERBOLIC FLAVOR GEOMETRY', cx, H-R*.12);
+    ctx.font = `${Math.round(R*.032)}px JetBrains Mono`;
+    ctx.fillStyle = pal[0]+'c0';
+    ctx.fillText('v₀ = 0.9813688289...', cx, H-R*.06);
+    ctx.textAlign='left';
+  }
+}
+
+function hexToRgba(hex,a){
+  const r=parseInt(hex.slice(1,3),16);
+  const g=parseInt(hex.slice(3,5),16);
+  const b=parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+// ══ UPDATE PRICE DISPLAY ══
+function updatePrice(){
+  const sz = SIZES[state.size];
+  document.querySelector('.price-name').textContent = `${sz.label} Fine Art Print`;
+  document.querySelector('.price-val').textContent = `$${sz.price}`;
+  document.getElementById('modalSize').textContent = sz.label;
+  document.getElementById('modalPrice').textContent = `$${sz.price}`;
+  document.getElementById('modalStyle').textContent =
+    `${state.preset.charAt(0).toUpperCase()+state.preset.slice(1)} · ${state.palette.charAt(0).toUpperCase()+state.palette.slice(1)}`;
+}
+
+// ══ WIRE UP CONTROLS ══
+document.querySelectorAll('.preset-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.preset = btn.dataset.preset;
+    const p = PRESETS[state.preset];
+    Object.assign(state, p);
+    syncControls();
+    state.seed = Math.random()*10000;
+    render();
+  });
+});
+
+document.querySelectorAll('.palette-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.palette-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.palette = btn.dataset.pal;
+    render();
+  });
+});
+
+document.querySelectorAll('.size-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state.size = btn.dataset.size;
+    setCanvasSize();
+    updatePrice();
+    render();
+  });
+});
+
+[
+  ['families','familiesVal',v=>Math.round(v)],
+  ['density','densityVal',v=>Math.round(v)],
+  ['depth','depthVal',v=>Math.round(v)],
+  ['rotation','rotationVal',v=>Math.round(v)+'°'],
+  ['weight','weightVal',v=>(v/10).toFixed(1),'weight',v=>v/10],
+  ['glow','glowVal',v=>['Off','Low','Med','High','Ultra'][v]],
+  ['symmetry','symmetryVal',v=>['None','×2','×3','×4','×6'][v]],
+].forEach(([id,valId,fmt,stateKey,transform])=>{
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('input',e=>{
+    const raw=parseFloat(e.target.value);
+    const val=transform?transform(raw):Math.round(raw);
+    document.getElementById(valId).textContent=fmt(raw);
+    state[stateKey||id]=val;
+    render();
+  });
+});
+
+document.getElementById('transformType').addEventListener('change',e=>{state.transform=e.target.value;render();});
+document.getElementById('bgType').addEventListener('change',e=>{state.bg=e.target.value;render();});
+document.getElementById('showTitle').addEventListener('change',e=>{state.showTitle=e.target.checked;render();});
+document.getElementById('showOrbit').addEventListener('change',e=>{state.showOrbit=e.target.checked;render();});
+document.getElementById('showBoundary').addEventListener('change',e=>{state.showBoundary=e.target.checked;render();});
+
+document.getElementById('randomBtn').addEventListener('click',()=>{
+  state.seed=Math.random()*10000;
+  state.families=1+Math.floor(Math.random()*7);
+  state.density=4+Math.floor(Math.random()*30);
+  state.depth=2+Math.floor(Math.random()*10);
+  state.rotation=Math.floor(Math.random()*360);
+  state.weight=0.3+Math.random()*2;
+  state.glow=Math.floor(Math.random()*5);
+  state.symmetry=Math.floor(Math.random()*5);
+  const pals=Object.keys(PALETTES);
+  state.palette=pals[Math.floor(Math.random()*pals.length)];
+  document.querySelectorAll('.palette-btn').forEach(b=>b.classList.toggle('active',b.dataset.pal===state.palette));
+  syncControls();
+  render();
+});
+
+document.getElementById('regenerateBtn').addEventListener('click',()=>{
+  state.seed=Math.random()*10000;
+  render();
+});
+
+document.getElementById('downloadBtn').addEventListener('click',downloadArt);
+document.getElementById('downloadFromModal').addEventListener('click',downloadArt);
+
+function downloadArt(){
+  // Render at 2× for print quality
+  const sz=SIZES[state.size];
+  const origW=canvas.width,origH=canvas.height;
+  const printCanvas=document.createElement('canvas');
+  printCanvas.width=sz.w*2;printCanvas.height=sz.h*2;
+  const pctx=printCanvas.getContext('2d');
+  pctx.scale(2,2);pctx.drawImage(canvas,0,0);
+  const a=document.createElement('a');
+  a.download=`hfg-${state.preset}-${state.palette}-${state.size}.png`;
+  a.href=printCanvas.toDataURL('image/png',1.0);
+  a.click();
+}
+
+document.getElementById('orderBtn').addEventListener('click',()=>{
+  updatePrice();
+  document.getElementById('orderModal').classList.add('open');
+});
+document.getElementById('modalClose').addEventListener('click',()=>{
+  document.getElementById('orderModal').classList.remove('open');
+});
+document.getElementById('orderModal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('orderModal'))
+    document.getElementById('orderModal').classList.remove('open');
+});
+
+function syncControls(){
+  document.getElementById('families').value=state.families;
+  document.getElementById('density').value=state.density;
+  document.getElementById('depth').value=state.depth;
+  document.getElementById('rotation').value=state.rotation;
+  document.getElementById('weight').value=state.weight*10;
+  document.getElementById('glow').value=state.glow;
+  document.getElementById('symmetry').value=state.symmetry;
+  document.getElementById('familiesVal').textContent=state.families;
+  document.getElementById('densityVal').textContent=state.density;
+  document.getElementById('depthVal').textContent=state.depth;
+  document.getElementById('rotationVal').textContent=state.rotation+'°';
+  document.getElementById('weightVal').textContent=state.weight.toFixed(1);
+  document.getElementById('glowVal').textContent=['Off','Low','Med','High','Ultra'][state.glow];
+  document.getElementById('symmetryVal').textContent=['None','×2','×3','×4','×6'][state.symmetry];
+}
+
+// ══ INIT ══
+setCanvasSize();
+updatePrice();
+render();
+window.addEventListener('resize',()=>{setCanvasSize();render();});
+</script>
+</body>
+</html>

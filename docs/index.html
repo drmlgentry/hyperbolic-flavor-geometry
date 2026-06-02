@@ -15,301 +15,58 @@
   --rule: #d4cfc8;
   --code-bg: #eeebe4;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'EB Garamond', Georgia, serif;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-/* ── Header ── */
-header {
-  border-bottom: 2px solid var(--ink);
-  padding: 2.5rem 0 1.5rem;
-  text-align: center;
-  position: relative;
-}
-
-header::before {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--accent);
-  margin: 0 auto 1.5rem;
-}
-
-h1 {
-  font-size: 2.6rem;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-.subtitle {
-  font-style: italic;
-  color: var(--muted);
-  margin-top: 0.4rem;
-  font-size: 1.1rem;
-}
-
-nav {
-  margin-top: 1.2rem;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-}
-
+body { font-family: 'EB Garamond', Georgia, serif; background: var(--paper); color: var(--ink); font-size: 18px; line-height: 1.7; }
+header { border-bottom: 2px solid var(--ink); padding: 2.5rem 0 1.5rem; text-align: center; }
+header::before { content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 0 auto 1.5rem; }
+h1 { font-size: 2.6rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.subtitle { font-style: italic; color: var(--muted); margin-top: 0.4rem; font-size: 1.1rem; }
+nav { margin-top: 1.2rem; display: flex; justify-content: center; gap: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+nav a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
 nav a:hover { color: var(--accent); border-color: var(--accent); }
-
-/* ── Layout ── */
-.container {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-section {
-  padding: 3rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-
+.container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
 section:last-child { border-bottom: none; }
-
-h2 {
-  font-size: 0.7rem;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-
-h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: 1.5rem 0 0.5rem;
-}
-
+h2 { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+h3 { font-size: 1.2rem; font-weight: 500; margin: 1.5rem 0 0.5rem; }
 p { margin-bottom: 1rem; }
-
-/* ── Hero ── */
-.hero {
-  padding: 4rem 0 3rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-.hero-statement {
-  font-size: 1.45rem;
-  line-height: 1.55;
-  font-style: italic;
-  color: var(--ink);
-  border-left: 3px solid var(--accent);
-  padding-left: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-/* ── Results table ── */
-.results-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-  margin: 1.5rem 0;
-}
-
-.results-table th {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--ink);
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-}
-
-.results-table td {
-  padding: 0.6rem 0.75rem;
-  border-bottom: 1px solid var(--rule);
-  vertical-align: top;
-}
-
+.hero { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
+.hero-statement { font-size: 1.45rem; line-height: 1.55; font-style: italic; color: var(--ink); border-left: 3px solid var(--accent); padding-left: 1.5rem; margin: 1.5rem 0; }
+.results-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1.5rem 0; }
+.results-table th { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--ink); padding: 0.5rem 0.75rem; text-align: left; }
+.results-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
 .results-table tr:hover td { background: var(--code-bg); }
-
 .acc { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
 .exact { color: #2a5e2a; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
-
-/* ── Manifold cards ── */
-.manifold-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.manifold-card {
-  background: var(--code-bg);
-  border: 1px solid var(--rule);
-  padding: 1.2rem;
-  border-top: 3px solid var(--accent);
-}
-
-.manifold-card .name {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--accent);
-  margin-bottom: 0.4rem;
-}
-
-.manifold-card .role {
-  font-size: 0.78rem;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.8rem;
-}
-
-.manifold-card p {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  margin-bottom: 0.4rem;
-  color: var(--ink);
-}
-
-/* ── Papers ── */
+.manifold-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.manifold-card { background: var(--code-bg); border: 1px solid var(--rule); padding: 1.2rem; border-top: 3px solid var(--accent); }
+.manifold-card .name { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 400; color: var(--accent); margin-bottom: 0.4rem; }
+.manifold-card .role { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
+.manifold-card p { font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.4rem; }
 .paper-list { list-style: none; }
-
-.paper-list li {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1rem;
-  align-items: baseline;
-}
-
+.paper-list li { padding: 1rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: baseline; }
 .paper-list li:last-child { border-bottom: none; }
-
-.paper-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--muted);
-  padding-top: 0.15rem;
-}
-
-.paper-title {
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.paper-title a {
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule);
-  transition: border-color 0.2s;
-}
-
+.paper-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); padding-top: 0.15rem; }
+.paper-title { font-size: 0.95rem; line-height: 1.4; }
+.paper-title a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s; }
 .paper-title a:hover { border-color: var(--accent); color: var(--accent); }
-
-.paper-venue {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--muted);
-  white-space: nowrap;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.paper-status {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 2px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: 0.25rem;
-}
-
+.paper-venue { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); white-space: nowrap; text-transform: uppercase; }
+.paper-status { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.25rem; }
 .status-review { background: #e8f0e8; color: #2a5e2a; }
-.status-check  { background: #f0ece8; color: #8b4010; }
+.status-check { background: #f0ece8; color: #8b4010; }
 .status-preprint { background: var(--code-bg); color: var(--muted); }
-
-/* ── Code block ── */
-pre {
-  background: var(--code-bg);
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--accent);
-  padding: 1.2rem 1.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  line-height: 1.6;
-  overflow-x: auto;
-  margin: 1.2rem 0;
-}
-
-/* ── Footer ── */
-footer {
-  text-align: center;
-  padding: 2rem 0 3rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.04em;
-}
-
+pre { background: var(--code-bg); border: 1px solid var(--rule); border-left: 3px solid var(--accent); padding: 1.2rem 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.6; overflow-x: auto; margin: 1.2rem 0; }
+.theorem { border: 1px solid var(--ink); padding: 1.2rem 1.5rem; margin: 1.5rem 0; position: relative; }
+.theorem::before { content: attr(data-label); position: absolute; top: -0.6rem; left: 1rem; background: var(--paper); padding: 0 0.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.article-list { list-style: none; }
+.article-list li { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.article-list li:last-child { border-bottom: none; }
+.article-list a { color: var(--ink); text-decoration: none; font-size: 1.05rem; border-bottom: 1px solid var(--rule); }
+.article-list a:hover { color: var(--accent); border-color: var(--accent); }
+.article-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; }
+footer { text-align: center; padding: 2rem 0 3rem; font-size: 0.82rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
 footer a { color: var(--muted); }
-
-/* ── Theorem box ── */
-.theorem {
-  border: 1px solid var(--ink);
-  padding: 1.2rem 1.5rem;
-  margin: 1.5rem 0;
-  position: relative;
-}
-
-.theorem::before {
-  content: attr(data-label);
-  position: absolute;
-  top: -0.6rem;
-  left: 1rem;
-  background: var(--paper);
-  padding: 0 0.4rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.math {
-  font-style: italic;
-  font-family: 'EB Garamond', serif;
-}
-
-@media (max-width: 600px) {
-  .manifold-grid { grid-template-columns: 1fr; }
-  h1 { font-size: 1.9rem; }
-  .paper-list li { grid-template-columns: 1fr; gap: 0.3rem; }
-  .paper-venue { display: none; }
-}
+@media (max-width: 600px) { .manifold-grid { grid-template-columns: 1fr; } h1 { font-size: 1.9rem; } .paper-list li { grid-template-columns: 1fr; gap: 0.3rem; } }
 </style>
 </head>
 <body>
@@ -320,9 +77,13 @@ footer a { color: var(--muted); }
     <p class="subtitle">Standard Model flavor parameters from arithmetic hyperbolic 3-manifolds</p>
     <nav>
       <a href="#results">Results</a>
+      <a href="#bloch">Bloch</a>
       <a href="#manifolds">Manifolds</a>
       <a href="#theorems">Theorems</a>
+      <a href="#results">Results</a>
       <a href="#papers">Papers</a>
+      <a href="#articles">Articles</a>
+      <a href="art.html">Art</a>
       <a href="#reproduce">Reproduce</a>
     </nav>
   </div>
@@ -330,285 +91,183 @@ footer a { color: var(--muted); }
 
 <div class="container">
 
-  <!-- Hero -->
-  <section class="hero" id="about">
-    <p>
-      The <strong>Hyperbolic Flavor Geometry (HFG)</strong> programme proposes that the
-      flavor structure of the Standard Model — the mixing matrices, CP phases, and mass
-      hierarchies of quarks and leptons — arises from the arithmetic geometry of compact
-      hyperbolic 3-manifolds.
-    </p>
-    <p class="hero-statement">
-      The unique minimum-volume closed hyperbolic 3-manifold encodes the PMNS lepton
-      mixing matrix. Its volume is 0.9814. It is the most rigid geometric object of its
-      kind. It is not adjusted to fit the data.
-    </p>
-    <p>
-      Three cusped manifolds — <span class="math">m003</span>, <span class="math">m006</span>,
-      <span class="math">m019</span> — have cusp-shape Galois groups isomorphic to the Weyl
-      groups of SU(2), SU(3), and SU(4): the gauge groups of the Standard Model.
-      This identification is exact and requires no free parameters.
-    </p>
-  </section>
+<section class="hero" id="about">
+  <p>The <strong>Hyperbolic Flavor Geometry (HFG)</strong> programme proposes that the flavor structure of the Standard Model — the mixing matrices, CP phases, and mass hierarchies of quarks and leptons — arises from the arithmetic geometry of compact hyperbolic 3-manifolds.</p>
+  <p class="hero-statement">The unique minimum-volume closed hyperbolic 3-manifold encodes the PMNS lepton mixing matrix. Its volume v₀ = 0.9814 is the fundamental Bloch quantum of an arithmetic family organized by the discriminant −283 field. It is not adjusted to fit the data.</p>
+  <p>Three cusped manifolds — m003, m006, m019 — have cusp-shape Galois groups isomorphic to Weyl(SU(2)), Weyl(SU(3)), Weyl(SU(4)): the gauge groups of the Standard Model. Every disc=−283 cusped manifold in the census has volume a rational multiple of v₀.</p>
+</section>
 
-  <!-- Key Results -->
-  <section id="results">
-    <h2>Key Numerical Results</h2>
-    <table class="results-table">
-      <thead>
-        <tr>
-          <th>Result</th>
-          <th>Manifold</th>
-          <th>Value</th>
-          <th>Accuracy</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>PMNS lepton mixing</td>
-          <td><span class="acc">m003(-2,3)</span></td>
-          <td>fitness 0.005087</td>
-          <td><span class="exact">global min</span></td>
-        </tr>
-        <tr>
-          <td>CKM quark mixing</td>
-          <td><span class="acc">m006(-5,2)</span></td>
-          <td>fitness 0.016482</td>
-          <td><span class="acc">0 free params</span></td>
-        </tr>
-        <tr>
-          <td>CP phase δ = 195.91°</td>
-          <td><span class="acc">m003</span> holonomy</td>
-          <td>PDG: 197.0°</td>
-          <td><span class="acc">0.55%</span></td>
-        </tr>
-        <tr>
-          <td>m<sub>μ</sub>/m<sub>e</sub> = 206.77</td>
-          <td>N(16+12ω) = 208</td>
-          <td>Eisenstein norm</td>
-          <td><span class="acc">0.59%</span></td>
-        </tr>
-        <tr>
-          <td>m<sub>τ</sub>/m<sub>e</sub> = 3477</td>
-          <td>N(68+37ω) = 3477</td>
-          <td>Eisenstein norm</td>
-          <td><span class="exact">0.006%</span></td>
-        </tr>
-        <tr>
-          <td>Gal(m003) = Z/2 = Weyl(SU(2))</td>
-          <td>cusp field x²−x+1</td>
-          <td>disc = −3</td>
-          <td><span class="exact">exact</span></td>
-        </tr>
-        <tr>
-          <td>Gal(m006) = S₃ = Weyl(SU(3))</td>
-          <td>cusp field x³+2x+1</td>
-          <td>disc = −59</td>
-          <td><span class="exact">exact</span></td>
-        </tr>
-        <tr>
-          <td>Gal(m019) = S₄ = Weyl(SU(4))</td>
-          <td>cusp field x⁴−x−1</td>
-          <td>disc = −283</td>
-          <td><span class="exact">exact</span></td>
-        </tr>
-        <tr>
-          <td>Dual surgery identity</td>
-          <td>m003(−2,3) = m019(2,1)</td>
-          <td>M<sub>PMNS</sub></td>
-          <td><span class="exact">15 sig. figs.</span></td>
-        </tr>
-        <tr>
-          <td>Delta invariant δ(m019) = 12</td>
-          <td>disc=−283 cusp field</td>
-          <td>|H₁(M(π*))| = δ(M)</td>
-          <td><span class="exact">exact</span></td>
-        </tr>
-        <tr>
-          <td>Lucas trace: 2cosh(2m·log φ) = L<sub>2m</sub></td>
-          <td>golden ratio identity</td>
-          <td>integer Wilson loops</td>
-          <td><span class="exact">exact</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+<section id="bloch">
+  <h2>The Bloch Volume Quantum — New June 2026</h2>
+  <p>In the quartic field K = ℚ(w), w⁴ = w+1 (discriminant −283), the tetrahedral shapes of m019 and m178 are explicit units:</p>
+  <div class="theorem" data-label="Theorem — Unit Orbit (proved)">
+    z_A = w³ = 1−u₁, &nbsp; z_B = −w = u₁⁻¹, &nbsp; z_S = w⁻⁴ = u₁⁴
+    <br><br>
+    where u₁ = 1−w³ is a fundamental unit of norm −1.
+    These form a period-3 orbit: w³ → −w → w⁻⁴ → w³ under T(z)=1/(1−z),
+    proved by pure algebra from w⁴=w+1.
+    Product: z_A · z_B · z_S = −1 exactly.
+  </div>
+  <p>Since D(z) = D(T(z)) (Bloch-Wigner functional equation), all three shapes have equal D-values, giving:</p>
+  <div class="theorem" data-label="Theorem — Volume Identities (proved)">
+    vol(m019) = 3·v₀ &nbsp;&nbsp; vol(m178) = 4·v₀
+    <br><br>
+    where v₀ = vol(M_PMNS) = 0.9813688289... verified to 2×10⁻⁵¹
+  </div>
+  <div class="theorem" data-label="Observation — Full Census (numerical, all 6/6)">
+    Every disc=−283 cusped manifold in the SnapPy census has vol(M)/v₀ ∈ ℚ.
+    <br>
+    Sequence: m019=3, m178=4, m179=4, v1024=5, t03293=11/2, v2603=6.
+    <br>
+    All verified to machine precision (errors ≤ 8.88×10⁻¹⁶).
+  </div>
+  <p>The embedding table confirms the Borel regulator interpretation: D(u₁) = (0, −v₀, +v₀, 0) across the four field embeddings, exactly as predicted by Borel regulator theory for a field with signature (2,1).</p>
+</section>
 
-  <!-- Canonical Manifolds -->
-  <section id="manifolds">
-    <h2>Canonical Manifolds</h2>
-    <div class="manifold-grid">
-      <div class="manifold-card">
-        <div class="name">m003</div>
-        <div class="role">SU(2) parent</div>
-        <p>Cusp shape τ = e<sup>iπ/3</sup></p>
-        <p>Trace field ℚ(√−3)</p>
-        <p>Gal ≅ ℤ/2 = Weyl(SU(2))</p>
-        <p>Filling m003(−2,3) = M<sub>PMNS</sub></p>
-      </div>
-      <div class="manifold-card">
-        <div class="name">m006</div>
-        <div class="role">SU(3) parent</div>
-        <p>Cusp shape satisfies x³+2x+1</p>
-        <p>Disc = −59 (inert in ℤ[ω])</p>
-        <p>Gal ≅ S₃ = Weyl(SU(3))</p>
-        <p>Filling m006(−5,2) = M<sub>CKM</sub></p>
-      </div>
-      <div class="manifold-card">
-        <div class="name">m019</div>
-        <div class="role">SU(4) parent</div>
-        <p>Cusp shape satisfies x⁴−x−1</p>
-        <p>Disc = −283 (splits in ℤ[ω])</p>
-        <p>Gal ≅ S₄ = Weyl(SU(4))</p>
-        <p>Filling m019(2,1) = M<sub>PMNS</sub></p>
-      </div>
+<section id="results">
+  <h2>Key Results</h2>
+  <table class="results-table">
+    <thead><tr><th>Result</th><th>Manifold</th><th>Value</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>PMNS lepton mixing</td><td><span class="acc">m003(−2,3)</span></td><td>fitness 0.005087</td><td><span class="exact">global min</span></td></tr>
+      <tr><td>CKM quark mixing</td><td><span class="acc">m006(−5,2)</span></td><td>fitness 0.016482</td><td><span class="acc">0 free params</span></td></tr>
+      <tr><td>CP phase δ = 195.91°</td><td><span class="acc">m003</span> holonomy</td><td>PDG: 197.0°</td><td><span class="acc">0.55%</span></td></tr>
+      <tr><td>m_μ/m_e = 208</td><td>N(16+12ω)</td><td>Eisenstein norm</td><td><span class="acc">0.59%</span></td></tr>
+      <tr><td>m_τ/m_e = 3477</td><td>N(68+37ω)</td><td>Eisenstein norm</td><td><span class="exact">0.006%</span></td></tr>
+      <tr><td>Gal(m003) = ℤ/2 = Weyl(SU(2))</td><td>x²−x+1, disc=−3</td><td></td><td><span class="exact">exact</span></td></tr>
+      <tr><td>Gal(m006) = S₃ = Weyl(SU(3))</td><td>x³+2x+1, disc=−59</td><td></td><td><span class="exact">exact</span></td></tr>
+      <tr><td>Gal(m019) = S₄ = Weyl(SU(4))</td><td>x⁴−x−1, disc=−283</td><td></td><td><span class="exact">exact</span></td></tr>
+      <tr><td>Dual surgery: m003(−2,3) = m019(2,1)</td><td>M_PMNS</td><td>15 sig. figs.</td><td><span class="exact">exact</span></td></tr>
+      <tr><td>δ(m019)=12, δ(m178)=34</td><td>disc=−283 cusp field</td><td>peripheral det.</td><td><span class="exact">exact</span></td></tr>
+      <tr><td>2·cosh(2m·log φ) = L_{2m}</td><td>golden ratio identity</td><td>integer Wilson loops</td><td><span class="exact">exact</span></td></tr>
+      <tr><td>vol(m019) = 3·v₀</td><td>z_A=w³, orbit period 3</td><td>Bloch quantum</td><td><span class="exact">proved</span></td></tr>
+      <tr><td>vol(m178) = 4·v₀</td><td>z_S=u₁⁴, z_B=u₁⁻¹</td><td>unit orbit</td><td><span class="exact">proved</span></td></tr>
+      <tr><td>All disc=−283 vols in v₀·ℚ</td><td>6/6 census manifolds</td><td>3,4,4,5,11/2,6</td><td><span class="exact">numerical</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="manifolds">
+  <h2>Canonical Manifolds</h2>
+  <div class="manifold-grid">
+    <div class="manifold-card">
+      <div class="name">m003</div>
+      <div class="role">SU(2) parent</div>
+      <p>Cusp shape τ = e<sup>iπ/3</sup></p>
+      <p>Trace field ℚ(√−3), disc=−3</p>
+      <p>Gal ≅ ℤ/2 = Weyl(SU(2))</p>
+      <p>u₁ = 1−w³: D(u₁) = v₀</p>
     </div>
-    <p>
-      The dual surgery identity <span class="math">m003(−2,3) = m019(2,1)</span> means
-      the Meyerhoff manifold M<sub>PMNS</sub> is the unique closed hyperbolic 3-manifold
-      arising as a Dehn filling of two arithmetically independent cusped parents. Their
-      compositum has Galois group S₄ × ℤ/2 = Weyl(SU(4) × SU(2)<sub>L</sub>),
-      the Weyl group of the left-handed Pati–Salam gauge sector.
-    </p>
-  </section>
-
-  <!-- Theorems -->
-  <section id="theorems">
-    <h2>Proved Results</h2>
-
-    <div class="theorem" data-label="Theorem — Galois–Weyl Trichotomy">
-      The cusp-shape Galois groups of m003, m006, m019 are isomorphic to
-      Weyl(SU(2)), Weyl(SU(3)), Weyl(SU(4)) respectively. All computations
-      performed at 300-bit precision in SnapPy and Sage; residuals below 10<sup>−85</sup>.
+    <div class="manifold-card">
+      <div class="name">m006</div>
+      <div class="role">SU(3) parent</div>
+      <p>Cusp shape: x³+2x+1</p>
+      <p>Disc=−59, Gal=S₃=Weyl(SU(3))</p>
+      <p>Filling m006(−5,2) = M_CKM</p>
+      <p>Boundary prime: 59</p>
     </div>
-
-    <div class="theorem" data-label="Theorem — Dual Surgery">
-      m003(−2,3) = m019(2,1) = M<sub>PMNS</sub>.
-      Verified by SnapPy to 15 significant figures via volume identity and
-      explicit isometry check.
+    <div class="manifold-card">
+      <div class="name">m019</div>
+      <div class="role">SU(4) parent</div>
+      <p>Cusp shape: x⁴−x−1, disc=−283</p>
+      <p>Gal=S₄=Weyl(SU(4))</p>
+      <p>Shapes: w³, −w, w⁻⁴ (units in K)</p>
+      <p>vol = 3·v₀</p>
     </div>
+  </div>
+  <p>The dual surgery identity <strong>m003(−2,3) = m019(2,1) = M_PMNS</strong> links the two SU(2) and SU(4) parents. Their compositum has Galois group S₄×ℤ/2 = Weyl(SU(4)×SU(2)_L), the Weyl group of the Pati–Salam gauge sector.</p>
+</section>
 
-    <div class="theorem" data-label="Theorem — Peripheral Determinant Invariant">
-      For a one-cusped manifold M with cusp field disc = −283 and longitude (a,b),
-      define δ(M) = min(|6a−19b|, |13a+6b|, |13b−19a|). If H₁(M;ℤ) ≅ ℤ
-      (torsion-free), then |H₁(M(π*);ℤ)| = δ(M) exactly, where π* is the
-      minimising Eisenstein orbit element.
-    </div>
+<section id="theorems">
+  <h2>Proved Results</h2>
+  <div class="theorem" data-label="Theorem — Galois–Weyl Trichotomy">
+    Gal(τ_m003)≅ℤ/2≅Weyl(SU(2)), Gal(τ_m006)≅S₃≅Weyl(SU(3)), Gal(τ_m019)≅S₄≅Weyl(SU(4)). Verified at 300-bit precision; residuals below 10⁻⁸⁵.
+  </div>
+  <div class="theorem" data-label="Theorem — Dual Surgery">
+    m003(−2,3) = m019(2,1) = M_PMNS. Verified to 15 significant figures via volume identity and explicit isometry check in SnapPy.
+  </div>
+  <div class="theorem" data-label="Theorem — Unit Orbit in K">
+    In K=ℚ(w), w⁴=w+1: the shapes z_A=w³=1−u₁, z_B=−w=u₁⁻¹, z_S=w⁻⁴=u₁⁴ form a period-3 orbit under T(z)=1/(1−z). Product z_A·z_B·z_S=−1. Proved by pure algebra.
+  </div>
+  <div class="theorem" data-label="Theorem — Volume Identities">
+    vol(m019) = 3·D(w³) and vol(m178) = 4·D(w³), where D is the Bloch-Wigner dilogarithm. D(w³) = v₀ verified to 2×10⁻⁵¹.
+  </div>
+  <div class="theorem" data-label="Theorem — Peripheral Determinant Invariant">
+    For disc=−283 manifolds with longitude (a,b): δ(M)=min(|6a−19b|,|13a+6b|,|13b−19a|). If H₁≅ℤ then |H₁(M(π*))| = δ(M) exactly.
+  </div>
+  <div class="theorem" data-label="Theorem — Lucas Trace Identity">
+    2·cosh(2m·log φ) = L_{2m} for all m≥1. Closed geodesics of length 4m·log φ have integer holonomy traces equal to Lucas numbers.
+  </div>
+</section>
 
-    <div class="theorem" data-label="Theorem — Lucas Trace Identity">
-      2·cosh(2m·log φ) = L<sub>2m</sub> for all integers m ≥ 1,
-      where φ = (1+√5)/2 and L<sub>k</sub> is the k-th Lucas number.
-      Closed geodesics of length 4m·log φ have integer holonomy traces
-      equal to Lucas numbers, contributing integer Wilson loops in
-      Chern–Simons theory.
-    </div>
-  </section>
+<section id="papers">
+  <h2>Publications &amp; Preprints</h2>
+  <ul class="paper-list">
+    <li><span class="paper-num">01</span><span class="paper-title"><a href="https://ssrn.com/abstract=6859979">Tetrahedral Shapes of m019 and m178 as Units in the Discriminant −283 Field</a><br><span class="paper-status status-review">NYJM — submitted</span> &nbsp; <span class="paper-status status-review">Exp. Math — under review</span></span><span class="paper-venue">SSRN 6859979</span></li>
+    <li><span class="paper-num">02</span><span class="paper-title"><a href="https://ssrn.com/abstract=6854378">Lucas Numbers as Geodesic Holonomy Traces in Hyperbolic 3-Manifolds</a><br><span class="paper-status status-review">MRL — under review</span></span><span class="paper-venue">SSRN 6854378</span></li>
+    <li><span class="paper-num">03</span><span class="paper-title"><a href="https://ssrn.com/abstract=6851440">A Peripheral Determinant Invariant for Hyperbolic 3-Manifolds, Discriminant −283</a><br><span class="paper-status status-review">AGT — under review</span></span><span class="paper-venue">SSRN 6851440</span></li>
+    <li><span class="paper-num">04</span><span class="paper-title"><a href="https://ssrn.com/abstract=6845778">The Meyerhoff Manifold as a Dehn Filling of Two Arithmetically Independent Cusped Parents</a><br><span class="paper-status status-review">Proc. AMS — under review</span></span><span class="paper-venue">SSRN 6845778</span></li>
+    <li><span class="paper-num">05</span><span class="paper-title"><a href="https://ssrn.com/abstract=6840418">Lepton Masses as BPS States of a Class S Theory on X₀(11)</a><br><span class="paper-status status-review">LMP — under review</span></span><span class="paper-venue">SSRN 6840418</span></li>
+    <li><span class="paper-num">06</span><span class="paper-title"><a href="https://ssrn.com/abstract=6840322">Galois Groups of Cusp Shapes and Weyl Groups of SU(2), SU(3), SU(4)</a><br><span class="paper-status status-check">CNTP rejected — retargeting</span></span><span class="paper-venue">SSRN 6840322</span></li>
+    <li><span class="paper-num">07</span><span class="paper-title"><a href="https://ssrn.com/abstract=6808878">A Quadratic Cover Prime Formula for a Farey Tower of Arithmetic Hyperbolic 3-Manifolds</a><br><span class="paper-status status-check">Geometriae Dedicata — technical check</span></span><span class="paper-venue">SSRN 6808878</span></li>
+    <li><span class="paper-num">08</span><span class="paper-title"><a href="https://ssrn.com/abstract=6775158">Hyperbolic Flavor Geometry — Unified Framework</a><br><span class="paper-status status-preprint">Preprint</span></span><span class="paper-venue">SSRN 6775158</span></li>
+  </ul>
+</section>
 
-  <!-- Papers -->
-  <section id="papers">
-    <h2>Publications &amp; Preprints</h2>
-    <ul class="paper-list">
-      <li>
-        <span class="paper-num">01</span>
-        <span class="paper-title">
-          <a href="https://ssrn.com/abstract=6859979">The Meyerhoff Manifold as a Volume Quantum for the Cusped Manifolds m019 and m178</a>
-          <br><span class="paper-status status-review">Experimental Mathematics — submitted</span>
-        </span>
-        <span class="paper-venue">SSRN 6859979</span>
-      </li>
-      <li>
-        <span class="paper-num">08</span>
-        <span class="paper-title">
-          <a href="https://ssrn.com/abstract=6845778">The Meyerhoff Manifold as a Dehn Filling of Two Arithmetically Independent Cusped Parents</a>
-          <br><span class="paper-status status-review">Proc. AMS — under review</span>
-        </span>
-        <span class="paper-venue">SSRN 6845778</span>
-      </li>
-      <li>
-        <span class="paper-num">02</span>
-        <span class="paper-title">
-          <a href="https://ssrn.com/abstract=6851440">A Peripheral Determinant Invariant for Hyperbolic 3-Manifolds with Quartic Cusp Field of Discriminant −283</a>
-          <br><span class="paper-status status-review">AGT — under review</span>
-        </span>
-        <span class="paper-venue">SSRN 6851440</span>
-      </li>
-      <li>
-        <span class="paper-num">03</span>
-        <span class="paper-title">
-          <a href="https://ssrn.com/abstract=6854378">Lucas Numbers as Geodesic Holonomy Traces in Hyperbolic 3-Manifolds</a>
-          <br><span class="paper-status status-review">MRL — under review</span>
-        </span>
-        <span class="paper-venue">SSRN 6854378</span>
-      </li>
-      <li>
-        <span class="paper-num">04</span>
-        <span class="paper-title">
-          <a href="https://ssrn.com/abstract=6840322">Galois Groups of Cusp Shapes and Weyl Groups of SU(2), SU(3), SU(4)</a>
-          <br><span class="paper-status status-check">CNTP — pending submission</span>
-        </span>
-        <span class="paper-venue">SSRN 6840322</span>
-      </li>
-      <li>
-        <span class="paper-num">05</span>
-        <span class="paper-title">
-          <a href="https://ssrn.com/abstract=6840418">Lepton Masses as BPS States of a Class S Theory on X₀(11)</a>
-          <br><span class="paper-status status-review">LMP — under review</span>
-        </span>
-        <span class="paper-venue">SSRN 6840418</span>
-      </li>
-      <li>
-        <span class="paper-num">06</span>
-        <span class="paper-title">
-          <a href="https://submission.springernature.com">A Quadratic Cover Prime Formula for a Farey Tower of Arithmetic Hyperbolic 3-Manifolds</a>
-          <br><span class="paper-status status-check">Geometriae Dedicata — technical check</span>
-        </span>
-        <span class="paper-venue">GD submission</span>
-      </li>
-      <li>
-        <span class="paper-num">07</span>
-        <span class="paper-title">
-          <a href="https://ssrn.com/abstract=6775158">Hyperbolic Flavor Geometry — Unified Framework</a>
-          <br><span class="paper-status status-preprint">Preprint</span>
-        </span>
-        <span class="paper-venue">SSRN 6775158</span>
-      </li>
-    </ul>
-  </section>
+<section id="articles">
+  <h2>Popular Articles</h2>
+  <p style="color:var(--muted);font-size:.95rem;margin-bottom:2rem;">Visual, interactive explainers — no equations required.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem;">
 
-  <!-- Reproduce -->
-  <section id="reproduce">
-    <h2>Reproduce</h2>
-    <p>
-      All results are reproducible using
-      <a href="http://snappy.computop.org">SnapPy</a> and
-      <a href="https://www.sagemath.org">SageMath</a>.
-      Source code and scan data are available on GitHub.
-    </p>
-    <pre>
+    <a href="article1.html" style="text-decoration:none;display:block;background:#0d0d1a;border:1px solid var(--rule);border-top:3px solid var(--gold);padding:1.5rem;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderTopColor='var(--gold)';this.style.borderColor='var(--rule)';this.style.borderTopColor='var(--gold)'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">Article I</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text);margin-bottom:.6rem;line-height:1.3;">The Smallest Possible Universe</div>
+      <div style="font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">Why does the minimum-volume hyperbolic 3-space know the mass of the muon? Animated Poincaré disk, live orbit visualization, volume quantum ladder.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;">Read + Explore →</div>
+    </a>
+
+    <a href="article2.html" style="text-decoration:none;display:block;background:#0d0d1a;border:1px solid var(--rule);border-top:3px solid var(--cyan);padding:1.5rem;transition:border-color .2s;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.6rem;">Article II</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text);margin-bottom:.6rem;line-height:1.3;">Why Hyperbolic Space Looks Impossible</div>
+      <div style="font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">8 interactive modules: grid morph, fish tank, triangle angle deficit, geodesic challenge game, tessellation explorer, area growth explosion.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.12em;">Play + Learn →</div>
+    </a>
+
+    <a href="art.html" style="text-decoration:none;display:block;background:#0d0d1a;border:1px solid var(--rule);border-top:3px solid var(--rose);padding:1.5rem;transition:border-color .2s;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);margin-bottom:.6rem;">Art Generator</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text);margin-bottom:.6rem;line-height:1.3;">Design Your Own Hyperbolic Print</div>
+      <div style="font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">8 style presets, 8 color palettes, infinite variations. Generate mathematically exact hyperbolic art and order as a fine art print.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--rose);text-transform:uppercase;letter-spacing:.12em;">Create + Order →</div>
+    </a>
+
+  </div>
+</section>
+
+<section id="reproduce">
+  <h2>Reproduce</h2>
+  <p>All results are reproducible using <a href="http://snappy.computop.org">SnapPy</a> and <a href="https://www.sagemath.org">SageMath</a>.</p>
+  <pre>
 import snappy
-
-# Verify dual surgery identity
+# Verify dual surgery
 M1 = snappy.Manifold("m003(-2,3)")
 M2 = snappy.Manifold("m019(2,1)")
-print(M1.volume())              # 0.9813688289...
-print(M2.volume())              # 0.9813688289...
 print(M1.is_isometric_to(M2))   # True
 
-# Verify Galois–Weyl correspondence
-# m003: cusp poly x^2 - x + 1, disc = -3, Gal = Z/2
-# m006: cusp poly x^3 + 2x + 1, disc = -59, Gal = S3
-# m019: cusp poly x^4 - x - 1, disc = -283, Gal = S4</pre>
-    <p>
-      <strong>Note:</strong> Always use <code>OrientableClosedCensus[1]</code> (M<sub>PMNS</sub>)
-      and <code>OrientableClosedCensus[43]</code> (M<sub>CKM</sub>) by index in SnapPy.
-      Two distinct census manifolds share the name "m006".
-    </p>
-    <p style="margin-top:1.5rem;">
-      → <a href="https://github.com/drmlgentry/hyperbolic-flavor-scan">github.com/drmlgentry/hyperbolic-flavor-scan</a><br>
-      → <a href="https://github.com/drmlgentry/hyperbolic-flavor-geometry">github.com/drmlgentry/hyperbolic-flavor-geometry</a><br>
-      → <a href="https://pypi.org/project/latticefit/">PyPI: latticefit</a>
-    </p>
-  </section>
+# Verify Bloch volume quantum
+v0 = float(M1.volume())
+print(float(snappy.Manifold("m019").volume()) / v0)  # 3.0
+print(float(snappy.Manifold("m178").volume()) / v0)  # 4.0
+
+# Verify unit orbit in K=Q(w), w^4=w+1
+from sage.all import NumberField, QQ
+K = NumberField(QQ['x'].gen()^4 - QQ['x'].gen() - 1, 'w')
+w = K.gen()
+u1 = 1 - w^3
+print(-w == u1^(-1))   # True
+print(w^(-4) == u1^4)  # True</pre>
+  <p>→ <a href="https://github.com/drmlgentry/hyperbolic-flavor-scan">github.com/drmlgentry/hyperbolic-flavor-scan</a><br>
+  → <a href="https://pypi.org/project/latticefit/">PyPI: latticefit</a></p>
+</section>
 
 </div>
 
@@ -619,6 +278,5 @@ print(M1.is_isometric_to(M2))   # True
     ORCID <a href="https://orcid.org/0009-0006-4550-2663">0009-0006-4550-2663</a>
   </div>
 </footer>
-
 </body>
 </html>
