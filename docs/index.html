@@ -79,7 +79,10 @@ footer a { color: var(--muted); }
   <div class="container">
     <h1>Hyperbolic Flavor Geometry</h1>
     <p class="subtitle">Standard Model flavor parameters from arithmetic hyperbolic 3-manifolds</p>
-    <nav>
+    <nav style="align-items:center;">
+      <a href="https://hyperbolicflavorgeometry.org" style="margin-right:.5rem;">
+        <img src="hfg-logo.svg" alt="HFG" style="height:32px;width:32px;vertical-align:middle;opacity:.9;">
+      </a>
       <a href="#results">Results</a>
       <a href="#bloch">Bloch</a>
       <a href="#manifolds">Manifolds</a>
@@ -281,12 +284,31 @@ print(w^(-4) == u1^4)  # True</pre>
 
 </div>
 
-<footer>
-  <div class="container">
-    Marvin L. Gentry — Independent Researcher, Seattle WA —
-    <a href="mailto:drmlgentry@protonmail.com">drmlgentry@protonmail.com</a> —
-    ORCID <a href="https://orcid.org/0009-0006-4550-2663">0009-0006-4550-2663</a>
+<!-- SUBSTACK EMBED -->
+<section style="background:var(--deep);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:3rem 2rem;text-align:center;">
+  <div style="max-width:520px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">The HFG Dispatch</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;margin-bottom:.6rem;">Monthly dispatches from the frontier</div>
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.7;">New results, open problems, and honest frontier science. Free to read. Paid subscribers get the computational notebooks and proofs.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+      <a href="https://marvingentrynd.substack.com" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--gold);padding:.65rem 1.6rem;transition:all .2s;display:inline-block;" onmouseover="this.style.background='var(--gold)';this.style.color='#07070f'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Subscribe Free →</a>
+      <a href="https://marvingentrynd.substack.com" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid rgba(201,168,76,.2);padding:.65rem 1.6rem;display:inline-block;">$9 / month</a>
+    </div>
   </div>
+</section>
+
+<footer>
+  <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;">
+    <a href="https://marvingentrynd.substack.com">The HFG Dispatch</a>
+    <a href="https://ssrn.com/author=11170302">SSRN Preprints</a>
+    <a href="https://github.com/drmlgentry/hyperbolic-flavor-scan">GitHub</a>
+    <a href="https://pypi.org/project/latticefit/">LatticeFit</a>
+    <a href="https://www.linkedin.com/in/drmlg-a69241180">LinkedIn</a>
+    <a href="art.html">Art Shop</a>
+  </div>
+  <div style="margin-bottom:.5rem;">Marvin L. Gentry, ND · Independent Researcher · Seattle, WA</div>
+  <div style="font-size:.75rem;">ORCID: 0009-0006-4550-2663 · drmlgentry@protonmail.com</div>
+  <div style="font-size:.7rem;margin-top:.5rem;color:rgba(122,117,112,.6);">© 2026 Marvin L. Gentry · All rights reserved</div>
 </footer>
 </body>
 </html>
