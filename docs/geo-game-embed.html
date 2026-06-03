@@ -15,6 +15,7 @@ body{background:#07070f;color:#ece8df;font-family:'JetBrains Mono',monospace;ove
 .btn-g{border-color:#c9a84c;color:#c9a84c;} .btn-g:hover{background:#c9a84c;color:#07070f;}
 .btn-r{border-color:#e84393;color:#e84393;} .btn-r:hover{background:#e84393;color:#fff;}
 canvas{display:block;width:100%;cursor:none;}
+@keyframes popUp{0%{opacity:1;transform:translate(-50%,-50%);}100%{opacity:0;transform:translate(-50%,-120%);}}
 .pips{display:flex;align-items:center;gap:.4rem;padding:.4rem 1.1rem;background:#07070f;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap;}
 .pip-lbl{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#7a7570;margin-right:.2rem;}
 .pip{width:12px;height:12px;border-radius:50%;border:2px solid #333;transition:all .3s;}
@@ -53,6 +54,7 @@ canvas{display:block;width:100%;cursor:none;}
   </div>
 </div>
 
+<div id="popup" style="position:fixed;top:45%;left:50%;transform:translate(-50%,-50%);font-family:JetBrains Mono,monospace;font-size:2.8rem;font-weight:500;pointer-events:none;opacity:0;z-index:99;transition:none;"></div>
 <div class="cap" id="cap">Click where you think the geodesic — the hyperbolic straight line — passes between the two gold points.</div>
 
 <script>
@@ -60,11 +62,11 @@ const cv = document.getElementById('cv');
 const ctx = cv.getContext('2d');
 
 const STAGES = [
-  { name:'Stage 1',  color:'#c9a84c', px:18, hitPx:70, unlockAt:0  },
-  { name:'Stage 2',  color:'#4ecdc4', px:14, hitPx:56, unlockAt:2  },
-  { name:'Stage 3',  color:'#50fa7b', px:10, hitPx:42, unlockAt:5  },
-  { name:'Stage 4',  color:'#ff9500', px:7,  hitPx:30, unlockAt:9  },
-  { name:'Stage 5',  color:'#e84393', px:5,  hitPx:20, unlockAt:14 },
+  { name:'Stage 1',  color:'#c9a84c', px:18, hitPx:68, unlockAt:0 },
+  { name:'Stage 2',  color:'#4ecdc4', px:14, hitPx:52, unlockAt:1 },
+  { name:'Stage 3',  color:'#50fa7b', px:10, hitPx:38, unlockAt:2 },
+  { name:'Stage 4',  color:'#ff9500', px:7,  hitPx:26, unlockAt:3 },
+  { name:'Stage 5',  color:'#e84393', px:5,  hitPx:16, unlockAt:4 },
 ];
 
 let W, H, t = 0;
@@ -165,6 +167,15 @@ function restart(){
   updatePips();newRound();
 }
 
+function showPopup(txt,col){
+  const el=document.getElementById('popup');
+  el.textContent=txt;
+  el.style.color=col;
+  el.style.animation='none';
+  void el.offsetWidth;
+  el.style.animation='popUp .75s ease-out forwards';
+}
+
 // Click — GPT's fix: measure distance to actual curve, not just control point
 cv.addEventListener('click',e=>{
   if(phase!=='aim')return;
@@ -199,8 +210,10 @@ cv.addEventListener('click',e=>{
     score++;correctHits++;
     sndHit();
     if(stage()>prevStage)sndUp();
+    showPopup('+1','#ffd700');
   } else {
     sndMiss();
+    showPopup('—','#e84393');
   }
 
   document.getElementById('sc').textContent=score;
