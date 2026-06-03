@@ -92,20 +92,36 @@ canvas{display:block;width:100%;cursor:none;}
   const ctx = c.getContext('2d');
   const MAX_ROUNDS = 20;
   const STAGE_NAMES = ['Huge','Large','Medium','Small','Tiny'];
-
-  // Stage thresholds: 5 stages, each unlocked by a correct guess
-  // reticleStage 0=largest, 4=smallest (stays at 4 forever after)
-  // reticleRadius in normalized coords (fraction of R)
-  const STAGE_RADII = [0.28, 0.20, 0.14, 0.09, 0.06];
-  // Generosity multiplier per stage — hidden, slightly over-generous
-  // At stage 0 threshold is already large; each stage we keep it a touch generous
-  const STAGE_GENEROSITY = [1.35, 1.25, 1.18, 1.14, 1.12];
+  // Reticle shrinks continuously with every correct answer
+  // Starts at radius 42px, shrinks 3px per correct answer, min 8px
+  const START_RADIUS = 42;
+  const SHRINK_PER_HIT = 3;
+  const MIN_RADIUS = 8;
+  // Visual stage milestones (which hit count triggers each pip)
+  const STAGE_HITS = [0, 3, 7, 12, 17];
+  // Generosity: threshold = currentReticleRadius * factor (hidden, over-generous)
+  // Starts very generous, tightens slowly as reticle shrinks
+  const BASE_GENEROSITY = 1.4; // decreases as score increases
 
   let W, H, t = 0;
   let gP1 = null, gP2 = null, guess = null, state = 'guess';
   let score = 0, total = 0, round = 0;
-  let reticleStage = 0;      // 0-4
+  let reticleStage = 0;
   let mouseX = 0, mouseY = 0;
+
+  function getCurrentRadius(){
+    return Math.max(MIN_RADIUS, START_RADIUS - score * SHRINK_PER_HIT);
+  }
+  function getCurrentGenerosity(){
+    // Starts at 1.4, very slowly tightens toward 1.1
+    return Math.max(1.1, BASE_GENEROSITY - score * 0.012);
+  }
+  function getStageFromScore(s){
+    for(let i=STAGE_HITS.length-1;i>=0;i--){
+      if(s>=STAGE_HITS[i]) return i;
+    }
+    return 0;
+  }
 
   // Audio
   let audioCtx = null;
@@ -141,14 +157,16 @@ canvas{display:block;width:100%;cursor:none;}
   function resize(){ W = c.width = c.offsetWidth; H = parseInt(c.getAttribute('height')); }
 
   function updatePips(){
+    reticleStage = getStageFromScore(score);
     for(let i=0;i<5;i++){
       const pip = document.getElementById('pip'+i);
       pip.classList.remove('lit','current');
       if(i < reticleStage) pip.classList.add('lit');
       else if(i === reticleStage) pip.classList.add('current');
     }
+    const r = getCurrentRadius();
     document.getElementById('stageLabel').textContent =
-      `Stage ${reticleStage+1} of 5 · ${STAGE_NAMES[reticleStage]}`;
+      `Stage ${reticleStage+1} of 5 · ${STAGE_NAMES[reticleStage]} · Ø${Math.round(r*2)}px`;
   }
 
   function updateHUD(){
@@ -167,8 +185,9 @@ canvas{display:block;width:100%;cursor:none;}
     const a2 = a1 + 1.1 + Math.random()*1.8, r2 = .28+Math.random()*.48;
     gP1 = [r1*Math.cos(a1), r1*Math.sin(a1)];
     gP2 = [r2*Math.cos(a2), r2*Math.sin(a2)];
+    const curR = getCurrentRadius();
     document.getElementById('gCap').textContent =
-      `Round ${round+1}/20 · Stage ${reticleStage+1} · Click where the geodesic passes through.`;
+      `Round ${round+1}/20 · Stage ${reticleStage+1} · Target Ø${Math.round(curR*2)}px · Click where the geodesic passes through.`;
     updateHUD();
   }
 
@@ -278,22 +297,25 @@ canvas{display:block;width:100%;cursor:none;}
     const dist=Math.sqrt((mx-gMidX)**2+(my-gMidY)**2);
 
     // Threshold: stage radius * generosity factor
-    const threshold = STAGE_RADII[reticleStage] * STAGE_GENEROSITY[reticleStage];
-    const hit = dist < threshold;
+    // Threshold in normalized coords: reticle pixel radius / screen R
+    const screenR = Math.min(W,H)*.44;
+    const threshNorm = (getCurrentRadius() / screenR) * getCurrentGenerosity();
+    const hit = dist < threshNorm;
 
     if(hit){
       score++;
       playHit();
       showScoreFlash(true);
-      // Advance stage only on correct guess, max stage 4
-      if(reticleStage < 4){
-        reticleStage++;
+      const newStage = getStageFromScore(score);
+      if(newStage > reticleStage){
+        reticleStage = newStage;
         playLevelUp();
       }
+      const newR = getCurrentRadius();
       document.getElementById('gCap').textContent =
-        reticleStage < 4
-          ? `✓ Hit! Target shrinks next round. Score: ${score}/${total} · Click "Next Round"`
-          : `✓ Hit! You've reached maximum difficulty. Score: ${score}/${total} · Click "Next Round"`;
+        newR > MIN_RADIUS
+          ? `✓ Hit! Target shrinks → Ø${Math.round(newR*2)}px. Score: ${score}/${total} · Click "Next Round"`
+          : `✓ Hit! Maximum difficulty reached. Score: ${score}/${total} · Click "Next Round"`;
     } else {
       playMiss();
       showScoreFlash(false);
@@ -363,7 +385,7 @@ canvas{display:block;width:100%;cursor:none;}
 
     // Reticle cursor (only during guess phase)
     if(state==='guess'){
-      const reticleR = STAGE_RADII[reticleStage] * R;
+      const reticleR = getCurrentRadius();
       const stageColors = [
         'rgba(201,168,76,.9)',   // Stage 1 gold
         'rgba(78,205,196,.9)',   // Stage 2 cyan
