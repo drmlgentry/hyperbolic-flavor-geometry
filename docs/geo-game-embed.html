@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geodesic Challenge — HFG</title>
+<title>Geodesic Challenge â€” HFG</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -27,7 +27,7 @@ canvas{display:block;width:100%;cursor:none;}
 </head>
 <body>
 <div class="bar">
-  <span class="score">Score: <span id="sc">0</span> / <span id="tot">0</span> &nbsp;·&nbsp; Round <span id="rnd">1</span>/20</span>
+  <span class="score">Score: <span id="sc">0</span> / <span id="tot">0</span> &nbsp;Â·&nbsp; Round <span id="rnd">1</span>/20</span>
   <div class="btns">
     <button class="btn btn-g" id="btnNext">Next Round</button>
     <button class="btn btn-r" id="btnRestart">Restart</button>
@@ -64,7 +64,7 @@ canvas{display:block;width:100%;cursor:none;}
 </div>
 
 <div id="popup" style="position:fixed;top:45%;left:50%;transform:translate(-50%,-50%);font-family:JetBrains Mono,monospace;font-size:2.8rem;font-weight:500;pointer-events:none;opacity:0;z-index:99;transition:none;"></div>
-<div class="cap" id="cap">Click where you think the geodesic — the hyperbolic straight line — passes between the two gold points.</div>
+<div class="cap" id="cap">Click where you think the geodesic â€” the hyperbolic straight line â€” passes between the two gold points.</div>
 
 <script>
 const cv = document.getElementById('cv');
@@ -150,21 +150,21 @@ function newRound(){
   p2=[r2*Math.cos(a2),r2*Math.sin(a2)];
   document.getElementById('rnd').textContent=Math.min(rounds+1,20);
   document.getElementById('cap').textContent=
-    `${STAGES[stage()].name} · Click where the geodesic passes through.`;
+    `${STAGES[stage()].name} Â· Click where the geodesic passes through.`;
   updatePips();
 }
 
 function gameOver(){
   const grades=[
-    [18,'S — Hyperbolic Master','Genuine non-Euclidean spatial intuition.'],
-    [15,'A — Exceptional','Your instincts have recalibrated to negative curvature.'],
-    [12,'B — Strong','You can feel the geodesics now.'],
-    [8, 'C — Getting There','The geometry is starting to make sense.'],
-    [5, 'D — Euclidean Habits','Try again — the shift usually happens mid-game.'],
-    [0, 'F — Pure Euclid','Nobody gets it right away. Try again.'],
+    [18,'S â€” Hyperbolic Master','Genuine non-Euclidean spatial intuition.'],
+    [15,'A â€” Exceptional','Your instincts have recalibrated to negative curvature.'],
+    [12,'B â€” Strong','You can feel the geodesics now.'],
+    [8, 'C â€” Getting There','The geometry is starting to make sense.'],
+    [5, 'D â€” Euclidean Habits','Try again â€” the shift usually happens mid-game.'],
+    [0, 'F â€” Pure Euclid','Nobody gets it right away. Try again.'],
   ];
   const[,grade,sub]=grades.find(([min])=>score>=min);
-  // Game over sound — descending fanfare
+  // Game over sound â€” descending fanfare
   if(ac){
     [784,659,523,440,349].forEach((f,i)=>setTimeout(()=>beep(f,.15,'sine',.18),i*120));
   }
@@ -176,7 +176,7 @@ function gameOver(){
   document.getElementById('sb-grade').style.color=
     score>=18?'#ffd700':score>=15?'#4ecdc4':score>=12?'#50fa7b':
     score>=8?'#ff9500':score>=5?'#c9a84c':'#e84393';
-  document.getElementById('cap').textContent=`${grade} · Click Restart to play again.`;
+  document.getElementById('cap').textContent=`${grade} Â· Click Restart to play again.`;
 }
 
 function restart(){
@@ -197,7 +197,7 @@ function showPopup(txt,col){
   el.style.animation='popUp .75s ease-out forwards';
 }
 
-// Click — GPT's fix: measure distance to actual curve, not just control point
+// Click â€” GPT's fix: measure distance to actual curve, not just control point
 cv.addEventListener('click',e=>{
   if(phase!=='aim')return;
   if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();
@@ -234,7 +234,7 @@ cv.addEventListener('click',e=>{
     showPopup('+1','#ffd700');
   } else {
     sndMiss();
-    showPopup('—','#e84393');
+    showPopup('â€”','#e84393');
   }
 
   document.getElementById('sc').textContent=score;
@@ -248,8 +248,8 @@ cv.addEventListener('click',e=>{
 
   const ns=stage();
   document.getElementById('cap').textContent=hit
-    ?`✓ Hit! Score ${score}/${rounds}${ns>prevStage?' · Stage up — reticle changes color!':''} · Click Next Round`
-    :`Miss — geodesic curves more toward center than Euclidean instinct expects. ${score}/${rounds} · Click Next Round`;
+    ?`âœ“ Hit! Score ${score}/${rounds}${ns>prevStage?' Â· Stage up â€” reticle changes color!':''} Â· Click Next Round`
+    :`Miss â€” geodesic curves more toward center than Euclidean instinct expects. ${score}/${rounds} Â· Click Next Round`;
 });
 
 cv.addEventListener('mousemove',e=>{
@@ -318,9 +318,9 @@ function draw(){
 
   // HUD
   ctx.fillStyle=st.color;ctx.font='10px JetBrains Mono';
-  ctx.fillText(`${st.name}  ·  ${correctHits} correct hits`,10,H-10);
+  ctx.fillText(`${st.name}  Â·  ${correctHits} correct hits`,10,H-10);
 
-  // Reticle — always visible, color = current stage
+  // Reticle â€” always visible, color = current stage
   const sz=st.px,col=st.color;
   ctx.strokeStyle=col;ctx.lineWidth=1.5;
   ctx.beginPath();ctx.arc(mx,my,sz,0,Math.PI*2);ctx.stroke();
@@ -353,3 +353,5 @@ updatePips();newRound();draw();
 </script>
 </body>
 </html>
+
+<!-- deploy 06/02/2026 23:56:43 -->
