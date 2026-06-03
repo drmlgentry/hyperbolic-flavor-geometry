@@ -129,9 +129,6 @@ hr{border:none;border-top:1px solid var(--rule);margin:4rem 0;}
     <h1>Why Hyperbolic Space<br>Looks <em>Impossible</em></h1>
     <p class="hero-sub">A geometry where parallel lines diverge, triangles lose their angles, and an infinite universe compresses into a disk. Experience it before you try to understand it.</p>
     <div class="scroll-cue">Experience below</div>
-    <div style="margin-top:1.5rem;">
-      <a href="https://hyperbolicflavorgeometry.org/geo-game-embed.html" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);text-decoration:none;border:1px solid var(--cyan);padding:.65rem 1.5rem;display:inline-block;transition:all .2s;" onmouseover="this.style.background='var(--cyan)';this.style.color='#07070f'" onmouseout="this.style.background='transparent';this.style.color='var(--cyan)'">▶ Play the Geodesic Challenge</a>
-    </div>
   </div>
 </section>
 
@@ -218,7 +215,7 @@ hr{border:none;border-top:1px solid var(--rule);margin:4rem 0;}
 </section>
 
 <!-- ═══ 4. GEODESIC GAME ═══ -->
-<section class="sec sec-dark" id="geodesics" style="scroll-margin-top:60px;">
+<section class="sec sec-dark" id="geodesics">
   <div class="col">
     <div class="sec-label">Module 4</div>
     <h2>What does "straight" mean here?</h2>
@@ -227,11 +224,34 @@ hr{border:none;border-top:1px solid var(--rule);margin:4rem 0;}
   </div>
   <div class="wide">
     <div class="viz">
-      <iframe 
-        src="https://hyperbolicflavorgeometry.org/geo-game-embed.html" 
-        style="width:100%;height:560px;border:none;display:block;"
-        title="Geodesic Challenge">
-      </iframe>
+      <div class="game-bar">
+        <span class="viz-title">Module 4 — Geodesic Challenge</span>
+        <span class="game-score">Score: <span id="gScore">0</span>/<span id="gTotal">0</span> &nbsp;|&nbsp; Level <span id="gLevel">1</span> &nbsp;·&nbsp; Round <span id="gRound">1</span>/20</span>
+        <div style="display:flex;gap:.6rem;">
+          <button class="game-btn" id="gNew">Next Round</button>
+          <button class="game-btn" id="gRestart" style="border-color:var(--rose);color:var(--rose);">Restart</button>
+        </div>
+      </div>
+      <div style="position:relative;">
+      <canvas id="geoGame" height="460" style="width:100%;cursor:none;display:block;"></canvas>
+      <div id="gameOver" style="position:absolute;inset:0;background:rgba(7,7,15,.92);display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:50;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);">Game Complete</div>
+        <div style="font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold2);" id="goScore">0 / 20</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cyan);" id="goGrade">—</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);max-width:280px;text-align:center;line-height:1.7;" id="goSub">—</div>
+        <button class="game-btn" id="goRestart" style="margin-top:.5rem;">Play Again</button>
+      </div>
+    </div>
+      <div style="display:flex;gap:.3rem;align-items:center;padding:.35rem 1.4rem;background:rgba(7,7,15,.5);border-top:1px solid rgba(201,168,76,.08);">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:.3rem;">Target size</span>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold);border:2px solid transparent;" id="pip0"></div>
+        <div style="width:10px;height:10px;border-radius:50%;border:1px solid rgba(201,168,76,.3);background:transparent;" id="pip1"></div>
+        <div style="width:10px;height:10px;border-radius:50%;border:1px solid rgba(201,168,76,.3);background:transparent;" id="pip2"></div>
+        <div style="width:10px;height:10px;border-radius:50%;border:1px solid rgba(201,168,76,.3);background:transparent;" id="pip3"></div>
+        <div style="width:10px;height:10px;border-radius:50%;border:1px solid var(--cyan);background:transparent;" id="pip4"></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);margin-left:.4rem;" id="stageLabel">Stage 1 · Huge</span>
+      </div>
+      <div class="viz-cap" id="gCap">Round 1/20 · Stage 1 · Click where the geodesic passes through. Target shrinks only when you get it right.</div>
     </div>
   </div>
 </section>
