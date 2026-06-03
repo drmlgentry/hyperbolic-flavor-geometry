@@ -74,9 +74,9 @@ canvas{display:block;width:100%;cursor:none;}
     {size:6,  color:'rgba(232,67,147,.9)', name:'Stage 5 · Micro'},
   ];
   // Stage thresholds: unlock next stage at these hit counts
-  const STAGE_HITS=[0,1,4,8,13];
+  const STAGE_HITS=[0,2,5,9,14];
   // Generosity per stage (hidden — always a touch over-generous)
-  const GENEROSITY=[2.2,2.0,1.8,1.6,1.4];
+  const GENEROSITY=[3.0,2.5,2.0,1.7,1.4];
 
   function getStage(){
     for(let i=STAGE_HITS.length-1;i>=0;i--){
@@ -244,7 +244,7 @@ canvas{display:block;width:100%;cursor:none;}
 
     const prevStage=s;
     if(hit){
-      score++;hits++;
+      score++;hits++;console.log("HIT! hits=",hits,"stage=",getStage());
       playHit();
       showFlash(true);
       // Check if we just unlocked a new stage
