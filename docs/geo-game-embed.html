@@ -17,31 +17,104 @@ body{background:#07070f;color:#ece8df;font-family:'JetBrains Mono',monospace;ove
 .btn-r{border-color:#e84393;color:#e84393;}
 .btn-r:hover{background:#e84393;color:#fff;}
 canvas{display:block;width:100%;cursor:none;}
+.pip-bar{display:flex;gap:.35rem;align-items:center;padding:.4rem 1.1rem;background:#07070f;border-top:1px solid rgba(201,168,76,.08);}
+.pip-label{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#7a7570;margin-right:.3rem;}
+.pip{width:11px;height:11px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:transparent;transition:all .35s;}
+.pip.done{border-color:currentColor;}
+.stage-name{font-size:.58rem;color:#7a7570;margin-left:.5rem;}
 .cap{padding:.55rem 1.1rem;font-size:.62rem;color:#7a7570;line-height:1.65;min-height:2.8rem;background:#0d0d1a;border-top:1px solid rgba(201,168,76,.1);}
+
+/* score flash */
+.flash{position:fixed;top:50%;left:50%;transform:translate(-50%,-60%);font-size:2.8rem;font-weight:500;pointer-events:none;opacity:0;z-index:99;}
+.flash.show{animation:flashanim .7s ease-out forwards;}
+@keyframes flashanim{0%{opacity:1;transform:translate(-50%,-60%);}100%{opacity:0;transform:translate(-50%,-110%);}}
 </style>
 </head>
 <body>
+
 <div class="bar">
   <span class="title">Geodesic Challenge</span>
-  <span class="score">Score: <span id="gScore">0</span>/<span id="gTotal">0</span> &nbsp;|&nbsp; Level <span id="gLevel">1</span></span>
+  <span class="score">Score: <span id="gScore">0</span>/<span id="gTotal">0</span> &nbsp;·&nbsp; Round <span id="gRound">1</span>/20</span>
   <div style="display:flex;gap:.4rem;">
     <button class="btn btn-g" id="gNew">Next Round</button>
     <button class="btn btn-r" id="gRestart">Restart</button>
   </div>
 </div>
-<canvas id="geoGame" height="430"></canvas>
-<div class="cap" id="gCap">Two gold points have been placed. Click where you think the geodesic — the hyperbolic straight line — passes between them.</div>
+
+<canvas id="geoGame" height="400"></canvas>
+
+<!-- Stage pip bar -->
+<div class="pip-bar">
+  <span class="pip-label">Target</span>
+  <div class="pip" id="pip0" style="color:#c9a84c;"></div>
+  <div class="pip" id="pip1" style="color:#4ecdc4;"></div>
+  <div class="pip" id="pip2" style="color:#50fa7b;"></div>
+  <div class="pip" id="pip3" style="color:#ff9500;"></div>
+  <div class="pip" id="pip4" style="color:#e84393;"></div>
+  <span class="stage-name" id="stageName">Stage 1 · Large</span>
+</div>
+
+<div class="cap" id="gCap">Click where you think the geodesic — the hyperbolic straight line — passes between the two gold points.</div>
+<div class="flash" id="flash">+1</div>
 
 <script>
 (()=>{
   const c=document.getElementById('geoGame'),ctx=c.getContext('2d');
   let W,H,t=0,gP1=null,gP2=null,guess=null,state='guess';
-  let score=0,total=0,level=1,reticleSize=28;
+  let score=0,total=0,hits=0;
   let mouseX=200,mouseY=200;
 
+  // 5 stages unlocked by correct hits
+  // reticleSize in PIXELS, shrinks only on correct hit
+  const STAGES=[
+    {size:22, color:'rgba(201,168,76,.9)',  name:'Stage 1 · Large'},
+    {size:17, color:'rgba(78,205,196,.9)',  name:'Stage 2 · Medium'},
+    {size:13, color:'rgba(80,250,123,.9)',  name:'Stage 3 · Small'},
+    {size:9,  color:'rgba(255,149,0,.9)',   name:'Stage 4 · Tiny'},
+    {size:6,  color:'rgba(232,67,147,.9)', name:'Stage 5 · Micro'},
+  ];
+  // Stage thresholds: unlock next stage at these hit counts
+  const STAGE_HITS=[0,1,4,8,13];
+  // Generosity per stage (hidden — always a touch over-generous)
+  const GENEROSITY=[2.2,2.0,1.8,1.6,1.4];
+
+  function getStage(){
+    for(let i=STAGE_HITS.length-1;i>=0;i--){
+      if(hits>=STAGE_HITS[i]) return i;
+    }
+    return 0;
+  }
+
+  function updatePips(){
+    const s=getStage();
+    STAGES.forEach((_,i)=>{
+      const pip=document.getElementById('pip'+i);
+      pip.classList.remove('done');
+      if(i<s){
+        pip.style.background=STAGES[i].color.replace('rgba','rgba').replace(/,[^,)]+\)$/,',1)');
+        pip.style.borderColor=STAGES[i].color;
+        pip.classList.add('done');
+        pip.style.boxShadow=`0 0 6px ${STAGES[i].color}`;
+      } else if(i===s){
+        pip.style.background='transparent';
+        pip.style.borderColor=STAGES[i].color;
+        pip.style.boxShadow=`0 0 8px ${STAGES[i].color}`;
+        pip.style.animation='none';
+        pip.style.border=`2px solid ${STAGES[i].color}`;
+      } else {
+        pip.style.background='transparent';
+        pip.style.borderColor='rgba(255,255,255,.15)';
+        pip.style.boxShadow='none';
+      }
+    });
+    document.getElementById('stageName').textContent=STAGES[s].name;
+    document.getElementById('stageName').style.color=STAGES[s].color;
+  }
+
+  // Audio
   let audioCtx=null;
   function initAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();}
-  function playTone(freq,dur,type,vol){
+  function tone(freq,dur,type,vol){
     if(!audioCtx)return;
     const o=audioCtx.createOscillator(),g=audioCtx.createGain();
     o.connect(g);g.connect(audioCtx.destination);
@@ -50,42 +123,35 @@ canvas{display:block;width:100%;cursor:none;}
     g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);
     o.start();o.stop(audioCtx.currentTime+dur);
   }
-  function playHit(){
-    playTone(523,.12,'sine',.2);
-    setTimeout(()=>playTone(659,.15,'sine',.15),80);
-    setTimeout(()=>playTone(784,.2,'sine',.1),180);
-  }
-  function playMiss(){
-    playTone(220,.15,'sawtooth',.12);
-    setTimeout(()=>playTone(180,.2,'sawtooth',.08),100);
-  }
-  function playNew(){
-    playTone(440,.06,'square',.08);
-    setTimeout(()=>playTone(550,.08,'square',.06),80);
+  function playHit(){tone(523,.1,'sine',.2);setTimeout(()=>tone(659,.12,'sine',.15),70);setTimeout(()=>tone(784,.18,'sine',.1),160);}
+  function playMiss(){tone(220,.14,'sawtooth',.12);setTimeout(()=>tone(180,.18,'sawtooth',.08),100);}
+  function playStageUp(){tone(523,.07,'square',.1);setTimeout(()=>tone(659,.07,'square',.09),80);setTimeout(()=>tone(784,.07,'square',.08),160);setTimeout(()=>tone(1047,.2,'sine',.12),240);}
+  function playNew(){tone(440,.05,'square',.07);}
+
+  function showFlash(hit){
+    const el=document.getElementById('flash');
+    el.textContent=hit?'+1':'—';
+    el.style.color=hit?'#ffd700':'#e84393';
+    el.classList.remove('show');
+    void el.offsetWidth;
+    el.classList.add('show');
   }
 
   function resize(){W=c.width=c.offsetWidth;H=parseInt(c.getAttribute('height'));}
 
-  function getThreshold(){
-    // reticleSize is in screen pixels. R = Math.min(W,H)*.44 pixels.
-    // Convert to normalized coords and apply hidden generosity factor.
-    const R = Math.min(W,H)*.44;
-    const generosity = 1.35; // secretly over-generous
-    return (reticleSize / R) * generosity;
-  }
-
   function newRound(){
+    if(total>=20){showGameOver();return;}
     initAudio();playNew();
     state='guess';guess=null;
-    // reticleSize only shrinks on correct hit (see click handler)
     const a1=Math.random()*Math.PI*2,r1=.28+Math.random()*.48;
     const a2=a1+1.0+Math.random()*1.8,r2=.28+Math.random()*.48;
     gP1=[r1*Math.cos(a1),r1*Math.sin(a1)];
     gP2=[r2*Math.cos(a2),r2*Math.sin(a2)];
-    level=Math.floor(total/3)+1;
-    document.getElementById('gLevel').textContent=level;
+    const s=getStage();
+    document.getElementById('gRound').textContent=Math.min(total+1,20);
     document.getElementById('gCap').textContent=
-      `Level ${level} · Target size: ${Math.round(reticleSize)}px · Click where the geodesic passes through.`;
+      `${STAGES[s].name} · Click where the geodesic passes through.`;
+    updatePips();
   }
 
   function showGameOver(){
@@ -95,26 +161,24 @@ canvas{display:block;width:100%;cursor:none;}
       [12,'B — Strong','You can feel the geodesics. Euclid is losing his grip.'],
       [8, 'C — Getting There','The geometry is starting to make sense.'],
       [5, 'D — Euclidean Habits','Flat-space instincts are hard to shake. Try again.'],
-      [0, 'F — Pure Euclid','Nobody gets it right away. The geometry is alien. Try again.'],
+      [0, 'F — Pure Euclid','Nobody gets it right away. The geometry is alien.'],
     ];
     const [,grade,sub]=grades.find(([min])=>score>=min);
     document.getElementById('gCap').textContent=
-      `Game complete · ${score}/20 · ${grade} · ${sub} · Click Restart to play again.`;
+      `GAME OVER · ${score}/20 · ${grade} · ${sub} · Click Restart`;
   }
 
   function restart(){
-    score=0;total=0;level=1;reticleSize=28;
+    score=0;total=0;hits=0;
     document.getElementById('gScore').textContent='0';
     document.getElementById('gTotal').textContent='0';
-    document.getElementById('gLevel').textContent='1';
+    document.getElementById('gRound').textContent='1';
+    updatePips();
     newRound();
   }
 
   document.getElementById('gNew').addEventListener('click',()=>{
-    if(state==='reveal'){
-      if(total>=20){showGameOver();return;}
-      newRound();
-    }
+    if(state==='reveal') newRound();
   });
   document.getElementById('gRestart').addEventListener('click',restart);
 
@@ -131,7 +195,7 @@ canvas{display:block;width:100%;cursor:none;}
     const dx=mx-cx,dy=my-cy;
     const cpx=mx-dx*.4,cpy=my-dy*.4;
     ctx.beginPath();ctx.moveTo(ax,ay);ctx.quadraticCurveTo(cpx,cpy,bx,by);
-    ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
+    if(color){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}
     return{cpx,cpy};
   }
 
@@ -139,12 +203,12 @@ canvas{display:block;width:100%;cursor:none;}
     ctx.strokeStyle=color;ctx.lineWidth=1.5;
     ctx.beginPath();ctx.arc(x,y,size,0,Math.PI*2);ctx.stroke();
     ctx.beginPath();ctx.arc(x,y,size*.35,0,Math.PI*2);ctx.stroke();
-    const gap=size*.18;
+    const gap=size*.2;
     ctx.beginPath();
-    ctx.moveTo(x-size*1.35,y);ctx.lineTo(x-gap,y);
-    ctx.moveTo(x+gap,y);ctx.lineTo(x+size*1.35,y);
-    ctx.moveTo(x,y-size*1.35);ctx.lineTo(x,y-gap);
-    ctx.moveTo(x,y+gap);ctx.lineTo(x,y+size*1.35);
+    ctx.moveTo(x-size*1.4,y);ctx.lineTo(x-gap,y);
+    ctx.moveTo(x+gap,y);    ctx.lineTo(x+size*1.4,y);
+    ctx.moveTo(x,y-size*1.4);ctx.lineTo(x,y-gap);
+    ctx.moveTo(x,y+gap);    ctx.lineTo(x,y+size*1.4);
     ctx.stroke();
     for(let i=0;i<4;i++){
       const a=i*Math.PI/2+Math.PI/4;
@@ -154,8 +218,9 @@ canvas{display:block;width:100%;cursor:none;}
       ctx.stroke();
     }
     const pulse=.88+.12*Math.sin(t*.12);
-    ctx.beginPath();ctx.arc(x,y,size*1.55*pulse,0,Math.PI*2);
-    ctx.strokeStyle='rgba(78,205,196,.12)';ctx.lineWidth=.8;ctx.stroke();
+    ctx.beginPath();ctx.arc(x,y,size*1.6*pulse,0,Math.PI*2);
+    ctx.strokeStyle=color.replace(/,[^,)]+\)$/,',.1)');
+    ctx.lineWidth=.8;ctx.stroke();
   }
 
   c.addEventListener('click',e=>{
@@ -165,51 +230,81 @@ canvas{display:block;width:100%;cursor:none;}
     const mx=((e.clientX-rect.left)*(W/rect.width)-cx)/R;
     const my=((e.clientY-rect.top)*(H/rect.height)-cy)/R;
     if(mx*mx+my*my>=.93)return;
+
     guess=[mx,my];state='reveal';total++;
-    const{cpx,cpy}=drawArc(gP1,gP2,'',0,cx,cy,R);
+
+    const{cpx,cpy}=drawArc(gP1,gP2,null,0,cx,cy,R);
     const gMidX=(cpx-cx)/R,gMidY=(cpy-cy)/R;
     const dist=Math.sqrt((mx-gMidX)**2+(my-gMidY)**2);
-    const threshold=getThreshold();
-    const hit=dist<threshold;
+
+    const s=getStage();
+    const pixelThresh=STAGES[s].size;
+    const normThresh=(pixelThresh/R)*GENEROSITY[s];
+    const hit=dist<normThresh;
+
+    const prevStage=s;
     if(hit){
-      score++;
-      reticleSize=Math.max(8,reticleSize-3); // shrink only on correct guess
+      score++;hits++;
       playHit();
-    }else{playMiss();}
+      showFlash(true);
+      // Check if we just unlocked a new stage
+      const newStage=getStage();
+      if(newStage>prevStage) playStageUp();
+    } else {
+      playMiss();
+      showFlash(false);
+    }
+
     document.getElementById('gScore').textContent=score;
     document.getElementById('gTotal').textContent=total;
+    updatePips();
+
+    const newS=getStage();
     document.getElementById('gCap').textContent=hit?
-      `✓ Hit! Score: ${score}/${total} · Target shrinks next round → Click "Next Round"`:
-      `Miss — geodesic curves toward center more than Euclidean instinct expects. Score: ${score}/${total}`;
+      `✓ Hit! Score: ${score}/${total} · ${newS>prevStage?'Stage up! ':''}Click "Next Round"`:
+      `Miss — geodesic curves toward center. Score: ${score}/${total} · Click "Next Round"`;
   });
 
   function draw(){
     ctx.clearRect(0,0,W,H);
     const cx=W/2,cy=H/2,R=Math.min(W,H)*.44;
+
+    // Background
     const bg=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
     bg.addColorStop(0,'rgba(10,10,24,1)');bg.addColorStop(1,'rgba(4,4,10,1)');
     ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=bg;ctx.fill();
+
+    // Grid lines
     for(let i=0;i<10;i++){
       const a=i*Math.PI/5+t*.0008;
       ctx.beginPath();ctx.moveTo(cx+R*.98*Math.cos(a),cy+R*.98*Math.sin(a));
       ctx.lineTo(cx-R*.98*Math.cos(a),cy-R*.98*Math.sin(a));
       ctx.strokeStyle='rgba(201,168,76,.055)';ctx.lineWidth=.5;ctx.stroke();
     }
+
+    // Boundary
+    const s=getStage();
     ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
     ctx.strokeStyle='rgba(201,168,76,.4)';ctx.lineWidth=1.5;ctx.stroke();
 
     if(gP1&&gP2){
+      // Faint euclidean hint
       ctx.beginPath();ctx.moveTo(cx+gP1[0]*R,cy+gP1[1]*R);ctx.lineTo(cx+gP2[0]*R,cy+gP2[1]*R);
       ctx.strokeStyle='rgba(255,255,255,.07)';ctx.lineWidth=1;ctx.setLineDash([3,5]);ctx.stroke();ctx.setLineDash([]);
+
+      // Gold points
       [gP1,gP2].forEach(p=>{
         ctx.beginPath();ctx.arc(cx+p[0]*R,cy+p[1]*R,9,0,Math.PI*2);
         ctx.fillStyle='#c9a84c';ctx.fill();
         ctx.strokeStyle='#ffd700';ctx.lineWidth=2;ctx.stroke();
       });
+
       if(state==='reveal'){
-        drawArc(gP1,gP2,'rgba(78,205,196,.95)',2.5,cx,cy,R);
-        ctx.fillStyle='rgba(78,205,196,.7)';ctx.font='11px JetBrains Mono';
+        // True geodesic in current stage color
+        drawArc(gP1,gP2,STAGES[s].color,2.5,cx,cy,R);
+        ctx.fillStyle=STAGES[s].color;ctx.font='11px JetBrains Mono';
         ctx.fillText('geodesic',cx+10,cy-18);
+        // Guess marker
         if(guess){
           ctx.beginPath();ctx.arc(cx+guess[0]*R,cy+guess[1]*R,7,0,Math.PI*2);
           ctx.fillStyle='#e84393';ctx.fill();
@@ -218,14 +313,19 @@ canvas{display:block;width:100%;cursor:none;}
         }
       }
     }
-    ctx.fillStyle='rgba(201,168,76,.35)';ctx.font='10px JetBrains Mono';
-    ctx.fillText(`LVL ${level}  ·  TARGET Ø${Math.max(8,Math.round(reticleSize))}`,12,H-12);
-    if(state==='guess')drawReticle(mouseX,mouseY,reticleSize,'rgba(78,205,196,.9)');
+
+    // HUD bottom left
+    ctx.fillStyle=STAGES[s].color;ctx.font='10px JetBrains Mono';
+    ctx.fillText(`${STAGES[s].name}  ·  Ø${STAGES[s].size*2}px`,12,H-12);
+
+    // Reticle — always visible, color matches current stage
+    drawReticle(mouseX,mouseY,STAGES[s].size,STAGES[s].color);
+
     t++;requestAnimationFrame(draw);
   }
 
   resize();window.addEventListener('resize',resize);
-  newRound();draw();
+  updatePips();newRound();draw();
 })();
 </script>
 </body>
