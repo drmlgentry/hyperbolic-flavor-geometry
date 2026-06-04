@@ -204,6 +204,54 @@
     </div>
   </div>
 
+  <!-- ENTRY 2b -->
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-date">June 4, 2026</span>
+      <span class="entry-type type-result">Result</span>
+    </div>
+    <h2>The Period-3 Norm Orbit Theorem</h2>
+
+    <p>The polynomial p₈ studied in the Sextic&#8211;Octic paper is one element of a
+    period-3 orbit of octic polynomials under the Möbius transformation T(z) = (z&#8722;1)/z.
+    This is the same T that generates the unit orbit w³ → &#8722;w → w⁻⁴ → w³ in the
+    arithmetic of K = ℚ(w).</p>
+
+    <p>Three quadratics over K form a period-3 orbit under T:</p>
+
+    <div class="math-block">
+      <span class="neutral">q₀ = t² + (w³&#8722;2)t + (&#8722;w³+w²+1)</span><br>
+      <span class="neutral">q₁ = t² &#8722; wt + (&#8722;w³+w²+1)&nbsp;&nbsp;&nbsp;[= q₂ from the paper]</span><br>
+      <span class="neutral">q₂ = t² + (w²&#8722;w&#8722;2)t + (w+1)</span><br><br>
+      <span class="correct">T(q₁) = q₂ &nbsp; T(q₂) = q₀ &nbsp; T(q₀) = q₁ &nbsp; [period 3, exact]</span>
+    </div>
+
+    <p>Their algebraic norms are three distinct irreducible octic polynomials:</p>
+
+    <div class="math-block">
+      <span class="correct">Norm(q₀) = p₈_shapes &nbsp; [shape polynomial of Meyerhoff manifold]</span><br>
+      <span class="correct">Norm(q₁) = p₈_HFG &nbsp;&nbsp;&nbsp; [the paper's main polynomial]</span><br>
+      <span class="correct">Norm(q₂) = p₈_T² &nbsp;&nbsp;&nbsp;&nbsp; [T²-orbit polynomial]</span>
+    </div>
+
+    <p>All three octrics share identical arithmetic invariants:
+    disc = 7·11·283², Gal/ℚ = [2⁴]S₄ of order 384, and Sum D(roots) = 0 exactly.
+    The polynomial p₈_HFG studied in the paper is therefore not the shape polynomial
+    of the Meyerhoff manifold directly — it is the T¹-orbit image of the shape polynomial,
+    related by the same Möbius transformation that generates the period-3 unit orbit.</p>
+
+    <p>All three norm identities verified by exact computation in SageMath.
+    Being added to gentry-sextic-octic as a new theorem.</p>
+
+    <div class="tag-list">
+      <span class="tag">period-3 orbit</span>
+      <span class="tag">Möbius transformation</span>
+      <span class="tag">norm orbit</span>
+      <span class="tag">shape polynomial</span>
+      <span class="tag">new theorem</span>
+    </div>
+  </div>
+
   <!-- ENTRY 3 -->
   <div class="entry">
     <div class="entry-header">
