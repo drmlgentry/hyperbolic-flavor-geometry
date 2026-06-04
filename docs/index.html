@@ -77,12 +77,16 @@ footer a { color: var(--muted); }
 
 <header>
   <div class="container">
-    <h1>Hyperbolic Flavor Geometry</h1>
-    <p class="subtitle">Standard Model flavor parameters from arithmetic hyperbolic 3-manifolds</p>
-    <nav style="align-items:center;">
-      <a href="https://hyperbolicflavorgeometry.org" style="margin-right:.5rem;">
-        <img src="hfg-logo.svg" alt="HFG" style="height:320px;width:320px;vertical-align:middle;opacity:.95;display:block;margin:0 auto 1.5rem;">
+    <div style="display:flex;align-items:center;gap:2rem;padding:1.5rem 0 1rem;">
+      <a href="https://hyperbolicflavorgeometry.org" style="flex-shrink:0;">
+        <img src="hfg-logo.svg" alt="HFG" style="height:120px;width:120px;opacity:.95;display:block;">
       </a>
+      <div>
+        <h1 style="margin:0 0 .2rem;font-size:clamp(1.6rem,3.5vw,2.6rem);line-height:1.1;">Hyperbolic Flavor Geometry</h1>
+        <p class="subtitle" style="margin:0;font-size:.85rem;">Standard Model flavor parameters from arithmetic hyperbolic 3-manifolds</p>
+      </div>
+    </div>
+    <nav style="align-items:center;">
       <a href="#results">Results</a>
       <a href="#bloch">Bloch</a>
       <a href="#manifolds">Manifolds</a>
