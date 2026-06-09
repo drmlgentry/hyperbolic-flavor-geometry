@@ -98,6 +98,7 @@ footer a { color: var(--muted); }
         <div style="display:none;position:absolute;top:100%;left:0;background:rgba(7,7,15,.98);border:1px solid var(--rule);min-width:220px;z-index:300;padding:.4rem 0;" class="dropdown-menu">
           <a href="article1.html" style="display:block;padding:.5rem 1rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:none;transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">I · The Smallest Universe</a>
           <a href="article2.html" style="display:block;padding:.5rem 1rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:none;transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">II · Why Space Looks Impossible</a>
+          <a href="article3.html" style="display:block;padding:.5rem 1rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:none;transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">III · The CP Phase Is a Manifold Invariant</a>
           <a href="meyerhoff.html" style="display:block;padding:.5rem 1rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:none;transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">III · The Tetrahedral Polynomial Is a Norm</a>
         </div>
       </div>
@@ -149,6 +150,7 @@ footer a { color: var(--muted); }
     <tbody>
       <tr><td>PMNS lepton mixing</td><td><span class="acc">m003(−2,3)</span></td><td>fitness 0.005087</td><td><span class="exact">global min</span></td></tr>
       <tr><td>CKM quark mixing</td><td><span class="acc">m006(−5,2)</span></td><td>fitness 0.016482</td><td><span class="acc">0 free params</span></td></tr>
+      <tr><td style="font-weight:500;">CP phase: manifold invariant</td><td><span class="acc">m003(−2,3), ℤ/5</span></td><td>pair (1,4) D-sum 15.9° vs 49.0°</td><td><span class="exact">3.1× — Jun 2026</span></td></tr>
       <tr><td>CP phase δ = 195.91°</td><td><span class="acc">m003</span> holonomy</td><td>PDG: 197.0°</td><td><span class="acc">0.55%</span></td></tr>
       <tr><td>N(16+12ω) = 208 ≈ m_μ/m_e</td><td>N(16+12ω)</td><td>Eisenstein norm</td><td><span class="acc">0.59%</span></td></tr>
       <tr><td>m_τ/m_e = 3477</td><td>N(68+37ω)</td><td>Eisenstein norm</td><td><span class="exact">0.006%</span></td></tr>
@@ -202,6 +204,8 @@ footer a { color: var(--muted); }
     Gal(τ_m003)≅ℤ/2≅Weyl(SU(2)), Gal(τ_m006)≅S₃≅Weyl(SU(3)), Gal(τ_m019)≅S₄≅Weyl(SU(4)). Verified at 300-bit precision; residuals below 10⁻⁸⁵.
   </div>
   <div class="theorem" data-label="Theorem — Dual Surgery">
+    <strong>CP phase is a manifold invariant (June 8 2026).</strong> 216 candidate word triples collapse under conjugacy to two primitive geodesic classes. Their phase resonance at θ* = −180° uniquely selects the ℤ/5 inverse pair (1,4) with 3.1× advantage over (2,3). δ = 195.91° vs PDG 197.0°. Zero free parameters. Manuscript RNTB-D-26-00299 submitted.
+    <br><br>
     m003(−2,3) = m019(2,1) = M_PMNS. Verified to 15 significant figures via volume identity and explicit isometry check in SnapPy.
   </div>
   <div class="theorem" data-label="Theorem — Unit Orbit in K">
@@ -234,6 +238,15 @@ footer a { color: var(--muted); }
 </section>
 
 <section id="articles">
+  <div style="border-left:3px solid #9b2335;padding:1rem 1.5rem;margin:2.5rem 0;background:rgba(155,35,53,.04);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#9b2335;margin-bottom:.5rem;">New Result · June 8 2026</div>
+    <strong>Geometric Selection Principle Confirmed.</strong> The CP phase δ = 195.91° is a topological invariant of m003(−2,3), not a property of specific words. The ℤ/5 phase resonance mechanism selects the canonical inverse pair 3.1× more strongly than the competing pair — without reference to the PDG value.
+    <div style="margin-top:.7rem;">
+      <a href="article3.html" style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#9b2335;text-decoration:none;margin-right:1rem;">Article III →</a>
+      <a href="hfg_resonance_explorer.html" style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;">Interactive Explorer →</a>
+    </div>
+  </div>
+
   <h2>Popular Articles</h2>
   <p style="color:var(--muted);font-size:.95rem;margin-bottom:2rem;">Visual, interactive explainers — no equations required.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem;">
@@ -250,6 +263,11 @@ footer a { color: var(--muted); }
       <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--text);margin-bottom:.6rem;line-height:1.3;">Why Hyperbolic Space Looks Impossible</div>
       <div style="font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">8 interactive modules: grid morph, fish tank, triangle angle deficit, geodesic challenge game, tessellation explorer, area growth explosion.</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.12em;">Play + Learn →</div>
+    </a>
+    <a href="article3.html" style="text-decoration:none;display:block;background:#0d0d1a;border:1px solid var(--rule);border-top:3px solid #9b2335;padding:1.5rem;transition:border-color .2s;" onmouseover="this.style.borderColor='#9b2335'" onmouseout="this.style.borderTopColor='#9b2335';this.style.borderColor='var(--rule)';this.style.borderTopColor='#9b2335'">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#9b2335;margin-bottom:.5rem;">Article III · June 2026</div>
+      <div style="font-size:1.1rem;font-weight:500;margin-bottom:.4rem;color:#ece8df;">The CP Phase Is a Manifold Invariant</div>
+      <div style="font-size:.85rem;color:var(--muted);">216 word triples collapse to two geodesic classes. The ℤ/5 inverse pair (1,4) is selected by phase resonance at −180°. Zero free parameters.</div>
     </a>
 
     <a href="meyerhoff.html" style="text-decoration:none;display:block;background:#0d0d1a;border:1px solid var(--rule);border-top:3px solid #c9a84c;padding:1.5rem;transition:border-color .2s;">
@@ -305,6 +323,8 @@ print(w^(-4) == u1^4)  # True</pre>
     <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.7;">New results, open problems, and honest frontier science. Free to read. Paid subscribers get the computational notebooks and proofs.</p>
     <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
       <a href="https://marvingentrynd.substack.com" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--gold);padding:.65rem 1.6rem;transition:all .2s;display:inline-block;" onmouseover="this.style.background='var(--gold)';this.style.color='#07070f'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Subscribe Free →</a>
+      <br style="margin:.5rem 0;">
+      <a href="hfg_resonance_explorer.html" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--rule);padding:.65rem 1.6rem;display:inline-block;">Resonance Explorer →</a>
       <a href="https://marvingentrynd.substack.com" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid rgba(201,168,76,.2);padding:.65rem 1.6rem;display:inline-block;">$9 / month</a>
     </div>
   </div>
