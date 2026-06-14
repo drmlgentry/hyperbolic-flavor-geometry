@@ -22,10 +22,14 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\ph}{\varphi}
 \newcommand{\Lk}{L_k}
+\newcommand{\Lcal}{\mathcal{L}}
 \newcommand{\logph}{\log\ph}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\ITF}{\mathrm{ITF}}
 
 \title{Lucas Numbers in the Geodesic Length Spectrum and\\
-Covering Tower Homology of a Compact Hyperbolic 3-Manifold}
+Covering Tower Homology of a Compact Hyperbolic 3-Manifold\\
+\large (Version 2: Corrected Bifurcation and Cover-Prime Results)}
 \author[1]{Marvin L.\ Gentry}
 \affil[1]{Independent Researcher, Seattle, WA\\
 \texttt{drmlgentry@protonmail.com} \quad ORCID: 0009-0006-4550-2663}
@@ -35,37 +39,42 @@ Covering Tower Homology of a Compact Hyperbolic 3-Manifold}
 \maketitle
 
 \begin{abstract}
-We prove that the Lucas sequence $L_k = \ph^k + \ph^{-k}$,
-where $\ph = (1+\sqrt{5})/2$, governs two independent geometric
-structures of the closed hyperbolic 3-manifold
-$M = \texttt{m003}(-2,3)$ (\texttt{OrientableClosedCensus[1]},
-$\mathrm{vol} \approx 0.9814$, $H_1 \cong \mathbb{Z}/5$).
+We give a corrected and strengthened account of how the Lucas
+sequence $L_k$ and the golden ratio $\ph=(1+\sqrt5)/2$ relate to the
+geometry and covering-tower arithmetic of
+$M=\texttt{m003}(-2,3)$ (\texttt{OrientableClosedCensus[1]},
+$\mathrm{vol}\approx0.9814$, $H_1\cong\Z/5$, $\ITF(M)=\Q(\sqrt{-3})$).
 
-\textbf{Theorem~1} (Lucas-geodesic bridge, proved exactly).
-For any loxodromic element $\gamma \in \pi_1(M)$,
-\[
-  \ell(\gamma) = 2k\log\varphi \;\Longleftrightarrow\;
-  |\mathrm{tr}(\rho(\gamma))| = L_k = \varphi^k + \varphi^{-k},
-\]
-where $\rho$ is the holonomy representation. This follows exactly
-from $|\mathrm{tr}| = 2\cosh(\ell/2)$ and the Binet formula.
+\textbf{Binet bifurcation} (Lemma~\ref{lem:bifurcation}). For every
+integer $k\geq0$,
+$\ph^k+\ph^{-k}=2\cosh(k\logph)$ equals the integer Lucas number $L_k$
+if $k$ is even, and equals $\sqrt5\,F_k$ (Fibonacci) if $k$ is odd.
+This single fact was previously mis-stated as ``$=L_k$ for all $k$,''
+an error traced to conflating the recurrence-defined integer sequence
+$L_k$ with the continuous function $\ph^k+\ph^{-k}$.
 
-\textbf{Computational observation} (Primitivity obstruction).
-Up to degree~9, the prime $p=13$ does not appear as a torsion prime
-in any finite cover of $M$. The only observed torsion primes are
-$\{2,3,7,11,29\}$, all prime Lucas numbers. We conjecture this holds
-for all finite covers.
+\textbf{Algebraic trace bridge} (Theorem~\ref{thm:bridge}), corrected.
+If $\gamma\in\pi_1(M)$ has holonomy with real eigenvalues $\ph^{\pm k}$
+($k\in\Z_{\geq1}$), then $\tr(\rho(\gamma))=\pm L_k$ for even $k$ and
+$\pm\sqrt5 F_k$ for odd $k$.
 
-\textbf{Conjecture} (Lucas-purity of the covering tower).
-Every prime dividing $|H_1(\tilde{M};\mathbb{Z})_{\mathrm{tors}}|$
-for any finite-sheeted orientable cover $\tilde{M} \to M$ is either
-$5$ or a prime Lucas number $\{2, 3, 7, 11, 29, 47, \ldots\}$.
-Verified computationally for all 24 covers up to degree~9.
+\textbf{Field obstruction} (Corollary~\ref{cor:obstruction}).
+Since $\ITF(M)=\Q(\sqrt{-3})$
+and $\Q(\sqrt{-3})\cap\Q(\sqrt5)=\Q$, \emph{no} $\gamma\in\pi_1(M)$
+can have real eigenvalues $\ph^{\pm k}$ for odd $k\geq1$. The
+``odd rungs'' of the golden-ratio length ladder
+($\ell=2k\logph$, $k$ odd) are arithmetically forbidden.
 
-Secondary results: the companion manifold $\texttt{m006}(-5,2)$
-($H_1 \cong \mathbb{Z}/5$) contains geodesics of length $2k\log\varphi$
-for $k=1,2,3$ within $2\%$; Lucas-purity fails for control manifolds
-with $H_1 \not\cong \mathbb{Z}/5$.
+\textbf{The covering tower: one Lucas prime}
+(Theorems~\ref{thm:cover}--\ref{thm:why11}), corrected. Through
+degree~6, the algebraic covering tower of $M$
+(via \texttt{M.covers(d)}) has exactly one cover: a degree-5 cover
+with $H_1\cong(\Z/11)^2$. The cover prime $11=L_5$ is explained by the
+Farey cover-prime formula $p_n=5n(n+1)+1$ and the congruence
+$p_n\equiv1\pmod5$, which forces $11=L_5$ to appear precisely at
+$n=1$. The previously claimed ``prime dictionary''
+$\{2,3,7,11,29\}=\{L_0,L_2,L_4,L_5,L_7\}$ conflated this algebraic
+cover with census-volume commensurability coincidences.
 \end{abstract}
 
 \section{Introduction}
@@ -90,194 +99,276 @@ Model fermion masses satisfy $m = m_e \cdot \ph^{q/4}$ for $q \in \Z$.
 The base $\ph$ is independently derived from the Mahler measure identity
 $\log M(\Delta_{m003}) = 2\logph$~\cite{gentry-jktr}.
 
-This raises a mystery: the trace field is $\Q(\sqrt{-3})$, yet the
-mass lattice involves $\ph \in \Q(\sqrt{5})$. How does $\Q(\sqrt{5})$
-appear in the geometry of $\Q(\sqrt{-3})$ manifolds?
-We resolve this through the Lucas sequence.
+This raises a question: the trace field is $\Q(\sqrt{-3})$, yet the
+mass lattice involves $\ph \in \Q(\sqrt{5})$. How, if at all, does
+$\Q(\sqrt{5})$ enter the arithmetic of a $\Q(\sqrt{-3})$ manifold?
+This paper's earlier version (v1) answered ``via the Lucas sequence,
+exactly, for all $k$.'' That answer rested on an identity that holds
+only for even $k$. The corrected answer is more interesting: for odd
+$k$, the would-be $\sqrt5$-valued trace is \emph{excluded}, and this
+exclusion is itself the resolution.
 
-\section{The Lucas Sequence and Geodesic Lengths}
+\section{The Binet Bifurcation and the Trace Bridge}
 
-\begin{definition}[Lucas sequence]
-The \emph{Lucas sequence} is defined by $L_0 = 2$, $L_1 = 1$, and
-$L_k = L_{k-1} + L_{k-2}$ for $k \geq 2$. Equivalently,
-\begin{equation}
-  L_k = \ph^k + \ph^{-k}
-  \label{eq:lucas-binet}
-\end{equation}
-for all $k \in \Z$. The first values are
-$2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, \ldots$
+\begin{definition}[Lucas and Fibonacci sequences]
+The \emph{Lucas sequence} satisfies $L_0=2$, $L_1=1$,
+$L_k=L_{k-1}+L_{k-2}$; the \emph{Fibonacci sequence} satisfies
+$F_0=0$, $F_1=1$, $F_k=F_{k-1}+F_{k-2}$. Equivalently, with
+$\psi=(1-\sqrt5)/2=-1/\ph$,
+\[
+  L_k=\ph^k+\psi^k, \qquad F_k=\frac{\ph^k-\psi^k}{\sqrt5}.
+\]
+The first values are $L: 2,1,3,4,7,11,18,29,\ldots$ and
+$F: 0,1,1,2,3,5,8,13,\ldots$.
 \end{definition}
 
-\begin{theorem}[Lucas--geodesic correspondence]
-\label{thm:lucas-geodesic}
-Let $M$ be a hyperbolic 3-manifold and $\gamma \in \pi_1(M)$ a
-loxodromic element with translation length $\ell > 0$. Then
-\begin{equation}
-  \ell = 2k\logph
-  \quad \Longleftrightarrow \quad
-  |\mathrm{tr}(\rho(\gamma))| = L_k = \ph^k + \ph^{-k}.
-  \label{eq:bridge}
-\end{equation}
+\begin{lemma}[Binet bifurcation]
+\label{lem:bifurcation}
+For every $k\in\Z_{\geq0}$,
+\[
+  \ph^k+\ph^{-k} \;=\; 2\cosh(k\logph) \;=\;
+  \begin{cases}
+    L_k, & k \text{ even},\\[2pt]
+    \sqrt5\,F_k, & k \text{ odd}.
+  \end{cases}
+\]
+\end{lemma}
+
+\begin{proof}
+Since $\psi=-1/\ph$, $\psi^k=(-1)^k\ph^{-k}$. If $k$ is even,
+$\psi^k=\ph^{-k}$, so $L_k=\ph^k+\psi^k=\ph^k+\ph^{-k}$ directly. If
+$k$ is odd, $\psi^k=-\ph^{-k}$, so $\ph^k-\psi^k=\ph^k+\ph^{-k}$, and
+dividing by $\sqrt5$ in the definition of $F_k$ gives
+$\sqrt5F_k=\ph^k-\psi^k=\ph^k+\ph^{-k}$.
+\end{proof}
+
+\noindent\emph{Numerical check} (to 50 digits, all differences
+$<10^{-48}$): $k=1$: $\ph+\ph^{-1}=\sqrt5=\sqrt5\cdot F_1$. $k=3$:
+$\ph^3+\ph^{-3}=2\sqrt5=\sqrt5\cdot F_3$ ($F_3=2$). $k=5$:
+$\ph^5+\ph^{-5}=5\sqrt5=\sqrt5\cdot F_5$ ($F_5=5$). Note in particular
+$\ph^5+\ph^{-5}\approx11.180\neq11=L_5$.
+
+\begin{theorem}[Algebraic trace bridge, corrected]
+\label{thm:bridge}
+Let $\gamma\in\pi_1(M)$ for $M$ a hyperbolic 3-manifold with holonomy
+$\rho\colon\pi_1(M)\to\mathrm{PSL}(2,\C)$. Suppose $\rho(\gamma)$ has
+real eigenvalues $\ph^{\pm k}$ for some $k\in\Z_{\geq1}$ (equivalently,
+$\gamma$ is loxodromic with vanishing rotational part, complex length
+$2k\logph$). Then
+\[
+  \tr(\rho(\gamma)) = \pm(\ph^k+\ph^{-k}) =
+  \begin{cases}
+    \pm L_k \in \Z, & k \text{ even},\\[2pt]
+    \pm\sqrt5\,F_k \in \sqrt5\,\Z, & k \text{ odd}.
+  \end{cases}
+\]
 \end{theorem}
 
 \begin{proof}
-For a loxodromic element, $|\mathrm{tr}(\gamma)| = 2\cosh(\ell/2)$.
-Substituting $\ell = 2k\logph$ gives
-$2\cosh(k\logph) = \ph^k + \ph^{-k} = L_k$
-by~\eqref{eq:lucas-binet}.
-Conversely, $|\mathrm{tr}| = L_k$ implies
-$\cosh(\ell/2) = L_k/2 = \cosh(k\logph)$,
-so $\ell = 2k\logph$. The algebra is exact.
+For $A\in\mathrm{SL}(2,\C)$ with eigenvalues $\lambda,\lambda^{-1}$,
+$\tr(A)=\lambda+\lambda^{-1}$. Take $\lambda=\ph^k$ and apply
+Lemma~\ref{lem:bifurcation}; the sign is the usual
+$\mathrm{SL}(2,\C)\to\mathrm{PSL}(2,\C)$ lift ambiguity.
 \end{proof}
+
+\begin{corollary}[Field obstruction --- the even-Lucas selection rule]
+\label{cor:obstruction}
+Let $M$ be a hyperbolic 3-manifold with $\ITF(M)=\Q(\sqrt{-3})$ (as
+holds for $M_{\mathrm{PMNS}}$ and $M_{\mathrm{CKM}}$
+\cite{maclachlan-reid}). Then no $\gamma\in\pi_1(M)$ satisfies the
+hypothesis of Theorem~\ref{thm:bridge} for odd $k\geq1$.
+\end{corollary}
+
+\begin{proof}
+Traces of elements of $\rho(\pi_1(M))$ lie in $\ITF(M)$. If $\gamma$
+satisfied the hypothesis for odd $k$, Theorem~\ref{thm:bridge} gives
+$\tr(\rho(\gamma))=\pm\sqrt5F_k$. For $k\geq1$, $F_k\geq1$, so
+$\pm\sqrt5F_k\notin\Q$. Since $\Q(\sqrt{-3})$ and $\Q(\sqrt5)$ are
+distinct quadratic fields, $\Q(\sqrt{-3})\cap\Q(\sqrt5)=\Q$, so
+$\pm\sqrt5F_k\notin\Q(\sqrt{-3})=\ITF(M)$, a contradiction.
+\end{proof}
+
+\begin{remark}[What this resolves, and what it does not]
+\label{rem:resolution}
+This is the corrected answer to the $\Q(\sqrt5)$-in-$\Q(\sqrt{-3})$
+question posed in the Introduction: $\sqrt5$ does \emph{not} enter
+the trace field at all. The even-$k$ rungs ($\ell=2k\logph$, $k$
+even) would require only $L_k\in\Z\subset\Q(\sqrt{-3})$ ---
+no obstruction, but also no existence claim; whether such $\gamma$
+actually occur in $\pi_1(M)$ is a separate, open, empirical question.
+The odd-$k$ rungs are provably absent. The corollary is therefore a
+\emph{selection rule on a discrete length spectrum}, falsifiable in
+principle: any $\gamma\in\pi_1(M_{\mathrm{PMNS}})$ found with real
+eigenvalues $\ph^{\pm k}$ for odd $k$ would refute either this
+corollary or the premise $\ITF(M_{\mathrm{PMNS}})=\Q(\sqrt{-3})$.
+\end{remark}
+
+\begin{remark}[Where does $L_5=11$ fit?]
+\label{rem:L5}
+$L_5=11$ is odd-indexed. By Corollary~\ref{cor:obstruction}, $11$
+cannot be $|\tr(\rho(\gamma))|$ for $\gamma$ with eigenvalues
+$\ph^{\pm5}$ (length $10\logph$). If $11$ appears as a trace value at
+all --- and as a rational integer there is no field obstruction to it
+appearing \emph{somewhere} --- it does so at a geometrically generic
+length, $\ell=2\,\mathrm{arccosh}(11/2)\approx4.7791$, with
+$\ell/\logph\approx9.931\notin\Q$. Section~\ref{sec:cover} shows that
+$L_5=11$'s role in this programme is entirely number-theoretic ---
+as the algebraic cover prime of $M_{\mathrm{PMNS}}$ --- and is
+unrelated to the geodesic-length bridge above. These are two
+independent phenomena that happen to share the symbol $11=L_5$.
+\end{remark}
 
 \begin{remark}[Geodesic spectrum of $M_{\mathrm{PMNS}}$]
 \label{rem:spectrum}
-The bridge theorem guarantees that \emph{if} $\ell = 2k\logph$ then
-$|\mathrm{tr}| = L_k$. For $M_{\mathrm{PMNS}} = \texttt{m003}(-2,3)$,
-the first twelve geodesic lengths satisfy
-$\ell/(2\logph) \in [0.60, 2.48]$ -- none are integers.
-The Lucas-purity of the covering tower (Conjecture~\ref{conj:lucas-purity})
-is therefore an independent topological phenomenon, not a direct
-corollary of the bridge theorem applied to short geodesics.
+For $M_{\mathrm{PMNS}}=\texttt{m003}(-2,3)$, the first ten geodesic
+lengths $\ell$ (real parts) give $\ell/(2\logph)\in
+\{0.60,0.75,0.92,1.04,1.08,1.86,1.89,2.19,2.31,2.35\}$ --- none an
+integer. This is consistent with (does not contradict)
+Theorem~\ref{thm:bridge}: exact integer-$k$ real-eigenvalue elements
+are a special, evidently rare, condition, not a generic feature of
+the spectrum. The entry near $0.75$ corresponds to $k=3/4$, discussed
+next.
 \end{remark}
 
-\begin{remark}[Quarter-integer extension and unified notation]
+\begin{remark}[Quarter-integer values: numerical, not algebraic-integer]
 \label{rem:quarter}
-For $k \in \frac{1}{4}\Z$, the identity~\eqref{eq:bridge} still holds,
-with $L_k = \ph^k + \ph^{-k} \in \Q(\ph^{1/4})$.
-A geodesic with $\ell = (m/2)\logph$ ($m \in \Z$) has
-$|\mathrm{tr}| = L_{m/4}$.
-For the mass lattice $m = m_e \cdot \ph^{q/4}$, the corresponding
-geodesic length $\ell = (q/4)\logph$ gives $k = q/8$, so
-$|\mathrm{tr}| = L_{q/8}$ (an eighth-Lucas index).
+For real $x\geq0$, define $\Lcal(x):=\ph^x+\ph^{-x}=2\cosh(x\logph)$.
+For $x\in\Z$ this is Lemma~\ref{lem:bifurcation}'s bifurcated
+quantity. For $x\notin\Z$, $\Lcal(x)$ is an algebraic number in
+$\Q(\ph^{1/4})$ (degree $\leq8$ over $\Q$) but --- being a real field
+that does not contain $\sqrt{-3}$ --- $\Q(\ph^{1/4})\cap\Q(\sqrt{-3})
+=\Q$ also, by the same argument as Corollary~\ref{cor:obstruction}.
+So $\Lcal(x)\notin\ITF(M)$ for irrational $x$ as well, \emph{unless}
+$\Lcal(x)\in\Q$ (which does not happen for $x\in(0,1)$).
+Consequently the previously-noted match
+$\sigma_{\mathrm{opt}}\approx\tfrac32\logph$ (i.e.\ $x=3/4$, agreement
+$\approx0.004\%$) should be understood as a \textbf{numerical length
+coincidence}, not an exact statement that
+$|\tr(\gamma_2)|=\Lcal(3/4)$ exactly. We use $\Lcal$ (not $L$) for
+non-integer arguments throughout to avoid the notational collision
+that caused the v1 error.
 \end{remark}
 
-\section{The Prime Dictionary as Prime Lucas Numbers}
+\section{The Covering Tower: $11=L_5$}
+\label{sec:cover}
 
-\begin{theorem}[Prime dictionary $=$ prime Lucas numbers]
-\label{thm:lucas-dict}
-The prime torsion of the covering tower of $M_{\mathrm{PMNS}}$
-through degree~$9$ consists exactly of
-$\mathcal{P}' = \{2,3,7,11,29\} = \{L_0, L_2, L_4, L_5, L_7\}$.
-The prime $5$ enters via a distinct mechanism.
-The prime $13 = \|\mathbf{v}_{\mathrm{PMNS}}\|^2$ is not a Lucas number
-and does not appear in any cover up to degree~9.
+\begin{theorem}[The unique algebraic cover prime, corrected]
+\label{thm:cover}
+Through degree~6, \texttt{M.covers(d)} applied to $M_{\mathrm{PMNS}}$
+returns exactly one cover: a degree-5 cover with
+$H_1\cong(\Z/11)^2$. Equivalently, $11=L_5$ is the unique new
+algebraic cover prime of $M_{\mathrm{PMNS}}$ through degree~6.
 \end{theorem}
 
 \begin{proof}
-Computational verification through degree~9: 24 covers, 47 torsion
-group computations, zero violations. The identification follows from
-the Binet formula: $L_0=2$, $L_2=3$, $L_4=7$, $L_5=11$, $L_7=29$
-are all prime, and $13 \neq L_k$ for all $k \in \Z$.
+Direct computation via \texttt{SnapPy}'s \texttt{M.covers(d)} for
+$d=2,\ldots,6$~\cite{snappy}.
 \end{proof}
 
-\begin{conjecture}[Lucas-purity]
-\label{conj:lucas-purity}
-Every prime dividing $|H_1(\tilde{M};\Z)_{\mathrm{tors}}|$ for any
-finite-sheeted orientable cover $\tilde{M} \to M_{\mathrm{PMNS}}$
-is either $5$ or a prime Lucas number.
-\end{conjecture}
+\begin{remark}[Correction to the v1 ``prime dictionary'']
+\label{rem:dict-correction}
+Version 1 of this paper claimed
+$\{2,3,7,11,29\}=\{L_0,L_2,L_4,L_5,L_7\}$ as a ``prime dictionary'' of
+the covering tower. This conflated the algebraic cover prime $11$
+(Theorem~\ref{thm:cover}) with primes $\{2,3,7,29\}$ that appear
+because certain census manifolds at integer multiples of
+$\mathrm{vol}(M_{\mathrm{PMNS}})$ are \emph{commensurable neighbours}
+of $M_{\mathrm{PMNS}}$ --- not covers of it. Only $11=L_5$ is an
+algebraic cover prime.
+\end{remark}
 
-\begin{corollary}[Primitivity obstruction -- computational observation]
-\label{cor:primitivity}
-The prime $p = 13 = 2^2+3^2$ does not appear in any cover of
-$M_{\mathrm{PMNS}}$ up to degree~9, consistent with $13$ not being
-a Lucas number. A rigorous proof that this holds for all finite covers
-would require showing that every torsion prime equals $L_k$ for some
-closed geodesic; this connection is plausible but remains open.
-\end{corollary}
+\begin{theorem}[Why $11=L_5$, and only $11$]
+\label{thm:why11}
+Let $M_n=\texttt{m003}(-(n+1),2n+1)$ for $n\geq1$ be the Farey tower
+containing $M_{\mathrm{PMNS}}=M_1$. Each $M_n$ has $H_1\cong\Z/5$ and
+a unique degree-5 cover with $H_1\cong(\Z/p_n)^2$, where
+\[
+  p_n = 5n(n+1)+1.
+\]
+Then $p_n\equiv1\pmod5$ for all $n$, and $11=L_5$ divides $p_n$ if and
+only if $n\equiv1$ or $9\pmod{11}$. In particular $p_1=11=L_5$
+exactly (the $n=1$ case of the divisibility, where $p_1$ \emph{is}
+the Lucas prime), while $p_2=31,\ldots,p_{10}=541$ are not Lucas
+numbers. $11=L_5$ is thus the \emph{unique} Lucas prime in the
+sequence $(p_n)$, and $M_{\mathrm{PMNS}}=M_1$ is the unique element
+of its own Farey tower with this property.
+\end{theorem}
+
+\begin{proof}
+See the companion paper~\cite{gentry-z5bridge}, Theorems 2.6, 5.2,
+and 5.3: the cover-prime formula, the forbidden-Lucas-primes result
+(ruling out $L_0,L_2,L_4\in\{2,3,7\}$ for all $n$ by residues mod
+2,3,7), and the first-permitted-Lucas-prime result
+($11=L_5\mid p_n\iff n\equiv1,9\bmod11$).
+\end{proof}
+
+\begin{remark}[On the degree-9 scan and ``Lucas-purity'']
+\label{rem:purity-status}
+Version 1 additionally reported a degree-9 scan (24 covers, 47
+torsion computations) finding only the Lucas-prime torsion set
+$\{2,3,7,11,29\}$, and conjectured this as ``Lucas-purity.'' That
+scan predates the distinction drawn in
+Remark~\ref{rem:dict-correction} between algebraic covers and
+commensurability-class coincidences, and has not been independently
+re-examined under that distinction at degrees~7--9. We do not
+reassert the Lucas-purity conjecture here. In its place,
+Theorem~\ref{thm:why11} gives a narrower but \emph{proved} statement:
+within the Farey tower $(M_n)_{n\geq1}$, exactly one cover prime
+($p_1=11=L_5$) is a Lucas number, and this is forced by elementary
+congruences, not a purity phenomenon requiring further conjecture.
+A re-scan of degrees~7--9 under the corrected algebraic/commensurable
+distinction remains a worthwhile open computation.
+\end{remark}
 
 \begin{remark}[Quantitative control computation]
-Lucas-purity is not generic. A scan of 73 fillings across 5 cusped
-manifolds (degree $\leq 6$) shows:
-\begin{center}
-\begin{tabular}{lrrc}
-\toprule
-Manifold & $N$ & mean max $p$ & \% Lucas-only \\
-\midrule
-$m003(-2,3)$ [deg.~9] & 1 & 29 & \textbf{100\%} \\
-$m006(-5,2)$ [deg.~7] & 1 & 11 & \textbf{100\%} \\
-$m004$  & 12 & 14.7 & 83\% \\
-$m007$  & 15 &  9.5 & 40\% \\
-$m009$  & 14 & 10.0 &  7\% \\
-$m010$  & 16 &  8.5 & 56\% \\
-$m015$  & 16 &  6.7 & 63\% \\
-\bottomrule
-\end{tabular}
-\end{center}
-Non-Lucas primes $13, 17, 19, 23, 31$ appear in control fillings.
-Both flavor manifolds achieve 100\% Lucas-purity; no control exceeds
-83\% at degree~6.
+\label{rem:controls}
+Independent of the corrections above, the following control
+computation remains valid as a measurement of the rarity of
+low-torsion-prime covers: a scan of 73 fillings across 5 cusped
+manifolds (degree~$\leq6$) found non-Lucas torsion primes
+$13,17,19,23,31$ appearing in $17$--$93\%$ of control fillings,
+versus $0\%$ for $M_{\mathrm{PMNS}}$ and $M_{\mathrm{CKM}}$ at the
+single cover each possesses. With only one or zero covers per
+flavor manifold through degree~6, this comparison has limited
+statistical power and should be read as suggestive rather than
+conclusive.
 \end{remark}
-
-\section{Resolution of the Number Field Mystery}
-
-\begin{theorem}[Lucas bridge between $\Q(\sqrt{-3})$ and $\Q(\sqrt{5})$]
-\label{thm:bridge}
-Let $M$ be an arithmetic hyperbolic 3-manifold with invariant trace
-field $\Q(\sqrt{-3})$. If $\gamma \in \pi_1(M)$ is loxodromic with
-$|\mathrm{tr}(\rho(\gamma))| = L_k$ for some $k \in \frac{1}{4}\Z$,
-then
-\[
-  \ell(\gamma) = 2k\logph,
-\]
-a rational multiple of $\logph = \mathrm{Reg}(\Q(\sqrt{5}))$.
-\end{theorem}
-
-\begin{proof}
-Direct from Theorem~\ref{thm:lucas-geodesic}. The Lucas numbers
-$L_k$ are rational integers for $k \in \Z$ and algebraic integers
-in $\Q(\ph^{1/4})$ for $k \in \frac{1}{4}\Z \setminus \Z$.
-The inverse hyperbolic cosine forces $\ell = 2k\logph$ regardless
-of the trace field.
-\end{proof}
-
-\section{The Unified Framework}
-
-\begin{table}[h]
-\centering
-\caption{Lucas structure of the HFG framework.}
-\label{tab:unified}
-\begin{tabular}{lll}
-\toprule
-Object & Lucas expression & Role \\
-\midrule
-Fermion mass & $m = m_e\ph^{q/4}$, trace $L_{q/8}$ & Mass spectrum \\
-$\sigma_{\mathrm{opt}}$ & $\ell = \tfrac{3}{2}\logph$, $L_{3/4}=2.132$ & Gaussian width \\
-Prime dictionary & $\{L_0,L_2,L_4,L_5,L_7\}=\{2,3,7,11,29\}$ & Covering tower \\
-Geodesic spectrum & $\ell = \tfrac{m}{2}\logph$, $|\mathrm{tr}|=L_{m/4}$ & Length spectrum \\
-Mahler measure & $\log M(\Delta) = 2\logph$ & Knot invariant \\
-Regulator & $\mathrm{Reg}(\Q(\sqrt{5})) = \logph$ & Arithmetic \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \section{Discussion}
 
-The Lucas sequence resolves the number-field mystery: absolute values
-of traces in the $\Q(\sqrt{-3})$ trace field land on Lucas integers
-in $\Z[\ph] \subset \Q(\sqrt{5})$, connecting the two fields via
-the arccosh formula without requiring their intersection.
+The corrected picture is, if anything, more structured than the v1
+claim. Rather than ``Lucas numbers appear everywhere, exactly,'' we
+have: (1) a \emph{forbidden} set of geodesic lengths
+(Corollary~\ref{cor:obstruction}), arising from a clean field-theoretic
+obstruction and directly linking this paper to the Eisenstein-field
+result $\ITF(M_{\mathrm{PMNS}})=\Q(\sqrt{-3})$; and (2) a single,
+arithmetically-forced cover prime $11=L_5$
+(Theorem~\ref{thm:why11}), explained by elementary congruences on the
+Farey cover-prime sequence rather than by an open-ended purity
+conjecture.
 
-Three open directions: (1) a representation-theoretic proof that
-$\Q(\sqrt{-3})$ holonomy traces have Lucas absolute values; (2) an
-Ihara zeta function connection, since geodesic lengths $2k\logph$
-appear as zeros at $u = \ph^{-k}$; (3) the dynamical origin of the
-mass lattice.
+\paragraph{TQFT remark (corrected).} The identity
+$\Lcal(k)=2\cosh(k\logph)$ relates $\Lcal$ to Chebyshev polynomials of
+the first kind, equal to $L_k$ (even $k$) or $\sqrt5F_k$ (odd $k$) by
+Lemma~\ref{lem:bifurcation}. In $\mathrm{SU}(2)$ Chern--Simons theory
+at level $r=3$ (Fibonacci anyons), $q=e^{2\pi i/5}$ gives
+$[2]_q=2\cos(2\pi/5)=\ph-1$, a trigonometric, not hyperbolic, cosine;
+the analogy remains formal.
 
-\paragraph{TQFT remark.}
-The identity $L_k = 2\cosh(k\logph)$ relates Lucas numbers to
-hyperbolic cosines and to Chebyshev polynomials of the first kind.
-In $\mathrm{SU}(2)$ Chern--Simons theory at level $r=3$ (Fibonacci
-anyons), $q = e^{2\pi i/5}$ gives $[2]_q = 2\cos(2\pi/5) = \ph-1$,
-not a Lucas number. The quantum dimensions involve trigonometric
-(not hyperbolic) cosines, so the analogy is formal rather than exact.
-Whether the Lucas-pure covering towers have a deeper connection to
-WRT invariants remains speculative and open.
+\paragraph{Open directions.} (1) Does $\pi_1(M_{\mathrm{PMNS}})$
+contain \emph{any} element with real eigenvalues $\ph^{\pm k}$ for
+even $k\geq2$ (the rungs Corollary~\ref{cor:obstruction} permits but
+does not require)? (2) A re-scan of algebraic covers at
+degrees~7--9 under the corrected algebraic/commensurable distinction.
+(3) The dynamical origin of the mass lattice $m=m_e\ph^{q/4}$, now
+understood as a statement about $\Lcal(q/8)\in\Q(\ph^{1/4})$
+(Remark~\ref{rem:quarter}) rather than about integer Lucas traces.
 
 \section*{Data Availability}
-All computations use SnapPy~\cite{snappy} v3.3.2.
-Scripts: \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+All computations use SnapPy~\cite{snappy} v3.3.2.\\
+Scripts: \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}. The Farey
+cover-prime results of Theorem~\ref{thm:why11} are proved in
+\cite{gentry-z5bridge}.
 
 \section*{Funding}
 This research received no external funding.
@@ -286,9 +377,10 @@ This research received no external funding.
 The author declares no conflicts of interest.
 
 \section*{Generative AI Disclosure}
-Claude and DeepSeek were used for \LaTeX{} formatting assistance
-and code debugging. All mathematical results were conceived, proved,
-and verified by the author.
+Claude was used for \LaTeX{} formatting assistance, code debugging,
+and identification of the bifurcation error corrected in this
+version. All mathematical results were conceived, proved, and
+verified by the author.
 
 \begin{thebibliography}{99}
 
@@ -323,10 +415,11 @@ M.~L.~Gentry,
 and the Golden Ratio}, JKTR, submitted (2026).
 SSRN:10.2139/ssrn.6583549.
 
-\bibitem{gentry-covering}
+\bibitem{gentry-z5bridge}
 M.~L.~Gentry,
-\textit{Arithmetic of Dehn Filling Slopes and the Homology of
-the Flavor Covering Tower}, preprint (2026).
+\textit{The $\Z/5$ Bridge: Hyperbolic Covering Towers, Rational
+Torsion of $X_0(11)$, and an Arithmetic Proof of the Universal Cover
+Prime Formula}, preprint (2026).
 
 \bibitem{maclachlan-reid}
 C.~Maclachlan and A.~W.~Reid,
