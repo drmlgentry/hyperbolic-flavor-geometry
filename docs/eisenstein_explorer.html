@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Eisenstein Explorer</title>
+<style>
+  :root {
+    --paper: #fdfbf5;
+    --ink: #1a1a1a;
+    --green: #2d6a4f;
+    --green-bg: #eef7ef;
+    --red: #9b2226;
+    --red-bg: #fbecec;
+    --gray: #8a8a8a;
+    --gold: #b8860b;
+    --gold-bg: #fdf6e3;
+    --hairline: #e2ddd0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 20px;
+    background: var(--paper);
+    font-family: Georgia, serif;
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+  }
+  .wrap {
+    max-width: 760px;
+    width: 100%;
+  }
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0 0 4px;
+    text-align: center;
+  }
+  .sub {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+  }
+
+  /* ---- compass ---- */
+  .compass-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .compass-box {
+    flex: 0 0 360px;
+  }
+  svg#compass {
+    width: 100%;
+    height: auto;
+    cursor: default;
+  }
+  .manifold-point {
+    cursor: pointer;
+  }
+  .info-box {
+    flex: 1 1 320px;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px 20px;
+    min-height: 180px;
+  }
+  .info-box h2 {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    font-family: 'Courier New', monospace;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 0.92rem;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: #666; }
+  .info-value { font-family: 'Courier New', monospace; text-align: right; }
+  .status-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: bold;
+  }
+  .status-confirmed { background: var(--green-bg); color: var(--green); }
+  .status-refuted   { background: var(--red-bg); color: var(--red); }
+  .status-open      { background: #f1f1f1; color: var(--gray); }
+  .status-nearmiss  { background: var(--red-bg); color: var(--red); }
+
+  /* ---- selector ---- */
+  .selector-row {
+    margin-top: 22px;
+    text-align: center;
+  }
+  select {
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1px solid var(--hairline);
+    background: #fff;
+    color: var(--ink);
+  }
+
+  /* ---- conjecture tester ---- */
+  .tester {
+    margin-top: 28px;
+    background: var(--gold-bg);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+  .tester h3 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+    font-weight: normal;
+  }
+  .tester p.lead {
+    margin: 0 0 14px;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+  }
+  input[type=range] {
+    width: 100%;
+    accent-color: var(--gold);
+  }
+  .tester-readout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+  }
+  .prediction {
+    font-weight: bold;
+    font-size: 1.0rem;
+  }
+  .pred-yes { color: var(--green); }
+  .pred-no  { color: var(--red); }
+
+  .footnote {
+    margin-top: 22px;
+    font-size: 0.72rem;
+    color: #999;
+    text-align: center;
+    border-top: 1px solid var(--hairline);
+    padding-top: 12px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 560px) {
+    .compass-row { flex-direction: column; }
+    .compass-box { flex-basis: auto; }
+    .tester-readout { flex-direction: column; align-items: flex-start; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>The Eisenstein Explorer</h1>
+  <div class="sub">Hover or tap a manifold on the compass — or drag the slider below to test the conjecture at any angle.</div>
+
+  <div class="compass-row">
+    <div class="compass-box">
+      <svg id="compass" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+        <circle cx="200" cy="200" r="2" fill="#1a1a1a"/>
+
+        <!-- Eisenstein radii at multiples of 60deg -->
+        <line x1="200" y1="200" x2="350" y2="200"   stroke="#2d6a4f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="200" y1="200" x2="275" y2="70.1"  stroke="#b8860b" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <line x1="200" y1="200" x2="125" y2="70.1"  stroke="#2d6a4f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="200" y1="200" x2="50"  y2="200"   stroke="#2d6a4f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="200" y1="200" x2="125" y2="329.9" stroke="#2d6a4f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="200" y1="200" x2="275" y2="329.9" stroke="#2d6a4f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+
+        <!-- vacant +60 slot -->
+        <circle cx="275" cy="70.1" r="6" fill="none" stroke="#b8860b" stroke-width="1.6" stroke-dasharray="2,2"/>
+
+        <!-- manifold points (r=150 scale of the 250 used in static figs) -->
+        <circle class="manifold-point" data-id="m003" cx="50"   cy="200"   r="9" fill="#2d6a4f"/>
+        <circle class="manifold-point" data-id="m004" cx="125"  cy="70.1"  r="9" fill="#2d6a4f"/>
+        <circle class="manifold-point" data-id="m006" cx="200"  cy="50"    r="9" fill="#9b2226"/>
+        <circle class="manifold-point" data-id="m038" cx="306.1" cy="306.1" r="9" fill="#9b2226"/>
+        <circle class="manifold-point" data-id="m032" cx="314.9" cy="296.4" r="9" fill="#8a8a8a"/>
+        <circle class="manifold-point" data-id="m206" cx="277.2" cy="328.6" r="9" fill="#9b2226"/>
+
+        <!-- minimal labels -->
+        <text x="50"  y="222" text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#1a1a1a">m003</text>
+        <text x="125" y="58"  text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#1a1a1a">m004</text>
+        <text x="200" y="38"  text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#1a1a1a">m006</text>
+        <text x="323" y="310" text-anchor="start"  font-size="11" font-family="Georgia,serif" fill="#1a1a1a">m038</text>
+        <text x="328" y="290" text-anchor="start"  font-size="11" font-family="Georgia,serif" fill="#1a1a1a">m032</text>
+        <text x="277" y="352" text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="#1a1a1a">m206</text>
+      </svg>
+    </div>
+
+    <div class="info-box" id="infoBox">
+      <!-- populated by JS -->
+    </div>
+  </div>
+
+  <div class="selector-row">
+    <label for="manifoldSelect" style="font-size:0.85rem;color:#666;margin-right:8px;">Or choose directly:</label>
+    <select id="manifoldSelect">
+      <option value="m003">m003 — PMNS</option>
+      <option value="m004">m004</option>
+      <option value="m006">m006 — CKM</option>
+      <option value="m038">m038</option>
+      <option value="m032">m032</option>
+      <option value="m206">m206(1,2)</option>
+    </select>
+  </div>
+
+  <div class="tester">
+    <h3>Conjecture tester</h3>
+    <p class="lead">Pick any angle θ* and see what the Eisenstein conjecture predicts for the trace field.</p>
+    <input type="range" id="thetaSlider" min="-180" max="180" step="0.1" value="-180">
+    <div class="tester-readout">
+      <span>θ* = <span id="thetaVal">−180.0°</span></span>
+      <span class="prediction" id="thetaPred"></span>
+    </div>
+  </div>
+
+  <div class="footnote">
+    Six arithmetic 3-manifolds with H₁ = ℤ/5. Two confirm the Eisenstein conjecture exactly (m003, m004).
+    m006 and m038 correctly refute it. m206(1,2) is a near-miss: θ* = −59.02°, only 0.98° from −60°,
+    yet its trace field (disc = −23) shares no factor with 3. m032 remains open (degree-6 field).
+    The slot at +60° is a standing prediction — no known manifold occupies it yet.
+  </div>
+
+</div>
+
+<script>
+const DATA = {
+  m003: {
+    name: "m003 (PMNS)", theta: -180, multiple60: true,
+    field: "ℚ(√−3), disc = −3", status: "confirmed",
+    note: "Cusp shape τ = e^{iπ/3}, x²+x+1=0. The Meyerhoff manifold."
+  },
+  m004: {
+    name: "m004", theta: 120, multiple60: true,
+    field: "ℚ(√−3), disc = −27 = −3³", status: "confirmed",
+    note: "ITF generator satisfies x²+x+7=0. √−27 = 3√−3, same field as m003."
+  },
+  m006: {
+    name: "m006 (CKM)", theta: 90, multiple60: false,
+    field: "cubic, disc = −59", status: "refuted",
+    note: "θ*=+90° is not a multiple of 60° — and indeed no √−3 in this field. Correct refutation."
+  },
+  m038: {
+    name: "m038", theta: -45, multiple60: false,
+    field: "non-Eisenstein", status: "refuted",
+    note: "θ*=−45°, discriminant not divisible by 9. Correct refutation."
+  },
+  m032: {
+    name: "m032", theta: -45, multiple60: false,
+    field: "degree-6, irreducible — open", status: "open",
+    note: "θ*=−45°. The ITF is an irreducible degree-6 field; algdep coefficients run to 10¹³. Degree 6 can't contain a degree-2 subfield, so this is consistent with the conjecture — but the exact discriminant is uncomputed."
+  },
+  m206: {
+    name: "m206(1,2)", theta: -59.016, multiple60: false,
+    field: "cubic x³+3x²+2x−1=0, disc = −23", status: "nearmiss",
+    note: "θ*=−59.016° — only 0.98° from the Eisenstein angle −60°. But disc=−23 shares no factor with 3: no √−3 anywhere in this field. A dramatic near-miss that the conjecture survives cleanly."
+  }
+};
+
+const STATUS_LABEL = {
+  confirmed: "Confirmed",
+  refuted: "Correctly non-Eisenstein",
+  open: "Open",
+  nearmiss: "Near-miss (consistent)"
+};
+const STATUS_CLASS = {
+  confirmed: "status-confirmed",
+  refuted: "status-refuted",
+  open: "status-open",
+  nearmiss: "status-nearmiss"
+};
+
+function renderInfo(id) {
+  const d = DATA[id];
+  const cont60 = d.multiple60 ? "yes" : "no";
+  document.getElementById("infoBox").innerHTML = `
+    <h2>${d.name}</h2>
+    <div class="info-row"><span class="info-label">Resonance angle θ*</span><span class="info-value">${d.theta}°</span></div>
+    <div class="info-row"><span class="info-label">θ* multiple of 60°?</span><span class="info-value">${cont60}</span></div>
+    <div class="info-row"><span class="info-label">Trace field</span><span class="info-value" style="text-align:right;max-width:55%;">${d.field}</span></div>
+    <div class="info-row"><span class="info-label">Status</span><span class="status-pill ${STATUS_CLASS[d.status]}">${STATUS_LABEL[d.status]}</span></div>
+    <p style="font-size:0.85rem;color:#555;margin-top:10px;line-height:1.5;">${d.note}</p>
+  `;
+}
+
+function selectManifold(id, fromCompass) {
+  document.getElementById("manifoldSelect").value = id;
+  renderInfo(id);
+  // sync slider to this manifold's angle
+  document.getElementById("thetaSlider").value = DATA[id].theta;
+  updateTester(DATA[id].theta);
+}
+
+// compass interactions
+document.querySelectorAll(".manifold-point").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    renderInfo(el.dataset.id);
+    el.setAttribute("r", "12");
+  });
+  el.addEventListener("mouseleave", () => {
+    el.setAttribute("r", "9");
+  });
+  el.addEventListener("click", () => selectManifold(el.dataset.id, true));
+});
+
+// dropdown
+document.getElementById("manifoldSelect").addEventListener("change", e => {
+  renderInfo(e.target.value);
+});
+
+// conjecture tester
+function updateTester(theta) {
+  theta = parseFloat(theta);
+  document.getElementById("thetaVal").textContent = theta.toFixed(1) + "°";
+  const remainder = Math.abs(((theta % 60) + 90) % 60 - 30); // distance-ish helper unused
+  const nearest60 = Math.round(theta / 60) * 60;
+  const dev = Math.abs(theta - nearest60);
+  const predEl = document.getElementById("thetaPred");
+  if (dev < 0.001) {
+    predEl.textContent = "Prediction: ℚ(√−3) ⊂ ITF(M)  (exact Eisenstein angle)";
+    predEl.className = "prediction pred-yes";
+  } else {
+    predEl.textContent = `Prediction: ℚ(√−3) ⊄ ITF(M)  (${dev.toFixed(2)}° from nearest 60°·n)`;
+    predEl.className = "prediction pred-no";
+  }
+}
+
+document.getElementById("thetaSlider").addEventListener("input", e => {
+  updateTester(e.target.value);
+});
+
+// init
+renderInfo("m003");
+updateTester(-180);
+</script>
+</body>
+</html>
