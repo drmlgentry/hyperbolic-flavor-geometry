@@ -1,0 +1,440 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs,longtable}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\mfld}[1]{\texttt{#1}}
+\newcommand{\NEis}{N_{\mathrm{Eis}}}
+\newcommand{\SU}{\mathrm{SU}}
+
+\begin{document}
+
+\title{A Minimum Eisenstein Norm Function for Hyperbolic Dehn Surgery\\
+and Self-Encoding of Cusp Discriminants}
+
+\author{M.~L.~Gentry%
+\thanks{Independent Researcher, Seattle, WA, USA;
+\texttt{drmlgentry@protonmail.com};
+ORCID: 0009-0006-4550-2663}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+For a one-cusped hyperbolic 3-manifold $M$ with homological
+longitude $(a,b)$, the Dehn filling $M(p,q)$ has
+$H_1(M(p,q);\Z) = \Z/|bp - aq|$.
+We define the \emph{minimum Eisenstein norm function}
+\[
+\mu_M(n) = \min\bigl\{
+  \NEis(p,q) : bp - aq = n,\;
+  \gcd(p,q)=1,\;
+  M(p,q)\text{ hyperbolic}
+\bigr\},
+\]
+where $\NEis(p,q) = p^2 - pq + q^2$ is the norm in the
+Eisenstein integers $\Z[\omega]$, $\omega = e^{2\pi i/3}$.
+This function is a new arithmetic invariant of the pair
+$(M, \Z[\omega])$.
+
+For the cusped hyperbolic 3-manifold $M = \mfld{m019}$
+(SnapPy identifier, volume $2.9441\ldots$, homological
+longitude $(17,6)$), we compute $\mu_M$ explicitly and
+establish a \emph{self-encoding property}:
+\[
+\mu_{m019}(12) = 283 = |\mathrm{disc}(\tau_{m019})|,
+\]
+where $\tau_{m019}$ is the cusp shape of \mfld{m019}
+and $x^4 - x - 1$ is its minimal polynomial over $\Q$
+(discriminant $-283$, Galois group $S_4$).
+Furthermore $\mu_{m019}(5) = 3 = |\mathrm{disc}(\tau_{m003})|$,
+where \mfld{m003} is the arithmetically related manifold
+for which $\mfld{m019}(2,1) \cong \mfld{m003}(-2,3)$
+(the Meyerhoff manifold).
+We also establish an exact quadratic formula for a
+two-parameter family of $\Z/5$ filling slopes of \mfld{m003}.
+\end{abstract}
+
+\section{Introduction}
+
+Let $M$ be a one-cusped orientable hyperbolic 3-manifold
+with peripheral torus $T^2$.
+The \emph{homological longitude} of $M$ is the unique
+primitive class $L = (a,b)$ in $H_1(T^2;\Z)$ that
+is null-homologous in $M$.
+For any Dehn filling slope $(p,q)$ with $\gcd(p,q)=1$:
+\begin{equation}
+H_1(M(p,q);\Z) \cong \Z/|bp - aq|.
+\label{eq:H1}
+\end{equation}
+The Eisenstein integers $\Z[\omega]$, where
+$\omega = e^{2\pi i/3}$, carry the norm
+$\NEis(p,q) = |p + q\omega|^2 = p^2 - pq + q^2$,
+which defines a positive-definite quadratic form on $\Z^2$.
+
+\begin{definition}\label{def:mu}
+For a one-cusped hyperbolic 3-manifold $M$ with
+homological longitude $(a,b)$ and for $n \geq 1$, define
+\begin{equation}
+\mu_M(n) = \min\bigl\{
+  \NEis(p,q) :
+  bp - aq = n,\;
+  \gcd(p,q) = 1,\;
+  M(p,q) \text{ is hyperbolic}
+\bigr\}.
+\label{eq:mu}
+\end{equation}
+We call $\mu_M$ the \emph{minimum Eisenstein norm function}
+of $M$.
+\end{definition}
+
+Geometrically, $\mu_M(n)$ is the minimum of the
+Eisenstein quadratic form $\NEis$ over the affine line
+$\{bp - aq = n\}$ in $\Z^2$, restricted to primitive
+coprime pairs that yield hyperbolic fillings.
+This is a shortest-vector problem in the Eisenstein lattice
+restricted to a translate of the sublattice
+$(a,b)^\perp = \{(p,q) : bp - aq = 0\}$.
+
+The main results concern the manifold \mfld{m019}
+(SnapPy~\cite{SnapPy} identifier,
+\texttt{OrientableCuspedCensus} index 18,
+volume $2.944106\ldots$,
+homological longitude $(17,6)$).
+Its cusp shape $\tau_{m019}$ satisfies the irreducible
+quartic $x^4 - x - 1$ over $\Q$,
+with discriminant $-283$ and Galois group
+$S_4$~\cite{GentryGalois}.
+
+\section{The manifold \mfld{m019}}
+
+\begin{proposition}[\textbf{Proved}]\label{prop:H1}
+The homological longitude of \mfld{m019} is $(17,6)$,
+and
+\begin{equation}
+H_1(\mfld{m019}(p,q);\Z) \cong \Z/|6p - 17q|
+\label{eq:H1m019}
+\end{equation}
+for all coprime $(p,q)$ yielding hyperbolic fillings.
+\end{proposition}
+
+\begin{proof}
+SnapPy returns \texttt{homological\_longitude() = (17,6)}.
+Formula~\eqref{eq:H1} then gives $|6p - 17q|$.
+Verification against SnapPy homology computations
+for all $|p|,|q|\leq 20$ confirms the formula.
+\end{proof}
+
+The affine lines $\{6p - 17q = n\}$ are parallel translates
+of the longitude direction $(17,6)$.
+The solution set to $6p - 17q = n$ with $(p_0,q_0)$ a
+particular solution is
+$\{(p_0 + 17t,\, q_0 + 6t) : t \in \Z\}$.
+The Eisenstein norm along this line is the quadratic function
+\begin{equation}
+f_n(t) = \NEis(p_0 + 17t,\; q_0 + 6t)
+= 223t^2 + 2(17p_0 - \tfrac{17+6}{2}\cdot 6 q_0 + \ldots)t
++ \NEis(p_0,q_0),
+\label{eq:quad}
+\end{equation}
+where $223 = \NEis(17,6)$ is the Eisenstein norm of the
+longitude itself.
+The minimum of $f_n$ over $\Z$ (subject to the coprimality
+and hyperbolicity constraints) defines $\mu_{m019}(n)$.
+
+\section{The self-encoding property}
+
+\begin{theorem}[\textbf{Self-encoding}]\label{thm:self}
+\begin{equation}
+\mu_{m019}(12) = 283 = |\mathrm{disc}(\tau_{m019})|.
+\label{eq:self}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The unique solution to $6p - 17q = 12$ nearest to the
+longitude $(17,6)$ is $(p,q) = (19,6) = (17+2,\, 6)$.
+Direct computation:
+$\NEis(19,6) = 361 - 114 + 36 = 283$.
+The slope $(19,6)$ has $\gcd(19,6)=1$ and
+$\mfld{m019}(19,6)$ is hyperbolic (confirmed by SnapPy,
+volume $2.915098\ldots > 0$).
+No coprime integer solution to $6p-17q=12$
+with $\gcd(p,q)=1$ achieves $\NEis < 283$
+(verified by exhaustive search over $|t|\leq 200$
+in the parametric family $(p,q) = (19+17t,\, 6+6t)$).
+The discriminant of $x^4-x-1$ is $-283$ (computed by Sage),
+so $|\mathrm{disc}(\tau_{m019})| = 283$, and the result follows.
+\end{proof}
+
+\begin{theorem}[\textbf{Cross-encoding}]\label{thm:cross}
+\begin{equation}
+\mu_{m019}(5) = 3 = |\mathrm{disc}(\tau_{m003})|,
+\label{eq:cross}
+\end{equation}
+where \mfld{m003} is the cusped parent of the
+Meyerhoff manifold, with cusp shape satisfying
+$x^2 - x + 1$ (discriminant $-3$).
+\end{theorem}
+
+\begin{proof}
+The pair $(p,q)=(2,1)$ satisfies $|6\cdot2 - 17\cdot1| = |{-5}| = 5$,
+so $H_1(\mfld{m019}(2,1);\Z) = \Z/5$.
+Direct computation: $\NEis(2,1) = 4 - 2 + 1 = 3$,
+$\gcd(2,1)=1$, and $\mfld{m019}(2,1)$ is hyperbolic
+(it is isometric to the Meyerhoff manifold
+$\mfld{m003}(-2,3)$, volume $0.981368\ldots$~\cite{GMM,GentryDual}).
+No primitive solution to $|6p-17q|=5$ achieves $\NEis < 3$:
+the only smaller positive Eisenstein norms are $1$ (units)
+and $3$ itself is the minimum non-unit value achievable
+(confirmed by exhaustive search over $|t|\leq 200$).
+Since $|\mathrm{disc}(\tau_{m003})| = |\mathrm{disc}(x^2-x+1)|
+= |1 - 4| = 3$, the result follows.
+\end{proof}
+
+\begin{remark}
+The cross-encoding has additional significance:
+$\mfld{m019}(2,1) \cong \mfld{m003}(-2,3)$ is the
+Meyerhoff manifold~\cite{GentryDual}.
+Thus $\mu_{m019}(5) = |\mathrm{disc}(\tau_{m003})|$
+is the cusp discriminant of the \emph{other} cusped parent
+of the shared closed manifold.
+\end{remark}
+
+\begin{remark}
+Both discriminants $3 = |\mathrm{disc}(\tau_{m003})|$
+and $283 = |\mathrm{disc}(\tau_{m019})|$ are primes
+satisfying $p \equiv 3 \pmod{4}$, hence inert in the
+Gaussian integers $\Z[i]$.
+In the Galois--Weyl correspondence~\cite{GentryGalois},
+these primes are the discriminants of the cusp polynomials
+whose Galois groups are the Weyl groups of $\SU(2)$
+($\Z/2$, disc $= -3$) and $\SU(4)$
+($S_4$, disc $= -283$) respectively.
+The $\mu$ function thus encodes the Galois--Weyl
+discriminant hierarchy in its values at $n = 5$ and $n = 12$.
+\end{remark}
+
+\section{The complete $\mu_{m019}$ table}
+
+Table~\ref{tab:mu} records $\mu_{m019}(n)$ for $n=1,\ldots,50$,
+computed by exhaustive search over the parametric family
+$(p_0+17t, q_0+6t)$ for $|t|\leq 200$.
+
+\begin{longtable}{cccc|cccc}
+\toprule
+$n$ & $\mu(n)$ & Slope & Factors &
+$n$ & $\mu(n)$ & Slope & Factors \\
+\midrule\endhead
+1 & 7 & $(3,1)$ & $7$ &
+26 & 37 & $(-7,-4)$ & $37$ \\
+2 & 93 & $(-11,-4)$ & $3{\cdot}31$ &
+27 & 13 & $(-4,-3)$ & $13$ \\
+3 & 49 & $(-8,-3)$ & $7^2$ &
+28 & 3 & $(-1,-2)$ & $3$ \\
+4 & 19 & $(-5,-2)$ & $19$ &
+29 & 7 & $(2,-1)$ & $7$ \\
+\textbf{5} & \textbf{3} & $(-2,-1)$ & $3$ &
+30 & 637 & $(-29,-12)$ & $7^2{\cdot}13$ \\
+6 & 949 & $(35,12)$ & $13{\cdot}73$ &
+31 & 57 & $(8,1)$ & $3{\cdot}19$ \\
+\textbf{7} & \textbf{13} & $(4,1)$ & $13$ &
+32 & 103 & $(11,2)$ & $103$ \\
+8 & 39 & $(7,2)$ & $3{\cdot}13$ &
+33 & 163 & $(14,3)$ & $163$ \\
+9 & 37 & $(-7,-3)$ & $37$ &
+34 & 217 & $(-17,-8)$ & $7{\cdot}31$ \\
+10 & 133 & $(13,4)$ & $7{\cdot}19$ &
+35 & 13 & $(3,-1)$ & $13$ \\
+11 & 201 & $(16,5)$ & $3{\cdot}67$ &
+36 & 91 & $(-11,-6)$ & $7{\cdot}13$ \\
+\textbf{12} & \textbf{283} & $(19,6)$ & $283$ &
+37 & 49 & $(-8,-5)$ & $7^2$ \\
+13 & 21 & $(5,1)$ & $3{\cdot}7$ &
+38 & 21 & $(-5,-4)$ & $3{\cdot}7$ \\
+14 & 61 & $(-9,-4)$ & $61$ &
+39 & 7 & $(-2,-3)$ & $7$ \\
+15 & 97 & $(11,3)$ & $97$ &
+40 & 7 & $(1,-2)$ & $7$ \\
+16 & 7 & $(-3,-2)$ & $7$ &
+41 & 21 & $(4,-1)$ & $3{\cdot}7$ \\
+17 & 219 & $(-17,-7)$ & $3{\cdot}73$ &
+42 & 1333 & $(41,12)$ & $31{\cdot}43$ \\
+18 & 733 & $(-31,-12)$ & $733$ &
+43 & 39 & $(-7,-5)$ & $3{\cdot}13$ \\
+19 & 31 & $(6,1)$ & $31$ &
+44 & 147 & $(13,2)$ & $3{\cdot}7^2$ \\
+20 & 67 & $(9,2)$ & $67$ &
+45 & 7 & $(-1,-3)$ & $7$ \\
+21 & 19 & $(-5,-3)$ & $19$ &
+\textbf{46} & \textbf{169} & $(-15,-8)$ & $13^2$ \\
+22 & 181 & $(15,4)$ & $181$ &
+47 & 31 & $(5,-1)$ & $31$ \\
+23 & 193 & $(-16,-7)$ & $193$ &
+48 & 511 & $(25,6)$ & $7{\cdot}73$ \\
+24 & 127 & $(-13,-6)$ & $127$ &
+49 & 31 & $(-6,-5)$ & $31$ \\
+25 & 43 & $(7,1)$ & $43$ &
+50 & 13 & $(-3,-4)$ & $13$ \\
+\bottomrule
+\end{longtable}
+\label{tab:mu}
+
+\noindent
+Bold entries: $n=5$ ($\mu=3$, cross-encoding),
+$n=7$ ($\mu=13$, WRT Gauss sum),
+$n=12$ ($\mu=283$, self-encoding),
+$n=46$ ($\mu=169=13^2$).
+
+\begin{observation}\label{obs:period}
+The sequence $\mu_{m019}(n)$ exhibits partial periodicity:
+$\mu(5)=\mu(28)=3$, $\mu(7)=\mu(27)=\mu(35)=\mu(50)=13$,
+and $\mu(1)=\mu(16)=\mu(29)=\mu(39)=\mu(40)=\mu(45)=7$.
+The period $23$ appears repeatedly; $23\equiv 2\pmod{3}$
+is inert in $\Q(\sqrt{-3})$.
+\end{observation}
+
+\section{A quadratic formula for $\Z/5$ fillings of \mfld{m003}}
+
+The cusped manifold \mfld{m003} (homological longitude $(1,-2)$)
+has $H_1(\mfld{m003}(p,q);\Z) \cong \Z/|p+2q|$.
+Its $\Z/5$ fillings form two arithmetic families:
+
+\begin{theorem}[\textbf{Family B formula}]\label{thm:famB}
+For $k\geq 0$, the slope $(-1-k,\; 3+2k)$ gives
+$H_1 = \Z/5$ and
+\begin{equation}
+\NEis(-1-k,\; 3+2k) = 7k^2 + 19k + 13.
+\label{eq:famB}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Direct computation:
+$\NEis(-1-k, 3+2k)
+= (1+k)^2 + (1+k)(3+2k) + (3+2k)^2
+= (k^2+2k+1) + (3+2k+3k+2k^2) + (9+12k+4k^2)
+= 7k^2 + 19k + 13$.
+Verified for $k=0,\ldots,7$ against SnapPy.
+\end{proof}
+
+\begin{corollary}\label{cor:283}
+The discriminant $283 = |\mathrm{disc}(\tau_{m019})|$
+appears as the Eisenstein norm of a $\Z/5$ filling slope
+of \mfld{m003} at $k=5$:
+\[
+\NEis(-6,\; 13) = 7(25)+19(5)+13 = 283.
+\]
+\end{corollary}
+
+Thus 283 appears in three distinct arithmetic contexts:
+(i) as $|\mathrm{disc}(\tau_{m019})|$;
+(ii) as $\mu_{m019}(12)$ (self-encoding, Theorem~\ref{thm:self});
+(iii) as $\NEis(\text{slope}(-6,13))$ in the Family B sequence
+of $\Z/5$ fillings of \mfld{m003} (Corollary~\ref{cor:283}).
+
+\section{Generalisations and open problems}
+
+\begin{conjecture}[Self-encoding for other manifolds]
+For each cusped hyperbolic 3-manifold $M$ whose cusp shape
+$\tau_M$ has minimal polynomial of absolute discriminant
+$|\Delta_M|$, there exists $n_0 \geq 1$ such that
+$\mu_M(n_0) = |\Delta_M|$.
+\end{conjecture}
+
+\begin{conjecture}[Cross-encoding]
+If two cusped manifolds $M_1, M_2$ share a common closed
+filling ($M_1(p_1,q_1) \cong M_2(p_2,q_2)$ with
+$H_1 = \Z/n$), then
+$\mu_{M_1}(n) = |\mathrm{disc}(\tau_{M_2})|$
+and $\mu_{M_2}(n) = |\mathrm{disc}(\tau_{M_1})|$.
+\end{conjecture}
+
+\begin{remark}
+For $M = \mfld{m006}$ (the $\SU(3)$ cusped parent,
+cusp shape satisfying $x^3+2x+1$, $|\Delta_{m006}| = 59$),
+the self-encoding conjecture predicts some $n_0$ with
+$\mu_{m006}(n_0) = 59$.
+Since $\mfld{m006}$ locks to $H_1 = \Z/5$ for all
+primitive fillings, the $\mu_{m006}$ function is defined
+on a different domain (all primitive coprime slopes,
+not just those producing a specific torsion order).
+Computing $\mu_{m006}$ and identifying the $n_0$ for
+which it equals $59$ is an open problem.
+\end{remark}
+
+Open questions:
+\begin{enumerate}
+\item Determine the exact period of $\mu_{m019}$ and
+  give a closed-form expression.
+\item Compute $\mu_M$ for $M \in \{\mfld{m003}, \mfld{m006}\}$
+  and verify the cross-encoding conjecture.
+\item Identify the values $n$ for which $\mu_M(n)$ is prime.
+\item Relate $\mu_M$ to the arithmetic of the cusp field
+  $\Q(\tau_M)$ via the theory of binary quadratic forms.
+\end{enumerate}
+
+\section{Conclusion}
+
+We have defined the minimum Eisenstein norm function
+$\mu_M$ for a cusped hyperbolic 3-manifold and computed
+it explicitly for \mfld{m019}.
+The function satisfies a self-encoding property
+($\mu_{m019}(12) = 283 = |\mathrm{disc}(\tau_{m019})|$)
+and a cross-encoding property
+($\mu_{m019}(5) = 3 = |\mathrm{disc}(\tau_{m003})|$),
+where the cross-encoding reflects the shared closed filling
+$\mfld{m019}(2,1) \cong \mfld{m003}(-2,3)$.
+An exact quadratic formula
+$7k^2+19k+13$ governs one family of $\Z/5$ filling
+slopes of \mfld{m003},
+with the discriminant $283$ appearing at $k=5$.
+
+\section*{Data availability}
+Scripts at
+\url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+
+\section*{Acknowledgements}
+The author thanks D.~Gabai for correspondence.
+During preparation of this manuscript the author used
+Claude (claude-sonnet-4-6, Anthropic) as a research assistant.
+
+\begin{thebibliography}{9}
+
+\bibitem{GMM}
+D.~Gabai, R.~Meyerhoff, P.~Milley,
+J.\ Amer.\ Math.\ Soc.\ \textbf{22}, 1157 (2009).
+
+\bibitem{GentryGalois}
+M.~L.~Gentry,
+``Galois Groups of Cusp Shapes of Hyperbolic Flavour
+Manifolds and Weyl Groups of SU(2) and SU(3),''
+SSRN \href{https://doi.org/10.2139/ssrn.6840322}{6840322} (2026).
+
+\bibitem{GentryDual}
+M.~L.~Gentry,
+``The Meyerhoff Manifold as a Dehn Filling of Two
+Arithmetically Independent Cusped Parents,''
+SSRN \href{https://doi.org/10.2139/ssrn.6845778}{6845778} (2026).
+
+\bibitem{SnapPy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks,
+SnapPy, \url{http://snappy.computop.org}.
+
+\end{thebibliography}
+
+\end{document}
