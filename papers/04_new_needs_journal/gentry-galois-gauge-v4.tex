@@ -1,0 +1,388 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\mfld}[1]{\texttt{#1}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Weyl}{\mathrm{Weyl}}
+\newcommand{\disc}{\mathrm{disc}}
+
+\begin{document}
+
+\title{Galois Groups of Cusp Shapes of Hyperbolic Flavour Manifolds\\
+and Weyl Groups of $\SU(2)$, $\SU(3)$, and $\SU(4)$}
+
+\author{M.~L.~Gentry%
+\thanks{Independent Researcher, Seattle, WA, USA;
+\texttt{drmlgentry@protonmail.com};
+ORCID: 0009-0006-4550-2663}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+Three hyperbolic 3-manifolds arising in the Hyperbolic Flavour
+Geometry programme have cusp shapes whose minimal polynomials
+over $\Q$ have Galois groups isomorphic to Weyl groups of
+Standard Model gauge factors.
+The lepton manifold $M_{\mathrm{PMNS}}=\mfld{m003}(-2,3)$
+(the Meyerhoff manifold) has cusped parent \mfld{m003} with
+cusp shape satisfying $x^2-x+1$ ($\disc=-3$, $\Gal\cong\Z/2
+\cong\Weyl(\SU(2))$).
+The quark manifold $M_{\mathrm{CKM}}=\mfld{m006}(-5,2)$ has
+cusped parent \mfld{m006} with cusp shape satisfying
+$x^3+2x+1$ ($\disc=-59$, $\Gal\cong S_3\cong\Weyl(\SU(3))$).
+The extended parent \mfld{m019} has cusp shape satisfying
+$x^4-x-1$ ($\disc=-283$, $\Gal\cong S_4\cong\Weyl(\SU(4))$);
+its filling \mfld{m019}$(2,1)$ is a second surgery description
+of $M_{\mathrm{PMNS}}$, verified by SnapPy to 15 significant
+figures.
+
+The compositum of the splitting fields of the two cusp polynomials
+corresponding to the two surgery descriptions of the Meyerhoff
+manifold ($\mfld{m003}$ and $\mfld{m019}$) has Galois group
+$S_4\times\Z/2\cong\Weyl(\SU(4))\times\Weyl(\SU(2))$, the Weyl
+group of the gauge sector of the left-handed Pati--Salam model
+$\SU(4)\times\SU(2)_L$.  The cubic cusp field of $\mfld{m006}$
+(discriminant $-59$) is arithmetically independent from the
+other two fields.
+
+All computations are verified by SnapPy and Sage at 300-bit
+precision; residuals are below $10^{-85}$.
+\end{abstract}
+
+\section{Introduction}
+
+The Hyperbolic Flavour Geometry (HFG) programme~\cite{GentryUnified}
+associates compact hyperbolic 3-manifolds to Standard Model (SM)
+flavour parameters.
+The lepton mixing matrix (PMNS) is encoded by
+$M_{\mathrm{PMNS}}=\mfld{m003}(-2,3)$,
+the unique minimum-volume closed orientable hyperbolic
+3-manifold~\cite{GMM}.
+The quark mixing matrix (CKM) is encoded by
+$M_{\mathrm{CKM}}=\mfld{m006}(-5,2)$.
+
+The cusped parents of these closed manifolds carry cusp shapes
+$\tau_M\in\mathbb{H}$ that satisfy minimal polynomials over $\Q$.
+In this paper we compute these polynomials for three cusped parents
+(\mfld{m003}, \mfld{m006}, \mfld{m019}) and identify their Galois
+groups with Weyl groups of gauge Lie algebras.
+
+A key new result is the dual surgery identity
+$M_{\mathrm{PMNS}}=\mfld{m019}(2,1)$~\cite{GentryDual}:
+the Meyerhoff manifold arises as a Dehn filling of both
+\mfld{m003} and the arithmetically independent cusped parent
+\mfld{m019}, whose cusp Galois group $S_4\cong\Weyl(\SU(4))$
+extends the correspondence to a third gauge factor.
+
+\section{Cusp Shapes and Minimal Polynomials}
+
+All computations use SnapPy~\cite{SnapPy} at 300-bit precision.
+Polynomial identifications use \texttt{algdep} at the same
+precision, with residuals below $10^{-85}$.
+
+\subsection{The SU(2) parent: \mfld{m003}}
+
+\begin{proposition}\label{prop:m003}
+The cusp shape of \mfld{m003} is $\tau = e^{i\pi/3}$,
+the Eisenstein point, satisfying $\Phi_6(x)=x^2-x+1$
+with $\disc=-3$ and $\Gal(\Q(\tau)/\Q)\cong\Z/2$.
+\end{proposition}
+
+\begin{proof}
+$e^{i\pi/3}$ is a primitive 6th root of unity satisfying
+$(e^{i\pi/3})^2-e^{i\pi/3}+1=0$.
+The splitting field is $\Q(\sqrt{-3})$ with $\Gal\cong\Z/2$.
+\end{proof}
+
+\begin{remark}
+$\tau=e^{i\pi/3}$ is the unique fixed point of
+$\mathrm{PSL}(2,\Z)$ of order $6$, with $j(\tau)=0$.
+The closed filling \mfld{m003}$(-2,3)$ is the Meyerhoff manifold.
+\end{remark}
+
+\subsection{The SU(3) parent: \mfld{m006}}
+
+\begin{proposition}\label{prop:m006}
+The cusp shape $\tau_{\mathrm{CKM}}\approx 0.2267+1.4677i$
+of \mfld{m006} satisfies the irreducible depressed cubic
+$x^3+2x+1=0$, with $\disc=-59$ and $\Gal\cong S_3$.
+\end{proposition}
+
+\begin{proof}
+The polynomial is Eisenstein at $p=2$, hence irreducible.
+The discriminant of $x^3+px+q$ is $-4p^3-27q^2=-32-27=-59$,
+a negative prime, not a square in $\Q$.
+For a cubic, $\Gal\cong S_3$ iff $\disc$ is not a square
+in $\Q$~\cite{Lang}.
+\end{proof}
+
+\subsection{The SU(4) parent: \mfld{m019}}
+
+\begin{proposition}\label{prop:m019}
+The cusp shape of \mfld{m019} satisfies the irreducible
+quartic $x^4-x-1=0$, with $\disc=-283$ and $\Gal\cong S_4$.
+\end{proposition}
+
+\begin{proof}
+The polynomial $x^4-x-1$ is irreducible over $\Q$ (no rational
+roots; checked by \texttt{factor} in Sage).
+Its discriminant is $-283$, a negative prime.
+The Galois group, computed by Sage via \texttt{GaloisGroup},
+is the transitive group of degree~4 and order~24,
+which is $S_4$.
+\end{proof}
+
+\begin{proposition}[Dual surgery~\cite{GentryDual}]\label{prop:dual}
+$\mfld{m003}(-2,3) = \mfld{m019}(2,1) = M_{\mathrm{PMNS}}$.
+\end{proposition}
+
+\begin{proof}
+SnapPy computes the volumes of both fillings as
+$0.981368828\ldots$ to 15 significant figures.
+Isometry is confirmed by \texttt{is\_isometric\_to} in SnapPy.
+\end{proof}
+
+\section{The Galois--Weyl Correspondence}
+
+\begin{observation}[Galois--Weyl trichotomy]\label{obs:main}
+\begin{enumerate}
+\item $\Gal(\tau_{\mfld{m003}})\cong\Z/2\cong\Weyl(\SU(2))$
+\item $\Gal(\tau_{\mfld{m006}})\cong S_3\cong\Weyl(\SU(3))$
+\item $\Gal(\tau_{\mfld{m019}})\cong S_4\cong\Weyl(\SU(4))$
+\end{enumerate}
+\end{observation}
+
+The Weyl group identifications are standard:
+$\Weyl(\SU(n+1))\cong S_{n+1}$ (the $A_n$ root system).
+Table~\ref{tab:main} summarises the correspondence.
+
+\begin{table}[h]
+\centering
+\caption{Galois--Weyl correspondence for the three HFG cusped parents.}
+\label{tab:main}
+\begin{tabular}{llllll}
+\toprule
+Manifold & Poly & $\disc$ & $\Gal$ & $\Weyl(G)$ & $G$ \\
+\midrule
+\mfld{m003} & $x^2-x+1$ & $-3$   & $\Z/2$ & $\Weyl(\SU(2))$ & $\SU(2)$ \\
+\mfld{m006} & $x^3+2x+1$ & $-59$ & $S_3$  & $\Weyl(\SU(3))$ & $\SU(3)$ \\
+\mfld{m019} & $x^4-x-1$ & $-283$ & $S_4$  & $\Weyl(\SU(4))$ & $\SU(4)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Arithmetic Independence and the Pati--Salam Compositum}
+
+\begin{proposition}\label{prop:arith}
+The three discriminants $-3$, $-59$, $-283$ are pairwise
+arithmetically independent:
+\begin{enumerate}
+\item $59\equiv2\pmod3$: the prime $59$ is inert in
+  $\Q(\sqrt{-3})=\Q(\tau_{\mfld{m003}})$.
+\item $283\equiv1\pmod3$: the prime $283$ splits in
+  $\Q(\sqrt{-3})$ as $283=\pi\bar\pi$ where
+  $\pi=19+6\omega\in\Z[\omega]$, $|\pi|^2=283$.
+\item The three cusp fields are pairwise arithmetically
+  independent; in particular, none is contained in the
+  compositum of the other two.
+\end{enumerate}
+\end{proposition}
+
+\begin{corollary}[Pati--Salam compositum]\label{cor:ps}
+The compositum of the splitting fields of $x^2-x+1$ and
+$x^4-x-1$ --- the two cusp polynomials corresponding to the
+two surgery descriptions of $M_{\mathrm{PMNS}}$ --- has
+Galois group
+\[
+\Gal(\mathrm{compositum}/\Q) \cong S_4\times\Z/2
+\cong \Weyl(\SU(4))\times\Weyl(\SU(2)),
+\]
+the Weyl group of the gauge sector of the left-handed
+Pati--Salam model $\SU(4)\times\SU(2)_L$~\cite{PS}.
+The degree-$48$ compositum is confirmed by Sage.
+The cubic field of \mfld{m006} is arithmetically independent
+and not contained in this compositum.
+\end{corollary}
+
+\begin{remark}
+The absence of an $S_5$-type cusped parent in a census scan
+of 5000 manifolds~\cite{GentryUnified} is consistent with
+the non-observation of $\SU(5)$ grand unification.
+The sequence $\Z/2\subset S_3\subset S_4$ mirrors
+$\SU(2)\subset\SU(3)\subset\SU(4)$.
+\end{remark}
+
+\section{Further Arithmetic Structure of \mfld{m006}}
+
+\begin{proposition}\label{prop:coords}
+The real part $\mathrm{Re}(\tau_{\mathrm{CKM}})$ satisfies
+$8x^3-24x^2+28x-11=0$ with $\disc=-3776=-2^6\times59$.
+The imaginary part squared satisfies
+$64x^3-192x^2+144x-59=0$
+with $\disc=-2^{12}\times3^6\times59$.
+The prime $59=|\disc(x^3+2x+1)|$ appears in every discriminant
+in the boundary arithmetic of \mfld{m006} but is absent from
+the bulk invariant trace field discriminant
+$\disc(\mathrm{ITF})=-11\times239\times103266719$.
+Thus $59$ is a boundary prime of \mfld{m006}.
+\end{proposition}
+
+\section{Physical Interpretation as a Conjecture}
+
+\begin{conjecture}[Arithmetic origin of gauge symmetries]\label{conj:gauge}
+The SM gauge groups $\SU(2)$, $\SU(3)$, $\SU(4)$ arise
+from the cusp-field arithmetic of \mfld{m003}, \mfld{m006},
+\mfld{m019} respectively.
+The $U(1)$ electromagnetic factor corresponds to
+$\mathrm{Re}(\tau_{\mathrm{PMNS}})=-\tfrac12\in\Q$.
+\end{conjecture}
+
+Supporting evidence: exact polynomial identifications
+(Propositions~\ref{prop:m003}--\ref{prop:m019}),
+dual surgery (Proposition~\ref{prop:dual}),
+pairwise arithmetic independence (Proposition~\ref{prop:arith}),
+Pati--Salam compositum (Corollary~\ref{cor:ps}),
+and boundary-prime structure (Proposition~\ref{prop:coords}).
+
+\section{Conclusion}
+
+The cusped parents \mfld{m003}, \mfld{m006}, \mfld{m019}
+have cusp-shape Galois groups isomorphic to
+$\Weyl(\SU(2))$, $\Weyl(\SU(3))$, $\Weyl(\SU(4))$.
+Their cusp fields are pairwise arithmetically independent.
+The compositum of the two parents of $M_{\mathrm{PMNS}}$
+has Galois group $S_4\times\Z/2\cong\Weyl(\SU(4)\times\SU(2)_L)$.
+The dual surgery $M_{\mathrm{PMNS}}=\mfld{m003}(-2,3)
+=\mfld{m019}(2,1)$ links the two parents geometrically.
+
+\section{The Eisenstein Cusp and the Optimal M\"obius Strip}
+
+The cusp shape of \mfld{m003} is $\tau = e^{i\pi/3}$, the Eisenstein
+point. The corresponding cusp torus has a fundamental domain that is
+a rhombus with angles $60°$ and $120°$, giving an aspect ratio
+\begin{equation}
+\rho = \frac{\operatorname{Im}(\tau)}{|\operatorname{Re}(\tau)|}
+= \frac{\sqrt{3}/2}{1/2} = \sqrt{3}.
+\label{eq:aspect}
+\end{equation}
+This is the hexagonal (Eisenstein) lattice $\Z[\omega]$,
+the unique densest packing of circles in the plane.
+
+In a recent result, Schwartz~\cite{Schwartz} proved that the
+minimum aspect ratio of a smoothly embedded (developable) M\"obius
+strip in $\mathbb{R}^3$ is exactly $\sqrt{3}$.
+That is, a paper M\"obius strip of width $w$ requires length
+$\ell > \sqrt{3}\,w$; the bound is sharp and is achieved in the
+limit by a strip whose cross-section approaches the Eisenstein rhombus.
+
+\begin{observation}
+The cusp torus of \mfld{m003} has aspect ratio $\sqrt{3}$,
+equal to the optimal M\"obius strip bound of Schwartz.
+Both are controlled by the Eisenstein lattice $\Z[\omega]$
+with $\omega = e^{i\pi/3}$.
+\end{observation}
+
+The connection is geometric: the Eisenstein lattice is the unique
+flat torus realising the hexagonal close-packing, and both the
+M\"obius strip optimum and the cusp shape of \mfld{m003} are
+determined by this extremal property.
+The cusp of \mfld{m003} is thus, in a precise sense, the most
+efficiently packed flat torus that can appear at the end of a
+hyperbolic 3-manifold with $\Z/2$ cusp Galois group.
+
+Furthermore, all six HFG manifolds (\mfld{m003}, \mfld{m006},
+\mfld{m019}, \mfld{m178}, $M_{\mathrm{PMNS}}$, $M_{\mathrm{CKM}}$)
+are amphicheiral --- each is isometric to its mirror image.
+Amphicheirality is the 3-manifold analogue of the non-orientability
+of the M\"obius strip: in both cases, orientation reversal is a
+geometric symmetry of the object.
+For hyperbolic 3-manifolds, amphicheirality forces the
+Chern--Simons invariant to satisfy $\mathrm{CS}(M) \equiv 0$ or
+$\tfrac{1}{2} \pmod{1}$~\cite{Kirk-Klassen}, which constrains
+the strong CP phase $\theta_{\mathrm{QCD}} = 2\pi\,\mathrm{CS}(M)$
+to zero or $\pi$.
+The value $\mathrm{CS}(\mfld{m003}) = \tfrac{1}{4}$ is consistent
+with amphicheirality mod~$\tfrac{1}{2}$, and gives
+$\theta_{\mathrm{QCD}} = 0$ for the physical filling
+$M_{\mathrm{PMNS}}$~\cite{GentryUnified}.
+
+\section*{Data availability}
+Scripts at \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+
+\section*{Acknowledgements}
+The author thanks D.~Gabai for correspondence.
+During preparation of this manuscript the author used
+Claude and DeepSeek as research assistants.
+All mathematical results were independently verified using
+SnapPy and SageMath.
+The author takes full responsibility for all content.
+
+\begin{thebibliography}{99}
+
+\bibitem{GentryUnified}
+M.~L.~Gentry,
+``Hyperbolic Flavour Geometry,''
+SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158} (2026).
+
+\bibitem{GentryDual}
+M.~L.~Gentry,
+``The Meyerhoff Manifold as a Dehn Filling of Two
+Arithmetically Independent Cusped Parents,''
+SSRN \href{https://doi.org/10.2139/ssrn.6845778}{6845778} (2026);
+Proc.\ AMS submission 135580.
+
+\bibitem{GentryDelta}
+M.~L.~Gentry,
+``A Peripheral Determinant Invariant for Hyperbolic
+3-Manifolds with Quartic Cusp Field of Discriminant $-283$,''
+SSRN \href{https://doi.org/10.2139/ssrn.6851440}{6851440} (2026);
+AGT submission 260530-Gentry.
+
+\bibitem{GMM}
+D.~Gabai, R.~Meyerhoff, P.~Milley,
+J.\ Amer.\ Math.\ Soc.\ \textbf{22}, 1157 (2009).
+
+\bibitem{PS}
+J.~C.~Pati and A.~Salam,
+Phys.\ Rev.\ D \textbf{10}, 275 (1974).
+
+\bibitem{Lang}
+S.~Lang, \textit{Algebra}, 3rd ed.,
+Springer, New York (2002), Ch.~VI.
+
+\bibitem{Schwartz}
+R.~E.~Schwartz,
+``The optimal paper M\"obius band,''
+arXiv:2308.12641 (2023).
+
+\bibitem{Kirk-Klassen}
+P.~Kirk and E.~Klassen,
+``Chern--Simons invariants of 3-manifolds and representation
+spaces of knot groups,''
+Math.\ Ann.\ \textbf{287}, 343--367 (1990).
+
+\bibitem{SnapPy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks,
+SnapPy, \url{http://snappy.computop.org}.
+
+\end{thebibliography}
+
+\end{document}

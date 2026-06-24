@@ -1,0 +1,453 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\mfld}[1]{\texttt{#1}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\disc}{\operatorname{disc}}
+\newcommand{\WRT}{\operatorname{WRT}}
+\newcommand{\CS}{\operatorname{CS}}
+\newcommand{\ITF}{\operatorname{ITF}}
+\newcommand{\N}{\operatorname{N}}
+\newcommand{\SL}[2]{\mathrm{SL}(#1,#2)}
+
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Res}{Res}
+
+\begin{document}
+
+\title{Arithmetic Invariants of Two Hyperbolic Flavor Manifolds:\\
+WRT Invariants, Cusped Parents, and an $X_0(11)$ Bridge}
+
+\author{Marvin L. Gentry\thanks{Independent Researcher, Seattle, WA,
+USA; \texttt{drmlgentry@protonmail.com}; ORCID: 0009-0006-4550-2663}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+The Hyperbolic Flavor Geometry (HFG) framework identifies two compact
+arithmetic hyperbolic 3-manifolds as geometric models for Standard Model
+flavor parameters:
+\[
+M_{\mathrm{PMNS}} = \mfld{m003}(-2,3)\;\text{(Meyerhoff, vol.\,$0.9814$)},
+\qquad
+M_{\mathrm{CKM}} = \mfld{m006}(-5,2)\;\text{(vol.\,$2.0289$)}.
+\]
+We establish five results and one correction.
+\begin{enumerate}
+\item \textbf{WRT Slope Norm Theorem.} For $M_{\mathrm{PMNS}}$ with
+  $\CS=1/4$ and $H_1\cong\Z/5$,
+  \[
+  |\WRT_r(M_{\mathrm{PMNS}})|^2 = \frac{\N_{\Z[i]}(-2+3i)}{r}
+  = \frac{13}{r},\qquad r\equiv1,3\pmod4,
+  \]
+  where $13=(-2)^2+3^2$ is the Gaussian norm of the filling slope.
+\item \textbf{$\Z/5$ asymmetry.} The $\Z/5$ of $M_{\mathrm{PMNS}}$ is
+  \emph{created} by surgery (parent $\mfld{m003}$ has $H_1\cong\Z$);
+  that of $M_{\mathrm{CKM}}$ is \emph{inherited} from its parent
+  $\mfld{m006}$ ($H_1\cong\Z/5\oplus\Z$). This structural difference
+  explains why the two WRT formulas encode different data.
+\item \textbf{Invariant trace fields of the cusped parents.}
+  $\ITF(\mfld{m003})=\Q(\sqrt{-3})$ (discriminant $-3$);
+  $\ITF(\mfld{m006})=\Q(\alpha)$ with $\alpha^3-2\alpha^2-1=0$
+  (discriminant $-59$), verified to $10^{-16}$.
+\item \textbf{$X_0(11)$ arithmetic bridge.} Base change of $X_0(11)$
+  to $\Q(\sqrt{-3})$ yields the Bianchi newform \texttt{2.0.3.1-121.1-a};
+  all $12$ available Hecke eigenvalues match the base change formula.
+\item \textbf{Correction of the smearing parameter.}
+  $\sigma_{\mathrm{opt}} = \tfrac32\log\sqrt{13/5}$ exactly; the
+  previously used $\tfrac32\log\phi$ approximates this to $0.69\%$.
+\end{enumerate}
+We also retract the claim $\ITF(M_{\mathrm{CKM}})=\Q(\sqrt{17})$:
+real quadratic fields have no complex place and cannot serve as
+invariant trace fields of arithmetic Kleinian groups.
+All computations are verified by SnapPy~\cite{SnapPy} and the
+LMFDB~\cite{LMFDB}.
+\end{abstract}
+
+\section{Introduction}
+
+The Hyperbolic Flavor Geometry (HFG) programme~\cite{GentryUnified}
+proposes that Standard Model lepton and quark mixing matrices arise
+from the holonomy representations of two compact arithmetic hyperbolic
+3-manifolds:
+\[
+M_{\mathrm{PMNS}} = \mfld{m003}(-2,3),\qquad
+M_{\mathrm{CKM}} = \mfld{m006}(-5,2).
+\]
+Both closed manifolds have first homology $H_1\cong\Z/5$.
+The present paper reports five results and one correction.
+
+The main result is the \textbf{Slope Norm Theorem}
+(Section~\ref{sec:wrt}): for $M_{\mathrm{PMNS}}$, the squared WRT
+invariant at level~$r$ is $|\WRT_r|^2=13/r$ for $r\equiv1,3\pmod4$,
+where $13=\N_{\Z[i]}(-2+3i)$ is the Gaussian norm of the surgery slope.
+The proof uses only the linking form on the torsion $H_1$.
+
+A structural asymmetry (Section~\ref{sec:asymmetry}) distinguishes
+the two manifolds: the $\Z/5$ of $M_{\mathrm{PMNS}}$ is created by
+surgery, while that of $M_{\mathrm{CKM}}$ is inherited from its cusped
+parent. This explains why the WRT invariants encode the slope norm for
+$M_{\mathrm{PMNS}}$ but only $|H_1|$ for $M_{\mathrm{CKM}}$.
+
+The invariant trace fields of the cusped parents are confirmed
+(Section~\ref{sec:ITF}): $\Q(\sqrt{-3})$ for $\mfld{m003}$,
+and the cubic field of discriminant $-59$ for $\mfld{m006}$.
+The latter corrects a previous identification as $\Q(\sqrt{17})$,
+which is impossible since real quadratic fields cannot be invariant
+trace fields of arithmetic Kleinian groups.
+
+The arithmetic bridge from $\mfld{m003}$ to $X_0(11)$ is verified
+(Section~\ref{sec:x011}) by base change to $\Q(\sqrt{-3})$ and
+explicit Hecke eigenvalue matching at $12$ primes.
+
+Finally, the optimal smearing parameter is corrected
+(Section~\ref{sec:sigma}) to $\sigma_{\mathrm{opt}}=\tfrac32\log\sqrt{13/5}$.
+
+\section{The two manifolds and their cusped parents}
+\label{sec:basics}
+
+\begin{table}[htbp]
+\centering
+\caption{Topological and arithmetic invariants of the HFG manifolds
+and their cusped parents. The $\ITF$ degree and discriminant for
+$M_{\mathrm{CKM}}$ are those of the closed manifold; the $\ITF$ of
+the cusped parent $\mfld{m006}$ is the cubic of discriminant $-59$.}
+\label{tab:invariants}
+\small
+\begin{tabular}{lllllll}
+\toprule
+Manifold & Volume & $H_1$ & Slope & $\N_{\Z[i]}(\text{slope})$
+  & $\CS$ & $\ITF$ \\
+\midrule
+$\mfld{m003}$ (cusped) & $2.0299$ & $\Z$ & --- & ---
+  & --- & $\Q(\sqrt{-3})$, disc $-3$ \\
+$M_{\mathrm{PMNS}}$ & $0.9814$ & $\Z/5$ & $(-2,3)$ & $13$
+  & $1/4$ & degree $4$, disc $-283$ \\
+\addlinespace
+$\mfld{m006}$ (cusped) & $2.5690$ & $\Z/5\oplus\Z$ & --- & ---
+  & --- & $x^3{-}2x^2{-}1$, disc $-59$ \\
+$M_{\mathrm{CKM}}$ & $2.0289$ & $\Z/5$ & $(-5,2)$ & $29$
+  & --- & deg.\ $10$, disc $-271{,}488{,}204{,}251$ \\
+\bottomrule
+\end{tabular}
+\smallskip
+{\footnotesize$^*$ The exact Chern--Simons invariant of $M_{\mathrm{CKM}}$ remains to be determined.}
+\end{table}
+
+The Farey determinant of the two filling slopes is
+\begin{equation}
+\det\begin{pmatrix}-2 & -5\\3 & 2\end{pmatrix}
+= (-2)(2)-(3)(-5) = 11,
+\label{eq:farey}
+\end{equation}
+the conductor of the modular curve $X_0(11)$ and the Lucas prime
+$L_5=11$. The slope norms $\N_{\Z[i]}(-2+3i)=13$ and
+$\N_{\Z[i]}(-5+2i)=29=L_7$ are, respectively, not a Lucas number and
+the seventh Lucas number.
+
+\subsection{The $\Z/5$ asymmetry}
+\label{sec:asymmetry}
+
+\begin{observation}\label{obs:asymmetry}
+The cusped parent $\mfld{m003}$ has $H_1(\mfld{m003})\cong\Z$.
+The $(-2,3)$ Dehn surgery \emph{creates} the $\Z/5$ torsion of
+$M_{\mathrm{PMNS}}$.
+Conversely, $\mfld{m006}$ already has $H_1(\mfld{m006})\cong\Z/5\oplus\Z$;
+the $(-5,2)$ surgery kills the $\Z$ factor and \emph{inherits} the
+$\Z/5$, giving $H_1(M_{\mathrm{CKM}})\cong\Z/5$.
+Both are confirmed by SnapPy.
+\end{observation}
+
+This asymmetry explains the structural difference between the two WRT
+formulas: $M_{\mathrm{PMNS}}$ encodes the surgery datum (slope norm $13$),
+while $M_{\mathrm{CKM}}$ encodes only the topological datum ($|H_1|=5$).
+
+\section{Invariant trace fields of the cusped parents}
+\label{sec:ITF}
+
+An arithmetic Kleinian group must have an invariant trace field with
+exactly one complex place~\cite{MaclachlanReid}.
+Real quadratic fields (signature $(2,0)$, zero complex places) are
+therefore excluded.
+
+SnapPy at $150$-bit precision confirms:
+\begin{itemize}
+\item $\ITF(\mfld{m003}) = \Q(\sqrt{-3})$, discriminant $-3$,
+  signature $(0,1)$. This is the Eisenstein field; the cusp shape
+  of $\mfld{m003}$ is $\tau=e^{i\pi/3}$ exactly.
+\item $\ITF(\mfld{m006})$ is generated by
+  $\alpha\approx-0.10278+0.66546i$ satisfying
+  $\alpha^3-2\alpha^2-1=0$, discriminant $-59$, signature $(1,1)$;
+  verified by $|\alpha^3-2\alpha^2-1|<10^{-16}$.
+\end{itemize}
+
+The closed manifold $M_{\mathrm{PMNS}}$ has degree-$4$ ITF of
+discriminant $-283$~\cite{Chinburg01}. The ITF of $M_{\mathrm{CKM}}$
+has degree $10$ and Galois group $S_{10}$; its exact quaternion algebra
+and Chern--Simons invariant remain to be determined.
+
+\begin{remark}[Retraction of earlier claim]
+\label{rem:correction}
+Previous HFG papers~\cite{GentryBridge} identified
+$\ITF(M_{\mathrm{CKM}})=\Q(\sqrt{17})$.
+This is impossible: $\Q(\sqrt{17})$ is real quadratic with no complex
+place and cannot be the ITF of an arithmetic hyperbolic 3-manifold.
+The error originated from a numerical coincidence in an early SnapPy
+computation on the closed manifold rather than its cusped parent.
+The correct ITF of $M_{\mathrm{CKM}}$ (closed) has degree $10$;
+that of its cusped parent $\mfld{m006}$ is the cubic above.
+\end{remark}
+
+\section{WRT Slope Norm Theorem}
+\label{sec:wrt}
+
+For a rational homology sphere with $H_1\cong\Z/p$ and linking form
+$Q:\Z/p\to\Q/\Z$, the WRT invariant at level $r$ (with $\gcd(r,p)=1$)
+is given by the Freed--Gompf formula~\cite{FreedGompf}:
+\begin{equation}
+\WRT_r(M) = \frac{e^{-2\pi i\,\CS(M)}}{\sqrt{r}}
+\sum_{a=0}^{p-1} e^{2\pi i r Q(a)}.
+\label{eq:wrt}
+\end{equation}
+For $M_{\mathrm{PMNS}}$, the surgery slope $(-2,3)$ determines
+$\CS=1/4$ and the linking form
+\begin{equation}
+Q(a) = \frac{a^2}{4}\bmod1,\qquad a\in\Z/5,
+\label{eq:linking}
+\end{equation}
+which takes values $0$ on $\{0,2,4\}$ and $1/4$ on $\{1,3\}$.
+
+\begin{theorem}[Slope Norm Theorem]\label{thm:slope}
+For $M_{\mathrm{PMNS}}=\mfld{m003}(-2,3)$,
+\begin{equation}
+\WRT_r(M_{\mathrm{PMNS}}) = \frac{-i}{\sqrt{r}}\bigl(3+2i^r\bigr),
+\end{equation}
+and consequently
+\begin{equation}
+|\WRT_r(M_{\mathrm{PMNS}})|^2 =
+\begin{cases}
+13/r & r\equiv1,3\pmod4,\\[2pt]
+25/r & r\equiv0\pmod4,\\[2pt]
+1/r  & r\equiv2\pmod4.
+\end{cases}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Substituting~\eqref{eq:linking} into~\eqref{eq:wrt}:
+\[
+\WRT_r = \frac{e^{-2\pi i/4}}{\sqrt{r}}
+\bigl(3\cdot e^{0}+2\cdot e^{2\pi ir/4}\bigr)
+= \frac{-i}{\sqrt{r}}(3+2i^r).
+\]
+The squared modulus follows from $|3+2i^r|^2=13+12\operatorname{Re}(i^r)$,
+with $\operatorname{Re}(i^r)=0$ for odd $r$ and $\pm1$ for even $r$.
+\end{proof}
+
+\begin{corollary}
+The numerator $13=\N_{\Z[i]}(-2+3i)=(-2)^2+3^2$ is the Gaussian norm
+of the filling slope.
+\end{corollary}
+
+\begin{remark}
+For $M_{\mathrm{CKM}}$, the slope $(-5,2)$ gives a linking form
+$Q'$ on $\Z/5$ with values $Q'(0)=0$, $Q'(2)=Q'(3)=2/5$,
+$Q'(1)=Q'(4)=3/5$.
+This splits $\Z/5$ into orbits of sizes $(1,2,2)$ and yields
+\[
+|\WRT_r(M_{\mathrm{CKM}})|^2
+= \frac{|1+2e^{4\pi ir/5}+2e^{6\pi ir/5}|^2}{r}
+= \frac{5}{r},\quad \gcd(r,5)=1,
+\]
+encoding only $|H_1|=5$ rather than a slope norm --- a direct
+consequence of the inherited $\Z/5$ torsion
+(Observation~\ref{obs:asymmetry}).
+\end{remark}
+
+\section{Correction of the smearing parameter $\sigma_{\mathrm{opt}}$}
+\label{sec:sigma}
+
+In the HFG Borel construction~\cite{GentryUnified}, the optimal
+smearing parameter was identified as $\sigma_{\mathrm{opt}}=\tfrac32\log\phi$
+with $\phi=(1+\sqrt5)/2$.
+Theorem~\ref{thm:slope} provides the exact value: since
+$|\WRT_5(M_{\mathrm{PMNS}})|^2=13/5$,
+\begin{equation}
+\sigma_{\mathrm{opt}} = \tfrac32\log\sqrt{13/5}.
+\end{equation}
+The golden ratio satisfies $\phi^2=2.6180\ldots$, while $13/5=2.6000$;
+the relative error is $0.69\%$. The corrected value is used in all
+subsequent HFG computations.
+
+\section{The $X_0(11)$ arithmetic bridge}
+\label{sec:x011}
+
+The modular curve $X_0(11)$ has conductor $11$, Weierstrass model
+$y^2+y=x^3-x^2$, and rational torsion $X_0(11)(\Q)_{\mathrm{tors}}\cong\Z/5$.
+Since $\ITF(\mfld{m003})=\Q(\sqrt{-3})$ and $11\equiv2\pmod3$ is inert
+in this field, the base change of $X_0(11)$ to $\Q(\sqrt{-3})$ yields a
+Bianchi newform at level $(11)$, i.e.\ for the Bianchi group
+$\SL{2}{\mathcal{O}_{\Q(\sqrt{-3})}}$.
+The LMFDB identifies this form as \texttt{2.0.3.1-121.1-a} (level $121$).
+
+\begin{observation}
+\label{obs:hecke}
+All $12$ available Hecke eigenvalues of \texttt{2.0.3.1-121.1-a}
+match the base change formula: for a prime $p$ split in $\Q(\sqrt{-3})$
+(i.e.\ $p\equiv1\pmod3$), $a_{\mathfrak{p}}=a_p$; for an inert prime
+($p\equiv2\pmod3$), $a_{\mathfrak{p}^2}=a_p^2-2p$.
+The Atkin--Lehner eigenvalue at $(11)$ is $-1$, consistent with the
+newform being the base change of the unique weight-$2$ newform of
+level $11$.
+\end{observation}
+
+This establishes the chain
+\begin{equation*}
+\mfld{m003}
+\;\xrightarrow{\ITF=\Q(\sqrt{-3})}\;
+\texttt{2.0.3.1-121.1-a}
+\;\xrightarrow{\text{base change}}\;
+X_0(11)
+\;\xrightarrow{\Z/5}\;
+H_1(M_{\mathrm{PMNS}}).
+\end{equation*}
+The Farey determinant $11$ (Equation~\eqref{eq:farey}) is the geometric
+manifestation of this arithmetic link: it equals the conductor of $X_0(11)$.
+
+The analogous chain for the quark sector would require a base change of
+$X_0(11)$ to the cubic field of discriminant $-59$. Since $11$ is inert
+in this field ($11\equiv2\pmod3$, and the cubic has a single prime above
+$11$), the base change should exist; identifying it in the LMFDB is an
+open problem.
+
+\section{Open problems}
+\label{sec:open}
+
+\begin{enumerate}
+\item \textbf{Quaternion algebra of $M_{\mathrm{CKM}}$.}
+  The prime $11$ divides the discriminant of $\ITF(M_{\mathrm{CKM}})$;
+  computing the quaternion algebra ramification set would determine
+  whether the Jacquet--Langlands level norm is $121$.
+\item \textbf{Automorphic form over the cubic field.}
+  Identify the Bianchi or Hilbert modular form over the cubic field
+  of discriminant $-59$ corresponding to $\mfld{m006}$ via the
+  Jacquet--Langlands correspondence~\cite{JL}.
+\item \textbf{Chern--Simons invariant of $M_{\mathrm{CKM}}$.}
+  Determine $\CS(M_{\mathrm{CKM}})$ exactly via the Ptolemy variety
+  or Chinburg--Reid tables.
+\item \textbf{GPPV $\hat{Z}$ invariant.}
+  Compute $\hat{Z}_0(M_{\mathrm{PMNS}};q)$ via the DGG
+  correspondence~\cite{DGG} and verify agreement with
+  Theorem~\ref{thm:slope} at radial limits.
+\end{enumerate}
+
+\section{Conclusions}
+
+We have proved the Slope Norm Theorem
+$|\WRT_r(M_{\mathrm{PMNS}})|^2=13/r$ (Theorem~\ref{thm:slope})
+from the linking form on $H_1\cong\Z/5$ and $\CS=1/4$.
+The $\Z/5$ asymmetry between $M_{\mathrm{PMNS}}$ (created) and
+$M_{\mathrm{CKM}}$ (inherited) explains the different WRT structures.
+The invariant trace fields of the cusped parents are confirmed:
+$\Q(\sqrt{-3})$ for $\mfld{m003}$ (Eisenstein) and the cubic field
+of discriminant $-59$ for $\mfld{m006}$.
+The $X_0(11)$ arithmetic bridge is verified by base change to
+$\Q(\sqrt{-3})$ and Hecke eigenvalue matching (Observation~\ref{obs:hecke}).
+The optimal smearing parameter is corrected to
+$\sigma_{\mathrm{opt}}=\tfrac32\log\sqrt{13/5}$.
+The earlier claim $\ITF(M_{\mathrm{CKM}})=\Q(\sqrt{17})$
+is retracted (Remark~\ref{rem:correction}).
+
+\section*{Data availability}
+Scripts at \url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+LMFDB data at \url{https://www.lmfdb.org}.
+
+\section*{Acknowledgements}
+The author thanks the LMFDB collaboration.
+During preparation of this manuscript the author used Claude
+(claude-sonnet-4-6, Anthropic) as a research assistant.
+All mathematical results were independently verified.
+
+\begin{thebibliography}{99}
+
+\bibitem{GentryUnified}
+M.~L.~Gentry,
+``Hyperbolic Flavor Geometry,''
+SSRN \href{https://doi.org/10.2139/ssrn.6775158}{6775158} (2026).
+
+\bibitem{GentryBridge}
+M.~L.~Gentry,
+``A Common Level-11 Automorphic Structure for the PMNS and CKM
+Manifolds via Quadratic Base Change,''
+SSRN \href{https://doi.org/10.2139/ssrn.6815721}{6815721} (2026).
+
+\bibitem{Chinburg01}
+T.~Chinburg, E.~Friedman, K.~N.~Jones, A.~W.~Reid,
+``The arithmetic hyperbolic 3-manifold of smallest volume,''
+Ann.\ Scuola Norm.\ Sup.\ Pisa \textbf{30}, 1 (2001).
+
+\bibitem{MaclachlanReid}
+C.~Maclachlan, A.~W.~Reid,
+\emph{The Arithmetic of Hyperbolic 3-Manifolds},
+Springer (2003).
+
+\bibitem{LongReid}
+D.~D.~Long, A.~W.~Reid,
+``Commensurability and the character variety,''
+Math.\ Res.\ Lett.\ \textbf{6}, 581 (1999).
+
+\bibitem{GabaiMeyerhoffMilley}
+D.~Gabai, R.~Meyerhoff, P.~Milley,
+``Minimum volume cusped hyperbolic three-manifolds,''
+J.\ Amer.\ Math.\ Soc.\ \textbf{22}, 1157 (2009).
+
+\bibitem{Meyerhoff}
+R.~Meyerhoff,
+``The cusped hyperbolic 3-manifold of minimum volume,''
+Can.\ J.\ Math.\ \textbf{39}, 1038 (1987).
+
+\bibitem{FreedGompf}
+D.~S.~Freed, R.~E.~Gompf,
+``Computer calculation of Witten's 3-manifold invariant,''
+Commun.\ Math.\ Phys.\ \textbf{141}, 79 (1991).
+
+\bibitem{DGG}
+T.~Dimofte, D.~Gaiotto, S.~Gukov,
+``3-Manifolds and 3d Indices,''
+Commun.\ Math.\ Phys.\ \textbf{325}, 367 (2014)
+[arXiv:1112.5179].
+
+\bibitem{JL}
+H.~Jacquet, R.~P.~Langlands,
+\emph{Automorphic Forms on GL(2)},
+Lecture Notes in Mathematics \textbf{114}, Springer (1970).
+
+\bibitem{SnapPy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks,
+SnapPy, \url{http://snappy.computop.org}.
+
+\bibitem{LMFDB}
+The LMFDB Collaboration,
+\emph{The $L$-functions and Modular Forms Database},
+\url{https://www.lmfdb.org} (2026).
+
+\end{thebibliography}
+
+\end{document}

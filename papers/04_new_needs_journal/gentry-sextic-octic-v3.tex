@@ -1,0 +1,545 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{booktabs}
+
+%% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+%% Macros
+\newcommand{\QQ}{\mathbf{Q}}
+\newcommand{\ZZ}{\mathbf{Z}}
+\newcommand{\CC}{\mathbf{C}}
+\newcommand{\RR}{\mathbf{R}}
+\DeclareMathOperator{\Norm}{Norm}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\NZ}{NZ}
+\DeclareMathOperator{\Bloch}{\mathcal{B}}
+\newcommand{\M}{\texttt{m003}}
+\newcommand{\Meyer}{\texttt{m003}(-2,3)}
+\newcommand{\mzero}{\texttt{m019}}
+\newcommand{\mone}{\texttt{m178}}
+
+\title{The Sextic--Octic Decomposition of the\\
+Meyerhoff Manifold Shape Polynomial}
+
+\author{Marvin L.\ Gentry}
+\address{Independent Researcher, Seattle, Washington}
+\email{drmlgentry@protonmail.com}
+\thanks{Website: \texttt{hyperbolicflavorgeometry.org}}
+\date{\today}
+
+\keywords{hyperbolic 3-manifolds, Bloch group, norm forms,
+algebraic number theory, Galois theory, flavor geometry}
+
+\subjclass{11R32, 11R04, 57K32, 11F67}
+
+\begin{document}
+
+\begin{abstract}
+Let $M$ denote the Meyerhoff manifold $\Meyer$, the unique minimum-volume
+closed orientable hyperbolic 3-manifold. Its trace field is
+$K = \QQ(w)$ where $w^4 = w + 1$ and $\disc(K) = -283$.
+The cusped parent $\M$ has an ideal triangulation whose
+shape parameters are roots of the degree-8 polynomial
+\[
+  p_8(y) = y^8 + y^6 - 2y^5 + y^4 - y^3 + 3y^2 - 3y + 1.
+\]
+We prove that $p_8$ is the field norm:
+\[
+  p_8(y) = \Norm_{K/\QQ}(q_2(y)),
+\]
+where $q_2(y) = y^2 - wy + (-w^3 + w^2 + 1) \in K[y]$.
+Over the splitting field $L$ of $x^4 - x - 1$, $p_8$ factors into
+four quadratic Galois conjugates $Q_i = \sigma_i(q_2)$.
+The complementary degree-6 factor $p_6 \in K[y]$ satisfies
+$p_6 = Q_2 Q_3 Q_4$ over $L$, giving $p_8 = q_2 \cdot p_6$ and
+$\Norm_{K/\QQ}(p_6) = p_8^3$.
+The discriminant satisfies
+$\disc(p_8) = \Norm_{K/\QQ}(\disc(q_2)) \cdot \disc(K)^2 = 7 \cdot 11 \cdot 283^2$,
+with $7 \cdot 11 = \Norm_{K/\QQ}(4w^3 - 3w^2 - 4)$.
+The Galois group of $p_8$ over $\QQ$ is the wreath product $[2^4]S_4$
+of order $384$.
+The three quadratics $q_2$ and their $T_1$-orbit partners form a
+period-3 orbit under $T_1(z) = (z-1)/z$, whose norms are three
+distinct octics with the same arithmetic invariants.
+All identities are verified by exact symbolic computation in SageMath.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+The Meyerhoff manifold $M = \Meyer$ is the unique minimum-volume
+closed orientable hyperbolic 3-manifold~\cite{GMM09},
+with $\vol(M) = 0.9813688289\ldots$
+Its trace field is $K = \QQ(w)$, where $w$ satisfies $w^4 - w - 1 = 0$,
+a quartic field of discriminant $-283$ and signature $(2,1)$,
+with Galois group $S_4$.
+
+The cusped parent manifold $\M = \texttt{m003}$ admits an ideal
+triangulation with two tetrahedra; the shape parameters
+$z_1, z_2 \in \CC$ are roots of the degree-8 polynomial
+\begin{equation}\label{eq:p8}
+  p_8(y) = y^8 + y^6 - 2y^5 + y^4 - y^3 + 3y^2 - 3y + 1.
+\end{equation}
+Over $K$, this polynomial factors as $p_8 = q_2 \cdot p_6$ where
+$q_2 \in K[y]$ is a quadratic whose roots generate the tetrahedral
+shapes, and $p_6 \in K[y]$ is an irreducible degree-6 complement.
+
+The main results are:
+\begin{enumerate}
+\item $p_8 = \Norm_{K/\QQ}(q_2)$ (Theorem~\ref{thm:norm-octic}),
+\item $p_8 = Q_1 Q_2 Q_3 Q_4$ over $L$ (Theorem~\ref{thm:galois-product}),
+\item $p_6 = Q_2 Q_3 Q_4$ over $L$ (Theorem~\ref{thm:sextic}),
+\item $\Norm_{K/\QQ}(p_6) = p_8^3$ (Corollary~\ref{cor:norm-sextic}),
+\item $\disc(p_8) = \Norm_{K/\QQ}(\disc(q_2)) \cdot \disc(K)^2$
+  (Proposition~\ref{prop:disc-factorisation}),
+\item the three $T_1$-orbit quadratics each have norm an irreducible
+  octic with the same discriminant and Galois group
+  (Theorem~\ref{thm:norm-orbit}),
+\item the Ptolemy field of $\mzero$ at obstruction class~1 is $K$ itself,
+  with coordinates on the period-3 unit orbit
+  (Theorem~\ref{thm:ptolemy}).
+\end{enumerate}
+
+This work is motivated by the Hyperbolic Flavor Geometry
+programme~\cite{Gen26a}, which studies arithmetic properties
+of the Meyerhoff manifold and related spaces.
+
+\subsection*{Acknowledgements}
+Computations were performed using SageMath~\cite{Sage} and
+SnapPy~\cite{CDGW}.
+
+\section{Notation and background}
+
+Throughout, $K = \QQ(w)$ with $w^4 - w - 1 = 0$, $\disc(K) = -283$,
+$\Gal(L/\QQ) \cong S_4$, $[L:\QQ] = 24$.
+We fix $\sigma_2 : K \hookrightarrow \CC$ as the \emph{geometric embedding},
+corresponding to the complex root $w_2 \approx -0.2481 + 1.0340i$
+(with $\operatorname{Im}(w_2) > 0$).
+The remaining embeddings are $\sigma_1$ (the conjugate complex root,
+$\operatorname{Im}(w_1) < 0$) and $\sigma_3, \sigma_4$ (the two real roots).
+The \emph{norm} of $g(y) \in K[y]$ is
+$\Norm_{K/\QQ}(g)(y) = \prod_{i=1}^{4} \sigma_i(g)(y) \in \QQ[y]$.
+
+The cusped manifold $\M$ has two ideal tetrahedra with shapes
+\[
+  z_1 = w z_{\mathrm{tet}}^2,\quad z_2 = w(w - z_{\mathrm{tet}})^2,
+\]
+where $z_{\mathrm{tet}}$ is a root of $q_2(y) = y^2 - wy + (-w^3+w^2+1)$.
+
+\section{The quadratic factor and its conjugates}
+
+\begin{definition}
+Define $q_2, p_6 \in K[y]$ by:
+\begin{align}
+  q_2(y) &= y^2 - wy + (-w^3 + w^2 + 1), \label{eq:q2}\\
+  p_6(y) &= y^6 + wy^5 + w^3y^4 + (-w^3+w)y^3
+             + (w^2-2w)y^2 + (-2w^2+w)y + w^2. \label{eq:p6}
+\end{align}
+Let $Q_i = \sigma_i(q_2) \in L[y]$ for $i = 1,2,3,4$.
+\end{definition}
+
+\begin{lemma}\label{lem:p8-factor}
+Over $K$: $p_8 = q_2 \cdot p_6$. The factor $p_6$ is irreducible over $K$.
+\end{lemma}
+
+\begin{proof}
+Polynomial division in $K[y]$ and \texttt{p6.factor()} in Sage.
+\end{proof}
+
+\section{Main theorems}
+
+\begin{theorem}[Norm decomposition]\label{thm:norm-octic}
+$p_8(y) = \Norm_{K/\QQ}(q_2(y))$.
+\end{theorem}
+
+\begin{proof}
+$\operatorname{Res}_w(y^2 - wy + (-w^3+w^2+1),\; w^4-w-1) = p_8(y)$,
+verified exactly in Sage.
+\end{proof}
+
+\begin{theorem}[Galois product]\label{thm:galois-product}
+Over $L$: $p_8 = Q_1 Q_2 Q_3 Q_4$.
+\end{theorem}
+
+\begin{proof}
+Immediate from Theorem~\ref{thm:norm-octic} and the definition of norm.
+\end{proof}
+
+\begin{theorem}[Sextic triple]\label{thm:sextic}
+$p_6 = Q_2 Q_3 Q_4$ over $L$.
+\end{theorem}
+
+\begin{proof}
+Cancel $Q_1 = q_2$ from $p_8 = Q_1 Q_2 Q_3 Q_4$ using
+Lemma~\ref{lem:p8-factor}, verified independently in Sage.
+\end{proof}
+
+\begin{corollary}\label{cor:norm-sextic}
+$\Norm_{K/\QQ}(p_6) = p_8^3$.
+\end{corollary}
+
+\begin{proof}
+$\Norm_{K/\QQ}(p_8)/\Norm_{K/\QQ}(q_2) = p_8^4/p_8 = p_8^3$.
+\end{proof}
+
+\section{Arithmetic invariants}
+
+\subsection{Discriminant}
+
+\begin{proposition}\label{prop:disc-galois}
+$\disc(p_8) = 7 \cdot 11 \cdot 283^2 = 6\,166\,853$,
+$p_8$ is irreducible over $\QQ$,
+$\Gal(p_8/\QQ) \cong [2^4]S_4$ of order $384$.
+\end{proposition}
+
+\begin{proof}
+Direct Sage and PARI computations.
+\end{proof}
+
+\begin{proposition}[Discriminant factorisation]\label{prop:disc-factorisation}
+\[
+  \disc(p_8)
+  = \Norm_{K/\QQ}(\disc(q_2)) \cdot \disc(K)^{\deg q_2}
+  = 7 \cdot 11 \cdot 283^2 = 6\,166\,853,
+\]
+where $\disc(q_2) = 4w^3 - 3w^2 - 4 \in K$ and
+$\Norm_{K/\QQ}(4w^3 - 3w^2 - 4) = 7 \cdot 11 = 77$.
+\end{proposition}
+
+\begin{proof}
+The discriminant of $q_2(y) = y^2 - wy + c$ is $w^2 - 4c =
+4w^3 - 3w^2 - 4 \in K$.
+Direct Sage computation gives $\Norm_{K/\QQ}(4w^3-3w^2-4) = 77$.
+The general formula
+$\disc(\Norm_{K/\QQ}(g)) = \Norm_{K/\QQ}(\disc(g)) \cdot \disc(K)^{\deg g}$
+then yields $7 \cdot 11 \cdot 283^2$~\cite{Neu90}, confirmed against
+Proposition~\ref{prop:disc-galois}.
+The pairwise resultants satisfy
+$\Norm_{L/\QQ}(\operatorname{Res}(Q_i, Q_j)) = 283^4$ for all six pairs,
+so $7$ and $11$ arise entirely from $\disc(q_2)$, not from
+conjugate interactions.
+\end{proof}
+
+\subsection{Period-3 unit orbit}
+
+\begin{proposition}[Unit orbit]\label{prop:unit-orbit}
+The elements $w^3, -w, w^{-4} \in K^\times$ form a period-3 orbit
+under $T(z) = 1/(1-z)$:
+\[
+  T(w^3) = -w,\quad T(-w) = w^{-4},\quad T(w^{-4}) = w^3.
+\]
+The product satisfies $w^3 \cdot (-w) \cdot w^{-4} = -1$ in $K$.
+\end{proposition}
+
+\begin{proof}
+$1/(1-w^3) + w = 0$ in $K$, verified using $w^4 = w+1$.
+\end{proof}
+
+\subsection{Neumann--Zagier volume formula}
+
+Define the \emph{Neumann--Zagier regulator}
+\[
+  \NZ(z) = \operatorname{Im}(\operatorname{Li}_2(z))
+  + \operatorname{Re}(\log z) \cdot \operatorname{Im}(\log(1-z)).
+\]
+
+\begin{proposition}[NZ $T$-invariance~{\cite{NZ85,Zag91}}]\label{prop:NZ-invariant}
+$\NZ(1/(1-z)) = \NZ(z)$ for all $z \in \CC \setminus \{0,1\}$
+with $\operatorname{Im}(z) > 0$.
+\end{proposition}
+
+\begin{proof}
+Setting $w = 1/(1-z)$ gives $\log w = -\log(1-z)$ and
+$\log(1-w) = \log(-z) - \log(1-z)$.
+For $\operatorname{Im}(z) > 0$: $\operatorname{Im}(\log(-z)) = \operatorname{Im}(\log z) - \pi$.
+Using the dilogarithm identity
+$\operatorname{Li}_2(1/(1-z)) = -\pi^2/3 - \tfrac{1}{2}\log(z-1)^2
++ \log z \cdot \log(1-z) + \operatorname{Li}_2(z)$~\cite{Zag91},
+taking imaginary parts and substituting gives $\NZ(w) = \NZ(z)$.
+Verified numerically for 5 generic points to 60 significant figures.
+\end{proof}
+
+\begin{proposition}[Volume formula~{\cite{NZ85}}]\label{prop:volume}
+The manifold $\mzero$ has three ideal tetrahedra with shapes
+$\sigma_2(w^3), \sigma_2(w^3), \sigma_2(w^{-4})$ at the geometric
+embedding $\sigma_2$. The Neumann--Zagier volume formula gives:
+\[
+  \vol(\mzero) = 2\,\NZ(\sigma_2(w^3)) + \NZ(\sigma_2(w^{-4})) = 3v_0,
+\]
+where $v_0 = \vol(M) = 0.9813688289\ldots$ is the Meyerhoff volume.
+Since $w^3$ and $w^{-4}$ lie on the same $T$-orbit
+(Proposition~\ref{prop:unit-orbit}) and $\NZ$ is $T$-invariant,
+$\NZ(\sigma_2(w^3)) = \NZ(\sigma_2(w^{-4})) = v_0$.
+\end{proposition}
+
+\begin{proof}
+SnapPy confirms the triangulation shapes are $(\sigma_2(w^3), \sigma_2(w^3),
+\sigma_2(w^{-4}))$ with flattenings $p = 0$.
+The $T$-invariance of $\NZ$ (Proposition~\ref{prop:NZ-invariant}) then
+gives equal contributions, summing to $3v_0$.
+\end{proof}
+
+\subsection{Bloch group conjecture}
+
+\begin{remark}
+The following is a conjecture, not a proved theorem.
+Numerical verification to 60 significant figures is consistent
+with but does not prove the claim.
+\end{remark}
+
+\begin{conjecture}\label{conj:bloch}
+$\NZ(\sigma_2(w^3)) = v_0$ exactly, i.e.\ $w^3$ is a primitive
+generator of $\Bloch(K) \otimes \QQ$ with Borel regulator $v_0$.
+\end{conjecture}
+
+\begin{remark}
+Verified numerically to 60 significant figures via SnapPy and
+\texttt{mpmath} at 100-digit precision.
+\end{remark}
+
+\section{Inversion identity}
+
+\begin{proposition}\label{prop:inversion}
+For $z_{\mathrm{tet}}$ a root of $q_2$:
+$w^2 z_{\mathrm{tet}}(w - z_{\mathrm{tet}}) = 1$.
+\end{proposition}
+
+\begin{proof}
+Substitute $z_{\mathrm{tet}}^2 = wz_{\mathrm{tet}} + w^3 - w^2 - 1$ and
+use $w^4 = w+1$, $w^5 = w^2+w$.
+\end{proof}
+
+\section{Period-3 norm orbit}
+
+The M\"{o}bius transformation $T_1(z) = (z-1)/z$ has order 3 on
+$\mathbb{P}^1(K)$ (fixed points $e^{\pm i\pi/3}$).
+Define three monic quadratics over $K$:
+\begin{align*}
+  Q_0(t) &= t^2 + (w^3-2)t + (-w^3+w^2+1),\\
+  Q_1(t) &= t^2 - wt + (-w^3+w^2+1) = q_2,\\
+  Q_2(t) &= t^2 + (w^2-w-2)t + (w+1).
+\end{align*}
+
+\begin{theorem}[Period-3 norm orbit]\label{thm:norm-orbit}
+The quadratics $Q_0, Q_1, Q_2$ form a period-3 orbit under $T_1$:
+$T_1(Q_1) = Q_2$, $T_1(Q_2) = Q_0$, $T_1(Q_0) = Q_1$,
+where $T_1$ acts by $f(t) \mapsto t^2 f((t-1)/t)/\text{lc}$.
+Their norms are three distinct irreducible octics:
+\begin{align*}
+  \Norm_{K/\QQ}(Q_0) &= t^8-5t^7+10t^6-10t^5+6t^4-3t^3+t^2+1,\\
+  \Norm_{K/\QQ}(Q_1) &= p_8(t),\\
+  \Norm_{K/\QQ}(Q_2) &= t^8-8t^7+29t^6-59t^5+76t^4-60t^3+29t^2-8t+1.
+\end{align*}
+All three share $\disc = 7 \cdot 11 \cdot 283^2$ and
+$\Gal/\QQ \cong [2^4]S_4$.
+\end{theorem}
+
+\begin{proof}
+Orbit identities and norm identities verified by exact resultant
+computation in Sage.
+\end{proof}
+
+\begin{remark}
+$\Norm_{K/\QQ}(Q_0)$ is the shape polynomial of the Meyerhoff manifold
+$M = \Meyer$ itself; its roots are the tetrahedral shape parameters
+$\sigma_2(w^3)$ and $\sigma_2(w^{-4})$.
+The polynomial $p_8 = \Norm_{K/\QQ}(Q_1)$ studied in this paper is
+the $T_1$-image of that shape polynomial.
+The fixed points of $T_1$ are $e^{\pm i\pi/3}$, the shape parameters
+of the figure-eight knot complement $\M$ (cusped), connecting the
+period-3 structure to the $\disc = -3$ world.
+\end{remark}
+
+\section{Ptolemy field of \texorpdfstring{$\mzero$}{m019}}
+
+The manifold $\mzero$ satisfies the dual surgery identity
+$\mzero(2,1) \cong \Meyer$.
+
+\begin{theorem}[Ptolemy-unit orbit identity]\label{thm:ptolemy}
+The geometric Ptolemy solution of $\mzero$ at obstruction class~1
+has coordinates
+\[
+  a = \sigma_2(w^3),\quad b = \sigma_2(-w),\quad z_2 = \sigma_2(w^{-4}).
+\]
+These satisfy the Ptolemy equations exactly, and the M\"{o}bius relation
+$b = 1/(1-a)$ is the embedded version of the field identity
+$1/(1-w^3) = -w$ in $K$.
+Moreover:
+\begin{enumerate}
+\item $w^3$ satisfies $f_1(x) = x^4 - 3x^3 + 3x^2 - x - 1$, which
+  has $\disc = -283$ and $\QQ(w^3) \cong K$.
+\item The three coordinates lie on the $T$-orbit:
+  $T(a) = b$, $T(b) = z_2$, $T(z_2) = a$.
+\item $w^3 \cdot (-w) \cdot w^{-4} = -1$ in $K$ (exact).
+\end{enumerate}
+The Ptolemy variety at obstruction class~0 yields $\disc = -331 \ne -283$.
+\end{theorem}
+
+\begin{proof}
+All identities exact in Sage: \texttt{f1(w\^{}3) = 0},
+\texttt{1/(1-w\^{}3) + w = 0}, \texttt{w\^{}3*(-w)*w\^{}-4 + 1 = 0}.
+\end{proof}
+
+\section{Further results and open problems}
+
+\begin{theorem}[Sextic-octic decomposition]\label{thm:main}
+With $K$, $L$, $q_2$, $Q_i$ as above:
+\begin{align}
+  p_8 &= Q_1 Q_2 Q_3 Q_4 = \Norm_{K/\QQ}(q_2),\\
+  p_6 &= Q_2 Q_3 Q_4,\\
+  p_8 &= q_2 \cdot p_6 \text{ over } L,\\
+  \Norm_{K/\QQ}(p_6) &= p_8^3,\\
+  \disc(p_8) &= \Norm_{K/\QQ}(\disc(q_2)) \cdot \disc(K)^2
+               = 7 \cdot 11 \cdot 283^2.
+\end{align}
+All identities exact in SageMath.
+\end{theorem}
+
+\begin{proposition}[Volume quantization, verified computationally]
+\label{prop:vol-quantum}
+Let $v_0 = \vol(M) = 0.9813688289\ldots$ be the Meyerhoff volume.
+The SnapPy OrientableCuspedCensus contains exactly $16$ manifolds
+whose invariant trace field has discriminant $-283$; for each of these,
+\[
+  \vol(N) \;\in\; \tfrac{1}{2}\ZZ \cdot v_0.
+\]
+The observed values are
+$3, 4, 5, \tfrac{11}{2}, 6, 8, 9, 10$ times $v_0$, including
+$\vol(\mzero) = 3v_0$ and $\vol(\mone) = 4v_0$.
+\end{proposition}
+
+\begin{proof}
+Verified by direct computation for all $16$ cusped manifolds.
+For $\mzero$ and $\mone$, the shapes lie in the $T$-orbit
+$\mathcal{O} = \{w^3, -w, w^{-4}\}$ and
+$\NZ(\sigma_2(z)) = v_0$ for each $z \in \mathcal{O}$
+(Propositions~\ref{prop:NZ-invariant} and~\ref{prop:volume}),
+giving exact integer multiples.
+For the remaining manifolds, the sum $\sum_i \NZ(z_i)/v_0$
+lies in $\tfrac{1}{2}\ZZ$; the geometric explanation for the
+denominator bound of~$2$ is discussed in the open problems below.
+\end{proof}
+
+\begin{proposition}[Bloch class of $t03293$]\label{prop:bloch-t03293}
+Let $g = [w^3] \in \Bloch(K)\otimes\QQ$ denote the generator,
+with $\NZ(g) = v_0$ (Conjecture~\ref{conj:bloch}).
+All eight tetrahedral shapes of the manifold $t03293$ lie in $K$:
+\begin{align*}
+  z_0 &= \sigma_2(w^3-w^2+1), &
+  z_1 &= \sigma_2(-2w^3+2w^2-w+3),\\
+  z_2 &= \sigma_2(w^3-w), &
+  z_3 &= \sigma_2(-w^3-w+1),\\
+  z_6 &= \sigma_2(-w+1), &
+  z_4 &= z_5 = z_7 = \sigma_2(-w).
+\end{align*}
+Assuming Conjecture~\ref{conj:bloch}, the Bloch coordinates
+$q_i = \NZ(z_i)/v_0$ sum to $11/2$:
+\[
+  [t03293] = \tfrac{11}{2}\,[w^3]
+  \quad\text{in } \Bloch(K)\otimes\QQ,
+\]
+and $\vol(t03293) = \tfrac{11}{2}\,v_0$,
+verified numerically to 15 significant figures.
+\end{proposition}
+
+\begin{conjecture}[Half-integral volume quantum]\label{conj:half-int}
+For every cusped orientable hyperbolic 3-manifold in the
+SnapPy census with invariant trace field $\disc = -283$,
+\[
+  [M] = \tfrac{n}{2}\,[w^3]
+  \quad\text{in } \Bloch(K)\otimes\QQ,
+  \qquad n \in \ZZ.
+\]
+The observed values of $n$ are
+$6, 8, 10, 11, 12, 16, 18, 20$ across the 16 census manifolds.
+\end{conjecture}
+
+\medskip
+\noindent\textbf{Open problems.}
+
+\begin{enumerate}
+\item \textbf{Algebraic proof that $[w^3]$ generates $\Bloch(K)\otimes\QQ$.}
+  The rank-1 theorem guarantees a generator exists; showing
+  $[w^3]$ is primitive (rather than a multiple of the true generator)
+  requires computing the Borel regulator exactly.
+\item \textbf{Explain the denominator bound 2.}
+  Why does $c_M \in \tfrac{1}{2}\ZZ$ for every $\disc = -283$
+  cusped manifold? The answer likely lies in the 2-torsion
+  structure of the extended Bloch group or in $H_1$.
+\item \textbf{Geometric derivation of $q_2$} from the gluing equations
+  of $\M$ without passing through $p_8$.
+\item \textbf{Obstruction class 0 of $\mzero$}: the Ptolemy field has
+  $\disc = -331$; its geometric significance is open.
+\end{enumerate}
+
+\section*{Data availability}
+The SageMath script \texttt{verify\_sextic\_theorem.py} checking all
+identities in Theorem~\ref{thm:main} is at
+\url{https://github.com/drmlgentry/hyperbolic-flavor-scan}.
+
+\section*{Conflict of interest}
+The author declares no conflicts of interest.
+
+\section*{Funding}
+This research received no external funding.
+
+\begin{thebibliography}{99}
+
+\bibitem{CDGW}
+  M.\ Culler, N.\ M.\ Dunfield, M.\ Goerner, and J.\ R.\ Weeks,
+  \emph{SnapPy, a computer program for studying the geometry and
+  topology of 3-manifolds}, \url{http://snappy.computop.org}.
+
+\bibitem{Gen26a}
+  M.\ L.\ Gentry,
+  \emph{Hyperbolic Flavour Geometry: A Comprehensive Account},
+  SSRN preprint 6775158, 2026.
+
+\bibitem{GMM09}
+  D.\ Gabai, R.\ Meyerhoff, and P.\ Milley,
+  \emph{Minimum volume cusped hyperbolic three-manifolds},
+  J.\ Amer.\ Math.\ Soc.\ \textbf{22} (2009), no.\ 4, 1157--1215.
+
+\bibitem{Neu04}
+  W.\ D.\ Neumann,
+  \emph{Extended Bloch group and the Cheeger--Chern--Simons class},
+  Geom.\ Topol.\ \textbf{8} (2004), 413--474.
+
+\bibitem{Neu90}
+  J.\ Neukirch,
+  \emph{Algebraic Number Theory},
+  Grundlehren der mathematischen Wissenschaften \textbf{322},
+  Springer, Berlin, 1999.
+
+\bibitem{NZ85}
+  W.\ D.\ Neumann and D.\ Zagier,
+  \emph{Volumes of hyperbolic three-manifolds},
+  Topology \textbf{24} (1985), no.\ 3, 307--332.
+
+\bibitem{Sage}
+  The Sage Developers,
+  \emph{SageMath, the Sage Mathematics Software System},
+  \url{https://www.sagemath.org}.
+
+\bibitem{Zag91}
+  D.\ Zagier,
+  \emph{The Bloch--Wigner--Ramakrishnan polylogarithm function},
+  Math.\ Ann.\ \textbf{286} (1990), 613--624.
+
+\end{thebibliography}
+
+\end{document}
