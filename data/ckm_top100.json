@@ -1,0 +1,902 @@
+[
+  {
+    "f": 0.003618,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "ABBaB"
+    ]
+  },
+  {
+    "f": 0.003618,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "bAbba"
+    ]
+  },
+  {
+    "f": 0.003618,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "bAbA",
+      "bAbba"
+    ]
+  },
+  {
+    "f": 0.005573,
+    "s": 0.5,
+    "words": [
+      "aaaba",
+      "bAABB",
+      "BaabA"
+    ]
+  },
+  {
+    "f": 0.005573,
+    "s": 0.5,
+    "words": [
+      "aaaba",
+      "bbaaB",
+      "BaabA"
+    ]
+  },
+  {
+    "f": 0.005627,
+    "s": 0.35,
+    "words": [
+      "aaaaB",
+      "aabbb",
+      "ABBab"
+    ]
+  },
+  {
+    "f": 0.005627,
+    "s": 0.35,
+    "words": [
+      "aaaaB",
+      "aabbb",
+      "BAbba"
+    ]
+  },
+  {
+    "f": 0.005769,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "abaBa",
+      "AAAAB"
+    ]
+  },
+  {
+    "f": 0.005769,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "abaBa",
+      "ABBAB"
+    ]
+  },
+  {
+    "f": 0.005769,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "abaBa",
+      "baaaa"
+    ]
+  },
+  {
+    "f": 0.005769,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "abaBa",
+      "babba"
+    ]
+  },
+  {
+    "f": 0.005769,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "AbABA",
+      "ABBAB"
+    ]
+  },
+  {
+    "f": 0.005769,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "AbABA",
+      "baaaa"
+    ]
+  },
+  {
+    "f": 0.005769,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "AbABA",
+      "babba"
+    ]
+  },
+  {
+    "f": 0.006051,
+    "s": 0.45,
+    "words": [
+      "aaaba",
+      "baabb",
+      "baBAA"
+    ]
+  },
+  {
+    "f": 0.006138,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "aBABa",
+      "BBAA"
+    ]
+  },
+  {
+    "f": 0.006138,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "AbabA",
+      "BBAA"
+    ]
+  },
+  {
+    "f": 0.006394,
+    "s": 0.35,
+    "words": [
+      "aaaBA",
+      "AAbab",
+      "AABBB"
+    ]
+  },
+  {
+    "f": 0.006394,
+    "s": 0.35,
+    "words": [
+      "aaaBA",
+      "AAbab",
+      "bbbaa"
+    ]
+  },
+  {
+    "f": 0.006541,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "aBAb",
+      "BAAbA"
+    ]
+  },
+  {
+    "f": 0.006541,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "BabA",
+      "BAAbA"
+    ]
+  },
+  {
+    "f": 0.006585,
+    "s": 0.5,
+    "words": [
+      "aaaBA",
+      "abaBa",
+      "aBBaB"
+    ]
+  },
+  {
+    "f": 0.006585,
+    "s": 0.5,
+    "words": [
+      "aaaBA",
+      "abaBa",
+      "bAbbA"
+    ]
+  },
+  {
+    "f": 0.006585,
+    "s": 0.5,
+    "words": [
+      "aaaBA",
+      "AbABA",
+      "bAbbA"
+    ]
+  },
+  {
+    "f": 0.006865,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "AABab",
+      "Abaab"
+    ]
+  },
+  {
+    "f": 0.006865,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "AABab",
+      "BAABa"
+    ]
+  },
+  {
+    "f": 0.006907,
+    "s": 0.35,
+    "words": [
+      "aaaab",
+      "aBAba",
+      "ABBab"
+    ]
+  },
+  {
+    "f": 0.006907,
+    "s": 0.35,
+    "words": [
+      "aaaab",
+      "aBAba",
+      "BAbba"
+    ]
+  },
+  {
+    "f": 0.006907,
+    "s": 0.35,
+    "words": [
+      "aaaab",
+      "ABabA",
+      "ABBab"
+    ]
+  },
+  {
+    "f": 0.006907,
+    "s": 0.35,
+    "words": [
+      "aaaab",
+      "ABabA",
+      "BAbba"
+    ]
+  },
+  {
+    "f": 0.007301,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "ABaBB",
+      "bAbAb"
+    ]
+  },
+  {
+    "f": 0.007301,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "ABaBB",
+      "BaBaB"
+    ]
+  },
+  {
+    "f": 0.007301,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "bbAba",
+      "BaBaB"
+    ]
+  },
+  {
+    "f": 0.007487,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "AbAAB",
+      "bbAbb"
+    ]
+  },
+  {
+    "f": 0.007487,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "AbAAB",
+      "BBaBB"
+    ]
+  },
+  {
+    "f": 0.007487,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "baaBa",
+      "bbAbb"
+    ]
+  },
+  {
+    "f": 0.007487,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "baaBa",
+      "BBaBB"
+    ]
+  },
+  {
+    "f": 0.007629,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "AbaaB",
+      "AbbAA"
+    ]
+  },
+  {
+    "f": 0.007641,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "aaaBa",
+      "abaa"
+    ]
+  },
+  {
+    "f": 0.007641,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "aaaBa",
+      "AABA"
+    ]
+  },
+  {
+    "f": 0.00765,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "AbAAB",
+      "baa"
+    ]
+  },
+  {
+    "f": 0.007784,
+    "s": 0.3,
+    "words": [
+      "aaaaa",
+      "aaBaa",
+      "bAA"
+    ]
+  },
+  {
+    "f": 0.007784,
+    "s": 0.3,
+    "words": [
+      "aaaaa",
+      "AAbAA",
+      "bAA"
+    ]
+  },
+  {
+    "f": 0.007827,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "bbbb"
+    ]
+  },
+  {
+    "f": 0.007827,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "BBBB"
+    ]
+  },
+  {
+    "f": 0.007827,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "bAbA",
+      "bbbb"
+    ]
+  },
+  {
+    "f": 0.007827,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "bAbA",
+      "BBBB"
+    ]
+  },
+  {
+    "f": 0.007854,
+    "s": 0.35,
+    "words": [
+      "aaaBA",
+      "AAbab",
+      "baabA"
+    ]
+  },
+  {
+    "f": 0.007869,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "babAb",
+      "bAAAB"
+    ]
+  },
+  {
+    "f": 0.007869,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "babAb",
+      "bAAB"
+    ]
+  },
+  {
+    "f": 0.008011,
+    "s": 0.3,
+    "words": [
+      "aaabb",
+      "bAbAb",
+      "bAbba"
+    ]
+  },
+  {
+    "f": 0.008114,
+    "s": 0.5,
+    "words": [
+      "aaaba",
+      "aBaa",
+      "bAABA"
+    ]
+  },
+  {
+    "f": 0.008114,
+    "s": 0.5,
+    "words": [
+      "aaaba",
+      "AAbA",
+      "bAABA"
+    ]
+  },
+  {
+    "f": 0.008135,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "aaaBa",
+      "aba"
+    ]
+  },
+  {
+    "f": 0.008135,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "aaaBa",
+      "ABA"
+    ]
+  },
+  {
+    "f": 0.008135,
+    "s": 0.4,
+    "words": [
+      "aaaB",
+      "AbAAA",
+      "ABA"
+    ]
+  },
+  {
+    "f": 0.008175,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "ABaBB",
+      "baBaB"
+    ]
+  },
+  {
+    "f": 0.008175,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "ABaBB",
+      "bAbAB"
+    ]
+  },
+  {
+    "f": 0.00821,
+    "s": 0.2,
+    "words": [
+      "aaab",
+      "Abbb",
+      "BaBBa"
+    ]
+  },
+  {
+    "f": 0.008262,
+    "s": 0.3,
+    "words": [
+      "aaaba",
+      "AABB",
+      "bAbb"
+    ]
+  },
+  {
+    "f": 0.008262,
+    "s": 0.3,
+    "words": [
+      "aaaba",
+      "AABB",
+      "BBaB"
+    ]
+  },
+  {
+    "f": 0.008262,
+    "s": 0.3,
+    "words": [
+      "aaaba",
+      "bbaa",
+      "BBaB"
+    ]
+  },
+  {
+    "f": 0.008321,
+    "s": 0.2,
+    "words": [
+      "aaaBa",
+      "aBAAA",
+      "ABaaB"
+    ]
+  },
+  {
+    "f": 0.008321,
+    "s": 0.2,
+    "words": [
+      "aaaBa",
+      "aBAAA",
+      "bAAba"
+    ]
+  },
+  {
+    "f": 0.008411,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "AbaaB",
+      "bbbA"
+    ]
+  },
+  {
+    "f": 0.008411,
+    "s": 0.45,
+    "words": [
+      "aaaab",
+      "bAABa",
+      "bbbA"
+    ]
+  },
+  {
+    "f": 0.008474,
+    "s": 0.45,
+    "words": [
+      "aaabA",
+      "AABAB",
+      "ABAAb"
+    ]
+  },
+  {
+    "f": 0.008474,
+    "s": 0.45,
+    "words": [
+      "aaabA",
+      "AABAB",
+      "Baaba"
+    ]
+  },
+  {
+    "f": 0.008474,
+    "s": 0.45,
+    "words": [
+      "aaabA",
+      "babaa",
+      "Baaba"
+    ]
+  },
+  {
+    "f": 0.00859,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "aBBAB"
+    ]
+  },
+  {
+    "f": 0.00859,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "Abba"
+    ]
+  },
+  {
+    "f": 0.00859,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "ABBa"
+    ]
+  },
+  {
+    "f": 0.00859,
+    "s": 0.4,
+    "words": [
+      "aaab",
+      "aBaB",
+      "babbA"
+    ]
+  },
+  {
+    "f": 0.00864,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "aaB",
+      "aBaab"
+    ]
+  },
+  {
+    "f": 0.00864,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "aaB",
+      "BAAbA"
+    ]
+  },
+  {
+    "f": 0.00864,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "bAA",
+      "BAAbA"
+    ]
+  },
+  {
+    "f": 0.008783,
+    "s": 0.45,
+    "words": [
+      "aaaBa",
+      "ABAb",
+      "Baaa"
+    ]
+  },
+  {
+    "f": 0.008802,
+    "s": 0.45,
+    "words": [
+      "aaaaB",
+      "aBABB",
+      "aBBB"
+    ]
+  },
+  {
+    "f": 0.008802,
+    "s": 0.45,
+    "words": [
+      "aaaaB",
+      "aBABB",
+      "bbbA"
+    ]
+  },
+  {
+    "f": 0.008802,
+    "s": 0.45,
+    "words": [
+      "aaaaB",
+      "bbabA",
+      "bbbA"
+    ]
+  },
+  {
+    "f": 0.008816,
+    "s": 0.25,
+    "words": [
+      "aaaab",
+      "baaab",
+      "BBAba"
+    ]
+  },
+  {
+    "f": 0.008816,
+    "s": 0.25,
+    "words": [
+      "aaaab",
+      "BAAAB",
+      "BBAba"
+    ]
+  },
+  {
+    "f": 0.008817,
+    "s": 0.45,
+    "words": [
+      "aaaBA",
+      "ABab",
+      "bAbbb"
+    ]
+  },
+  {
+    "f": 0.008817,
+    "s": 0.45,
+    "words": [
+      "aaaBA",
+      "ABab",
+      "BBBaB"
+    ]
+  },
+  {
+    "f": 0.00892,
+    "s": 0.35,
+    "words": [
+      "aaab",
+      "AbbAb",
+      "bbaab"
+    ]
+  },
+  {
+    "f": 0.00892,
+    "s": 0.35,
+    "words": [
+      "aaab",
+      "AbbAb",
+      "BAABB"
+    ]
+  },
+  {
+    "f": 0.00892,
+    "s": 0.35,
+    "words": [
+      "aaab",
+      "BaBBa",
+      "BAABB"
+    ]
+  },
+  {
+    "f": 0.008969,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "babAb",
+      "BAbA"
+    ]
+  },
+  {
+    "f": 0.008969,
+    "s": 0.45,
+    "words": [
+      "aaab",
+      "BaBAB",
+      "BAbA"
+    ]
+  },
+  {
+    "f": 0.009028,
+    "s": 0.2,
+    "words": [
+      "aaaab",
+      "Abaab",
+      "baBAA"
+    ]
+  },
+  {
+    "f": 0.009064,
+    "s": 0.45,
+    "words": [
+      "aaaaB",
+      "aBABB",
+      "BaBAA"
+    ]
+  },
+  {
+    "f": 0.009064,
+    "s": 0.45,
+    "words": [
+      "aaaaB",
+      "bbabA",
+      "BaBAA"
+    ]
+  },
+  {
+    "f": 0.009218,
+    "s": 0.45,
+    "words": [
+      "aaaBA",
+      "ABab",
+      "bAAAb"
+    ]
+  },
+  {
+    "f": 0.009218,
+    "s": 0.45,
+    "words": [
+      "aaaBA",
+      "ABab",
+      "BaaaB"
+    ]
+  },
+  {
+    "f": 0.00924,
+    "s": 0.4,
+    "words": [
+      "aaaa",
+      "Abbbb",
+      "BabA"
+    ]
+  },
+  {
+    "f": 0.00937,
+    "s": 0.25,
+    "words": [
+      "aaaba",
+      "aabab",
+      "AAB"
+    ]
+  },
+  {
+    "f": 0.00937,
+    "s": 0.25,
+    "words": [
+      "aaaba",
+      "aabab",
+      "baa"
+    ]
+  },
+  {
+    "f": 0.009407,
+    "s": 0.25,
+    "words": [
+      "aaaab",
+      "aBab",
+      "ABabb"
+    ]
+  },
+  {
+    "f": 0.009407,
+    "s": 0.25,
+    "words": [
+      "aaaab",
+      "aBab",
+      "BBAba"
+    ]
+  },
+  {
+    "f": 0.009407,
+    "s": 0.25,
+    "words": [
+      "aaaab",
+      "BAbA",
+      "BBAba"
+    ]
+  }
+]
