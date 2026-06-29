@@ -1,0 +1,79 @@
+{
+  "results": {
+    "1": {
+      "name": "m003",
+      "index": 1,
+      "fitness": 0.006585427850371425,
+      "is_target": false
+    },
+    "11": {
+      "name": "m004",
+      "index": 11,
+      "fitness": 0.005277890406548815,
+      "is_target": false
+    },
+    "43": {
+      "name": "m006",
+      "index": 43,
+      "fitness": 0.003989260583004384,
+      "is_target": true
+    },
+    "117": {
+      "name": "m038",
+      "index": 117,
+      "fitness": 0.0033448542573759183,
+      "is_target": false
+    },
+    "177": {
+      "name": "m032",
+      "index": 177,
+      "fitness": 0.004888857443624807,
+      "is_target": false
+    },
+    "209": {
+      "name": "m206",
+      "index": 209,
+      "fitness": 0.002989869694614278,
+      "is_target": false
+    },
+    "305": {
+      "name": "m222",
+      "index": 305,
+      "fitness": 0.005888930648367159,
+      "is_target": false
+    },
+    "406": {
+      "name": "m322",
+      "index": 406,
+      "fitness": 0.004198017643596896,
+      "is_target": false
+    },
+    "431": {
+      "name": "m260",
+      "index": 431,
+      "fitness": 0.004713271505729058,
+      "is_target": false
+    },
+    "437": {
+      "name": "m222",
+      "index": 437,
+      "fitness": 0.002964496821825377,
+      "is_target": false
+    },
+    "457": {
+      "name": "m155",
+      "index": 457,
+      "fitness": 0.0036168370547654313,
+      "is_target": false
+    },
+    "470": {
+      "name": "m199",
+      "index": 470,
+      "fitness": 0.003391544786845,
+      "is_target": false
+    }
+  },
+  "target_index": 43,
+  "target_fitness": 0.003989260583004384,
+  "n_manifolds": 12
+}
