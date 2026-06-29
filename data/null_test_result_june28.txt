@@ -1,0 +1,107 @@
+Building word axes...
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 9.660590135020347e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.3402399702111896e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.1007295331922769e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.443546836507135e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 7.906333099400839e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.2710612868428512e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.137996650171839e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.187265905288097e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.855562481087306e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.3510499348390087e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.5436338939294853e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 5.309579045637178e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.8928953316515193e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.523164216353702e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.0886800755733888e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.199481087942945e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.1371221869059045e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.640711385568711e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 5.08936104621152e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.617725220486195e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.786499341251729e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.8287973360315825e-13
+  return f(*arrays, *other_args, **kwargs)
+Valid words: 1456
+Sampling 100k random triples...
+Sampled 100000 triples
+Scoring real CKM...
+Real CKM best-of-100k: 0.007769
+Running 50 null targets...
+  null 1/50: 0.253735
+  null 2/50: 0.310999
+  null 3/50: 0.165583
+  null 4/50: 0.347617
+  null 5/50: 0.376581
+  null 6/50: 0.198164
+  null 7/50: 0.267749
+  null 8/50: 0.184196
+  null 9/50: 0.271523
+  null 10/50: 0.287053
+  null 11/50: 0.313161
+  null 12/50: 0.413059
+  null 13/50: 0.233383
+  null 14/50: 0.268852
+  null 15/50: 0.154461
+  null 16/50: 0.330997
+  null 17/50: 0.303397
+  null 18/50: 0.365817
+  null 19/50: 0.310854
+  null 20/50: 0.199379
+  null 21/50: 0.258368
+  null 22/50: 0.246220
+  null 23/50: 0.182528
+  null 24/50: 0.419990
+  null 25/50: 0.153451
+  null 26/50: 0.347466
+  null 27/50: 0.250515
+  null 28/50: 0.317619
+  null 29/50: 0.235821
+  null 30/50: 0.324007
+  null 31/50: 0.184668
+  null 32/50: 0.302858
+  null 33/50: 0.289301
+  null 34/50: 0.178989
+  null 35/50: 0.239402
+  null 36/50: 0.219389
+  null 37/50: 0.208222
+  null 38/50: 0.196873
+  null 39/50: 0.325746
+  null 40/50: 0.199672
+  null 41/50: 0.370461
+  null 42/50: 0.176727
+  null 43/50: 0.372255
+  null 44/50: 0.286762
+  null 45/50: 0.187880
+  null 46/50: 0.238943
+  null 47/50: 0.253978
+  null 48/50: 0.214911
+  null 49/50: 0.227004
+  null 50/50: 0.284700
+
+=== RESULT ===
+Real CKM: 0.007769
+Null mean: 0.265026 std: 0.068848
+p-value: 0.0000
+TAIL
