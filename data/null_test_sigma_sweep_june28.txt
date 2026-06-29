@@ -1,0 +1,258 @@
+Building word axes...
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 9.660590135020347e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.3402399702111896e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.1007295331922769e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.443546836507135e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 7.906333099400839e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.2710612868428512e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.137996650171839e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.187265905288097e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.855562481087306e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.3510499348390087e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.5436338939294853e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 5.309579045637178e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.8928953316515193e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.523164216353702e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.0886800755733888e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.199481087942945e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.1371221869059045e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.640711385568711e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 5.08936104621152e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.617725220486195e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.786499341251729e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.8287973360315825e-13
+  return f(*arrays, *other_args, **kwargs)
+Valid words: 1456
+Sampling 30k random triples...
+Sampled 30000 triples
+Scoring real CKM...
+Real CKM: 0.003989
+Running 200 null targets...
+  null 1/200: 0.253730
+  null 2/200: 0.310997
+  null 3/200: 0.165574
+  null 4/200: 0.347617
+  null 5/200: 0.376579
+  null 6/200: 0.198159
+  null 7/200: 0.267746
+  null 8/200: 0.184191
+  nul  null 6/200: 0.198159
+  null 7/200: 0.267746
+  null 8/200: 0.184191
+  null 9/200: 0.271518
+  null 10/200: 0.287048
+  null 11/200: 0.313159
+  null 12/200: 0.413058
+  null 13/200: 0.233380
+  null 14/200: 0.268849
+  null 15/200: 0.154452
+  null 16/200: 0.330996
+  null 17/200: 0.303396
+  null 18/200: 0.365816
+  null 19/200: 0.310848
+  null 20/200: 0.199376
+  null 21/200: 0.258367
+  null 22/200: 0.246216
+  null 23/200: 0.182521
+  null 24/200: 0.419986
+  null 25/200: 0.153441
+  null 26/200: 0.347461
+  null 27/200: 0.250513
+  null 28/200: 0.317616
+  null 29/200: 0.235818
+  null 30/200: 0.324003
+  null 31/200: 0.184661
+  null 32/200: 0.302854
+  null 33/200: 0.289297
+  null 34/200: 0.178986
+  null 35/200: 0.239399
+  null 36/200: 0.219385
+  null 37/200: 0.208219
+  null 38/200: 0.196865
+  null 39/200: 0.325745
+  null 40/200: 0.199665
+null 44/200: 0.286758
+  null 45/200: 0.187875
+  null 46/200: 0.238938
+  null 47/200: 0.253974
+  null 48/200: 0.214906
+  null 49/200: 0.227001
+  null 50/200: 0.284698
+  null 51/200: 0.397664
+  null 52/200: 0.281237
+  null 53/200: 0.332177
+  null 54/200: 0.350144
+  null 55/200: 0.320647
+  null 56/200: 0.377425
+  null 57/200: 0.161985
+  null 58/200: 0.148787
+  null 59/200: 0.327521
+  null 60/200: 0.251873
+  null 61/200: 0.246678
+  null 62/200: 0.391717
+  null 63/200: 0.374231
+  null 64/200: 0.219414
+  null 65/200: 0.396372
+  null 66/200: 0.248861
+  null 67/200: 0.394543
+  null 68/200: 0.177473
+  null 69/200: 0.312938
+  null 70/200: 0.329160
+  null 71/200: 0.300702
+  null 72/200: 0.206868
+  null 73/200: 0.239045
+  null 74/200: 0.383442
+  null 75/200: 0.170482
+  null 76/200: 0.213944
+  null 77/200: 0.397014
+  null 78/200: 0.286410
+  null 79/200: 0.199137
+  null 80/200: 0.150565
+  null 81/200: 0.411629
+  null 82/200: 0.254591
+  null 83/200: 0.271504
+  null 84/200: 0.383246
+  null 85/200: 0.381791
+  null 86/200: 0.303542
+  null 87/200: 0.305984
+  null 88/200: 0.422094
+  null 89/200: 0.392232
+  null 90/200: 0.340761
+  null 91/200: 0.374902
+  null 92/200: 0.400759
+  null 93/200: 0.370291
+  null 94/200: 0.367304
+  null 95/200: 0.251723
+  null 96/200: 0.158254
+  null 97/200: 0.223024
+  null 98/200: 0.156354
+  null 99/200: 0.186656
+  null 100/200: 0.203446
+  null 101/200: 0.162537
+  null 102/200: 0.328655
+  null 103/200: 0.293025
+  null 104/200: 0.218747
+  null 105/200: 0.161510
+  null 106/200: 0.338410
+  null 107/200: 0.191044
+  null 108/200: 0.344205
+  null 109/200: 0.412765
+  null 110/200: 0.315162
+  null 111/200: 0.242574
+  null 112/200: 0.174933
+  null 113/200: 0.384601
+  null 114/200: 0.174118
+  null 115/200: 0.193950
+  null 116/200: 0.315583
+  null 117/200: 0.250965
+  null 118/200: 0.383386
+  null 119/200: 0.162381
+  null 120/200: 0.310454
+  null 121/200: 0.254324
+  null 122/200: 0.297808
+  null 123/200: 0.412866
+  null 124/200: 0.161698
+  null 125/200: 0.169372
+  null 126/200: 0.232274
+  null 127/200: 0.371352
+  null 128/200: 0.343812
+  null 129/200: 0.350013
+  null 130/200: 0.201013
+  null 131/200: 0.421557
+  null 132/200: 0.366161
+  null 133/200: 0.387237
+  null 134/200: 0.359744
+  null 135/200: 0.286018
+  null 136/200: 0.393782
+  null 137/200: 0.397486
+  null 138/200: 0.411670
+  null 139/200: 0.321039
+  null 140/200: 0.241187
+  null 141/200: 0.365046
+  null 142/200: 0.284390
+  null 143/200: 0.268485
+  null 144/200: 0.183589
+  null 145/200: 0.316201
+  null 146/200: 0.344150
+  null 147/200: 0.340886
+  null 148/200: 0.420460
+  null 149/200: 0.377125
+  null 150/200: 0.354162
+  null 151/200: 0.362408
+  null 152/200: 0.398648
+  null 153/200: 0.145830
+  null 154/200: 0.182181
+  null 155/200: 0.358256
+  null 156/200: 0.255144
+  null 157/200: 0.205541
+  null 158/200: 0.419074
+  null 159/200: 0.291157
+  null 160/200: 0.301167
+  null 161/200: 0.321485
+  null 162/200: 0.324988
+  null 163/200: 0.168588
+  null 164/200: 0.395105
+  null 165/200: 0.223376
+  null 166/200: 0.241991
+  null 167/200: 0.419293
+  null 168/200: 0.298679
+  null 169/200: 0.340613
+  null 170/200: 0.377392
+  null 171/200: 0.321362
+  null 172/200: 0.385502
+  null 173/200: 0.257680
+  null 174/200: 0.187564
+  null 175/200: 0.419037
+  null 176/200: 0.275277
+  null 177/200: 0.169019
+  null 178/200: 0.425382
+  null 179/200: 0.363683
+  null 180/200: 0.212433
+  null 181/200: 0.410860
+  null 182/200: 0.332623
+  null 183/200: 0.179206
+  null 184/200: 0.364355
+  null 185/200: 0.303893
+  null 186/200: 0.255711
+  null 187/200: 0.358327
+  null 188/200: 0.202076
+  null 189/200: 0.243259
+  null 190/200: 0.267347
+  null 191/200: 0.288953
+  null 192/200: 0.324235
+  null 193/200: 0.188261
+  null 194/200: 0.225432
+  null 195/200: 0.284777
+  null 196/200: 0.210268
+  null 197/200: 0.178925
+  null 198/200: 0.323766
+  null 199/200: 0.397261
+  null 200/200: 0.190783
+
+=== RESULT ===
+Real CKM: 0.003989
+Null mean: 0.287859 std: 0.080832
+Null min:  0.145830
+p-value (corrected): 0.0050
+TAIL
