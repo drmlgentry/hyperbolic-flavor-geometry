@@ -1,0 +1,8530 @@
+{
+  "description": "Phase 3 \u2014 fitness on 947 non-(8,1) H1=Z/5 manifolds",
+  "ckm_target_fitness": 0.003989,
+  "n_records": 947,
+  "records": [
+    {
+      "census_index": 0,
+      "name": "m003",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.011991
+    },
+    {
+      "census_index": 1,
+      "name": "m003",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.006345
+    },
+    {
+      "census_index": 3,
+      "name": "m003",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.013752
+    },
+    {
+      "census_index": 11,
+      "name": "m004",
+      "signature": [
+        5,
+        1
+      ],
+      "fitness": 0.008628
+    },
+    {
+      "census_index": 25,
+      "name": "m006",
+      "signature": [
+        0,
+        2
+      ],
+      "fitness": 0.007862
+    },
+    {
+      "census_index": 39,
+      "name": "m006",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.00608
+    },
+    {
+      "census_index": 46,
+      "name": "m016",
+      "signature": [
+        0,
+        2
+      ],
+      "fitness": 0.005221
+    },
+    {
+      "census_index": 68,
+      "name": "m011",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.009133
+    },
+    {
+      "census_index": 74,
+      "name": "m011",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010826
+    },
+    {
+      "census_index": 81,
+      "name": "m016",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.010102
+    },
+    {
+      "census_index": 95,
+      "name": "m016",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.00554
+    },
+    {
+      "census_index": 107,
+      "name": "m019",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.00866
+    },
+    {
+      "census_index": 111,
+      "name": "m026",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010367
+    },
+    {
+      "census_index": 117,
+      "name": "m038",
+      "signature": [
+        6,
+        1
+      ],
+      "fitness": 0.006804
+    },
+    {
+      "census_index": 144,
+      "name": "m036",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.007486
+    },
+    {
+      "census_index": 146,
+      "name": "m030",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00746
+    },
+    {
+      "census_index": 150,
+      "name": "m036",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.010023
+    },
+    {
+      "census_index": 164,
+      "name": "m036",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.007054
+    },
+    {
+      "census_index": 177,
+      "name": "m032",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004203
+    },
+    {
+      "census_index": 185,
+      "name": "m081",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.010235
+    },
+    {
+      "census_index": 192,
+      "name": "m145",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.009071
+    },
+    {
+      "census_index": 209,
+      "name": "m206",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.009544
+    },
+    {
+      "census_index": 246,
+      "name": "m117",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008446
+    },
+    {
+      "census_index": 254,
+      "name": "m117",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.008271
+    },
+    {
+      "census_index": 292,
+      "name": "m116",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010638
+    },
+    {
+      "census_index": 305,
+      "name": "m222",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.003455
+    },
+    {
+      "census_index": 308,
+      "name": "m285",
+      "signature": [
+        3,
+        1
+      ],
+      "fitness": 0.01088
+    },
+    {
+      "census_index": 312,
+      "name": "m162",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.006978
+    },
+    {
+      "census_index": 320,
+      "name": "m151",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007174
+    },
+    {
+      "census_index": 328,
+      "name": "m118",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.007651
+    },
+    {
+      "census_index": 362,
+      "name": "m141",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012864
+    },
+    {
+      "census_index": 396,
+      "name": "m142",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00857
+    },
+    {
+      "census_index": 406,
+      "name": "m322",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008158
+    },
+    {
+      "census_index": 431,
+      "name": "m260",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003962
+    },
+    {
+      "census_index": 435,
+      "name": "m162",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010961
+    },
+    {
+      "census_index": 436,
+      "name": "m162",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01107
+    },
+    {
+      "census_index": 437,
+      "name": "m222",
+      "signature": [
+        5,
+        1
+      ],
+      "fitness": 0.01013
+    },
+    {
+      "census_index": 441,
+      "name": "m262",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.009208
+    },
+    {
+      "census_index": 443,
+      "name": "m170",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008708
+    },
+    {
+      "census_index": 444,
+      "name": "m247",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.012255
+    },
+    {
+      "census_index": 457,
+      "name": "m155",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009518
+    },
+    {
+      "census_index": 461,
+      "name": "m285",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.009318
+    },
+    {
+      "census_index": 463,
+      "name": "m168",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005356
+    },
+    {
+      "census_index": 466,
+      "name": "m178",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009555
+    },
+    {
+      "census_index": 470,
+      "name": "m199",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.011779
+    },
+    {
+      "census_index": 477,
+      "name": "m170",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.006598
+    },
+    {
+      "census_index": 498,
+      "name": "m195",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010954
+    },
+    {
+      "census_index": 506,
+      "name": "m208",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010226
+    },
+    {
+      "census_index": 525,
+      "name": "m189",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012409
+    },
+    {
+      "census_index": 543,
+      "name": "m234",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006457
+    },
+    {
+      "census_index": 554,
+      "name": "m206",
+      "signature": [
+        1,
+        2
+      ],
+      "fitness": 0.005785
+    },
+    {
+      "census_index": 556,
+      "name": "s118",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.004667
+    },
+    {
+      "census_index": 558,
+      "name": "m275",
+      "signature": [
+        1,
+        2
+      ],
+      "fitness": 0.007303
+    },
+    {
+      "census_index": 561,
+      "name": "m262",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.005211
+    },
+    {
+      "census_index": 568,
+      "name": "m206",
+      "signature": [
+        4,
+        1
+      ],
+      "fitness": 0.006773
+    },
+    {
+      "census_index": 572,
+      "name": "m185",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006286
+    },
+    {
+      "census_index": 576,
+      "name": "m196",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01092
+    },
+    {
+      "census_index": 580,
+      "name": "m210",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011823
+    },
+    {
+      "census_index": 586,
+      "name": "m234",
+      "signature": [
+        1,
+        2
+      ],
+      "fitness": 0.012379
+    },
+    {
+      "census_index": 594,
+      "name": "m220",
+      "signature": [
+        3,
+        1
+      ],
+      "fitness": 0.010451
+    },
+    {
+      "census_index": 602,
+      "name": "m247",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010346
+    },
+    {
+      "census_index": 622,
+      "name": "m234",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009394
+    },
+    {
+      "census_index": 639,
+      "name": "m216",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01156
+    },
+    {
+      "census_index": 650,
+      "name": "s663",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.006714
+    },
+    {
+      "census_index": 652,
+      "name": "m206",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.004906
+    },
+    {
+      "census_index": 683,
+      "name": "m275",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.004127
+    },
+    {
+      "census_index": 685,
+      "name": "m275",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009256
+    },
+    {
+      "census_index": 686,
+      "name": "m222",
+      "signature": [
+        4,
+        1
+      ],
+      "fitness": 0.007219
+    },
+    {
+      "census_index": 688,
+      "name": "m219",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009197
+    },
+    {
+      "census_index": 712,
+      "name": "m222",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009212
+    },
+    {
+      "census_index": 733,
+      "name": "m232",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.005447
+    },
+    {
+      "census_index": 736,
+      "name": "m303",
+      "signature": [
+        0,
+        2
+      ],
+      "fitness": 0.0068
+    },
+    {
+      "census_index": 738,
+      "name": "s572",
+      "signature": [
+        0,
+        1
+      ],
+      "fitness": 0.00981
+    },
+    {
+      "census_index": 791,
+      "name": "m285",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.00659
+    },
+    {
+      "census_index": 793,
+      "name": "m290",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006675
+    },
+    {
+      "census_index": 801,
+      "name": "m356",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.004811
+    },
+    {
+      "census_index": 805,
+      "name": "s359",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007359
+    },
+    {
+      "census_index": 826,
+      "name": "s140",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007377
+    },
+    {
+      "census_index": 836,
+      "name": "m253",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009006
+    },
+    {
+      "census_index": 857,
+      "name": "m303",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.011382
+    },
+    {
+      "census_index": 872,
+      "name": "m269",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009082
+    },
+    {
+      "census_index": 896,
+      "name": "m285",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009478
+    },
+    {
+      "census_index": 901,
+      "name": "m262",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009678
+    },
+    {
+      "census_index": 905,
+      "name": "s235",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004804
+    },
+    {
+      "census_index": 922,
+      "name": "s313",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00863
+    },
+    {
+      "census_index": 955,
+      "name": "s479",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007631
+    },
+    {
+      "census_index": 973,
+      "name": "m350",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008805
+    },
+    {
+      "census_index": 983,
+      "name": "m302",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012403
+    },
+    {
+      "census_index": 986,
+      "name": "m302",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009065
+    },
+    {
+      "census_index": 994,
+      "name": "m372",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.003555
+    },
+    {
+      "census_index": 996,
+      "name": "m320",
+      "signature": [
+        1,
+        2
+      ],
+      "fitness": 0.008599
+    },
+    {
+      "census_index": 997,
+      "name": "m300",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005584
+    },
+    {
+      "census_index": 1006,
+      "name": "s254",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008712
+    },
+    {
+      "census_index": 1007,
+      "name": "m288",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009297
+    },
+    {
+      "census_index": 1008,
+      "name": "m378",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011109
+    },
+    {
+      "census_index": 1009,
+      "name": "s256",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011626
+    },
+    {
+      "census_index": 1042,
+      "name": "m400",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005341
+    },
+    {
+      "census_index": 1054,
+      "name": "m310",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011033
+    },
+    {
+      "census_index": 1059,
+      "name": "s238",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009514
+    },
+    {
+      "census_index": 1060,
+      "name": "s244",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007673
+    },
+    {
+      "census_index": 1078,
+      "name": "m356",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00861
+    },
+    {
+      "census_index": 1092,
+      "name": "m291",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006803
+    },
+    {
+      "census_index": 1095,
+      "name": "s256",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.007927
+    },
+    {
+      "census_index": 1102,
+      "name": "s254",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.004157
+    },
+    {
+      "census_index": 1106,
+      "name": "m371",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.007572
+    },
+    {
+      "census_index": 1175,
+      "name": "s488",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010181
+    },
+    {
+      "census_index": 1184,
+      "name": "s488",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006192
+    },
+    {
+      "census_index": 1188,
+      "name": "s481",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008075
+    },
+    {
+      "census_index": 1189,
+      "name": "s437",
+      "signature": [
+        3,
+        1
+      ],
+      "fitness": 0.006157
+    },
+    {
+      "census_index": 1196,
+      "name": "s359",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00854
+    },
+    {
+      "census_index": 1207,
+      "name": "s682",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010424
+    },
+    {
+      "census_index": 1210,
+      "name": "s663",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.009659
+    },
+    {
+      "census_index": 1215,
+      "name": "m338",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009872
+    },
+    {
+      "census_index": 1225,
+      "name": "m342",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008358
+    },
+    {
+      "census_index": 1247,
+      "name": "m372",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.002567
+    },
+    {
+      "census_index": 1249,
+      "name": "m351",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.009544
+    },
+    {
+      "census_index": 1252,
+      "name": "s381",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006911
+    },
+    {
+      "census_index": 1254,
+      "name": "s657",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010408
+    },
+    {
+      "census_index": 1283,
+      "name": "s705",
+      "signature": [
+        0,
+        1
+      ],
+      "fitness": 0.004318
+    },
+    {
+      "census_index": 1310,
+      "name": "s417",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005617
+    },
+    {
+      "census_index": 1312,
+      "name": "s648",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.00718
+    },
+    {
+      "census_index": 1315,
+      "name": "m356",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008014
+    },
+    {
+      "census_index": 1316,
+      "name": "s377",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011454
+    },
+    {
+      "census_index": 1322,
+      "name": "s869",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.004713
+    },
+    {
+      "census_index": 1327,
+      "name": "m360",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00689
+    },
+    {
+      "census_index": 1356,
+      "name": "s663",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.013783
+    },
+    {
+      "census_index": 1359,
+      "name": "s423",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.011391
+    },
+    {
+      "census_index": 1362,
+      "name": "s667",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005748
+    },
+    {
+      "census_index": 1369,
+      "name": "s554",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010137
+    },
+    {
+      "census_index": 1377,
+      "name": "s432",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009863
+    },
+    {
+      "census_index": 1405,
+      "name": "m345",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.00753
+    },
+    {
+      "census_index": 1409,
+      "name": "s448",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010442
+    },
+    {
+      "census_index": 1415,
+      "name": "m350",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006163
+    },
+    {
+      "census_index": 1425,
+      "name": "m356",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014215
+    },
+    {
+      "census_index": 1454,
+      "name": "s547",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.014232
+    },
+    {
+      "census_index": 1463,
+      "name": "v1315",
+      "signature": [
+        4,
+        1
+      ],
+      "fitness": 0.00777
+    },
+    {
+      "census_index": 1491,
+      "name": "m363",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011654
+    },
+    {
+      "census_index": 1497,
+      "name": "s874",
+      "signature": [
+        3,
+        1
+      ],
+      "fitness": 0.009166
+    },
+    {
+      "census_index": 1501,
+      "name": "s649",
+      "signature": [
+        3,
+        1
+      ],
+      "fitness": 0.012553
+    },
+    {
+      "census_index": 1541,
+      "name": "s450",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.011286
+    },
+    {
+      "census_index": 1556,
+      "name": "s488",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.010118
+    },
+    {
+      "census_index": 1571,
+      "name": "s482",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010587
+    },
+    {
+      "census_index": 1578,
+      "name": "m358",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003359
+    },
+    {
+      "census_index": 1591,
+      "name": "m372",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.004036
+    },
+    {
+      "census_index": 1648,
+      "name": "s458",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011367
+    },
+    {
+      "census_index": 1651,
+      "name": "s471",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007491
+    },
+    {
+      "census_index": 1660,
+      "name": "m374",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011504
+    },
+    {
+      "census_index": 1666,
+      "name": "v2101",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.00895
+    },
+    {
+      "census_index": 1678,
+      "name": "s432",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.007523
+    },
+    {
+      "census_index": 1723,
+      "name": "s764",
+      "signature": [
+        3,
+        1
+      ],
+      "fitness": 0.008736
+    },
+    {
+      "census_index": 1729,
+      "name": "m376",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010668
+    },
+    {
+      "census_index": 1744,
+      "name": "m378",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010989
+    },
+    {
+      "census_index": 1761,
+      "name": "s493",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005735
+    },
+    {
+      "census_index": 1762,
+      "name": "m372",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.008051
+    },
+    {
+      "census_index": 1779,
+      "name": "s525",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008191
+    },
+    {
+      "census_index": 1791,
+      "name": "s450",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011728
+    },
+    {
+      "census_index": 1804,
+      "name": "s488",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006705
+    },
+    {
+      "census_index": 1855,
+      "name": "s847",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008839
+    },
+    {
+      "census_index": 1871,
+      "name": "s479",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003956
+    },
+    {
+      "census_index": 1873,
+      "name": "v2656",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.011716
+    },
+    {
+      "census_index": 1897,
+      "name": "s764",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.007618
+    },
+    {
+      "census_index": 1921,
+      "name": "s495",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.015162
+    },
+    {
+      "census_index": 1947,
+      "name": "s649",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.010416
+    },
+    {
+      "census_index": 1950,
+      "name": "s490",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.005411
+    },
+    {
+      "census_index": 1964,
+      "name": "s572",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010969
+    },
+    {
+      "census_index": 1971,
+      "name": "s726",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010026
+    },
+    {
+      "census_index": 2037,
+      "name": "s704",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010432
+    },
+    {
+      "census_index": 2047,
+      "name": "s529",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007662
+    },
+    {
+      "census_index": 2051,
+      "name": "v1268",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011721
+    },
+    {
+      "census_index": 2056,
+      "name": "s861",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.006969
+    },
+    {
+      "census_index": 2061,
+      "name": "v2380",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.006457
+    },
+    {
+      "census_index": 2084,
+      "name": "s597",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010355
+    },
+    {
+      "census_index": 2098,
+      "name": "s502",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005281
+    },
+    {
+      "census_index": 2113,
+      "name": "s755",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009592
+    },
+    {
+      "census_index": 2117,
+      "name": "v1065",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011006
+    },
+    {
+      "census_index": 2121,
+      "name": "s525",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011469
+    },
+    {
+      "census_index": 2124,
+      "name": "s612",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009189
+    },
+    {
+      "census_index": 2125,
+      "name": "s835",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012717
+    },
+    {
+      "census_index": 2146,
+      "name": "v1161",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012285
+    },
+    {
+      "census_index": 2147,
+      "name": "s648",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008737
+    },
+    {
+      "census_index": 2171,
+      "name": "s554",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009298
+    },
+    {
+      "census_index": 2178,
+      "name": "s573",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009366
+    },
+    {
+      "census_index": 2183,
+      "name": "s709",
+      "signature": [
+        1,
+        2
+      ],
+      "fitness": 0.009074
+    },
+    {
+      "census_index": 2193,
+      "name": "v2643",
+      "signature": [
+        5,
+        1
+      ],
+      "fitness": 0.01349
+    },
+    {
+      "census_index": 2209,
+      "name": "s582",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010596
+    },
+    {
+      "census_index": 2219,
+      "name": "s741",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.002129
+    },
+    {
+      "census_index": 2220,
+      "name": "v1534",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013498
+    },
+    {
+      "census_index": 2239,
+      "name": "v2585",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.013508
+    },
+    {
+      "census_index": 2252,
+      "name": "s698",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006662
+    },
+    {
+      "census_index": 2257,
+      "name": "s702",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008109
+    },
+    {
+      "census_index": 2259,
+      "name": "v1538",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008455
+    },
+    {
+      "census_index": 2260,
+      "name": "v2018",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00882
+    },
+    {
+      "census_index": 2269,
+      "name": "v1262",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.008781
+    },
+    {
+      "census_index": 2272,
+      "name": "s530",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.004008
+    },
+    {
+      "census_index": 2297,
+      "name": "s698",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.010557
+    },
+    {
+      "census_index": 2346,
+      "name": "v1315",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010211
+    },
+    {
+      "census_index": 2357,
+      "name": "s639",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.010581
+    },
+    {
+      "census_index": 2361,
+      "name": "s718",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.014777
+    },
+    {
+      "census_index": 2373,
+      "name": "s640",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009649
+    },
+    {
+      "census_index": 2379,
+      "name": "s677",
+      "signature": [
+        0,
+        3
+      ],
+      "fitness": 0.007829
+    },
+    {
+      "census_index": 2388,
+      "name": "s646",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010912
+    },
+    {
+      "census_index": 2395,
+      "name": "s718",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.011056
+    },
+    {
+      "census_index": 2400,
+      "name": "s566",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.005503
+    },
+    {
+      "census_index": 2411,
+      "name": "s846",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008123
+    },
+    {
+      "census_index": 2419,
+      "name": "s873",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008753
+    },
+    {
+      "census_index": 2424,
+      "name": "s663",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01203
+    },
+    {
+      "census_index": 2427,
+      "name": "s640",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010334
+    },
+    {
+      "census_index": 2429,
+      "name": "s572",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010638
+    },
+    {
+      "census_index": 2431,
+      "name": "v1777",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01074
+    },
+    {
+      "census_index": 2445,
+      "name": "s690",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004961
+    },
+    {
+      "census_index": 2453,
+      "name": "s855",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.004681
+    },
+    {
+      "census_index": 2456,
+      "name": "s644",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.004486
+    },
+    {
+      "census_index": 2471,
+      "name": "s639",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010933
+    },
+    {
+      "census_index": 2532,
+      "name": "v1181",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.006963
+    },
+    {
+      "census_index": 2536,
+      "name": "s633",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013688
+    },
+    {
+      "census_index": 2551,
+      "name": "v1313",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.013091
+    },
+    {
+      "census_index": 2561,
+      "name": "s732",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005291
+    },
+    {
+      "census_index": 2566,
+      "name": "s572",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00823
+    },
+    {
+      "census_index": 2567,
+      "name": "s764",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.00733
+    },
+    {
+      "census_index": 2569,
+      "name": "s704",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00584
+    },
+    {
+      "census_index": 2571,
+      "name": "s644",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011039
+    },
+    {
+      "census_index": 2575,
+      "name": "s701",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010635
+    },
+    {
+      "census_index": 2593,
+      "name": "v1183",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007612
+    },
+    {
+      "census_index": 2607,
+      "name": "s699",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00953
+    },
+    {
+      "census_index": 2608,
+      "name": "s611",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.004155
+    },
+    {
+      "census_index": 2610,
+      "name": "s648",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009631
+    },
+    {
+      "census_index": 2623,
+      "name": "s663",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00666
+    },
+    {
+      "census_index": 2637,
+      "name": "v1732",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007075
+    },
+    {
+      "census_index": 2642,
+      "name": "s805",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011606
+    },
+    {
+      "census_index": 2668,
+      "name": "s663",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012428
+    },
+    {
+      "census_index": 2672,
+      "name": "v2876",
+      "signature": [
+        1,
+        3
+      ],
+      "fitness": 0.012999
+    },
+    {
+      "census_index": 2689,
+      "name": "s682",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011179
+    },
+    {
+      "census_index": 2744,
+      "name": "v1222",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00679
+    },
+    {
+      "census_index": 2745,
+      "name": "s649",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.010982
+    },
+    {
+      "census_index": 2753,
+      "name": "s668",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005714
+    },
+    {
+      "census_index": 2769,
+      "name": "s663",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010428
+    },
+    {
+      "census_index": 2792,
+      "name": "s652",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006542
+    },
+    {
+      "census_index": 2808,
+      "name": "v2986",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009433
+    },
+    {
+      "census_index": 2820,
+      "name": "s847",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.010265
+    },
+    {
+      "census_index": 2821,
+      "name": "s912",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008445
+    },
+    {
+      "census_index": 2841,
+      "name": "s639",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013338
+    },
+    {
+      "census_index": 2856,
+      "name": "v1538",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.008848
+    },
+    {
+      "census_index": 2859,
+      "name": "s695",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.012054
+    },
+    {
+      "census_index": 2860,
+      "name": "v1425",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008152
+    },
+    {
+      "census_index": 2869,
+      "name": "v1315",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.008164
+    },
+    {
+      "census_index": 2873,
+      "name": "s640",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01152
+    },
+    {
+      "census_index": 2878,
+      "name": "s704",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011107
+    },
+    {
+      "census_index": 2894,
+      "name": "v1261",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.01277
+    },
+    {
+      "census_index": 2917,
+      "name": "s750",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006928
+    },
+    {
+      "census_index": 2921,
+      "name": "v2242",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010577
+    },
+    {
+      "census_index": 2934,
+      "name": "v2217",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007168
+    },
+    {
+      "census_index": 2947,
+      "name": "s677",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.011072
+    },
+    {
+      "census_index": 2953,
+      "name": "s805",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004311
+    },
+    {
+      "census_index": 2954,
+      "name": "s873",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00453
+    },
+    {
+      "census_index": 2973,
+      "name": "v2585",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009459
+    },
+    {
+      "census_index": 2975,
+      "name": "v1251",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.004902
+    },
+    {
+      "census_index": 3002,
+      "name": "v1268",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010491
+    },
+    {
+      "census_index": 3014,
+      "name": "s903",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011862
+    },
+    {
+      "census_index": 3019,
+      "name": "s861",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008838
+    },
+    {
+      "census_index": 3044,
+      "name": "v1814",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009847
+    },
+    {
+      "census_index": 3047,
+      "name": "s732",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008765
+    },
+    {
+      "census_index": 3049,
+      "name": "v2343",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008921
+    },
+    {
+      "census_index": 3051,
+      "name": "v1980",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008423
+    },
+    {
+      "census_index": 3054,
+      "name": "v1398",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00531
+    },
+    {
+      "census_index": 3079,
+      "name": "v1629",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010455
+    },
+    {
+      "census_index": 3091,
+      "name": "s889",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.014093
+    },
+    {
+      "census_index": 3092,
+      "name": "v2739",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.010092
+    },
+    {
+      "census_index": 3109,
+      "name": "s909",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006935
+    },
+    {
+      "census_index": 3117,
+      "name": "s729",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008227
+    },
+    {
+      "census_index": 3155,
+      "name": "s779",
+      "signature": [
+        2,
+        3
+      ],
+      "fitness": 0.010639
+    },
+    {
+      "census_index": 3163,
+      "name": "v1315",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012984
+    },
+    {
+      "census_index": 3170,
+      "name": "v2302",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008448
+    },
+    {
+      "census_index": 3181,
+      "name": "s949",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010047
+    },
+    {
+      "census_index": 3190,
+      "name": "s944",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.00999
+    },
+    {
+      "census_index": 3197,
+      "name": "v2568",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.012889
+    },
+    {
+      "census_index": 3216,
+      "name": "v2656",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013296
+    },
+    {
+      "census_index": 3231,
+      "name": "v1682",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007229
+    },
+    {
+      "census_index": 3235,
+      "name": "s734",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.007363
+    },
+    {
+      "census_index": 3247,
+      "name": "s874",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.007285
+    },
+    {
+      "census_index": 3262,
+      "name": "s779",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.008496
+    },
+    {
+      "census_index": 3272,
+      "name": "s902",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003234
+    },
+    {
+      "census_index": 3298,
+      "name": "s871",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.016713
+    },
+    {
+      "census_index": 3343,
+      "name": "v1431",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.011831
+    },
+    {
+      "census_index": 3347,
+      "name": "s850",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006064
+    },
+    {
+      "census_index": 3358,
+      "name": "s718",
+      "signature": [
+        0,
+        3
+      ],
+      "fitness": 0.00948
+    },
+    {
+      "census_index": 3367,
+      "name": "v1644",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.010466
+    },
+    {
+      "census_index": 3401,
+      "name": "s751",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.0055
+    },
+    {
+      "census_index": 3404,
+      "name": "s751",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.008319
+    },
+    {
+      "census_index": 3457,
+      "name": "s820",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008633
+    },
+    {
+      "census_index": 3469,
+      "name": "v1492",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003622
+    },
+    {
+      "census_index": 3471,
+      "name": "s750",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.012686
+    },
+    {
+      "census_index": 3480,
+      "name": "s903",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008455
+    },
+    {
+      "census_index": 3533,
+      "name": "s879",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009212
+    },
+    {
+      "census_index": 3627,
+      "name": "v1695",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.009258
+    },
+    {
+      "census_index": 3631,
+      "name": "s850",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009956
+    },
+    {
+      "census_index": 3636,
+      "name": "s952",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00717
+    },
+    {
+      "census_index": 3642,
+      "name": "v1682",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011703
+    },
+    {
+      "census_index": 3648,
+      "name": "s889",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.0133
+    },
+    {
+      "census_index": 3650,
+      "name": "v1538",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.010488
+    },
+    {
+      "census_index": 3653,
+      "name": "s805",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.013
+    },
+    {
+      "census_index": 3654,
+      "name": "s886",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.014408
+    },
+    {
+      "census_index": 3655,
+      "name": "v2503",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010513
+    },
+    {
+      "census_index": 3657,
+      "name": "v1539",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008278
+    },
+    {
+      "census_index": 3658,
+      "name": "v2671",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008966
+    },
+    {
+      "census_index": 3664,
+      "name": "v1669",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006464
+    },
+    {
+      "census_index": 3691,
+      "name": "v1843",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008728
+    },
+    {
+      "census_index": 3704,
+      "name": "s901",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008781
+    },
+    {
+      "census_index": 3711,
+      "name": "s932",
+      "signature": [
+        3,
+        2
+      ],
+      "fitness": 0.007456
+    },
+    {
+      "census_index": 3713,
+      "name": "v2503",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007799
+    },
+    {
+      "census_index": 3730,
+      "name": "s832",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009573
+    },
+    {
+      "census_index": 3749,
+      "name": "v1730",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011266
+    },
+    {
+      "census_index": 3753,
+      "name": "v1737",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014758
+    },
+    {
+      "census_index": 3770,
+      "name": "s861",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.006749
+    },
+    {
+      "census_index": 3818,
+      "name": "s861",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.004956
+    },
+    {
+      "census_index": 3821,
+      "name": "v2447",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.00779
+    },
+    {
+      "census_index": 3825,
+      "name": "v1732",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011381
+    },
+    {
+      "census_index": 3827,
+      "name": "v1695",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009797
+    },
+    {
+      "census_index": 3840,
+      "name": "v2238",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010963
+    },
+    {
+      "census_index": 3841,
+      "name": "s838",
+      "signature": [
+        5,
+        1
+      ],
+      "fitness": 0.009426
+    },
+    {
+      "census_index": 3848,
+      "name": "v2272",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004431
+    },
+    {
+      "census_index": 3854,
+      "name": "v2678",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007584
+    },
+    {
+      "census_index": 3866,
+      "name": "v2846",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006095
+    },
+    {
+      "census_index": 3877,
+      "name": "v2797",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01117
+    },
+    {
+      "census_index": 3898,
+      "name": "v2442",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.011388
+    },
+    {
+      "census_index": 3904,
+      "name": "v1603",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010163
+    },
+    {
+      "census_index": 3924,
+      "name": "s893",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008416
+    },
+    {
+      "census_index": 3930,
+      "name": "s832",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.016544
+    },
+    {
+      "census_index": 3956,
+      "name": "s855",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00427
+    },
+    {
+      "census_index": 3962,
+      "name": "v2817",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.012211
+    },
+    {
+      "census_index": 3966,
+      "name": "s892",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.00417
+    },
+    {
+      "census_index": 3998,
+      "name": "s889",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010397
+    },
+    {
+      "census_index": 3999,
+      "name": "s861",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008199
+    },
+    {
+      "census_index": 4007,
+      "name": "v2254",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012043
+    },
+    {
+      "census_index": 4012,
+      "name": "v2632",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010478
+    },
+    {
+      "census_index": 4039,
+      "name": "v2656",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00893
+    },
+    {
+      "census_index": 4053,
+      "name": "v1752",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.013073
+    },
+    {
+      "census_index": 4061,
+      "name": "s844",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005511
+    },
+    {
+      "census_index": 4071,
+      "name": "v2209",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.006372
+    },
+    {
+      "census_index": 4074,
+      "name": "v1695",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00998
+    },
+    {
+      "census_index": 4093,
+      "name": "v2040",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014552
+    },
+    {
+      "census_index": 4099,
+      "name": "v1727",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011549
+    },
+    {
+      "census_index": 4104,
+      "name": "s891",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009389
+    },
+    {
+      "census_index": 4114,
+      "name": "v2335",
+      "signature": [
+        5,
+        1
+      ],
+      "fitness": 0.006948
+    },
+    {
+      "census_index": 4124,
+      "name": "v2202",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007047
+    },
+    {
+      "census_index": 4147,
+      "name": "s881",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.006783
+    },
+    {
+      "census_index": 4157,
+      "name": "v2722",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.005807
+    },
+    {
+      "census_index": 4159,
+      "name": "v2770",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010918
+    },
+    {
+      "census_index": 4162,
+      "name": "v2623",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009804
+    },
+    {
+      "census_index": 4169,
+      "name": "v2698",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008832
+    },
+    {
+      "census_index": 4180,
+      "name": "v2040",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007391
+    },
+    {
+      "census_index": 4215,
+      "name": "v2841",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.011606
+    },
+    {
+      "census_index": 4219,
+      "name": "s932",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01295
+    },
+    {
+      "census_index": 4247,
+      "name": "s879",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004355
+    },
+    {
+      "census_index": 4255,
+      "name": "s854",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.006356
+    },
+    {
+      "census_index": 4275,
+      "name": "s861",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007471
+    },
+    {
+      "census_index": 4281,
+      "name": "v2381",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007167
+    },
+    {
+      "census_index": 4283,
+      "name": "v1809",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007859
+    },
+    {
+      "census_index": 4292,
+      "name": "s869",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012072
+    },
+    {
+      "census_index": 4311,
+      "name": "v2051",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010903
+    },
+    {
+      "census_index": 4320,
+      "name": "v3469",
+      "signature": [
+        6,
+        1
+      ],
+      "fitness": 0.003716
+    },
+    {
+      "census_index": 4324,
+      "name": "v2362",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01179
+    },
+    {
+      "census_index": 4327,
+      "name": "v2284",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011748
+    },
+    {
+      "census_index": 4329,
+      "name": "v2293",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003165
+    },
+    {
+      "census_index": 4333,
+      "name": "v2217",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.012291
+    },
+    {
+      "census_index": 4336,
+      "name": "s928",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008693
+    },
+    {
+      "census_index": 4340,
+      "name": "v2072",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00862
+    },
+    {
+      "census_index": 4343,
+      "name": "v2221",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.012033
+    },
+    {
+      "census_index": 4349,
+      "name": "v2189",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007359
+    },
+    {
+      "census_index": 4374,
+      "name": "v2158",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007182
+    },
+    {
+      "census_index": 4375,
+      "name": "v1963",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005071
+    },
+    {
+      "census_index": 4382,
+      "name": "s896",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010067
+    },
+    {
+      "census_index": 4390,
+      "name": "s879",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00868
+    },
+    {
+      "census_index": 4399,
+      "name": "v2265",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010785
+    },
+    {
+      "census_index": 4408,
+      "name": "v2344",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.005812
+    },
+    {
+      "census_index": 4411,
+      "name": "s893",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004722
+    },
+    {
+      "census_index": 4418,
+      "name": "v2173",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007449
+    },
+    {
+      "census_index": 4427,
+      "name": "v2388",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.012357
+    },
+    {
+      "census_index": 4435,
+      "name": "v2616",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004481
+    },
+    {
+      "census_index": 4444,
+      "name": "s877",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.004203
+    },
+    {
+      "census_index": 4445,
+      "name": "v1845",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006784
+    },
+    {
+      "census_index": 4453,
+      "name": "v1980",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012894
+    },
+    {
+      "census_index": 4459,
+      "name": "s888",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007176
+    },
+    {
+      "census_index": 4461,
+      "name": "v2413",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009655
+    },
+    {
+      "census_index": 4478,
+      "name": "v2163",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011574
+    },
+    {
+      "census_index": 4483,
+      "name": "s893",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007141
+    },
+    {
+      "census_index": 4491,
+      "name": "v2046",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012071
+    },
+    {
+      "census_index": 4498,
+      "name": "v1938",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009332
+    },
+    {
+      "census_index": 4499,
+      "name": "v1938",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.00439
+    },
+    {
+      "census_index": 4506,
+      "name": "s908",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006592
+    },
+    {
+      "census_index": 4542,
+      "name": "s907",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00746
+    },
+    {
+      "census_index": 4545,
+      "name": "v2393",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008142
+    },
+    {
+      "census_index": 4571,
+      "name": "v2307",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.008411
+    },
+    {
+      "census_index": 4579,
+      "name": "s905",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006376
+    },
+    {
+      "census_index": 4596,
+      "name": "v2230",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.00609
+    },
+    {
+      "census_index": 4604,
+      "name": "v2698",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.008377
+    },
+    {
+      "census_index": 4635,
+      "name": "v2503",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009895
+    },
+    {
+      "census_index": 4646,
+      "name": "v2542",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.012851
+    },
+    {
+      "census_index": 4661,
+      "name": "s909",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010555
+    },
+    {
+      "census_index": 4662,
+      "name": "v2517",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.005188
+    },
+    {
+      "census_index": 4677,
+      "name": "v2381",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012363
+    },
+    {
+      "census_index": 4681,
+      "name": "s884",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009262
+    },
+    {
+      "census_index": 4696,
+      "name": "v2817",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006457
+    },
+    {
+      "census_index": 4706,
+      "name": "s902",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006681
+    },
+    {
+      "census_index": 4709,
+      "name": "s889",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010406
+    },
+    {
+      "census_index": 4722,
+      "name": "v3086",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006882
+    },
+    {
+      "census_index": 4742,
+      "name": "s917",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006642
+    },
+    {
+      "census_index": 4753,
+      "name": "s893",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005046
+    },
+    {
+      "census_index": 4761,
+      "name": "v2101",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007294
+    },
+    {
+      "census_index": 4777,
+      "name": "s888",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007436
+    },
+    {
+      "census_index": 4780,
+      "name": "v2455",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.00348
+    },
+    {
+      "census_index": 4787,
+      "name": "v2293",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007937
+    },
+    {
+      "census_index": 4824,
+      "name": "v2210",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009192
+    },
+    {
+      "census_index": 4830,
+      "name": "s932",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.013515
+    },
+    {
+      "census_index": 4870,
+      "name": "v3001",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009254
+    },
+    {
+      "census_index": 4876,
+      "name": "v3178",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.007204
+    },
+    {
+      "census_index": 4879,
+      "name": "v2051",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009697
+    },
+    {
+      "census_index": 4914,
+      "name": "v2194",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009935
+    },
+    {
+      "census_index": 4919,
+      "name": "v2543",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010448
+    },
+    {
+      "census_index": 4940,
+      "name": "s949",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012418
+    },
+    {
+      "census_index": 4947,
+      "name": "v2735",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011411
+    },
+    {
+      "census_index": 4951,
+      "name": "v2210",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004736
+    },
+    {
+      "census_index": 4957,
+      "name": "v2631",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008451
+    },
+    {
+      "census_index": 4961,
+      "name": "v2388",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010024
+    },
+    {
+      "census_index": 4972,
+      "name": "v2901",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009852
+    },
+    {
+      "census_index": 4983,
+      "name": "v2230",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007032
+    },
+    {
+      "census_index": 5010,
+      "name": "v2293",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009349
+    },
+    {
+      "census_index": 5025,
+      "name": "v3120",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.007042
+    },
+    {
+      "census_index": 5049,
+      "name": "v2585",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011011
+    },
+    {
+      "census_index": 5063,
+      "name": "v2307",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010912
+    },
+    {
+      "census_index": 5079,
+      "name": "v2465",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011817
+    },
+    {
+      "census_index": 5083,
+      "name": "v2354",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010287
+    },
+    {
+      "census_index": 5090,
+      "name": "v2217",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.002699
+    },
+    {
+      "census_index": 5095,
+      "name": "v2168",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.010944
+    },
+    {
+      "census_index": 5116,
+      "name": "v2526",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006804
+    },
+    {
+      "census_index": 5126,
+      "name": "v2557",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011384
+    },
+    {
+      "census_index": 5176,
+      "name": "s934",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007819
+    },
+    {
+      "census_index": 5178,
+      "name": "s896",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009722
+    },
+    {
+      "census_index": 5188,
+      "name": "v2302",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004198
+    },
+    {
+      "census_index": 5226,
+      "name": "v2368",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012809
+    },
+    {
+      "census_index": 5231,
+      "name": "v2971",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006469
+    },
+    {
+      "census_index": 5248,
+      "name": "v2446",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.010038
+    },
+    {
+      "census_index": 5250,
+      "name": "s903",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008583
+    },
+    {
+      "census_index": 5255,
+      "name": "v2689",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.009176
+    },
+    {
+      "census_index": 5277,
+      "name": "s958",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.011348
+    },
+    {
+      "census_index": 5280,
+      "name": "v2307",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00886
+    },
+    {
+      "census_index": 5291,
+      "name": "v3142",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009426
+    },
+    {
+      "census_index": 5293,
+      "name": "v2738",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.011167
+    },
+    {
+      "census_index": 5294,
+      "name": "v3188",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009724
+    },
+    {
+      "census_index": 5297,
+      "name": "s904",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003258
+    },
+    {
+      "census_index": 5299,
+      "name": "v3001",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009629
+    },
+    {
+      "census_index": 5305,
+      "name": "v2503",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.01503
+    },
+    {
+      "census_index": 5309,
+      "name": "v2422",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005474
+    },
+    {
+      "census_index": 5319,
+      "name": "s950",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.00882
+    },
+    {
+      "census_index": 5331,
+      "name": "v2557",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010521
+    },
+    {
+      "census_index": 5333,
+      "name": "s908",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011613
+    },
+    {
+      "census_index": 5354,
+      "name": "v2272",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005323
+    },
+    {
+      "census_index": 5424,
+      "name": "v2368",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011956
+    },
+    {
+      "census_index": 5426,
+      "name": "v2457",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.011093
+    },
+    {
+      "census_index": 5444,
+      "name": "v2661",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.01427
+    },
+    {
+      "census_index": 5459,
+      "name": "v2447",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009329
+    },
+    {
+      "census_index": 5460,
+      "name": "v2876",
+      "signature": [
+        2,
+        3
+      ],
+      "fitness": 0.009981
+    },
+    {
+      "census_index": 5485,
+      "name": "v2503",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006534
+    },
+    {
+      "census_index": 5498,
+      "name": "s921",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00751
+    },
+    {
+      "census_index": 5503,
+      "name": "v2446",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006776
+    },
+    {
+      "census_index": 5509,
+      "name": "v2468",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.011912
+    },
+    {
+      "census_index": 5529,
+      "name": "v2343",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010264
+    },
+    {
+      "census_index": 5540,
+      "name": "s917",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010796
+    },
+    {
+      "census_index": 5542,
+      "name": "v3011",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011717
+    },
+    {
+      "census_index": 5551,
+      "name": "v2293",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010689
+    },
+    {
+      "census_index": 5556,
+      "name": "s927",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01011
+    },
+    {
+      "census_index": 5557,
+      "name": "v2515",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.013425
+    },
+    {
+      "census_index": 5566,
+      "name": "v2343",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.012414
+    },
+    {
+      "census_index": 5582,
+      "name": "v2371",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012249
+    },
+    {
+      "census_index": 5586,
+      "name": "v2392",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.0088
+    },
+    {
+      "census_index": 5599,
+      "name": "v2739",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.003158
+    },
+    {
+      "census_index": 5606,
+      "name": "v2378",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010885
+    },
+    {
+      "census_index": 5643,
+      "name": "v2694",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.006442
+    },
+    {
+      "census_index": 5648,
+      "name": "v2739",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.014879
+    },
+    {
+      "census_index": 5671,
+      "name": "v3274",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008816
+    },
+    {
+      "census_index": 5732,
+      "name": "v2725",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.017953
+    },
+    {
+      "census_index": 5763,
+      "name": "v2401",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.014551
+    },
+    {
+      "census_index": 5777,
+      "name": "v2486",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008181
+    },
+    {
+      "census_index": 5790,
+      "name": "v2402",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010607
+    },
+    {
+      "census_index": 5793,
+      "name": "v2735",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.015304
+    },
+    {
+      "census_index": 5800,
+      "name": "s934",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.012265
+    },
+    {
+      "census_index": 5838,
+      "name": "v2393",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00434
+    },
+    {
+      "census_index": 5848,
+      "name": "v2388",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009899
+    },
+    {
+      "census_index": 5855,
+      "name": "v2572",
+      "signature": [
+        1,
+        2
+      ],
+      "fitness": 0.007538
+    },
+    {
+      "census_index": 5865,
+      "name": "v2824",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010569
+    },
+    {
+      "census_index": 5868,
+      "name": "v2889",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00865
+    },
+    {
+      "census_index": 5874,
+      "name": "v2568",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014537
+    },
+    {
+      "census_index": 5884,
+      "name": "v2846",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011631
+    },
+    {
+      "census_index": 5912,
+      "name": "v2543",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009378
+    },
+    {
+      "census_index": 5938,
+      "name": "v2878",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009188
+    },
+    {
+      "census_index": 5947,
+      "name": "v2500",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.011072
+    },
+    {
+      "census_index": 5956,
+      "name": "v2806",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009073
+    },
+    {
+      "census_index": 5966,
+      "name": "v2534",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006474
+    },
+    {
+      "census_index": 5983,
+      "name": "v2587",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011051
+    },
+    {
+      "census_index": 6021,
+      "name": "v2570",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007619
+    },
+    {
+      "census_index": 6022,
+      "name": "v2939",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007156
+    },
+    {
+      "census_index": 6023,
+      "name": "v2543",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.006512
+    },
+    {
+      "census_index": 6030,
+      "name": "v2857",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.007325
+    },
+    {
+      "census_index": 6035,
+      "name": "v2422",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012408
+    },
+    {
+      "census_index": 6036,
+      "name": "v3411",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009153
+    },
+    {
+      "census_index": 6038,
+      "name": "v2696",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003513
+    },
+    {
+      "census_index": 6059,
+      "name": "v2742",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004628
+    },
+    {
+      "census_index": 6064,
+      "name": "v3266",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010129
+    },
+    {
+      "census_index": 6069,
+      "name": "v2709",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.010295
+    },
+    {
+      "census_index": 6074,
+      "name": "v2455",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006433
+    },
+    {
+      "census_index": 6075,
+      "name": "v2557",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010554
+    },
+    {
+      "census_index": 6080,
+      "name": "v2528",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009296
+    },
+    {
+      "census_index": 6081,
+      "name": "v2511",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009329
+    },
+    {
+      "census_index": 6096,
+      "name": "v2596",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009352
+    },
+    {
+      "census_index": 6097,
+      "name": "v2744",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006207
+    },
+    {
+      "census_index": 6102,
+      "name": "v2570",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007684
+    },
+    {
+      "census_index": 6107,
+      "name": "v2515",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009687
+    },
+    {
+      "census_index": 6126,
+      "name": "v2462",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009537
+    },
+    {
+      "census_index": 6140,
+      "name": "v2557",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006394
+    },
+    {
+      "census_index": 6170,
+      "name": "v2866",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007955
+    },
+    {
+      "census_index": 6179,
+      "name": "v2462",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007551
+    },
+    {
+      "census_index": 6193,
+      "name": "v2604",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.00726
+    },
+    {
+      "census_index": 6210,
+      "name": "v2691",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010432
+    },
+    {
+      "census_index": 6222,
+      "name": "v3310",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014491
+    },
+    {
+      "census_index": 6240,
+      "name": "v2864",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007744
+    },
+    {
+      "census_index": 6264,
+      "name": "v2996",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011235
+    },
+    {
+      "census_index": 6268,
+      "name": "v2957",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.011856
+    },
+    {
+      "census_index": 6272,
+      "name": "v2462",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008516
+    },
+    {
+      "census_index": 6285,
+      "name": "v2503",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.012083
+    },
+    {
+      "census_index": 6294,
+      "name": "v2553",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007874
+    },
+    {
+      "census_index": 6317,
+      "name": "v3261",
+      "signature": [
+        0,
+        2
+      ],
+      "fitness": 0.013741
+    },
+    {
+      "census_index": 6327,
+      "name": "s950",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010354
+    },
+    {
+      "census_index": 6328,
+      "name": "v2660",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012992
+    },
+    {
+      "census_index": 6338,
+      "name": "v2511",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008166
+    },
+    {
+      "census_index": 6365,
+      "name": "s933",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004652
+    },
+    {
+      "census_index": 6369,
+      "name": "v2638",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003753
+    },
+    {
+      "census_index": 6371,
+      "name": "v2804",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012507
+    },
+    {
+      "census_index": 6378,
+      "name": "v2577",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.008855
+    },
+    {
+      "census_index": 6384,
+      "name": "v2966",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.008559
+    },
+    {
+      "census_index": 6404,
+      "name": "v2964",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010562
+    },
+    {
+      "census_index": 6426,
+      "name": "v2661",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.008537
+    },
+    {
+      "census_index": 6456,
+      "name": "v2694",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010181
+    },
+    {
+      "census_index": 6491,
+      "name": "v2806",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.014491
+    },
+    {
+      "census_index": 6493,
+      "name": "v2725",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013643
+    },
+    {
+      "census_index": 6494,
+      "name": "v3455",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.010993
+    },
+    {
+      "census_index": 6496,
+      "name": "v2511",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.013883
+    },
+    {
+      "census_index": 6516,
+      "name": "v2722",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010366
+    },
+    {
+      "census_index": 6517,
+      "name": "v2804",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005409
+    },
+    {
+      "census_index": 6524,
+      "name": "v2851",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010205
+    },
+    {
+      "census_index": 6525,
+      "name": "v2584",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009629
+    },
+    {
+      "census_index": 6539,
+      "name": "v2861",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005693
+    },
+    {
+      "census_index": 6542,
+      "name": "v3189",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010868
+    },
+    {
+      "census_index": 6544,
+      "name": "v3325",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009722
+    },
+    {
+      "census_index": 6554,
+      "name": "v2526",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008894
+    },
+    {
+      "census_index": 6556,
+      "name": "v3143",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.006805
+    },
+    {
+      "census_index": 6561,
+      "name": "v2729",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010414
+    },
+    {
+      "census_index": 6572,
+      "name": "v2817",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.012963
+    },
+    {
+      "census_index": 6609,
+      "name": "s952",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007671
+    },
+    {
+      "census_index": 6634,
+      "name": "v3100",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008771
+    },
+    {
+      "census_index": 6636,
+      "name": "v2674",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.011033
+    },
+    {
+      "census_index": 6671,
+      "name": "v2670",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010459
+    },
+    {
+      "census_index": 6674,
+      "name": "v2661",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003358
+    },
+    {
+      "census_index": 6675,
+      "name": "v2923",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.005959
+    },
+    {
+      "census_index": 6676,
+      "name": "v2813",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010489
+    },
+    {
+      "census_index": 6696,
+      "name": "v2817",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00617
+    },
+    {
+      "census_index": 6716,
+      "name": "v2796",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009317
+    },
+    {
+      "census_index": 6725,
+      "name": "v2791",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011444
+    },
+    {
+      "census_index": 6750,
+      "name": "v2901",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011694
+    },
+    {
+      "census_index": 6753,
+      "name": "v2897",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008788
+    },
+    {
+      "census_index": 6755,
+      "name": "v2596",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.012114
+    },
+    {
+      "census_index": 6765,
+      "name": "s955",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009353
+    },
+    {
+      "census_index": 6773,
+      "name": "v2670",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006857
+    },
+    {
+      "census_index": 6780,
+      "name": "v3244",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006329
+    },
+    {
+      "census_index": 6842,
+      "name": "v2919",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.013046
+    },
+    {
+      "census_index": 6864,
+      "name": "v3261",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.004256
+    },
+    {
+      "census_index": 6867,
+      "name": "v2739",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004902
+    },
+    {
+      "census_index": 6869,
+      "name": "v2693",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012864
+    },
+    {
+      "census_index": 6884,
+      "name": "v3327",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007438
+    },
+    {
+      "census_index": 6900,
+      "name": "v2597",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010958
+    },
+    {
+      "census_index": 6912,
+      "name": "v2749",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003111
+    },
+    {
+      "census_index": 6931,
+      "name": "v3325",
+      "signature": [
+        2,
+        3
+      ],
+      "fitness": 0.010544
+    },
+    {
+      "census_index": 6933,
+      "name": "v2673",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005042
+    },
+    {
+      "census_index": 6937,
+      "name": "v2748",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009791
+    },
+    {
+      "census_index": 6951,
+      "name": "v2864",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008043
+    },
+    {
+      "census_index": 6959,
+      "name": "v3051",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010061
+    },
+    {
+      "census_index": 6960,
+      "name": "v3086",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010472
+    },
+    {
+      "census_index": 6971,
+      "name": "v2750",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011152
+    },
+    {
+      "census_index": 6984,
+      "name": "s950",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006527
+    },
+    {
+      "census_index": 7041,
+      "name": "v3200",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007313
+    },
+    {
+      "census_index": 7049,
+      "name": "v3245",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008509
+    },
+    {
+      "census_index": 7083,
+      "name": "s957",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.014805
+    },
+    {
+      "census_index": 7100,
+      "name": "v3049",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.008838
+    },
+    {
+      "census_index": 7104,
+      "name": "v2765",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009825
+    },
+    {
+      "census_index": 7105,
+      "name": "v2937",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011379
+    },
+    {
+      "census_index": 7108,
+      "name": "v2806",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009534
+    },
+    {
+      "census_index": 7111,
+      "name": "v2757",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006016
+    },
+    {
+      "census_index": 7114,
+      "name": "v2776",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006853
+    },
+    {
+      "census_index": 7129,
+      "name": "v2756",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011479
+    },
+    {
+      "census_index": 7136,
+      "name": "v2744",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.006862
+    },
+    {
+      "census_index": 7147,
+      "name": "v3266",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009108
+    },
+    {
+      "census_index": 7148,
+      "name": "v3128",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010568
+    },
+    {
+      "census_index": 7149,
+      "name": "v2996",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010705
+    },
+    {
+      "census_index": 7167,
+      "name": "v2709",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.006473
+    },
+    {
+      "census_index": 7191,
+      "name": "v3266",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.00712
+    },
+    {
+      "census_index": 7193,
+      "name": "v3158",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009863
+    },
+    {
+      "census_index": 7208,
+      "name": "v3129",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003768
+    },
+    {
+      "census_index": 7215,
+      "name": "v3441",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.00704
+    },
+    {
+      "census_index": 7229,
+      "name": "v3126",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010474
+    },
+    {
+      "census_index": 7236,
+      "name": "v3195",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009137
+    },
+    {
+      "census_index": 7240,
+      "name": "v3482",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008505
+    },
+    {
+      "census_index": 7262,
+      "name": "v2798",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.01265
+    },
+    {
+      "census_index": 7281,
+      "name": "s951",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005691
+    },
+    {
+      "census_index": 7287,
+      "name": "v3257",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00754
+    },
+    {
+      "census_index": 7288,
+      "name": "v3248",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004419
+    },
+    {
+      "census_index": 7291,
+      "name": "v2919",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009175
+    },
+    {
+      "census_index": 7297,
+      "name": "v3390",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013728
+    },
+    {
+      "census_index": 7309,
+      "name": "v3536",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011585
+    },
+    {
+      "census_index": 7319,
+      "name": "v2725",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003647
+    },
+    {
+      "census_index": 7336,
+      "name": "v2721",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014921
+    },
+    {
+      "census_index": 7367,
+      "name": "v3015",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006595
+    },
+    {
+      "census_index": 7387,
+      "name": "v2996",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007869
+    },
+    {
+      "census_index": 7389,
+      "name": "v2825",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004959
+    },
+    {
+      "census_index": 7398,
+      "name": "v2861",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009883
+    },
+    {
+      "census_index": 7399,
+      "name": "v2817",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.015149
+    },
+    {
+      "census_index": 7404,
+      "name": "v3207",
+      "signature": [
+        0,
+        2
+      ],
+      "fitness": 0.010728
+    },
+    {
+      "census_index": 7441,
+      "name": "v2872",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012141
+    },
+    {
+      "census_index": 7445,
+      "name": "v2955",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009816
+    },
+    {
+      "census_index": 7450,
+      "name": "v3318",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008971
+    },
+    {
+      "census_index": 7460,
+      "name": "v2966",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006738
+    },
+    {
+      "census_index": 7468,
+      "name": "v2897",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009144
+    },
+    {
+      "census_index": 7487,
+      "name": "v2841",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00753
+    },
+    {
+      "census_index": 7509,
+      "name": "v2802",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006516
+    },
+    {
+      "census_index": 7531,
+      "name": "v3205",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012356
+    },
+    {
+      "census_index": 7548,
+      "name": "v3132",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005901
+    },
+    {
+      "census_index": 7562,
+      "name": "v2793",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.009225
+    },
+    {
+      "census_index": 7568,
+      "name": "v2929",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009966
+    },
+    {
+      "census_index": 7574,
+      "name": "v2974",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007439
+    },
+    {
+      "census_index": 7592,
+      "name": "v2873",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.016082
+    },
+    {
+      "census_index": 7597,
+      "name": "v2939",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011734
+    },
+    {
+      "census_index": 7602,
+      "name": "v2813",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010669
+    },
+    {
+      "census_index": 7620,
+      "name": "v3001",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007944
+    },
+    {
+      "census_index": 7629,
+      "name": "v3041",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.014558
+    },
+    {
+      "census_index": 7642,
+      "name": "v2833",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007595
+    },
+    {
+      "census_index": 7663,
+      "name": "v2878",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008225
+    },
+    {
+      "census_index": 7671,
+      "name": "v2908",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012825
+    },
+    {
+      "census_index": 7675,
+      "name": "v3120",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011832
+    },
+    {
+      "census_index": 7676,
+      "name": "v3007",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007837
+    },
+    {
+      "census_index": 7688,
+      "name": "v2872",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01238
+    },
+    {
+      "census_index": 7703,
+      "name": "v3122",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007886
+    },
+    {
+      "census_index": 7712,
+      "name": "v2861",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007461
+    },
+    {
+      "census_index": 7718,
+      "name": "v2872",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009296
+    },
+    {
+      "census_index": 7730,
+      "name": "v2806",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.004631
+    },
+    {
+      "census_index": 7738,
+      "name": "v3422",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009036
+    },
+    {
+      "census_index": 7740,
+      "name": "v2870",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00866
+    },
+    {
+      "census_index": 7773,
+      "name": "v2873",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009024
+    },
+    {
+      "census_index": 7775,
+      "name": "v2866",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008947
+    },
+    {
+      "census_index": 7778,
+      "name": "v3080",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.014257
+    },
+    {
+      "census_index": 7784,
+      "name": "v3339",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.015543
+    },
+    {
+      "census_index": 7813,
+      "name": "v3128",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009573
+    },
+    {
+      "census_index": 7814,
+      "name": "v3240",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008149
+    },
+    {
+      "census_index": 7828,
+      "name": "v3262",
+      "signature": [
+        2,
+        1
+      ],
+      "fitness": 0.003355
+    },
+    {
+      "census_index": 7832,
+      "name": "v3010",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.015071
+    },
+    {
+      "census_index": 7835,
+      "name": "v2841",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011019
+    },
+    {
+      "census_index": 7853,
+      "name": "v3142",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.0121
+    },
+    {
+      "census_index": 7897,
+      "name": "v2857",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.00917
+    },
+    {
+      "census_index": 7898,
+      "name": "v3361",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.011479
+    },
+    {
+      "census_index": 7900,
+      "name": "v2858",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006496
+    },
+    {
+      "census_index": 7915,
+      "name": "v2889",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009998
+    },
+    {
+      "census_index": 7922,
+      "name": "v2851",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.003666
+    },
+    {
+      "census_index": 7977,
+      "name": "v3116",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.008441
+    },
+    {
+      "census_index": 8005,
+      "name": "v2903",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007257
+    },
+    {
+      "census_index": 8015,
+      "name": "v3027",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.009684
+    },
+    {
+      "census_index": 8017,
+      "name": "v2986",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.006735
+    },
+    {
+      "census_index": 8028,
+      "name": "v2856",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009374
+    },
+    {
+      "census_index": 8030,
+      "name": "v2900",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012778
+    },
+    {
+      "census_index": 8038,
+      "name": "s958",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010692
+    },
+    {
+      "census_index": 8040,
+      "name": "s958",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010156
+    },
+    {
+      "census_index": 8045,
+      "name": "v2901",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.009577
+    },
+    {
+      "census_index": 8069,
+      "name": "v2998",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006601
+    },
+    {
+      "census_index": 8071,
+      "name": "v2950",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009956
+    },
+    {
+      "census_index": 8076,
+      "name": "v3188",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008567
+    },
+    {
+      "census_index": 8081,
+      "name": "v3158",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005646
+    },
+    {
+      "census_index": 8094,
+      "name": "v2917",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008479
+    },
+    {
+      "census_index": 8100,
+      "name": "v3280",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011042
+    },
+    {
+      "census_index": 8104,
+      "name": "v3463",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012978
+    },
+    {
+      "census_index": 8107,
+      "name": "v2933",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.007314
+    },
+    {
+      "census_index": 8112,
+      "name": "v3005",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011531
+    },
+    {
+      "census_index": 8130,
+      "name": "v2988",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008783
+    },
+    {
+      "census_index": 8150,
+      "name": "v3085",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009937
+    },
+    {
+      "census_index": 8152,
+      "name": "v3202",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.002396
+    },
+    {
+      "census_index": 8163,
+      "name": "v3498",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011782
+    },
+    {
+      "census_index": 8178,
+      "name": "v3110",
+      "signature": [
+        1,
+        3
+      ],
+      "fitness": 0.013091
+    },
+    {
+      "census_index": 8183,
+      "name": "v3372",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004179
+    },
+    {
+      "census_index": 8184,
+      "name": "v2914",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013042
+    },
+    {
+      "census_index": 8186,
+      "name": "v2875",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.0099
+    },
+    {
+      "census_index": 8188,
+      "name": "v3543",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010486
+    },
+    {
+      "census_index": 8203,
+      "name": "v3012",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010713
+    },
+    {
+      "census_index": 8204,
+      "name": "v2997",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.007567
+    },
+    {
+      "census_index": 8228,
+      "name": "v2965",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008849
+    },
+    {
+      "census_index": 8240,
+      "name": "v2908",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.004461
+    },
+    {
+      "census_index": 8242,
+      "name": "s957",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005767
+    },
+    {
+      "census_index": 8273,
+      "name": "v3071",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011406
+    },
+    {
+      "census_index": 8274,
+      "name": "v3408",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.00513
+    },
+    {
+      "census_index": 8315,
+      "name": "v3028",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013212
+    },
+    {
+      "census_index": 8321,
+      "name": "v3169",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.002162
+    },
+    {
+      "census_index": 8342,
+      "name": "v2974",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004386
+    },
+    {
+      "census_index": 8361,
+      "name": "v3080",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009722
+    },
+    {
+      "census_index": 8371,
+      "name": "v3071",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00353
+    },
+    {
+      "census_index": 8382,
+      "name": "v3162",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007631
+    },
+    {
+      "census_index": 8384,
+      "name": "v3421",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012852
+    },
+    {
+      "census_index": 8397,
+      "name": "v3109",
+      "signature": [
+        3,
+        2
+      ],
+      "fitness": 0.004408
+    },
+    {
+      "census_index": 8398,
+      "name": "v3107",
+      "signature": [
+        3,
+        2
+      ],
+      "fitness": 0.003409
+    },
+    {
+      "census_index": 8404,
+      "name": "v3543",
+      "signature": [
+        3,
+        2
+      ],
+      "fitness": 0.00562
+    },
+    {
+      "census_index": 8418,
+      "name": "v3351",
+      "signature": [
+        1,
+        1
+      ],
+      "fitness": 0.004267
+    },
+    {
+      "census_index": 8424,
+      "name": "v3168",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.015917
+    },
+    {
+      "census_index": 8427,
+      "name": "v3062",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00975
+    },
+    {
+      "census_index": 8436,
+      "name": "v3189",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008937
+    },
+    {
+      "census_index": 8445,
+      "name": "v3263",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.013159
+    },
+    {
+      "census_index": 8455,
+      "name": "v3346",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00489
+    },
+    {
+      "census_index": 8466,
+      "name": "v3168",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009337
+    },
+    {
+      "census_index": 8472,
+      "name": "v3420",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00678
+    },
+    {
+      "census_index": 8473,
+      "name": "v3261",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011887
+    },
+    {
+      "census_index": 8479,
+      "name": "v2968",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006373
+    },
+    {
+      "census_index": 8485,
+      "name": "v3209",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009784
+    },
+    {
+      "census_index": 8487,
+      "name": "v3212",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008693
+    },
+    {
+      "census_index": 8494,
+      "name": "v2967",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008093
+    },
+    {
+      "census_index": 8495,
+      "name": "v2957",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006489
+    },
+    {
+      "census_index": 8536,
+      "name": "v3305",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009091
+    },
+    {
+      "census_index": 8537,
+      "name": "v3398",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005041
+    },
+    {
+      "census_index": 8539,
+      "name": "v3157",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00949
+    },
+    {
+      "census_index": 8550,
+      "name": "v3071",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008801
+    },
+    {
+      "census_index": 8570,
+      "name": "v3508",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011626
+    },
+    {
+      "census_index": 8576,
+      "name": "v2998",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006962
+    },
+    {
+      "census_index": 8582,
+      "name": "v2998",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00769
+    },
+    {
+      "census_index": 8587,
+      "name": "v2959",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.005499
+    },
+    {
+      "census_index": 8596,
+      "name": "v3392",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005772
+    },
+    {
+      "census_index": 8611,
+      "name": "v3126",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010608
+    },
+    {
+      "census_index": 8637,
+      "name": "v3539",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008817
+    },
+    {
+      "census_index": 8638,
+      "name": "v3202",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010129
+    },
+    {
+      "census_index": 8651,
+      "name": "v3258",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013848
+    },
+    {
+      "census_index": 8655,
+      "name": "v3490",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005988
+    },
+    {
+      "census_index": 8679,
+      "name": "v3071",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010128
+    },
+    {
+      "census_index": 8699,
+      "name": "v3047",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005973
+    },
+    {
+      "census_index": 8716,
+      "name": "v2997",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011934
+    },
+    {
+      "census_index": 8735,
+      "name": "v3208",
+      "signature": [
+        1,
+        2
+      ],
+      "fitness": 0.011471
+    },
+    {
+      "census_index": 8751,
+      "name": "v3188",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011245
+    },
+    {
+      "census_index": 8752,
+      "name": "v3392",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007819
+    },
+    {
+      "census_index": 8769,
+      "name": "v3304",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011588
+    },
+    {
+      "census_index": 8784,
+      "name": "v3109",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010357
+    },
+    {
+      "census_index": 8793,
+      "name": "v3299",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006067
+    },
+    {
+      "census_index": 8796,
+      "name": "v3169",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008998
+    },
+    {
+      "census_index": 8797,
+      "name": "v3117",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010776
+    },
+    {
+      "census_index": 8804,
+      "name": "v3284",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007094
+    },
+    {
+      "census_index": 8814,
+      "name": "v3085",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.0064
+    },
+    {
+      "census_index": 8824,
+      "name": "v3261",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011728
+    },
+    {
+      "census_index": 8830,
+      "name": "v3067",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012615
+    },
+    {
+      "census_index": 8833,
+      "name": "v3092",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007329
+    },
+    {
+      "census_index": 8839,
+      "name": "v3320",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.009593
+    },
+    {
+      "census_index": 8840,
+      "name": "v3198",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.012496
+    },
+    {
+      "census_index": 8856,
+      "name": "v3062",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006565
+    },
+    {
+      "census_index": 8857,
+      "name": "v3358",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005155
+    },
+    {
+      "census_index": 8871,
+      "name": "v3314",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.008911
+    },
+    {
+      "census_index": 8879,
+      "name": "v3415",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00964
+    },
+    {
+      "census_index": 8890,
+      "name": "v3318",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005617
+    },
+    {
+      "census_index": 8912,
+      "name": "v3283",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.010656
+    },
+    {
+      "census_index": 8939,
+      "name": "v3130",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006385
+    },
+    {
+      "census_index": 8951,
+      "name": "v3362",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.01272
+    },
+    {
+      "census_index": 8960,
+      "name": "v3147",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009515
+    },
+    {
+      "census_index": 8963,
+      "name": "v3062",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008661
+    },
+    {
+      "census_index": 8964,
+      "name": "v3170",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010397
+    },
+    {
+      "census_index": 8972,
+      "name": "v3136",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.006702
+    },
+    {
+      "census_index": 8978,
+      "name": "v3184",
+      "signature": [
+        6,
+        2
+      ],
+      "fitness": 0.013034
+    },
+    {
+      "census_index": 8979,
+      "name": "v3280",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011971
+    },
+    {
+      "census_index": 8984,
+      "name": "v3457",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008761
+    },
+    {
+      "census_index": 8994,
+      "name": "v3404",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00879
+    },
+    {
+      "census_index": 9004,
+      "name": "v3129",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008783
+    },
+    {
+      "census_index": 9024,
+      "name": "v3345",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009528
+    },
+    {
+      "census_index": 9032,
+      "name": "v3121",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009309
+    },
+    {
+      "census_index": 9033,
+      "name": "v3346",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005675
+    },
+    {
+      "census_index": 9037,
+      "name": "v3085",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007248
+    },
+    {
+      "census_index": 9059,
+      "name": "v3076",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009566
+    },
+    {
+      "census_index": 9079,
+      "name": "v3372",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009903
+    },
+    {
+      "census_index": 9083,
+      "name": "v3166",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011355
+    },
+    {
+      "census_index": 9102,
+      "name": "v3166",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004012
+    },
+    {
+      "census_index": 9103,
+      "name": "v3474",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009369
+    },
+    {
+      "census_index": 9109,
+      "name": "v3519",
+      "signature": [
+        2,
+        2
+      ],
+      "fitness": 0.010934
+    },
+    {
+      "census_index": 9110,
+      "name": "v3154",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011724
+    },
+    {
+      "census_index": 9123,
+      "name": "v3188",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00949
+    },
+    {
+      "census_index": 9161,
+      "name": "v3188",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01014
+    },
+    {
+      "census_index": 9167,
+      "name": "v3327",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.003482
+    },
+    {
+      "census_index": 9200,
+      "name": "v3168",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.00403
+    },
+    {
+      "census_index": 9204,
+      "name": "v3238",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00653
+    },
+    {
+      "census_index": 9212,
+      "name": "v3271",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008204
+    },
+    {
+      "census_index": 9256,
+      "name": "v3142",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005519
+    },
+    {
+      "census_index": 9258,
+      "name": "v3189",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.009184
+    },
+    {
+      "census_index": 9262,
+      "name": "v3134",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009214
+    },
+    {
+      "census_index": 9271,
+      "name": "v3193",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004186
+    },
+    {
+      "census_index": 9285,
+      "name": "v3198",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007813
+    },
+    {
+      "census_index": 9303,
+      "name": "v3138",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010666
+    },
+    {
+      "census_index": 9316,
+      "name": "v3340",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.007165
+    },
+    {
+      "census_index": 9336,
+      "name": "v3162",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009577
+    },
+    {
+      "census_index": 9347,
+      "name": "v3378",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009165
+    },
+    {
+      "census_index": 9349,
+      "name": "v3482",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012385
+    },
+    {
+      "census_index": 9360,
+      "name": "v3209",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003591
+    },
+    {
+      "census_index": 9362,
+      "name": "v3212",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.004844
+    },
+    {
+      "census_index": 9371,
+      "name": "v3157",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006532
+    },
+    {
+      "census_index": 9372,
+      "name": "v3411",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005602
+    },
+    {
+      "census_index": 9379,
+      "name": "v3532",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003764
+    },
+    {
+      "census_index": 9397,
+      "name": "v3209",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005958
+    },
+    {
+      "census_index": 9423,
+      "name": "v3448",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009254
+    },
+    {
+      "census_index": 9424,
+      "name": "v3143",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.01061
+    },
+    {
+      "census_index": 9436,
+      "name": "v3400",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004372
+    },
+    {
+      "census_index": 9438,
+      "name": "v3351",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009321
+    },
+    {
+      "census_index": 9443,
+      "name": "v3245",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010555
+    },
+    {
+      "census_index": 9460,
+      "name": "v3160",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.015227
+    },
+    {
+      "census_index": 9463,
+      "name": "v3375",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.012427
+    },
+    {
+      "census_index": 9514,
+      "name": "v3190",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009419
+    },
+    {
+      "census_index": 9527,
+      "name": "v3513",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00786
+    },
+    {
+      "census_index": 9545,
+      "name": "v3463",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003643
+    },
+    {
+      "census_index": 9553,
+      "name": "v3479",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008974
+    },
+    {
+      "census_index": 9555,
+      "name": "v3166",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010191
+    },
+    {
+      "census_index": 9578,
+      "name": "v3252",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01113
+    },
+    {
+      "census_index": 9581,
+      "name": "v3453",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007123
+    },
+    {
+      "census_index": 9598,
+      "name": "v3400",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005736
+    },
+    {
+      "census_index": 9599,
+      "name": "v3333",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011947
+    },
+    {
+      "census_index": 9603,
+      "name": "v3261",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004592
+    },
+    {
+      "census_index": 9617,
+      "name": "v3331",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011132
+    },
+    {
+      "census_index": 9618,
+      "name": "v3261",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007342
+    },
+    {
+      "census_index": 9625,
+      "name": "v3473",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005722
+    },
+    {
+      "census_index": 9627,
+      "name": "v3280",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010438
+    },
+    {
+      "census_index": 9635,
+      "name": "v3454",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.010509
+    },
+    {
+      "census_index": 9636,
+      "name": "v3453",
+      "signature": [
+        4,
+        2
+      ],
+      "fitness": 0.009493
+    },
+    {
+      "census_index": 9643,
+      "name": "v3268",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01385
+    },
+    {
+      "census_index": 9648,
+      "name": "v3471",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010013
+    },
+    {
+      "census_index": 9650,
+      "name": "v3244",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.0048
+    },
+    {
+      "census_index": 9699,
+      "name": "v3463",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.01073
+    },
+    {
+      "census_index": 9731,
+      "name": "v3255",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007864
+    },
+    {
+      "census_index": 9733,
+      "name": "v3454",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004481
+    },
+    {
+      "census_index": 9749,
+      "name": "v3188",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008681
+    },
+    {
+      "census_index": 9782,
+      "name": "v3207",
+      "signature": [
+        0,
+        4
+      ],
+      "fitness": 0.005265
+    },
+    {
+      "census_index": 9793,
+      "name": "v3284",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.008243
+    },
+    {
+      "census_index": 9798,
+      "name": "v3263",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010048
+    },
+    {
+      "census_index": 9807,
+      "name": "v3324",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010387
+    },
+    {
+      "census_index": 9810,
+      "name": "v3352",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009511
+    },
+    {
+      "census_index": 9816,
+      "name": "v3422",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007893
+    },
+    {
+      "census_index": 9852,
+      "name": "v3249",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004496
+    },
+    {
+      "census_index": 9854,
+      "name": "v3266",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003665
+    },
+    {
+      "census_index": 9882,
+      "name": "v3365",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009638
+    },
+    {
+      "census_index": 9892,
+      "name": "v3534",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010747
+    },
+    {
+      "census_index": 9907,
+      "name": "v3349",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009245
+    },
+    {
+      "census_index": 9933,
+      "name": "v3347",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010612
+    },
+    {
+      "census_index": 9951,
+      "name": "v3290",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006895
+    },
+    {
+      "census_index": 9993,
+      "name": "v3417",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006867
+    },
+    {
+      "census_index": 9994,
+      "name": "v3276",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009885
+    },
+    {
+      "census_index": 9996,
+      "name": "v3477",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009606
+    },
+    {
+      "census_index": 10002,
+      "name": "v3500",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008482
+    },
+    {
+      "census_index": 10014,
+      "name": "v3261",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011326
+    },
+    {
+      "census_index": 10032,
+      "name": "v3417",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004757
+    },
+    {
+      "census_index": 10051,
+      "name": "v3508",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.009043
+    },
+    {
+      "census_index": 10101,
+      "name": "v3329",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011632
+    },
+    {
+      "census_index": 10103,
+      "name": "v3516",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00861
+    },
+    {
+      "census_index": 10124,
+      "name": "v3340",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005149
+    },
+    {
+      "census_index": 10127,
+      "name": "v3483",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.007821
+    },
+    {
+      "census_index": 10151,
+      "name": "v3348",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005229
+    },
+    {
+      "census_index": 10153,
+      "name": "v3362",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.006076
+    },
+    {
+      "census_index": 10154,
+      "name": "v3512",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.003327
+    },
+    {
+      "census_index": 10156,
+      "name": "v3529",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00994
+    },
+    {
+      "census_index": 10168,
+      "name": "v3478",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009987
+    },
+    {
+      "census_index": 10169,
+      "name": "v3351",
+      "signature": [
+        5,
+        2
+      ],
+      "fitness": 0.007639
+    },
+    {
+      "census_index": 10184,
+      "name": "v3356",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.01106
+    },
+    {
+      "census_index": 10186,
+      "name": "v3494",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004073
+    },
+    {
+      "census_index": 10198,
+      "name": "v3439",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007034
+    },
+    {
+      "census_index": 10199,
+      "name": "v3351",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012018
+    },
+    {
+      "census_index": 10210,
+      "name": "v3444",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005842
+    },
+    {
+      "census_index": 10225,
+      "name": "v3352",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012582
+    },
+    {
+      "census_index": 10234,
+      "name": "v3340",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011236
+    },
+    {
+      "census_index": 10237,
+      "name": "v3470",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.009821
+    },
+    {
+      "census_index": 10260,
+      "name": "v3466",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.009028
+    },
+    {
+      "census_index": 10263,
+      "name": "v3509",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.018306
+    },
+    {
+      "census_index": 10280,
+      "name": "v3443",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009525
+    },
+    {
+      "census_index": 10311,
+      "name": "v3536",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008759
+    },
+    {
+      "census_index": 10312,
+      "name": "v3359",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009011
+    },
+    {
+      "census_index": 10322,
+      "name": "v3415",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010354
+    },
+    {
+      "census_index": 10337,
+      "name": "v3517",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005757
+    },
+    {
+      "census_index": 10355,
+      "name": "v3441",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008845
+    },
+    {
+      "census_index": 10372,
+      "name": "v3361",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.013487
+    },
+    {
+      "census_index": 10374,
+      "name": "v3371",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.013138
+    },
+    {
+      "census_index": 10376,
+      "name": "v3469",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011142
+    },
+    {
+      "census_index": 10380,
+      "name": "v3351",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005097
+    },
+    {
+      "census_index": 10384,
+      "name": "v3453",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.002628
+    },
+    {
+      "census_index": 10393,
+      "name": "v3374",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00412
+    },
+    {
+      "census_index": 10417,
+      "name": "v3473",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00736
+    },
+    {
+      "census_index": 10418,
+      "name": "v3476",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.011414
+    },
+    {
+      "census_index": 10425,
+      "name": "v3441",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006915
+    },
+    {
+      "census_index": 10433,
+      "name": "v3479",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006337
+    },
+    {
+      "census_index": 10434,
+      "name": "v3448",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007039
+    },
+    {
+      "census_index": 10457,
+      "name": "v3435",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.00578
+    },
+    {
+      "census_index": 10465,
+      "name": "v3420",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007377
+    },
+    {
+      "census_index": 10466,
+      "name": "v3457",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010896
+    },
+    {
+      "census_index": 10481,
+      "name": "v3374",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007925
+    },
+    {
+      "census_index": 10484,
+      "name": "v3435",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00938
+    },
+    {
+      "census_index": 10508,
+      "name": "v3411",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.010397
+    },
+    {
+      "census_index": 10513,
+      "name": "v3469",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006758
+    },
+    {
+      "census_index": 10514,
+      "name": "v3470",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.00626
+    },
+    {
+      "census_index": 10532,
+      "name": "v3516",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.010794
+    },
+    {
+      "census_index": 10552,
+      "name": "v3524",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005577
+    },
+    {
+      "census_index": 10556,
+      "name": "v3443",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007996
+    },
+    {
+      "census_index": 10588,
+      "name": "v3443",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.004452
+    },
+    {
+      "census_index": 10593,
+      "name": "v3482",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014555
+    },
+    {
+      "census_index": 10633,
+      "name": "v3477",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009891
+    },
+    {
+      "census_index": 10634,
+      "name": "v3522",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007064
+    },
+    {
+      "census_index": 10639,
+      "name": "v3465",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.007342
+    },
+    {
+      "census_index": 10646,
+      "name": "v3520",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.010775
+    },
+    {
+      "census_index": 10654,
+      "name": "v3499",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.005412
+    },
+    {
+      "census_index": 10665,
+      "name": "v3503",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008982
+    },
+    {
+      "census_index": 10674,
+      "name": "v3509",
+      "signature": [
+        3,
+        3
+      ],
+      "fitness": 0.007303
+    },
+    {
+      "census_index": 10678,
+      "name": "v3513",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.007135
+    },
+    {
+      "census_index": 10684,
+      "name": "v3489",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.004445
+    },
+    {
+      "census_index": 10696,
+      "name": "v3498",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011272
+    },
+    {
+      "census_index": 10703,
+      "name": "v3494",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.008656
+    },
+    {
+      "census_index": 10710,
+      "name": "v3491",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008338
+    },
+    {
+      "census_index": 10732,
+      "name": "v3494",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011536
+    },
+    {
+      "census_index": 10733,
+      "name": "v3534",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006639
+    },
+    {
+      "census_index": 10738,
+      "name": "v3517",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009869
+    },
+    {
+      "census_index": 10743,
+      "name": "v3519",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.003663
+    },
+    {
+      "census_index": 10758,
+      "name": "v3473",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.012615
+    },
+    {
+      "census_index": 10763,
+      "name": "v3502",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005328
+    },
+    {
+      "census_index": 10773,
+      "name": "v3469",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008451
+    },
+    {
+      "census_index": 10809,
+      "name": "v3490",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005788
+    },
+    {
+      "census_index": 10853,
+      "name": "v3489",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011019
+    },
+    {
+      "census_index": 10860,
+      "name": "v3491",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.006757
+    },
+    {
+      "census_index": 10902,
+      "name": "v3539",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.002814
+    },
+    {
+      "census_index": 10907,
+      "name": "v3500",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.011032
+    },
+    {
+      "census_index": 10912,
+      "name": "v3529",
+      "signature": [
+        2,
+        3
+      ],
+      "fitness": 0.012453
+    },
+    {
+      "census_index": 10922,
+      "name": "v3523",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007246
+    },
+    {
+      "census_index": 10925,
+      "name": "v3534",
+      "signature": [
+        0,
+        5
+      ],
+      "fitness": 0.011532
+    },
+    {
+      "census_index": 10926,
+      "name": "v3505",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.010777
+    },
+    {
+      "census_index": 10933,
+      "name": "v3505",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.007715
+    },
+    {
+      "census_index": 10945,
+      "name": "v3513",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.004835
+    },
+    {
+      "census_index": 10959,
+      "name": "v3522",
+      "signature": [
+        1,
+        4
+      ],
+      "fitness": 0.00956
+    },
+    {
+      "census_index": 10961,
+      "name": "v3519",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008724
+    },
+    {
+      "census_index": 10962,
+      "name": "v3521",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.009796
+    },
+    {
+      "census_index": 10966,
+      "name": "v3521",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.005255
+    },
+    {
+      "census_index": 10976,
+      "name": "v3539",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.014393
+    },
+    {
+      "census_index": 10993,
+      "name": "v3522",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005361
+    },
+    {
+      "census_index": 10997,
+      "name": "v3522",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.005172
+    },
+    {
+      "census_index": 11011,
+      "name": "v3529",
+      "signature": [
+        2,
+        4
+      ],
+      "fitness": 0.008959
+    },
+    {
+      "census_index": 11022,
+      "name": "v3539",
+      "signature": [
+        4,
+        3
+      ],
+      "fitness": 0.008403
+    }
+  ]
+}
