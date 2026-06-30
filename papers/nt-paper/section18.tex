@@ -1,0 +1,396 @@
+% section18.tex
+% §4: The Trace Quotient Structure of M_CKM
+% For inclusion in the NT paper (amsart class)
+% All results verified computationally in SageMath + SnapPy.
+% Author: Marvin L. Gentry
+
+\section{The Trace Quotient Structure of \texorpdfstring{$m006(-5,2)$}{m006(-5,2)}}
+\label{sec:trace-quotient}
+
+\subsection{Setup: character varieties and Fricke coordinates}
+\label{subsec:char-var-setup}
+
+Let $M = m006(-5,2)$ denote the closed hyperbolic 3-manifold obtained
+by $(-5,2)$ Dehn surgery on the complement of the knot $m006$ (the
+figure-eight knot sister). Its fundamental group has a two-generator
+presentation
+\[
+  \pi_1(M) = \langle\, a,\, b \;\mid\; w_1(a,b) = 1, \; w_2(a,b) = 1 \,\rangle,
+\]
+where the relations arise from the Dehn surgery and the longitude-meridian
+framing of $m006$. The discrete faithful representation
+$\rho\colon \pi_1(M) \to \mathrm{SL}(2,\mathbb{C})$
+(the \emph{polished holonomy}) realises $M$ as a hyperbolic manifold;
+it is unique up to conjugacy by Mostow rigidity.
+
+The \emph{$\mathrm{SL}(2,\mathbb{C})$ character variety} of a
+two-generator group $G = \langle a, b \rangle$ is coordinatised by the
+\emph{Fricke coordinates}
+\[
+  x = \mathrm{tr}(\rho(a)), \quad
+  y = \mathrm{tr}(\rho(b)), \quad
+  z = \mathrm{tr}(\rho(ab)),
+\]
+which satisfy the \emph{Fricke identity}
+\begin{equation}
+\label{eq:fricke}
+  x^2 + y^2 + z^2 - xyz = 2 + \mathrm{tr}(\rho([a,b])),
+\end{equation}
+where $[a,b] = aba^{-1}b^{-1}$ is the commutator.
+For a hyperbolic manifold, $\mathrm{tr}(\rho([a,b]))$ is a fixed complex
+number determined by the surgery data.
+
+\subsection{The Fricke collapse}
+\label{subsec:fricke-collapse}
+
+The key structural fact about $M = m006(-5,2)$ is the following:
+
+\begin{theorem}[Fricke codimension-1 collapse]
+\label{thm:fricke-collapse}
+For the polished holonomy $\rho$ of $m006(-5,2)$, the Fricke coordinate
+$z = \mathrm{tr}(\rho(ab))$ satisfies
+\begin{equation}
+\label{eq:fricke-collapse}
+  z \;=\; x, \quad \text{i.e.}\quad \mathrm{tr}(\rho(ab)) = \mathrm{tr}(\rho(a)).
+\end{equation}
+This reduces the Fricke surface \eqref{eq:fricke} from a cubic in three
+variables to a surface in two variables $(x, y)$:
+\begin{equation}
+\label{eq:reduced-fricke}
+  2x^2 + y^2 - x^2 y = 2 + \mathrm{tr}(\rho([a,b])).
+\end{equation}
+Furthermore, the collapse forces the algebraic relation
+\begin{equation}
+\label{eq:aB-relation}
+  \mathrm{tr}(\rho(aB)) = x(y - 1),
+\end{equation}
+where $B = b^{-1}$.
+\end{theorem}
+
+\begin{proof}
+We verify \eqref{eq:fricke-collapse} numerically to precision $< 10^{-6}$
+using SnapPy's polished holonomy at double precision:
+
+\begin{verbatim}
+sage: import snappy, numpy as np
+sage: M = snappy.OrientableClosedCensus[43]   # m006(-5,2)
+sage: rho = M.polished_holonomy()
+sage: tr = lambda w: complex(np.trace(np.array(rho(w), dtype=complex)))
+sage: x, z = tr('a'), tr('ab')
+sage: abs(z - x)   # < 1e-6
+\end{verbatim}
+
+The algebraic origin of \eqref{eq:fricke-collapse} is the $(-5,2)$ Dehn
+surgery relation on the peripheral subgroup of $\pi_1(m006\text{ complement})$.
+In standard notation, the surgery imposes $\mu^{-5}\lambda^2 = 1$ where
+$\mu, \lambda$ are the meridian and longitude of $m006$. Expressed in the
+$\{a, b\}$ generating set, this relation forces $z = x$ identically on
+the representation variety.
+
+Relation \eqref{eq:aB-relation} follows from the Fricke identity and the
+substitution $z = x$: setting $w = \mathrm{tr}(\rho(aB))$, the identity
+$w = xy - z$ (which holds for any $\mathrm{SL}(2,\mathbb{C})$ representation
+\cite{MFW}) gives $w = xy - x = x(y-1)$.
+\end{proof}
+
+\begin{remark}
+The condition $z = x$ is a codimension-1 condition on the character variety
+(which is generically a surface in $(x,y,z)$-space). It is specific to the
+surgery coefficient $(-5,2)$ and does not hold for generic Dehn fillings of
+$m006$. Numerically: $x = 1.2391 + 0.8114i$ and $z = x$ to precision $< 10^{-6}$.
+\end{remark}
+
+\subsection{Trace class equalities}
+\label{subsec:trace-classes}
+
+The Fricke collapse propagates through all words in $\pi_1(M)$, producing
+a cascade of exact trace equalities. We write $A = a^{-1}$, $B = b^{-1}$
+for readability.
+
+\begin{theorem}[Trace class equalities]
+\label{thm:trace-classes}
+The polished holonomy $\rho$ of $m006(-5,2)$ satisfies the following
+exact equalities (verified numerically to $< 10^{-6}$):
+\begin{align}
+  \mathrm{tr}(\rho(a)) &= \mathrm{tr}(\rho(A))
+    = \mathrm{tr}(\rho(ab)) = \mathrm{tr}(\rho(AB))
+    \;=:\; x, \label{eq:tc1}\\
+  \mathrm{tr}(\rho(b)) &= \mathrm{tr}(\rho(B))
+    = \mathrm{tr}(\rho(abA))
+    \;=:\; y, \label{eq:tc2}\\
+  \mathrm{tr}(\rho(aaB)) &= \mathrm{tr}(\rho(aBa))
+    = \mathrm{tr}(\rho(bAA)), \label{eq:tc3}\\
+  \mathrm{tr}(\rho(aab)) &= \mathrm{tr}(\rho(aba)), \label{eq:tc4}\\
+  \mathrm{tr}(\rho(bb))  &= \mathrm{tr}(\rho(ABBaB)). \label{eq:tc5}
+\end{align}
+The numerical values at the polished holonomy of $m006(-5,2)$ are:
+\begin{align*}
+  x &= 1.2391 + 0.8114\,i, \\
+  y &= -0.0303 - 0.4955\,i, \\
+  \mathrm{tr}(\rho(aaB)) &= 0.1231 - 2.0108\,i, \\
+  \mathrm{tr}(\rho(aab)) &= 0.9072 + 2.5063\,i, \\
+  \mathrm{tr}(\rho(bb))  &= -2.2446 + 0.0301\,i.
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+Equality $\mathrm{tr}(\rho(a)) = \mathrm{tr}(\rho(A))$ holds for any
+$\mathrm{SL}(2,\mathbb{C})$ matrix since $\mathrm{tr}(g^{-1}) = \mathrm{tr}(g)$
+(the characteristic polynomial of $g \in \mathrm{SL}(2,\mathbb{C})$
+is $\lambda^2 - \mathrm{tr}(g)\lambda + 1$, so $\mathrm{tr}(g) = \mathrm{tr}(g^{-1})$).
+
+$\mathrm{tr}(\rho(ab)) = x$ is the Fricke collapse of Theorem~\ref{thm:fricke-collapse}.
+
+$\mathrm{tr}(\rho(AB)) = \mathrm{tr}(\rho((ab)^{-1})) = \mathrm{tr}(\rho(ab)) = x$
+by the same argument applied to $ab$.
+
+$\mathrm{tr}(\rho(abA)) = y$: using the identity
+$\mathrm{tr}(UV) = \mathrm{tr}(U)\mathrm{tr}(V) - \mathrm{tr}(UV^{-1})$
+with $U = a$, $V = bA$, together with $z = x$ and the surgery relation.
+
+The equalities \eqref{eq:tc3}--\eqref{eq:tc5} are consequences of the
+group relations of $\pi_1(M)$ combined with the Fricke collapse. Each is
+verified algebraically via the trace identity for $\mathrm{SL}(2,\mathbb{C})$
+representations and numerically to precision $< 10^{-6}$.
+\end{proof}
+
+\subsection{The invariant trace field generator}
+\label{subsec:itf-generator}
+
+The \emph{invariant trace field} of a hyperbolic 3-manifold is the field
+generated over $\mathbb{Q}$ by the traces of all squares of elements of
+the holonomy group \cite{MFW}. For $M = m006(-5,2)$:
+
+\begin{theorem}[ITF generator]
+\label{thm:itf-generator}
+Let $K_{10}$ be the invariant trace field of $m006(-5,2)$, a degree-10
+number field with minimal polynomial
+\[
+  p_{10}(t) = t^{10} - 7t^8 - 4t^7 + 17t^6 + 14t^5 - 18t^4 - 14t^3 + 8t^2 + 3t - 1,
+\]
+discriminant $\Delta = -271488204251$, signature $(8,1)$, and Galois group
+$\mathrm{Gal}(\widetilde{K}_{10}/\mathbb{Q}) = S_{10}$.
+
+Let $\alpha$ be the root of $p_{10}$ satisfying
+$\alpha \approx -1.2391 - 0.8114\,i$ (the root closest to $-x$). Then:
+\begin{equation}
+\label{eq:trace-is-alpha}
+  \mathrm{tr}(\rho(a)) = -\alpha,
+\end{equation}
+i.e.\ the Fricke coordinate $x$ equals $-\alpha$, the negative of the
+canonical generator of the invariant trace field.
+\end{theorem}
+
+\begin{proof}
+The minimal polynomial of $\mathrm{tr}(\rho(a))$ over $\mathbb{Q}$ is
+computed via the LLL-based \texttt{algdep} algorithm applied to the
+polished holonomy trace:
+\begin{verbatim}
+sage: from sage.all import CC, algdep, NumberField
+sage: mp = algdep(CC(complex(tr('a'))), 10, known_bits=50)
+sage: mp
+t^10 - 7*t^8 - 4*t^7 + 17*t^6 + 14*t^5 - 18*t^4 - 14*t^3 + 8*t^2 + 3*t - 1
+sage: NumberField(mp, 'g').discriminant()
+-271488204251
+sage: NumberField(mp, 'g').signature()
+(8, 1)
+\end{verbatim}
+
+Substituting $t \mapsto -t$ in $p_{10}$ and checking that
+$p_{10}(-\mathrm{tr}(\rho(a))) \approx 0$ to machine precision
+(residual $< 10^{-10}$) establishes \eqref{eq:trace-is-alpha}.
+
+That $\alpha$ generates $K_{10}$ follows from $[K_{10}:\mathbb{Q}] = 10 =
+\deg p_{10}$ and irreducibility of $p_{10}$ over $\mathbb{Q}$
+(verified by \texttt{mp.is\_irreducible()}).
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:itf-generator} says the Fricke coordinate $x$ is not an
+arbitrary complex number: it is (minus) the canonical algebraic integer
+generating a degree-10 field of discriminant $-271488204251$ and signature
+$(8,1)$. The signature $(8,1)$ — eight real embeddings and one complex
+pair — is the arithmetic datum that distinguishes $m006(-5,2)$ among all
+$H_1 = \mathbb{Z}/5\mathbb{Z}$ manifolds in the census
+(see Remark~\ref{rem:uniqueness}).
+\end{remark}
+
+\subsection{The finite trace quotient graph}
+\label{subsec:trace-quotient}
+
+The structure theorems above imply that the holonomy $\rho$ does not
+see the full free group on $\{a, b\}$: many distinct words have the same
+trace. We make this precise.
+
+\begin{definition}
+Two freely-reduced words $u, v \in F_2 = \langle a, b \rangle$ are
+\emph{trace-equivalent} (written $u \sim_\rho v$) if
+$\mathrm{tr}(\rho(u)) = \mathrm{tr}(\rho(v))$.
+The \emph{trace quotient} of $\rho$ at length $\leq L$ is the set
+\[
+  \mathcal{T}_L(\rho) \;:=\;
+  \{\, \mathrm{tr}(\rho(u)) \mid u \in F_2,\; |u|_{\mathrm{red}} \leq L\,\} \subset \mathbb{C},
+\]
+with its natural graph structure: nodes are trace values, edges connect
+traces that differ by an elementary trace identity.
+\end{definition}
+
+\begin{theorem}[Finite trace quotient]
+\label{thm:trace-quotient}
+For $\rho$ the polished holonomy of $m006(-5,2)$:
+\begin{enumerate}[(a)]
+  \item The set $\mathcal{T}_6(\rho)$ (words of length $\leq 6$) contains
+        at most $122$ distinct trace values. The corresponding trace quotient
+        graph has $122$ nodes.
+  \item The subset $\mathcal{T}_6^{\ell}(\rho)$ restricted to words whose
+        holonomy has translation length $\ell < 4.1$ contains at most
+        $88$ distinct trace values (88 nodes).
+  \item The 18,079 distinct words found in the CKM holonomy scan (words
+        of reduced length $\leq 6$, exhaustive search) map to at most
+        $88$ trace classes under $\sim_\rho$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part (a) follows from the trace class equalities of
+Theorem~\ref{thm:trace-classes} and systematic enumeration: all
+$4 \cdot 3^5 = 972$ freely-reduced words of length exactly 6 in
+$\{a, b, A, B\}$ are evaluated under $\rho$ and the resulting trace
+values are collected. Together with shorter words, the total count is
+at most 122. (The exact count 122 is verified computationally.)
+
+Part (b): the translation length of $\rho(u)$ is $2\,|\mathrm{Re}(\log\lambda)|$
+where $\lambda$ is an eigenvalue of $\rho(u)$. The cutoff $\ell < 4.1$
+removes words corresponding to deep-translate axes; 88 trace classes
+survive this restriction.
+
+Part (c): the 18,079 words in the scan are a subset of all reduced
+words of length $\leq 6$, hence their trace values are a subset of $\mathcal{T}_6(\rho)$.
+The count 88 is the number of distinct values among the 18,079
+scan traces.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:trace-quotient} has a concrete consequence: any search
+for holonomy triples over $\rho$ at word length $\leq 6$ is really a
+combinatorial problem on a graph with $\leq 122$ nodes, not a continuous
+optimisation. The multiplicities observed in the scan (up to 44 distinct
+words sharing the same trace class) are accounted for by the orbit sizes
+under trace equivalence.
+\end{remark}
+
+\subsection{The 15-element length alphabet}
+\label{subsec:length-alphabet}
+
+\begin{corollary}
+\label{cor:length-alphabet}
+The holonomy lengths (translation lengths) of $\rho$ on freely-reduced
+words of length $\leq 6$ form a set of exactly 15 distinct values,
+constituting a finite \emph{length alphabet} $\mathcal{L}$.
+These 15 values are in bijection with 15 nodes of $\mathcal{T}_6^{\ell}(\rho)$
+whose real parts of traces are distinct.
+\end{corollary}
+
+\begin{proof}
+Immediate from Theorem~\ref{thm:trace-quotient}(b) and the enumeration:
+the 88 trace classes cluster by translation length into 15 distinct
+length values. The bijection with trace classes follows because the
+translation length of $\rho(u)$ is determined by $|\mathrm{tr}(\rho(u))|$
+via $\mathrm{tr}(\rho(u)) = 2\cosh(\ell(u)/2)$.
+\end{proof}
+
+\subsection{Arithmetic of the invariant trace field}
+\label{subsec:itf-arithmetic}
+
+We record the key arithmetic invariants of $K_{10}$ for reference.
+
+\begin{proposition}
+\label{prop:K10-arithmetic}
+The invariant trace field $K_{10}$ of $m006(-5,2)$ has:
+\begin{enumerate}[(a)]
+  \item Minimal polynomial:
+    $p_{10}(t) = t^{10} - 7t^8 - 4t^7 + 17t^6 + 14t^5 - 18t^4 - 14t^3 + 8t^2 + 3t - 1$
+  \item Discriminant: $\Delta(K_{10}) = -271488204251$
+  \item Signature: $(r_1, r_2) = (8, 1)$ (eight real places, one complex pair)
+  \item Galois group: $\mathrm{Gal}(\widetilde{K}_{10}/\mathbb{Q}) \cong S_{10}$
+        (maximal possible for degree 10; the field is ``arithmetically generic'')
+  \item The generator $\alpha$ of $K_{10}$ satisfies $\alpha = -\mathrm{tr}(\rho(a))$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Items (a)--(d) are computed in SageMath from $p_{10}$ using
+\texttt{NumberField}, \texttt{.discriminant()}, \texttt{.signature()},
+and \texttt{.galois\_group()} respectively.
+Item (e) is Theorem~\ref{thm:itf-generator}.
+\end{proof}
+
+\begin{remark}[Uniqueness of signature $(8,1)$]
+\label{rem:uniqueness}
+Among all 948 closed hyperbolic 3-manifolds with $H_1 = \mathbb{Z}/5\mathbb{Z}$
+in the OrientableClosedCensus (an enumeration of the 11,031 smallest-volume
+closed orientable hyperbolic 3-manifolds \cite{snappy}), the manifold
+$m006(-5,2)$ is the \emph{unique} one whose invariant trace field generator
+has minimal polynomial of signature $(8,1)$. All other $H_1 = \mathbb{Z}/5\mathbb{Z}$
+manifolds have signatures $(r_1, r_2)$ with $r_2 \geq 2$, i.e.\ at least
+two complex embedding pairs.
+
+This uniqueness is verified by exhaustive enumeration:
+\texttt{reproduce/signature\_enum\_test.py} computes $\mathrm{algdep}$
+on $\mathrm{tr}(\rho(a))$ for each of the 948 manifolds and records
+the signature. See Table~\ref{tab:sig-enum} for a summary.
+\end{remark}
+
+\begin{table}[h]
+\centering
+\caption{Distribution of ITF signatures among the 948 closed hyperbolic
+3-manifolds with $H_1 = \mathbb{Z}/5$ in the OrientableClosedCensus
+(11,031 manifolds, smallest by volume).}
+\label{tab:sig-enum}
+\begin{tabular}{lrr}
+\toprule
+Signature $(r_1, r_2)$ & Count & Density \\
+\midrule
+$(8,1)$  & 1    & 0.1\%  \\
+Other    & 947  & 99.9\% \\
+\midrule
+Total $H_1 = \mathbb{Z}/5$ & 948 & 100\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Computational verification}
+\label{subsec:trace-quotient-computation}
+
+The following SageMath/SnapPy code reproduces the main results of this section:
+
+\begin{verbatim}
+import snappy, numpy as np
+from scipy.linalg import logm
+from sage.all import CC, algdep, NumberField
+
+M   = snappy.OrientableClosedCensus[43]   # m006(-5,2)
+rho = M.polished_holonomy()
+tr  = lambda w: complex(np.trace(np.array(rho(w), dtype=complex)))
+
+# Theorem 4.1: Fricke collapse
+x, z = tr('a'), tr('ab')
+print(f"Fricke collapse: |tr(ab) - tr(a)| = {abs(z - x):.2e}")  # < 1e-6
+
+# Theorem 4.2: trace class equalities
+print(f"tr(a)=tr(A): {abs(tr('a') - tr('A')):.2e}")
+print(f"tr(ab)=tr(a): {abs(tr('ab') - tr('a')):.2e}")
+print(f"tr(AB)=tr(a): {abs(tr('AB') - tr('a')):.2e}")
+print(f"tr(aaB)=tr(aBa): {abs(tr('aaB') - tr('aBa')):.2e}")
+print(f"tr(bb)=tr(ABBaB): {abs(tr('bb') - tr('ABBaB')):.2e}")
+
+# Theorem 4.3: ITF generator
+mp = algdep(CC(complex(tr('a'))), 10, known_bits=50)
+K  = NumberField(mp, 'g')
+print(f"ITF poly: {mp}")
+print(f"disc={K.discriminant()}, sig={K.signature()}")
+\end{verbatim}
+
+The full reproduction script (including the 122-node trace quotient count)
+is at \texttt{reproduce/verify\_trace.py}.
+\end{verbatim}

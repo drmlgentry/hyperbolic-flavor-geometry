@@ -1,0 +1,220 @@
+% section_intro.tex
+% §1: Introduction
+% Author: Marvin L. Gentry
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Background}
+
+Two classical subjects of modern number theory — the arithmetic of
+hyperbolic 3-manifolds and the theory of Bianchi modular forms — meet
+in a single arithmetic object studied in this paper.
+
+\medskip
+\textbf{Hyperbolic 3-manifolds and their arithmetic.}
+A \emph{closed hyperbolic 3-manifold} $M$ is a compact Riemannian
+3-manifold of constant sectional curvature $-1$ and finite volume.
+By the uniformisation theorem of Thurston, $M = \mathbb{H}^3 / \Gamma$
+where $\Gamma \subset \mathrm{PSL}(2,\mathbb{C})$ is a discrete cocompact
+torsion-free subgroup (the \emph{Kleinian group}).
+The arithmetic of $M$ is encoded in three invariants of $\Gamma$:
+\begin{itemize}
+  \item The \emph{invariant trace field} $k(\Gamma)$, the subfield of
+        $\mathbb{C}$ generated over $\mathbb{Q}$ by $\{\mathrm{tr}(\gamma)^2
+        : \gamma \in \Gamma\}$ \cite{MFW};
+  \item The \emph{invariant quaternion algebra} $A(\Gamma)$, a central
+        simple algebra over $k(\Gamma)$ whose ramification controls the
+        commensurability class of $\Gamma$;
+  \item The \emph{character variety} $X(\Gamma, \mathrm{SL}(2,\mathbb{C}))$,
+        the affine algebraic variety parameterising representations of
+        $\pi_1(M)$ into $\mathrm{SL}(2,\mathbb{C})$ up to conjugacy.
+\end{itemize}
+For two-generator groups these invariants are largely captured by the
+\emph{Fricke coordinates} $(x, y, z) = (\mathrm{tr}(a), \mathrm{tr}(b),
+\mathrm{tr}(ab))$, which satisfy a cubic surface equation (the Fricke
+identity) in the character variety \cite{Goldman}.
+
+\medskip
+\textbf{Bianchi modular forms.}
+For an imaginary quadratic field $K = \mathbb{Q}(\sqrt{-d})$ with ring
+of integers $\mathcal{O}_K$, the \emph{Bianchi group}
+$\mathrm{PSL}(2, \mathcal{O}_K)$ acts on hyperbolic 3-space $\mathbb{H}^3$
+by isometries. Its congruence subgroups and their associated spaces of
+modular forms — \emph{Bianchi modular forms} — are the natural 3-dimensional
+generalisation of classical modular forms over $\mathbb{Q}$.
+The Langlands programme predicts, and in many cases has established,
+a correspondence between Bianchi newforms and Galois representations
+\cite{TaylorWiles, Berger}.
+In particular, Bianchi newforms over $\mathbb{Q}(\sqrt{-3})$ (the
+Eisenstein field) are associated to elliptic curves over
+$\mathbb{Q}(\sqrt{-3})$ and to arithmetic hyperbolic 3-manifolds fibered
+over $\mathrm{Spec}\,\mathcal{O}_K$.
+
+\subsection{The central object}
+
+The hyperbolic 3-manifold at the centre of this paper is
+\[
+  M_0 = m006(-5,2),
+\]
+the closed manifold obtained by $(-5,2)$ Dehn surgery on the figure-eight
+knot sister $m006$. It has volume $\approx 2.0289$, first homology
+$H_1(M_0; \mathbb{Z}) = \mathbb{Z}/5\mathbb{Z}$, and is the 44th
+manifold in the Hodgson--Weeks closed census ordered by volume \cite{snappy}.
+
+The invariant trace field of $M_0$ is
+\[
+  K_{10} = \mathbb{Q}[t]/(p_{10}(t)),
+  \quad
+  p_{10}(t) = t^{10} - 7t^8 - 4t^7 + 17t^6 + 14t^5 - 18t^4 - 14t^3 + 8t^2 + 3t - 1,
+\]
+a degree-10 totally generic field (Galois group $S_{10}$) with discriminant
+$\Delta(K_{10}) = -271488204251$ and signature $(r_1, r_2) = (8, 1)$.
+
+On the automorphic side, there is a Bianchi newform $f_{283}$ of level
+$\mathfrak{n}_{283}$ over $K = \mathbb{Q}(\sqrt{-3})$ whose Hecke
+eigenvalues at rational primes agree with those of the elliptic curve
+$E_1\colon y^2 + y = x^3 - x^2$ (Cremona label \texttt{11a1},
+the modular curve $X_0(11)$). The form $f_{283}$ is associated to the
+companion manifold
+$M_{\mathrm{PMNS}} = m003(-2,3)$ (the Meyerhoff manifold, smallest-volume
+closed hyperbolic 3-manifold with $H_1 = \mathbb{Z}/5$).
+
+The two manifolds $M_0$ and $M_{\mathrm{PMNS}}$ share the homology group
+$\mathbb{Z}/5\mathbb{Z}$ and the Bianchi base form $f_{283}$, but differ
+in every other arithmetic invariant.
+
+\subsection{Main results}
+
+We establish three theorems that each describe a different facet of the
+arithmetic of $M_0$ and its Bianchi form.
+
+\medskip
+\textbf{Theorem A (Frobenius discriminant, \S\ref{sec:frobenius}).}
+Define the \emph{Farey tower primes} $p_k = 5k(k+1)+1$ ($p_1 = 11$,
+$p_2 = 31$, $p_3 = 61$, \ldots). The $\chi_5^{(p_k)}$-twist of $f_{283}$
+— where $\chi_5^{(p_k)}$ is the unique primitive order-5 character of
+conductor $p_k$ — produces a $\mathbb{Q}(\sqrt{5})$-valued Bianchi newform
+at level $283\cdot p_k$ if and only if the Frobenius discriminant satisfies
+\[
+  a_{p_k}(f_{11})^2 - 4p_k = -3\,m^2 \quad\text{for some }m \in \mathbb{Z}.
+\]
+Among all tower primes $p_k \leq 281$, this condition holds for exactly
+one prime: $p_2 = 31$, where $7^2 - 4\cdot 31 = -75 = -3\cdot 5^2$.
+The $\mathbb{Q}(\sqrt{5})$ Bianchi component at level $8773 = 283\cdot 31$
+is confirmed in the LMFDB.
+
+\medskip
+\textbf{Theorem B (Three-Ray Theorem, \S\ref{sec:three-ray}).}
+The Hecke eigenvalues of the $\mathbb{Q}(\sqrt{5})$ Bianchi newform $g$
+at level 8773 satisfy
+\[
+  a_p(g) = a_p(f_{11}) \cdot S_{k(p)},
+  \qquad
+  k(p) = \mathrm{dlog}_3(p \bmod 31) \bmod 5,
+\]
+where $S_k = \zeta_5^k + \zeta_5^{-k}$ takes exactly three values:
+$2$, $1/\varphi$, and $-\varphi$ (with $\varphi$ the golden ratio).
+Every Hecke eigenvalue of $g$ therefore lies on one of three rays through
+the origin in $\mathbb{Q}(\sqrt{5}) \cong \mathbb{R}^2$.
+The coefficient field $\mathbb{Q}(\sqrt{5})$ is generated, as a
+$\mathbb{Q}$-algebra, by the non-trivial Hecke multipliers
+$\{1/\varphi, -\varphi\}$ of $g$ itself — a self-referential structure
+specific to the case of fifth roots of unity.
+
+\medskip
+\textbf{Theorem C (Trace Quotient Theorem, \S\ref{sec:trace-quotient}).}
+The Dehn surgery relation of $M_0 = m006(-5,2)$ forces the Fricke
+coordinate collapse
+\[
+  \mathrm{tr}(\rho(ab)) = \mathrm{tr}(\rho(a)),
+\]
+reducing the character variety from a cubic surface to a two-variable
+surface. This collapse propagates to a cascade of exact trace class
+equalities, and implies that the search space of words of length $\leq 6$
+maps to a finite trace quotient graph with at most 122 nodes. Furthermore,
+the generator of $K_{10}$ is identified as
+\[
+  \mathrm{tr}(\rho(a)) = -\alpha,
+\]
+where $\alpha$ is the canonical root of $p_{10}$.
+
+Among all 948 closed hyperbolic 3-manifolds with $H_1 = \mathbb{Z}/5$
+in the SnapPy closed census (11,031 manifolds by volume), $M_0$ is the
+\emph{unique} one whose invariant trace field generator has signature
+$(8,1)$. All others have $r_2 \geq 2$.
+
+\subsection{The common thread}
+
+Theorems A, B, and C arise from a single arithmetic coincidence: the
+Hecke eigenvalue $a_{31}(f_{11}) = 7$ satisfies $7^2 - 4\cdot 31 = -3\cdot5^2$.
+This identity:
+\begin{enumerate}[(i)]
+  \item forces $p = 31$ as the unique tower prime admitting Bianchi descent
+        (Theorem A);
+  \item forces the eigenvalue field $\mathbb{Q}(\sqrt{5})$, generated by
+        $\zeta_5 + \zeta_5^{-1} = 1/\varphi$, whose generator is the
+        Hecke multiplier (Theorem B);
+  \item is connected to $M_0$ through its surgery coefficient $(-5,2)$,
+        which forces $H_1 = \mathbb{Z}/5$ and the Fricke collapse
+        $z = x$ (Theorem C).
+\end{enumerate}
+
+The chain $31 \to \chi_5 \to \mathbb{Q}(\sqrt{5}) \to \varphi \to M_0$
+is thus forced by the single numerical fact $a_{31} = 7$.
+
+\subsection{Conventions and notation}
+
+Throughout, we write:
+\begin{itemize}
+  \item $K = \mathbb{Q}(\sqrt{-3})$, with ring of integers
+        $\mathcal{O}_K = \mathbb{Z}[\omega]$, $\omega = e^{2\pi i/3}$;
+  \item $f_{11}$: the weight-2 newform of level 11
+        (Cremona label \texttt{11a1}), with $a_p = a_p(f_{11})$;
+  \item $f_{283}$: the associated Bianchi newform over $K$ at level $\mathfrak{n}_{283}$;
+  \item $g$: the $\mathbb{Q}(\sqrt{5})$-Bianchi newform at level 8773;
+  \item $M_0 = m006(-5,2)$: the central manifold, with
+        $\rho\colon \pi_1(M_0) \to \mathrm{SL}(2,\mathbb{C})$
+        its polished holonomy;
+  \item $\alpha$: the root of $p_{10}$ with $\mathrm{Im}(\alpha) < 0$,
+        so that $\mathrm{tr}(\rho(a)) = -\alpha$;
+  \item $\varphi = (1+\sqrt{5})/2$: the golden ratio.
+\end{itemize}
+We use $A = a^{-1}$, $B = b^{-1}$ for the inverses of the standard
+generators.
+
+\subsection{Computational methods and reproducibility}
+
+All results are verified computationally in SageMath (version 10.x)
+and SnapPy (version 3.x). The verification scripts are available in
+the \texttt{reproduce/} directory of the accompanying repository:
+\begin{itemize}
+  \item \texttt{verify\_frobenius.py}: reproduces Table~\ref{tab:frobenius}
+        (Frobenius discriminant at each tower prime);
+  \item \texttt{verify\_three\_ray.py}: verifies the three-ray structure
+        for all primes $p < 300$;
+  \item \texttt{verify\_trace.py}: verifies the Fricke collapse, trace
+        class equalities, and ITF generator identity;
+  \item \texttt{signature\_enum\_test.py}: exhaustive enumeration of
+        ITF signatures among all 948 $H_1 = \mathbb{Z}/5$ manifolds
+        in the closed census.
+\end{itemize}
+Each script prints \texttt{PASS}/\texttt{FAIL} for each claimed equality
+and can be run in under 10 minutes on a standard laptop.
+
+\subsection{Organisation}
+
+Section~\ref{sec:frobenius} proves Theorem A and establishes the
+Frobenius discriminant criterion that forces $p = 31$.
+Section~\ref{sec:three-ray} proves Theorem B and develops the
+three-ray and self-referential structures of the Hecke eigenvalues.
+Section~\ref{sec:trace-quotient} proves Theorem C, including the
+ITF generator identity and the uniqueness of the $(8,1)$ signature.
+Section~\ref{sec:connections} discusses connections among the three
+theorems and states the remaining open questions.
+
+\medskip
+\noindent\textbf{Acknowledgements.}
+Computations were performed using SnapPy \cite{snappy} and SageMath.
+The LMFDB \cite{lmfdb} database was essential for independent verification
+of the Bianchi form at level 8773.

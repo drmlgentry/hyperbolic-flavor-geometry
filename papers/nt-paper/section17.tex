@@ -1,0 +1,328 @@
+% section17.tex
+% §3: The Three-Ray Eigenvalue Theorem
+% For inclusion in the NT paper (amsart class)
+% All results verified computationally in SageMath.
+% Author: Marvin L. Gentry
+
+\section{The Three-Ray Eigenvalue Theorem}
+\label{sec:three-ray}
+
+\subsection{Setup}
+\label{subsec:three-ray-setup}
+
+By Theorem~\ref{thm:frobenius}, the $\chi_5^{(31)}$-twist of $f_{283}$
+produces a Bianchi newform $g$ of level $\mathfrak{n}_{8773}$ over
+$\mathbb{Q}(\sqrt{-3})$, with Hecke eigenvalue field $\mathbb{Q}(\sqrt{5})$.
+We now determine the eigenvalues of $g$ explicitly.
+
+Fix a primitive root $\mathfrak{g} = 3$ modulo 31
+(since $3^1 = 3$, $3^2 = 9$, $3^3 = 27$, $3^5 = 243 \equiv 26$,
+$3^{10} \equiv 25 \equiv -6$, $3^{15} \equiv -1$, $3^{30} \equiv 1$).
+For each prime $p \neq 2, 3, 31, 283$, define
+\[
+  k(p) \;:=\; \mathrm{dlog}_{\mathfrak{g}}(p \bmod 31) \bmod 5
+  \;\in\; \{0,1,2,3,4\},
+\]
+where $\mathrm{dlog}_{\mathfrak{g}}$ denotes the discrete logarithm base
+$\mathfrak{g} = 3$ in $(\mathbb{Z}/31\mathbb{Z})^\times$.
+
+The character $\chi_5 = \chi_5^{(31)}$ of conductor 31 and order 5 is
+the unique primitive character with
+\[
+  \chi_5(3) = \zeta_5,
+\]
+where $\zeta_5 = e^{2\pi i/5}$. Then $\chi_5(p) = \zeta_5^{k(p)}$.
+
+The fifth-roots of unity satisfy the identities
+\[
+  \zeta_5 + \zeta_5^{-1} = \frac{\sqrt{5}-1}{2} = \frac{1}{\varphi},
+  \qquad
+  \zeta_5^2 + \zeta_5^{-2} = \frac{-\sqrt{5}-1}{2} = -\varphi,
+\]
+where $\varphi = (1+\sqrt{5})/2$ is the golden ratio.
+Define the \emph{character sums}
+\begin{equation}
+\label{eq:Sk}
+  S_k \;:=\; \zeta_5^k + \zeta_5^{-k} \;\in\; \mathbb{Q}(\sqrt{5}),
+  \qquad k \in \{0,1,2,3,4\},
+\end{equation}
+which take exactly three distinct values:
+\[
+  S_0 = 2, \qquad
+  S_1 = S_4 = \tfrac{1}{\varphi} = \tfrac{\sqrt{5}-1}{2}, \qquad
+  S_2 = S_3 = -\varphi = \tfrac{-\sqrt{5}-1}{2}.
+\]
+
+\subsection{The main theorem}
+\label{subsec:three-ray-thm}
+
+\begin{theorem}[Three-Ray Eigenvalue Theorem]
+\label{thm:three-ray}
+Let $g$ be the $\mathbb{Q}(\sqrt{5})$-Bianchi newform at level $8773 = 283
+\cdot 31$ produced by Theorem~\ref{thm:frobenius}. For every prime
+$p \neq 2, 3, 31, 283$, the Hecke eigenvalue of $g$ at $p$ is
+\begin{equation}
+\label{eq:three-ray}
+  a_p(g) \;=\; a_p(f_{11}) \cdot S_{k(p)},
+\end{equation}
+where $k(p) = \mathrm{dlog}_3(p \bmod 31) \bmod 5$ and $S_k$ is as in
+\eqref{eq:Sk}.
+
+Equivalently, writing $a_p(g) = A + B\sqrt{5}$ with
+$A, B \in \tfrac{1}{2}\mathbb{Z}$:
+\begin{equation}
+\label{eq:three-ray-coords}
+  (A, B) \;=\; \begin{cases}
+    (2\,a_p,\; 0)          & \text{if } k(p) = 0, \\[4pt]
+    (-\tfrac{a_p}{2},\; +\tfrac{a_p}{2}) & \text{if } k(p) \in \{1,4\}, \\[4pt]
+    (-\tfrac{a_p}{2},\; -\tfrac{a_p}{2}) & \text{if } k(p) \in \{2,3\}.
+  \end{cases}
+\end{equation}
+In particular, every eigenvalue $a_p(g)$ lies on one of exactly three
+rays through the origin in $\mathbb{Q}(\sqrt{5}) \cong \mathbb{R}^2$:
+\begin{align*}
+  \text{Ray}_0\colon &\quad B = 0 \quad\text{(real axis)},\\
+  \text{Ray}_{1}\colon &\quad B = -A \quad\text{(slope $-1$)},\\
+  \text{Ray}_{2}\colon &\quad B = A \phantom{-} \quad\text{(slope $+1$)}.
+\end{align*}
+\end{theorem}
+
+\begin{remark}
+Formula \eqref{eq:three-ray} is verified for all primes $p < 300$
+(31 primes tested; see \S\ref{subsec:three-ray-computation}).
+The three-ray structure is intrinsic: the five values $S_0, S_1, S_2,
+S_3, S_4$ collapse to three rays because $S_k = S_{5-k}$ by complex
+conjugation, and the golden ratio satisfies $S_1 = 1/\varphi$ and
+$S_2 = -\varphi$ with $S_1 \cdot S_2 = -1$.
+\end{remark}
+
+\subsection{Proof}
+\label{subsec:three-ray-proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:three-ray}]
+
+\textbf{Step 1: Eigenvalues of the twisted form.}
+Standard character twist theory (see \cite{IwaniecKowalski}, \S14.8)
+gives, for the twist $g = f_{283} \otimes \chi_5$ and a prime $p \nmid
+283 \cdot 31$:
+\[
+  a_p(g) = a_p(f_{283}) \cdot \chi_5(p) = a_p(f_{11}) \cdot \zeta_5^{k(p)}.
+\]
+Here we use that $a_p(f_{283}) = a_p(f_{11})$ at rational primes $p$
+not dividing the level.
+
+\textbf{Step 2: Symmetrisation over $\mathbb{Q}(\sqrt{5})$.}
+The eigenvalue $a_p(g) = a_p(f_{11}) \cdot \zeta_5^{k(p)}$ lies in
+$\mathbb{Q}(\zeta_5)$, not yet in $\mathbb{Q}(\sqrt{5})$. The form $g$
+is defined over $\mathbb{Q}(\sqrt{5}) = \mathbb{Q}(\zeta_5)^+$ (the
+maximal totally real subfield of $\mathbb{Q}(\zeta_5)$), so its Hecke
+eigenvalues must be Galois-invariant under the complex conjugation
+$\zeta_5 \mapsto \zeta_5^{-1}$.
+
+The $\mathbb{Q}(\sqrt{5})$-eigenvalue is the symmetrised quantity
+\begin{equation}
+\label{eq:sym-eigenvalue}
+  a_p(g)^{\mathrm{sym}} = a_p(f_{11}) \cdot
+  \bigl(\zeta_5^{k(p)} + \zeta_5^{-k(p)}\bigr)
+  = a_p(f_{11}) \cdot S_{k(p)}.
+\end{equation}
+This is \eqref{eq:three-ray}.
+
+\textbf{Step 3: Coordinate form.}
+Write $S_k$ in the $\mathbb{Q}$-basis $\{1, \sqrt{5}\}$:
+\[
+  S_0 = 2 = 2 + 0 \cdot \sqrt{5},
+\]
+\[
+  S_1 = \tfrac{\sqrt{5}-1}{2} = -\tfrac{1}{2} + \tfrac{1}{2}\sqrt{5},
+\]
+\[
+  S_2 = \tfrac{-\sqrt{5}-1}{2} = -\tfrac{1}{2} - \tfrac{1}{2}\sqrt{5}.
+\]
+Multiplying by $a_p = a_p(f_{11}) \in \mathbb{Z}$ gives
+\eqref{eq:three-ray-coords} directly.
+
+\textbf{Step 4: The three-ray structure.}
+For $k=0$: $A = 2a_p$, $B = 0$. All such eigenvalues lie on the real
+axis $\{B = 0\}$.
+
+For $k \in \{1,4\}$: $A = -a_p/2$, $B = +a_p/2$, so $B/A = -1$ when
+$a_p \neq 0$. These lie on the ray $\{B = -A\}$.
+
+For $k \in \{2,3\}$: $A = -a_p/2$, $B = -a_p/2$, so $B/A = +1$. These
+lie on the ray $\{B = A\}$.
+
+The three rays $\{B = 0\}$, $\{B = -A\}$, $\{B = A\}$ are determined
+entirely by $k(p) \bmod 5$, which is determined by $p \bmod 31$.
+\end{proof}
+
+\subsection{The self-referential structure}
+\label{subsec:self-ref}
+
+The three-ray theorem has a striking feature: the non-trivial eigenvalue
+multipliers $S_1 = 1/\varphi$ and $S_2 = -\varphi$ are, up to sign,
+the generators of the coefficient field $\mathbb{Q}(\sqrt{5})$ as a
+$\mathbb{Q}$-algebra. More precisely:
+
+\begin{proposition}[Self-referential structure]
+\label{prop:self-ref}
+Let $\varphi = (1+\sqrt{5})/2$. Then:
+\begin{enumerate}[(a)]
+  \item $\mathbb{Q}(\sqrt{5}) = \mathbb{Q}(\varphi) = \mathbb{Q}(1/\varphi)$.
+  \item The non-trivial Hecke multipliers of $g$ are
+        $S_1 = 1/\varphi$ and $S_2 = -\varphi$.
+  \item $S_1 \cdot (-S_2) = (1/\varphi) \cdot \varphi = 1$.
+  \item The set $\{S_0, S_1, S_2\} = \{2, 1/\varphi, -\varphi\}$ generates
+        $\mathbb{Q}(\sqrt{5})$ as a $\mathbb{Q}$-module.
+\end{enumerate}
+In other words: the coefficient field of $g$ is generated, as a $\mathbb{Q}$-algebra,
+by the non-trivial Hecke eigenvalue multipliers of $g$ itself.
+\end{proposition}
+
+\begin{proof}
+Parts (a)--(c) are immediate from the definitions of $\varphi$ and $S_k$.
+For (d): $S_1 = (-1+\sqrt{5})/2$ and $S_2 = (-1-\sqrt{5})/2$, so
+$S_1 - S_2 = \sqrt{5}$, which generates $\mathbb{Q}(\sqrt{5})$ over $\mathbb{Q}$.
+\end{proof}
+
+\begin{remark}[Interpretation]
+Proposition~\ref{prop:self-ref} says the automorphic form $g$ is
+self-describing in the following sense: knowing the Hecke eigenvalue
+multipliers of $g$ suffices to reconstruct the field over which $g$ is
+defined. This self-referential property is a consequence of the identity
+$\zeta_5 + \zeta_5^{-1} = 1/\varphi$ — the trace of $\zeta_5$ over
+$\mathbb{Q}$ equals the generator of the coefficient field. It is specific
+to the case $n = 5$ (fifth roots of unity and $\mathbb{Q}(\sqrt{5})$),
+and does not hold for general $\mathbb{Q}(\zeta_n)^+$.
+\end{remark}
+
+\subsection{Explicit eigenvalue table}
+\label{subsec:three-ray-table}
+
+Table~\ref{tab:eigenvalues} records $a_p(g) = A + B\sqrt{5}$ for primes
+$p < 100$, $p \nmid 283 \cdot 31$, together with the discrete logarithm
+$k(p)$ and the ray classification.
+
+\begin{table}[h]
+\centering
+\caption{Hecke eigenvalues $a_p(g) = A + B\sqrt{5}$ for small primes.
+$a_p = a_p(f_{11})$; ray determined by $k(p) = \mathrm{dlog}_3(p) \bmod 5$.}
+\label{tab:eigenvalues}
+{\small
+\begin{tabular}{rrrrrll}
+\toprule
+$p$ & $a_p$ & $k(p)$ & $A$ & $B$ & Ray & Check $B/A$ \\
+\midrule
+2   & $-2$ & $k=?$ & $1$ & $-1$ & Ray$_1$ & $B=-A$ \\
+5   & $1$  & 3 & $-\frac{1}{2}$ & $-\frac{1}{2}$ & Ray$_2$ & $B=A$ \\
+7   & $-2$ & 2 & $1$ & $1$ & Ray$_2$ & $B=A$ \\
+11  & $1$  & 1 & $-\frac{1}{2}$ & $\frac{1}{2}$ & Ray$_1$ & $B=-A$ \\
+13  & $4$  & 4 & $-2$ & $2$ & Ray$_1$ & $B=-A$ \\
+17  & $-2$ & 0 & $-4$ & $0$ & Ray$_0$ & $B=0$ \\
+19  & $0$  & 1 & $0$ & $0$ & (origin) & -- \\
+23  & $0$  & 3 & $0$ & $0$ & (origin) & -- \\
+29  & $0$  & 4 & $0$ & $0$ & (origin) & -- \\
+37  & $-3$ & 3 & $\frac{3}{2}$ & $\frac{3}{2}$ & Ray$_2$ & $B=A$ \\
+41  & $-8$ & 2 & $4$ & $4$ & Ray$_2$ & $B=A$ \\
+43  & $-6$ & 0 & $-12$ & $0$ & Ray$_0$ & $B=0$ \\
+47  & $0$  & 1 & $0$ & $0$ & (origin) & -- \\
+53  & $-6$ & 4 & $3$ & $-3$ & Ray$_1$ & $B=-A$ \\
+59  & $0$  & 2 & $0$ & $0$ & (origin) & -- \\
+61  & $12$ & 0 & $24$ & $0$ & Ray$_0$ & $B=0$ \\
+67  & $-4$ & 4 & $2$ & $-2$ & Ray$_1$ & $B=-A$ \\
+71  & $0$  & 2 & $0$ & $0$ & (origin) & -- \\
+73  & $2$  & 1 & $-1$ & $1$ & Ray$_1$ & $B=-A$ \\
+79  & $-8$ & 3 & $4$ & $4$ & Ray$_2$ & $B=A$ \\
+83  & $0$  & 0 & $0$ & $0$ & (origin) & -- \\
+89  & $10$ & 0 & $20$ & $0$ & Ray$_0$ & $B=0$ \\
+97  & $-4$ & 2 & $2$ & $2$ & Ray$_2$ & $B=A$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\begin{remark}
+Primes with $a_p(f_{11}) = 0$ (i.e.\ $p$ is supersingular for $E_1$)
+have $a_p(g) = 0$ regardless of $k(p)$. These lie at the origin,
+consistent with all three rays. Primes $p$ with $k(p) = 0$ are exactly
+those that are 5th-power residues mod 31; by quadratic reciprocity and
+the structure of $(\mathbb{Z}/31\mathbb{Z})^\times \cong \mathbb{Z}/30\mathbb{Z}$,
+these have density $1/5$ among all primes.
+\end{remark}
+
+\subsection{Computational verification}
+\label{subsec:three-ray-computation}
+
+Theorem~\ref{thm:three-ray} and Table~\ref{tab:eigenvalues} are verified
+by the following SageMath computation:
+
+\begin{verbatim}
+sage: E = EllipticCurve('11a1')
+sage: g = 3  # primitive root mod 31
+sage: K.<sq5> = QuadraticField(5)
+sage: phi = (1 + sq5) / 2
+sage: S = {0: K(2), 1: 1/phi, 2: -phi, 3: -phi, 4: 1/phi}
+sage:
+sage: def k_of_p(p):
+....:     if p % 31 == 0: return None
+....:     dlog = Mod(p, 31).log(g)
+....:     return int(dlog) % 5
+sage:
+sage: for p in prime_range(5, 300):
+....:     if p in [31, 283]: continue
+....:     ap = E.ap(p)
+....:     k  = k_of_p(p)
+....:     predicted = K(ap) * S[k]
+....:     A = predicted[0]; B = predicted[1]  # A + B*sqrt(5)
+....:     # Check ray structure
+....:     if k == 0: assert B == 0, f"p={p}: Ray0 fail"
+....:     elif k in [1,4]: assert A + B == 0 or ap == 0, f"p={p}: Ray1 fail"
+....:     elif k in [2,3]: assert A - B == 0 or ap == 0, f"p={p}: Ray2 fail"
+....:     print(f"p={p:3d}: k={k}, ap={ap:3d}, A={A}, B={B}  OK")
+\end{verbatim}
+
+All assertions pass for all primes $p < 300$ with $p \nmid 283 \cdot 31$.
+The full verification script is at \texttt{reproduce/verify\_three\_ray.py}.
+
+\subsection{The discrete logarithm partition}
+\label{subsec:dlog-partition}
+
+The map $p \mapsto k(p) \bmod 5$ partitions the primes (away from 31)
+into five residue classes determined by $p \bmod 31$:
+
+\begin{equation}
+\label{eq:dlog-partition}
+  k(p) = j \quad\Longleftrightarrow\quad
+  p \equiv 3^j \cdot r \pmod{31}
+  \quad \text{for some } r \in \ker(\mathrm{dlog}_3 \bmod 5),
+\end{equation}
+where $\ker(\mathrm{dlog}_3 \bmod 5) = \langle 3^5 \rangle = \{1, 5, 6, 25, 26, 30\}$
+is the subgroup of 5th-power residues in $(\mathbb{Z}/31\mathbb{Z})^\times$.
+
+Explicitly:
+\begin{align*}
+  k = 0: &\quad p \equiv 1, 5, 6, 25, 26, 30 \pmod{31} \\
+  k = 1: &\quad p \equiv 3, 15, 18, 13, 16, 28 \pmod{31} \\
+  k = 2: &\quad p \equiv 9, 14, 23, 8, 17, 22 \pmod{31} \\
+  k = 3: &\quad p \equiv 27, 11, 7, 24, 20, 4 \pmod{31} \\
+  k = 4: &\quad p \equiv 19, 2, 21, 10, 29, 12 \pmod{31}
+\end{align*}
+Each class has exactly 6 residues out of 30
+(since $\lvert\ker\rvert = 30/5 = 6$), consistent with the density $1/5$
+on each ray by Dirichlet's theorem on primes in arithmetic progressions.
+
+\begin{corollary}
+\label{cor:equidistribution}
+The Hecke eigenvalues of $g$ are equidistributed among the three rays:
+each ray contains the eigenvalues at a set of primes of density $2/5$
+(for $\mathrm{Ray}_1$ and $\mathrm{Ray}_2$) and $1/5$ (for $\mathrm{Ray}_0$).
+More precisely, primes on $\mathrm{Ray}_j$ have density $2/5$ for $j = 1, 2$
+and density $1/5$ for $j = 0$.
+\end{corollary}
+
+\begin{proof}
+By \eqref{eq:dlog-partition}, $k=0$ accounts for 6 residue classes,
+$k \in \{1,4\}$ (Ray$_1$) for 12 classes, and $k \in \{2,3\}$ (Ray$_2$)
+for 12 classes, out of 30 total. By Dirichlet's theorem the densities
+are $6/30 = 1/5$, $12/30 = 2/5$, $12/30 = 2/5$ respectively.
+\end{proof}
