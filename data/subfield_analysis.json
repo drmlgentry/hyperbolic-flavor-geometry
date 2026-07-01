@@ -1,0 +1,118 @@
+{
+  "description": "Task #21: Subfield analysis for the 4 degree-8 ITF manifolds in the H\u2081=Z/5 stratum.  These are the degree-8 exceptional traces referenced in the HFG handoff.",
+  "degree_distribution": {
+    "4": 1,
+    "7": 4,
+    "10": 106,
+    "8": 4,
+    "3": 1,
+    "9": 15,
+    "6": 2,
+    "5": 1
+  },
+  "n_deg8": 4,
+  "ckm_itf_degree": 10,
+  "ckm_itf_disc": -271488204251,
+  "results": [
+    {
+      "manifold": "m038(3,2)",
+      "volume": 2.5026593053728208,
+      "poly": [
+        1,
+        -2,
+        -6,
+        7,
+        11,
+        -6,
+        -7,
+        0,
+        1
+      ],
+      "poly_str": "+x^8 - 7x^6 - 6x^5 11x^4 7x^3 - 6x^2 - 2x 1",
+      "disc": -202734487,
+      "sig": [
+        6,
+        1
+      ],
+      "galois_order": 40320,
+      "galois_label": "PARI group [40320, -1, 50, \"S8\"] of degree 8",
+      "gcd_with_ckm": 1,
+      "irreducible": true
+    },
+    {
+      "manifold": "s648(-4,1)",
+      "volume": 4.069323157588299,
+      "poly": [
+        -1,
+        1,
+        20,
+        -34,
+        2,
+        17,
+        -4,
+        -3,
+        1
+      ],
+      "poly_str": "+x^8 - 3x^7 - 4x^6 17x^5 2x^4 - 34x^3 20x^2 + x - 1",
+      "disc": 34002469,
+      "sig": [
+        4,
+        2
+      ],
+      "galois_order": 40320,
+      "galois_label": "PARI group [40320, -1, 50, \"S8\"] of degree 8",
+      "gcd_with_ckm": 1,
+      "irreducible": true
+    },
+    {
+      "manifold": "s944(-4,1)",
+      "volume": 4.732369576417238,
+      "poly": [
+        -5,
+        31,
+        -52,
+        33,
+        7,
+        -27,
+        20,
+        -7,
+        1
+      ],
+      "poly_str": "+x^8 - 7x^7 20x^6 - 27x^5 7x^4 33x^3 - 52x^2 31x - 5",
+      "disc": 501164633,
+      "sig": [
+        4,
+        2
+      ],
+      "galois_order": 40320,
+      "galois_label": "PARI group [40320, -1, 50, \"S8\"] of degree 8",
+      "gcd_with_ckm": 1,
+      "irreducible": true
+    },
+    {
+      "manifold": "v3469(1,2)",
+      "volume": 4.989804907785888,
+      "poly": [
+        -1,
+        -2,
+        4,
+        8,
+        -2,
+        -7,
+        -3,
+        1,
+        1
+      ],
+      "poly_str": "+x^8 + x^7 - 3x^6 - 7x^5 - 2x^4 8x^3 4x^2 - 2x - 1",
+      "disc": -948381887,
+      "sig": [
+        6,
+        1
+      ],
+      "galois_order": 40320,
+      "galois_label": "PARI group [40320, -1, 50, \"S8\"] of degree 8",
+      "gcd_with_ckm": 1,
+      "irreducible": true
+    }
+  ]
+}

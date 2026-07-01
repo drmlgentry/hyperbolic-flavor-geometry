@@ -1,0 +1,36 @@
+{
+  "description": "Galois group and subfield lattice of M_CKM ITF K₁₀. Gal(K̃₁₀/Q) = S₁₀ (order 3628800 = 10!). Subfield lattice: trivial (only Q and K₁₀).",
+  "manifold": "m006(-5,2)",
+  "poly": [-1, -3, 8, 14, -18, -14, 17, 4, -7, 0, 1],
+  "disc": -271488204251,
+  "signature": [8, 1],
+  "galois_order": 3628800,
+  "galois_label": "PARI group [3628800, -1, 45, \"S10\"] of degree 10",
+  "galois_is_S10": true,
+  "subfields": [
+    {
+      "degree": 1,
+      "disc": 1,
+      "signature": [1, 0],
+      "poly": null
+    },
+    {
+      "degree": 10,
+      "disc": -271488204251,
+      "signature": [8, 1],
+      "poly": null
+    }
+  ],
+  "n_proper_subfields": 0,
+  "lattice_trivial": true,
+  "checks": {
+    "degree_10": true,
+    "irreducible": true,
+    "disc_correct": true,
+    "signature_correct": true,
+    "galois_S10": true,
+    "no_proper_subfields": true
+  },
+  "all_pass": true,
+  "computed": "2026-07-01"
+}

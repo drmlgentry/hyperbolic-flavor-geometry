@@ -132,7 +132,7 @@ for r in deg8:
 
 # ── SageMath algebraic analysis ───────────────────────────────────────────────
 try:
-    from sage.all import QQ, NumberField, GaloisGroup
+    from sage.all import QQ, NumberField
     SAGE_OK = True
 except ImportError:
     SAGE_OK = False
@@ -270,8 +270,16 @@ if SAGE_OK:
         'ckm_itf_disc': int(K10.discriminant()) if ckm_poly_coeffs else None,
         'results': results_out,
     }
+    class _SageEncoder(json.JSONEncoder):
+        def default(self, obj):
+            try: return int(obj)
+            except Exception: pass
+            try: return float(obj)
+            except Exception: pass
+            return super().default(obj)
+
     with open(OUT_FILE, 'w') as f:
-        json.dump(output, f, indent=2)
+        json.dump(output, f, indent=2, cls=_SageEncoder)
     print(f"\n  Results written to: {OUT_FILE}")
 
 print(HLINE)
