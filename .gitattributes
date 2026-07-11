@@ -1,0 +1,18 @@
+# Normalize line endings: store as LF, checkout as CRLF on Windows
+* text=auto
+
+# Force LF for specific types (never auto-convert these)
+*.tex text eol=lf
+*.py  text eol=lf
+*.md  text eol=lf
+*.bib text eol=lf
+*.sh  text eol=lf
+*.ps1 text eol=crlf
+
+# Binary files — never touch
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jfif binary
+*.zip binary
+*.exe binary

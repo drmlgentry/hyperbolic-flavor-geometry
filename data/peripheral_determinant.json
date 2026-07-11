@@ -1,5 +1,5 @@
 {
-  "description": "Peripheral determinant of M_CKM = m006(-5,2). Claim: \u03b4 = |det \u039b| / (p\u00b2+q\u00b2) \u2248 J_CKM.",
+  "description": "EXPLORATORY NON-RESULT: Peripheral determinant of M_CKM = m006(-5,2). Computed delta = 2.949e-4; PDG J_CKM = 3.06e-5. These differ by factor ~10. The claim delta ~ J_CKM does NOT hold. See SSRN 6775158 open problem #1. J_CKM = 0 is the HFG zeroth-order prediction.",
   "manifold": "m006(-5,2)",
   "slope": [
     -5,
@@ -28,11 +28,12 @@
   ],
   "det_Lambda": 0.008550924817048479,
   "delta": 0.00029485947644994755,
-  "J_CKM": 0.000306,
-  "ratio_delta_J": 0.9635930602939462,
-  "rel_err_pct": 3.6406939706053807,
-  "pass": true,
+  "J_CKM": 3.06e-05,
+  "ratio_delta_J": 9.635930602939462,
+  "rel_err_pct": 863.5930602939463,
+  "pass": false,
   "note_complex_det": 0.19172859028101602,
   "note_formula": "Formula uses REAL parts of log eigenvalues (= dilation exponents). Full complex Jacobian |det J_C| = 0.1917 overshoots by ~2500x. Only Re(log lambda) sub-Jacobian gives correct scale.",
-  "computed": "2026-07-01"
+  "computed": "2026-07-01",
+  "note_correction": "J_CKM corrected 2026-07-10: was 3.06e-4 (wrong by 10x), now 3.06e-5 (PDG 2022)"
 }
