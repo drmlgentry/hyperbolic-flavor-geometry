@@ -70,5 +70,5 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "`n=== Session committed and pushed. ===" -ForegroundColor Green
     Write-Host "Next session: read CLAUDE.md + HFG_STATUS.md + git log --oneline -5" -ForegroundColor Green
 } else {
-    Write-Host "`n[WARN] Push failed — committed locally. Run 'git push origin main' when online." -ForegroundColor Yellow
+    Write-Host "`n[WARN] Push failed -- committed locally. Run 'git push origin main' when online." -ForegroundColor Yellow
 }
