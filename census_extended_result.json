@@ -1,0 +1,182 @@
+{
+  "1": {
+    "name": "m003",
+    "index": 1,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.005442171943827903,
+    "random_sig": 0.47,
+    "random_words": [
+      "abaaab",
+      "AABBBa",
+      "BBBaa"
+    ],
+    "known_f": null,
+    "best_f": 0.005442171943827903
+  },
+  "11": {
+    "name": "m004",
+    "index": 11,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.004986671470792809,
+    "random_sig": 0.42,
+    "random_words": [
+      "aaBBBB",
+      "Abbbba",
+      "bbaBB"
+    ],
+    "known_f": null,
+    "best_f": 0.004986671470792809
+  },
+  "43": {
+    "name": "m006",
+    "index": 43,
+    "is_target": true,
+    "h1": "Z/5",
+    "random_f": 0.003989260583004384,
+    "random_sig": 0.45,
+    "random_words": [
+      "AbaaB",
+      "BAAAA",
+      "BAAbaB"
+    ],
+    "known_f": 0.0027278827888445856,
+    "best_f": 0.0027278827888445856
+  },
+  "117": {
+    "name": "m038",
+    "index": 117,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.0033448542573759183,
+    "random_sig": 0.45,
+    "random_words": [
+      "aabaa",
+      "AAAAba",
+      "BBABa"
+    ],
+    "known_f": null,
+    "best_f": 0.0033448542573759183
+  },
+  "177": {
+    "name": "m032",
+    "index": 177,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.003987854942770455,
+    "random_sig": 0.42,
+    "random_words": [
+      "AAbAAb",
+      "bABa",
+      "bbbAA"
+    ],
+    "known_f": null,
+    "best_f": 0.003987854942770455
+  },
+  "209": {
+    "name": "m206",
+    "index": 209,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.002989869694614278,
+    "random_sig": 0.45,
+    "random_words": [
+      "aaBABa",
+      "abAAba",
+      "Abbbb"
+    ],
+    "known_f": null,
+    "best_f": 0.002989869694614278
+  },
+  "305": {
+    "name": "m222",
+    "index": 305,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.005888930648367159,
+    "random_sig": 0.45,
+    "random_words": [
+      "ABaabA",
+      "bbaBA",
+      "BabbbA"
+    ],
+    "known_f": null,
+    "best_f": 0.005888930648367159
+  },
+  "406": {
+    "name": "m322",
+    "index": 406,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.004198017643596896,
+    "random_sig": 0.4,
+    "random_words": [
+      "AbaBBB",
+      "ABABBa",
+      "bAAbaB"
+    ],
+    "known_f": null,
+    "best_f": 0.004198017643596896
+  },
+  "431": {
+    "name": "m260",
+    "index": 431,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.004713271505729058,
+    "random_sig": 0.45,
+    "random_words": [
+      "ABab",
+      "bAbaBB",
+      "Babba"
+    ],
+    "known_f": null,
+    "best_f": 0.004713271505729058
+  },
+  "437": {
+    "name": "m222",
+    "index": 437,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.002964496821825377,
+    "random_sig": 0.35,
+    "random_words": [
+      "aBAbb",
+      "ABabba",
+      "BaB"
+    ],
+    "known_f": null,
+    "best_f": 0.002964496821825377
+  },
+  "457": {
+    "name": "m155",
+    "index": 457,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.0036168370547654313,
+    "random_sig": 0.45,
+    "random_words": [
+      "AABB",
+      "bABBBA",
+      "BABabb"
+    ],
+    "known_f": null,
+    "best_f": 0.0036168370547654313
+  },
+  "470": {
+    "name": "m199",
+    "index": 470,
+    "is_target": false,
+    "h1": "Z/5",
+    "random_f": 0.003391544786845,
+    "random_sig": 0.45,
+    "random_words": [
+      "aBBaBA",
+      "AbbbAA",
+      "BaaaBB"
+    ],
+    "known_f": null,
+    "best_f": 0.003391544786845
+  }
+}

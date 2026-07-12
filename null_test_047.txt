@@ -1,0 +1,90 @@
+nohup: ignoring input
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.8287973360315825e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.855562481087306e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.786499341251729e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 5.08936104621152e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.640711385568711e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.1371221869059045e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 5.309579045637178e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.5436338939294853e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.3510499348390087e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.0886800755733888e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.199481087942945e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.523164216353702e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.8928953316515193e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.617725220486195e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.3402399702111896e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.187265905288097e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.137996650171839e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.2710612868428512e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.1007295331922769e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.443546836507135e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 7.906333099400839e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 9.660590135020347e-13
+  return f(*arrays, *other_args, **kwargs)
+Manifold: m006  sigma=0.47  N_triples=30000  N_null=200
+Building word axes (len<=6)...
+Valid words: 1456
+
+New global-best triple ['aaab', 'aabb', 'bAbAB']:
+  F(PDG CKM, sigma=0.47) = 0.00272788  (expected 0.002728)
+
+Scanning 30000 random triples vs actual PDG CKM...
+  5000/30000  current best=0.016174
+  10000/30000  current best=0.010361
+  15000/30000  current best=0.006595
+  20000/30000  current best=0.006595
+  25000/30000  current best=0.006595
+  30000/30000  current best=0.006595
+
+Random-sample best: F=0.00659450  words=['aBabA', 'ABAbAB', 'babbb']
+Known global best:  F=0.00272788  words=['aaab', 'aabb', 'bAbAB']
+(Global best was NOT found in random sample)
+
+Target fitness for p-value: 0.00272788
+
+Running null test: 200 Haar-random targets...
+  null 20/200  best_so_far=0.011308  beat_target=0
+  null 40/200  best_so_far=0.011308  beat_target=0
+  null 60/200  best_so_far=0.011308  beat_target=0
+  null 80/200  best_so_far=0.011308  beat_target=0
+  null 100/200  best_so_far=0.011308  beat_target=0
+  null 120/200  best_so_far=0.011308  beat_target=0
+  null 140/200  best_so_far=0.011308  beat_target=0
+  null 160/200  best_so_far=0.011308  beat_target=0
+  null 180/200  best_so_far=0.011308  beat_target=0
+  null 200/200  best_so_far=0.011308  beat_target=0
+
+============================================================
+NULL TEST RESULTS  (sigma=0.47, N_triples=30000)
+============================================================
+CKM target fitness:  0.00272788
+Null mean:           0.123006
+Null std:            0.080285
+Null minimum:        0.011308
+Null max:            0.370432
+Null beats target:   0 / 200
+p-value:             0.0000
+
+RESULT: p <= 0.005  ✓  Statistical significance maintained

@@ -1,0 +1,53 @@
+nohup: ignoring input
+Loaded 17069 triples
+
+=== KNOWN TRIPLES AT FINE SIGMA GRID ===
+  old_best_0.40    sigma=0.390: 0.024780
+  old_best_0.40    sigma=0.400: 0.003618
+  old_best_0.40    sigma=0.410: 0.025061
+  old_best_0.40    sigma=0.415: 0.037358
+  old_best_0.40    sigma=0.420: 0.049704
+  old_best_0.40    sigma=0.425: 0.062065
+  old_best_0.40    sigma=0.430: 0.074426
+  old_best_0.40    sigma=0.440: 0.099108
+  old_best_0.40    sigma=0.450: 0.123690
+  new_best_0.42    sigma=0.390: 0.069468
+  new_best_0.42    sigma=0.400: 0.046558
+  new_best_0.42    sigma=0.410: 0.023460
+  new_best_0.42    sigma=0.415: 0.012029
+  new_best_0.42    sigma=0.420: 0.003564
+  new_best_0.42    sigma=0.425: 0.012542
+  new_best_0.42    sigma=0.430: 0.024099
+  new_best_0.42    sigma=0.440: 0.047647
+  new_best_0.42    sigma=0.450: 0.071329
+
+=== FULL SCAN AT FINE SIGMA GRID ===
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.5436338939294853e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 1.855562481087306e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.640711385568711e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.3402399702111896e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 2.443546836507135e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 3.786499341251729e-13
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.11/site-packages/scipy/_lib/_util.py:1181: RuntimeWarning: logm result may be inaccurate, approximate err = 6.617725220486195e-13
+  return f(*arrays, *other_args, **kwargs)
+sigma=0.390: best=0.008484  triple=('aaabA', 'abbba', 'aBBaB')
+sigma=0.400: best=0.003618  triple=('aaab', 'aBaB', 'ABBaB')
+sigma=0.410: best=0.002938  triple=('aaaaa', 'AbAb', 'ABaaB')
+sigma=0.415: best=0.005091  triple=('aaaba', 'abaab', 'bAbbA')
+sigma=0.420: best=0.003564  triple=('aaabb', 'AAAbb', 'ABAA')
+sigma=0.425: best=0.009490  triple=('aaaab', 'aBaab', 'AbbAA')
+sigma=0.430: best=0.003356  triple=('aaaab', 'aBaab', 'ABBAB')
+sigma=0.440: best=0.004079  triple=('aa', 'aBABB', 'BaBAA')
+sigma=0.450: best=0.006051  triple=('aaaba', 'baabb', 'baBAA')
+
+=== FINAL RESULT ===
+Global best: 0.002938 at sigma=0.410
+Triple: ('aaaaa', 'AbAb', 'ABaaB')
+Previous best: 0.003618 at sigma=0.400
+IMPROVEMENT: 0.000680 (18.8%)
