@@ -488,38 +488,56 @@ try:
   The character variety canonical component is the algebraic curve:
     C : z² − z(xy−x−y) + (x²+y²−xy−1) = 0        [Riley 1984]
 
-  For the (−2,3) surgery, we need the surgery polynomial P_{{-2,3}}(x,y,z)
-  expressing tr(μ⁻²λ³) as a polynomial. This requires:
-    (1) tr(μ) and tr(λ) as polynomials in (x,y,z)  [from peripheral words]
-    (2) Trace recursion to compute tr(μ⁻²λ³)
+  SURGERY POLYNOMIAL — COMPUTED (July 2026)
+  ==========================================
+  Peripheral curves of m003 in cusped generator basis {{a, b}}:
+    μ = 'ABABB'   (meridian)
+    λ = 'ABAbab'  (longitude)
+    tr(μ) = -xz + yz² - y
+    tr(λ) = -x²z + xyz² + xy - y²z - z³ + 3z
 
-  The system to solve:
-    I = ⟨ z²−z(xy−x−y)+(x²+y²−xy−1),  P_{{-2,3}}(x,y,z)−2 ⟩  ⊂ ℚ[x,y,z]
+  Surgery word for m003(−2,3): μ^{{−2}}λ^3 = 'bbababbbabABAbabABAbab'  (22 chars)
 
-  Gröbner basis of I gives:
-    → Minimal polynomials for x₀, y₀, z₀  (exact algebraic coordinates)
-    → Confirms uniqueness of the quasi-hyperbolic solution
-    → Converts [Computed] evidence to [Proved] theorem
+  tr(μ^{{−2}}λ^3) computed via SL(2,C) trace recursion tr(PQ) = tr(P)tr(Q) − tr(PQ^{{−1}}).
+  Verified numerically to < 1.5e-11 over 10 random SL(2,C) representations.
+  Degree: 15.  Coefficients: integers.
 
-  Next step: compute P_{{-2,3}} from peripheral word traces and run:
-    sage: I.groebner_basis()
+  P(x,y,z) = tr(μ^{{−2}}λ^3) =
+    x^6 y^2 z^3
+    - 4x^5 y^3 z^4 - x^5 y^3 z^2 + 2x^5 y z^4 - 2x^5 y z^2
+    + 6x^4 y^4 z^5 + 5x^4 y^4 z^3 - x^4 y^4 z - 4x^4 y^2 z^5 - 3x^4 y^2 z^3 + 4x^4 y^2 z + x^4 z^5 - 2x^4 z^3
+    - 4x^3 y^5 z^6 - 9x^3 y^5 z^4 + 2x^3 y^5 z^2 + x^3 y^5 + 22x^3 y^3 z^4 - 12x^3 y^3 z^2 - 2x^3 y^3
+      + 2x^3 y z^6 - 15x^3 y z^4 + 19x^3 y z^2
+    + x^2 y^6 z^7 + 7x^2 y^6 z^5 - 3x^2 y^6 z + 4x^2 y^4 z^7 - 25x^2 y^4 z^5 + 2x^2 y^4 z^3 + 13x^2 y^4 z
+      - 6x^2 y^2 z^7 + 28x^2 y^2 z^5 - 17x^2 y^2 z^3 - 17x^2 y^2 z + 2x^2 z^7 - 11x^2 z^5 + 15x^2 z^3 - 2x^2 z
+    - 2x y^7 z^6 - 2x y^7 z^4 + 3x y^7 z^2 - 2x y^5 z^8 + 6x y^5 z^6 + 16x y^5 z^4 - 20x y^5 z^2
+      + 2x y^3 z^8 - 37x y^3 z^4 + 50x y^3 z^2 - 2x y^3 - 6x y z^6 + 32x y z^4 - 42x y z^2 + 4x y
+    + y^8 z^5 - y^8 z^3 + 2y^6 z^7 - 10y^6 z^5 + 9y^6 z^3
+    + y^4 z^9 - 11y^4 z^7 + 35y^4 z^5 - 33y^4 z^3 + 2y^4 z
+    - 2y^2 z^9 + 18y^2 z^7 - 53y^2 z^5 + 54y^2 z^3 - 8y^2 z
+    + z^9 - 9z^7 + 27z^5 - 30z^3 + 9z
+
+  The Gröbner basis of I = ⟨Riley, P²−4⟩ ⊂ ℚ[x,y,z] (sympy times out; use SageMath):
+    sage groebner_surgery_m003.sage    (script in this directory)
+  Expected: zero-dimensional ideal → unique solution → R-039 promoted to [Proved].
+
+  NOTE: 'ababAbbAb' is a DERIVED relator (tr=2 at multiple fillings), NOT the
+  surgery polynomial. Always use tr(μ^{{−2}}λ^3) for the algebraic proof.
 """)
         else:
             print(f"\n  Riley polynomial does not vanish on sample — checking alternatives...")
 
 except ImportError:
-    print("\n  SageMath not in current path. Run with:")
-    print("    conda run -n sage python3 reproduce/character_variety_m003.py")
+    print("\n  SageMath not in current path. To run the Gröbner basis computation:")
+    print("    sage reproduce/groebner_surgery_m003.sage")
     print()
-    print("  Setup for when SageMath is available:")
-    print("    R.<x,y,z> = QQ[]")
-    print("    riley = z^2 - z*(x*y-x-y) + (x^2+y^2-x*y-1)  # Riley 1984")
-    print("    surgery = <tr(μ^{-2}λ^3) - 2>                 # from Part D")
-    print("    I = ideal(riley, surgery)")
-    print("    I.groebner_basis()")
+    print("  Surgery polynomial P(x,y,z) = tr(μ^{-2}λ^3) is degree 15 (see script).")
+    print("  sympy's groebner() times out; SageMath (Singular backend) required.")
     print()
-    print("  Expected result: a zero-dimensional ideal with unique solution")
-    print("  (up to orientation) having small Im(x²y−xz−y) and Im(xz−y).")
+    print("  SageMath setup:")
+    print("    R = PolynomialRing(QQ, ['x','y','z']); x,y,z = R.gens()")
+    print("    I = R.ideal([riley, surg**2 - 4])")
+    print("    G = I.groebner_basis()   # uses Singular automatically")
 
 # ── PART F: Summary ────────────────────────────────────────────────────────────
 
@@ -556,9 +574,13 @@ if mpns:
     print(f"       C: z2 - z(xy-x-y) + (x2+y2-xy-1) = 0   [Riley 1984]")
     print(f"     Quadratic in z -> algebraic CURVE in C3.")
     print()
-    print(f"  5. PATH TO PROOF [Conjecture -> target: Proved]")
-    print(f"     Need: surgery polynomial P_(-2,3)(x,y,z) = tr(mu^(-2) lambda^3)")
-    print(f"     Then: Groebner basis <Riley, P_(-2,3)-2> in QQ[x,y,z]")
-    print(f"     Expected: unique solution with Im(x2y-xz-y) minimal")
-    print(f"     -> Proves: m003(-2,3) UNIQUE quasi-hyperbolic Dehn filling of m003")
-    print(f"     -> Converts R-036 from [Computed] to [Proved].")
+    print(f"  5. PATH TO PROOF [Conjecture -> in progress]")
+    print(f"     Surgery polynomial P(x,y,z) = tr(mu^(-2) lambda^3) COMPUTED (July 2026)")
+    print(f"       mu='ABABB', lambda='ABAbab', surgery word='bbababbbabABAbabABAbab' (len 22)")
+    print(f"       Degree 15, integer coefficients, verified to <1.5e-11 numerically.")
+    print(f"     Groebner basis <Riley, P^2-4> requires SageMath (Singular backend).")
+    print(f"       sympy groebner() times out for this degree.")
+    print(f"       Script: reproduce/groebner_surgery_m003.sage")
+    print(f"     Expected: 0-dimensional ideal -> unique solution -> R-039 [Proved].")
+    print(f"     WARNING: 'ababAbbAb' is a DERIVED relator (tr=2 at multiple fillings)")
+    print(f"       — NOT the surgery polynomial. Always use tr(mu^(-2) lambda^3).")
