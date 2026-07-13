@@ -20,7 +20,7 @@ Verification:
 RELATION TO HFG:
   tr(μ)_cusped = tr(b)_filled − 1  [identity verified numerically]
   where tr(b)_filled = trace_field_generators()[1] from polished_holonomy.
-  The prime 283 in the discriminant is a new arithmetic invariant of M_PMNS.
+  disc = -283 is the ESTABLISHED ITF discriminant of M_PMNS (NOT new — SSRN 6851440).
 
 GEOMETRY RECAP:
   V(riley) is 2-dim, V(surg-2) is 2-dim → intersection is 1-dim (curve).
@@ -150,7 +150,7 @@ print()
 if dim0 == 0:
     # Count isolated solutions
     print("  Variety is 0-dimensional. Points (x₀, y₀, z₀):")
-    V = I0.variety(CC200)
+    V = I0.variety(ComplexField(200))
     for i, pt in enumerate(V):
         xv, yv, zv = pt[x], pt[y], pt[z]
         # Check riley and surg constraints
