@@ -66,6 +66,17 @@ pre { background: var(--code-bg); border: 1px solid var(--rule); border-left: 3p
 .article-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; }
 footer { text-align: center; padding: 2rem 0 3rem; font-size: 0.82rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
 footer a { color: var(--muted); }
+.flow-diagram { display: flex; align-items: stretch; gap: 0.6rem; margin: 1.8rem 0; }
+.flow-step { flex: 1; background: var(--code-bg); border: 1px solid var(--rule); border-top: 3px solid var(--muted); padding: 1rem 0.9rem; }
+.flow-step--gap { border-top-color: var(--accent); }
+.flow-step--gap .flow-label { color: var(--accent); }
+.flow-step--candidate { border-top-color: #2a5e2a; }
+.flow-step--candidate .flow-label { color: #2a5e2a; }
+.flow-label { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.5rem; }
+.flow-desc { font-size: 0.8rem; line-height: 1.45; color: var(--muted); }
+.flow-arrow { flex: 0 0 auto; display: flex; align-items: center; color: var(--rule); font-size: 1.3rem; }
+.flow-caption { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+@media (max-width: 800px) { .flow-diagram { flex-direction: column; } .flow-arrow { transform: rotate(90deg); padding: 0.2rem 0; align-self: center; } }
 @media (max-width: 600px) { .manifold-grid { grid-template-columns: 1fr; } h1 { font-size: 1.9rem; } .paper-list li { grid-template-columns: 1fr; gap: 0.3rem; } }
 
 .nav-dropdown:hover .dropdown-menu { display:block !important; }
@@ -113,8 +124,40 @@ footer a { color: var(--muted); }
 
 <section class="hero" id="about">
   <p>The <strong>Hyperbolic Flavor Geometry (HFG)</strong> program proposes that the flavor structure of the Standard Model — the mixing matrices, CP phases, and mass hierarchies of quarks and leptons — arises from the arithmetic geometry of compact hyperbolic 3-manifolds.</p>
-  <p class="hero-statement">The unique minimum-volume closed hyperbolic 3-manifold encodes the PMNS lepton mixing matrix. Its volume v₀ = 0.9814 is the fundamental Bloch quantum of an arithmetic family organized by the discriminant −283 field. It is not adjusted to fit the data.</p>
+  <p class="hero-statement">The Meyerhoff manifold — the unique minimum-volume closed hyperbolic 3-manifold with first homology H₁=ℤ/5, and the second-smallest known closed hyperbolic 3-manifold by volume globally — encodes the PMNS lepton mixing matrix. Its volume v₀ = 0.9814 is the fundamental Bloch quantum of an arithmetic family organized by the discriminant −283 field. It is not adjusted to fit the data.</p>
   <p>Three cusped manifolds — m003, m006, m019 — have cusp-shape Galois groups isomorphic to Weyl(SU(2)), Weyl(SU(3)), Weyl(SU(4)): the gauge groups of the Standard Model. Every disc=−283 cusped manifold in the census has volume a rational multiple of v₀.</p>
+</section>
+
+<section id="flavor-problem">
+  <h2>The Flavor Problem, Oriented</h2>
+  <p>Before the theorems: what problem is this actually solving, and why hyperbolic geometry?</p>
+  <div class="flow-diagram">
+    <div class="flow-step">
+      <div class="flow-label">Observed Constants</div>
+      <div class="flow-desc">19 measured numbers: quark &amp; lepton masses, mixing angles, the CP phase.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-label">Standard Model</div>
+      <div class="flow-desc">Predicts their consequences to 11 decimal places — but not the numbers themselves.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step flow-step--gap">
+      <div class="flow-label">Open Question</div>
+      <div class="flow-desc">Why these 19 values, and not others? No first-principles derivation exists.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-label">Hyperbolic Geometry</div>
+      <div class="flow-desc">Rigid by Mostow's theorem: fix the topology and every invariant — volume, angles, lengths — is completely determined. No free parameters.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step flow-step--candidate">
+      <div class="flow-label">Candidate Explanation</div>
+      <div class="flow-desc">Two specific manifolds' arithmetic reproduces the shadow of those 19 numbers — HFG's central claim.</div>
+    </div>
+  </div>
+  <p class="flow-caption">The theorems below are about the rightmost two boxes. The middle box is the reason any of this is worth reading.</p>
 </section>
 
 <section id="bloch">
