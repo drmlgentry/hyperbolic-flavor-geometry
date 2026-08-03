@@ -1,5 +1,29 @@
 # CORE_MASTER Gap Report
 
+## Aug 3 2026 — Session updates
+
+**Resolved this session:**
+- Publications section synced to ORCID (0009-0006-4550-2663), BPS paper omitted with note
+- Full Substack archive (12 posts) added to the site — previously only 1 of 12 was linked
+- m206 order-6 downgraded in 4 locations (3 on `index.html`, 4 on `article4.html`)
+- `article4.html` correction banner added
+- CKM search range corrected to |p|,|q| ≤ 15 — verified directly from
+  `reproduce/dual_surgery_exploration.py`, not from memory or secondhand tracking notes
+- `CLAIMS_REGISTER.md` created (see repo root)
+
+**Still open, carried forward:**
+- SU(2)_R factor of Pati-Salam unaddressed by any current result
+- Class S / 3D-3D field-theoretic derivation: proposed, not proved
+- Linear disjointness of K_m003/K_m019 with K_m006 not yet checked
+- Q-001 (primary decomposition, WSL/Sage) still running — PID 720, ~223+ CPU-hours as of last check
+- SSRN 6840418 removal: requested, not yet confirmed
+- Poincaré Disk Explorer: specced, not built — next session
+- CORE_MASTER_v12 still has no Galois-Weyl correspondence section (unchanged from the finding below)
+- `HFG_STATUS.md` and this file were themselves stale before this update — worth a habit of
+  updating them at the end of a working session, not just at the start of the next one
+
+---
+
 Generated 2026-07-29. Compares `hyperbolic-flavor-geometry/papers/07_core_master/CORE_MASTER_v12.tex`
 (current section structure below) against the abstract/opening claim of each of the other 43 distinct
 paper titles found in `hyperbolic-flavor-geometry/papers/`. No content was rewritten or merged — this is
@@ -58,6 +82,20 @@ which had the wrong claim until fixed earlier in this session. This is the clear
 | Alexander polynomial of (-2,3,7) pretzel knot, Mahler measure = regulator *(The Alexander Polynomial...)* | §8 "Alexander polynomial and the golden ratio" — **IN MASTER** |
 | Three rigidity properties of logarithmic weight spectra (abstract lattice-action theorems) *(Three Rigidity Properties...)* | **NOT IN MASTER** |
 | GW peak frequency quantization / dark matter mass conjecture *(Golden Ratio Quantisation of GW Peak Frequencies)* | §13 "Cosmological Implications" exists but this specific GW-freeze-in conjecture — **NOT CLEARLY IN MASTER** |
+
+## Addendum — Aug 2–3 2026 findings (not covered by the July 29 comparison above)
+
+CORE_MASTER_v12 was repurposed (per CLAUDE.md, July 15 decision) into a dedicated golden-ratio-mass-lattice paper and no longer covers the unified-framework ground at all, so **none** of the following are expected to be "in" it — this section is a record of what's new, not a gap against v12 specifically.
+
+| Finding / claim | Status | Where documented |
+|---|---|---|
+| Dual surgery identity m003(−2,3) ≅ m019(2,1) ≅ M_PMNS | [Proved] | `class_s_verification.txt`, `CLAUDE.md`, `gentry-galois-gauge-v4.tex` |
+| Galois closure of compositum = S₄ × ℤ/2 = Weyl(SU(4)) × Weyl(SU(2)_L) | [Proved] | Same three sources |
+| CKM negative-result search bounds (no S₄ parent for M_CKM) | [Computed] — resolved Aug 3: |p|,|q| ≤ 15, 9 candidate manifolds, coprime pairs only, script-verified | `reproduce/dual_surgery_exploration.py` (now committed). Two other figures (≤12, ≤20) were circulating in the corpus and are both wrong. |
+| Eisenstein-norm BPS mass ratio claims (muon/tau) | [Refuted as evidence] | `class_s_verification.txt`; SSRN 6840418 withdrawal requested but not yet reflected live |
+| m206(1,2) "order-6 Eisenstein torsion" / complete torsion taxonomy | [Retracted] — H₁(m206(1,2))=ℤ/5, not order 6 | Fixed in `docs/index.html` (3 locations) and `docs/article4.html` (4 locations) Aug 3 2026; **not yet fixed** in the underlying `article4.html`-adjacent source data or any paper `.tex` that may assert it |
+| ORCID/SSRN/Substack sync gaps | Website was out of sync with ORCID (missing 12 of 21 works, one stale SSRN number) and with the live Substack archive (11 of 12 posts unlinked) | Fixed on `docs/index.html` Aug 3 2026 |
+| `HFG_STATUS.md` and this file's own staleness | Both had drifted from the day's actual work before this addendum | This edit |
 | Two-tier universal geodesic spectrum in Dehn fillings of m003/m006 *(A Universal Spectral Phase Transition / Two-Tier Geodesic Spectrum Structure)* | §6 "Spectral gap" is adjacent but this specific universality-scan result — **NOT CLEARLY IN MASTER** |
 | Charge conjugation = orientation reversal, confirmed chirality via Chern-Simons sign *(Charge Conjugation as Orientation Reversal)* | §5 "Chirality and charge conjugation" — **IN MASTER** |
 | 134-manifold census, ITF signature (8,1) selection criterion, no fitting *(Quark Mixing from an Arithmetically Selected Hyperbolic 3-Manifold)* | Likely in §1/§2 selection narrative — **LIKELY IN MASTER**, specific "134" figure not independently confirmed here |
