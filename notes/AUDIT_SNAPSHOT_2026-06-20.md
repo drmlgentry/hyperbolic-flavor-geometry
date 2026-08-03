@@ -1,4 +1,4 @@
-# HFG Programme Audit Snapshot — 2026-06-20
+# HFG Program Audit Snapshot — 2026-06-20
 
 ## Session summary
 Full-day audit of all SSRN submissions, local Downloads folder (197 .tex files),

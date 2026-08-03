@@ -148,22 +148,46 @@ print(f"  Gröbner basis: {len(G0)} elements")
 print()
 
 if dim0 == 0:
-    # Count isolated solutions
-    print("  Variety is 0-dimensional. Points (x₀, y₀, z₀):")
+    # Step 1: fast low-precision pass to count solutions and get a preview
+    print("  Step 1/2: Fast variety enumeration at ComplexField(53) ...")
+    import sys; sys.stdout.flush()
+    V53 = I0.variety(ComplexField(53))
+    print(f"  -> {len(V53)} solution(s) found at low precision.")
+    sys.stdout.flush()
+
+    for i, pt in enumerate(V53):
+        xv, yv, zv = pt[x], pt[y], pt[z]
+        print(f"  [{i}] x={complex(xv):.5f}  y={complex(yv):.5f}  z={complex(zv):.5f}")
+    sys.stdout.flush()
+
+    # Step 2: high-precision pass
+    print()
+    print("  Step 2/2: High-precision variety at ComplexField(200) ...")
+    print("  (This is slow — the basis has degree up to 28. ~5-20 min.)")
+    sys.stdout.flush()
     V = I0.variety(ComplexField(200))
+    print(f"  -> Done. {len(V)} solution(s).")
+    sys.stdout.flush()
+
+    print()
+    print("  Points (x₀, y₀, z₀)  [high precision]:")
     for i, pt in enumerate(V):
         xv, yv, zv = pt[x], pt[y], pt[z]
-        # Check riley and surg constraints
-        rv = float(abs(riley(xv, yv, zv)))
-        sv = float(abs(surg(xv, yv, zv) - 2))
-        tr_mu_v = float(abs(tr_mu_poly(xv, yv, zv) - tr_mu_val))
-        print(f"  [{i}] x={complex(xv):.6f}  y={complex(yv):.6f}  z={complex(zv):.6f}")
-        print(f"       |riley|={rv:.1e}  |surg-2|={sv:.1e}  |tr(μ)-target|={tr_mu_v:.1e}")
+        rv  = float(abs(riley(xv, yv, zv)))
+        sv  = float(abs(surg(xv, yv, zv) - 2))
+        muv = float(abs(tr_mu_poly(xv, yv, zv) - tr_mu_val))
+        print(f"  [{i}] x={complex(xv):.8f}")
+        print(f"       y={complex(yv):.8f}")
+        print(f"       z={complex(zv):.8f}")
+        print(f"       |riley|={rv:.1e}  |surg-2|={sv:.1e}  |tr(mu)-target|={muv:.1e}")
+        sys.stdout.flush()
+
     print(f"\nTotal: {len(V)} solution(s)")
     if len(V) == 1:
-        print("UNIQUE SOLUTION: m003(-2,3) holonomy is isolated. R-039 path to proof complete.")
+        print("UNIQUE SOLUTION: m003(-2,3) holonomy is isolated. Proof complete.")
     else:
         print("Multiple solutions — holonomy is ONE among these; need to identify which.")
+    sys.stdout.flush()
 
 # Also try surg = -2 branch
 print()

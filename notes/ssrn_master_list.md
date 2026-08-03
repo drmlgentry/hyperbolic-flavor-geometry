@@ -9,9 +9,9 @@
 | 6845778 | The Meyerhoff Manifold as a Dehn Filling of Two Arithmetically Independent Cusped Parents: Cusp Galois Groups Z/2 and S4 | 05/29 | 06/02 |
 | 6840418 | Lepton Masses as BPS States of a Class S Theory on X0(11) at the Eisenstein Orbifold Point | 05/28 | 06/11 |
 | 6840324 | The Gauss Polynomial and Homological Blocks of the Meyerhoff Manifold | 05/28 | 06/11 |
-| 6840322 | The Galois-Gauge Correspondence: Weyl Groups of Standard Model Forces from Cusp Arithmetic of Hyperbolic Flavour Manifolds | 05/28 | 06/11 |
+| 6840322 | The Galois-Gauge Correspondence: Weyl Groups of Standard Model Forces from Cusp Arithmetic of Hyperbolic Flavor Manifolds | 05/28 | 06/11 |
 | 6808878 | A Quadratic Cover Prime Formula for a Farey Tower of Arithmetic Hyperbolic 3-Manifolds | 05/21 | 05/22 |
-| 6775158 | Hyperbolic Flavour Geometry: A Comprehensive Account | 05/16 | 05/29 |
+| 6775158 | Hyperbolic Flavor Geometry: A Comprehensive Account | 05/16 | 05/29 |
 | 6761978 | Two-Tier Geodesic Spectrum Structure in Dehn Fillings of m003 and m006: Lucas Universality and Slope Encoding | 05/14 | 06/02 |
 | 6689678 | Geometric Origin of CP Phases from Hyperbolic Holonomy | 05/01 | 06/02 |
 | 6689441 | Discrete Mixing Operators from Boundary Sector Geometry | 05/01 | 05/19 |

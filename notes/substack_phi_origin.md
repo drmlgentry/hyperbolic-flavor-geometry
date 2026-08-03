@@ -7,7 +7,7 @@
 
 There is a number that appears throughout the Standard Model fermion mass spectrum: the golden ratio φ = (1+√5)/2 ≈ 1.618. The observed lepton masses satisfy m ≈ mₑ · φ^(q/4) for integer q, with the electron-to-muon gap being exactly 4 × L₅ = 4 × 11 quarter-steps, where L₅ = 11 is the fifth Lucas number.
 
-Until now, φ entered the HFG programme as an observed pattern — a parameter chosen to fit the data. This post reports that φ is *forced* by the arithmetic of a specific prime number, 31, through a chain of implications that is now completely proved.
+Until now, φ entered the HFG program as an observed pattern — a parameter chosen to fit the data. This post reports that φ is *forced* by the arithmetic of a specific prime number, 31, through a chain of implications that is now completely proved.
 
 ---
 
@@ -85,7 +85,7 @@ The tau-to-muon gap $q_\tau - q_\mu = 24$ numerically equals $2 \times a_{61}(X_
 
 ### Summary
 
-The golden ratio φ enters the HFG programme through a chain:
+The golden ratio φ enters the HFG program through a chain:
 
 $$31 \xrightarrow{a_{31}^2-4\cdot31=-3\cdot5^2} \chi_5 \xrightarrow{\text{order 5}} \zeta_5 \xrightarrow{\text{real subfield}} \mathbb{Q}(\sqrt{5}) \xrightarrow{\text{generator}} \phi$$
 

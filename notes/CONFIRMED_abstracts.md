@@ -23,9 +23,9 @@
 ---
 
 ## SSRN 6840322 — 1781135187353_gentry-galois-gauge.tex
-**Title:** The Galois--Gauge Correspondence: Weyl Groups of Standard Model Forces from Cusp Arithmetic of Hyperbolic Flavour Manifolds
+**Title:** The Galois--Gauge Correspondence: Weyl Groups of Standard Model Forces from Cusp Arithmetic of Hyperbolic Flavor Manifolds
 
-**Abstract:** The Standard Model gauge groups $U(1)$, $\mathrm{SU}(2)$, and $\mathrm{SU}(3)$ have Weyl groups $\{1\}$, $\mathbb{Z}/2$, and $S_3$ respectively. We show that these three Weyl groups appear as the Galois groups of the minimal polynomials of the cusp shape coordinates of the two compact hyperbolic 3-manifolds of the Hyperbolic Flavour Geometry (HFG) programme: $M_{\mathrm{PMNS}}=\mfld{m003}(-2,3)$ (the Meyerhoff manifold) and $M_{\mathrm{CKM}}=\mfld{m006}(-5,2)$. Specifically: the real part $\mathrm{Re}(\tau_{\mathrm{PMNS}})=-\tfrac12$ is rational (Galois group $\{1\}$, encoding electromagnetism); the imaginary part $\mathrm{Im}(\tau_{\mathrm{PMNS}})=\tfrac{\sqrt3}{2}$ satisfies $x^2-\tfrac34=0$ (Galois group $\mathbb{Z}/2$, encoding the weak force); and the real part $\mathrm{Re}(\tau_{\mathrm{CKM}})$ satisfies the irreducible cubic $8x^3-24x^2+28x-11$ with Galois group $S_3$ (the Weyl group of $\mathrm{SU}(3)$, encoding the strong force). The cubic discriminant is $-3776=-2^6\times59$; the splitting field has degree $6=|S_3|$ over $\mathbb{Q}$. All results are verified by SnapPy and Sage computations. This Galois--gauge correspondence provides a purely arithmetic explanation for the three distinct gauge symmetries of the Standard Model.
+**Abstract:** The Standard Model gauge groups $U(1)$, $\mathrm{SU}(2)$, and $\mathrm{SU}(3)$ have Weyl groups $\{1\}$, $\mathbb{Z}/2$, and $S_3$ respectively. We show that these three Weyl groups appear as the Galois groups of the minimal polynomials of the cusp shape coordinates of the two compact hyperbolic 3-manifolds of the Hyperbolic Flavor Geometry (HFG) program: $M_{\mathrm{PMNS}}=\mfld{m003}(-2,3)$ (the Meyerhoff manifold) and $M_{\mathrm{CKM}}=\mfld{m006}(-5,2)$. Specifically: the real part $\mathrm{Re}(\tau_{\mathrm{PMNS}})=-\tfrac12$ is rational (Galois group $\{1\}$, encoding electromagnetism); the imaginary part $\mathrm{Im}(\tau_{\mathrm{PMNS}})=\tfrac{\sqrt3}{2}$ satisfies $x^2-\tfrac34=0$ (Galois group $\mathbb{Z}/2$, encoding the weak force); and the real part $\mathrm{Re}(\tau_{\mathrm{CKM}})$ satisfies the irreducible cubic $8x^3-24x^2+28x-11$ with Galois group $S_3$ (the Weyl group of $\mathrm{SU}(3)$, encoding the strong force). The cubic discriminant is $-3776=-2^6\times59$; the splitting field has degree $6=|S_3|$ over $\mathbb{Q}$. All results are verified by SnapPy and Sage computations. This Galois--gauge correspondence provides a purely arithmetic explanation for the three distinct gauge symmetries of the Standard Model.
 
 ---
 
@@ -172,7 +172,7 @@ For M=m019 (volume 2.9441..., homological longitude (17,6)), we compute mu_M exp
 ---
 
 ## SSRN 6775158 — CORE_MASTER_v12.tex (or v11)
-**Title:** Hyperbolic Flavour Geometry: A Comprehensive Account
+**Title:** Hyperbolic Flavor Geometry: A Comprehensive Account
 **Abstract:** Comprehensive account of HFG. Results: PMNS fitness 0.005087 (global minimum); CKM fitness 0.016482; CP phase 195.91 degrees (0.55% from PDG); lepton mass ratios as Eisenstein integer norms; WRT invariants |WRT_r|^2=13/r exactly. Galois-Weyl correspondence: cusp shapes of m003, m006, m019 satisfy polynomials with Galois groups Z/2, S_3, S_4 = Weyl groups of SU(2), SU(3), SU(4). Arithmetic holographic principle: cusp and invariant trace field splitting fields coincide. Meyerhoff manifold simultaneously filling of m003 (SU(2) parent) and m019 (SU(4) parent); compositum Gal=S_4 x Z/2=Weyl(SU(4) x SU(2)_L). No S_5 cusp Galois group found in 5000 manifolds. All verified by SnapPy and Sage.
 **NOTE:** Contains sigma_opt error (uses (3/2)log(phi) rather than corrected (3/2)log(sqrt(13/5))). Contains Q(sqrt(17)) claim for CKM trace field -- RETRACTED in gentry-hfg-arithmetic.
 

@@ -229,7 +229,7 @@ The key arithmetic fact is $7^2 - 4 \cdot 31 = -75 = -3 \cdot 5^2$.
 This follows from $a_{31}(X_0(11)) = 7$. Whether the value 7 is "forced"
 by some deeper arithmetic principle, or is coincidental, is unknown.
 An analytic rank-2 curve with a_31 ≠ 7 would not produce level 8773 descent,
-which would refute the programme's Bianchi connection entirely.
+which would refute the program's Bianchi connection entirely.
 
 ---
 

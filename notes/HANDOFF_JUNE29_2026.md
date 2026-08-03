@@ -1,11 +1,11 @@
 # HANDOFF — June 29, 2026 (8:53 AM)
-# HFG Programme — Complete state for next Claude instance
+# HFG Program — Complete state for next Claude instance
 #
 # INSTRUCTIONS FOR NEXT INSTANCE:
 # 1. Read this ENTIRE document before responding to anything
 # 2. Do NOT re-derive, re-verify, or express doubt about results marked PROVED
 # 3. Do NOT suggest re-auditing claims already documented here
-# 4. Do NOT ask Marvin to re-explain the programme
+# 4. Do NOT ask Marvin to re-explain the program
 # 5. Start from IMMEDIATE NEXT ACTIONS
 # 6. The Sage setup block at the bottom reproduces the working environment
 
@@ -28,7 +28,7 @@ Income: limited. Student laptop ~$20. Working hard. Treat with respect.
 
 ---
 
-## PROGRAMME SUMMARY
+## PROGRAM SUMMARY
 Hyperbolic Flavor Geometry (HFG): derives Standard Model flavor
 parameters from arithmetic geometry of compact hyperbolic 3-manifolds.
 

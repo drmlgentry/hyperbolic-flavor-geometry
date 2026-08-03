@@ -339,7 +339,7 @@ def main():
     args = parser.parse_args()
 
     print("="*70)
-    print("HFG PROGRAMME — FULL ITF SIGNATURE ENUMERATION")
+    print("HFG PROGRAM — FULL ITF SIGNATURE ENUMERATION")
     print("Theorem 6.1 verification: H₁=Z/5  ∩  ITF sig=(8,1)  →  unique")
     print("="*70)
     print(f"\nCheckpoint file:  {CHECKPOINT}")

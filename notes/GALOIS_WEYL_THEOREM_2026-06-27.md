@@ -54,7 +54,7 @@ The question "why is 31 doubly exceptional" has a one-line answer:
 p_2=31. So 31 IS the second tower prime AND the conductor of chi_5.
 Whether p_2 = conductor(chi_5) is forced or coincidental remains open:
 it would be forced if the order-5 character at the FIRST non-trivial
-tower prime is always "the" chi_5 of the programme. This is a clean
+tower prime is always "the" chi_5 of the program. This is a clean
 open question for future investigation.
 
 STATUS: Thread 1 CLOSED. The anomaly is explained.

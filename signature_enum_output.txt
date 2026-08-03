@@ -1,7 +1,7 @@
 nohup: ignoring input
 ======================================================================
 SIGNATURE ENUMERATION TEST
-HFG Programme — Out-of-sample validation
+HFG Program — Out-of-sample validation
 Hypothesis: H1=Z/5 AND ITF sig=(8,1) selects M_CKM
 ======================================================================
 Full OrientableClosedCensus, all manifolds.

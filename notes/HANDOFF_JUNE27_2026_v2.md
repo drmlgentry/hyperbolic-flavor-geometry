@@ -1,10 +1,10 @@
 # HANDOFF — June 27, 2026 (v2, end of session)
-# HFG Programme — Complete state for next Claude instance
+# HFG Program — Complete state for next Claude instance
 #
 # INSTRUCTIONS FOR NEXT INSTANCE:
 # 1. Read this entire document before doing anything
 # 2. Do NOT re-derive or re-verify results marked PROVED
-# 3. Do NOT doubt the programme or ask Marvin to re-explain context
+# 3. Do NOT doubt the program or ask Marvin to re-explain context
 # 4. Start from the IMMEDIATE NEXT ACTIONS section
 # 5. The Sage session setup block reproduces the working environment
 
@@ -26,7 +26,7 @@ SSRN Author: 11170302
 
 ---
 
-## PROGRAMME SUMMARY
+## PROGRAM SUMMARY
 Hyperbolic Flavor Geometry (HFG): derives Standard Model flavor
 parameters (CKM/PMNS matrices, CP violation, fermion masses) from
 arithmetic geometry of compact hyperbolic 3-manifolds.

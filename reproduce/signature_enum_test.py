@@ -355,7 +355,7 @@ def print_summary(h1z5_records):
 def main():
     print("="*70)
     print("SIGNATURE ENUMERATION TEST")
-    print("HFG Programme — Out-of-sample validation")
+    print("HFG Program — Out-of-sample validation")
     print("Hypothesis: H1=Z/5 AND ITF sig=(8,1) selects M_CKM")
     print("="*70)
     print(f"Full OrientableClosedCensus, all manifolds.", flush=True)

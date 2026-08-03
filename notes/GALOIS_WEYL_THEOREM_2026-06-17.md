@@ -1,5 +1,5 @@
 # The Galois-Weyl Selection Theorem
-## HFG Programme — 2026-06-17
+## HFG Program — 2026-06-17
 
 ---
 
@@ -141,7 +141,7 @@ factor in the census — genuinely unique selection, not a loose constraint.
 
 ---
 
-## §4. Connections to the Broader Programme
+## §4. Connections to the Broader Program
 
 The Galois-Weyl theorem is the **structural foundation** from which
 the larger connections extend. Here is the map:
@@ -197,7 +197,7 @@ $m003$ as the $SU(2)$ manifold is also the Galois group that controls
 the mass-ratio encoding. These are the same group for potentially
 structural reasons, not coincidence.
 
-### 4c. Galois-Weyl $\rightarrow$ Langlands Programme
+### 4c. Galois-Weyl $\rightarrow$ Langlands Program
 
 The Galois groups $\{1\}$, $\mathbb{Z}/2$, $S_3$ appearing in the
 Galois-Weyl table are exactly the Galois groups of the smallest
@@ -206,7 +206,7 @@ conductor cyclotomic extensions:
 - $\mathbb{Q}(\zeta_3)=\mathbb{Q}(\sqrt{-3})$: $\mathrm{Gal}=\mathbb{Z}/2$
 - Cubic with $\mathrm{Gal}=S_3$: the "simplest" non-abelian Galois group
 
-Under the Langlands programme, Galois representations valued in $W(G)$
+Under the Langlands program, Galois representations valued in $W(G)$
 correspond to automorphic forms for the Langlands dual group $G^\vee$.
 The Weyl group $W(G)$ is precisely the data that indexes the unramified
 representations in the Langlands correspondence. This suggests:
@@ -455,7 +455,7 @@ The central value $L(\frac{1}{2},\rho_2)$ is real and positive.
 ### Open: physical interpretation of $L(\frac{1}{2},\rho_2)$
 
 The central $L$-value $L(\frac{1}{2},\rho_2)$ is the object that, in the
-Langlands programme, encodes the "depth" of the automorphic representation.
+Langlands program, encodes the "depth" of the automorphic representation.
 In physics terms, it is the analogue of a coupling constant or mass ratio at
 the self-dual scale $s=\frac{1}{2}$. Whether $L(\frac{1}{2},\rho_2)$ has
 a direct physical interpretation (e.g., matching a QCD coupling or quark
@@ -473,7 +473,7 @@ Whether this is coincidence or structure is the next physical question.
 
 ## §9. HANDOFF SUMMARY — 2026-06-17
 
-### State of the programme (verified, unhedged)
+### State of the program (verified, unhedged)
 
 | Piece | Status | Evidence |
 |---|---|---|
@@ -623,7 +623,7 @@ Both cusped flavor manifolds have the **identical relator structure**:
 
 The relator having net $b$-exponent $= 5$ and net $a$-exponent $= 0$ is the
 **single algebraic source** of all $\mathbb{Z}/5$ structure throughout the
-programme. Every appearance of $\mathbb{Z}/5$ flows from this.
+program. Every appearance of $\mathbb{Z}/5$ flows from this.
 
 ### Four chains from one source
 
@@ -821,7 +821,7 @@ contributing dimension 2 over $\mathbb{Q}$.
 
 ### The golden ratio field in HFG
 
-$\mathbb{Q}(\sqrt{5})$ is already central to the programme:
+$\mathbb{Q}(\sqrt{5})$ is already central to the program:
 - $\varphi=(1+\sqrt{5})/2$ is the golden ratio
 - $\log\varphi$ is the systole appearing in the Lucas geodesic bridge theorem:
   $\ell(\gamma) = k\log\varphi \Leftrightarrow |\mathrm{tr}(\rho(\gamma))| = L_k$

@@ -63,7 +63,7 @@ which had the wrong claim until fixed earlier in this session. This is the clear
 | 134-manifold census, ITF signature (8,1) selection criterion, no fitting *(Quark Mixing from an Arithmetically Selected Hyperbolic 3-Manifold)* | Likely in §1/§2 selection narrative — **LIKELY IN MASTER**, specific "134" figure not independently confirmed here |
 | EFT feasibility analysis, spectrum obstruction for logarithmic mass lattice *(Uniqueness-First EFT Realization)* | §3 "Methods...discrete lattice hypothesis" is adjacent but this EFT-specific feasibility/obstruction analysis — **NOT CLEARLY IN MASTER** |
 | Three conjectures: dark matter as non-Lucas primes, matter/dark-energy transition, information geometry *(HFG: Conjectures on Dark Sector, Dark Energy)* | §13 "Cosmological Implications" exists but these specific three conjectures — **NOT CLEARLY IN MASTER, needs verification** |
-| Frobenius discriminant forces p=31 as tower prime; Bianchi descent, character variety theorems *(Frobenius Discriminant, Bianchi Descent, and the Character Variety)* | **NOT IN MASTER** — this proves the "31-exception" claim referenced elsewhere in the programme's own reasoning, but the theorem itself isn't in v12 |
+| Frobenius discriminant forces p=31 as tower prime; Bianchi descent, character variety theorems *(Frobenius Discriminant, Bianchi Descent, and the Character Variety)* | **NOT IN MASTER** — this proves the "31-exception" claim referenced elsewhere in the program's own reasoning, but the theorem itself isn't in v12 |
 | Scale-free quadratic forms ≅ symmetric space SL(n,R)/SO(n) *(Scale-Free Quadratic Forms, Symmetric Space Geometry)* | Foundational/background math, not tied to a specific v12 section — **NOT IN MASTER** |
 
 ## Notes on method

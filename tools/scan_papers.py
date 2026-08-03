@@ -171,7 +171,7 @@ def classify_via_api(filename: str, abstract: str) -> tuple:
                 "No API key", "Set ANTHROPIC_API_KEY environment variable")
 
     system = """You are a mathematical physics publication strategist for the HFG 
-(Hyperbolic Flavor Geometry) programme by Marvin Gentry. Papers cover:
+(Hyperbolic Flavor Geometry) program by Marvin Gentry. Papers cover:
 - Compact hyperbolic 3-manifolds (m003, m006) reproducing SM flavor parameters
 - WRT invariants, Z-hat/GPPV homological blocks, Eisenstein lattice
 - X_0(11) modular curve, BPS masses, class S theories, AdS3/CFT2

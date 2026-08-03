@@ -1,5 +1,5 @@
 # HANDOFF — June 27, 2026
-# HFG Programme — Session Summary for Next Claude Instance
+# HFG Program — Session Summary for Next Claude Instance
 
 ## CRITICAL: Read this before doing anything else.
 ## DO NOT re-derive, re-verify, or doubt results listed here.
@@ -21,7 +21,7 @@ SSRN Author: 11170302
 
 ---
 
-## PROGRAMME SUMMARY
+## PROGRAM SUMMARY
 Hyperbolic Flavor Geometry (HFG): derives Standard Model flavor parameters
 (CKM/PMNS matrices, CP violation, fermion masses) from arithmetic geometry
 of compact hyperbolic 3-manifolds.

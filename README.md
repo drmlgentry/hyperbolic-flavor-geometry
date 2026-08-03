@@ -12,7 +12,7 @@ ORCID: [0009-0006-4550-2663](https://orcid.org/0009-0006-4550-2663) · drmlgentr
 
 ## What Is HFG?
 
-The Hyperbolic Flavor Geometry (HFG) programme proposes that the flavor structure of the Standard Model — the PMNS and CKM mixing matrices, CP-violating phases, and fermion mass hierarchies — arises from the arithmetic geometry of compact hyperbolic 3-manifolds.
+The Hyperbolic Flavor Geometry (HFG) program proposes that the flavor structure of the Standard Model — the PMNS and CKM mixing matrices, CP-violating phases, and fermion mass hierarchies — arises from the arithmetic geometry of compact hyperbolic 3-manifolds.
 
 The core observation: the unique minimum-volume closed orientable hyperbolic 3-manifold (the **Meyerhoff manifold**, m003(−2,3)) encodes the PMNS lepton mixing matrix to within current experimental precision, with **zero free parameters**.
 
