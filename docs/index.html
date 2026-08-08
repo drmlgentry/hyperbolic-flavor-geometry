@@ -43,6 +43,11 @@ p { margin-bottom: 1rem; }
 .manifold-card .name { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 400; color: var(--accent); margin-bottom: 0.4rem; }
 .manifold-card .role { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
 .manifold-card p { font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.4rem; }
+.figure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0 2rem; }
+.figure-grid figure { margin: 0; background: var(--code-bg); border: 1px solid var(--rule); padding: 1rem; }
+.figure-grid img { width: 100%; height: auto; display: block; background: #fff; border: 1px solid var(--rule); }
+.figure-grid figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-top: 0.6rem; line-height: 1.5; }
+@media (max-width: 700px) { .figure-grid { grid-template-columns: 1fr; } }
 .paper-list { list-style: none; }
 .paper-list li { padding: 1rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: baseline; }
 .paper-list li:last-child { border-bottom: none; }
@@ -285,6 +290,27 @@ footer a { color: var(--muted); }
   <div class="theorem" data-label="Statistical Validation — CKM Null Test (June 2026)">
     <strong>Same-search null (p ≤ 0.005):</strong> 200 random CKM-shaped matrices tested against m006(−5,2) using the same word-triple search achieve fitness no better than 0.146 (mean 0.288). The physical CKM matrix achieves 0.003989 — a strict outlier; one-sided Monte Carlo p ≤ 0.005. <strong>Census null:</strong> among 12 H₁=ℤ/5 manifolds scanned, m006(−5,2) ranks 6th by raw fitness — it is not selected by fitness. <strong>Arithmetic uniqueness:</strong> m006(−5,2) is the unique H₁=ℤ/5 manifold with ITF signature (8,1) in the full SnapPy closed census (948 candidates across 11,031 manifolds), verified by exhaustive enumeration; script: <code>reproduce/signature_enum_test.py</code>.
   </div>
+
+  <h3>The Dual Surgery Identity — Figures</h3>
+  <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1rem;">Supporting graphics for the dual surgery theorem above — also published with the <a href="https://open.substack.com/pub/marvingentrynd/p/the-dual-surgery-identity-a-proved" style="color:var(--muted);">Substack writeup</a>.</p>
+  <div class="figure-grid">
+    <figure>
+      <img src="assets/images/01_dual_surgery_hero.svg" alt="One closed manifold, two arithmetic parents">
+      <figcaption>One closed manifold, two arithmetic parents — m003(−2,3) and m019(2,1) both fill to M_PMNS.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/02_verification_panel.svg" alt="What was actually checked — volume, homology, isometry">
+      <figcaption>What was actually checked: Dehn-filling descriptions, volume agreement (0.981368828892232), first homology (ℤ/5 for both), and SnapPy's is_isometric_to = True.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/04_survived_vs_failed.svg" alt="What survived verification, and what did not">
+      <figcaption>What survived independent verification, and what did not — the dual filling isometry and Galois closure hold; the Eisenstein-norm mass claims and full Pati-Salam mechanism do not.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/03_field_galois_diagram.svg" alt="Field compositum and Galois closure">
+      <figcaption>Field compositum and Galois closure: K₀₀₃ (degree 2) and K₀₁₉ (degree 4) compose to degree 8; the Galois closure has degree 48, Gal(L/ℚ) ≅ S₄ × ℤ/2.</figcaption>
+    </figure>
+  </div>
 </section>
 
 <section id="papers">
@@ -338,6 +364,7 @@ footer a { color: var(--muted); }
   <h2>All Substack Posts</h2>
   <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">The HFG Dispatch, in full — synced from <a href="https://marvingentrynd.substack.com/archive" style="color:var(--muted);">the live archive</a>, Aug 2026.</p>
   <ul class="article-list" style="margin-bottom:2.5rem;">
+    <li><a href="https://open.substack.com/pub/marvingentrynd/p/the-dual-surgery-identity-a-proved">The Dual Surgery Identity: A Proved Topological Intersection of SU(2) and SU(4)</a><div class="article-meta">Aug 2026</div></li>
     <li><a href="https://marvingentrynd.substack.com/p/the-golden-ratio-has-an-automorphic">The Golden Ratio Has an Automorphic Origin</a><div class="article-meta">Jun 30 2026</div></li>
     <li><a href="https://marvingentrynd.substack.com/p/the-z5-bridge">The Z/5 Bridge</a><div class="article-meta">Jun 20 2026</div></li>
     <li><a href="https://marvingentrynd.substack.com/p/the-eisenstein-conjecture">The Eisenstein Conjecture</a><div class="article-meta">Jun 14 2026</div></li>

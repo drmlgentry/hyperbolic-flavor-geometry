@@ -1,5 +1,42 @@
 # CORE_MASTER Gap Report
 
+## Aug 6 2026 — Session updates
+
+**Resolved this session:**
+- Substack post "The Dual Surgery Identity" published and linked from `HFG_STATUS.md`
+- Q-001 memory-heartbeat script fixed — was hardcoded to a stale PID (720, lost on a WSL reboot);
+  now self-heals via `pgrep -f q001_primdec.sage` and relaunched against the current PID (703)
+- Narration script + deck NOTES corrected "twenty-two preprints" → "twenty-one" (verified against
+  live ORCID: 21 works currently listed) — **the printed `HFG_shoot_scripts_onepager.pdf` still
+  says twenty-two**; say twenty-one when Slide 18 is actually shot on location
+- `HFG_STATUS.md` SSRN table corrected: 6840418 confirmed still live on ORCID as of today
+  (put-code 217382443, last-modified 2026-06-11, unchanged) — a "removed/confirmed" claim
+  circulating this session was not accurate; 6845778/6775158's Aug 2 fixes also not yet reflected
+  on the public ORCID record (last-modified 2026-07-29 for both)
+
+**New gaps found this session:**
+- `gentry-galois-gauge-v4.tex` has no mention of the CKM negative-result search (no "negative
+  result," candidate manifold list, or slope bound anywhere in the file) — the result currently
+  only lives in `CLAIMS_REGISTER.md` and the Substack post, not in the paper body itself
+- 2TB drive (WD Elements, disk 5, GPT, stable) showing pre-failure SMART status, still needs a
+  ddrescue clone before any recovery attempt. The candidate 4TB destination ("SSD SSD", disk 1)
+  was ruled out Aug 6 2026: repeated Event ID 51 disk I/O errors on it, which got denser (not
+  better) after a physical reseat on a different port/cable — points to the drive/enclosure
+  itself failing, not a connection issue. Marvin is sourcing a different destination drive.
+  Do not use disk 1 ("SSD SSD") as a clone destination.
+
+**Still open, carried forward:**
+- SU(2)_R factor of Pati-Salam unaddressed by any current result
+- Class S / 3D-3D field-theoretic derivation: proposed, not proved
+- Linear disjointness of K_m003/K_m019 with K_m006 not yet checked
+- Q-001 (primary decomposition, WSL/Sage) still running — PID 703 (changed from 720 after a WSL
+  reboot today), continuously alive ~7 hours since the reboot, resumed cleanly from its cached
+  Groebner-basis checkpoint, still on "computing elimination ideal for x-coordinate," no new
+  milestone since the last check
+- Poincaré Disk Explorer: specced, not built — next session
+
+---
+
 ## Aug 3 2026 — Session updates
 
 **Resolved this session:**
