@@ -128,3 +128,22 @@ not yet marked as such)
 **Correct version:** `lucas-structure/gentry_lucas_structure_v4.tex`, SSRN 6981259 (live,
 per ORCID Aug 3 2026 check — supersedes withdrawn SSRN 6854378, which some tracking files
 still reference)
+
+## 13. Linear disjointness of K_m003 and K_m006
+**Claim:** The cusp fields K_m003 = ℚ(√−3) (deg 2, disc −3) and K_m006 (deg 3, x³+2x+1,
+disc −59, Gal=S₃) are linearly disjoint over ℚ.
+**Status:** [Proved]. Sage: compositum K_m003·K_m006 has degree 6 = 2×3 (verified directly,
+not assumed) — confirms disjointness. Galois closure of the compositum has degree 12,
+Galois group D₆ (dihedral of order 12) — confirmed by Sage's `galois_group()` structure
+description. This is a distinct result from Claim 2 (S₄×ℤ/2 for the m003/m019 compositum) —
+different manifold pair, different closure group.
+**Physical reading:** unlike the m003/m019 pair (which combine into the Pati-Salam
+SU(4)×SU(2)_L Weyl group), D₆ is not a direct product of the individual Weyl groups ℤ/2 and
+S₃, so this compositum does NOT extend the Pati-Salam correspondence to a three-factor
+statement. The m006 field remains "arithmetically independent" in the linear disjointness
+sense, but its Galois closure does not slot into the same product-group narrative as the
+m003/m019 case. Report as-is; do not force into the existing physical framing.
+**Script:** ad hoc Sage session (`K003 = NumberField(x^2-x+1)`, `K006 = NumberField(x^3+2*x+1)`,
+`K003.composite_fields(K006)`, `.galois_closure().galois_group()`), Aug 11 2026. Not yet
+saved as a `reproduce/` script.
+**Last verified:** Aug 11 2026
