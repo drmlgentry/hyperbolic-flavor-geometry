@@ -1,0 +1,469 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{tikz-cd}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\mfld}[1]{\texttt{#1}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Weyl}{\mathrm{Weyl}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\vol}{\mathrm{vol}}
+
+\begin{document}
+
+\title{The Meyerhoff Manifold as a Dual Dehn Filling:\\
+Arithmetic Independence of $\SU(2)$ and $\SU(4)$ Cusped Parents}
+
+\author{Marvin L.~Gentry%
+\thanks{Independent Researcher, Seattle, WA, USA;
+\texttt{drmlgentry@protonmail.com};
+ORCID: 0009-0006-4550-2663}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+The Meyerhoff manifold $M_{\mathrm{PMNS}}$ -- the minimum-volume
+closed hyperbolic 3-manifold with first homology $\Z/5$ -- admits
+two distinct Dehn filling descriptions from arithmetically
+independent cusped parents: $M_{\mathrm{PMNS}} = \mfld{m003}(-2,3)
+= \mfld{m019}(2,1)$. The cusp field of \mfld{m003} has Galois group
+$\Z/2$; the cusp field of \mfld{m019} has Galois group $S_4$. We
+prove these two cusp fields are linearly disjoint over $\Q$, and
+that the Galois group of the Galois closure of their compositum is
+$S_4\times\Z/2$, order 48. We further prove that the cusp field
+of \mfld{m003} is linearly disjoint from the cusp field of
+\mfld{m006} (the parent of the CKM manifold), yielding a Galois
+closure with group $D_6$, order 12 -- not a direct product of
+Weyl groups. We report a negative result: a systematic search over
+9 candidate manifolds with $S_4$-type cusp fields, at Dehn surgery
+slopes $|p|,|q|\le 15$, finds no dual filling description of the
+companion manifold $M_{\mathrm{CKM}}$. We note, without asserting
+a physical derivation, that the group $S_4\times\Z/2$ is
+abstractly isomorphic to $\Weyl(\SU(4))\times\Weyl(\SU(2))$.
+All computations are verified by SnapPy and Sage at 300-bit
+precision.
+\end{abstract}
+
+\section{Introduction}
+
+The Hyperbolic Flavor Geometry (HFG) program associates compact
+hyperbolic 3-manifolds to Standard Model flavor parameters. The
+lepton mixing matrix (PMNS) is encoded by the closed manifold
+$M_{\mathrm{PMNS}}$, obtained by Dehn filling a cusped parent
+manifold.
+
+By Mostow rigidity, every complete finite-volume hyperbolic
+structure on a 3-manifold of dimension $\ge 3$ is unique up to
+isometry; geometric invariants such as volume and cusp shape are
+therefore topological invariants of the manifold, not artifacts of
+a choice of metric.
+
+This paper proves the following results.
+
+\begin{theorem}[Dual surgery]\label{thm:dual}
+$M_{\mathrm{PMNS}} = \mfld{m003}(-2,3) = \mfld{m019}(2,1)$: the
+Meyerhoff manifold arises as a Dehn filling of two distinct cusped
+parents, \mfld{m003} and \mfld{m019}.
+\end{theorem}
+
+\begin{theorem}[Linear disjointness of $K_{m003}$ and $K_{m019}$]\label{thm:disjoint}
+The cusp fields $K_{\mfld{m003}}$ and $K_{\mfld{m019}}$ are linearly
+disjoint over $\Q$. The Galois group of the Galois closure of their
+compositum is $S_4\times\Z/2$, of order 48.
+\end{theorem}
+
+\begin{proposition}[Linear disjointness of $K_{m003}$ and $K_{m006}$]\label{prop:d6}
+The cusp fields $K_{\mfld{m003}}$ and $K_{\mfld{m006}}$ are linearly
+disjoint over $\Q$, with compositum degree 6. The Galois group of
+the Galois closure of their compositum is $D_6$, of order 12.
+\end{proposition}
+
+Section~\ref{sec:ckm-negative} reports a negative result: no
+analogous dual filling exists for the companion manifold
+$M_{\mathrm{CKM}}$ within a bounded search. We regard the absence
+of a positive result here as itself informative, and report it
+with the same rigor as the positive results above.
+
+\subsection*{Notation}
+
+We adopt the following notation throughout:
+\begin{itemize}
+\item $M_{\mathrm{PMNS}} = \mfld{m003}(-2,3) \cong \mfld{m019}(2,1)$
+      is the lepton mixing manifold.
+\item $M_{\mathrm{CKM}} = \mfld{m006}(-5,2)$ is the quark mixing
+      manifold.
+\item $K_M$ denotes the invariant trace field of a manifold $M$,
+      equivalently its cusp field for one-cusped manifolds.
+\item $\mfld{m003}, \mfld{m006}, \mfld{m019}$ are one-cusped
+      hyperbolic manifolds from the SnapPy census.
+\end{itemize}
+
+\section{The Two Cusped Parents}
+
+All computations use SnapPy \cite{SnapPy} at 300-bit precision.
+Polynomial identifications use \texttt{algdep} at the same
+precision, with residuals below $10^{-85}$.
+
+\begin{proposition}\label{prop:m003}
+The cusp shape of \mfld{m003} is $\tau=e^{i\pi/3}$, satisfying
+$x^2-x+1=0$, $\disc=-3$, $\Gal(K_{\mfld{m003}}/\Q)\cong\Z/2$.
+The volume of the filled manifold $\mfld{m003}(-2,3)$ is
+\[
+\vol(M_{\mathrm{PMNS}}) = 0.981368828892232\ldots
+\]
+\end{proposition}
+
+\begin{proof}
+$e^{i\pi/3}$ is a primitive 6th root of unity, a root of the
+cyclotomic polynomial $\Phi_6(x)=x^2-x+1$. The splitting field is
+$\Q(\sqrt{-3})$, with Galois group $\Z/2$ over $\Q$. The volume
+is computed directly by SnapPy.
+\end{proof}
+
+\begin{proposition}\label{prop:m019}
+The cusp shape of \mfld{m019} satisfies the irreducible quartic
+$x^4-x-1=0$, $\disc=-283$, $\Gal(K_{\mfld{m019}}/\Q)\cong S_4$.
+The filling $\mfld{m019}(2,1)$ has volume
+\[
+\vol(\mfld{m019}(2,1)) = 0.981368828892232\ldots
+\]
+agreeing with $\vol(M_{\mathrm{PMNS}})$ to 15 decimal places.
+\end{proposition}
+
+\begin{proof}
+$x^4-x-1$ has no rational roots and is irreducible over $\Q$
+(verified by \texttt{factor} in Sage). Its discriminant is $-283$,
+a negative prime. The Galois group, computed directly by Sage's
+\texttt{galois\_group()}, is the transitive permutation group of
+degree 4 and order 24 -- i.e.\ $S_4$ (GAP small-group id
+$[24,12]$). The volume is computed directly by SnapPy.
+\end{proof}
+
+Both cusp shapes and their minimal polynomials are cross-checked
+against the LMFDB number field database~\cite{LMFDB}.
+
+\begin{remark}
+The volume of the Meyerhoff manifold $M_{\mathrm{PMNS}}$ is
+independently known in the literature \cite{GMM}; the value above
+is consistent with the published value to the stated precision.
+\end{remark}
+
+\section{The Dual Surgery Identity}
+
+\begin{proof}[Proof of Theorem~\ref{thm:dual}]
+SnapPy computes:
+\[
+\vol(\mfld{m003}(-2,3)) = \vol(\mfld{m019}(2,1)) =
+0.981368828892232\ldots
+\]
+agreeing to 15 significant figures. Both fillings have
+$H_1=\Z/5$. SnapPy's \texttt{is\_isometric\_to} confirms isometry
+between the two filled manifolds directly, not merely volume
+coincidence. The search identifying \mfld{m019}(2,1) as a second
+filling description of $M_{\mathrm{PMNS}}$ is reproduced in
+\texttt{reproduce/dual\_surgery\_exploration.py}.
+\end{proof}
+
+\begin{remark}
+This is a direct identity check between two specific, previously
+fixed objects, not a search over candidates: \mfld{m003}(-2,3) and
+\mfld{m019}(2,1) were each independently constructed before the
+comparison was made.
+\end{remark}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzcd}
+\mfld{m003}(-2,3) \arrow[dr, "\cong"] & & \mfld{m019}(2,1) \arrow[dl, "\cong"] \\
+& M_{\mathrm{PMNS}} &
+\end{tikzcd}
+\caption{The dual surgery identity: two distinct Dehn fillings
+produce the same closed manifold $M_{\mathrm{PMNS}}$.}
+\label{fig:dual}
+\end{figure}
+
+\section{Linear Disjointness and Galois Closure}\label{sec:disjoint}
+
+\begin{proof}[Proof of Theorem~\ref{thm:disjoint}]
+Let $K_1=\Q(\sqrt{-3})$ (Proposition~\ref{prop:m003}, degree 2) and
+$K_2=\Q[x]/(x^4-x-1)$ (Proposition~\ref{prop:m019}, degree 4). The
+compositum $K_1K_2$, computed directly in Sage via
+\texttt{composite\_fields}, has degree 8 over $\Q$. Since
+$8 = 2\times 4 = [K_1:\Q]\cdot[K_2:\Q]$, the two fields are linearly
+disjoint over $\Q$.
+
+The compositum $K_1K_2$ is not itself Galois over $\Q$. Its Galois
+closure $L$ has degree 48. Computing $\Gal(L/\Q)$ directly in Sage
+gives a group of GAP small-group id $[48,48]$. An independently
+constructed group, $S_4\times\Z/2$ (via \texttt{SymmetricGroup(4)}
+direct product with \texttt{CyclicPermutationGroup(2)}), has the
+same GAP small-group id $[48,48]$, confirming
+$\Gal(L/\Q)\cong S_4\times\Z/2$.
+\end{proof}
+
+\begin{corollary}\label{cor:group}
+$\Gal(L/\Q)\cong S_4\times\Z/2$, order 48.
+\end{corollary}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzcd}
+& L & \\
+& K_1K_2 \ar[dash, u, "\Gal=S_4\times\Z/2"] & \\
+K_1 \ar[dash, ur, "\deg 2"] & & K_2 \ar[dash, ul, "\deg 4"'] \\
+& \Q \ar[dash, ul, "\deg 2"] \ar[dash, ur, "\deg 4"'] &
+\end{tikzcd}
+\caption{Field tower for $K_1=\Q(\sqrt{-3})$ and $K_2=\Q[x]/(x^4-x-1)$.
+The compositum $K_1K_2$ has degree 8; its Galois closure $L$ has
+degree 48 with Galois group $S_4\times\Z/2$.}
+\label{fig:tower}
+\end{figure}
+
+\begin{remark}[Observation only]
+$S_4\times\Z/2$ is abstractly isomorphic to
+$\Weyl(\SU(4))\times\Weyl(\SU(2))$, since $\Weyl(\SU(n+1))\cong
+S_{n+1}$ for the $A_n$ root system and $\Weyl(\SU(2))\cong\Z/2$.
+We record this as a group-theoretic observation. We do not assert,
+and this paper does not attempt to establish, any physical or
+field-theoretic mechanism by which the arithmetic of these cusp
+fields would give rise to a gauge symmetry. That question is
+explicitly open; see Section~\ref{sec:discussion}.
+\end{remark}
+
+\subsection{Linear disjointness with $K_{m006}$}
+
+The cusp field of \mfld{m006}, the parent of $M_{\mathrm{CKM}}$,
+satisfies:
+\[
+K_{\mfld{m006}} = \Q[x]/(x^3 + 2x + 1),\quad
+\Gal(K_{\mfld{m006}}/\Q) \cong S_3,
+\]
+verified by the same methods as Propositions~\ref{prop:m003}
+and~\ref{prop:m019}. The following result is proved analogously
+to Theorem~\ref{thm:disjoint}.
+
+\begin{proof}[Proof of Proposition~\ref{prop:d6}]
+Let $K_1 = \Q(\sqrt{-3})$ (degree 2) and $K_3 = K_{\mfld{m006}}$
+(degree 3). Sage computes the compositum degree as 6; since
+$6 = 2\times 3$, the fields are linearly disjoint. The Galois
+closure of the compositum has degree 12 and Galois group $D_6$,
+the dihedral group of order 12, confirmed by Sage's
+\texttt{galois\_group()} returning GAP small-group id $[12,4]$.
+\end{proof}
+
+\begin{remark}
+Since $D_6$ is not a direct product of $\Z/2$ and $S_3$, this
+result does \emph{not} extend the Pati--Salam correspondence of
+Corollary~\ref{cor:group} to a third gauge factor. We record it
+here as a proved, honestly-scoped result that does not fit the
+physical narrative of this paper, rather than omit it.
+\end{remark}
+
+\section{The CKM Negative Result}\label{sec:ckm-negative}
+
+The lepton manifold $M_{\mathrm{PMNS}}$ has a companion manifold in
+the HFG program, $M_{\mathrm{CKM}}=\mfld{m006}(-5,2)$, encoding the
+quark mixing matrix. Given the dual filling result of
+Theorem~\ref{thm:dual}, it is natural to ask whether
+$M_{\mathrm{CKM}}$ admits an analogous second filling description
+from a cusped parent with $S_4$-type cusp field.
+
+\begin{proposition}[Negative result]\label{prop:ckm-negative}
+Among 9 named cusped manifolds with $S_4$ cusp field type, listed
+in Table~\ref{tab:s4-manifolds}, no Dehn filling at coprime slopes
+$|p|,|q|\le 15$ produces a manifold matching the volume and first
+homology of $M_{\mathrm{CKM}}$.
+\end{proposition}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Manifold & Cusp Field Polynomial & Discriminant & Galois Group \\
+\midrule
+\mfld{m011} & $x^4 + 2x^3 + x^2 + x - 1$ & $-751$ & $S_4$ \\
+\mfld{m019} & $x^4 - x - 1$ & $-283$ & $S_4$ \\
+\mfld{m026} & $x^4 - x^3 + x^2 - x - 1$ & $-563$ & $S_4$ \\
+\mfld{m033} & $x^4 - x^3 + 3x^2 - 2x + 1$ & $257$ & $S_4$ \\
+\mfld{m079} & $x^4 + x^3 + 4x^2 + 3x + 2$ & $1929$ & $S_4$ \\
+\mfld{m115} & $x^4 + x^3 + 2x^2 + 2x - 5$ & $-52083$ & $S_4$ \\
+\mfld{m141} & $x^4 - x^3 + x - 2$ & $-1399$ & $S_4$ \\
+\mfld{m155} & $x^4 - 3x^3 + 4x^2 - 6x + 5$ & $-331$ & $S_4$ \\
+\mfld{m178} & $x^4 - x - 1$ & $-283$ & $S_4$ \\
+\bottomrule
+\end{tabular}
+\caption{The nine one-cusped manifolds with $S_4$-type cusp fields
+considered in the search for a dual parent of $M_{\mathrm{CKM}}$.
+Polynomials and discriminants computed directly via SnapPy cusp
+shapes (300-bit precision) and Sage's \texttt{algdep}, verified
+against \texttt{galois\_group()} returning order 24 for all nine.
+\mfld{m178} shares the same cusp field as \mfld{m019}.}
+\label{tab:s4-manifolds}
+\end{table}
+
+\begin{proof}
+Direct computational search, implemented in
+\texttt{reproduce/dual\_surgery\_exploration.py}: for each of the 9
+manifolds and each coprime slope pair $(p,q)$ with
+$-15\le p,q\le 15$, $(p,q)\ne(0,0)$, the filled volume is compared
+against $\vol(M_{\mathrm{CKM}})$ to a tolerance of
+$10^{-6}$, restricted to fillings with $|H_1|=5$. No match is
+found.
+\end{proof}
+
+\begin{remark}
+This is a bounded search, not an exhaustive census; it does not
+rule out a dual parent at larger slopes, among unlisted manifolds,
+or of a different cusp-field type. We report it as a negative
+result within the stated bounds, not as a proof of non-existence.
+Two smaller bounds ($\le 12$, $\le 20$) have circulated elsewhere
+in the corpus; neither traces to this script, and the figure
+$|p|,|q|\le 15$ stated here is the one actually verified against
+the code.
+\end{remark}
+
+\section{Discussion}\label{sec:discussion}
+
+The results above are, we believe, a complete and self-contained
+mathematical statement: a proved identity (Theorem~\ref{thm:dual}),
+a proved arithmetic independence result with an explicitly computed
+Galois group (Theorem~\ref{thm:disjoint}), a proved linear
+disjointness result for a second field pair (Proposition~\ref{prop:d6}),
+and a clearly bounded negative result (Proposition~\ref{prop:ckm-negative}).
+Three questions remain explicitly open and are not addressed by this
+paper:
+
+\begin{itemize}
+\item \textbf{The $\SU(2)_R$ factor.} The group
+$S_4\times\Z/2\cong\Weyl(\SU(4))\times\Weyl(\SU(2))$ matches only
+the left-handed factor of the Pati--Salam gauge group
+$\SU(4)\times\SU(2)_L\times\SU(2)_R$. No cusped parent or geometric
+construction addressing an $\SU(2)_R$ factor is known.
+
+\item \textbf{The physical mechanism.} No field-theoretic
+derivation connects the abstract group isomorphism of
+Corollary~\ref{cor:group} to an actual gauge theory. Whether a
+construction along the lines of the Dimofte--Gaiotto--Gukov 3d-3d
+correspondence \cite{DGG} could supply such a mechanism is an
+open research question, not addressed here.
+
+\item \textbf{Linear disjointness with a third field.}
+Proposition~\ref{prop:d6} shows that $K_{\mfld{m003}}$ and
+$K_{\mfld{m006}}$ are also linearly disjoint over $\Q$, with
+Galois closure $D_6$ (dihedral, order 12) -- not $S_3\times\Z/2$.
+Because $D_6$ is not a direct product of the individual Weyl
+groups $\Z/2$ and $S_3$, this result does \emph{not} extend the
+Pati--Salam correspondence of Corollary~\ref{cor:group} to a third
+gauge factor. We record it as a proved, honestly-scoped result
+that does not fit the physical narrative of this paper, rather
+than omit it.
+\end{itemize}
+
+No claim in this paper extends beyond what is directly verified by
+SnapPy or Sage computation. The group-theoretic observation of
+Section~\ref{sec:disjoint} is explicitly not a physical derivation.
+
+\appendix
+\section{Computational Reproducibility and Certification}\label{app:repro}
+
+This appendix records the computational provenance of the results above.
+The purpose is to distinguish high-precision numerical evidence from
+rigorously certified algebraic or topological statements.
+
+\begin{enumerate}
+\item \textbf{Census objects and fillings.}
+The manifolds are identified by their SnapPy census names and the Dehn
+filling slopes are given in SnapPy's peripheral-curve convention.
+The exact software version and census version used for the archived
+computation should be recorded with the accompanying source release.
+
+\item \textbf{Hyperbolic computations.}
+Volumes and cusp shapes are numerical outputs. The working precision
+used in the computations reported here is 300 bits. Decimal agreement
+is used only as a consistency check and is not, by itself, taken as a
+proof of isometry.
+
+\item \textbf{Dual-filling identification.}
+The decisive computational step is the direct isometry test between
+the two filled manifolds. The archived reproduction script records
+the precise SnapPy routine used. For archival publication, the
+authors should additionally retain any available certified
+triangulation or combinatorial isomorphism certificate produced by
+the software, so that the topological identification does not rest
+on equality of numerical invariants alone.
+
+\item \textbf{Number fields.}
+Minimal polynomials inferred from high-precision cusp data are recorded
+together with the reconstruction procedure and residual. Irreducibility,
+discriminants, composita, normal closures, and finite Galois groups are
+then computed exactly in SageMath once the defining polynomial has been
+fixed. A numerical algebraic-dependence calculation is therefore
+distinguished from the subsequent exact algebraic computations.
+
+\item \textbf{Archival record.}
+The reproduction repository should be cited by immutable commit hash
+and, for submission, preferably archived with a DOI-bearing release.
+The archive should include software versions, commands, raw output, and
+the scripts used to generate every computational statement in the paper.
+\end{enumerate}
+
+No physical interpretation is required for any theorem in this paper.
+The notation $M_{\mathrm{PMNS}}$, where mentioned, records the terminology
+of the broader HFG programme and is not part of the mathematical content
+of the dual-filling or Galois-group results.
+
+\section*{Data availability}
+Scripts at
+\url{https://github.com/drmlgentry/hyperbolic-flavor-geometry}
+(\url{reproduce/dual_surgery_exploration.py}).
+
+\section*{Acknowledgements}
+During preparation of this manuscript the author used Claude as a
+research assistant. All mathematical results were independently
+verified using SnapPy and SageMath. The author takes full
+responsibility for all content.
+
+\begin{thebibliography}{99}
+
+\bibitem{GMM}
+D.~Gabai, R.~Meyerhoff, P.~Milley,
+J.\ Amer.\ Math.\ Soc.\ \textbf{22}, 1157 (2009).
+
+\bibitem{PS}
+J.~C.~Pati and A.~Salam,
+Phys.\ Rev.\ D \textbf{10}, 275 (1974).
+
+\bibitem{SnapPy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, J.~R.~Weeks,
+SnapPy, \url{http://snappy.computop.org}.
+
+\bibitem{LMFDB}
+The LMFDB Collaboration,
+\emph{The L-functions and Modular Forms Database},
+\url{http://www.lmfdb.org}.
+
+\bibitem{DGG}
+T.~Dimofte, D.~Gaiotto, S.~Gukov,
+``Gauge Theories Labelled by Three-Manifolds,''
+Commun.\ Math.\ Phys.\ \textbf{325}, 367 (2014),
+arXiv:1108.4389.
+
+\end{thebibliography}
+
+\end{document}

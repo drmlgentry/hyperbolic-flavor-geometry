@@ -1,0 +1,12 @@
+Dear Editors,
+
+I am submitting "The Meyerhoff Manifold as a Dual Dehn Filling: Arithmetic Independence of SU(2) and SU(4) Cusped Parents" for consideration at Algebraic & Geometric Topology.
+
+The paper proves that the Meyerhoff manifold arises as a Dehn filling of two arithmetically independent cusped parents (m003 and m019), establishes that their cusp fields are linearly disjoint over ℚ with Galois closure S₄ × ℤ/2 of order 48, proves an analogous disjointness result for a third field pair with Galois closure D₆, and reports a systematic negative-result search for a dual filling of a companion manifold. This work is part of the Hyperbolic Flavor Geometry program, though every result in this paper is purely mathematical and requires no physical interpretation.
+
+All computations are reproducible via SnapPy and Sage at 300-bit precision, with scripts archived at https://github.com/drmlgentry/hyperbolic-flavor-geometry.
+
+Sincerely,
+Marvin L. Gentry
+Independent Researcher, Seattle, WA
+ORCID: 0009-0006-4550-2663
