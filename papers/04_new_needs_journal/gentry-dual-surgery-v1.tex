@@ -25,6 +25,9 @@
 \newcommand{\disc}{\mathrm{disc}}
 \newcommand{\vol}{\mathrm{vol}}
 
+\newcommand{\subjclass}[2][2020]{\par\noindent\textbf{#1 Mathematics Subject Classification.} #2\par}
+\newcommand{\keywords}[1]{\par\noindent\textbf{Keywords.} #1\par}
+
 \begin{document}
 
 \title{The Meyerhoff Manifold as a Dual Dehn Filling:\\
@@ -46,11 +49,7 @@ independent cusped parents: $M_{\mathrm{PMNS}} = \mfld{m003}(-2,3)
 $\Z/2$; the cusp field of \mfld{m019} has Galois group $S_4$. We
 prove these two cusp fields are linearly disjoint over $\Q$, and
 that the Galois group of the Galois closure of their compositum is
-$S_4\times\Z/2$, order 48. We further prove that the cusp field
-of \mfld{m003} is linearly disjoint from the cusp field of
-\mfld{m006} (the parent of the CKM manifold), yielding a Galois
-closure with group $D_6$, order 12 -- not a direct product of
-Weyl groups. We report a negative result: a systematic search over
+$S_4\times\Z/2$, order 48. We report a negative result: a systematic search over
 9 candidate manifolds with $S_4$-type cusp fields, at Dehn surgery
 slopes $|p|,|q|\le 15$, finds no dual filling description of the
 companion manifold $M_{\mathrm{CKM}}$. We note, without asserting
@@ -59,6 +58,11 @@ abstractly isomorphic to $\Weyl(\SU(4))\times\Weyl(\SU(2))$.
 All computations are verified by SnapPy and Sage at 300-bit
 precision.
 \end{abstract}
+
+\subjclass[2020]{Primary 57K32; Secondary 11R32, 57K31}
+
+\keywords{hyperbolic 3-manifolds, Dehn surgery, Meyerhoff manifold,
+Galois groups, trace fields, linear disjointness}
 
 \section{Introduction}
 
