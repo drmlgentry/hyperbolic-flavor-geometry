@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How the geometry of curved space might explain why matter comes in threes — a popular account of the Hyperbolic Flavor Geometry programme." />
+  <meta property="og:title" content="The Shape of Flavor — Marvin Gentry" />
+  <meta property="og:description" content="How the geometry of curved space might explain why matter comes in threes." />
+  <title>The Shape of Flavor — Marvin Gentry</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --bg: #f7f4ef;
+      --surface: #efe9df;
+      --ink: #1a1a1a;
+      --text: #2a2a26;
+      --muted: #6b6460;
+      --rule: #d4cfc8;
+      --accent: #8b2020;
+      --accent-dim: rgba(139,32,32,0.08);
+      --blue: #1d4e89;
+      --blue-dim: rgba(29,78,137,0.08);
+      --green: #2a5e2a;
+      --green-dim: rgba(45,94,45,0.10);
+      --tan: #7b5a2e;
+      --tan-dim: rgba(123,90,46,0.10);
+      --magenta: #6b2a5e;
+      --magenta-dim: rgba(107,42,94,0.08);
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+
+    /* SITE NAV */
+    nav.site-nav { position: sticky; top: 0; z-index: 200; background: rgba(247,244,239,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    nav.site-nav .nav-logo { font-family: var(--sans); font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; font-size: 0.85rem; }
+    nav.site-nav .nav-links { display: flex; gap: 1.25rem; list-style: none; }
+    nav.site-nav .nav-links a { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    nav.site-nav .nav-links a:hover { color: var(--accent); }
+    @media (max-width: 560px) { nav.site-nav .nav-links { gap: 0.75rem; } }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+    /* SCROLL PROGRESS */
+    .progress-bar { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: var(--rule); z-index: 1000; }
+    .progress-bar .fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.1s linear; }
+
+    /* HEADER */
+    .article-header { text-align: center; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+    .eyebrow { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+    h1 { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 3.8rem); font-weight: 600; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; }
+    h1 em { color: var(--accent); font-style: italic; }
+    .subtitle { font-family: var(--serif); font-size: 1.2rem; font-style: italic; color: var(--muted); margin-bottom: 1.5rem; }
+    .byline { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+    .byline strong { color: var(--accent); }
+
+    /* HOW TO READ */
+    .read-guide {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.5rem;
+      margin: 1.5rem auto 0; padding: 0.7rem 1.5rem;
+      background: var(--surface); border-radius: 30px; border: 1px solid var(--rule);
+      font-family: var(--sans); font-size: 0.72rem; color: var(--muted);
+    }
+    .read-guide span { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .read-guide .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+    .dot-story { background: var(--accent); }
+    .dot-math { background: var(--blue); }
+    .dot-evidence { background: var(--green); }
+
+    /* SECTION HEADERS */
+    h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; color: var(--ink); margin: 3.5rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+    h2 .section-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 0.4rem; }
+    h2 .section-badge { font-family: var(--sans); font-size: 0.56rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--surface); padding: 0.12rem 0.6rem; border-radius: 12px; margin-left: 0.5rem; border: 1px solid var(--rule); }
+
+    /* BODY TEXT */
+    p { margin-bottom: 1.4rem; color: var(--text); }
+    strong { color: var(--ink); font-weight: 600; }
+    em { color: var(--accent); font-style: italic; }
+    u { text-decoration-color: var(--blue); text-underline-offset: 3px; }
+    .dot-inline { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 0.4rem; }
+
+    /* PULL QUOTE */
+    .pullquote { border-left: 3px solid var(--accent); margin: 2.5rem 0; padding: 1rem 1.5rem; background: var(--accent-dim); border-radius: 0 8px 8px 0; font-size: 1.25rem; font-style: italic; color: var(--ink); line-height: 1.6; }
+
+    /* EVIDENCE BADGES */
+    .badge-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2rem 0; }
+    .badge { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; border: 1px solid; }
+    .badge-proved { background: var(--green-dim); color: var(--green); border-color: var(--green); }
+    .badge-computed { background: var(--blue-dim); color: var(--blue); border-color: var(--blue); }
+    .badge-structural { background: var(--tan-dim); color: var(--tan); border-color: var(--tan); }
+    .badge-open { background: var(--magenta-dim); color: var(--magenta); border-color: var(--magenta); }
+
+    /* CLAIM CARDS */
+    .claim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+    @media (max-width: 560px) { .claim-grid { grid-template-columns: 1fr; } }
+    .claim-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.2rem; }
+    .claim-card .claim-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .claim-card.proved { border-color: var(--green); } .claim-card.proved .claim-label { color: var(--green); }
+    .claim-card.computed { border-color: var(--blue); } .claim-card.computed .claim-label { color: var(--blue); }
+    .claim-card.structural { border-color: var(--tan); } .claim-card.structural .claim-label { color: var(--tan); }
+    .claim-card.open { border-color: var(--magenta); } .claim-card.open .claim-label { color: var(--magenta); }
+    .claim-card p { font-family: var(--sans); font-size: 0.82rem; line-height: 1.5; color: var(--muted); margin: 0; }
+
+    /* MANIFOLD TABLE */
+    .manifold-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-family: var(--sans); font-size: 0.82rem; }
+    .manifold-table th { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--accent); }
+    .manifold-table td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--rule); color: var(--muted); vertical-align: top; }
+    .manifold-table td:first-child { font-family: var(--mono); font-size: 0.78rem; color: var(--blue); }
+    .manifold-table tr:hover td { background: var(--surface); }
+
+    /* MATH INLINE */
+    .math { font-family: var(--mono); font-size: 0.88rem; color: var(--blue); background: var(--blue-dim); padding: 0.1rem 0.4rem; border-radius: 4px; }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.5rem 1.8rem; margin: 2.5rem 0; }
+    .highlight-box .box-label { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .highlight-box p { margin-bottom: 0.6rem; color: var(--muted); font-size: 0.95rem; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    /* FIGURES */
+    .figure { margin: 2.5rem 0; border-radius: 10px; overflow: hidden; background: var(--surface); border: 1px solid var(--rule); }
+    .figure img { width: 100%; height: auto; display: block; }
+    .figure figcaption { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); padding: 0.9rem 1.2rem; border-top: 1px solid var(--rule); line-height: 1.5; }
+    .figure figcaption strong { color: var(--accent); }
+
+    /* DIVIDER */
+    .section-divider { text-align: center; margin: 3rem 0; color: var(--accent); letter-spacing: 0.5em; font-size: 0.8rem; opacity: 0.5; }
+
+    /* NUMBER CALLOUT */
+    .number-callout { float: right; margin: 0 0 1.5rem 2rem; text-align: center; background: var(--blue-dim); border: 1px solid var(--blue); border-radius: 10px; padding: 1rem 1.5rem; max-width: 180px; }
+    .number-callout .big-num { font-family: var(--mono); font-size: 1.8rem; color: var(--blue); display: block; line-height: 1; margin-bottom: 0.3rem; }
+    .number-callout .num-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); line-height: 1.4; }
+    @media (max-width: 480px) { .number-callout { float: none; margin: 1.5rem auto; } }
+
+    /* FOOTER */
+    .article-footer { margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+    .article-footer a { color: var(--accent); text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) { .article-wrap { padding: 1.5rem 1.2rem 4rem; font-size: 1rem; } h2 { font-size: 1.4rem; } .pullquote { font-size: 1.05rem; padding: 1rem 1.2rem; } }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="fill" id="progressFill"></div></div>
+
+<nav class="site-nav">
+  <a href="https://hyperbolicflavorgeometry.org" class="nav-logo">HFG</a>
+  <ul class="nav-links">
+    <li><a href="https://hyperbolicflavorgeometry.org">Home</a></li>
+    <li><a href="https://hyperbolicflavorgeometry.org#video">Watch</a></li>
+    <li><a href="https://hyperbolicflavorgeometry.org#articles">Articles</a></li>
+    <li><a href="https://hyperbolicflavorgeometry.org#papers">Papers</a></li>
+  </ul>
+</nav>
+
+<div class="article-wrap">
+
+<!-- HEADER -->
+<header class="article-header">
+  <p class="eyebrow">Hyperbolic Flavor Geometry · Popular Account</p>
+  <h1>The Shape of <em>Flavor</em></h1>
+  <p class="subtitle">How the geometry of curved space might explain<br>why matter comes in threes</p>
+  <p class="byline"><strong>Marvin L. Gentry</strong> &nbsp;·&nbsp; Independent Researcher &nbsp;·&nbsp; August 2026</p>
+  <div class="read-guide">
+    <span><span class="dot dot-story"></span> Story</span>
+    <span><span class="dot dot-math"></span> Math</span>
+    <span><span class="dot dot-evidence"></span> Evidence</span>
+    <span style="color:var(--muted);">·</span>
+    <span style="color:var(--muted);">This article has three levels — stories, math, and evidence. Look for the badges.</span>
+  </div>
+</header>
+
+<!-- INTRO -->
+<div class="number-callout">
+  <span class="big-num">0.2243</span>
+  <span class="num-label">sine of the Cabibbo angle — unexplained by the Standard Model</span>
+</div>
+
+<p>There is a number that particle physicists have never been able to explain: <strong>0.2243</strong>. It is the sine of the Cabibbo angle — the probability amplitude governing how readily a strange quark transforms into an up quark via the weak force. The Standard Model does not predict it. It is measured, recorded, and inserted by hand, one of nineteen such numbers that the theory requires as inputs without explaining where any of them come from.</p>
+
+<p>This is <em>the flavor problem</em>. Why do quarks and leptons come in three generations, nearly identical except for mass? Why are the neutrino mixing angles large and the quark mixing angles small? Why does matter dominate antimatter by a factor that makes the universe possible? The Standard Model describes all of this with exquisite precision — and explains none of it.</p>
+
+<div class="pullquote">What if these numbers are not arbitrary inputs at all — but geometric invariants, as fixed and inevitable as π?</div>
+
+<p>What follows is an account of a research programme called <strong>Hyperbolic Flavor Geometry</strong> (HFG), which proposes exactly that: these numbers emerge from the arithmetic geometry of specific curved three-dimensional spaces whose shapes are as rigid and exact as the value of π. The programme sits at an unusual crossroads — between the mathematics of hyperbolic 3-manifolds (a field that earned Thurston a Fields Medal) and the phenomenology of particle mixing (a field that has generated multiple Nobel Prizes). Whether it succeeds as physics remains an open question the programme itself is careful not to overclaim. But the mathematics it has produced is real, verified at high precision, and <u>in at least one case now under peer review at a topology journal</u>.</p>
+
+<figure class="figure">
+  <img src="figures/shape_of_flavor_fig1_meyerhoff.png" alt="The Dirichlet fundamental domain of the Meyerhoff manifold: a 16-vertex, 16-face polyhedron, computed directly via SnapPy." loading="lazy" />
+  <figcaption><strong>Figure 1:</strong> The Dirichlet fundamental domain of the Meyerhoff manifold — the minimum-volume closed hyperbolic 3-manifold with first homology ℤ/5. This 16-vertex, 16-face polyhedron is the actual computed geometry produced by SnapPy from the same manifold used for every volume and geodesic calculation in this programme. Matching faces are identified under the hyperbolic isometry group; the resulting compact space has no boundary and constant negative curvature throughout. Note: this is a 3D projection of the Dirichlet domain — the manifold itself cannot be faithfully embedded in flat 3D space.</figcaption>
+</figure>
+
+<div class="section-divider">· · · ·</div>
+
+<!-- SECTION 1 -->
+<h2><span class="section-num">Part I</span>Curved Space and Rigid Shapes <span class="section-badge">story · math</span></h2>
+
+<p><span class="dot-inline dot-story"></span>To understand the proposal, start with a simpler question: what does it mean for a space to be <em>hyperbolic</em>?</p>
+
+<p>In flat Euclidean space — the geometry of high school — parallel lines stay parallel forever, and the angles of a triangle sum to exactly 180°. On the surface of a sphere, parallel lines eventually meet (think of lines of longitude converging at the poles), and triangle angles sum to <em>more</em> than 180°. Hyperbolic space is the opposite: it curves away from itself in every direction, like the surface of a saddle extended to infinity. Parallel lines diverge, and triangle angles sum to <em>less</em> than 180°.</p>
+
+<figure class="figure">
+  <img src="figures/shape_of_flavor_fig2_three_geometries.png" alt="Three-panel comparison of Euclidean, spherical, and hyperbolic geometry showing triangle angle sums and the behavior of parallel geodesics." loading="lazy" />
+  <figcaption><strong>Figure 2:</strong> Three geometries, three curvatures. In flat (Euclidean) space, triangle angles sum to exactly 180° and parallel lines never meet. On a sphere (positive curvature), geodesics that begin parallel-like converge and triangle angles sum to more than 180°. In hyperbolic space (negative curvature), geodesics diverge and triangle angles sum to less than 180°.</figcaption>
+</figure>
+
+<p>We've seen how curvature changes the behavior of straight lines and triangles. Now imagine folding a piece of hyperbolic space into a compact shape — a finite volume with no boundary, like the surface of a donut but in three dimensions and with hyperbolic rather than flat geometry. The result is a <strong>hyperbolic 3-manifold</strong>. And here is what makes them remarkable:</p>
+
+<div class="highlight-box">
+  <p class="box-label">⬡ Mostow Rigidity (1968)</p>
+  <p>Once you specify the topology of a hyperbolic 3-manifold — its abstract connectivity — the geometry is <strong>completely determined</strong>. There is no free parameter to adjust. Every geometric measurement you can make — its volume, the lengths of its shortest closed loops, the shape of its cusps — is an exact arithmetic invariant, as fixed as π.</p>
+</div>
+
+<p>This rigidity is what makes the connection to physics potentially interesting. The Standard Model's flavor parameters look arbitrary because they are put in by hand. But if they were geometric invariants of some underlying space, they would be exactly what they are for the same reason π is exactly what it is: not because anyone chose them, but because the geometry leaves no room for choice.</p>
+
+<div class="section-divider">· · · ·</div>
+
+<!-- SECTION 2 -->
+<h2><span class="section-num">Part II</span>The Census and the Manifolds <span class="section-badge">evidence</span></h2>
+
+<p><span class="dot-inline dot-evidence"></span>That was the geometry. Now let's look at the specific shapes that matter. Mathematicians have catalogued hyperbolic 3-manifolds the way chemists catalogued elements — systematically, by volume. The smallest known closed hyperbolic 3-manifold by volume is called the Weeks manifold. The smallest with a particular topological property (first homology group <span class="math">ℤ/5</span>) is called the <strong>Meyerhoff manifold</strong>.</p>
+
+<p>HFG identifies the Meyerhoff manifold as the geometric home of the <em>lepton sector</em> — the world of electrons and neutrinos. A related manifold from the SnapPy census, called <span class="math">m006</span>, is identified as the home of the <em>quark sector</em>. These are not chosen because they fit the data and then justified after the fact. They are identified by a structural argument: the homology group <span class="math">ℤ/5</span> is what forces exactly three generations of matter, and minimum volume is what selects the specific manifold within that constraint.</p>
+
+<table class="manifold-table">
+  <thead><tr><th>Manifold</th><th>Physical role</th><th>Key property</th></tr></thead>
+  <tbody>
+    <tr><td>Meyerhoff (m003 filled)</td><td>Lepton sector / PMNS matrix</td><td>Min. volume with H₁ = ℤ/5</td></tr>
+    <tr><td>m006</td><td>Quark sector / CKM matrix</td><td>H₁ = ℤ/5, larger volume</td></tr>
+    <tr><td>m003</td><td>Lepton parent / weak force</td><td>Cusp Galois group ≅ Weyl(SU(2))</td></tr>
+    <tr><td>m019</td><td>GUT parent / Pati-Salam sector</td><td>Cusp Galois group ≅ Weyl(SU(4))</td></tr>
+  </tbody>
+</table>
+
+<p>The mixing angles emerge from a calculation involving <strong>closed loops</strong> inside these manifolds. Each generation of matter corresponds to a specific loop — described algebraically as a "word" in the manifold's fundamental group. The way these loops overlap — calculated using a mathematical tool called a Gaussian integral — gives the probability that one generation of matter will "mix" into another.</p>
+
+<figure class="figure">
+  <img src="figures/shape_of_flavor_fig3_geodesic_overlap.svg" alt="Schematic showing tight geodesic loop overlap in the Meyerhoff manifold (large neutrino mixing) versus separated loops in m006 (small quark mixing). Illustrative only." loading="lazy" />
+  <figcaption><strong>Figure 3 (schematic):</strong> Geodesic loops in the lepton manifold wrap tightly, producing large overlap amplitudes and near-maximal neutrino mixing angles. Loops in the quark manifold are more separated, suppressing mixing — yielding the small, hierarchical CKM angles. Loop positions are illustrative; actual values are computed numerically at 300-bit precision.</figcaption>
+</figure>
+
+<p>For the Meyerhoff manifold, the loops wrap tightly around each other — giving <u>large, near-maximal mixing angles</u>, exactly as observed for neutrinos. For <span class="math">m006</span>, the loops are more separated — giving <u>small, hierarchical mixing angles</u>, exactly as observed for quarks. The asymmetry between the neutrino world and the quark world, one of the deepest puzzles in flavor physics, falls out of the difference in shape between two specific compact spaces.</p>
+
+<div class="section-divider">· · · ·</div>
+
+<!-- SECTION 3 -->
+<h2><span class="section-num">Part III</span>Why Exactly Three Generations <span class="section-badge">math · structural</span></h2>
+
+<div class="number-callout">
+  <span class="big-num">ℤ/5</span>
+  <span class="num-label">the homology group behind the three-generation argument</span>
+</div>
+
+<p><span class="dot-inline dot-math"></span>The question of why matter comes in exactly three generations — not two, not four — has no answer in the Standard Model. It is simply how many there are.</p>
+
+<p>In HFG, it is a <strong>structural argument</strong> about the topology of the manifold. Both the Meyerhoff manifold and <span class="math">m006</span> share the same first homology group: <span class="math">ℤ/5</span>, the cyclic group of order five. This is the group you get when you flatten the manifold's full fundamental group down to its simplest commutative form.</p>
+
+<div class="highlight-box">
+  <p class="box-label">◈ The Three-Generation Argument — structural, not yet a formal theorem</p>
+  <p>A cyclic group of order five has five elements. <strong>Two</strong> are structural boundary classes, inherited from the Dehn surgery construction — they maintain the shape of the space and cannot host physical matter fields. Subtract those two, and <strong>exactly three</strong> elements remain.</p>
+  <p>These are the only topological slots available for stable, localized particle states. A fourth generation would require a fourth slot that does not exist: the geometry forbids it.</p>
+</div>
+
+<figure class="figure">
+  <img src="figures/shape_of_flavor_fig4_z5_generations.png" alt="Diagram distinguishing the verified mathematical fact that H1 is isomorphic to Z/5 from HFG's structural interpretation splitting the five homology classes into two structural roles and three matter-generation slots, explicitly labeled as an interpretation and not a theorem." loading="lazy" />
+  <figcaption><strong>Figure 4:</strong> From ℤ/5 topology to the three-generation hypothesis. <em>Left:</em> the verified mathematical fact — the first homology group is ℤ/5, with five residue classes. <em>Right:</em> HFG's structural interpretation, splitting the five classes into two structural/boundary roles and three matter-generation slots. This assignment is an interpretation, not a theorem of group theory — the two panels are deliberately separated to keep that distinction visible.</figcaption>
+</figure>
+
+<p>Three generations is not a coincidence or a choice. It is what <span class="math">ℤ/5</span> allows — pending a full proof that it is the <em>only</em> thing ℤ/5 allows.</p>
+
+<div class="section-divider">· · · ·</div>
+
+<!-- SECTION 4 -->
+<h2><span class="section-num">Part IV</span>The Galois Connection <span class="section-badge">math · proved</span></h2>
+
+<p><span class="dot-inline dot-evidence"></span>That was the topology. Now let's look at the algebra. There is a second thread running through the programme, more algebraic than geometric, which connects the framework to the gauge symmetries of the Standard Model — the groups <span class="math">SU(2)</span>, <span class="math">SU(3)</span>, and <span class="math">SU(4)</span> that govern the weak, strong, and Pati-Salam forces.</p>
+
+<p>Every hyperbolic 3-manifold has <em>cusps</em> — points where the space opens into an infinite tube. The shape of each cusp satisfies an algebraic polynomial equation. The <strong>Galois group</strong> of that polynomial — the group of symmetries of its roots — turns out to match, in case after case, the Weyl group of the corresponding gauge force:</p>
+
+<table class="manifold-table">
+  <thead><tr><th>Manifold</th><th>Cusp polynomial</th><th>Galois group</th><th>Gauge Weyl group</th></tr></thead>
+  <tbody>
+    <tr><td>m003</td><td>x² − x + 1</td><td>ℤ/2</td><td>Weyl(SU(2)) — weak force</td></tr>
+    <tr><td>m006</td><td>8x³ − 24x² + 28x − 11</td><td>S₃</td><td>Weyl(SU(3)) — strong force</td></tr>
+    <tr><td>m019</td><td>x⁴ − x − 1</td><td>S₄</td><td>Weyl(SU(4)) — Pati-Salam</td></tr>
+  </tbody>
+</table>
+
+<figure class="figure">
+  <img src="figures/shape_of_flavor_fig5_galois_weyl.svg" alt="Three-tier diagram of the Galois-Weyl correspondence. Top two tiers (green, PROVED): individual cusp Galois groups for m003, m006, m019; field tower from parent fields through compositum (degree 8) to Galois closure (degree 48) with Gal(L/Q) isomorphic to S4 x Z/2, and its abstract isomorphism to Weyl(SU(4)) x Weyl(SU(2)). Bottom tier (tan, separated by heavy divider): HFG physical interpretation — weak, strong, Pati-Salam — explicitly marked as open and not part of the proved theorem." loading="lazy" />
+  <figcaption><strong>Figure 5:</strong> The Galois-Weyl correspondence across three tiers of certainty. <em>Top two tiers (green):</em> proved results — the individual cusp Galois groups, the field tower (compositum degree 8, Galois closure degree 48), and the abstract group isomorphism S₄ × ℤ/2 ≅ Weyl(SU(4)) × Weyl(SU(2)). Note that the degree-8 compositum itself is not Galois — only its closure is. <em>Bottom tier (tan):</em> HFG's physical interpretation, explicitly separated — assigning gauge-force meaning to these Weyl groups is the programme's conjecture, not a consequence of the proved theorem above.</figcaption>
+</figure>
+
+<p>When <span class="math">m003</span> and <span class="math">m019</span> are taken together — their number fields combined — the Galois group of the resulting compositum has order 48 and is isomorphic to <span class="math">S₄ × ℤ/2</span>. This is abstractly isomorphic to the direct product of the Weyl groups of <span class="math">SU(4)</span> and <span class="math">SU(2)</span> — the gauge structure of the Pati-Salam model, one of the leading candidates for physics beyond the Standard Model.</p>
+
+<div class="pullquote">This result is proved. What remains open — and the programme is explicit about this — is whether this algebraic correspondence reflects a genuine physical mechanism or a profound structural coincidence.</div>
+
+<div class="section-divider">· · · ·</div>
+
+<!-- SECTION 5 — EVIDENCE LADDER -->
+<h2><span class="section-num">Part V</span>What Is Proved, What Is Not <span class="section-badge">evidence · open</span></h2>
+
+<p><span class="dot-inline dot-evidence"></span>Intellectual honesty requires a clear account of the programme's epistemic state. Every result carries an explicit evidence tag:</p>
+
+<div class="badge-row">
+  <span class="badge badge-proved">✓ Proved</span>
+  <span class="badge badge-computed">⊞ Computed</span>
+  <span class="badge badge-structural">◈ Structural argument</span>
+  <span class="badge badge-open">○ Open</span>
+</div>
+
+<figure class="figure">
+  <img src="figures/shape_of_flavor_fig6_evidence_ladder.svg" alt="The evidence ladder: every claim in this article sorted by evidence tier — proved (green), computed (blue), structural argument (tan), and open (magenta)." loading="lazy" />
+  <figcaption><strong>Figure 6:</strong> The evidence ladder — every claim made in this article, sorted by what is actually established. This figure introduces no new content; it restates the claim cards from Part V as a single visual summary.</figcaption>
+</figure>
+
+<div class="claim-grid">
+  <div class="claim-card proved"><p class="claim-label">✓ Proved</p><p>Dual Dehn filling identity — the Meyerhoff manifold arises from two arithmetically independent cusped parents (m003 and m019).</p></div>
+  <div class="claim-card proved"><p class="claim-label">✓ Proved</p><p>Linear disjointness of cusp fields of m003 and m019. Galois group of their compositum: S₄ × ℤ/2, order 48.</p></div>
+  <div class="claim-card proved"><p class="claim-label">✓ Proved</p><p>Factorization of the Meyerhoff manifold's octic shape polynomial as a norm over a quartic number field (w⁴ = w + 1).</p></div>
+  <div class="claim-card computed"><p class="claim-label">⊞ Computed</p><p>CKM and PMNS mixing angles from geodesic word scan, verified against PDG experimental bounds at 300-bit precision.</p></div>
+  <div class="claim-card computed"><p class="claim-label">⊞ Computed</p><p>CP-violating phase: 195.91°, within 0.55% of current global fits. Residuals below 10⁻⁸⁵.</p></div>
+  <div class="claim-card structural"><p class="claim-label">◈ Structural argument</p><p>Three-generation counting from ℤ/5 homology — structurally compelling, not yet a formal theorem.</p></div>
+  <div class="claim-card open"><p class="claim-label">○ Open</p><p>Physical derivation connecting hyperbolic geometry to the Standard Model Lagrangian. No mechanism proposed yet.</p></div>
+  <div class="claim-card open"><p class="claim-label">○ Open</p><p>SU(2)_R factor needed for a complete Pati-Salam embedding. No candidate manifold identified.</p></div>
+</div>
+
+<div class="section-divider">· · · ·</div>
+
+<!-- CLOSING -->
+<h2><span class="section-num">Coda</span>A Research Programme in Progress <span class="section-badge">story</span></h2>
+
+<p><span class="dot-inline dot-story"></span>HFG is not a finished theory. It is a research programme that has found something — a cluster of precise numerical agreements and exact algebraic correspondences — that does not have an obvious explanation and has not gone away under scrutiny. The proved results are real mathematics. The computed results have been independently verified at extreme precision. The open questions are stated honestly and pursued actively.</p>
+
+<p>Whether the Galois-Weyl correspondence is a coincidence, a shadow of a deeper structure, or the beginning of a genuine derivation of the Standard Model from geometry — that question is open. It is the right question to be asking.</p>
+
+<div class="highlight-box">
+  <p class="box-label">◎ Further Reading</p>
+  <p>Research site and full paper list: <a href="https://hyperbolicflavorgeometry.org" style="color:var(--accent);">hyperbolicflavorgeometry.org</a></p>
+  <p>Video overview: <a href="https://youtu.be/VW7SrF0TXfc" style="color:var(--accent);">Hyperbolic Flavor Geometry: An Arithmetic Holographic Primer</a></p>
+  <p>Substack: <a href="https://marvingentrynd.substack.com" style="color:var(--accent);">marvingentrynd.substack.com</a></p>
+  <p>Preprints: SSRN author page — Marvin Gentry</p>
+</div>
+
+<footer class="article-footer">
+  <p>© 2026 Marvin L. Gentry · Independent Researcher · Seattle, WA</p>
+  <p style="margin-top:0.5rem;">All mathematical results are the author's own work. Computational verification performed using SnapPy and SageMath. This article is intended for a general scientific audience and does not substitute for the technical papers.</p>
+</footer>
+
+</div>
+
+<script>
+  const fill = document.getElementById('progressFill');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    fill.style.width = progress + '%';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Geodesic Overlap and Mixing Angles</title>
+<desc id="desc">Schematic comparison of overlapping closed loops for the Meyerhoff manifold and more separated loops for m006. The figure is illustrative and does not depict computed geodesic coordinates.</desc>
+
+<rect width="1200" height="760" fill="#f7f4ef"/>
+
+<style>
+  .title { font-family: "EB Garamond", Georgia, serif; font-size: 36px; font-weight: 600; fill: #1a1a1a; }
+  .panel-title { font-family: "EB Garamond", Georgia, serif; font-size: 23px; font-weight: 600; fill: #1a1a1a; }
+  .body { font-family: "EB Garamond", Georgia, serif; font-size: 20px; fill: #1a1a1a; }
+  .note { font-family: "EB Garamond", Georgia, serif; font-size: 16px; font-style: italic; fill: #7b5a2e; }
+  .badge { font-family: "EB Garamond", Georgia, serif; font-size: 16px; font-weight: 600; fill: #7b5a2e; letter-spacing: .02em; }
+  .manifold { fill: none; stroke: #7b5a2e; stroke-width: 2.2; stroke-dasharray: 8 6; opacity: .72; }
+  .loopA { fill: none; stroke: #8b2020; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .loopB { fill: none; stroke: #1a1a1a; stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+
+<text x="600" y="54" text-anchor="middle" class="title">Geodesic Overlap and Mixing Angles</text>
+
+<rect x="140" y="78" width="920" height="56" rx="10"
+      fill="rgba(123,90,46,0.10)" stroke="#7b5a2e" stroke-width="1.2"/>
+<text x="600" y="101" text-anchor="middle" class="badge">
+  SCHEMATIC — ILLUSTRATIVE ONLY, NOT A RENDERING OF COMPUTED
+</text>
+<text x="600" y="123" text-anchor="middle" class="badge">
+  GEODESIC COORDINATES
+</text>
+
+<!-- LEFT PANEL -->
+<rect x="60" y="170" width="500" height="500" rx="16" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="310" y="207" text-anchor="middle" class="panel-title">Meyerhoff manifold (leptons / PMNS)</text>
+
+<!-- abstract manifold outline -->
+<path d="M140 400
+ C150 285, 230 240, 330 250
+ C445 245, 510 320, 500 420
+ C490 535, 405 585, 305 575
+ C205 585, 125 520, 140 400 Z" class="manifold"/>
+
+<!-- tightly overlapping loops -->
+<path d="M190 470
+ C145 400, 175 310, 270 300
+ C375 290, 430 365, 405 440
+ C385 510, 255 545, 190 470 Z" class="loopA"/>
+<path d="M215 335
+ C280 275, 405 300, 430 395
+ C455 480, 350 535, 265 505
+ C185 475, 165 390, 215 335 Z" class="loopA"/>
+<path d="M275 300
+ C380 280, 470 350, 435 455
+ C400 555, 275 540, 225 460
+ C175 380, 220 315, 275 300 Z" class="loopA"/>
+
+<circle cx="310" cy="410" r="48" fill="#8b2020" opacity=".08"/>
+<circle cx="310" cy="410" r="48" fill="none" stroke="#8b2020" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="310" y="416" text-anchor="middle" class="body" fill="#8b2020">high overlap</text>
+
+<text x="310" y="608" text-anchor="middle" class="body">Loops overlap tightly → large mixing angles</text>
+<text x="310" y="638" text-anchor="middle" class="note">Observed: near-maximal neutrino mixing</text>
+
+<!-- RIGHT PANEL -->
+<rect x="640" y="170" width="500" height="500" rx="16" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="890" y="207" text-anchor="middle" class="panel-title">m006 manifold (quarks / CKM)</text>
+
+<path d="M720 400
+ C730 285, 810 240, 910 250
+ C1025 245, 1090 320, 1080 420
+ C1070 535, 985 585, 885 575
+ C785 585, 705 520, 720 400 Z" class="manifold"/>
+
+<!-- separated loops -->
+<path d="M755 350
+ C735 295, 800 270, 845 305
+ C890 340, 865 405, 810 410
+ C760 415, 735 390, 755 350 Z" class="loopB"/>
+
+<path d="M925 300
+ C990 275, 1050 315, 1035 380
+ C1020 440, 955 455, 915 415
+ C875 375, 875 325, 925 300 Z" class="loopB"/>
+
+<path d="M830 475
+ C880 430, 960 445, 990 500
+ C1015 550, 940 575, 875 560
+ C820 545, 790 510, 830 475 Z" class="loopB"/>
+
+<circle cx="870" cy="420" r="14" fill="#8b2020" opacity=".04"/>
+<circle cx="920" cy="455" r="14" fill="#8b2020" opacity=".04"/>
+
+<text x="890" y="608" text-anchor="middle" class="body">Loops stay separated → small mixing angles</text>
+<text x="890" y="638" text-anchor="middle" class="note">Observed: small, hierarchical quark mixing</text>
+
+<!-- center relation -->
+<line x1="600" y1="320" x2="600" y2="500" stroke="#7b5a2e" stroke-width="1.4"/>
+<text x="600" y="305" text-anchor="middle" class="note">same ℤ/5 topology</text>
+<text x="600" y="523" text-anchor="middle" class="note">different loop geometry</text>
+
+<text x="600" y="725" text-anchor="middle" class="note">
+  Conceptual illustration only. No loop position or manifold shape in this figure is taken from computed geodesic coordinates.
+</text>
+</svg>
