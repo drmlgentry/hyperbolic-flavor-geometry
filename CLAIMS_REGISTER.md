@@ -147,3 +147,33 @@ m003/m019 case. Report as-is; do not force into the existing physical framing.
 `K003.composite_fields(K006)`, `.galois_closure().galois_group()`), Aug 11 2026. Not yet
 saved as a `reproduce/` script.
 **Last verified:** Aug 11 2026
+
+## 14. Candidate manifold for the SU(2)_R factor
+**Claim:** m010 (volume 2.6667, cusp field ℚ(√−7), minimal polynomial x²−x+2, field
+discriminant −7) is linearly disjoint from the existing m003/m019 compositum, and the
+Galois closure of the full three-field compositum (K_m003 · K_m019 · K_m010) has degree
+96 and Galois group C₂ × C₂ × S₄ — the Weyl group of SU(2) × SU(2) × SU(4), i.e. the
+complete Pati-Salam Weyl group including the SU(2)_R factor that Claim 4 flags as
+unaddressed.
+**Status:** [Computed]. Result independently re-derived twice from scratch (two separate
+Sage sessions, same day) with matching output: field discriminants −3 / −283 / −7 (all
+distinct, confirming genuine arithmetic independence — not a duplicate of K_m003),
+compositum degree 8 then 16, closure degree 96, group order 96, structure C₂×C₂×S₄.
+m010 was found via a structured census search (SnapPy 1-cusped manifolds, 2–6 ideal
+tetrahedra, 1199 manifolds screened) for the smallest-volume manifold whose cusp field
+is quadratic, arithmetically distinct from K_m003, and linearly disjoint from the
+existing compositum — not selected after the fact to fit a wanted answer. m009 (same
+volume) generates the same field ℚ(√−7) via a different generator polynomial and is not
+a second independent candidate.
+**Physical reading:** [Conjecture], not established. This is a candidate for the SU(2)_R
+factor referenced in Claim 4, selected by the same minimum-volume-plus-disjointness
+principle used for m003/m006/m019 — but no field-theoretic mechanism connects m010's
+cusp geometry to a physical right-handed weak force, and no independent physical
+argument singles out m010 over any other manifold that might pass the same screen at
+slightly higher volume. Report as a candidate; do not upgrade to [Proved] or claim the
+SU(2)_R gap is closed without further scrutiny (e.g. checking whether other small-volume
+disjoint candidates exist beyond the top screen cutoff, and whether m010 has any other
+distinguishing structural property beyond passing this one screen).
+**Script:** `reproduce/su2r_candidate_search.py` (census screen + disjointness + closure),
+independently re-verified via a second ad hoc Sage session, Aug 18 2026.
+**Last verified:** Aug 18 2026

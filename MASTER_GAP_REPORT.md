@@ -1,5 +1,59 @@
 # CORE_MASTER Gap Report
 
+## Aug 18 2026 — Session updates
+
+**Resolved this session:**
+- "The Shape of Flavor" popular article published: website (`docs/shape-of-flavor.html`,
+  linked from `docs/index.html` nav + Popular Articles + Substack Dispatch list) and
+  Substack (marvingentrynd.substack.com/p/the-shape-of-flavor). YouTube pin/description
+  still pending on Marvin's end.
+- Confirmed CLAIMS_REGISTER.md has zero uncommitted changes (a relayed claim from a
+  separate session that it needed a commit was checked directly via `git status` and
+  found false).
+- Confirmed the "Aug 3 2026 American-spelling decision" (program not programme) claimed
+  by a separate session's memory does not exist in any primary source (`CLAUDE.md` absent
+  from both repo locations, `HFG_STATUS.md` has zero spelling mentions) and directly
+  contradicts a real, already-published Substack URL slug
+  (`the-hfg-programme-from-derivation`, Jun 9 2026). Treated as false; "programme" spelling
+  is unchanged.
+
+**New gaps found / partially resolved this session:**
+- SU(2)_R factor of Pati-Salam: **first candidate found**, see CLAIMS_REGISTER.md entry
+  14. m010 (vol 2.6667, cusp field ℚ(√−7)) is linearly disjoint from the m003/m019
+  compositum; full closure with both is degree 96, group C₂×C₂×S₄ = Weyl(SU(2))² ×
+  Weyl(SU(4)), independently re-verified twice. Tagged [Computed] for the group theory,
+  [Conjecture] for any physical reading — not a resolution of the "still open" item below,
+  a first candidate for it. `reproduce/su2r_candidate_search.py`.
+- Linear disjointness of K_m003/K_m019 with K_m006 (the specific three-way item this
+  report has carried since Aug 3): still not checked. What *was* resolved Aug 11 (entry
+  13) is the simpler pairwise K_m003/K_m006 case only — degree-6 compositum, D₆ closure —
+  a distinct, smaller question from the one this report names. Do not treat entry 13 as
+  closing this item.
+
+**Still open, carried forward:**
+- SU(2)_R factor of Pati-Salam: candidate found (entry 14), not yet a derivation —
+  the field-theoretic mechanism connecting any of these cusp fields to physical gauge
+  groups is still entirely unaddressed
+- Class S / 3D-3D field-theoretic derivation: proposed, not proved
+- Linear disjointness of the full K_m003/K_m019 compositum with K_m006 (three-way,
+  distinct from entry 13's pairwise check) — not yet checked
+- Q-001 (primary decomposition, WSL/Sage) still running — PID 730 (changed since the
+  Aug 6 entry's PID 703, restart tied to `HFG_Q001_ModStd_Watchdog` firing Aug 17 03:45,
+  ~22.6 CPU-hours since), no new milestone since the last check
+- Poincaré Disk Explorer: specced, not built — next session
+
+**Ideas, not yet screened** (resurfaced from an earlier, superseded golden-ratio-lattice /
+A₅ modular-symmetry thread via a DeepSeek relay; not claims the current programme makes,
+recorded here so they aren't lost twice, not in CLAIMS_REGISTER.md):
+- Z/5 stabilizer of the golden point τ₀ in A₅ vs. H₁(Meyerhoff) = Z/5 — both are cyclic of
+  order 5, which is close to tautological (5 is prime, all order-5 groups are cyclic); not
+  an independently verified correspondence.
+- Whether the 2D A₅ modular geometry at τ₀ can be read as the conformal boundary of the
+  Meyerhoff manifold's 3D hyperbolic geometry (a 3d-3d/DGG-style holographic proposal,
+  cf. arXiv:1112.5179) — no mechanism established, not yet screened against current results.
+
+---
+
 ## Aug 6 2026 — Session updates
 
 **Resolved this session:**
