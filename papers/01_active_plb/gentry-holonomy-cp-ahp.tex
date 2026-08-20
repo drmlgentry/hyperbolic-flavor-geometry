@@ -1,9 +1,18 @@
 \documentclass[12pt]{article}
 \usepackage{authblk}
 
-\usepackage{amsmath,amssymb,hyperref}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
 \usepackage{geometry}
 \geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\newcommand{\subjclass}[2][2020]{\par\noindent\textbf{#1 Mathematics Subject Classification.} #2\par}
+\newcommand{\keywords}[1]{\par\noindent\textbf{Keywords.} #1\par}
 
 
 \title{Geometric Origin of CP Phases from Hyperbolic Holonomy}
@@ -31,6 +40,11 @@ are stable under all metric deformations preserving topological type.
 We formulate the argument entirely in representation-theoretic language
 and illustrate the mechanism using the Meyerhoff manifold ($\mathrm{OrientableClosedCensus}[1]$, $\mathrm{vol}=0.9814$, $H_1=\mathbb{Z}/5$).
 \end{abstract}
+
+\subjclass[2020]{Primary 57K32; Secondary 20H10}
+
+\keywords{hyperbolic 3-manifolds, Kleinian groups, flat $U(1)$ connections,
+CP violation, orientation-reversing isometries, holonomy}
 
 The geometric construction developed here provides the theoretical
 foundation for the companion results in~\cite{Gentry:CKM,Gentry:PMNS},
@@ -341,13 +355,13 @@ in \emph{Handbook of Knot Theory}, Elsevier, 2005.
 
 \bibitem{Gentry:CKM}
 M.~L. Gentry,
-\newblock {CKM} quark mixing from geodesic axes of hyperbolic 3-manifold holonomy,
-\newblock \emph{Phys. Rev. D} (2026), submitted March 2026, manuscript RINP-D-26-00327, \emph{Results in Physics} (2026).
+\newblock Quark Mixing from Hyperbolic Geometry: The CKM Matrix from a Compact Arithmetic 3-Manifold,
+\newblock SSRN~\href{https://doi.org/10.2139/ssrn.6583550}{6583550} (2026).
 
 \bibitem{Gentry:PMNS}
 M.~L. Gentry,
-\newblock Lepton mixing from Borel structure of hyperbolic holonomy,
-\newblock \emph{Phys. Rev. D} (2026), submitted March 2026, manuscript RINP-D-26-00328, \emph{Results in Physics} (2026).
+\newblock Lepton Mixing from Borel Structure of Hyperbolic Holonomy,
+\newblock SSRN~\href{https://doi.org/10.2139/ssrn.6583553}{6583553} (2026).
 \end{thebibliography}
 
 \end{document}
