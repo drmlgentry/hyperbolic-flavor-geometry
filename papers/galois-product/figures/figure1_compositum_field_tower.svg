@@ -3,13 +3,13 @@
 <desc id="desc">Field diagram for the four base fields, their Galois closures, and the sequential composita of degrees 144, 288, and 576.</desc>
 <rect width="1500" height="1050" fill="#f7f4ef"/>
 <style>
-.title{font-family:"EB Garamond",Georgia,serif;font-size:38px;font-weight:600;fill:#1a1a1a}
-.sub{font-family:"EB Garamond",Georgia,serif;font-size:18px;font-style:italic;fill:#5d574f}
-.head{font-family:"EB Garamond",Georgia,serif;font-size:23px;font-weight:600;fill:#1a1a1a}
-.body{font-family:"EB Garamond",Georgia,serif;font-size:18px;fill:#1a1a1a}
-.small{font-family:"EB Garamond",Georgia,serif;font-size:15px;fill:#5d574f}
-.mono{font-family:"JetBrains Mono","Courier New",monospace;font-size:17px;fill:#1a1a1a}
-.degree{font-family:"JetBrains Mono","Courier New",monospace;font-size:15px;fill:#7b5a2e;font-weight:700}
+.title{font-family:"EB Garamond",Georgia,serif;font-size:32px;font-weight:600;fill:#1a1a1a}
+.sub{font-family:"EB Garamond",Georgia,serif;font-size:17px;font-style:italic;fill:#5d574f}
+.head{font-family:"EB Garamond",Georgia,serif;font-size:30px;font-weight:600;fill:#1a1a1a}
+.body{font-family:"EB Garamond",Georgia,serif;font-size:27px;fill:#1a1a1a}
+.small{font-family:"EB Garamond",Georgia,serif;font-size:21px;fill:#5d574f}
+.mono{font-family:"JetBrains Mono","Courier New",monospace;font-size:25px;fill:#1a1a1a}
+.degree{font-family:"JetBrains Mono","Courier New",monospace;font-size:20px;fill:#7b5a2e;font-weight:700}
 .field{fill:none;stroke:#1a1a1a;stroke-width:1.4}
 .closure{fill:#2a5e2a;fill-opacity:.07;stroke:#2a5e2a;stroke-width:1.6}
 .compositum{fill:#7b5a2e;fill-opacity:.08;stroke:#7b5a2e;stroke-width:1.7}
