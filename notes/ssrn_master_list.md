@@ -1,9 +1,11 @@
 # SSRN Master List — extracted from live account view, 2026-06-19
+# (rows below 2026-06-19 added manually as submissions are confirmed; not re-extracted from the account)
 
-## PUBLICLY AVAILABLE (DISTRIBUTED) — 19 papers, newest first
+## PUBLICLY AVAILABLE (DISTRIBUTED) — 20 papers, newest first
 
 | Abstract ID | Title | Created | Updated |
 |---|---|---|---|
+| 7341038 | Arithmetic Disjointness and Galois Product Structure in a Family of Hyperbolic 3-Manifold Trace Fields | 08/23 | 08/23 |
 | 6876278 | THE SEXTIC-OCTIC DECOMPOSITION OF THE MEYERHOFF MANIFOLD SHAPE POLYNOMIAL | 06/04 | 06/04 (PRELIMINARY_UPLOAD - not yet submitted) |
 | 6851440 | A Peripheral Determinant Invariant for Hyperbolic 3-Manifolds with Quartic Cusp Field of Discriminant -283 | 05/30 | 06/02 |
 | 6845778 | The Meyerhoff Manifold as a Dehn Filling of Two Arithmetically Independent Cusped Parents: Cusp Galois Groups Z/2 and S4 | 05/29 | 06/02 |
@@ -40,4 +42,4 @@
 | 6670398 | Hyperbolic Flavor Geometry: Conjectures on Dark Sector, Dark Energy, and Information Geometry | 04/28 | 05/11 |
 | 6660598 | The Lucas Sequence as the Arithmetic Bridge in Hyperbolic Flavor Geometry: Lucas-Pure Covering Towers and the Prime Dictionary of the Flavor Sector | 04/27 | 05/11 |
 
-## Total: 29 papers tracked (19 live + 10 inactive). Plus 1 draft (6876278, in-process).
+## Total: 30 papers tracked (20 live + 10 inactive). Plus 1 draft (6876278, in-process).
