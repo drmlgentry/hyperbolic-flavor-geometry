@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ramification Disjointness</title>
+<style>
+:root{--bg:#f7f4ef;--ink:#1a1a1a;--green:#2a5e2a;--tan:#7b5a2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"EB Garamond",serif}
+.wrap{max-width:1180px;margin:auto;padding:36px 20px 60px}
+h1{text-align:center;font-size:2.3rem;margin:.2rem 0}
+.sub{text-align:center;color:var(--tan);font-style:italic;margin-bottom:30px}
+.islands{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:10px}
+.island{border:2px solid var(--green);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px;cursor:pointer;background:rgba(42,94,42,.06);transition:.15s transform,.15s background}
+.island:hover{transform:translateY(-3px);background:rgba(42,94,42,.11)}
+.island.active{background:rgba(42,94,42,.15);outline:2px solid var(--green)}
+.code{font-family:"JetBrains Mono","Courier New",monospace}
+.prime{font-size:1.4rem;font-weight:700;color:var(--green);margin:6px 0}
+.caption{text-align:center;color:var(--tan);font-style:italic;font-size:.95rem;margin:14px 0 30px}
+.card,.stage,.interpret{border:1.5px solid var(--green);border-radius:12px;padding:18px;background:rgba(42,94,42,.06)}
+h2{font-size:1.3rem}
+.detail{margin-top:14px;border-top:1px solid #c9c1b7;padding-top:14px;min-height:64px}
+.flow{display:flex;align-items:center;gap:10px;margin:30px 0;flex-wrap:wrap}
+.stage{flex:1;min-width:220px;text-align:center}
+.arrow{font:700 1.8rem/1 monospace;color:var(--green)}
+.result{border:2px solid var(--green);padding:24px;border-radius:14px;text-align:center;margin-top:10px}
+.divider{height:4px;background:var(--tan);margin:38px 0 18px}
+.interpret{border-color:var(--tan);background:rgba(123,90,46,.07)}
+.interpret h2{color:var(--tan)}
+button{border:1px solid var(--tan);background:transparent;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--ink)}
+@media(max-width:800px){.islands{grid-template-columns:1fr 1fr}.flow{flex-direction:column}.arrow{transform:rotate(90deg)}}
+@media(max-width:480px){.islands{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Ramification Disjointness</h1>
+<div class="sub">Why the four fields don't interfere — click an island to see its argument.</div>
+
+<div class="islands" id="islands">
+  <div class="island" data-detail="K₁ = ℚ(√−3), discriminant −3. Its only ramified prime is 3.">
+    <div class="code">K₁</div><div class="prime">{3}</div><div class="code" style="font-size:.8rem">disc −3</div>
+  </div>
+  <div class="island" data-detail="L₂ = closure(K₂), discriminant 283²³. Its only ramified prime is 283.">
+    <div class="code">L₂</div><div class="prime">{283}</div><div class="code" style="font-size:.8rem">disc 283²³</div>
+  </div>
+  <div class="island" data-detail="K₃ = ℚ(√−7), discriminant −7. Its only ramified prime is 7.">
+    <div class="code">K₃</div><div class="prime">{7}</div><div class="code" style="font-size:.8rem">disc −7</div>
+  </div>
+  <div class="island" data-detail="L₄ = closure(K₄), discriminant −59³. Its only ramified prime is 59.">
+    <div class="code">L₄</div><div class="prime">{59}</div><div class="code" style="font-size:.8rem">disc −59³</div>
+  </div>
+</div>
+<div class="caption">Four separate, non-touching islands of ramification — no shared prime, anywhere.</div>
+
+<div class="card">
+  <h2>Select a field above</h2>
+  <div class="detail" id="detail">Click any island to inspect its ramified-prime support.</div>
+</div>
+
+<h2 style="margin-top:36px">Why disjoint support forces disjoint fields</h2>
+<div class="card">
+  <p>Suppose two of these Galois extensions shared a nontrivial common subfield <span class="code">F ⊆ ℚ</span>.
+  <span class="code">F</span> would have to be unramified at every prime dividing either extension's discriminant —
+  and since the two supports share no prime at all, <span class="code">F</span> is unramified <em>everywhere</em>.</p>
+  <p class="code" style="color:var(--green);font-weight:700">Minkowski's theorem: the only extension of ℚ unramified at every prime is ℚ itself.</p>
+  <p>So <span class="code">F = ℚ</span> — the fields are automatically <strong>linearly disjoint</strong>, with no closure of the full compositum needed.</p>
+</div>
+
+<h2 style="margin-top:36px">Consequence: degrees multiply exactly</h2>
+<div class="flow">
+ <div class="stage"><div class="code">[L₂L₄:ℚ] = 144</div><small>24 × 6</small></div>
+ <div class="arrow">→</div>
+ <div class="stage"><div class="code">[L₂L₄K₁:ℚ] = 288</div><small>144 × 2</small></div>
+ <div class="arrow">→</div>
+ <div class="stage"><div class="code">[L₂L₄K₁K₃:ℚ] = 576</div><small>288 × 2</small></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="interpret">
+  <h2>HFG INTERPRETATION — PHYSICS</h2>
+  <p>Disjoint ramification is number-theoretic bookkeeping.</p>
+  <button id="toggle">Show epistemic boundary note</button>
+  <p id="note" hidden><strong>Whether this reflects a physical independence of the four gauge sectors is an open interpretation, not part of the theorem.</strong> The theorem ends at the exact linear-disjointness statement above.</p>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.island').forEach(el=>{
+ el.addEventListener('click',()=>{
+  document.querySelectorAll('.island').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('detail').textContent=el.dataset.detail;
+ });
+});
+document.getElementById('toggle').onclick=()=>{
+ const n=document.getElementById('note'); n.hidden=!n.hidden;
+};
+</script>
+</body>
+</html>

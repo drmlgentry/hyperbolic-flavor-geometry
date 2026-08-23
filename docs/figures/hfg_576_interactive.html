@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The 576-Element Galois Closure</title>
+<style>
+:root{--bg:#f7f4ef;--ink:#1a1a1a;--green:#2a5e2a;--tan:#7b5a2e;--red:#8b2020}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"EB Garamond",serif}
+.wrap{max-width:1180px;margin:auto;padding:36px 20px 60px}
+h1{text-align:center;font-size:2.5rem;margin:.2rem 0}
+.sub{text-align:center;color:var(--tan);font-style:italic;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card,.stage,.interpret{border:1.5px solid var(--green);border-radius:12px;padding:18px;background:rgba(42,94,42,.06)}
+.card{cursor:pointer;transition:.15s transform,.15s background}
+.card:hover{transform:translateY(-2px);background:rgba(42,94,42,.11)}
+.card.active{background:rgba(42,94,42,.14);outline:2px solid var(--green)}
+.code{font-family:"JetBrains Mono","Courier New",monospace}
+.badge{display:inline-block;color:var(--green);border:1px solid var(--green);padding:3px 8px;border-radius:999px;font-size:.72rem;font-family:Arial,sans-serif;font-weight:700}
+.flow{display:flex;align-items:center;gap:10px;margin:34px 0;flex-wrap:wrap}
+.stage{flex:1;min-width:220px;text-align:center}
+.arrow{font:700 1.8rem/1 monospace;color:var(--green)}
+.result{border:2px solid var(--green);padding:24px;border-radius:14px;text-align:center;margin-top:24px}
+.divider{height:4px;background:var(--tan);margin:38px 0 18px}
+.interpret{border-color:var(--tan);background:rgba(123,90,46,.07)}
+.interpret h2{color:var(--tan)}
+.detail{margin-top:18px;border-top:1px solid #c9c1b7;padding-top:14px;min-height:58px}
+button{border:1px solid var(--tan);background:transparent;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--ink)}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.flow{flex-direction:column}.arrow{transform:rotate(90deg)}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>The 576-Element Galois Closure</h1>
+<div class="sub">Click any field to inspect its exact Galois contribution.</div>
+
+<div class="grid" id="cards">
+  <div class="card" data-detail="K₁ is quadratic and already Galois over ℚ. Its Galois group is C₂.">
+    <span class="badge">PROVED</span><h3 class="code">K₁ = ℚ(√−3)</h3><div>degree 2</div><div class="code">Gal ≅ C₂</div>
+  </div>
+  <div class="card" data-detail="K₂ itself is quartic and non-Galois. Its Galois closure L₂ has degree 24 and group S₄.">
+    <span class="badge">PROVED</span><h3 class="code">L₂ = closure(K₂)</h3><div>degree 24</div><div class="code">Gal ≅ S₄</div>
+  </div>
+  <div class="card" data-detail="K₃ is quadratic and already Galois over ℚ. Its Galois group is C₂.">
+    <span class="badge">PROVED</span><h3 class="code">K₃ = ℚ(√−7)</h3><div>degree 2</div><div class="code">Gal ≅ C₂</div>
+  </div>
+  <div class="card" data-detail="K₄ itself is cubic and non-Galois. Its Galois closure L₄ has degree 6 and group S₃.">
+    <span class="badge">PROVED</span><h3 class="code">L₄ = closure(K₄)</h3><div>degree 6</div><div class="code">Gal ≅ S₃</div>
+  </div>
+</div>
+
+<div class="detail" id="detail">Select a field above.</div>
+
+<h2>Direct linear-disjointness check</h2>
+<div class="flow">
+ <div class="stage"><div class="code">[L₂L₄:ℚ] = 144</div><small>24 × 6</small></div>
+ <div class="arrow">→</div>
+ <div class="stage"><div class="code">[L₂L₄K₁:ℚ] = 288</div><small>144 × 2</small></div>
+ <div class="arrow">→</div>
+ <div class="stage"><div class="code">[L₂L₄K₁K₃:ℚ] = 576</div><small>288 × 2</small></div>
+</div>
+
+<div class="result">
+  <span class="badge">THEOREM</span>
+  <h2 class="code">Gal(L/ℚ) ≅ C₂ × S₄ × C₂ × S₃</h2>
+  <div class="code">|Gal(L/ℚ)| = 576</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="interpret">
+  <h2>HFG INTERPRETATION — PHYSICS</h2>
+  <p class="code">C₂ × S₄ × C₂ × S₃ ≅ W(SU(2)) × W(SU(4)) × W(SU(2)) × W(SU(3))</p>
+  <p>The Weyl-group isomorphism is exact mathematics. Assigning the factors to physical gauge sectors is an interpretation, not part of the theorem.</p>
+  <button id="toggle">Show epistemic boundary note</button>
+  <p id="note" hidden><strong>The theorem ends at the exact Galois/Weyl group statement.</strong> A field-theoretic mechanism connecting this arithmetic structure to an actual gauge theory remains open.</p>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.card').forEach(card=>{
+ card.addEventListener('click',()=>{
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+  document.getElementById('detail').textContent=card.dataset.detail;
+ });
+});
+document.getElementById('toggle').onclick=()=>{
+ const n=document.getElementById('note'); n.hidden=!n.hidden;
+};
+</script>
+</body>
+</html>

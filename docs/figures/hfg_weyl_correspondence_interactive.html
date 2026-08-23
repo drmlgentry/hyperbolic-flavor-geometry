@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Weyl-Product Correspondence</title>
+<style>
+:root{--bg:#f7f4ef;--ink:#1a1a1a;--green:#2a5e2a;--tan:#7b5a2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"EB Garamond",serif}
+.wrap{max-width:1180px;margin:auto;padding:36px 20px 60px}
+h1{text-align:center;font-size:2.3rem;margin:.2rem 0}
+.sub{text-align:center;color:var(--tan);font-style:italic;margin-bottom:30px}
+.row{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;gap:8px;margin-bottom:14px;cursor:pointer}
+.side{border:1.5px solid var(--green);border-radius:12px;padding:14px 16px;background:rgba(42,94,42,.06);transition:.15s background}
+.side.physical{border-color:var(--tan);background:rgba(123,90,46,.06)}
+.row.active .side{background:rgba(42,94,42,.14)}
+.row.active .side.physical{background:rgba(123,90,46,.14)}
+.cong{text-align:center;font-size:1.4rem;color:var(--green);font-weight:700}
+.code{font-family:"JetBrains Mono","Courier New",monospace}
+.small{font-size:.85rem;color:#5a554f}
+.card,.result,.interpret{border:1.5px solid var(--green);border-radius:12px;padding:18px;background:rgba(42,94,42,.06)}
+.detail{margin-top:16px;border-top:1px solid #c9c1b7;padding-top:14px;min-height:50px}
+.result{text-align:center;margin-top:26px;border-width:2px}
+.divider{height:4px;background:var(--tan);margin:38px 0 18px}
+.interpret{border-color:var(--tan);background:rgba(123,90,46,.07)}
+.interpret h2{color:var(--tan)}
+h2{font-size:1.3rem}
+@media(max-width:700px){.row{grid-template-columns:1fr}.cong{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>The Weyl-Product Correspondence</h1>
+<div class="sub">Four Galois factors, four Weyl groups — click a row to inspect the isomorphism.</div>
+
+<div id="rows">
+  <div class="row" data-detail="K₁ = ℚ(√−3), ramified only at 3. Already Galois over ℚ — its own Galois group is C₂, matching the reflection group of SU(2)_L exactly.">
+    <div class="side"><div class="code">Gal(K₁/ℚ) ≅ C₂</div><div class="small">K₁ = ℚ(√−3), ramified at {3}</div></div>
+    <div class="cong">≅</div>
+    <div class="side physical"><div class="code">W(SU(2)) ≅ C₂</div><div class="small">reflection group of SU(2)_L</div></div>
+  </div>
+  <div class="row" data-detail="K₂ is quartic and non-Galois; its Galois closure L₂ has degree 24 and group S₄ — matching the reflection group of SU(4), the Pati-Salam unifying factor.">
+    <div class="side"><div class="code">Gal(L₂/ℚ) ≅ S₄</div><div class="small">L₂ = closure(K₂), ramified at {283}</div></div>
+    <div class="cong">≅</div>
+    <div class="side physical"><div class="code">W(SU(4)) ≅ S₄</div><div class="small">reflection group of Pati-Salam SU(4)</div></div>
+  </div>
+  <div class="row" data-detail="K₃ = ℚ(√−7), ramified only at 7. Already Galois over ℚ — its own Galois group is C₂, matching the reflection group of SU(2)_R, the missing right-handed weak factor.">
+    <div class="side"><div class="code">Gal(K₃/ℚ) ≅ C₂</div><div class="small">K₃ = ℚ(√−7), ramified at {7}</div></div>
+    <div class="cong">≅</div>
+    <div class="side physical"><div class="code">W(SU(2)) ≅ C₂</div><div class="small">reflection group of SU(2)_R</div></div>
+  </div>
+  <div class="row" data-detail="K₄ is cubic and non-Galois; its Galois closure L₄ has degree 6 and group S₃ — matching the reflection group of color SU(3)_C.">
+    <div class="side"><div class="code">Gal(L₄/ℚ) ≅ S₃</div><div class="small">L₄ = closure(K₄), ramified at {59}</div></div>
+    <div class="cong">≅</div>
+    <div class="side physical"><div class="code">W(SU(3)) ≅ S₃</div><div class="small">reflection group of color SU(3)_C</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Select a row above</h2>
+  <div class="detail" id="detail">Click any row to inspect why that factor's Galois group matches that gauge factor's Weyl group.</div>
+</div>
+
+<div class="result">
+  <div class="code" style="font-size:1.15rem;color:var(--green);font-weight:700">Gal(L/ℚ) ≅ C₂ × S₄ × C₂ × S₃ ≅ W(SU(2)) × W(SU(4)) × W(SU(2)) × W(SU(3))</div>
+  <div class="small" style="margin-top:8px">order 576 = 2 × 24 × 2 × 6, factor by factor, no relabeling required</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="interpret">
+  <h2>HFG INTERPRETATION — PHYSICS</h2>
+  <p class="code">W(SU(4) × SU(2)_L × SU(2)_R × SU(3)_C) — the Pati-Salam-plus-color Weyl group</p>
+  <button id="toggle" style="border:1px solid var(--tan);background:transparent;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--ink)">Show epistemic boundary note</button>
+  <p id="note" hidden><strong>Which manifold gets which physical label is an interpretive choice.</strong> The group isomorphism itself is exact and does not depend on it — the theorem ends at the abstract algebra above.</p>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.row').forEach(row=>{
+ row.addEventListener('click',()=>{
+  document.querySelectorAll('.row').forEach(r=>r.classList.remove('active'));
+  row.classList.add('active');
+  document.getElementById('detail').textContent=row.dataset.detail;
+ });
+});
+document.getElementById('toggle').onclick=()=>{
+ const n=document.getElementById('note'); n.hidden=!n.hidden;
+};
+</script>
+</body>
+</html>

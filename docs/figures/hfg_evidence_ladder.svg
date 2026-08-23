@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 940" role="img" aria-labelledby="title desc">
+<title id="title">The Evidence Ladder — Updated for the Four-Field Theorem</title>
+<desc id="desc">Every claim in the HFG programme organized by evidence tier: proved, computed, structural argument, and open. Updated to promote the four-field Galois product theorem (576 elements) to the headline proved result, and to retire the SU(2)_R open item it resolves.</desc>
+
+<rect width="1300" height="940" fill="#f7f4ef"/>
+
+<text x="650" y="50" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="34" font-weight="600" fill="#1a1a1a">THE EVIDENCE LADDER</text>
+<text x="650" y="80" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="17" font-style="italic" fill="#6b6460">Every claim in the programme, sorted by what is actually established — updated Aug 22 2026</text>
+
+<!-- TIER: PROVED (green) — 3 bullets, 6 lines, headline = entry 15 -->
+<rect x="60" y="115" width="1180" height="210" rx="12" fill="#2a5e2a" fill-opacity="0.08" stroke="#2a5e2a" stroke-width="1.6"/>
+<rect x="85" y="132" width="140" height="32" rx="16" fill="#2a5e2a" fill-opacity="0.15" stroke="#2a5e2a" stroke-width="1.2"/>
+<text x="155" y="153" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="15" font-weight="700" fill="#2a5e2a" letter-spacing="0.05em">✓ PROVED</text>
+
+<text x="85" y="195" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a" font-weight="600">★ Four-field Galois product theorem (entry 15) — the compositum of all four cusp fields is</text>
+<text x="105" y="216" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a" font-weight="600">Galois over ℚ with group C₂×S₄×C₂×S₃, order 576, extending the earlier m003/m019 pairwise result.</text>
+
+<text x="85" y="240" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">• Dual Dehn filling identity — the Meyerhoff manifold arises from two arithmetically</text>
+<text x="105" y="261" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">independent cusped parents (m003 and m019).</text>
+
+<text x="85" y="285" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">• Factorization of the Meyerhoff manifold's octic shape polynomial as a norm over a</text>
+<text x="105" y="306" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">quartic number field (w⁴ = w + 1).</text>
+
+<!-- TIER: COMPUTED (blue) — 2 bullets, 3 lines, unchanged -->
+<rect x="60" y="345" width="1180" height="160" rx="12" fill="#1d4e89" fill-opacity="0.08" stroke="#1d4e89" stroke-width="1.6"/>
+<rect x="85" y="362" width="165" height="32" rx="16" fill="#1d4e89" fill-opacity="0.15" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="167" y="383" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="15" font-weight="700" fill="#1d4e89" letter-spacing="0.05em">⊞ COMPUTED</text>
+
+<text x="85" y="425" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">• CKM and PMNS mixing angles from geodesic word scan, verified against PDG</text>
+<text x="105" y="446" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">experimental bounds at 300-bit precision.</text>
+
+<text x="85" y="475" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">• CP-violating phase: 195.91°, within 0.55% of current global fits. Residuals below 10⁻⁸⁵.</text>
+
+<!-- TIER: STRUCTURAL (tan) — 1 bullet, 2 lines, unchanged -->
+<rect x="60" y="525" width="1180" height="130" rx="12" fill="#7b5a2e" fill-opacity="0.08" stroke="#7b5a2e" stroke-width="1.6"/>
+<rect x="85" y="542" width="270" height="32" rx="16" fill="#7b5a2e" fill-opacity="0.15" stroke="#7b5a2e" stroke-width="1.2"/>
+<text x="220" y="563" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="15" font-weight="700" fill="#7b5a2e" letter-spacing="0.05em">◈ STRUCTURAL ARGUMENT</text>
+
+<text x="85" y="605" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">• Three-generation counting from ℤ/5 homology — structurally compelling, argued</text>
+<text x="105" y="626" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">from the topology, but not yet a formal theorem.</text>
+
+<!-- TIER: OPEN (magenta) — 2 bullets, 4 lines; SU(2)_R item retired, replaced -->
+<rect x="60" y="680" width="1180" height="180" rx="12" fill="#6b2a5e" fill-opacity="0.08" stroke="#6b2a5e" stroke-width="1.6"/>
+<rect x="85" y="697" width="115" height="32" rx="16" fill="#6b2a5e" fill-opacity="0.15" stroke="#6b2a5e" stroke-width="1.2"/>
+<text x="142" y="718" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="15" font-weight="700" fill="#6b2a5e" letter-spacing="0.05em">○ OPEN</text>
+
+<text x="85" y="760" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">• Physical derivation connecting hyperbolic geometry to the Standard Model</text>
+<text x="105" y="781" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">Lagrangian. No mechanism proposed yet.</text>
+
+<text x="85" y="810" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">• Field-theoretic mechanism connecting the proved Galois/Weyl correspondence to an actual</text>
+<text x="105" y="831" font-family="'EB Garamond',Georgia,serif" font-size="16" fill="#1a1a1a">gauge theory (e.g. a 3D-3D/Dimofte-Gaiotto-Gukov-style duality) — the theorem ends at the group isomorphism.</text>
+
+<!-- connecting rail suggesting decreasing certainty -->
+<line x1="30" y1="130" x2="30" y2="845" stroke="#b8b2aa" stroke-width="2"/>
+<text x="20" y="490" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="14" font-style="italic" fill="#6b6460" transform="rotate(-90 20 490)">decreasing certainty →</text>
+
+<text x="650" y="905" text-anchor="middle" font-family="'EB Garamond',Georgia,serif" font-size="15" font-style="italic" fill="#6b6460">Every claim carries one of these four tags. None is asserted without it. The SU(2)_R item this figure once listed as Open is now Proved — see entry 15.</text>
+</svg>

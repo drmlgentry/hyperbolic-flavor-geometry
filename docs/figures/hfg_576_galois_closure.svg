@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+<title id="title">The 576-Element Galois Closure</title>
+<desc id="desc">Four Galois pieces with groups C2, S4, C2, and S3 are jointly linearly disjoint, producing a direct-product Galois group of order 576. Physical gauge interpretation is shown separately.</desc>
+<rect width="1600" height="980" fill="#f7f4ef"/>
+<style>
+ .t{font-family:"EB Garamond",Georgia,serif;fill:#1a1a1a}
+ .m{font-family:"JetBrains Mono","Courier New",monospace;fill:#1a1a1a}
+ .title{font-size:42px;font-weight:600}
+ .sub{font-size:20px;font-style:italic;fill:#7b5a2e}
+ .head{font-size:24px;font-weight:600}
+ .body{font-size:18px}
+ .small{font-size:15px}
+ .mono{font-size:17px}
+ .green{fill:#2a5e2a;font-weight:700}
+ .tan{fill:#7b5a2e}
+ .card{fill:#2a5e2a;fill-opacity:.08;stroke:#2a5e2a;stroke-width:1.4}
+ .interp{fill:#7b5a2e;fill-opacity:.08;stroke:#7b5a2e;stroke-width:1.4}
+ .arrow{stroke:#2a5e2a;stroke-width:2;fill:none;marker-end:url(#a)}
+</style>
+<defs>
+ <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2a5e2a"/></marker>
+</defs>
+
+<text x="800" y="58" text-anchor="middle" class="t title">The 576-Element Galois Closure</text>
+<text x="800" y="92" text-anchor="middle" class="t sub">Exact algebra first; physical interpretation kept separate</text>
+
+<text x="70" y="142" class="t head">PROVED NUMBER-FIELD STRUCTURE</text>
+
+<!-- four pieces -->
+<rect x="55" y="170" width="340" height="170" rx="14" class="card"/>
+<text x="80" y="205" class="m mono">K₁ = ℚ(√−3)</text>
+<text x="80" y="240" class="t body">already Galois, degree 2</text>
+<text x="80" y="276" class="m mono green">Gal ≅ C₂</text>
+<text x="80" y="310" class="t small">finite ramification support: {3}</text>
+
+<rect x="425" y="170" width="340" height="170" rx="14" class="card"/>
+<text x="450" y="205" class="m mono">L₂ = closure(α⁴−α−1)</text>
+<text x="450" y="240" class="t body">Galois closure, degree 24</text>
+<text x="450" y="276" class="m mono green">Gal ≅ S₄</text>
+<text x="450" y="310" class="t small">finite ramification support: {283}</text>
+
+<rect x="795" y="170" width="340" height="170" rx="14" class="card"/>
+<text x="820" y="205" class="m mono">K₃ = ℚ(√−7)</text>
+<text x="820" y="240" class="t body">already Galois, degree 2</text>
+<text x="820" y="276" class="m mono green">Gal ≅ C₂</text>
+<text x="820" y="310" class="t small">finite ramification support: {7}</text>
+
+<rect x="1165" y="170" width="380" height="170" rx="14" class="card"/>
+<text x="1190" y="205" class="m mono">L₄ = closure(K₄)</text>
+<text x="1190" y="240" class="t body">Galois closure, degree 6</text>
+<text x="1190" y="276" class="m mono green">Gal ≅ S₃</text>
+<text x="1190" y="310" class="t small">finite ramification support: {59}</text>
+
+<!-- degree test chain -->
+<text x="70" y="390" class="t head">DIRECT DISJOINTNESS CHECK</text>
+
+<rect x="110" y="420" width="310" height="100" rx="12" class="card"/>
+<text x="265" y="452" text-anchor="middle" class="m mono">[L₂L₄:ℚ] = 144</text>
+<text x="265" y="484" text-anchor="middle" class="t small">24 × 6</text>
+
+<line x1="420" y1="470" x2="505" y2="470" class="arrow"/>
+
+<rect x="505" y="420" width="360" height="100" rx="12" class="card"/>
+<text x="685" y="452" text-anchor="middle" class="m mono">[L₂L₄K₁:ℚ] = 288</text>
+<text x="685" y="484" text-anchor="middle" class="t small">144 × 2</text>
+
+<line x1="865" y1="470" x2="950" y2="470" class="arrow"/>
+
+<rect x="950" y="420" width="430" height="100" rx="12" class="card"/>
+<text x="1165" y="452" text-anchor="middle" class="m mono">[L₂L₄K₁K₃:ℚ] = 576</text>
+<text x="1165" y="484" text-anchor="middle" class="t small">288 × 2</text>
+
+<!-- theorem -->
+<rect x="170" y="575" width="1260" height="145" rx="16" class="card"/>
+<text x="800" y="615" text-anchor="middle" class="t head">FOUR-FIELD GALOIS PRODUCT THEOREM</text>
+<text x="800" y="660" text-anchor="middle" class="m mono green">Gal(L/ℚ) ≅ C₂ × S₄ × C₂ × S₃</text>
+<text x="800" y="700" text-anchor="middle" class="m mono green">|Gal(L/ℚ)| = 2 × 24 × 2 × 6 = 576</text>
+
+<!-- theorem boundary -->
+<line x1="70" y1="760" x2="1530" y2="760" stroke="#7b5a2e" stroke-width="4"/>
+<text x="800" y="790" text-anchor="middle" class="t small tan">THE PROVED ALGEBRA ENDS ABOVE THIS LINE</text>
+
+<!-- interpretation -->
+<rect x="150" y="815" width="1300" height="115" rx="14" class="interp"/>
+<text x="800" y="850" text-anchor="middle" class="t head tan">HFG INTERPRETATION — PHYSICS</text>
+<text x="800" y="885" text-anchor="middle" class="m mono">C₂ × S₄ × C₂ × S₃ ≅ W(SU(2)) × W(SU(4)) × W(SU(2)) × W(SU(3))</text>
+<text x="800" y="915" text-anchor="middle" class="t small">The abstract Weyl-group isomorphism is exact mathematics; assigning gauge-sector meaning is an open physical interpretation.</text>
+</svg>

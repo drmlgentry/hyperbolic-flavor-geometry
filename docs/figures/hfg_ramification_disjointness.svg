@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1060" role="img" aria-labelledby="title desc">
+<title id="title">Ramification Disjointness — Why the Four Fields Don't Interfere</title>
+<desc id="desc">The four cusp fields have pairwise disjoint ramified-prime supports {3}, {283}, {7}, {59}. By Minkowski's theorem, any nontrivial intersection between them would be an everywhere-unramified extension of Q, hence trivial — giving linear disjointness without computing the full compositum directly.</desc>
+<rect width="1600" height="1060" fill="#f7f4ef"/>
+<style>
+ .t{font-family:"EB Garamond",Georgia,serif;fill:#1a1a1a}
+ .m{font-family:"JetBrains Mono","Courier New",monospace;fill:#1a1a1a}
+ .title{font-size:40px;font-weight:600}
+ .sub{font-size:19px;font-style:italic;fill:#7b5a2e}
+ .head{font-size:23px;font-weight:600}
+ .body{font-size:17px}
+ .small{font-size:14px}
+ .mono{font-size:16px}
+ .green{fill:#2a5e2a;font-weight:700}
+ .tan{fill:#7b5a2e}
+ .island{fill:#2a5e2a;fill-opacity:.07;stroke:#2a5e2a;stroke-width:1.6}
+ .card{fill:#2a5e2a;fill-opacity:.08;stroke:#2a5e2a;stroke-width:1.4}
+ .interp{fill:#7b5a2e;fill-opacity:.08;stroke:#7b5a2e;stroke-width:1.4}
+</style>
+
+<text x="800" y="56" text-anchor="middle" class="t title">Ramification Disjointness</text>
+<text x="800" y="88" text-anchor="middle" class="t sub">Why the four fields don't interfere — no compositum computation required</text>
+
+<text x="70" y="138" class="t head">PROVED: PAIRWISE DISJOINT RAMIFIED-PRIME SUPPORT</text>
+
+<!-- four disjoint islands, deliberately non-overlapping to make the point visually -->
+<circle cx="230" cy="270" r="115" class="island"/>
+<text x="230" y="250" text-anchor="middle" class="m mono">K₁ = ℚ(√−3)</text>
+<text x="230" y="278" text-anchor="middle" class="m mono green" font-size="22">{3}</text>
+<text x="230" y="305" text-anchor="middle" class="t small">disc = −3</text>
+
+<circle cx="600" cy="270" r="115" class="island"/>
+<text x="600" y="250" text-anchor="middle" class="m mono">L₂ = closure(K₂)</text>
+<text x="600" y="278" text-anchor="middle" class="m mono green" font-size="22">{283}</text>
+<text x="600" y="305" text-anchor="middle" class="t small">disc = 283²³</text>
+
+<circle cx="970" cy="270" r="115" class="island"/>
+<text x="970" y="250" text-anchor="middle" class="m mono">K₃ = ℚ(√−7)</text>
+<text x="970" y="278" text-anchor="middle" class="m mono green" font-size="22">{7}</text>
+<text x="970" y="305" text-anchor="middle" class="t small">disc = −7</text>
+
+<circle cx="1340" cy="270" r="115" class="island"/>
+<text x="1340" y="250" text-anchor="middle" class="m mono">L₄ = closure(K₄)</text>
+<text x="1340" y="278" text-anchor="middle" class="m mono green" font-size="22">{59}</text>
+<text x="1340" y="305" text-anchor="middle" class="t small">disc = −59³</text>
+
+<text x="800" y="428" text-anchor="middle" class="t small tan">Four separate, non-touching islands of ramification — no shared prime, anywhere.</text>
+
+<!-- Minkowski argument -->
+<text x="70" y="480" class="t head">THE ARGUMENT (MINKOWSKI)</text>
+<rect x="55" y="500" width="1490" height="185" rx="16" class="card"/>
+<text x="90" y="540" class="t body">Suppose two of these Galois extensions shared a nontrivial common subfield F ⊆ ℚ.</text>
+<text x="90" y="570" class="t body">F would have to be unramified at every prime dividing either extension's discriminant —</text>
+<text x="90" y="600" class="t body">and since the two supports share no prime at all, F is unramified <tspan class="m mono">everywhere</tspan>.</text>
+<text x="90" y="640" class="m mono green" font-size="19">Minkowski's theorem: the only extension of ℚ unramified at every prime is ℚ itself.</text>
+<text x="90" y="668" class="t body">So F = ℚ — the fields are automatically <tspan class="tan">linearly disjoint</tspan>, with no closure of the full compositum needed.</text>
+
+<!-- degree chain, consistent with module 1 -->
+<text x="70" y="735" class="t head">CONSEQUENCE: DEGREES MULTIPLY EXACTLY</text>
+
+<rect x="110" y="758" width="310" height="90" rx="12" class="card"/>
+<text x="265" y="788" text-anchor="middle" class="m mono">[L₂L₄:ℚ] = 144</text>
+<text x="265" y="816" text-anchor="middle" class="t small">24 × 6</text>
+
+<line x1="420" y1="803" x2="500" y2="803" stroke="#2a5e2a" stroke-width="2" marker-end="url(#a)"/>
+
+<rect x="500" y="758" width="360" height="90" rx="12" class="card"/>
+<text x="680" y="788" text-anchor="middle" class="m mono">[L₂L₄K₁:ℚ] = 288</text>
+<text x="680" y="816" text-anchor="middle" class="t small">144 × 2</text>
+
+<line x1="860" y1="803" x2="945" y2="803" stroke="#2a5e2a" stroke-width="2" marker-end="url(#a)"/>
+
+<rect x="945" y="758" width="430" height="90" rx="12" class="card"/>
+<text x="1160" y="788" text-anchor="middle" class="m mono">[L₂L₄K₁K₃:ℚ] = 576</text>
+<text x="1160" y="816" text-anchor="middle" class="t small">288 × 2</text>
+
+<defs>
+ <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2a5e2a"/></marker>
+</defs>
+
+<!-- theorem boundary -->
+<line x1="70" y1="900" x2="1530" y2="900" stroke="#7b5a2e" stroke-width="4"/>
+<text x="800" y="928" text-anchor="middle" class="t small tan">THE PROVED ALGEBRA ENDS ABOVE THIS LINE</text>
+
+<!-- interpretation footer, same wording as module 1 for series consistency -->
+<rect x="150" y="950" width="1300" height="90" rx="14" class="interp"/>
+<text x="800" y="982" text-anchor="middle" class="t head tan">HFG INTERPRETATION — PHYSICS</text>
+<text x="800" y="1013" text-anchor="middle" class="t small">Disjoint ramification is number-theoretic bookkeeping; whether it reflects a physical independence of the four gauge sectors is an open interpretation, not part of the theorem.</text>
+</svg>
