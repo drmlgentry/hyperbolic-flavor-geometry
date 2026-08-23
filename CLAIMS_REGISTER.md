@@ -210,3 +210,35 @@ these four cusp fields to actual physical gauge groups. This result does not
 strengthen the physical interpretation, only the arithmetic scaffolding beneath it.
 **Script:** `reproduce/fourway_ramification_check.py`, Aug 22 2026.
 **Last verified:** Aug 22 2026
+
+## 16. Geometry-only candidate selector for charged-lepton mass indices
+**Claim:** A specific combination of arithmetic invariants already established elsewhere
+in the corpus — H₁(M_PMNS)=ℤ/5, the Farey-tower conductor p₁=11=5·1·2+1, and the Hecke
+eigenvalue a₆₁=12 for the level-11 curve E: y²+y=x³−x² at the first tower prime beyond
+the order-5 character's conductor where that character is trivial — reproduces the
+integer lattice indices Q_e=0, Q_μ=44, Q_τ=68 (equivalently k=Q/4 = 0, 11, 17) via
+Q_μ−Q_e = 4·p₁ and Q_τ−Q_μ = 2·a₆₁, where 4 and 2 are the counts of nonzero classes and
+inversion-orbits of ℤ/5 respectively. Comparing against the actual masses only after
+computing the indices gives m_μ/m_e error 3.755% and m_τ/m_e error 2.697%.
+**Status:** [Conjecture]. The script genuinely does not read particle masses before
+producing Q_e/Q_μ/Q_τ — the execution order is real and was independently reproduced
+here. But this is weaker than it sounds: the *specific* combinatorial rule (why this
+transition uses 4×p₁ additively rather than some other invariant or coefficient, why the
+second transition searches for "the first post-conductor tower prime with trivial
+order-5 character" rather than a different selection rule, why 2×a_p rather than another
+multiple) is not independently derived from any geometric argument — the source script's
+own status note admits exactly this ("the rule is NOT yet canonically derived"). With
+several free choices of which invariant, which arithmetic operation, and which specific
+prime-selection criterion to combine, landing near two already-known target integers
+(44 and 68, previously identified in the mass-lattice mechanism check, entry-independent)
+carries a real look-elsewhere/multiple-comparisons risk: the rule may have been tuned
+against those known targets during construction even though it does not consult them at
+runtime. This is categorically weaker evidence than entries 15 or the m006 archimedean
+root-labeling result (which involve no such free choices). For contrast: the analogous
+attempt at a geometry-only selector for the six quark indices
+(`reproduce/hfg_quark_selector_audit.py`) found no uniform rule at all — an honest
+negative result, itself a caution against over-crediting the lepton case's apparent
+success as more than a smaller-target-space coincidence.
+**Script:** `reproduce/hfg_geometry_only_mass_selector.py` (independently rerun here,
+output matches exactly: Q_μ=44 at 3.755% error, Q_τ=68 at 2.697% error).
+**Last verified:** Aug 22 2026
