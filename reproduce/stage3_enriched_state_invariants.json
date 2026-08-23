@@ -1,0 +1,86 @@
+{
+  "status": "mass-blind enriched six-state invariant table",
+  "notes": [
+    "No quark masses or target q-indices are used.",
+    "tr(a),tr(b) vary genuinely across embedding states -- new information,",
+    "not a recoding of the bare cusp root.",
+    "tr(mu),tr(lambda),tr(s) are exactly rational, hence embedding-invariant;",
+    "they vary only by spin (epsilon), via chi(mu)=chi(lambda)=chi(s)=1.",
+    "The upper/real/lower <-> geometric-trace correction (g0) is derived and",
+    "checked in this script, not assumed."
+  ],
+  "states": [
+    {
+      "state_id": "0",
+      "epsilon": "1",
+      "embedding": "upper",
+      "tr_a_re": -1.1027847152002952,
+      "tr_a_im": -0.6654569511528134,
+      "tr_b_re": -0.10278471520029515,
+      "tr_b_im": -0.6654569511528134,
+      "tr_mu": 2,
+      "tr_lambda": -2,
+      "tr_s": 2
+    },
+    {
+      "state_id": "1",
+      "epsilon": "1",
+      "embedding": "real",
+      "tr_a_re": -1.1027847152002952,
+      "tr_a_im": 0.6654569511528134,
+      "tr_b_re": -0.10278471520029515,
+      "tr_b_im": 0.6654569511528134,
+      "tr_mu": 2,
+      "tr_lambda": -2,
+      "tr_s": 2
+    },
+    {
+      "state_id": "2",
+      "epsilon": "1",
+      "embedding": "lower",
+      "tr_a_re": 1.2055694304005904,
+      "tr_a_im": -9.818186930595453e-91,
+      "tr_b_re": 2.2055694304005904,
+      "tr_b_im": -9.818186930595453e-91,
+      "tr_mu": 2,
+      "tr_lambda": -2,
+      "tr_s": 2
+    },
+    {
+      "state_id": "3",
+      "epsilon": "-1",
+      "embedding": "upper",
+      "tr_a_re": 1.1027847152002952,
+      "tr_a_im": 0.6654569511528134,
+      "tr_b_re": -0.10278471520029515,
+      "tr_b_im": -0.6654569511528134,
+      "tr_mu": -2,
+      "tr_lambda": 2,
+      "tr_s": -2
+    },
+    {
+      "state_id": "4",
+      "epsilon": "-1",
+      "embedding": "real",
+      "tr_a_re": 1.1027847152002952,
+      "tr_a_im": -0.6654569511528134,
+      "tr_b_re": -0.10278471520029515,
+      "tr_b_im": 0.6654569511528134,
+      "tr_mu": -2,
+      "tr_lambda": 2,
+      "tr_s": -2
+    },
+    {
+      "state_id": "5",
+      "epsilon": "-1",
+      "embedding": "lower",
+      "tr_a_re": -1.2055694304005904,
+      "tr_a_im": 9.818186930595453e-91,
+      "tr_b_re": 2.2055694304005904,
+      "tr_b_im": -9.818186930595453e-91,
+      "tr_mu": -2,
+      "tr_lambda": 2,
+      "tr_s": -2
+    }
+  ]
+}
