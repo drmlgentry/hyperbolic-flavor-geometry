@@ -295,3 +295,47 @@ exists) but supplies no mechanism connecting it to which quark occupies which sl
 **Script:** `reproduce/hfg_stage2_oriented_coset_selector.sage`, Aug 22 2026.
 **Proof:** `reproduce/stage2_invariance_proof.md`, Aug 22 2026.
 **Last verified:** Aug 22 2026
+
+## 18. Stage 3A spin-lift binary state for the m006 CKM filling
+**Claim:** H₁(m006;ℤ/2) ≅ ℤ/2 — verified directly from SnapPy's actual fundamental
+group presentation (generators, relator `ababbAAbb`, peripheral words μ=Abb, λ=AAbA,
+all matched verbatim, not assumed). The unique nontrivial character χ has χ(a)=1,
+χ(b)=0; verified χ(μ)=1, χ(λ)=1, χ(s)=1 for the CKM filling slope s=−5μ+2λ. By
+Menal-Ferrer–Porti (Prop. 3.8, arXiv:1001.2242), the set of SL(2,ℂ) lifts of m006's
+PSL(2,ℂ) holonomy is a torsor over H¹(m006;ℤ/2), so there are exactly two lifts,
+differing in sign exactly where χ is nonzero.
+**Sign correction (from actual holonomy computation, not abstract reasoning):**
+SnapPy's default discrete-faithful lift has tr(μ)=+2, tr(λ)=−2, tr(s)=+2 (exact,
+computed via `G.SL2C(...)`, both multiplication orders for s agree). Working the
+Thurston Dehn-surgery continuity argument directly for slope s (the same mechanism
+as Menal-Ferrer–Porti's Lemma 3.9, applied without the auxiliary large-slope trick
+since m006(−5,2) is already independently known to be hyperbolic): along the
+deformation path α∈[0,2π], trace(ρ_α(s))=ε·2cos(α/2) for fixed sign ε; the filled
+endpoint requires ρ(s)=I exactly (trace +2) at α=2π, forcing ε=−1, hence the
+extending lift has trace(s)=−2 at the complete structure (α=0) — the *opposite* of
+SnapPy's default lift. **The lift extending over m006(−5,2) is therefore the χ-twist
+of SnapPy's default lift, not the default lift itself.** This gives the independent
+binary parity bit ε the Stage 3A analysis called for:
+ε=+1 ↔ χ-twisted lift (extends over the filling); ε=−1 ↔ default lift (does not
+extend). Combined with Stage 2's 3-state G/H coset selector (entry 17), this gives a
+canonical 6-element state space (2×3).
+**Status:** [Structural]. The Menal-Ferrer–Porti framework (lifts as an H¹(M;ℤ/2)
+torsor) is directly confirmed from the paper, verbatim. The continuity mechanism is
+standard (Thurston; Neumann-Zagier; Hodgson-Kerckhoff for existence of the
+deformation path) and correctly applied, with a concrete, falsifiable, checkable
+numerical answer — not left as an open ±1 ambiguity. Not [Proved]: three specific
+technical hypotheses have not been independently re-verified to the standard of
+entry 17's proof — (1) existence of the continuous cone-manifold path is cited, not
+re-derived; (2) the monotonicity argument at α=π was checked in Menal-Ferrer–Porti's
+proof for their own auxiliary curve, not independently re-verified here for s
+directly; (3) irreducibility of the representation along the full deformation path
+has not been explicitly checked. See `reproduce/stage3_spin_lift_continuity_note.md`
+for the complete argument and the exact gap.
+**Combined with entry 17:** as with the mass-index selectors (entries 16, and the
+quark-selector negative result), the six-slot state space here is now real and
+concretely constructed — but no map from these six states to the six quark mass
+indices (12,18,43,65,75,106) has been attempted. That remains Stage 3, untouched.
+**Physical reading:** [Conjecture]/open, same status as entries 4, 14, 15, 17.
+**Scripts:** `reproduce/hfg_stage3_binary_spin_selector.py`,
+`reproduce/stage3_spin_lift_continuity_note.md`, Aug 23 2026.
+**Last verified:** Aug 23 2026
