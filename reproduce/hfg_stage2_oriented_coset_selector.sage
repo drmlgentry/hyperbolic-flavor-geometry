@@ -1,5 +1,18 @@
 # hfg_stage2_oriented_coset_selector.sage
 #
+# ORIENTATION FOR A NEW READER: this script proves CLAIMS_REGISTER.md entry 17,
+# a follow-on to the "576 theorem" (entry 15, fourway_ramification_check.py --
+# Gal(L/Q)=C2xS4xC2xS3, order 576, = Weyl(SU(2)xSU(4)xSU(2)xSU(3))). Entry 15
+# established the exact algebra; entries 16-17 ask whether that algebra can be
+# made PHYSICALLY canonical, i.e. whether geometry (not an arbitrary choice)
+# picks out one specific element/coset instead of just a conjugacy class.
+# K=Q(alpha), f(x)=x^3+2x+1, disc=-59, is the m006/SU(3) factor of the 576
+# compositum; H=Gal(L/K) is the S3 subgroup fixing it. This script proves
+# (see reproduce/stage2_invariance_proof.md) that m006's oriented holonomy
+# canonically selects one of the 3 cosets G/H, independent of coordinate
+# (peripheral-basis) choice -- the companion Stage 1 result (a separate
+# script) proves the analogous canonical-Frobenius-element fact for H itself.
+#
 # Stage 2 test (extends hfg_m006_root_labeled_selector.sage and the Stage 1
 # canonical prime-lift result): does the oriented geometric holonomy of m006
 # select the SAME embedding of the cusp field K = Q(alpha), f(alpha)=0,

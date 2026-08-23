@@ -18,6 +18,15 @@ The core observation: the unique minimum-volume closed orientable hyperbolic 3-m
 
 ---
 
+## Recent Results (August 2026)
+
+- **[Proved]** Four-Field Galois Product Theorem: Gal(L/ℚ) ≅ C₂ × S₄ × C₂ × S₃, order 576 — the complete Pati–Salam-plus-color Weyl group, assembled from four arithmetically independent cusp fields (entries 14–17, [CLAIMS_REGISTER.md](CLAIMS_REGISTER.md))
+- Three papers submitted: Journal of Topology (Torsion), Annals of Physics ×2 (CKM v3, PMNS)
+- **[Computed → Proved]** Oriented G/H coset selector for m006 — the oriented holonomy canonically selects one of three conjugate embeddings of the cusp field, invariant under peripheral basis change (entry 17)
+- Substack: [The 576-Element Breakthrough](https://marvingentrynd.substack.com/p/the-576-element-breakthrough-how)
+
+---
+
 ## Canonical Results (June 2026)
 
 | Observable | Manifold | HFG value | PDG value | Status |

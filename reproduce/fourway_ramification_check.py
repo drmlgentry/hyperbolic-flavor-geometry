@@ -1,4 +1,13 @@
 # fourway_ramification_check.py
+#
+# ORIENTATION FOR A NEW READER: this is the script that proves the headline
+# "576 theorem" -- CLAIMS_REGISTER.md entry 15, "The 576-Element Breakthrough"
+# (Substack, Aug 22 2026): the compositum of all four HFG cusp fields is
+# Galois over Q with group C2xS4xC2xS3, order 576, abstractly isomorphic to
+# Weyl(SU(2))xWeyl(SU(4))xWeyl(SU(2))xWeyl(SU(3)) -- the complete Pati-Salam-
+# plus-color Weyl group. See also entries 16-17 for the follow-on Stage 1/2
+# work (canonical Frobenius/coset selectors) that this result made possible.
+#
 # Verifies the ramification-disjointness argument for the four-field Galois
 # closure question, following the reasoning: if the individual closures
 # L1,L2,L3,L4 are Galois over Q with pairwise disjoint ramified-prime sets,

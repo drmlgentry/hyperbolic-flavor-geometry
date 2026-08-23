@@ -217,7 +217,9 @@ footer a { color: var(--muted); }
       <tr><td>CP phase δ = 195.91°</td><td><span class="acc">m003</span> holonomy</td><td>PDG: 197.0°</td><td><span class="acc">0.55%</span></td></tr>
       <tr><td>N(16+12ω) = 208 ≈ m_μ/m_e</td><td>N(16+12ω)</td><td>Eisenstein norm</td><td><span class="acc">0.59%</span></td></tr>
       <tr><td>m_τ/m_e = 3477</td><td>N(68+37ω)</td><td>Eisenstein norm</td><td><span class="exact">0.006%</span></td></tr>
-      <tr><td>Gal(m003) = ℤ/2 = Weyl(SU(2))</td><td>x²−x+1, disc=−3</td><td></td><td><span class="exact">exact</span></td></tr>
+      <tr><td style="font-weight:600;">Gal(L/ℚ) ≅ ℤ/2×S₄×ℤ/2×S₃, order 576</td><td>4-field compositum</td><td>≅ Weyl(SU(2)×SU(4)×SU(2)×SU(3))</td><td><span class="exact">proved Aug 2026</span></td></tr>
+      <tr><td>Gal(m003) = ℤ/2 = Weyl(SU(2)_L)</td><td>x²−x+1, disc=−3</td><td></td><td><span class="exact">exact</span></td></tr>
+      <tr><td>Gal(m010) = ℤ/2 = Weyl(SU(2)_R)</td><td>x²+2x+2, disc=−7</td><td></td><td><span class="exact">exact</span></td></tr>
       <tr><td>Gal(m006) = S₃ = Weyl(SU(3))</td><td>x³+2x+1, disc=−59</td><td></td><td><span class="exact">exact</span></td></tr>
       <tr><td>Gal(m019) = S₄ = Weyl(SU(4))</td><td>x⁴−x−1, disc=−283</td><td></td><td><span class="exact">exact</span></td></tr>
       <tr><td>Dual surgery: m003(−2,3) = m019(2,1)</td><td>M_PMNS</td><td>15 sig. figs.</td><td><span class="exact">exact</span></td></tr>
@@ -264,6 +266,18 @@ footer a { color: var(--muted); }
 
 <section id="theorems">
   <h2>Proved Results</h2>
+  <div class="theorem" data-label="Theorem — Four-Field Galois Product (Aug 2026)">
+    The compositum of all four cusp fields (K_m003 disc=−3, K_m010 disc=−7, K_m006 disc=−59,
+    K_m019 disc=−283) is Galois over ℚ with Gal(L/ℚ) ≅ ℤ/2×S₄×ℤ/2×S₃, order 576 — the full
+    direct product of the four individual Weyl groups Weyl(SU(2)_L)×Weyl(SU(4))×Weyl(SU(2)_R)×Weyl(SU(3)_C),
+    the complete Pati–Salam-plus-color gauge structure. Proved via mutual linear disjointness
+    (pairwise disjoint ramified-prime supports {3},{7},{59},{283} force triviality of any common
+    subfield by Minkowski's theorem), confirmed by exact degree computation at every step
+    (24×6=144, ×2=288, ×2=576). The theorem is exact algebra; assigning the four factors to
+    physical gauge sectors remains an interpretation, not part of the proof.
+    See <a href="https://marvingentrynd.substack.com/p/the-576-element-breakthrough-how" style="color:var(--accent);">The 576-Element Breakthrough</a>,
+    CLAIMS_REGISTER.md entries 14–17.
+  </div>
   <div class="theorem" data-label="Theorem — Galois–Weyl Trichotomy">
     Gal(τ_m003)≅ℤ/2≅Weyl(SU(2)), Gal(τ_m006)≅S₃≅Weyl(SU(3)), Gal(τ_m019)≅S₄≅Weyl(SU(4)). Verified at 300-bit precision; residuals below 10⁻⁸⁵.
   </div>
@@ -355,10 +369,10 @@ footer a { color: var(--muted); }
 
 <section id="articles">
   <div style="border-left:3px solid var(--accent);padding:1rem 1.5rem;margin:2.5rem 0;background:rgba(139,32,32,.04);">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;">New Post · August 10 2026</div>
-    <strong>Ten Dimensions of Geometric Structure.</strong> A map of ten geometric invariants — volume, homology, cusp shape, Galois group, trace field, geodesic twist, Chern-Simons, Bloch-Wigner, Dehn slope, and covering tower — each encoding something specific about the Standard Model. Every claim tagged: Proved, Computed, or Conjectural.
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;">New Post · August 22 2026</div>
+    <strong>The 576-Element Breakthrough: How Four Arithmetic Manifolds Assemble the Gauge Structure of Nature.</strong> Four curved spaces, one exact theorem: the arithmetic of hyperbolic geometry assembles the complete gauge symmetry of the Standard Model — proved, not guessed. The full four-field Galois product theorem, Gal(L/ℚ) ≅ ℤ/2×S₄×ℤ/2×S₃, order 576.
     <div style="margin-top:.7rem;">
-      <a href="https://marvingentrynd.substack.com/p/ten-dimensions-of-geometric-structure" style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;margin-right:1rem;">Substack Post →</a>
+      <a href="https://marvingentrynd.substack.com/p/the-576-element-breakthrough-how" style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;margin-right:1rem;">Substack Post →</a>
       <a href="#articles" style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;">All Posts →</a>
     </div>
   </div>
@@ -375,6 +389,7 @@ footer a { color: var(--muted); }
   <h2>All Substack Posts</h2>
   <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;">The HFG Dispatch, in full — synced from <a href="https://marvingentrynd.substack.com/archive" style="color:var(--muted);">the live archive</a>, Aug 2026.</p>
   <ul class="article-list" style="margin-bottom:2.5rem;">
+    <li><a href="https://marvingentrynd.substack.com/p/the-576-element-breakthrough-how">The 576-Element Breakthrough: How Four Arithmetic Manifolds Assemble the Gauge Structure of Nature</a><div class="article-meta">Aug 22 2026</div></li>
     <li><a href="https://marvingentrynd.substack.com/p/the-shape-of-flavor">The Shape of Flavor</a><div class="article-meta">Aug 17 2026</div></li>
     <li><a href="https://marvingentrynd.substack.com/p/ten-dimensions-of-geometric-structure">Ten Dimensions of Geometric Structure</a><div class="article-meta">Aug 10 2026</div></li>
     <li><a href="https://open.substack.com/pub/marvingentrynd/p/the-dual-surgery-identity-a-proved">The Dual Surgery Identity: A Proved Topological Intersection of SU(2) and SU(4)</a><div class="article-meta">Aug 2026</div></li>
