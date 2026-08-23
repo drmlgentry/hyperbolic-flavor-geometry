@@ -1,5 +1,6 @@
 \documentclass[12pt]{amsart}
 \usepackage{amsmath,amssymb,amsthm,hyperref,graphicx}
+\usepackage[margin=1in]{geometry}
 \graphicspath{{figures/}}
 \subjclass[2020]{Primary 57K32; Secondary 11R32, 11R04}
 \keywords{hyperbolic 3-manifolds, invariant trace fields, Galois group,
@@ -140,7 +141,7 @@ The four ramification sets $\{3\}$, $\{283\}$, $\{7\}$, $\{59\}$
 are pairwise disjoint.
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.82\textwidth]{figure1_compositum_field_tower}
+\includegraphics[width=0.96\textwidth]{figure1_compositum_field_tower}
 \caption{The Galois-closure tower. The four base fields $K_1,K_2,K_3,K_4$
 are extended to their Galois closures $L_2$ (degree~24) and $L_4$ (degree~6),
 and the sequential degree chain $[L_2 L_4:\Q]=144$, $[L_2 L_4 K_1:\Q]=288$,
@@ -193,7 +194,7 @@ is provided in~\cite{HFGcode}.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.82\textwidth]{figure2_ramification_disjointness}
+\includegraphics[width=0.96\textwidth]{figure2_ramification_disjointness}
 \caption{The four Galois pieces and their disjoint prime ramification
 supports. Since no prime is shared between any two pieces, any intersection
 would be an unramified extension of $\Q$, which must be trivial by
@@ -202,8 +203,11 @@ Minkowski's theorem.}
 \end{figure}
 \begin{proof}[Proof of Theorem~\ref{thm:main} via ramification]
 The discriminants of the four Galois pieces are
-$\disc(K_1)=-3$, $\disc(L_2)=283^{23}$, $\disc(K_3)=-7$,
-$\disc(L_4)=-59^3$ (all verified by SageMath). Suppose two fields
+\[
+\disc(K_1)=-3,\qquad \disc(L_2)=283^{23},\qquad \disc(K_3)=-7,\qquad
+\disc(L_4)=-59^3
+\]
+(all verified by SageMath). Suppose two fields
 $E$, $F$ from $\{K_1,L_2,K_3,L_4\}$ satisfy $E\cap F\supsetneq\Q$.
 Then $E\cap F/\Q$ can only ramify at primes dividing both $\disc(E)$
 and $\disc(F)$. Since the four ramification sets are pairwise disjoint,
