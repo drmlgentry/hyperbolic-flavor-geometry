@@ -177,3 +177,36 @@ distinguishing structural property beyond passing this one screen).
 **Script:** `reproduce/su2r_candidate_search.py` (census screen + disjointness + closure),
 independently re-verified via a second ad hoc Sage session, Aug 18 2026.
 **Last verified:** Aug 18 2026
+
+## 15. Full four-field Galois closure — complete Pati-Salam-plus-SU(3) Weyl group
+**Claim:** The compositum of all four cusp fields (K_m003, K_m019, K_m010, K_m006 —
+disc −3, −283, −7, −59 respectively) is Galois over ℚ with
+Gal ≅ ℤ/2 × S₄ × ℤ/2 × S₃, order 576 — the full direct product of the four
+individual Weyl groups Weyl(SU(2)) × Weyl(SU(4)) × Weyl(SU(2)) × Weyl(SU(3)).
+**Status:** [Proved], not merely [Computed]. This is a genuine proof, not a numerical
+coincidence: K_m003 and K_m010 are quadratic (automatically Galois); the Galois
+closures of K_m019 (degree 24, group S₄) and K_m006 (degree 6, group S₃) are Galois
+by construction. Mutual linear disjointness of all four was confirmed by direct,
+exact degree computation at every step (24×6=144, ×2=288, ×2=576 — each compositum
+degree matching the product exactly, computed in under 1 second total). For mutually
+linearly disjoint Galois extensions, the compositum's Galois group is the direct
+product of the individual groups — a standard theorem, not an assumption. As a
+secondary check (not needed for the proof but corroborating it), the closure of
+K_m006 has discriminant exactly −59³, confirming it ramifies only at 59, disjoint
+from the other three fields' ramified primes {3, 283, 7}.
+**How this was found:** the direct approach (`K1234.galois_closure()` on the raw
+degree-48 compositum) ran 27 hours with zero progress signal (and 46 hours on an
+earlier attempt) and was abandoned as intractable on this hardware. The actual
+resolution came from computing the *individual* Galois closures of the two
+non-Galois pieces first (degree 4→24 and degree 3→6, each near-instant) and composing
+those instead of the raw fields — a reformulation suggested via a relayed GPT
+analysis (Aug 22 2026), independently checked here (the discriminant/ramification
+facts were already established in entries 2/3/13/14 before this suggestion arrived;
+the specific reformulation of the problem was GPT's contribution) and confirmed by
+direct computation rather than taken on trust.
+**Physical reading:** [Conjecture], unchanged from entries 4 and 14 — the group
+theory here is now fully proved, but no field-theoretic mechanism connects any of
+these four cusp fields to actual physical gauge groups. This result does not
+strengthen the physical interpretation, only the arithmetic scaffolding beneath it.
+**Script:** `reproduce/fourway_ramification_check.py`, Aug 22 2026.
+**Last verified:** Aug 22 2026
