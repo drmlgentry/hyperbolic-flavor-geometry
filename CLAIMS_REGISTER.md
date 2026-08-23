@@ -242,3 +242,45 @@ success as more than a smaller-target-space coincidence.
 **Script:** `reproduce/hfg_geometry_only_mass_selector.py` (independently rerun here,
 output matches exactly: Q_μ=44 at 3.755% error, Q_τ=68 at 2.697% error).
 **Last verified:** Aug 22 2026
+
+## 17. Oriented G/H coset selector for the m006 cusp field (Stage 2)
+**Claim:** For K=ℚ(α), α³+2α+1=0 (disc −59, the same field as entry 15's SU(3) factor
+K_m006), with L its S₃ Galois closure and H=Gal(L/K)≅C₂, the three left cosets G/H
+correspond exactly to the three ℚ-embeddings of K (equivalently the three conjugate
+roots r_R, r₊, r₋ of the defining cubic). m006's oriented discrete-faithful holonomy
+representation ρ_geo selects the r₊ embedding (Im>0) — SnapPy's independently computed
+cusp shape matches r₊ to machine precision (~1e-16, already established in the m006
+root-labeled-selector work). Tested here: does that selection survive a change of
+peripheral (meridian,longitude) basis? For 7 tested SL(2,ℤ) basis changes (via SnapPy's
+`set_peripheral_curves`, determinant ±1, including the identity as a sanity check), the
+transformed cusp shape ALWAYS matches — to residuals of 1e-16–1e-17, i.e. exactly — the
+r₊ embedding evaluated under the corresponding exact Möbius transform of α, and never
+the r_R or r₋ embeddings. Reversing orientation swaps the selection to r₋ (up to an
+overall sign from SnapPy's internal peripheral-convention reset upon reversal — verified
+directly, residual ~3e-16), leaving the real embedding r_R untouched by either operation.
+**Status:** [Computed], not [Proved]. The invariance held exactly on every case tested,
+and the group-theoretic argument for why it should hold in general (a peripheral-basis
+change acts on the same fixed embedding ι_geo:K↪ℂ, so it can only relabel which element
+of K is being evaluated, never which of the three embeddings is geometric) is
+straightforward — but only 7 bases were tested computationally, not all of SL(2,ℤ), and
+no formal proof was written. Two real bugs were found and fixed while building this
+script, both instructive: (1) the originally-proposed Möbius formula τ'=(cτ+d)/(aτ+b)
+did not match SnapPy's actual basis-change convention (failed even the identity-matrix
+sanity check) — the correct formula, τ'=(dτ+c)/(bτ+a), was empirically calibrated
+against real SnapPy output before use, not assumed; (2) an initial verdict check compared
+the transformed cusp value directly against the three *original* roots, which is exactly
+the invalid test the underlying write-up itself warned against (post-transform, the cusp
+value generally is not one of the three original roots) — fixed by comparing against the
+exact Möbius-transformed algebraic element evaluated at each embedding instead.
+**Combined with Stage 1** (this register's implicit companion result, not yet its own
+entry): Stage 1 showed the canonical prime-lift construction always selects the same
+transposition h∈H (a C₂ datum); Stage 2 shows the oriented holonomy selects one of 3
+cosets G/H independent of coordinate choice. Together these give a genuine 2×3=6-element
+geometric state space — but no map from those six states to the six actual quark mass
+indices (12,18,43,65,75,106) has been attempted or found. That remains completely open
+(Stage 3, explicitly not attempted this session).
+**Physical reading:** [Conjecture]/open, same status as entries 4, 14, 15 — this
+strengthens the arithmetic scaffolding (a genuine six-element geometric torsor now
+exists) but supplies no mechanism connecting it to which quark occupies which slot.
+**Script:** `reproduce/hfg_stage2_oriented_coset_selector.sage`, Aug 22 2026.
+**Last verified:** Aug 22 2026

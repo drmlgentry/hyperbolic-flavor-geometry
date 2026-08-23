@@ -36,6 +36,17 @@ which combined with h would give 2×3=6 slots. Not yet added to CLAIMS_REGISTER.
 flagging as a candidate entry pending the user's call, since it's a stronger result than
 anything else in this section but the abstract proof isn't done.
 
+**Stage 2 oriented G/H coset selector — PASSED, now CLAIMS_REGISTER entry 17.** Tested
+whether the oriented holonomy's selected embedding of m006's cusp field survives
+peripheral-basis changes: it does, exactly, on all 7 tested SL(2,Z) bases (residuals
+~1e-16), and orientation reversal swaps the two complex embeddings as predicted. Two
+real bugs found and fixed en route (wrong Mobius-formula convention, caught by an
+identity-matrix sanity check; an invalid direct-root comparison in the verdict logic,
+which was exactly the mistake the original write-up warned against). Combined with
+Stage 1's C2 result, this gives a genuine 6-element geometric state space — but mapping
+those six states to the six actual quark mass indices (Stage 3) remains completely open
+and was explicitly not attempted this session.
+
 **Ideas, not yet screened** (a relayed GPT analysis proposed investigating whether the
 four cusp-field discriminant primes {3,7,59,283} connect to the Lucas sequence that
 already governs the programme's Eisenstein-norm mass encoding; both checks below were
