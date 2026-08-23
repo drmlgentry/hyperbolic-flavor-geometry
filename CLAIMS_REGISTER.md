@@ -258,20 +258,30 @@ r₊ embedding evaluated under the corresponding exact Möbius transform of α, 
 the r_R or r₋ embeddings. Reversing orientation swaps the selection to r₋ (up to an
 overall sign from SnapPy's internal peripheral-convention reset upon reversal — verified
 directly, residual ~3e-16), leaving the real embedding r_R untouched by either operation.
-**Status:** [Computed], not [Proved]. The invariance held exactly on every case tested,
-and the group-theoretic argument for why it should hold in general (a peripheral-basis
-change acts on the same fixed embedding ι_geo:K↪ℂ, so it can only relabel which element
-of K is being evaluated, never which of the three embeddings is geometric) is
-straightforward — but only 7 bases were tested computationally, not all of SL(2,ℤ), and
-no formal proof was written. Two real bugs were found and fixed while building this
-script, both instructive: (1) the originally-proposed Möbius formula τ'=(cτ+d)/(aτ+b)
-did not match SnapPy's actual basis-change convention (failed even the identity-matrix
-sanity check) — the correct formula, τ'=(dτ+c)/(bτ+a), was empirically calibrated
-against real SnapPy output before use, not assumed; (2) an initial verdict check compared
-the transformed cusp value directly against the three *original* roots, which is exactly
-the invalid test the underlying write-up itself warned against (post-transform, the cusp
-value generally is not one of the three original roots) — fixed by comparing against the
-exact Möbius-transformed algebraic element evaluated at each embedding instead.
+**Status:** [Proved] (upgraded from an initial [Computed] tag — proof written and checked
+in `reproduce/stage2_invariance_proof.md`). The argument: (1) a peripheral basis change
+does not alter the manifold, its orientation, or ρ_geo, so the recomputed shape is always
+the SAME rational function (with rational, in fact integer, coefficients) of the SAME
+fixed geometric quantity r₊; since field embeddings are ring homomorphisms fixing ℚ, they
+commute with any rational-coefficient Möbius transform, so applying the SAME transform to
+α and evaluating under σ₊ reproduces the recomputed shape exactly, for EVERY valid basis
+change — this needs no case-by-case checking, only that a,b,c,d are rational. (2) Reversing
+orientation replaces ρ_geo by its complex conjugate (standard: orientation-reversing
+isometries of H³ conjugate PSL(2,ℂ)), and since r₋=conj(r₊) and r_R is real, conjugation
+swaps σ₊↔σ₋ and fixes σ_R as embeddings — again exact algebra, not a numerical coincidence.
+The only empirical inputs are (a) ι_geo=σ₊ for the default basis and (b) that SnapPy's
+`set_peripheral_curves` implements the standard cusp-shape transformation law — both
+confirmed to ~1e-16 against real computation, not assumed. Two real bugs were found and
+fixed while building the underlying script, both instructive: (1) the originally-proposed
+Möbius formula τ'=(cτ+d)/(aτ+b) — and, independently, a second relayed variant
+τ'=(bτ+a)/(dτ+c) proposed alongside the proof sketch — both failed the identity-matrix
+sanity check (predicting 1/τ instead of τ); the correct formula, τ'=(dτ+c)/(bτ+a), was
+empirically calibrated against real SnapPy output before use, not assumed, either time;
+(2) an initial verdict check compared the transformed cusp value directly against the
+three *original* roots, exactly the invalid test the underlying write-up itself warned
+against (post-transform, the cusp value generally is not one of the three original roots)
+— fixed by comparing against the exact Möbius-transformed algebraic element evaluated at
+each embedding instead.
 **Combined with Stage 1** (this register's implicit companion result, not yet its own
 entry): Stage 1 showed the canonical prime-lift construction always selects the same
 transposition h∈H (a C₂ datum); Stage 2 shows the oriented holonomy selects one of 3
@@ -283,4 +293,5 @@ indices (12,18,43,65,75,106) has been attempted or found. That remains completel
 strengthens the arithmetic scaffolding (a genuine six-element geometric torsor now
 exists) but supplies no mechanism connecting it to which quark occupies which slot.
 **Script:** `reproduce/hfg_stage2_oriented_coset_selector.sage`, Aug 22 2026.
+**Proof:** `reproduce/stage2_invariance_proof.md`, Aug 22 2026.
 **Last verified:** Aug 22 2026
