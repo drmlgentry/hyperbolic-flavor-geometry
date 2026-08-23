@@ -1,5 +1,164 @@
 # CORE_MASTER Gap Report
 
+## Aug 22 2026 — Mass-lattice mechanism check + Substack visuals
+
+**Ideas, not yet screened** (a relayed GPT analysis proposed investigating whether the
+four cusp-field discriminant primes {3,7,59,283} connect to the Lucas sequence that
+already governs the programme's Eisenstein-norm mass encoding; both checks below were
+run and independently reproduced here, not taken on the relay's word — not claims the
+current programme makes, recorded here so they aren't lost, not in CLAIMS_REGISTER.md):
+
+- **Discriminant primes vs. Lucas numbers**: 3 (K1, SU(2)_L factor) = L_2 and 7 (K3,
+  SU(2)_R factor) = L_4 are genuine Lucas numbers; 59 (K4, S3/SU(3) factor) and 283 (K2,
+  S4/Pati-Salam factor) are not. A clean 2-of-2/0-of-2 split along the abelian/non-abelian
+  divide of entry 15's Galois factors — but n=4 is too small a sample and small Lucas
+  numbers are dense enough among small primes that this is not strong evidence by itself.
+  No null test has been run against how often 4 random small primes would show this same
+  split by chance.
+- **Mass-lattice mechanism test** (`reproduce/mass_lattice_mechanism_test.py`, copied from
+  a relayed deliverable and independently rerun here — every number reproduced exactly):
+  the φ^(q/4) charged-fermion lattice has RMS residual 0.0582 φ-units (marginal, consistent
+  with the corpus's existing non-significant nulls); the naive Lucas matches
+  L_11=199≈m_μ/m_e and L_17=3571≈m_τ/m_e are only 3.76%/2.70% accurate (NOT the "0.003%"/
+  "essentially 0%" figures that appear in one stale internal note,
+  `notes/GALOIS_WEYL_THEOREM_2026-06-17.md` — every actual paper already has the correct
+  3.8%/2.7%, so no submission-facing document needs correcting); the tighter Eisenstein-norm
+  matches (208 for μ/e at 0.594% error, 3477 for τ/e at 0.006% error) are search-aware
+  null-sensitive — the τ/e match's significance flips across p≈0.05 depending on whether the
+  null is uniform (p=0.061) or log-uniform (p=0.037) over the same search window, so it is
+  not robust evidence of a mechanism on its own. Bottom line, matching the relay's own
+  conclusion: log(φ) has a legitimate arithmetic-geometric origin (Alexander-polynomial
+  Mahler measure M(Δ)=φ²), but nothing yet derives which integer q each fermion occupies —
+  the lattice remains a phenomenological regularity, not a mass-generating mechanism.
+- Substack visual series (parchment/green/tan house style, three formats each — SVG, TikZ,
+  interactive HTML): module 1 (576-element Galois closure) and module 2 (ramification
+  disjointness) produced and verified against entry 15's actual computed values. Module 3
+  (Weyl-product correspondence) and module 4 (evidence ladder) not yet built.
+
+## Aug 20 2026 — Paper Audit
+
+**Submission history — now fully confirmed from an actual editorialmanager.com/plb
+"Completed - Reject" portal screenshot** (supersedes all earlier relayed/transcript-sourced
+claims about this history, several of which did not check out):
+
+| Manuscript | Title | Submitted | Rejected |
+|---|---|---|---|
+| PLB-D-26-01006 | Charge Conjugation as Orientation Reversal (Chirality) | 19 Apr 2026 | **still active, Under Review** — do not touch |
+| PLB-D-26-01017 | Neutrino Masses from the Golden Ratio Lattice | 19 Apr 2026 | 19 Apr 2026 (same day) |
+| PLB-D-26-01341 | CP Violation from Twist Angles (`gentry-cp-final.tex`) | 17 May 2026 | 20 May 2026 |
+| PLB-D-26-01448 | Lepton Mixing from Borel Structure (PMNS) | 26 May 2026 | 09 Jun 2026 |
+| PLB-D-26-01449 | Homology Class Asymmetry (Torsion) | 26 May 2026 | 09 Jun 2026 |
+| PLB-D-26-01463 | Quark Mixing from Hyperbolic Geometry (CKM, 1st attempt) | 27 May 2026 | 09 Jun 2026 |
+| PLB-D-26-01854 | Quark Mixing from Hyperbolic Geometry (CKM, 2nd attempt, same title) | 25 Jun 2026 | 26 Jun 2026 |
+
+A separately relayed claim of an additional CMP→Geometriae Dedicata→Topology and its
+Applications rejection chain for the torsion paper (specific manuscript ID 81e2ee6b, editor
+name Dyatlov) could not be verified anywhere in the corpus or the portal and should be
+treated as unconfirmed, not fact.
+
+**Paper audit findings:**
+
+- **Torsion** (`gentry-torsion-plb.tex`): confirmed rejected PLB-D-26-01449. MSC codes
+  added, compiles clean. Free to resubmit — Geometriae Dedicata (original recommendation,
+  no confirmed prior rejection there) or Topology and its Applications.
+- **Lepton Mixing / PMNS** (`gentry-pmns-plb.tex`): confirmed rejected PLB-D-26-01448.
+  MSC codes added, Chinburg bibkey bug fixed, compiles clean. Recommended venue: SciPost
+  Physics.
+- **CP Violation from Twist Angles** (`gentry-cp-final.tex`, already in
+  `05_rejected_archived/`): confirmed rejected PLB-D-26-01341. Checked for redundancy
+  against the PMNS paper: content (δ=195.91° CP-phase formula) is fully duplicated there.
+  Do not resurrect as a standalone paper.
+- **Twist Angle Spectrum** (`papers/hyperbolic-flavor-twist/gentry-hyperbolic-flavor-twist-npb.tex`
+  — a different paper from Torsion above despite the similar folder name; self-declared as a
+  Nuclear Physics B submission with its own manuscript IDs, not a PLB submission, so it does
+  not appear in the table above). Full readthrough completed. Findings:
+  - **No null-hypothesis test anywhere in the paper**, unlike every sibling paper (CKM/PMNS
+    are null-tested against 50,000 Haar-random unitary matrices, p<0.002/p<10⁻⁴). This paper
+    scans 484 words per manifold against 7 SM targets with a folding convention that doubles
+    the comparison space (|φ| and 180°−|φ|) and reports "6 of 7 matched to <3%" with no
+    measure of how likely that is by chance. This is the paper's central methodological gap.
+  - **The δ_CKM=68.0° claim does NOT actually contradict the CKM paper's J_CKM=0 result** —
+    resolved by reading the paper's own §3.5 ("The generator twist and CKM isospectrality"):
+    δ_CKM here comes from a single word (`aa`), while J=0 in the CKM paper comes from the
+    three-word triple `{aaB, AbA, AAb}` (all ≈92.49°, causing phase-cancellation). Different
+    objects, not a contradiction — but the paper's own framing blurs this distinction and
+    should be more explicit that `δ_CKM` is an independent single-word coincidence, not the
+    matrix-derived phase.
+  - **No Data Availability / reproducibility section at all** — every sibling paper checked
+    this session (CKM, PMNS, torsion, dual-surgery) has one citing
+    `github.com/drmlgentry/hyperbolic-flavor-scan`; this paper has none.
+  - One genuinely good element: §5 ("Null Result: θ₁₃^CKM") is an honestly-labeled negative
+    result with appropriate hedging ("this estimate is heuristic... requires explicit
+    computation") — worth keeping in any revision.
+  - The paper self-cites four companion PRD/NPB submissions with specific manuscript IDs
+    (PRD: es2026mar11_966, es2026mar13_942, es2026mar14_722; NPB: NPB-S-26-00538/39/40,
+    all "submitted March 2026") — not yet cross-checked against current status. Worth
+    reconciling before any resubmission, since these are stated as "currently under review"
+    inside the paper's own text and may now be stale.
+  - **Recommendation: HOLD.** Needs a real null test, the word-choice clarification above,
+    and a reproducibility section before resubmission — not ready regardless of venue.
+
+**CKM v3 audit (`papers/04_new_needs_journal/gentry-ckm-v3.tex`), completed:** no "5 pending
+upgrades" checklist could be found anywhere in the corpus despite searching — that framing
+appears ungrounded, same pattern as several other unverified relayed claims this session.
+Read the file directly and assessed independently instead. Findings: genuinely the most
+rigorous paper in the portfolio — explicitly separates arithmetic selection from fitness
+quality (reports its own manifold ranking 82nd of 134, below average, in its own comparison
+class), has a real null test with a robustness re-check, and reports the live Q-001
+computation status honestly as an open problem. Two concrete fixes needed: bibliography
+cites SSRN 6775158 as "(2025)" when `CONFIRMED_abstracts.md` has it created May 2026; no
+MSC classification. **Recommendation: ready to resubmit once those two are fixed** — this
+supersedes the 4x-rejected `gentry-ckm-plb` lineage (PRD, RINP, PLB x2, all confirmed
+rejected this session). Suggested venue: SciPost Physics, alongside the PMNS paper.
+
+**Qubit gates audit (`papers/qubit-gates/gentry-qubit-gates-v2.tex`), completed:** the CS
+level k=2 claim is still the blocking issue, but precisely characterized now — the algebraic
+identity itself (Δ₄ = 3/2 = c_WZW(k=2)) is exact and provable; what's unproven is packaging
+the *physical interpretation* (that this identifies the manifold's actual Chern-Simons level)
+under the same "Proposition" label as the proven algebra. The paper's own §6.3 already states
+the honest distinction — the fix is moving that separation earlier (split into a Lemma for
+the identity + an explicit Conjecture for the physical claim), not inventing new hedges.
+Two more issues found: bibliography cites PLB-D-26-01854 as a live reference, now confirmed
+rejected 26 Jun 2026 this session; and its proof that J_CKM=0 (homology-class collision →
+rank-deficient overlap matrix) uses a different mechanism than the CKM v3 paper's proof of
+the same fact (any real-valued kernel construction forces J=0) — worth reconciling before
+both go out, though not blocking either individually. **Recommendation**: fixable, not a
+rewrite — npj Quantum Information is a reasonable venue once the k=2 claim is restructured.
+
+**Holonomy-CP audit (`gentry-holonomy-cp-ahp.tex`), completed:** genuinely solid pure-math
+paper — Theorem/Lemma/Proof throughout, no overclaiming found, no evidence-tag issues (this
+is proof-based representation theory, not a numerical-fitting paper, so no null test applies
+and the "no research data" Data Availability line is honestly correct, not a gap). The
+abelianization-vs-π₁-conjugacy remark (§2, addressing why Θ*'s inversion action on
+H₁=ℤ/5 doesn't contradict the fixed-conjugacy-class hypothesis) is a nice piece of honest
+care that anticipates a real objection. Redundancy re-confirmed on full read: its only
+worked example (Meyerhoff manifold, W_ρ(γ)=e^(2πi/5)) is illustrative, never fit against
+PDG data, genuinely distinct from the PMNS paper's δ=195.91° result.
+
+**Real bug found**: both self-citations (`Gentry:CKM`, `Gentry:PMNS`) are internally
+garbled — each lists "Phys. Rev. D (2026)" *and* "Results in Physics (2026)" as the same
+journal while citing a RINP-specific manuscript number (RINP-D-26-00327/00328), reading
+like a template mismatch. Now also stale: both describe the companion papers as "submitted
+March 2026" (i.e. pending) when we've confirmed this session both were rejected 14 May 2026.
+No MSC codes present.
+
+**Correction to a recurring conflation**: an instruction this session again described
+PLB-D-26-01006 as this paper's live submission — same error already corrected two turns
+earlier in this file. PLB-D-26-01006 is the Chirality paper (`gentry-chirality.tex`), a
+different file with a different abstract. Holonomy-CP has **zero live submissions** — its
+only confirmed history is the NPB-D-26-00449 rejection (20 Mar 2026), fully closed, free
+to resubmit.
+
+**Recommendation: REVISE, not hold** — citation cleanup + MSC codes, genuinely closer to
+submission-ready than several other papers audited tonight.
+
+**Qubit gates**: audit findings recorded as a scoped comment block at the top of
+`gentry-qubit-gates-v2.tex` itself (Aug 20 2026) rather than only here, so a future session
+finds the task pre-scoped without needing to re-read this report. Paper body not otherwise
+edited.
+
+---
+
 ## Aug 18 2026 — Session updates
 
 **Resolved this session:**
