@@ -6,6 +6,11 @@
     "not a recoding of the bare cusp root.",
     "tr(mu),tr(lambda),tr(s) are exactly rational, hence embedding-invariant;",
     "they vary only by spin (epsilon), via chi(mu)=chi(lambda)=chi(s)=1.",
+    "tr(b) itself does not flip with epsilon (chi(b)=0). Relative to tr(a),",
+    "which DOES flip (chi(a)=1), this means tr_b=tr_a+1 for epsilon=+1 but",
+    "tr_b=1-tr_a for epsilon=-1 -- an earlier packet's summary claim that",
+    "this held identically in every state was an overgeneralization; see",
+    "STAGE3_DATASET_ERRATA.md.",
     "The upper/real/lower <-> geometric-trace correction (g0) is derived and",
     "checked in this script, not assumed."
   ],

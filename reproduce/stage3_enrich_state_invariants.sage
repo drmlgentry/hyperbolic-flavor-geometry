@@ -175,7 +175,20 @@ sid = 0
 for eps in [1, -1]:
     for name in ["upper", "real", "lower"]:
         tr_a = tr_a_by_state[name] * ((-1) ** (chi_a if eps == -1 else 0))
-        tr_b = tr_a_by_state[name] + 1   # tr(b)=tr(a)+1 exact, chi(b)=0 so no flip
+        # tr(b) itself never flips with epsilon (chi(b)=0) -- it stays at the
+        # eps=+1 reference value tr_a_by_state[name]+1 regardless of eps.
+        # CORRECTED (Aug 23 2026, caught by an independent blind GPT session
+        # checking this against the raw sealed-packet data rather than the
+        # packet's own overgeneralized summary claim): because tr(a) DOES
+        # flip (chi(a)=1), the relationship between the two DISPLAYED
+        # columns is eps-dependent even though tr_b's own value is not:
+        #   eps=+1: tr_b = tr_a + 1          (tr_a here is unflipped)
+        #   eps=-1: tr_b = 1 - tr_a          (tr_a here is flipped)
+        # The original packet (stage3_blind_states.json, commit 29c3c08,
+        # frozen historical record, NOT edited here) incorrectly stated
+        # "tr_b = tr_a + 1 exactly, in every state". That claim is wrong for
+        # the epsilon=-1 rows -- see STAGE3_DATASET_ERRATA.md.
+        tr_b = tr_a_by_state[name] + 1
         tr_mu = 2 * ((-1) ** (chi_mu if eps == -1 else 0))
         tr_lambda = -2 * ((-1) ** (chi_lambda if eps == -1 else 0))
         tr_s = 2 * ((-1) ** (chi_s if eps == -1 else 0))
@@ -219,6 +232,11 @@ with open(json_name, "w") as fh:
             "not a recoding of the bare cusp root.",
             "tr(mu),tr(lambda),tr(s) are exactly rational, hence embedding-invariant;",
             "they vary only by spin (epsilon), via chi(mu)=chi(lambda)=chi(s)=1.",
+            "tr(b) itself does not flip with epsilon (chi(b)=0). Relative to tr(a),",
+            "which DOES flip (chi(a)=1), this means tr_b=tr_a+1 for epsilon=+1 but",
+            "tr_b=1-tr_a for epsilon=-1 -- an earlier packet's summary claim that",
+            "this held identically in every state was an overgeneralization; see",
+            "STAGE3_DATASET_ERRATA.md.",
             "The upper/real/lower <-> geometric-trace correction (g0) is derived and",
             "checked in this script, not assumed.",
         ],

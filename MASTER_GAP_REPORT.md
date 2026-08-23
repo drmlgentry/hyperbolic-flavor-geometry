@@ -35,21 +35,51 @@ not one candidate's output set overlaps the target set under any bijection.
 Deviations are tens of units against a 12-106 target range -- not a
 borderline call, nothing close to argue about.
 
-**Result: NULL.** No canonical, geometry-only selector was found by either
-blind session under the pre-registered rule forms. This is the valid,
-anticipated negative outcome the protocol was built to allow -- not a
-failure of the experiment, a real result of it.
+**Result: NULL, precisely stated.** "No canonical selector is supported by
+these invariants" is reasonable shorthand but overstates the result; the
+searched rule class was deliberately restricted (round(AI+B), field norm/
+trace, simple linear combinations of at most two invariants, exact integers
+already in hand -- see STAGE3_SCORING_CRITERION.md). The defensible
+statement is narrower and is the one that stands:
 
-**What this does and does not affect:** the six-state geometric
-construction (CLAIMS_REGISTER entries 15, 17, 18 -- the 576 theorem, the
-proved coset selector, the structural spin-lift binary) is completely
-unaffected. Stage 3 (mapping the six states to the six quark indices)
-remains open. This result rules out the specific low-complexity forms
-tested here (norm/trace of tr_a, degree-normalized argument, simple
-integer differences) as the mechanism -- it does not rule out the six-state
-architecture itself, and does not imply no mechanism exists, only that
-none of the naturally-motivated candidates two independent blind sessions
-proposed under strict, pre-registered rules happened to be it.
+**No natural selector within the pre-registered low-complexity function
+class recovered the target indices from the frozen invariant set.**
+
+This is the valid, anticipated negative outcome the protocol was built to
+allow -- not a failure of the experiment, a real result of it. Commit
+`070e62d` (the unblinding record) is a milestone, not something to revise.
+
+**Dataset erratum, corrected separately, frozen packet left untouched:**
+the sealed packet's claim "tr_b=tr_a+1 exactly, in every state" is an
+overgeneralization (true only for epsilon=+1; for epsilon=-1 the correct
+relation is tr_b=1-tr_a, since tr_b does not flip with epsilon while tr_a
+does). `stage3_blind_states.json` (commit 29c3c08) is NOT edited -- it
+remains the historical experimental input exactly as both blind sessions
+received it. The correction is recorded in `STAGE3_DATASET_ERRATA.md`, and
+`reproduce/stage3_enrich_state_invariants.sage` and its regenerated CSV/JSON
+now document the correct relation for any future dataset built from this
+construction.
+
+**Project state as of this result:**
+- Stages 1-3A: retained independently of this test, subject to their
+  existing proof/status classifications (entries 15 [Proved], 17 [Proved],
+  18 [Structural]) -- unaffected by Stage 3's outcome.
+- Stage 3 prospective selector test #1: NEGATIVE.
+- Specific mechanisms eliminated (not merely untested): the frozen norm/
+  trace of tr_a, the peripheral-trace-derived values, the simple trace
+  difference tr_b-tr_a, and the degree-normalized principal-argument
+  candidate tested here.
+- Mass-index selector: OPEN.
+- Next legitimate experiment: introduce genuinely new, independently
+  motivated geometry (candidates: non-peripheral holonomy words beyond a/b,
+  complex lengths/eigenvalues of geometrically distinguished elements,
+  representation characters beyond tr_a/tr_b, exact arithmetic attached to
+  the filling representation) -- criterion for adding any such invariant is
+  geometric motivation established BEFORE checking whether it improves the
+  mass-index match, not after. Do not launch an unconstrained search over
+  increasingly elaborate functions of the same five invariants already
+  ruled out here -- that would turn this clean negative result back into
+  exactly the pattern-hunt the blind protocol was built to prevent.
 
 ## Aug 23 2026 — Stage 3 first attempt: INCONCLUSIVE (blinding problem + thin table)
 
