@@ -1,6 +1,40 @@
 # CORE_MASTER Gap Report
 
-## Aug 22 2026 — Mass-lattice mechanism check + Substack visuals
+## Aug 22 2026 — Mass-lattice mechanism check, Substack visuals, m006 root-labeled selector, Q-001
+
+**Q-001 (Fricke-collapse identity, m006 character variety):** dug into the actual logs
+rather than trusting the stale top-level checkpoint. Real progress confirmed: dim(I)=0
+(modstd, ~5.7h), (z-x) fails on the full ideal (reduces to -x+z, not 0) so the identity
+can only hold on the single geometric component. Two brute-force `variety()` enumeration
+attempts both died from memory exhaustion, not logic. The smart targeted approach
+(isolate the geometric component via `elimination_ideal([y,z])`, factor, match the known
+root, test membership on the restricted ideal) is already scripted and was already
+launched twice — both times dying silently at the `elimination_ideal` call itself, no
+process left running. Wrote up the precise obstruction and a candidate faster alternative
+(multiplication-matrix minimal polynomial, since dim=0 makes the quotient ring finite-
+dimensional) for the GPT relay to weigh in on — same pattern that resolved entry 15's
+four-way closure. No further action taken pending that response.
+
+**Stage 1 canonical prime-lift test — PASSED** (`reproduce/hfg_stage1_canonical_prime_lift.sage`,
+relayed script, one Sage-API bug fixed here — `ring_of_integers()` order objects lack
+`.factor()` in this Sage version, fixed by using `K.ideal(...)`/`L.ideal(...)` directly —
+then independently rerun): for all six tested tower primes (11, 31, 61, 101, 151, 211,
+all transposition-type in the m006 S3 closure), the residue-degree-1 prime q1 of K is
+unique, stays prime (inert) in L/K, and its decomposition group D(P) computed directly
+as an ideal stabilizer in G=Gal(L/Q) equals exactly H=Gal(L/K)={e,h}, order 2 — real
+ideal arithmetic, no masses, no root-ordering choices. This DOES strengthen "Frobenius
+canonical only up to conjugacy" to "Frobenius is exactly h, once K subset L is fixed" —
+a genuine result. But it also forces a NO-GO: since |H|=2 has only one nontrivial
+element, every transposition-type prime necessarily selects the SAME h, so this datum
+alone cannot distinguish six quark slots. This looks like a general theorem (the group-
+theoretic argument sketched through it holds for any transposition acting on 3 cosets,
+not just these 6 primes) but has only been verified computationally on 6 cases here, not
+proved abstractly — tag as [Computed], not [Proved], until that gap is closed. Stage 2
+target (per the script's own next-step note): test whether m006's holonomy/peripheral
+geometry canonically distinguishes the three conjugate cubic subfields (cosets G/H),
+which combined with h would give 2×3=6 slots. Not yet added to CLAIMS_REGISTER.md —
+flagging as a candidate entry pending the user's call, since it's a stronger result than
+anything else in this section but the abstract proof isn't done.
 
 **Ideas, not yet screened** (a relayed GPT analysis proposed investigating whether the
 four cusp-field discriminant primes {3,7,59,283} connect to the Lucas sequence that
@@ -31,9 +65,30 @@ current programme makes, recorded here so they aren't lost, not in CLAIMS_REGIST
   Mahler measure M(Δ)=φ²), but nothing yet derives which integer q each fermion occupies —
   the lattice remains a phenomenological regularity, not a mass-generating mechanism.
 - Substack visual series (parchment/green/tan house style, three formats each — SVG, TikZ,
-  interactive HTML): module 1 (576-element Galois closure) and module 2 (ramification
-  disjointness) produced and verified against entry 15's actual computed values. Module 3
-  (Weyl-product correspondence) and module 4 (evidence ladder) not yet built.
+  interactive HTML): all four modules now produced and verified — 1 (576-element Galois
+  closure), 2 (ramification disjointness), 3 (Weyl-product correspondence), 4 (evidence
+  ladder, entry 15 promoted to headline Proved, stale SU(2)_R Open item retired). Note:
+  the already-published `docs/figures/shape_of_flavor_fig6_evidence_ladder.svg` still has
+  the old, now-stale version of that ladder — not yet updated in the live article.
+- **m006 root-labeled S3 selector test** (`reproduce/hfg_m006_root_labeled_selector.sage`,
+  relayed script, independently rerun here via live Sage/SnapPy — not taken on the relay's
+  word): m006's cusp cubic is exactly K4 from entry 15 (f(x)=x^3+2x+1, disc=-59, S3 Galois
+  closure). Confirmed by hand and by computation: SnapPy's independently-computed oriented
+  cusp shape matches the root r_+ = 0.226699+1.467712i to ~1e-16 (essentially exact),
+  while the other two roots are O(1) away — a real, precise, verified numerical fact, not
+  a coincidence. This gives a genuine geometry-selected ordered triple (sigma_+, sigma_R,
+  sigma_-) and hence a real 6-element S3 "torsor" of embedding labels. BUT: rational-prime
+  Frobenius elements are only canonical up to conjugacy class in S3 (standard Chebotarev
+  fact) — turning that into ONE specific permutation requires choosing a prime P above p
+  in the Galois closure, and nothing about the archimedean/orientation labeling supplies
+  that choice. Also empirically confirmed a genuine subtlety flagged by the relay itself:
+  SnapPy's `reverse_orientation()` does NOT simply conjugate the numeric cusp-shape
+  coordinate (tau_rev != conj(tau); it negates the real part instead, consistent with
+  cusp shapes being peripheral-basis-dependent coordinates rather than the invariant
+  object, which is the abstract complex place). Net result: the archimedean root-labeling
+  half of a six-quark-slot mechanism is real and verified; the arithmetic half (prime ->
+  specific S3 element) remains open. Not promoted to CLAIMS_REGISTER.md — same treatment
+  as the mass-lattice mechanism check above.
 
 ## Aug 20 2026 — Paper Audit
 
