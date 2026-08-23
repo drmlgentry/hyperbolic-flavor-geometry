@@ -1,5 +1,46 @@
 # CORE_MASTER Gap Report
 
+## Aug 23 2026 — Stage 3 first attempt: INCONCLUSIVE (blinding problem + thin table)
+
+**Built the six-state invariant table** (`reproduce/stage3_build_state_invariants.sage`,
+relayed script, three real Sage-API bugs fixed here -- `CC(alpha)` fails on elements of
+the degree-6 closure field without an explicit embedding, `K.trace/norm(t)` should be
+`t.trace()/t.norm()`, and a leaked Sage Integer broke JSON serialization; all mechanical,
+no logic errors). Output cross-checked against SnapPy independently: the "upper"
+embedding matches the real cusp shape to 1.18e-16, consistent with every prior check
+this session. Frozen output: `reproduce/stage3_state_invariants.csv/json`, no target
+indices anywhere (verified by reading the whole script).
+
+**Attempted to find F, concluded INCONCLUSIVE rather than propose a candidate, for two
+compounding reasons, both real:**
+
+1. **A genuine blinding problem, not a technicality.** The agent (Claude) attempting to
+   choose F already held the target list {12,18,43,65,75,106} in its working context
+   from earlier in the same conversation. Pre-registration only has force if the process
+   choosing F hasn't seen the targets -- that was not true here. A live example surfaced
+   during exploration: 59*|root^2| (59 = the field's own discriminant, not externally
+   fit) is approximately 12.13 for one state, near the first target -- flagged explicitly
+   as an example of the exact failure mode (a large-enough unconscious exploration will
+   eventually produce a near-hit by chance), not presented as a finding.
+2. **The current invariant table is thinner than it looks.** Beyond the bare root value
+   and epsilon, every other column (abs, arg, root^2, root^3) is a deterministic recoding
+   of the same one complex number -- no new independent information. Reaching the
+   12-106 target range from an O(1)-magnitude root requires an externally chosen scale,
+   and any scale chosen after seeing the targets is unfalsifiable regardless of
+   justification offered for it.
+
+**Resolution (user's explicit choice, offered three options, this one selected):** report
+this round as inconclusive rather than propose any F. No candidate rule is recorded as a
+Stage 3 result. Entries 15/17/18 (the six-state geometry itself) stand independent of
+whether Stage 3 ever succeeds -- exactly as the pre-registration below anticipated.
+
+**For any future Stage 3 attempt:** the blinding problem is structural, not fixable by
+being more careful -- it requires either a genuinely fresh context/session that has never
+seen the target list, or a human selecting F with the frozen table only. Separately,
+before that even matters, the invariant table itself likely needs new, independent
+geometric content (e.g. trace of the filling-slope word s evaluated at each state, not
+yet computed) rather than more recombinations of the bare root value.
+
 ## Aug 23 2026 — Stage 3 pre-registered success criterion (LOCKED BEFORE ANY ATTEMPT)
 
 **Context:** Stages 1 (entry 15/companion Frobenius result), 2 (entry 17, [Proved]),
