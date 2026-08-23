@@ -1,5 +1,56 @@
 # CORE_MASTER Gap Report
 
+## Aug 23 2026 — Stage 3 BLIND TEST COMPLETE: result NULL (no canonical selector found)
+
+**The full pre-registered blind protocol ran to completion.** Sealed packet
+(`STAGE3_BLIND_PACKET.md` + `stage3_blind_states.json`, commit `29c3c08`,
+verified leak-free of target integers and domain keywords) handed to two
+independent fresh sessions -- one Claude, one GPT -- neither exposed to this
+conversation or the target index list. Scoring criterion pre-registered
+(`STAGE3_SCORING_CRITERION.md`, commit `4f322ae`) before either frozen
+answer was examined. Both responses frozen, hashed, and committed
+(`8139c2d` Claude sha256 371ea4f4..., `8336b7b` GPT sha256 8128d688...)
+before the target set was opened.
+
+**Candidates produced:**
+- Claude #1: `Q=N_{K/Q}(tr_a)` = (2,2,2,-2,-2,-2)
+- Claude #2: `Q=Tr_{K/Q}(tr_a)` = (-1,-1,-1,1,1,1)
+- Claude #3: `Q=tr_b-tr_a` = (1,1,1,1,1,1) -- built on a real documentation
+  error in the sealed packet (the stated identity "tr_b=tr_a+1 in every
+  state" only holds on the epsilon=+1 sheet; for epsilon=-1 the correct
+  relation is tr_b=1-tr_a, since tr_b never flips with epsilon (chi(b)=0)
+  while tr_a does (chi(a)=1) -- caught by GPT's session checking the raw
+  data directly rather than trusting the packet's summary claim, not a
+  computational bug in the underlying construction, purely a documentation
+  overgeneralization)
+- GPT #1: `Q=round(3/pi * Arg(tr_a))` = (-2,2,0,1,-1,3)
+- GPT #2: `Q=N_{K/Q}(tr_a)` = (2,2,2,-2,-2,-2) -- numerically identical to
+  Claude #1, found independently
+
+**Unblinding pass** (targets {12,18,43,65,75,106}, pre-registered
+state_id-order pairing, no permutation search): every candidate scores
+0/6 exact matches and 0/6 within the pre-registered tolerance of 1.
+Secondary permutation-allowed set-match check also fails for all five --
+not one candidate's output set overlaps the target set under any bijection.
+Deviations are tens of units against a 12-106 target range -- not a
+borderline call, nothing close to argue about.
+
+**Result: NULL.** No canonical, geometry-only selector was found by either
+blind session under the pre-registered rule forms. This is the valid,
+anticipated negative outcome the protocol was built to allow -- not a
+failure of the experiment, a real result of it.
+
+**What this does and does not affect:** the six-state geometric
+construction (CLAIMS_REGISTER entries 15, 17, 18 -- the 576 theorem, the
+proved coset selector, the structural spin-lift binary) is completely
+unaffected. Stage 3 (mapping the six states to the six quark indices)
+remains open. This result rules out the specific low-complexity forms
+tested here (norm/trace of tr_a, degree-normalized argument, simple
+integer differences) as the mechanism -- it does not rule out the six-state
+architecture itself, and does not imply no mechanism exists, only that
+none of the naturally-motivated candidates two independent blind sessions
+proposed under strict, pre-registered rules happened to be it.
+
 ## Aug 23 2026 — Stage 3 first attempt: INCONCLUSIVE (blinding problem + thin table)
 
 **Built the six-state invariant table** (`reproduce/stage3_build_state_invariants.sage`,
