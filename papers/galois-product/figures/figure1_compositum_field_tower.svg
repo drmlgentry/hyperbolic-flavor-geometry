@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1050" role="img" aria-labelledby="title desc">
+<title id="title">Figure 1 — Compositum and Galois-closure tower</title>
+<desc id="desc">Field diagram for the four base fields, their Galois closures, and the sequential composita of degrees 144, 288, and 576.</desc>
+<rect width="1500" height="1050" fill="#f7f4ef"/>
+<style>
+.title{font-family:"EB Garamond",Georgia,serif;font-size:38px;font-weight:600;fill:#1a1a1a}
+.sub{font-family:"EB Garamond",Georgia,serif;font-size:18px;font-style:italic;fill:#5d574f}
+.head{font-family:"EB Garamond",Georgia,serif;font-size:23px;font-weight:600;fill:#1a1a1a}
+.body{font-family:"EB Garamond",Georgia,serif;font-size:18px;fill:#1a1a1a}
+.small{font-family:"EB Garamond",Georgia,serif;font-size:15px;fill:#5d574f}
+.mono{font-family:"JetBrains Mono","Courier New",monospace;font-size:17px;fill:#1a1a1a}
+.degree{font-family:"JetBrains Mono","Courier New",monospace;font-size:15px;fill:#7b5a2e;font-weight:700}
+.field{fill:none;stroke:#1a1a1a;stroke-width:1.4}
+.closure{fill:#2a5e2a;fill-opacity:.07;stroke:#2a5e2a;stroke-width:1.6}
+.compositum{fill:#7b5a2e;fill-opacity:.08;stroke:#7b5a2e;stroke-width:1.7}
+.top{fill:#8b2020;fill-opacity:.06;stroke:#8b2020;stroke-width:2}
+.incl{stroke:#1a1a1a;stroke-width:1.6;fill:none;marker-end:url(#arrow)}
+.join{stroke:#7b5a2e;stroke-width:1.8;fill:none;marker-end:url(#arrowTan)}
+.guide{stroke:#b8b2aa;stroke-width:1.1;stroke-dasharray:6 5;fill:none}
+</style>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#1a1a1a"/></marker>
+<marker id="arrowTan" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7b5a2e"/></marker>
+</defs>
+<text x="750" y="55" text-anchor="middle" class="title">FIGURE 1 — COMPOSITUM AND GALOIS-CLOSURE TOWER</text>
+<text x="750" y="88" text-anchor="middle" class="sub">Sequential degree multiplication underlying the 576-element Galois group</text>
+
+<rect x="650" y="905" width="200" height="70" rx="10" class="field"/>
+<text x="750" y="948" text-anchor="middle" class="mono">ℚ</text>
+
+<text x="75" y="835" class="head">Base fields</text>
+
+<rect x="65" y="735" width="285" height="110" rx="12" class="field"/>
+<text x="207" y="772" text-anchor="middle" class="mono">K₁ = ℚ(√−3)</text>
+<text x="207" y="805" text-anchor="middle" class="body">degree 2 · Galois</text>
+
+<rect x="395" y="735" width="320" height="110" rx="12" class="field"/>
+<text x="555" y="772" text-anchor="middle" class="mono">K₂ = ℚ(α)</text>
+<text x="555" y="802" text-anchor="middle" class="mono">α⁴ − α − 1 = 0</text>
+<text x="555" y="830" text-anchor="middle" class="body">degree 4 · non-Galois</text>
+
+<rect x="785" y="735" width="285" height="110" rx="12" class="field"/>
+<text x="927" y="772" text-anchor="middle" class="mono">K₃ = ℚ(√−7)</text>
+<text x="927" y="805" text-anchor="middle" class="body">degree 2 · Galois</text>
+
+<rect x="1115" y="735" width="320" height="110" rx="12" class="field"/>
+<text x="1275" y="772" text-anchor="middle" class="mono">K₄ = ℚ(β)</text>
+<text x="1275" y="802" text-anchor="middle" class="mono">8β³−24β²+28β−11=0</text>
+<text x="1275" y="830" text-anchor="middle" class="body">degree 3 · non-Galois</text>
+
+<line x1="700" y1="905" x2="260" y2="845" class="incl"/>
+<text x="455" y="883" class="degree">[K₁:ℚ]=2</text>
+<line x1="730" y1="905" x2="585" y2="845" class="incl"/>
+<text x="624" y="879" class="degree">[K₂:ℚ]=4</text>
+<line x1="770" y1="905" x2="895" y2="845" class="incl"/>
+<text x="808" y="879" class="degree">[K₃:ℚ]=2</text>
+<line x1="800" y1="905" x2="1225" y2="845" class="incl"/>
+<text x="995" y="883" class="degree">[K₄:ℚ]=3</text>
+
+<text x="75" y="670" class="head">Individual Galois closures</text>
+
+<rect x="400" y="575" width="310" height="100" rx="12" class="closure"/>
+<text x="555" y="613" text-anchor="middle" class="mono">L₂ = K̃₂</text>
+<text x="555" y="646" text-anchor="middle" class="body">degree 24 · Gal ≅ S₄</text>
+
+<rect x="1105" y="575" width="340" height="100" rx="12" class="closure"/>
+<text x="1275" y="613" text-anchor="middle" class="mono">L₄ = K̃₄</text>
+<text x="1275" y="646" text-anchor="middle" class="body">degree 6 · Gal ≅ S₃</text>
+
+<line x1="555" y1="735" x2="555" y2="675" class="incl"/>
+<text x="570" y="710" class="degree">[L₂:K₂]=6</text>
+<line x1="1275" y1="735" x2="1275" y2="675" class="incl"/>
+<text x="1290" y="710" class="degree">[L₄:K₄]=2</text>
+
+<rect x="615" y="405" width="390" height="105" rx="13" class="compositum"/>
+<text x="810" y="445" text-anchor="middle" class="mono">L₂L₄</text>
+<text x="810" y="480" text-anchor="middle" class="body">degree 144 = 24 × 6</text>
+
+<line x1="620" y1="575" x2="735" y2="510" class="join"/>
+<text x="635" y="548" class="degree">×6</text>
+<line x1="1200" y1="575" x2="885" y2="510" class="join"/>
+<text x="1035" y="547" class="degree">×24</text>
+
+<rect x="585" y="255" width="450" height="105" rx="13" class="compositum"/>
+<text x="810" y="295" text-anchor="middle" class="mono">L₂L₄K₁</text>
+<text x="810" y="330" text-anchor="middle" class="body">degree 288 = 144 × 2</text>
+<line x1="810" y1="405" x2="810" y2="360" class="join"/>
+<text x="830" y="387" class="degree">adjoin K₁ · ×2</text>
+
+<rect x="540" y="110" width="540" height="110" rx="14" class="top"/>
+<text x="810" y="150" text-anchor="middle" class="mono">L = K₁L₂K₃L₄</text>
+<text x="810" y="184" text-anchor="middle" class="body">degree 576 = 288 × 2</text>
+<text x="810" y="208" text-anchor="middle" class="mono">Gal(L/ℚ) ≅ C₂ × S₄ × C₂ × S₃</text>
+<line x1="810" y1="255" x2="810" y2="220" class="join"/>
+<text x="830" y="244" class="degree">adjoin K₃ · ×2</text>
+
+<path d="M207 735 C207 550,420 350,585 305" class="guide"/>
+<text x="260" y="538" class="small">K₁ enters at the degree-288 stage</text>
+<path d="M927 735 C1010 570,1110 360,1035 305" class="guide"/>
+<text x="1030" y="534" class="small">K₃ enters at the degree-576 stage</text>
+
+<text x="750" y="1015" text-anchor="middle" class="small">Solid arrows are field inclusions. Tan arrows emphasize the sequential compositum steps used in the degree-multiplication proof.</text>
+</svg>

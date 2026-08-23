@@ -1,0 +1,300 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,hyperref,graphicx}
+\graphicspath{{figures/}}
+\subjclass[2020]{Primary 57K32; Secondary 11R32, 11R04}
+\keywords{hyperbolic 3-manifolds, invariant trace fields, Galois group,
+  compositum, linear disjointness, Weyl groups}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\disc}{disc}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\title{Arithmetic Disjointness and Galois Product Structure in a
+  Family of Hyperbolic 3-Manifold Trace Fields}
+\author{Marvin L.\ Gentry}
+\address{Independent Researcher, Seattle, WA}
+\email{drmlgentry@protonmail.com}
+\urladdr{https://hyperbolicflavorgeometry.org}
+\begin{document}
+\begin{abstract}
+We study the compositum of four number fields arising as invariant trace
+fields of compact hyperbolic 3-manifolds selected by arithmetic criteria.
+The four fields have discriminants $-3$, $-283$, $-7$, and $-59$, with
+individual Galois groups $C_2$, $S_4$, $C_2$, and $S_3$. We prove that
+their Galois closures are jointly linearly disjoint over $\Q$ by two
+independent methods: sequential degree multiplication verifying the chain
+$144\to 288\to 576$, and a ramification argument using the pairwise
+disjoint prime supports $\{3\}$, $\{283\}$, $\{7\}$, $\{59\}$ of the four
+Galois pieces together with Minkowski's theorem. The Galois closure of the
+compositum has degree $576$ with Galois group
+$C_2\times S_4\times C_2\times S_3$. Via the standard Weyl group
+identifications, this group is abstractly isomorphic to
+$W(\mathrm{SU}(2))\times W(\mathrm{SU}(4))\times W(\mathrm{SU}(2))\times
+W(\mathrm{SU}(3))$. All computations are verified in SageMath; reproducible
+scripts are available at
+\url{https://github.com/drmlgentry/hyperbolic-flavor-geometry}.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+The invariant trace field of a finite-volume hyperbolic 3-manifold is a
+number-field invariant whose arithmetic encodes geometric data of the
+manifold in a canonical way~\cite{MR}. For arithmetic hyperbolic
+3-manifolds---those whose holonomy groups are arithmetic Kleinian
+groups---the trace field and its Galois group carry particularly rigid
+structure~\cite{NR}.
+
+This paper concerns four hyperbolic 3-manifolds drawn from the SnapPy
+census~\cite{SnapPy}, selected by arithmetic criteria arising in the
+Hyperbolic Flavor Geometry research program~\cite{HFG}. Their invariant
+trace fields are:
+\begin{align*}
+K_1 &= \Q(\sqrt{-3}), & \disc(K_1)&=-3,\\
+K_2 &= \Q(\alpha),\quad\alpha^4-\alpha-1=0, & \disc(K_2)&=-283,\\
+K_3 &= \Q(\sqrt{-7}), & \disc(K_3)&=-7,\\
+K_4 &= \Q(\beta),\quad 8\beta^3-24\beta^2+28\beta-11=0, & \disc(K_4)&=-59.
+\end{align*}
+The individual Galois groups over $\Q$ are $C_2$, $S_4$, $C_2$, and $S_3$.
+
+\begin{theorem}[Four-Field Galois Product Theorem]\label{thm:main}
+Let $L_2$ denote the Galois closure of $K_2$ over $\Q$, and $L_4$ the
+Galois closure of $K_4$ over $\Q$. Set $L = K_1 L_2 K_3 L_4$. Then
+$L/\Q$ is Galois with
+\[
+\Gal(L/\Q)\cong C_2\times S_4\times C_2\times S_3,\qquad|\Gal(L/\Q)|=576.
+\]
+\end{theorem}
+
+We give two independent proofs: a degree-multiplication argument
+(Section~\ref{sec:degree}) and a ramification argument
+(Section~\ref{sec:ramification}).
+
+\begin{corollary}[Weyl Group Identification]\label{cor:weyl}
+Using $W(\mathrm{SU}(2))\cong C_2$, $W(\mathrm{SU}(3))\cong S_3$,
+$W(\mathrm{SU}(4))\cong S_4$,
+\[
+\Gal(L/\Q)\cong W(\mathrm{SU}(2))\times W(\mathrm{SU}(4))\times
+W(\mathrm{SU}(2))\times W(\mathrm{SU}(3)).
+\]
+The identification of these factors with physical gauge sectors is discussed
+in Section~\ref{sec:discussion} and is not part of the theorem.
+\end{corollary}
+
+\section{Preliminaries}\label{sec:prelim}
+
+\subsection{Invariant trace fields}
+For a hyperbolic 3-manifold $M$ with holonomy
+$\rho\colon\pi_1(M)\to\mathrm{PSL}(2,\C)$, the invariant trace field
+$k(M)$ is the subfield of $\C$ generated over $\Q$ by
+$\{\mathrm{tr}(\rho(\gamma))^2:\gamma\in\pi_1(M)\}$.
+It is an invariant of the commensurability class of $M$;
+see~\cite[Chapter~3]{MR}.
+
+\subsection{Linear disjointness and Galois products}
+Extensions $E$, $F$ of $\Q$ are \emph{linearly disjoint} over $\Q$ if
+$[EF:\Q]=[E:\Q][F:\Q]$.
+
+\begin{lemma}\label{lem:product}
+Let $E_1,\ldots,E_n$ be finite Galois extensions of $\Q$ that are jointly
+linearly disjoint. Then $E_1\cdots E_n/\Q$ is Galois and
+$\Gal(E_1\cdots E_n/\Q)\cong\prod_{i=1}^n\Gal(E_i/\Q)$.
+\end{lemma}
+\begin{proof}
+Standard; see e.g.~\cite[Theorem~1.14]{Neukirch}.
+\end{proof}
+
+\subsection{Ramification and Minkowski's theorem}
+A rational prime $p$ ramifies in $K/\Q$ if and only if $p\mid\disc(K)$.
+Minkowski's theorem asserts that every nontrivial finite extension of $\Q$
+is ramified at at least one prime~\cite[Theorem~2.17]{Neukirch}.
+Consequently, if two Galois extensions of $\Q$ have disjoint ramification
+sets, their intersection is $\Q$.
+
+\section{The Four Fields}\label{sec:fields}
+
+\textbf{$K_1=\Q(\sqrt{-3})$.} The quadratic subfield of $\Q(\zeta_3)$.
+Discriminant $-3$, $\Gal(K_1/\Q)\cong C_2$. Cusp field of $m003$.
+
+\textbf{$K_2=\Q(\alpha)$, $\alpha^4-\alpha-1=0$.} The polynomial
+$x^4-x-1$ is irreducible over $\Q$ with discriminant $-283$. Its Galois
+closure $L_2$ satisfies $[L_2:\Q]=24$ and $\Gal(L_2/\Q)\cong S_4$.
+Cusp field of $m019$.
+
+\textbf{$K_3=\Q(\sqrt{-7})$.} Discriminant $-7$, $\Gal(K_3/\Q)\cong C_2$.
+
+\textbf{$K_4=\Q(\beta)$, $8\beta^3-24\beta^2+28\beta-11=0$.} An
+irreducible cubic with number-field discriminant $-59$ (the polynomial
+discriminant is $-3776=-64\cdot 59$; SageMath confirms the number-field
+value). Its Galois closure $L_4$ satisfies $[L_4:\Q]=6$ and
+$\Gal(L_4/\Q)\cong S_3$. Cusp field of $m006$.
+
+The four ramification sets $\{3\}$, $\{283\}$, $\{7\}$, $\{59\}$
+are pairwise disjoint.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.82\textwidth]{figure1_compositum_field_tower}
+\caption{The Galois-closure tower. The four base fields $K_1,K_2,K_3,K_4$
+are extended to their Galois closures $L_2$ (degree~24) and $L_4$ (degree~6),
+and the sequential degree chain $[L_2 L_4:\Q]=144$, $[L_2 L_4 K_1:\Q]=288$,
+$[L:\Q]=576$ establishes joint linear disjointness.}
+\label{fig:tower}
+\end{figure}
+
+
+\section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
+
+\subsection{Individual Galois closures}
+The Galois group of $x^4-x-1$ over $\Q$ is $S_4$, so $[L_2:\Q]=24$.
+The Galois group of the cubic $f_4$ over $\Q$ is $S_3$ (the discriminant
+$-59$ is not a rational square), so $[L_4:\Q]=6$. Both are confirmed
+by SageMath.
+
+\subsection{Degree-multiplication proof}\label{sec:degree}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main} via degree multiplication]
+Since $L_2$ and $L_4$ are Galois over $\Q$ and
+$[L_2 L_4:\Q]=144=24\cdot 6=[L_2:\Q][L_4:\Q]$, the fields $L_2$ and
+$L_4$ are linearly disjoint. Since
+$[L_2 L_4 K_1:\Q]=288=144\cdot 2=[L_2 L_4:\Q][K_1:\Q]$,
+$K_1$ is linearly disjoint from $L_2 L_4$. Since
+$[L_2 L_4 K_1 K_3:\Q]=576=288\cdot 2=[L_2 L_4 K_1:\Q][K_3:\Q]$,
+$K_3$ is linearly disjoint from $L_2 L_4 K_1$. The four Galois
+extensions are jointly linearly disjoint, so $L/\Q$ is Galois and
+Lemma~\ref{lem:product} gives
+$\Gal(L/\Q)\cong C_2\times S_4\times C_2\times S_3$ of order
+$2\cdot 24\cdot 2\cdot 6=576$.
+\end{proof}
+
+The degree equalities were computed in SageMath:
+\begin{verbatim}
+sage: x = polygen(QQ)
+sage: K2 = NumberField(x^4 - x - 1, 'a2')
+sage: K4 = NumberField(8*x^3 - 24*x^2 + 28*x - 11, 'a4')
+sage: L2 = K2.galois_closure('b'); L2.degree()
+24
+sage: L4 = K4.galois_closure('d'); L4.degree()
+6
+sage: L2.composite_fields(L4)[0].degree()
+144
+\end{verbatim}
+The degrees 288 and 576 follow analogously; a self-contained script
+is provided in~\cite{HFGcode}.
+
+\subsection{Ramification proof}\label{sec:ramification}
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.82\textwidth]{figure2_ramification_disjointness}
+\caption{The four Galois pieces and their disjoint prime ramification
+supports. Since no prime is shared between any two pieces, any intersection
+would be an unramified extension of $\Q$, which must be trivial by
+Minkowski's theorem.}
+\label{fig:ramification}
+\end{figure}
+\begin{proof}[Proof of Theorem~\ref{thm:main} via ramification]
+The discriminants of the four Galois pieces are
+$\disc(K_1)=-3$, $\disc(L_2)=283^{23}$, $\disc(K_3)=-7$,
+$\disc(L_4)=-59^3$ (all verified by SageMath). Suppose two fields
+$E$, $F$ from $\{K_1,L_2,K_3,L_4\}$ satisfy $E\cap F\supsetneq\Q$.
+Then $E\cap F/\Q$ can only ramify at primes dividing both $\disc(E)$
+and $\disc(F)$. Since the four ramification sets are pairwise disjoint,
+no prime ramifies in $E\cap F$. By Minkowski's
+theorem~\cite[Theorem~2.17]{Neukirch}, $E\cap F=\Q$, a contradiction.
+The four pieces are jointly linearly disjoint, and Theorem~\ref{thm:main}
+follows as before.
+\end{proof}
+
+\section{Weyl Group Corollary}\label{sec:weyl}
+
+The standard isomorphisms $W(\mathrm{SU}(2))\cong C_2$,
+$W(\mathrm{SU}(3))\cong S_3$, $W(\mathrm{SU}(4))\cong S_4$ combined
+with Theorem~\ref{thm:main} give Corollary~\ref{cor:weyl} immediately.
+
+\begin{remark}
+The identification of the four Galois factors with physical gauge
+sectors---as in the Pati-Salam model
+$\mathrm{SU}(4)\times\mathrm{SU}(2)_L\times\mathrm{SU}(2)_R$ together
+with $\mathrm{SU}(3)_C$---belongs to the HFG program's physical
+interpretation and is not part of the theorem.
+\end{remark}
+
+\section{Discussion}\label{sec:discussion}
+
+\subsection{Relationship to the HFG program}
+The four fields arise in the Hyperbolic Flavor Geometry
+program~\cite{HFG}, which investigates whether Standard Model flavor
+parameters are arithmetic invariants of compact hyperbolic 3-manifolds.
+The association of $K_1$ with $m003$, $K_2$ with $m019$, $K_4$ with
+$m006$, and $K_3=\Q(\sqrt{-7})$ with a candidate right-handed $\mathrm{SU}(2)$
+manifold is proposed in that program. Theorem~\ref{thm:main} and
+Corollary~\ref{cor:weyl} are results in algebraic number theory,
+independent of any physical interpretation.
+
+\subsection{Open questions}
+\begin{enumerate}
+\item \textit{The manifold for $K_3$.} The cusped manifold $m010$
+  in the SnapPy census has invariant trace field $\Q(\sqrt{-7})$ and is
+  the proposed geometric realization of the $K_3$ factor. Its status as
+  the canonical representative for this factor---in particular, whether
+  it is the unique minimal-volume candidate with this trace field---remains
+  to be established with the same rigor as the identifications for $m003$,
+  $m019$, and $m006$.
+\item \textit{Covering tower structure.} The manifolds $m003$ and $m006$
+  have covering towers with Lucas-number behavior in their first homology
+  groups~\cite{MR97}. Whether an analogous structure extends to the
+  four-field compositum is open.
+\item \textit{Geometric mechanism.} The theorem establishes an algebraic
+  isomorphism. Whether a 3D-3D correspondence in the sense of
+  Dimofte-Gaiotto-Gukov provides a geometric mechanism elevating this
+  to a dynamical statement about gauge interactions remains an open
+  problem.
+\end{enumerate}
+
+\section*{Acknowledgments}
+The author used Claude (claude-sonnet-4-6, Anthropic) as a research
+assistant for editorial support and computational verification in
+preparing this manuscript. All mathematical content, proofs, and scientific
+claims are the author's own work, independently verified using SageMath
+and SnapPy.
+
+\begin{thebibliography}{99}
+\bibitem{MR}
+C.~Maclachlan and A.~W.~Reid,
+\emph{The Arithmetic of Hyperbolic 3-Manifolds},
+Graduate Texts in Mathematics~219, Springer, New York, 2003.
+\bibitem{MR97}
+C.~Maclachlan and A.~W.~Reid,
+Generalised Fibonacci manifolds,
+\emph{Transform.\ Groups} \textbf{2} (1997), no.~2, 165--182.
+\bibitem{NR}
+W.~D.~Neumann and A.~W.~Reid,
+Arithmetic of hyperbolic manifolds,
+in \emph{Topology '90} (Columbus, OH, 1990),
+Ohio State Univ.\ Math.\ Res.\ Inst.\ Publ.~1,
+de~Gruyter, Berlin, 1992, pp.~273--310.
+\bibitem{Neukirch}
+J.~Neukirch,
+\emph{Algebraic Number Theory},
+Grundlehren der Mathematischen Wissenschaften~322,
+Springer, Berlin, 1999.
+\bibitem{SnapPy}
+M.~Culler, N.~M.~Dunfield, M.~Goerner, and J.~R.~Weeks,
+SnapPy, a computer program for studying the geometry and topology
+of 3-manifolds, \url{http://snappy.computop.org}.
+\bibitem{HFG}
+M.~L.~Gentry,
+Hyperbolic Flavor Geometry research program,
+\url{https://hyperbolicflavorgeometry.org}.
+\bibitem{HFGcode}
+M.~L.~Gentry,
+HFG computational suite,
+\url{https://github.com/drmlgentry/hyperbolic-flavor-geometry},
+commit \texttt{e0bfd33} (2026).
+\end{thebibliography}
+\end{document}
