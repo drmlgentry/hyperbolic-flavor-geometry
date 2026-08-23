@@ -104,11 +104,11 @@
 
 <!-- guides for K1, K3 entering later -->
 <path d="M210 990 C210 770,430 480,690 400" class="guide"/>
-<text x="55" y="605" class="small">K₁ enters at the</text>
-<text x="55" y="632" class="small">degree-288 stage</text>
+<text x="90" y="638" class="small">K₁ enters at the</text>
+<text x="90" y="665" class="small">degree-288 stage</text>
 <path d="M930 990 C1030 800,1130 480,1030 400" class="guide"/>
-<text x="1075" y="605" class="small">K₃ enters at the</text>
-<text x="1075" y="632" class="small">degree-576 stage</text>
+<text x="1085" y="649" class="small">K₃ enters at the</text>
+<text x="1085" y="676" class="small">degree-576 stage</text>
 
 <text x="750" y="1390" text-anchor="middle" class="small">Solid arrows are field inclusions. Tan arrows emphasize the sequential compositum steps used in the degree-multiplication proof.</text>
 </svg>
