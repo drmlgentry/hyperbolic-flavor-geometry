@@ -8,6 +8,7 @@
   compositum, linear disjointness, Weyl groups}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{remark}[theorem]{Remark}
 \DeclareMathOperator{\Gal}{Gal}
@@ -25,7 +26,8 @@
 \begin{document}
 \begin{abstract}
 We study the compositum of four number fields arising as invariant trace
-fields of compact hyperbolic 3-manifolds selected by arithmetic criteria.
+fields of finite-volume cusped hyperbolic 3-manifolds selected by arithmetic
+criteria.
 The four fields have discriminants $-3$, $-283$, $-7$, and $-59$, with
 individual Galois groups $C_2$, $S_4$, $C_2$, and $S_3$. We prove that
 their Galois closures are jointly linearly disjoint over $\Q$ by two
@@ -123,12 +125,11 @@ sets, their intersection is $\Q$.
 \section{The Four Fields}\label{sec:fields}
 
 \textbf{$K_1=\Q(\sqrt{-3})$.} The quadratic subfield of $\Q(\zeta_3)$.
-Discriminant $-3$, $\Gal(K_1/\Q)\cong C_2$. Cusp field of $m003$.
+Discriminant $-3$, $\Gal(K_1/\Q)\cong C_2$.
 
 \textbf{$K_2=\Q(\alpha)$, $\alpha^4-\alpha-1=0$.} The polynomial
 $x^4-x-1$ is irreducible over $\Q$ with discriminant $-283$. Its Galois
 closure $L_2$ satisfies $[L_2:\Q]=24$ and $\Gal(L_2/\Q)\cong S_4$.
-Cusp field of $m019$.
 
 \textbf{$K_3=\Q(\sqrt{-7})$.} Discriminant $-7$, $\Gal(K_3/\Q)\cong C_2$.
 
@@ -136,7 +137,20 @@ Cusp field of $m019$.
 irreducible cubic with number-field discriminant $-59$ (the polynomial
 discriminant is $-3776=-64\cdot 59$; SageMath confirms the number-field
 value). Its Galois closure $L_4$ satisfies $[L_4:\Q]=6$ and
-$\Gal(L_4/\Q)\cong S_3$. Cusp field of $m006$.
+$\Gal(L_4/\Q)\cong S_3$.
+
+\begin{proposition}[Manifold--field identification]\label{prop:manifolds}
+Using SnapPy's exact algebraic field-recognition routine, the invariant
+trace fields of the cusped census manifolds $m003$, $m019$, $m010$, $m006$
+are respectively $K_1$, $K_2$, $K_3$, $K_4$:
+\[
+k(m003)\cong K_1,\qquad k(m019)\cong K_2,\qquad k(m010)\cong K_3,\qquad
+k(m006)\cong K_4.
+\]
+(For $m006$ the recognized defining polynomial is $x^3+2x-1$, which
+SageMath confirms is isomorphic to $K_4$, with matching discriminant
+$-59$.)
+\end{proposition}
 
 The four ramification sets $\{3\}$, $\{283\}$, $\{7\}$, $\{59\}$
 are pairwise disjoint.
@@ -154,10 +168,23 @@ $[L:\Q]=576$ establishes joint linear disjointness.}
 \section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
 
 \subsection{Individual Galois closures}
-The Galois group of $x^4-x-1$ over $\Q$ is $S_4$, so $[L_2:\Q]=24$.
-The Galois group of the cubic $f_4$ over $\Q$ is $S_3$ (the discriminant
-$-59$ is not a rational square), so $[L_4:\Q]=6$. Both are confirmed
-by SageMath.
+Both Galois groups can be verified directly, without appeal to computer
+algebra.
+
+\emph{$\Gal(L_2/\Q)\cong S_4$.} Modulo $2$, $x^4-x-1$ is irreducible over
+$\mathbb{F}_2$, so Frobenius at $2$ acts on the four roots as a $4$-cycle.
+Modulo $7$, $x^4-x-1$ factors as a linear times an irreducible cubic, so
+Frobenius at $7$ acts as a $3$-cycle. A transitive subgroup of $S_4$
+containing a $4$-cycle and a $3$-cycle is all of $S_4$, so
+$\Gal(L_2/\Q)\cong S_4$ and $[L_2:\Q]=24$.
+
+\emph{$\Gal(L_4/\Q)\cong S_3$.} Set $t=2\beta-2$; then $t^3+2t+1=0$,
+which is irreducible modulo $3$ and has polynomial discriminant $-59$, a
+nonsquare. An irreducible cubic with nonsquare discriminant has Galois
+group $S_3$ rather than $A_3\cong C_3$, so $\Gal(L_4/\Q)\cong S_3$ and
+$[L_4:\Q]=6$.
+
+Both facts are also confirmed independently in SageMath; see~\cite{HFGcode}.
 
 \subsection{Degree-multiplication proof}\label{sec:degree}
 
@@ -205,17 +232,100 @@ Minkowski's theorem.}
 \begin{proof}[Proof of Theorem~\ref{thm:main} via ramification]
 The discriminants of the four Galois pieces are
 \[
-\disc(K_1)=-3,\qquad \disc(L_2)=283^{23},\qquad \disc(K_3)=-7,\qquad
+\disc(K_1)=-3,\qquad \disc(L_2)=283^{12},\qquad \disc(K_3)=-7,\qquad
 \disc(L_4)=-59^3
 \]
-(all verified by SageMath). Suppose two fields
-$E$, $F$ from $\{K_1,L_2,K_3,L_4\}$ satisfy $E\cap F\supsetneq\Q$.
-Then $E\cap F/\Q$ can only ramify at primes dividing both $\disc(E)$
-and $\disc(F)$. Since the four ramification sets are pairwise disjoint,
-no prime ramifies in $E\cap F$. By Minkowski's
-theorem~\cite[Theorem~2.17]{Neukirch}, $E\cap F=\Q$, a contradiction.
-The four pieces are jointly linearly disjoint, and Theorem~\ref{thm:main}
-follows as before.
+(all verified by SageMath), so their ramification sets $\{3\}$,
+$\{283\}$, $\{7\}$, $\{59\}$ are pairwise disjoint. Pairwise disjoint
+ramification alone does not imply joint linear disjointness in general,
+so we argue by induction. Order the pieces $E_1=K_1$, $E_2=L_2$,
+$E_3=K_3$, $E_4=L_4$ and set $F_r=E_1\cdots E_r$. The base case $F_1=E_1$
+is trivial. Suppose $F_r/\Q$ is Galois with
+$\Gal(F_r/\Q)\cong\prod_{i\le r}\Gal(E_i/\Q)$; in particular every finite
+prime ramified in $F_r$ divides $\disc(E_i)$ for some $i\le r$. Since the
+ramification set of $E_{r+1}$ is disjoint from all of these, the
+intersection $F_r\cap E_{r+1}$ is unramified at every finite prime, so by
+Minkowski's theorem~\cite[Theorem~2.17]{Neukirch}, $F_r\cap E_{r+1}=\Q$.
+As $F_r$ and $E_{r+1}$ are both Galois over $\Q$, this trivial
+intersection gives $[F_{r+1}:\Q]=[F_r:\Q][E_{r+1}:\Q]$ and
+$\Gal(F_{r+1}/\Q)\cong\Gal(F_r/\Q)\times\Gal(E_{r+1}/\Q)$, completing the
+inductive step. Taking $r=3$ shows the four pieces are jointly linearly
+disjoint, and Theorem~\ref{thm:main} follows as before.
+\end{proof}
+
+\section{Further Arithmetic Consequences}\label{sec:consequences}
+
+Let $K=K_1K_2K_3K_4$ denote the compositum of the four stem fields
+themselves, as opposed to $L$, the compositum of their Galois closures.
+
+\begin{proposition}\label{prop:stemdegree}
+$[K:\Q]=48$.
+\end{proposition}
+\begin{proof}
+Since the Galois closures $K_1,L_2,K_3,L_4$ are jointly linearly disjoint
+(Theorem~\ref{thm:main}), so are the stem fields $K_1,K_2,K_3,K_4$,
+giving $[K:\Q]=2\cdot4\cdot2\cdot3=48$. Confirmed directly in SageMath via
+\texttt{composite\_fields}.
+\end{proof}
+
+\begin{corollary}[Relative Galois group]\label{cor:relative}
+$[L:K]=12$ and $\Gal(L/K)\cong S_3\times C_2$.
+\end{corollary}
+\begin{proof}
+Since $K_1,K_3$ are already Galois of degree $2=|\Gal(K_i/\Q)|$, the
+subgroup of $\Gal(K_i/\Q)$ fixing $K_i$ pointwise is trivial. Inside
+$\Gal(L_2/\Q)\cong S_4$, the subgroup fixing $K_2$ pointwise is a point
+stabilizer for the natural action on the four roots of $x^4-x-1$, hence
+isomorphic to $S_3$; inside $\Gal(L_4/\Q)\cong S_3$, the subgroup fixing
+$K_4$ pointwise is a point stabilizer on the three roots of $f_4$, hence
+isomorphic to $C_2$ (both verified directly in SageMath). Since
+$\Gal(L/\Q)$ is the direct product $C_2\times S_4\times C_2\times S_3$
+and $K$ embeds as the corresponding product of stem fields, $\Gal(L/K)$
+is the direct product of these four stabilizers,
+$\{1\}\times S_3\times\{1\}\times C_2\cong S_3\times C_2$, of order
+$12=576/48$.
+\end{proof}
+
+\begin{corollary}[Uniform ramification exponent]\label{cor:disc}
+\[
+v_3(\disc L)=v_7(\disc L)=v_{59}(\disc L)=v_{283}(\disc L)=288,
+\]
+and consequently
+\[
+\disc(L)=(3\cdot7\cdot59\cdot283)^{288}=350637^{288}.
+\]
+\end{corollary}
+\begin{proof}
+At each ramified prime $p$, exactly one of the four Galois pieces
+$G_i\in\{K_1,L_2,K_3,L_4\}$ ramifies, with discriminant exponent
+$e_i=v_p(\disc G_i)$ and degree $d_i=[G_i:\Q]$. Since the other three
+pieces are unramified at $p$ and linearly disjoint from $G_i$, the
+extension $L/G_i$ is unramified at $p$, so the tower formula gives
+$v_p(\disc L)=[L:G_i]\,e_i=(576/d_i)\,e_i$. For $p=3$: $d_1=2$, $e_1=1$,
+giving $288$. For $p=283$: $d_2=24$, $e_2=12$, giving $288$. For $p=7$:
+$d_3=2$, $e_3=1$, giving $288$. For $p=59$: $d_4=6$, $e_4=3$, giving
+$288$.
+\end{proof}
+
+\begin{corollary}[Maximal abelian subextension]\label{cor:abelian}
+The abelianization of $\Gal(L/\Q)$ is $C_2^4$, realized by
+\[
+A=\Q(\sqrt{-3},\sqrt{-283},\sqrt{-7},\sqrt{-59}),\qquad
+[A:\Q]=16,\qquad \Gal(A/\Q)\cong C_2^4,
+\]
+the maximal abelian subextension of $L/\Q$, containing $15$ quadratic
+subfields.
+\end{corollary}
+\begin{proof}
+$S_4^{\mathrm{ab}}\cong C_2$ and $S_3^{\mathrm{ab}}\cong C_2$ (in each
+case the commutator subgroup is the alternating group, and the quotient
+is the sign map), so
+$\Gal(L/\Q)^{\mathrm{ab}}\cong C_2\times C_2\times C_2\times C_2$. The
+corresponding fixed field is generated by $\sqrt{-3}$, the unique
+quadratic subfield $\Q(\sqrt{-283})$ of $L_2$, $\sqrt{-7}$, and the
+unique quadratic subfield $\Q(\sqrt{-59})$ of $L_4$. Directly verified in
+SageMath: the compositum of these four quadratic fields has degree $16$
+with Galois group $C_2\times C_2\times C_2\times C_2$.
 \end{proof}
 
 \section{Weyl Group Corollary}\label{sec:weyl}
@@ -240,7 +350,8 @@ interpretation and is not part of the theorem.
 \subsection{Relationship to the HFG program}
 The four fields arise in the Hyperbolic Flavor Geometry
 program~\cite{HFG}, which investigates whether Standard Model flavor
-parameters are arithmetic invariants of compact hyperbolic 3-manifolds.
+parameters are arithmetic invariants of finite-volume cusped hyperbolic
+3-manifolds.
 The association of $K_1$ with $m003$, $K_2$ with $m019$, $K_4$ with
 $m006$, and $K_3=\Q(\sqrt{-7})$ with a candidate right-handed $\mathrm{SU}(2)$
 manifold is proposed in that program, building on the arithmetic
@@ -250,13 +361,12 @@ independent of any physical interpretation.
 
 \subsection{Open questions}
 \begin{enumerate}
-\item \textit{The manifold for $K_3$.} The cusped manifold $m010$
-  in the SnapPy census has invariant trace field $\Q(\sqrt{-7})$ and is
-  the proposed geometric realization of the $K_3$ factor. Its status as
-  the canonical representative for this factor---in particular, whether
-  it is the unique minimal-volume candidate with this trace field---remains
-  to be established with the same rigor as the identifications for $m003$,
-  $m019$, and $m006$.
+\item \textit{Canonicity of $m010$.} By Proposition~\ref{prop:manifolds},
+  $m010$ has invariant trace field exactly $K_3=\Q(\sqrt{-7})$, on the
+  same computational footing as the identifications for $m003$, $m019$,
+  and $m006$. What remains open is whether $m010$ is the \emph{canonical}
+  geometric representative for this factor---in particular, whether it is
+  the unique minimal-volume census manifold with this trace field.
 \item \textit{Covering tower structure.} The manifolds $m003$ and $m006$
   have covering towers with Lucas-number behavior in their first homology
   groups~\cite{MR97}. Whether an analogous structure extends to the
@@ -267,6 +377,17 @@ independent of any physical interpretation.
   to a dynamical statement about gauge interactions remains an open
   problem.
 \end{enumerate}
+
+\section*{Appendix: Chebotarev Density Check}
+
+As a further empirical check on Theorem~\ref{thm:main}, the direct-product
+structure predicts, by the Chebotarev density theorem, that the density
+of rational primes splitting completely in $L$ is $1/576$. Testing all
+$3241$ unramified primes below $30000$: the four defining polynomials
+split completely simultaneously at exactly $5$ primes, against an
+expected count of $3241/576\approx5.63$ under the theoretical density---
+consistent with, though of course not an independent proof of,
+Theorem~\ref{thm:main}.
 
 \section*{Acknowledgments}
 The author used Claude (Sonnet 4.6) as a research
