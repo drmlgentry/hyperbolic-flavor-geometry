@@ -67,6 +67,7 @@
 <!-- implication -->
 <path d="M750 745 L750 805" stroke="#7b5a2e" stroke-width="2.4" fill="none"/>
 <path d="M738 793 L750 810 L762 793" fill="none" stroke="#7b5a2e" stroke-width="2.4"/>
+<text x="775" y="780" class="small">inductively: Fᵣ ∩ Eᵣ₊₁ = ℚ</text>
 
 <rect x="70" y="818" width="1360" height="160" rx="18" class="result"/>
 <text x="750" y="865" text-anchor="middle" class="head">No nontrivial common subextension</text>

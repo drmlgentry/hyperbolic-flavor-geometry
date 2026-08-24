@@ -1,9 +1,9 @@
 \documentclass[12pt]{amsart}
 \usepackage{amsmath,amssymb,amsthm,hyperref,graphicx}
 \usepackage[margin=1in]{geometry}
-\usepackage{microtype}
+\usepackage[expansion=false]{microtype}
 \graphicspath{{figures/}}
-\subjclass[2020]{Primary 57K32; Secondary 11R32, 11R04}
+\subjclass[2020]{Primary 11R32; Secondary 11R04, 57K32}
 \keywords{hyperbolic 3-manifolds, invariant trace fields, Galois group,
   compositum, linear disjointness, Weyl groups}
 \newtheorem{theorem}{Theorem}[section]
@@ -28,8 +28,9 @@
 We study the compositum of four number fields arising as invariant trace
 fields of finite-volume cusped hyperbolic 3-manifolds selected by arithmetic
 criteria.
-The four fields have discriminants $-3$, $-283$, $-7$, and $-59$, with
-individual Galois groups $C_2$, $S_4$, $C_2$, and $S_3$. We prove that
+The four fields have discriminants $-3$, $-283$, $-7$, and $-59$; their
+Galois closures have groups $C_2$, $S_4$, $C_2$, and $S_3$ respectively,
+where the quadratic fields are already Galois. We prove that
 their Galois closures are jointly linearly disjoint over $\Q$ by two
 independent methods: sequential degree multiplication verifying the chain
 $144\to 288\to 576$, and a ramification argument using the pairwise
@@ -62,9 +63,11 @@ trace fields are:
 K_1 &= \Q(\sqrt{-3}), & \disc(K_1)&=-3,\\
 K_2 &= \Q(\alpha),\quad\alpha^4-\alpha-1=0, & \disc(K_2)&=-283,\\
 K_3 &= \Q(\sqrt{-7}), & \disc(K_3)&=-7,\\
-K_4 &= \Q(\beta),\quad 8\beta^3-24\beta^2+28\beta-11=0, & \disc(K_4)&=-59.
+K_4 &= \Q(t),\quad t^3+2t+1=0, & \disc(K_4)&=-59.
 \end{align*}
-The individual Galois groups over $\Q$ are $C_2$, $S_4$, $C_2$, and $S_3$.
+Their Galois closures have groups $C_2$, $S_4$, $C_2$, and $S_3$ over
+$\Q$ respectively; $K_1$ and $K_3$ are already Galois, while $K_2$ and
+$K_4$ are not.
 
 \begin{theorem}[Four-Field Galois Product Theorem]\label{thm:main}
 Let $L_2$ denote the Galois closure of $K_2$ over $\Q$, and $L_4$ the
@@ -133,23 +136,25 @@ closure $L_2$ satisfies $[L_2:\Q]=24$ and $\Gal(L_2/\Q)\cong S_4$.
 
 \textbf{$K_3=\Q(\sqrt{-7})$.} Discriminant $-7$, $\Gal(K_3/\Q)\cong C_2$.
 
-\textbf{$K_4=\Q(\beta)$, $8\beta^3-24\beta^2+28\beta-11=0$.} An
-irreducible cubic with number-field discriminant $-59$ (the polynomial
-discriminant is $-3776=-64\cdot 59$; SageMath confirms the number-field
-value). Its Galois closure $L_4$ satisfies $[L_4:\Q]=6$ and
-$\Gal(L_4/\Q)\cong S_3$.
+\textbf{$K_4=\Q(t)$, $t^3+2t+1=0$.} An irreducible cubic with
+discriminant $-59$ (see~\S4.1 for the elementary Galois-group argument).
+The original cusp-shape coordinate $\beta$ satisfies
+$8\beta^3-24\beta^2+28\beta-11=0$, related to $t$ by $t=2\beta-2$
+(equivalently $\beta=(t+2)/2$); we use $t$ throughout the remainder of
+the paper as the more economical generator. Its Galois closure $L_4$
+satisfies $[L_4:\Q]=6$ and $\Gal(L_4/\Q)\cong S_3$.
 
-\begin{proposition}[Manifold--field identification]\label{prop:manifolds}
+\begin{proposition}[Trace field identification]\label{prop:manifolds}
 Using SnapPy's exact algebraic field-recognition routine, the invariant
-trace fields of the cusped census manifolds $m003$, $m019$, $m010$, $m006$
-are respectively $K_1$, $K_2$, $K_3$, $K_4$:
-\[
-k(m003)\cong K_1,\qquad k(m019)\cong K_2,\qquad k(m010)\cong K_3,\qquad
-k(m006)\cong K_4.
-\]
-(For $m006$ the recognized defining polynomial is $x^3+2x-1$, which
-SageMath confirms is isomorphic to $K_4$, with matching discriminant
-$-59$.)
+trace fields of the cusped census manifolds $m003$, $m019$,
+$m010$, $m006$ are, respectively, $K_1$, $K_2$, $K_3$, $K_4$:
+\begin{align*}
+k(m003)&\cong K_1, & k(m019)&\cong K_2,\\
+k(m010)&\cong K_3, & k(m006)&\cong K_4.
+\end{align*}
+(For $m006$ the recognized defining polynomial is $x^3+2x-1$; the
+substitution $x=-t$ gives $t^3+2t+1=0$, confirming this is $K_4$ with
+matching discriminant $-59$.)
 \end{proposition}
 
 The four ramification sets $\{3\}$, $\{283\}$, $\{7\}$, $\{59\}$
@@ -178,9 +183,9 @@ Frobenius at $7$ acts as a $3$-cycle. A transitive subgroup of $S_4$
 containing a $4$-cycle and a $3$-cycle is all of $S_4$, so
 $\Gal(L_2/\Q)\cong S_4$ and $[L_2:\Q]=24$.
 
-\emph{$\Gal(L_4/\Q)\cong S_3$.} Set $t=2\beta-2$; then $t^3+2t+1=0$,
-which is irreducible modulo $3$ and has polynomial discriminant $-59$, a
-nonsquare. An irreducible cubic with nonsquare discriminant has Galois
+\emph{$\Gal(L_4/\Q)\cong S_3$.} The defining polynomial $t^3+2t+1$ is
+irreducible modulo $3$ and has discriminant $-59$, a nonsquare. An
+irreducible cubic with nonsquare discriminant has Galois
 group $S_3$ rather than $A_3\cong C_3$, so $\Gal(L_4/\Q)\cong S_3$ and
 $[L_4:\Q]=6$.
 
@@ -188,7 +193,7 @@ Both facts are also confirmed independently in SageMath; see~\cite{HFGcode}.
 
 \subsection{Degree-multiplication proof}\label{sec:degree}
 
-\begin{proof}[Proof of Theorem~\ref{thm:main} via degree multiplication]
+\begin{proof}[Proof via degree multiplication]
 Since $L_2$ and $L_4$ are Galois over $\Q$ and
 $[L_2 L_4:\Q]=144=24\cdot 6=[L_2:\Q][L_4:\Q]$, the fields $L_2$ and
 $L_4$ are linearly disjoint. Since
@@ -277,7 +282,8 @@ subgroup of $\Gal(K_i/\Q)$ fixing $K_i$ pointwise is trivial. Inside
 $\Gal(L_2/\Q)\cong S_4$, the subgroup fixing $K_2$ pointwise is a point
 stabilizer for the natural action on the four roots of $x^4-x-1$, hence
 isomorphic to $S_3$; inside $\Gal(L_4/\Q)\cong S_3$, the subgroup fixing
-$K_4$ pointwise is a point stabilizer on the three roots of $f_4$, hence
+$K_4$ pointwise is a point stabilizer on the three roots of $t^3+2t+1$,
+hence
 isomorphic to $C_2$ (both verified directly in SageMath). Since
 $\Gal(L/\Q)$ is the direct product $C_2\times S_4\times C_2\times S_3$
 and $K$ embeds as the corresponding product of stem fields, $\Gal(L/K)$
@@ -328,6 +334,80 @@ SageMath: the compositum of these four quadratic fields has degree $16$
 with Galois group $C_2\times C_2\times C_2\times C_2$.
 \end{proof}
 
+\section{Artin Representations and the Conductor-Discriminant
+Formula}\label{sec:artin}
+
+\begin{proposition}\label{prop:artin-count}
+Every irreducible complex representation of
+$G=\Gal(L/\Q)\cong C_2\times S_4\times C_2\times S_3$ is an external
+tensor product $\rho=\rho_1\boxtimes\rho_2\boxtimes\rho_3\boxtimes\rho_4$
+of irreducibles of the four factors. Consequently $G$ has exactly
+$2\cdot5\cdot2\cdot3=60$ irreducible representations, with dimension
+distribution
+\[
+\begin{array}{c|ccccc}
+\dim\rho & 1 & 2 & 3 & 4 & 6\\\hline
+\text{count} & 16 & 16 & 16 & 4 & 8
+\end{array}
+\]
+and $\sum_{\rho}(\dim\rho)^2=576=|G|$.
+\end{proposition}
+\begin{proof}
+Standard representation theory of direct products. Directly verified in
+SageMath by constructing $G$ as an explicit permutation group of degree
+$11$ and computing its full character table.
+\end{proof}
+
+\begin{proposition}[Conductor-discriminant check]\label{prop:artin-conductor}
+For each ramified prime $p\in\{3,7,59,283\}$, inertia in $G$ has order
+$2$: trivial in three factors, and generating the remaining one. At
+$p=283$: since $v_{283}(\disc K_2)=1$, ramification is tame with a
+single collision, so inertia acts on the roots of $x^4-x-1$ as a
+transposition, not a double transposition. For an order-$2$ generator
+$\sigma$, the tame Artin conductor of $\rho$ at $p$ is
+\[
+a_p(\rho)=\dim\rho-\dim\rho^{\langle\sigma\rangle}
+=\frac{\dim\rho-\chi_\rho(\sigma)}{2}.
+\]
+Summing over all $60$ irreducibles,
+\[
+\sum_{\rho\in\widehat G}\dim(\rho)\,a_p(\rho)=288
+\qquad\text{for each }p\in\{3,7,59,283\}.
+\]
+\end{proposition}
+\begin{proof}
+At a transposition, the tame conductor exponent
+$a=(\dim\rho-\chi_\rho(\sigma))/2$ takes the following values on the
+irreducibles of $S_4$ and $S_3$, independently confirmed against Sage's
+character tables:
+\[
+\begin{array}{c|ccccc}
+S_4 & [4] & [1^4] & [2,2] & [3,1] & [2,1,1]\\\hline
+\dim & 1 & 1 & 2 & 3 & 3\\
+a & 0 & 1 & 1 & 1 & 2
+\end{array}
+\qquad
+\begin{array}{c|ccc}
+S_3 & [3] & [1^3] & [2,1]\\\hline
+\dim & 1 & 1 & 2\\
+a & 0 & 1 & 1
+\end{array}
+\]
+Building $G$ directly as a
+permutation group of order $576$, identifying the four inertia
+generators from its natural block structure, and summing
+$\dim(\rho)\,a_p(\rho)$ over all $60$ irreducible complex characters
+(which are real-valued in this case) gives $288$ for each of
+$p=3,7,59,283$.
+\end{proof}
+
+By the Artin conductor--discriminant formula,
+$v_p(\disc L)=\sum_\rho\dim(\rho)\,a_p(\rho)$, so
+Proposition~\ref{prop:artin-conductor} gives a second, independent proof
+of Corollary~\ref{cor:disc}: the uniform ramification exponent $288$,
+and hence $\disc(L)=350637^{288}$, obtained here from the representation
+theory of $G$ rather than from the tower discriminant formula.
+
 \section{Weyl Group Corollary}\label{sec:weyl}
 
 The standard isomorphisms
@@ -354,8 +434,9 @@ parameters are arithmetic invariants of finite-volume cusped hyperbolic
 3-manifolds.
 The association of $K_1$ with $m003$, $K_2$ with $m019$, $K_4$ with
 $m006$, and $K_3=\Q(\sqrt{-7})$ with a candidate right-handed $\mathrm{SU}(2)$
-manifold is proposed in that program, building on the arithmetic
-independence established in~\cite{DualSurgery}. Theorem~\ref{thm:main} and
+manifold is proposed in that program; the arithmetic independence of the
+$K_1$/$K_2$ ($m003$/$m019$) pair specifically is established
+in~\cite{DualSurgery}. Theorem~\ref{thm:main} and
 Corollary~\ref{cor:weyl} are results in algebraic number theory,
 independent of any physical interpretation.
 
@@ -367,27 +448,69 @@ independent of any physical interpretation.
   and $m006$. What remains open is whether $m010$ is the \emph{canonical}
   geometric representative for this factor---in particular, whether it is
   the unique minimal-volume census manifold with this trace field.
-\item \textit{Covering tower structure.} The manifolds $m003$ and $m006$
-  have covering towers with Lucas-number behavior in their first homology
-  groups~\cite{MR97}. Whether an analogous structure extends to the
-  four-field compositum is open.
+\item \textit{Covering tower structure.} Related Lucas/Lehmer behavior in
+  hyperbolic 3-manifold covering-tower homology is known~\cite{MR97};
+  whether the specific covering towers of $m003$ and $m006$ fit into
+  this framework, and whether an analogous structure extends to the
+  four-field compositum, is open.
 \item \textit{Geometric mechanism.} The theorem establishes an algebraic
   isomorphism. Whether a 3D-3D correspondence in the sense of
-  Dimofte-Gaiotto-Gukov provides a geometric mechanism elevating this
-  to a dynamical statement about gauge interactions remains an open
-  problem.
+  Dimofte-Gaiotto-Gukov~\cite{DGG} provides a geometric mechanism
+  elevating this to a dynamical statement about gauge interactions
+  remains an open problem.
+\item \textit{Rarity of the configuration.} The proof method here---four
+  Galois pieces with pairwise disjoint ramification support---does not
+  by itself imply that this specific configuration is arithmetically
+  distinguished: for census trace fields with large, essentially random
+  ramified primes, disjoint support is common rather than exceptional,
+  since large primes rarely collide. A preliminary scan of the first
+  $20$ orientable cusped census manifolds already produces $15$ distinct
+  quadruples with the same $C_2\times S_4\times C_2\times S_3$ Galois-type
+  and pairwise disjoint ramification, purely from non-collision of
+  unrelated primes. Whether the specific small primes $\{3,7,59,283\}$
+  occurring here are themselves distinguished---by minimal volume, by
+  discriminant size, or by some other intrinsic criterion---is a
+  separate question, left to a dedicated census-wide study.
 \end{enumerate}
 
 \section*{Appendix: Chebotarev Density Check}
 
 As a further empirical check on Theorem~\ref{thm:main}, the direct-product
 structure predicts, by the Chebotarev density theorem, that the density
-of rational primes splitting completely in $L$ is $1/576$. Testing all
-$3241$ unramified primes below $30000$: the four defining polynomials
-split completely simultaneously at exactly $5$ primes, against an
-expected count of $3241/576\approx5.63$ under the theoretical density---
-consistent with, though of course not an independent proof of,
-Theorem~\ref{thm:main}.
+of rational primes splitting completely in $L$ is $1/576$, and more
+generally that the joint Frobenius class $(c_1,c_2,c_3,c_4)$ (conjugacy
+classes in the four factors) occurs with density
+$|c_1||c_2||c_3||c_4|/576$.
+
+Testing all $3241$ unramified primes below $30000$, using the monic
+model $t^3+2t+1$ throughout (the non-monic geometric model
+$8\beta^3-24\beta^2+28\beta-11$ would give a degenerate reduction at
+$p=2$, since its leading coefficient $8$ vanishes mod $2$): all $60$
+possible joint Frobenius classes occur, and the four defining
+polynomials split completely at exactly $5$ primes,
+against an expected count of $3241/576\approx5.63$ under the theoretical
+density---consistent with, though of course not an independent proof
+of, Theorem~\ref{thm:main}.
+
+The marginal splitting-type distributions for the two non-abelian
+factors are, similarly, an empirical illustration of the already-proved
+direct-product Chebotarev law, not an independent statistical proof of
+it:
+\[
+\begin{array}{c|ccccc}
+S_4\text{ type} & 1^4 & 2,1,1 & 2,2 & 3,1 & 4\\\hline
+\text{observed} & 119 & 830 & 409 & 1062 & 821\\
+\text{expected} & 135.04 & 810.25 & 405.13 & 1080.33 & 810.25
+\end{array}
+\]
+\[
+\begin{array}{c|ccc}
+S_3\text{ type} & 1^3 & 2,1 & 3\\\hline
+\text{observed} & 531 & 1618 & 1092\\
+\text{expected} & 540.17 & 1620.50 & 1080.33
+\end{array}
+\]
+with expected counts given by (conjugacy class size)$\times3241/|G_i|$.
 
 \section*{Acknowledgments}
 The author used Claude (Sonnet 4.6) as a research
@@ -429,6 +552,10 @@ M.~Gentry,
 HFG computational suite,\\
 \url{https://github.com/drmlgentry/hyperbolic-flavor-geometry},
 commit \texttt{e0bfd33} (2026).
+\bibitem{DGG}
+T.~Dimofte, D.~Gaiotto, and S.~Gukov,
+Gauge theories labelled by three-manifolds,
+\emph{Comm.\ Math.\ Phys.} \textbf{325} (2014), no.~2, 367--419.
 \bibitem{DualSurgery}
 M.~Gentry,
 The Meyerhoff manifold as a dual Dehn filling of two

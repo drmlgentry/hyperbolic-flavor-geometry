@@ -85,8 +85,8 @@
 <text x="930" y="1097" text-anchor="middle" class="body">degree 2 · Galois</text>
 
 <rect x="1130" y="990" width="340" height="180" rx="12" class="field"/>
-<text x="1300" y="1035" text-anchor="middle" class="mono">K₄ = ℚ(β)</text>
-<text x="1300" y="1072" text-anchor="middle" class="mono">8β³−24β²+28β−11=0</text>
+<text x="1300" y="1035" text-anchor="middle" class="mono">K₄ = ℚ(t)</text>
+<text x="1300" y="1072" text-anchor="middle" class="mono">t³+2t+1=0</text>
 <text x="1300" y="1115" text-anchor="middle" class="body">degree 3 · non-Galois</text>
 
 <!-- Q -->
