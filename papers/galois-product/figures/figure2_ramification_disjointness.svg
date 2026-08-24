@@ -37,6 +37,7 @@
 <text x="220" y="395" text-anchor="middle" class="body">Galois group C₂</text>
 <rect x="115" y="450" width="210" height="90" rx="45" class="prime"/>
 <text x="220" y="507" text-anchor="middle" class="bigmono">{3}</text>
+<text x="220" y="562" text-anchor="middle" class="small">e=1</text>
 
 <rect x="420" y="245" width="330" height="330" rx="16" class="card"/>
 <text x="585" y="300" text-anchor="middle" class="bigmono">L₂</text>
@@ -44,6 +45,7 @@
 <text x="585" y="395" text-anchor="middle" class="body">Galois group S₄</text>
 <rect x="465" y="450" width="240" height="90" rx="45" class="prime"/>
 <text x="585" y="507" text-anchor="middle" class="bigmono">{283}</text>
+<text x="585" y="562" text-anchor="middle" class="small">e=12</text>
 
 <rect x="785" y="245" width="330" height="330" rx="16" class="card"/>
 <text x="950" y="300" text-anchor="middle" class="bigmono">K₃</text>
@@ -51,6 +53,7 @@
 <text x="950" y="395" text-anchor="middle" class="body">Galois group C₂</text>
 <rect x="845" y="450" width="210" height="90" rx="45" class="prime"/>
 <text x="950" y="507" text-anchor="middle" class="bigmono">{7}</text>
+<text x="950" y="562" text-anchor="middle" class="small">e=1</text>
 
 <rect x="1150" y="245" width="330" height="330" rx="16" class="card"/>
 <text x="1315" y="300" text-anchor="middle" class="bigmono">L₄</text>
@@ -58,6 +61,7 @@
 <text x="1315" y="395" text-anchor="middle" class="body">Galois group S₃</text>
 <rect x="1210" y="450" width="210" height="90" rx="45" class="prime"/>
 <text x="1315" y="507" text-anchor="middle" class="bigmono">{59}</text>
+<text x="1315" y="562" text-anchor="middle" class="small">e=3</text>
 
 <!-- disjointness -->
 <line x1="75" y1="620" x2="1425" y2="620" class="dash"/>
