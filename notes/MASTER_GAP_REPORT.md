@@ -217,6 +217,19 @@ be right for the wrong stated reason.
 31. **m009/m010 arithmeticity** [Computed, extensive but not a formal
     closed-form certificate]: 78/78 Γ^(2) trace-integrality checks land
     exactly in O_K.
+32. **m010 uniquely the minimum-volume maximal-order manifold, full
+    census** [Computed — exact, not statistical]. `census_uniqueness_scan.py`
+    ran to completion across the entire 212,641-manifold
+    OrientableCuspedCensus (~5.8 CPU-hours, 1 error, 0 timeouts). 37
+    manifolds share invariant trace field Q(√−7); 17 realize the maximal
+    order O_K (exact `p+qb` index check, not numerical); m010
+    (vol=2.66674478344906) is uniquely the minimum-volume manifold among
+    all 17 — the next-smallest maximal-order manifolds are all at
+    exactly double that volume. Upgrades
+    `gentry-galois-product-theorem.tex` Proposition 3.2 from an early
+    ~20,000-manifold slice to a genuine full-census result. Not yet
+    propagated into `CLAIMS_REGISTER.md` or the paper's own wording —
+    both still open, see below.
 
 ---
 
@@ -290,8 +303,8 @@ its own regardless of rank.
    count, degree, volume, census family)` — the selection function of
    the computation itself. A companion scan (`census_uniqueness_scan.py`,
    testing whether m010 is uniquely the minimal-volume manifold with
-   maximal cusp order) does not have this bias and is separately running,
-   near completion.
+   maximal cusp order) did not have this bias and has **completed — see
+   COMPLETED item 32**.
 
 6. **Dual surgery paper (SSRN 7277458) — revision + venue.** AGT
    rejected (scope, not a math error). Needs explicit prior-unknown
@@ -352,9 +365,11 @@ its own regardless of rank.
 18. **SSRN 6631218** neutrino mass prediction (m_ν=71.4±2.9 meV) —
     falsifiable by future CMB-S4 data; untested.
 
-19. **Full census extension** for the uniqueness/selection checks —
-    earlier checks only covered the first 80–200 of ~10,000+ manifolds;
-    this session's two census scans (item 5) are the actual follow-through.
+19. **Full census extension for the disjoint-ramification/rarity check**
+    (item 5) — earlier checks only covered the first 80–200 of ~10,000+
+    manifolds. The uniqueness half of this pair is now done (COMPLETED
+    item 32); this item now refers only to the still-running
+    `census_disjoint_ramification_scan.sage.py`.
 
 ### Paper-portfolio / editorial gaps (from the Aug 6–20 2026 audit entries)
 

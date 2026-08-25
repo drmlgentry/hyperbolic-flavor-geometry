@@ -1,5 +1,36 @@
 # CORE_MASTER Gap Report
 
+## Aug 25 2026 — Full-census confirmation: m010 uniquely minimal-volume maximal-order manifold
+
+**`census_uniqueness_scan.py` ran to completion across the entire
+212,641-manifold `OrientableCuspedCensus`** (~5.8 CPU-hours, 1 error, 0
+timeouts after a per-manifold hard timeout and resumable checkpointing
+were added following two earlier silent kills — one from a host reboot
+tearing down WSL2, one from WSL2's own idle-timeout between separate
+`wsl.exe` invocations; both fixed by running the job as one continuously-
+attached session). Result:
+
+- 37 manifolds in the full census have invariant trace field Q(√−7).
+- 17 of those realize the maximal order O_K (cusp-shape index 1, exact
+  algebraic check via `p+qb` coordinate recovery, not numerical).
+- **m010 (vol=2.66674478344906) is uniquely the minimum-volume manifold
+  among all 17** — the next-smallest maximal-order manifolds (s772,
+  s774–s776, s778, s781–s782, s786–s787) are all at exactly double that
+  volume (5.333490), with nothing at or below m010's own volume.
+
+This upgrades `gentry-galois-product-theorem.tex` Proposition 3.2 from
+"verified in an early ~20,000-manifold slice" to a genuine, exact,
+full-census result. Companion scan
+(`census_disjoint_ramification_scan.sage.py`, testing rarity of the
+C₂×S₄×C₂×S₃ configuration and the {3,7,59,283} quadruple) is still
+running as of this entry — see its own methodological caveat about
+non-random missingness in the `s`-family before treating any rarity
+statistic from it as unbiased.
+
+**Not yet done:** propagating this into `CLAIMS_REGISTER.md` (a new or
+upgraded entry) and into the paper's Proposition 3.2 wording itself —
+both are the user's call, not made unilaterally here.
+
 ## Aug 23 2026 — Stage 3 BLIND TEST COMPLETE: result NULL (no canonical selector found)
 
 **The full pre-registered blind protocol ran to completion.** Sealed packet
