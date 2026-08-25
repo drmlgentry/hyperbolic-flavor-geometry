@@ -351,6 +351,31 @@ its own regardless of rank.
    — this would settle the question without depending on any of the
    presentation-theoretic subtleties above.
 
+   **Item (c) attempted, INCONCLUSIVE by construction — not a negative
+   result.** Ran `reproduce/m009_m010_holonomy_integrality_test.py`:
+   pulled m009/m010's actual holonomy matrices via
+   `M.polished_holonomy(bits_prec=200).SL2C(g)` for both generators, ran
+   `algdep(entry, 4)` on all 8 matrix entries per manifold. Every entry
+   has a degree-4 minimal polynomial (none degree ≤2), which would look
+   like a negative result at face value — but the data itself shows why
+   this test is inconclusive rather than negative: the (0,1) and (1,0)
+   entries of generator `a`, for both manifolds, are **exactly ±i**, and
+   i=√−1 belongs to Q(i), a completely different quadratic field from
+   Q(√−7) — it cannot be in O_{−7} under any embedding, valid or not.
+   This confirms the exact caveat raised before running the test:
+   SnapPy's default holonomy generating set is not already expressed in
+   an O_K-arithmetic-integral basis; some conjugation by an element of
+   PSL₂(C) would be needed first, and finding that specific conjugating
+   matrix was not attempted here. **Do not read this as evidence against
+   arithmeticity or embedding** — the basis-independent trace-integrality
+   result already established this session (all 15 Horowitz-Southcott
+   generators + 64 triple products, both manifolds, exactly in O_K)
+   remains the stronger and still-standing fact. Genuine next step for
+   item (c): find the conjugating matrix that puts the holonomy into
+   O_K-integral form (e.g. by solving for a basis change using the
+   already-confirmed integral traces as constraints) before re-running
+   the entrywise algdep test.
+
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
    ramification, Artin conductors, Chebotarev, maximal abelian
