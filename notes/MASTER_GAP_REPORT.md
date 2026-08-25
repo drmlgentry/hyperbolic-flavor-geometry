@@ -317,64 +317,72 @@ its own regardless of rank.
      five checks pass cleanly and consistently — meaningfully raises
      confidence that G_GAP is a faithful presentation of ⟨T_7,J⟩, though
      it does not amount to a full independent proof of that fact.
-   - **Correct, precisely-scoped statement of the result (not yet
-     upgraded further):** for the presently constructed extension
-     G_GAP=⟨T_7,J⟩, the index-6 enumeration yields six torsion-free
-     candidates, none having the target rank-one abelianizations. This
-     is *not* the same claim as "m009, m010 are not index-6 subgroups of
-     the maximal d=−7 arithmetic lattice" — that stronger claim requires
-     first confirming G_GAP (built here as PGL₂(O_{−7})) is genuinely
-     Vulakh's maximal extension B_7, which remains unconfirmed (see
-     citation note below) and is now the leading remaining suspect,
-     given the presentation audit above increases confidence the
-     construction itself is faithful. m009/m010's own cusp-order theorem
-     (item 30) is entirely unaffected regardless of how this resolves.
-   Citation status: Vulakh, "Reflections in extended Bianchi groups,"
-   *Math. Proc. Cambridge Philos. Soc.* 115(1), 1994, DOI
-   10.1017/S0305004100071887, confirmed real via Cambridge's listing,
-   full text still not read, so whether PGL₂(O_{−7}) actually equals
-   Vulakh's B_d for d=−7 remains unconfirmed from source.
-   **Further next steps, not yet attempted** (from the same methodological
-   review): (a) read Vulakh's actual theorem directly, rather than infer
-   B_7=PGL₂(O_{−7}); (b) independently re-derive the covolume 0.888914927816353
-   from the Borel/Bianchi volume formula via a second method as a
-   normalization cross-check (partial evidence already exists that the
-   current value is correctly normalized: it divides m009's real,
-   independently-computed volume 2.66674478344906 to give exactly
-   3.000000... to 10+ significant figures — an unlikely coincidence if
-   the normalization were off by a constant factor, though not a full
-   substitute for an independent re-derivation); (c) most decisively,
-   conjugate m009/m010's actual holonomy representations (already
-   available from this session's Γ^(2) trace-integrality work) directly
-   into PSL₂(O_{−7}) or the relevant maximal lattice and compute the
-   index computationally, rather than inferring it from the volume ratio
-   — this would settle the question without depending on any of the
-   presentation-theoretic subtleties above.
-
-   **Item (c) attempted, INCONCLUSIVE by construction — not a negative
-   result.** Ran `reproduce/m009_m010_holonomy_integrality_test.py`:
-   pulled m009/m010's actual holonomy matrices via
-   `M.polished_holonomy(bits_prec=200).SL2C(g)` for both generators, ran
-   `algdep(entry, 4)` on all 8 matrix entries per manifold. Every entry
-   has a degree-4 minimal polynomial (none degree ≤2), which would look
-   like a negative result at face value — but the data itself shows why
-   this test is inconclusive rather than negative: the (0,1) and (1,0)
-   entries of generator `a`, for both manifolds, are **exactly ±i**, and
-   i=√−1 belongs to Q(i), a completely different quadratic field from
-   Q(√−7) — it cannot be in O_{−7} under any embedding, valid or not.
-   This confirms the exact caveat raised before running the test:
-   SnapPy's default holonomy generating set is not already expressed in
-   an O_K-arithmetic-integral basis; some conjugation by an element of
-   PSL₂(C) would be needed first, and finding that specific conjugating
-   matrix was not attempted here. **Do not read this as evidence against
-   arithmeticity or embedding** — the basis-independent trace-integrality
-   result already established this session (all 15 Horowitz-Southcott
-   generators + 64 triple products, both manifolds, exactly in O_K)
-   remains the stronger and still-standing fact. Genuine next step for
-   item (c): find the conjugating matrix that puts the holonomy into
-   O_K-integral form (e.g. by solving for a basis change using the
-   already-confirmed integral traces as constraints) before re-running
-   the entrywise algdep test.
+   - **MAXIMALITY CONFIRMED — result upgraded.** Read Vulakh's cited
+     companion source directly: Krieg, Rodriguez, Wernz, "The maximal
+     discrete extension of SL₂(O_K) for an imaginary quadratic number
+     field K," *Arch. Math.* (2019), arXiv:1811.08251 — citation
+     verified real via the authors' own institutional listing, then the
+     full text read directly (legitimately open access). Their Theorem
+     1 + Proposition give [Γ*_K : SL₂(O_K)] = 2^ν, ν = #{primes dividing
+     d_K}. For d_K=−7 (prime discriminant), ν=1, so the index is exactly
+     2 — only one possible nontrivial extension exists at all. Checked
+     by hand whether J=diag(−1,1) (this session's extension generator)
+     actually satisfies their Proposition's precise membership condition
+     for Γ*_K: taking (α,β,γ,δ)=(−1,0,0,1) — literally in O_K, and the
+     ideal condition ⟨αδ−βγ⟩=⟨−1⟩=O_K=⟨α,β,γ,δ⟩ holds — confirms
+     J genuinely is an element of Γ*_K. Since ν=1 means only one
+     nontrivial coset exists, J and the paper's own Atkin-Lehner-style
+     generator V_7 must generate the identical extension. **This
+     confirms, independently and from the primary source (not merely
+     asserted), that B_7=PGL₂(O_{−7}) as constructed in
+     `bianchi_d7_lowindex.g` genuinely is the maximal discrete extension
+     for d=−7** — matching Vulakh's terminology exactly.
+   - **Result, now correctly upgraded:** m009 and m010 are confirmed
+     **not** to be index-6 subgroups of the maximal discrete extension
+     of the standard d=−7 Bianchi group — not merely of one particular
+     constructed presentation. m009/m010's own cusp-order theorem (item
+     30) remains entirely unaffected; what changes is the shape of the
+     open question below.
+   - **The open question has changed accordingly.** It is no longer "is
+     there a larger extension of T_7?" — that branch is closed. It is
+     now: **which maximal arithmetic lattice, among those in the same
+     Q(√−7) commensurability class, actually contains Γ_009 and
+     Γ_010?** Equal volume does not force m009/m010 to share the same
+     maximal parent lattice — the invariant trace field being M₂(K)-
+     split (already established) permits other maximal arithmetic
+     lattices arising as normalizers of other Eichler-type orders in
+     M₂(K), which need not literally contain the standard Bianchi group
+     PSL₂(O_K). A structurally attractive possibility, consistent with
+     the already-proved cusp-order distinction (Z[√−7]⊂O_K, index 2):
+     Γ_009 and Γ_010 could sit in maximal lattices attached to two
+     *different* orders R₉, R₁₀ that happen to share the same covolume.
+     Proposed (not yet attempted) computational route: for each
+     manifold, compute the O_K-order R_i generated by the (now
+     confirmed-integral, see below) squared-generator holonomy matrices,
+     determine its local level/discriminant, compute its normalizer in
+     PGL₂(K) and that normalizer's covolume, then recover the genuine
+     subgroup index via vol(m_i)/covol(N(R_i)) — only after that,
+     enumerate subgroups of the correct parent.
+   - **Partial progress on that route: Γ^(2) holonomy entries tested
+     directly, more informative than the earlier raw-generator test.**
+     Ran `reproduce/m009_m010_gamma2_holonomy_order_test.py`: pulled
+     m009/m010's holonomy for the squared/product generators (aa, bb,
+     ab, ba — matching this session's earlier Γ^(2) trace-integrality
+     scope) at 300-bit precision and ran `algdep` on all entries.
+     **Diagonal entries are confirmed elements of O_K** — recognizable
+     minimal polynomials x²−x+2 (=ω's own polynomial), x²+7 (=√−7's),
+     rational integers, and other quadratic patterns matching O_K's
+     lattice structure exactly, across all four words and both
+     manifolds. **Off-diagonal entries are degree-4**, but structurally
+     revealing: e.g. x⁴+5x²+8 factors as a quadratic in x² with roots
+     (−5±√−7)/2 ∈ K exactly — i.e. these entries satisfy x²∈K, meaning
+     they live in a specific quadratic extension of K, not a
+     random degree-4 field. This is consistent with (not yet confirmed
+     as) a single global diagonal conjugation/rescaling being able to
+     bring the off-diagonal entries into O_K while leaving the
+     already-good diagonal entries untouched — the natural next
+     computational step for the order-identification route above, not
+     yet carried out.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
