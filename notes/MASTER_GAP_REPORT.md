@@ -277,50 +277,79 @@ its own regardless of rank.
    distinguished elements, representation characters beyond tr_a/tr_b,
    or exact arithmetic attached to the filling representation.
 
-2. **Bianchi subgroup identification for m009/m010 — B_7=PGL₂(O_{−7})
-   GAP search run to completion, NEGATIVE result.** `Γ_{009}, Γ_{010}`
-   are proved not to be subgroups of ordinary T_7=PSL₂(O_{−7})
-   (COMPLETED item 34). The presentation blocker is now resolved: the
-   Reese paper's full text was read directly (arXiv:2206.01262 is
-   legitimately open access — no institutional login or piracy
-   involved), giving the exact d=−7 presentation, Γ_{−7}=⟨A,B,U | B²,
-   (BA)³, AUA⁻¹U⁻¹, (BAU⁻¹BU)²⟩ with A=[[1,1],[0,1]], B=[[0,1],[−1,0]],
-   U=[[1,ω],[0,1]] (p.12 of the paper). Peripheral generators are simply
-   A (=T₁) and U (=T_ω). The Stage-2 conjugation action was computed
-   from these real matrices and independently checked numerically
-   (zero error): **J·g·J⁻¹=g⁻¹ for all of g∈{A,B,U}**.
-   `reproduce/bianchi_d7_lowindex.g` now has both stages fully filled
-   in (no more TODOs/QUIT_GAP) and was **run end-to-end in GAP**:
-   - Stage 1 sanity checks all passed: all 3 index-3 classes of T_7
-     correctly show torsion (validates the presentation, torsion
-     representatives, and coset-action test together).
-   - Stage 2 (B_7): 45 index-6 subgroup classes found, 6 torsion-free.
-     **None match m009 or m010 — and not narrowly.** All 6 torsion-free
-     classes have entirely finite H₁ (zero free rank), while both
-     m009 (H₁=Z⊕Z/2) and m010 (H₁=Z⊕Z/6) require free rank 1. Checked
-     whether this could be an artifact of an incomplete torsion
-     representative list (a real risk, since only B, BA, and j were
-     used): it cannot — an incomplete torsion list can only produce
-     *false positives* (wrongly calling a subgroup torsion-free), never
-     false negatives, so a genuinely torsion-free rank-1 candidate could
-     not have been hidden by this.
-   - **Conclusion:** either B_7=PGL₂(O_{−7}) is not actually Vulakh's
-     correct maximal extension (the maximality claim was already flagged
-     unconfirmed — see the citation note below), or some other
-     assumption in the index-6/volume-ratio chain needs revisiting. This
-     is the built-in falsifier this search was designed to provide,
-     firing as intended — a genuine result, not a dead end. m009/m010's
-     own cusp-order theorem (item 30) is entirely unaffected regardless.
+2. **Bianchi subgroup identification for m009/m010 — GAP search complete
+   for one candidate parent group; result precisely scoped, not yet a
+   theorem about the manifolds.** `Γ_{009}, Γ_{010}` are proved not to be
+   subgroups of ordinary T_7=PSL₂(O_{−7}) (COMPLETED item 34). The
+   presentation blocker is resolved: the Reese paper's full text was read
+   directly (arXiv:2206.01262 is legitimately open access — no
+   institutional login or piracy involved), giving the exact d=−7
+   presentation, Γ_{−7}=⟨A,B,U | B², (BA)³, AUA⁻¹U⁻¹, (BAU⁻¹BU)²⟩ with
+   A=[[1,1],[0,1]], B=[[0,1],[−1,0]], U=[[1,ω],[0,1]] (p.12). Peripheral
+   generators: A (=T₁), U (=T_ω). The Stage-2 conjugation action was
+   computed from these real matrices and independently checked
+   numerically (zero error): J·g·J⁻¹=g⁻¹ for all of g∈{A,B,U} (this
+   follows automatically from J,A,B,U being real matrices in one common
+   ambient group — conjugation is always a genuine automorphism, so it
+   necessarily preserves every relation the generators satisfy; this
+   does not by itself certify the resulting *presentation* is complete).
+   `reproduce/bianchi_d7_lowindex.g` was run end-to-end in GAP:
+   - Stage 1 sanity checks passed: all 3 index-3 classes of T_7 show
+     torsion, as required.
+   - Stage 2 (the constructed group G_GAP=⟨T_7,J⟩): 45 index-6
+     subgroups, 6 torsion-free, **none matching m009 or m010** — all 6
+     have entirely finite H₁ (zero free rank) against both targets'
+     required free rank 1.
+   - **Presentation audit performed in response to a methodologically
+     sound objection** (relayed via the user: automorphism-preserves-
+     relators alone doesn't certify the extension presentation is
+     complete/faithful) — checked directly in GAP:
+     T_7's own abelianization from this presentation is [0,2]=Z⊕Z/2,
+     which matches Reese's own published table value (Γ₋₇ᵃᵇ=C₂×C∞)
+     *exactly* — real evidence the T_7 presentation was entered
+     correctly, since a relator typo would very likely break this
+     match. ⟨A,B,U⟩ sits at index exactly 2 inside G_GAP and is normal,
+     as intended. B and BA retain their expected orders (2, 3) inside
+     G_GAP — nothing collapsed. G_GAP's abelianization is [2,2,2] (all
+     torsion) — initially surprising, but this is the *predicted*
+     consequence of jAj⁻¹=A⁻¹ becoming A²=1 once abelianized (conjugation
+     is trivial in an abelian quotient), not evidence of an error. All
+     five checks pass cleanly and consistently — meaningfully raises
+     confidence that G_GAP is a faithful presentation of ⟨T_7,J⟩, though
+     it does not amount to a full independent proof of that fact.
+   - **Correct, precisely-scoped statement of the result (not yet
+     upgraded further):** for the presently constructed extension
+     G_GAP=⟨T_7,J⟩, the index-6 enumeration yields six torsion-free
+     candidates, none having the target rank-one abelianizations. This
+     is *not* the same claim as "m009, m010 are not index-6 subgroups of
+     the maximal d=−7 arithmetic lattice" — that stronger claim requires
+     first confirming G_GAP (built here as PGL₂(O_{−7})) is genuinely
+     Vulakh's maximal extension B_7, which remains unconfirmed (see
+     citation note below) and is now the leading remaining suspect,
+     given the presentation audit above increases confidence the
+     construction itself is faithful. m009/m010's own cusp-order theorem
+     (item 30) is entirely unaffected regardless of how this resolves.
    Citation status: Vulakh, "Reflections in extended Bianchi groups,"
    *Math. Proc. Cambridge Philos. Soc.* 115(1), 1994, DOI
    10.1017/S0305004100071887, confirmed real via Cambridge's listing,
-   but its full text still has not been read, so the B_7=PGL₂(O_{−7})
-   identification with Vulakh's actual maximal-extension theorem remains
-   unconfirmed from source — now with active negative evidence against
-   it, not just an unverified citation. **Next step, not yet attempted:**
-   either read Vulakh's actual theorem to check whether PGL₂(O_{−7}) is
-   really his B_d for d=−7, or reconsider whether the volume-ratio
-   argument's index-6 prediction is even the right frame.
+   full text still not read, so whether PGL₂(O_{−7}) actually equals
+   Vulakh's B_d for d=−7 remains unconfirmed from source.
+   **Further next steps, not yet attempted** (from the same methodological
+   review): (a) read Vulakh's actual theorem directly, rather than infer
+   B_7=PGL₂(O_{−7}); (b) independently re-derive the covolume 0.888914927816353
+   from the Borel/Bianchi volume formula via a second method as a
+   normalization cross-check (partial evidence already exists that the
+   current value is correctly normalized: it divides m009's real,
+   independently-computed volume 2.66674478344906 to give exactly
+   3.000000... to 10+ significant figures — an unlikely coincidence if
+   the normalization were off by a constant factor, though not a full
+   substitute for an independent re-derivation); (c) most decisively,
+   conjugate m009/m010's actual holonomy representations (already
+   available from this session's Γ^(2) trace-integrality work) directly
+   into PSL₂(O_{−7}) or the relevant maximal lattice and compute the
+   index computationally, rather than inferring it from the volume ratio
+   — this would settle the question without depending on any of the
+   presentation-theoretic subtleties above.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
