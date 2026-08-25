@@ -1,3 +1,7 @@
+% STALE -- see papers/04_new_needs_journal/gentry-ckm-v3.tex
+% This copy predates the Aug 19 2026 citation-year/MSC-code fix
+% (commit 63dbc34) and the AI-acknowledgment wording update. Do not
+% edit or submit this file -- flagged 2026-08-25, MASTER_GAP_REPORT.md.
 \documentclass[11pt,a4paper]{article}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{authblk}

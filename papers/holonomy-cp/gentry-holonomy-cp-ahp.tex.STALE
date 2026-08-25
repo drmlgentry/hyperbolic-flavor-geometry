@@ -1,3 +1,8 @@
+% STALE -- see papers/01_active_plb/gentry-holonomy-cp-ahp.tex
+% This copy predates the Aug 19 2026 citation/MSC-code fix (commit
+% 7f4ac46) -- missing MSC codes, missing theorem environments, and
+% still has the garbled/stale self-citations. Do not edit or submit
+% this file -- flagged 2026-08-25, MASTER_GAP_REPORT.md.
 \documentclass[12pt]{article}
 \usepackage{authblk}
 

@@ -402,11 +402,14 @@ its own regardless of rank.
     "CKM v3: fix citation year, add MSC2020 codes"). Confirmed directly
     in `papers/04_new_needs_journal/gentry-ckm-v3.tex`: MSC codes present
     (`Primary 57K32; Secondary 11R32`), SSRN citations correctly dated
-    2026. Ready to resubmit. **Caveat: a second, diverged, un-fixed copy
-    exists at `papers/ckm-rebuild/gentry-ckm-v3.tex`** (missing MSC
-    codes/keywords entirely, different AI-acknowledgment wording) — real
-    risk of the wrong copy being edited or submitted; needs reconciling
-    or deleting, not previously flagged anywhere in the corpus.
+    2026. Ready to resubmit. **Duplicate-copy risk resolved 2026-08-25:**
+    `papers/ckm-rebuild/gentry-ckm-v3.tex` was confirmed genuinely
+    different from the fixed version (missing MSC codes/keywords,
+    different AI-acknowledgment wording) — not deleted (it has an
+    associated compiled .pdf/.aux/.log that might still be wanted for
+    reference), instead renamed to `gentry-ckm-v3.tex.STALE` with a
+    header comment pointing to the live file, so it can no longer be
+    mistaken for an editable/submittable .tex.
 22. **Qubit gates paper** — the CS level k=2 physical-interpretation
     claim needs to be split from the proven algebraic identity (already
     flagged honestly in the paper's own §6.3, just needs moving
@@ -420,9 +423,17 @@ its own regardless of rank.
     `papers/01_active_plb/gentry-holonomy-cp-ahp.tex`: MSC codes present
     (`Primary 57K32; Secondary 20H10`), both self-citations now clean
     (plain SSRN references, no garbled double-journal listing, no stale
-    "submitted March 2026" text). **Same duplicate-copy caveat as item
-    21: a diverged, un-fixed copy exists at
-    `papers/holonomy-cp/gentry-holonomy-cp-ahp.tex`.**
+    "submitted March 2026" text). **Duplicate-copy risk resolved
+    2026-08-25:** `papers/holonomy-cp/gentry-holonomy-cp-ahp.tex` was
+    confirmed genuinely different from the fixed version — renamed to
+    `gentry-holonomy-cp-ahp.tex.STALE` with a header comment pointing to
+    the live file. Note: `papers/holonomy-cp/` also contains
+    `gentry-holonomy-cp-epjc.tex` (a *genuinely different* paper —
+    different `\journalname`, Eur. Phys. J. C, different
+    `\documentclass` options) and a bare `gentry-holonomy-cp.tex` —
+    neither was touched, since neither was the flagged duplicate and
+    the epjc variant is a legitimate separate submission target, not a
+    stale copy.
 24. **CORE_MASTER_v12 gap table** (July 29 audit, ~20 findings): several
     major results are proved elsewhere in the corpus but never made it
     into the "master" paper — most notably, **no Galois-Weyl
