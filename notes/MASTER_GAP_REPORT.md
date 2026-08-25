@@ -205,12 +205,21 @@ be right for the wrong stated reason.
 
 ### This session's own work
 
-29. **Q-001 Fricke-collapse exact resolution** ("RESOLVED," commit
-    `e419cfa`). B=A/(q₁₀(x)) has dim 20 exactly; multiplication by
-    u=z−x on B has rank 10 and **u²=0 exactly** — confirmed by exact
-    rational linear algebra. This is a genuine nonreduced/nilpotent
-    scheme-theoretic structure, not a plain z=x collapse — see OPEN
-    item 2 for the natural next calculation this motivates.
+29. **Q-001 Fricke-collapse exact resolution, including the nilpotent-
+    thickening formulation** ("RESOLVED," commit `e419cfa`;
+    `reproduce/q001_writeup_for_gpt.md`). B=A/(q₁₀(x)) has dim 20
+    exactly; multiplication by u=z−x on B has rank 10 and **u²=0
+    exactly** — confirmed by exact rational linear algebra. The writeup
+    already states the precise ring-theoretic structure this gives:
+    **B ≅ K[ε]/(ε²)** (the dual numbers over the degree-10 field K, with
+    ε=z−x) — equivalently, in the ambient ring, z−x∈√(I+⟨q₁₀(x)⟩)∖(I+⟨q₁₀(x)⟩).
+    z=x holds exactly on the reduced geometric component, while z−x is a
+    genuine order-2 nilpotent at the scheme level, not literally zero
+    there. (An externally-relayed suggestion to compute this radical as
+    a fresh next step was checked against this file and found to already
+    be answered by the existing result — no new computation needed;
+    u²∈J with u∉J already gives u∈√J by definition, and u∉J follows
+    immediately from rank(M_u)=10≠0.)
 30. **m009/m010 cusp-order distinction** [Proved via exact algebraic
     identity] (`gentry-galois-product-theorem.tex` Prop. 3.2). τ₉=√−7
     (order Z[√−7]), τ₁₀=(1+√−7)/2 (maximal order O_K), index 2 apart.
@@ -230,6 +239,17 @@ be right for the wrong stated reason.
     ~20,000-manifold slice to a genuine full-census result. Not yet
     propagated into `CLAIMS_REGISTER.md` or the paper's own wording —
     both still open, see below.
+34. **m009/m010 cannot be subgroups of ordinary T_7=PSL₂(O_{−7})**
+    [Computed — exact]. covol(T_7) independently computed this session
+    via the Humbert volume formula directly in Sage/PARI (not taken from
+    any relay): **0.888914927816353**. vol(m009)=vol(m010)=2.66674478344906.
+    Ratio = 2.66674478344906/0.888914927816353 = 3.000000... exactly. A
+    literal embedding would therefore require index 3 — but
+    Grunewald-Schwermer's torsion obstruction requires any torsion-free
+    finite-index subgroup of T_7 to have index divisible by 6. The two
+    facts are incompatible, so m009/m010 are not subgroups of ordinary
+    T_7. This redirects the Bianchi search to the maximal arithmetic
+    extension T7~ — see OPEN item 2.
 
 ---
 
@@ -257,30 +277,30 @@ its own regardless of rank.
    distinguished elements, representation characters beyond tr_a/tr_b,
    or exact arithmetic attached to the filling representation.
 
-2. **Q-001 — determine the radical of J=I+⟨q₁₀(x)⟩ and test whether
-   z−x∈√J.** Natural next step given item 29: if true, z=x holds on
-   every closed point of the geometric component while z−x≠0 in A/J,
-   meaning the apparent Fricke collapse is exact on the reduced variety
-   but carries a first-order nilpotent transverse direction — a
-   materially stronger and more interesting theorem than the original
-   z=x collapse question. Not yet attempted.
-
-3. **Bianchi index-6 subgroup enumeration for m009/m010.** Conjecture
-   that both are torsion-free index-6 subgroups of T_7=PSL₂(O_{−7}) or
-   its extension Γ~_{−7} (covolume≈0.4445). **The Grunewald-Schwermer
-   citation and the Dinakaran(2022)/Reese(2023) presentation citations
-   have not been independently checked** — verify before spending GAP
-   compute time on `LowIndexSubgroups(T_7, 6)`. A more careful sequence
-   than jumping straight to the index-6 enumeration: (i) certify
-   arithmeticity exactly rather than resting on the 78/78 computational
-   check; (ii) identify and verify the correct maximal arithmetic
-   lattice; (iii) compute its covolume exactly; (iv) only then infer the
-   candidate index from the volume ratio; (v) enumerate subgroups at
-   that index; (vi) compute torsion/cusp-number/abelianization/peripheral
-   lattice for each; (vii) identify m009/m010 from those invariants. A
-   built-in falsifier: if the enumeration doesn't produce the expected
-   pair, the overgroup/index picture is wrong even though the cusp-order
-   theorem (item 30) remains true regardless.
+2. **Bianchi subgroup identification for m009/m010 — target group
+   corrected, presentation still needed.** `Γ_{009}, Γ_{010}` are now
+   **proved not to be subgroups of ordinary T_7=PSL₂(O_{−7})** — see
+   COMPLETED item 34. The search must target the maximal discrete
+   arithmetic extension T7~ instead (predicted covolume ≈0.44445746,
+   i.e. covol(T_7)/2, giving index 6). **Blocking:** no verified
+   presentation of T7~ has been sourced yet — do not guess one. The
+   ordinary-T_7 presentation itself is also not yet entered (a GAP
+   script skeleton exists, `reproduce/bianchi_d7_lowindex.g`, with
+   explicit TODO markers that make it refuse to run rather than use
+   guessed relators — copy the d=−7 row directly from Grunewald-Schwermer,
+   *Trans. Amer. Math. Soc.* 335(1), 1993, pp. 47–78, Tables). Citation
+   status (verified this session, see COMPLETED item 34):
+   Grunewald-Schwermer (1993) and Reese, "Presentations for Singly-Cusped
+   Bianchi Groups," arXiv:2206.01262 (2022), are both real and correctly
+   attributed. **"Dinakaran (2022)" is a false attribution — no such
+   paper exists; arXiv:2206.01262 is by Tanner Reese alone**, confirmed
+   directly from the paper's own abstract page. Strike "Dinakaran" from
+   any future citation of this result. Once T7~'s presentation is in
+   hand: enumerate its index-6 subgroups, filter torsion-free + one-cusp,
+   and match against m009's H₁=Z⊕Z/2, Λ=Z[√−7] vs. m010's H₁=Z⊕Z/6,
+   Λ=O_K — a built-in falsifier, since a failed match would mean the
+   overgroup picture is wrong even though the cusp-order theorem (item
+   30) stands regardless.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
@@ -378,18 +398,31 @@ its own regardless of rank.
     Availability section, and a real ambiguity between its δ_CKM=68.0°
     (single-word) and the CKM paper's J=0 (three-word triple) that the
     paper's own framing blurs without contradicting.
-21. **CKM v3 paper** — two small fixes needed (a stale SSRN citation
-    year, missing MSC classification), otherwise assessed as the most
-    rigorous paper in the portfolio and ready to resubmit.
+21. **CKM v3 paper — fixed, verified this session** (commit `63dbc34`,
+    "CKM v3: fix citation year, add MSC2020 codes"). Confirmed directly
+    in `papers/04_new_needs_journal/gentry-ckm-v3.tex`: MSC codes present
+    (`Primary 57K32; Secondary 11R32`), SSRN citations correctly dated
+    2026. Ready to resubmit. **Caveat: a second, diverged, un-fixed copy
+    exists at `papers/ckm-rebuild/gentry-ckm-v3.tex`** (missing MSC
+    codes/keywords entirely, different AI-acknowledgment wording) — real
+    risk of the wrong copy being edited or submitted; needs reconciling
+    or deleting, not previously flagged anywhere in the corpus.
 22. **Qubit gates paper** — the CS level k=2 physical-interpretation
     claim needs to be split from the proven algebraic identity (already
     flagged honestly in the paper's own §6.3, just needs moving
     earlier); a citation to a now-confirmed-rejected manuscript needs
-    updating.
-23. **Holonomy-CP paper** — genuinely solid, no overclaiming found;
-    needs citation cleanup (two garbled self-citations, stale
-    "submitted" status) and MSC codes. Assessed closer to
-    submission-ready than most other papers audited.
+    updating. Not independently re-verified this session.
+23. **Holonomy-CP paper — fixed, verified this session** (commit
+    `7f4ac46`, "Holonomy-CP: fix citations, add amsthm/theorems, add MSC
+    codes" — note: an externally-relayed claim cited commit `e0bfd33`
+    for this fix, which is real but is a *different, unrelated* commit;
+    `7f4ac46` is the correct one). Confirmed directly in
+    `papers/01_active_plb/gentry-holonomy-cp-ahp.tex`: MSC codes present
+    (`Primary 57K32; Secondary 20H10`), both self-citations now clean
+    (plain SSRN references, no garbled double-journal listing, no stale
+    "submitted March 2026" text). **Same duplicate-copy caveat as item
+    21: a diverged, un-fixed copy exists at
+    `papers/holonomy-cp/gentry-holonomy-cp-ahp.tex`.**
 24. **CORE_MASTER_v12 gap table** (July 29 audit, ~20 findings): several
     major results are proved elsewhere in the corpus but never made it
     into the "master" paper — most notably, **no Galois-Weyl
