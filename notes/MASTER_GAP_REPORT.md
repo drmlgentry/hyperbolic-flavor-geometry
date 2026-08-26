@@ -716,6 +716,51 @@ its own regardless of rank.
      that the already-computed covol(N(R)) is correct at all.** Status:
      `[Proved] Γ_009⊆N(R)`; `[Conditional] Γ_009=N(R)`, pending the local
      classification.
+   - **Audit of the covolume figure — credible, partially independently
+     corroborated concern about a missing factor of 2; NOT accepted as a
+     confirmed correction, and NOT dismissed either.** A relayed audit
+     argued that the original index-1 computation
+     (covol(N(E))=vol(m009), 15-digit match) omits an independent
+     [PGL₂(O_K):PSL₂(O_K)]=2 factor beyond the Atkin-Lehner involution,
+     which would instead give covol(N(E))=vol(m009)/2 and
+     [N(E):Γ_009]=2, not 1. Rather than accept or dismiss this on the
+     audit's say-so, ran two independent checks:
+     (1) **`covol_T7=0.888914927816353` verified via Humbert's volume
+     formula** (|d_K|^{3/2}·ζ_K(2)/4π², computed from Sage's own zeta
+     function, matching to 20+ digits) — confirms this constant
+     genuinely is covol(PSL₂(O_K)) specifically, not already
+     covol(PGL₂(O_K)) under a different name. So the audit's proposed
+     factor is not already secretly baked in — if it applies, it is a
+     real additional correction, not double-counting.
+     (2) **J=diag(−1,1) directly verified (by hand, on the standard
+     Eichler-order model) to normalize it**: conjugation sends the
+     lower-left entry c↦−c, trivially preserving "c≡0 mod 𝔫." J has
+     det=−1 (a unit; cannot be rescaled into SL₂ since √−1∉K, so J∉T7),
+     and its determinant class is generically independent of the
+     Atkin-Lehner involution's (a generator of 𝔫, norm 4) — consistent
+     with J being a genuinely separate normalizing symmetry not already
+     captured by [T7:Γ0(𝔫)]×[AL index].
+     **Both checks support the audit's concern being real, not
+     hand-waving — but neither constitutes a primary-source proof that
+     ⟨Γ0(𝔫),W_AL,J⟩ is the *complete* normalizer with no further
+     extensions.** Both the original index-1 and the audited index-2
+     rest on the same underlying by-analogy classical-index-formula
+     assumption (flagged as unverified from the start); the audit
+     refines that analogy rather than replacing it with a citation.
+     **Not rewriting the record to assert index 2 as established.**
+     Recording instead: confidence has shifted toward index 2 being more
+     likely correct than index 1, pending either a primary source for
+     the exact normalizer structure or a from-scratch derivation of the
+     complete generator set of N(R). Either way, this entire question is
+     orthogonal to and does not affect the now-solid, directly-computed
+     `[Proved] Γ_009⊆N(R)` containment result above — and either way, the
+     local Eichler classification at 𝔭̄ remains the actual bottleneck for
+     turning containment into equality.
+   - **Declined to draft a "completed m009 theorem"** as separately
+     requested — it would be premature given the open items above (the
+     covolume-index question, and the local Eichler classification at
+     𝔭̄), and this report's standing practice is not to write results as
+     closed until they are.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
