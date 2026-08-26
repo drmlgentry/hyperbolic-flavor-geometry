@@ -661,6 +661,24 @@ its own regardless of rank.
      larger computation than the O_K-arithmetic used for Γ′ so far, not
      yet attempted. Recorded as the concrete next step, not launched
      without being asked given its scope.
+   - **Checkpoint before committing to the O_L rewrite: [Γ_009:Γ′]
+     computed exactly — 2, the consistent branch, not a contradiction.**
+     Ran `reproduce/gamma_prime_index_check.g`: took the actual SnapPy
+     presentation (`generators: ['a','b']`, `relators:
+     ['aabABaaBAb']`), built it as an FpGroup in GAP, and computed
+     `Index(G, Subgroup(G,[a^2,b^2,a*b,b*a]))` via genuine Todd-Coxeter
+     coset enumeration — not inferred from covers or H₁. Result:
+     **[Γ_009:Γ′]=2 exactly.** Consequently covol(Γ′)=2·vol(m009)=
+     5.33348956..., while covol(N(R_𝔭̄²))=vol(m009)=2.66674478... — and
+     since Γ′⊆N(R) was already proved, this forces **[N(R):Γ′]=2 as
+     well**, the same index on both sides. Γ′ is therefore a common
+     index-2 subgroup of both Γ_009 and N(R) with matching covolumes on
+     each side — consistent with, but not a proof of, Γ_009=N(R): they
+     could in principle be two *different* index-2 overgroups of Γ′ that
+     merely share a covolume. No inconsistency was found anywhere in the
+     setup. **Conclusion: the O_L base-change is confirmed necessary,
+     not avoidable** — this checkpoint does not shortcut it, but does
+     rule out the scenario where it would have been unnecessary.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
