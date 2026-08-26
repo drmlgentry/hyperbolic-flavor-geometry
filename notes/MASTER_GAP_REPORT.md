@@ -422,22 +422,49 @@ its own regardless of rank.
      them, not asymmetric. The broader Eichler-order-of-level-dividing-2
      picture stands; the specific "distinct conjugate parents explaining
      the H₁ difference" idea does not, at least not via this mechanism.
-     One further numerical note, flagged as suggestive only, not
-     verified: using the standard index formula for a squarefree level
-     with two distinct prime factors, N(𝔭𝔭̄)·(1+1/2)(1+1/2) = 4·9/4 = 9,
-     giving covol(Γ₀((2))) = 9×0.888914927816353 = 8.000234350347 —
-     extremely close to 3×vol(m009) = 8.00023435034718. The correct
-     normalizer for a two-prime level has not been derived here (it
-     depends on how many independent Atkin-Lehner-type involutions apply
-     when both primes are present), so this numerical proximity is not
-     yet a confirmed identification — it needs the same care as the
-     single-prime case before being trusted.
-     **Not yet done**: derive the correct normalizer/index formula for a
-     two-prime Eichler level, compute its covolume properly, and check
-     it against vol(m009)/vol(m010) — this requires real quaternion-
-     order-theory machinery (specifically the structure of Atkin-Lehner-
-     type extensions at two independent primes) beyond what's been
-     attempted so far.
+     **The level-(2) Γ₀((2)) numerical coincidence flagged above is
+     ruled out on reflection**: covol(Γ₀((2)))=8.000234350347 is
+     *larger* than vol(m009)=2.66674478344906, and subgroups always
+     have volume ≥ their ambient supergroup's covolume (vol(subgroup) =
+     index × covol(supergroup), index≥1) — so Γ₀((2)) cannot be an
+     ambient supergroup of Γ_009 at all; the earlier "3×covol
+     ≈vol(m009)" proximity was comparing the wrong direction and is a
+     coincidence, not a containment.
+   - **Attempted the actual reduced-discriminant computation directly —
+     real methodological progress, but the specific numbers obtained
+     are not yet reliable.** Built `reproduce/order_classify.sage`:
+     recovers exact O_K-basis-recognized matrices for all four Γ^(2)
+     generators (automating what was done by hand before — cross-
+     checked and it reproduces the earlier by-hand findings exactly),
+     then computes the reduced discriminant of the O_K-module they span
+     via the trace-pairing Gram determinant (Trd(e_i·conj(e_j)),
+     conjugation via the standard M₂ adjugate) — a genuine,
+     conjugation-invariant order-theoretic quantity, not a numerical
+     coincidence check. Result: v_𝔭(disc)=4, v_𝔭̄(disc)=6 for m009;
+     v_𝔭(disc)=6, v_𝔭̄(disc)=6 for m010. **These numbers should NOT be
+     read as the true Eichler level** — two real gaps remain: (1) only
+     4 of the 5 generators (I, aa, bb, ab) were used to build a K-basis,
+     dropping `ba`, which may contribute lattice points not already in
+     that span; (2) closure under multiplication was never checked —
+     products like aa·bb could introduce genuinely new O_K-module
+     elements not in the current span, meaning the true order (as an
+     O_K-*algebra*, not just the module spanned by these 5 elements)
+     could be strictly larger than what was computed here, which would
+     make the true discriminant smaller (the true, minimal level) than
+     what was found. The large, mutually inconsistent exponents
+     obtained here (nothing symmetric or small, unlike the clean
+     valuation-1 pattern found for the individual obstructing entries)
+     are consistent with this being an inflated, non-minimal
+     discriminant from an incomplete spanning set, not a real
+     measurement of the level.
+     **Not yet done**: close the spanning set under multiplication
+     (compute all pairwise products of the four Γ^(2) generators, add
+     any genuinely new O_K-module elements, iterate to a stable order),
+     recompute the discriminant on that closed order, and only then
+     trust the resulting (a,b) exponent pair against Maclachlan-Reid's
+     classification of maximal arithmetic lattices for Q(√−7) — this is
+     real quaternion-order machinery beyond what's been attempted so
+     far, not a quick follow-up.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
