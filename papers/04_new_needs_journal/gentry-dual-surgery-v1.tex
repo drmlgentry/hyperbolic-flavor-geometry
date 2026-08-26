@@ -112,8 +112,10 @@ We adopt the following notation throughout:
       is the lepton mixing manifold.
 \item $M_{\mathrm{CKM}} = \mfld{m006}(-5,2)$ is the quark mixing
       manifold.
-\item $K_M$ denotes the invariant trace field of a manifold $M$,
-      equivalently its cusp field for one-cusped manifolds.
+\item $K_M$ denotes the cusp field of a one-cusped manifold $M$,
+      computed from its cusp shape. We do not assert this equals
+      the invariant trace field; that equality is not established
+      here for any of the manifolds below.
 \item $\mfld{m003}, \mfld{m006}, \mfld{m019}$ are one-cusped
       hyperbolic manifolds from the SnapPy census.
 \end{itemize}
@@ -264,22 +266,22 @@ to Theorem~\ref{thm:disjoint}.
 
 \begin{proof}[Proof of Proposition~\ref{prop:d6}]
 Let $K_1 = \Q(\sqrt{-3})$ (degree 2) and $K_3 = K_{\mfld{m006}}$
-(degree 3). Sage computes the compositum degree as 6; since
-$6 = 2\times 3$, the fields are linearly disjoint. The Galois
-closure of the compositum has degree 12 and Galois group $D_6$,
-the dihedral group of order 12, confirmed by Sage's
-\texttt{galois\_group()} returning GAP small-group id $[12,4]$.
+(degree 3, defined by $x^3+2x+1$). The Galois closure $K_3^{\rm
+gal}$ has degree 6 and Galois group $S_3$; its unique quadratic
+subfield is $\Q(\sqrt{\disc(x^3+2x+1)}) = \Q(\sqrt{-59})$, since
+$\disc(x^3+2x+1)=-59$. Because $-59/-3=59/3$ is not the square of
+a rational, $\Q(\sqrt{-59})\ne\Q(\sqrt{-3})$: the two quadratic
+fields differ, so $K_1$ and $K_3^{\rm gal}$ share no common
+subfield beyond $\Q$ and are therefore linearly disjoint. Their
+compositum has Galois group $\Z/2\times S_3$, order 12, confirmed
+independently by Sage's \texttt{galois\_group()}, which returns
+GAP small-group id $[12,4]$ -- the id shared by $\Z/2\times S_3$
+itself, consistent with (not merely asserted by) the conceptual
+argument above.
 \end{proof}
 
 \begin{remark}
-$D_6$ (order 12) is in fact isomorphic to $S_3\times\Z/2$: writing
-$D_6=\mathrm{Dih}(6)$, the general splitting
-$\mathrm{Dih}(2n)\cong\mathrm{Dih}(n)\times\Z/2$ holds whenever $n$
-is even, and $n=6$ is even here, giving
-$\mathrm{Dih}(6)\cong\mathrm{Dih}(3)\times\Z/2=S_3\times\Z/2$
-(confirmed directly: both groups have GAP small-group id
-$[12,4]$, and an explicit isomorphism exists). This result
-therefore \emph{does} extend the Pati--Salam correspondence of
+This result therefore \emph{does} extend the Pati--Salam correspondence of
 Corollary~\ref{cor:group} to a third gauge factor: the Galois
 closure of $K_{\mfld{m003}}\cdot K_{\mfld{m006}}$ has group
 $S_3\times\Z/2\cong W(SU(3))\times\Z/2$, mirroring the
@@ -378,13 +380,12 @@ correspondence \cite{DGG} could supply such a mechanism is an
 open research question, not addressed here.
 
 \item \textbf{Linear disjointness with a third field, resolved.}
-Proposition~\ref{prop:d6} shows that $K_{\mfld{m003}}$ and
-$K_{\mfld{m006}}$ are also linearly disjoint over $\Q$, with
-Galois closure $D_6$ (dihedral, order 12). $D_6$ is in fact
-isomorphic to $S_3\times\Z/2\cong\Weyl(\SU(3))\times\Z/2$ (the
-splitting $\mathrm{Dih}(2n)\cong\mathrm{Dih}(n)\times\Z/2$ for even
-$n$, here $n=6$; confirmed directly, both groups share GAP
-small-group id $[12,4]$). This result therefore \emph{does} extend
+Proposition~\ref{prop:d6} shows that $K_{\mfld{m003}}=\Q(\sqrt{-3})$
+and the Galois closure of $K_{\mfld{m006}}$ (unique quadratic
+subfield $\Q(\sqrt{-59})\ne\Q(\sqrt{-3})$, from
+$\disc(x^3+2x+1)=-59$) are linearly disjoint over $\Q$, with
+compositum Galois group $\Z/2\times S_3\cong\Z/2\times\Weyl(\SU(3))$,
+order 12. This result therefore \emph{does} extend
 the Pati--Salam correspondence of Corollary~\ref{cor:group} to a
 third gauge factor, with the same $\Z/2$ contributed by
 $K_{\mfld{m003}}$ pairing with $\Weyl(\SU(4))$ in one compositum
