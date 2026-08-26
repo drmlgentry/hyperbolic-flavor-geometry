@@ -634,6 +634,33 @@ its own regardless of rank.
      still-open obstacle. Status stays `[Computed]` (index-1 covolume
      match) + `[Proved, restricted]` (Γ′⊆N(R)), not yet `[Proved]` for
      the full group.
+   - **K-rationalization of raw generators a,b — proved IMPOSSIBLE, not
+     merely unattempted.** Ran `reproduce/tr_a_field_test.sage`: computed
+     tr(a), tr(b) at 300-bit precision for both manifolds and ran algdep
+     (degree bound 8, 200 known bits). Both traces satisfy genuine
+     degree-4 minimal polynomials over Q — m009: a: `x⁴−5x²+8`, b:
+     `x⁴−10x²+32`; m010: a: `x⁴−5x²+8` (same as m009's a), b:
+     `x⁴+2x²+8` — not degree ≤2. **Since trace is a conjugation
+     invariant, this rigorously rules out any g∈GL₂(C) with
+     g·a·g⁻¹∈M₂(K)**: no search over conjugations can ever fix this, the
+     obstruction is intrinsic to a itself, not to the choice of basis.
+     The earlier plan to test the *full* Γ_009=⟨a,b⟩ against N(R) inside
+     M₂(K) is closed off as stated.
+     **Positive structure found: a,b live in a genuine degree-2
+     extension of K, not an unrelated field.** Both quartics are
+     biquadratic in x², and tr(a)², tr(b)² land exactly in K: for m009,
+     tr(a)²=(5±√−7)/2, tr(b)²=5±√−7 (both roots of quadratics with
+     discriminant −7, i.e. elements of K=Q(√−7) itself). So a,b are
+     defined over L=K(tr(a)), a degree-4-over-Q, degree-2-over-K field —
+     exactly the classical trace-field-vs-invariant-trace-field relation
+     [kΓ:kΓ^(2)]≤2 (Maclachlan–Reid), concretely pinned down here rather
+     than merely cited.
+     **Consequence for the open containment question.** Testing whether
+     the full Γ_009 normalizes R now requires base-changing R to an
+     O_L-order (R⊗_{O_K}O_L) and testing a,b against that — a materially
+     larger computation than the O_K-arithmetic used for Γ′ so far, not
+     yet attempted. Recorded as the concrete next step, not launched
+     without being asked given its scope.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
