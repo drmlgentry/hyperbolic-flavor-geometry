@@ -381,8 +381,35 @@ its own regardless of rank.
      as) a single global diagonal conjugation/rescaling being able to
      bring the off-diagonal entries into O_K while leaving the
      already-good diagonal entries untouched — the natural next
-     computational step for the order-identification route above, not
-     yet carried out.
+     computational step for the order-identification route above.
+   - **That conjugation attempted directly — strong, convergent partial
+     result.** Ran `reproduce/m009_conjugation_test.py` and
+     `m010_conjugation_test.py`: conjugated by D=diag(β,1) with
+     β=aa[0,1] (the natural first candidate — note this is genuinely
+     testable numerically even though "β=√(entry²) in K" as originally
+     phrased is not quite well-posed, since β itself has degree 4, not
+     2, over Q; the actual conjugation was just run directly and
+     checked). Result, at 300-bit precision:
+     - **m009**: 6 of 8 off-diagonal entries (across aa, bb, ab, ba)
+       become exact elements of O_K after this single conjugation. The
+       remaining 2 (bb[1,0], ab[1,0]) land in K but with denominator 4
+       rather than ≤2 — i.e. in "½O_K"-type territory, not quite O_K.
+     - **m010**: 7 of 8 land exactly in O_K — better than m009. Only
+       bb[1,0] remains non-integral.
+     - **The single residual obstruction is structurally identical in
+       both manifolds**: bb[1,0] gives the exact same non-monic
+       polynomial 2x²−x+8 (denominator 4) for both m009 and m010. Not
+       noise — a consistent signal tied specifically to generator b, at
+       a prime dividing 2 (which splits in Q(√−7), since −7≡1 mod 8).
+     **This is genuine, convergent evidence for an Eichler order of
+     some level dividing 2, not O_K itself** — consistent with the
+     "nonstandard maximal arithmetic lattice" hypothesis above. **Not
+     yet done**: pin down the precise level/discriminant of the
+     generated order R from this data, compute its normalizer in
+     PGL₂(K) and that normalizer's covolume, and derive the corrected
+     subgroup index — this requires real quaternion-order-theory
+     machinery beyond what's been attempted so far, not a quick
+     follow-up.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
