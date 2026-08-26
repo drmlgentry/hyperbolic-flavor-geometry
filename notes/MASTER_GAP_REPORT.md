@@ -390,26 +390,54 @@ its own regardless of rank.
      phrased is not quite well-posed, since β itself has degree 4, not
      2, over Q; the actual conjugation was just run directly and
      checked). Result, at 300-bit precision:
-     - **m009**: 6 of 8 off-diagonal entries (across aa, bb, ab, ba)
-       become exact elements of O_K after this single conjugation. The
-       remaining 2 (bb[1,0], ab[1,0]) land in K but with denominator 4
-       rather than ≤2 — i.e. in "½O_K"-type territory, not quite O_K.
-     - **m010**: 7 of 8 land exactly in O_K — better than m009. Only
-       bb[1,0] remains non-integral.
-     - **The single residual obstruction is structurally identical in
-       both manifolds**: bb[1,0] gives the exact same non-monic
-       polynomial 2x²−x+8 (denominator 4) for both m009 and m010. Not
-       noise — a consistent signal tied specifically to generator b, at
-       a prime dividing 2 (which splits in Q(√−7), since −7≡1 mod 8).
+     - **m009 and m010 both**: 6 of 8 off-diagonal entries (across aa,
+       bb, ab, ba) become exact elements of O_K after this single
+       conjugation. (Correction to an earlier miscount in this report:
+       m010 was previously stated as 7/8 — rechecked, it's 6/8, the
+       same as m009.) The 2 residual entries in each manifold land in K
+       but not O_K.
+     - **The two residual obstructions are structurally identical
+       between the manifolds, just at swapped word positions**: both
+       manifolds have one obstruction from a 2x²−x+8-type entry
+       (bb[1,0] in both) and one from a 2x²+x+1-type entry (ab[1,0] in
+       m009, ba[1,0] in m010 — same value, transposed position). Not
+       noise — tied specifically to a prime dividing 2 (which splits in
+       Q(√−7), since −7≡1 mod 8).
      **This is genuine, convergent evidence for an Eichler order of
      some level dividing 2, not O_K itself** — consistent with the
-     "nonstandard maximal arithmetic lattice" hypothesis above. **Not
-     yet done**: pin down the precise level/discriminant of the
-     generated order R from this data, compute its normalizer in
-     PGL₂(K) and that normalizer's covolume, and derive the corrected
-     subgroup index — this requires real quaternion-order-theory
-     machinery beyond what's been attempted so far, not a quick
-     follow-up.
+     "nonstandard maximal arithmetic lattice" hypothesis above.
+   - **Level pinned down further — exact valuations computed.** Ran
+     `reproduce/eichler_level_check.sage` and
+     `eichler_level_valuation_check.sage`: confirmed exactly (not
+     numerically) that (2)=𝔭·𝔭̄ in O_K, both primes norm 2, via
+     𝔭=(ω), 𝔭̄=(1−ω). The 2x²−x+8-type obstruction equals exactly
+     (3ω−1)/2, confirmed by direct valuation computation to have
+     v_𝔭=−1, v_𝔭̄=+3 — a clean simple pole at 𝔭 only. The 2x²+x+1-type
+     obstruction equals exactly −ω/2, with v_𝔭=0, v_𝔭̄=−1 — a clean
+     simple pole at 𝔭̄ only. **Since both obstructions appear in both
+     manifolds** (just at transposed word positions), **this
+     disconfirms the "conjugate parents" sub-hypothesis** (m009↔𝔭,
+     m010↔𝔭̄ as distinct single-prime parents) — both manifolds instead
+     show the same combined level-(2)=𝔭𝔭̄ pattern, symmetric between
+     them, not asymmetric. The broader Eichler-order-of-level-dividing-2
+     picture stands; the specific "distinct conjugate parents explaining
+     the H₁ difference" idea does not, at least not via this mechanism.
+     One further numerical note, flagged as suggestive only, not
+     verified: using the standard index formula for a squarefree level
+     with two distinct prime factors, N(𝔭𝔭̄)·(1+1/2)(1+1/2) = 4·9/4 = 9,
+     giving covol(Γ₀((2))) = 9×0.888914927816353 = 8.000234350347 —
+     extremely close to 3×vol(m009) = 8.00023435034718. The correct
+     normalizer for a two-prime level has not been derived here (it
+     depends on how many independent Atkin-Lehner-type involutions apply
+     when both primes are present), so this numerical proximity is not
+     yet a confirmed identification — it needs the same care as the
+     single-prime case before being trusted.
+     **Not yet done**: derive the correct normalizer/index formula for a
+     two-prime Eichler level, compute its covolume properly, and check
+     it against vol(m009)/vol(m010) — this requires real quaternion-
+     order-theory machinery (specifically the structure of Atkin-Lehner-
+     type extensions at two independent primes) beyond what's been
+     attempted so far.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
