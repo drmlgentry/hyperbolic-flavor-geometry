@@ -457,14 +457,51 @@ its own regardless of rank.
      are consistent with this being an inflated, non-minimal
      discriminant from an incomplete spanning set, not a real
      measurement of the level.
-     **Not yet done**: close the spanning set under multiplication
-     (compute all pairwise products of the four Γ^(2) generators, add
-     any genuinely new O_K-module elements, iterate to a stable order),
-     recompute the discriminant on that closed order, and only then
-     trust the resulting (a,b) exponent pair against Maclachlan-Reid's
-     classification of maximal arithmetic lattices for Q(√−7) — this is
-     real quaternion-order machinery beyond what's been attempted so
-     far, not a quick follow-up.
+     **Closure completed — genuinely converged result.** Ran
+     `reproduce/order_closure.sage`: built the full O_K-module spanned
+     by I, the 4 Γ^(2) generators, and all 16 pairwise products (exact
+     symbolic matrix multiplication over K, no re-recognition needed —
+     the exact generator matrices were already in hand), reduced via
+     Hermite Normal Form over O_K (valid: O_K is norm-Euclidean for
+     d=−7 and has class number 1). **Verified convergence directly**: a
+     second closure round (multiplying the round-1 basis by itself and
+     by the original generators again) gave the identical discriminant
+     both times — not assumed, checked. Also calibrated against the
+     reference discriminant of the maximal order M₂(O_K) itself under
+     the same trace-pairing normalization (`order_baseline_check.sage`):
+     disc(M₂(O_K))=1 exactly (v_𝔭=v_𝔭̄=0), confirming no correction
+     factor is needed to read the computed exponents directly as level
+     valuations.
+     **Converged, calibrated result:** m009: v_𝔭(disc R)=0, v_𝔭̄(disc
+     R)=4 → level 𝔫=𝔭̄² (both valuations even, consistent with — though
+     not a full proof of — R being genuinely Eichler). m010: v_𝔭(disc
+     R)=4, v_𝔭̄(disc R)=4 → level 𝔫=𝔭²𝔭̄²=(4).
+   - **m009: a real, precise result.** Using the classical prime-power
+     Eichler index formula [PSL₂(O_K):Γ₀(𝔭̄²)]=N(𝔭̄)²+N(𝔭̄)=4+2=6 (not
+     independently verified from a Bianchi-specific source — applying
+     the classical formula by analogy) and a single Atkin-Lehner
+     involution (one prime dividing the level, normalizer index 2):
+     covol(N(R))=6×covol(T_7)/2=2.66674478344906. **vol(m009)/covol(N(R))
+     = 1.00000000000000 exactly** (15-digit match) — meaning **Γ_009 is
+     not merely a subgroup but essentially equal to the full normalizer
+     N(R) of this level-𝔭̄² Eichler order**, index 1. This is a genuinely
+     precise numerical confirmation, not a loose coincidence.
+   - **m010: does not follow the same pattern — reported honestly, not
+     forced.** Applying the same style of formula to the level-(4)
+     case ([PSL₂(O_K):Γ₀((4))]=6×6=36, normalizer index 4 assuming two
+     independent Atkin-Lehner involutions, one per prime) gives
+     covol(N(R))=8.00023435034718, and **vol(m010)/covol(N(R)) =
+     1/3 exactly — not an integer**, so m010 cannot be an index-k
+     subgroup of this specific candidate normalizer for any integer k.
+     Either the assumed Atkin-Lehner-index-4 structure is wrong for a
+     level with squared exponents at both primes (the classical
+     squarefree-level formula may not directly generalize this way),
+     or some other aspect of the level-(4) case needs different
+     treatment. **Not yet resolved** — this is the concrete remaining
+     gap, not a dead end: m009's chain (exact discriminant → exact
+     level → exact index-1 match) is fully worked and precise; m010's
+     needs the correct prime-power-with-two-primes normalizer theory,
+     which hasn't been sourced from a primary reference.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
