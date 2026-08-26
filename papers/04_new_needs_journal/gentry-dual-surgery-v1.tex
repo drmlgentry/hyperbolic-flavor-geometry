@@ -46,15 +46,26 @@ closed hyperbolic 3-manifold with first homology $\Z/5$ -- admits
 two distinct Dehn filling descriptions from arithmetically
 independent cusped parents: $M_{\mathrm{PMNS}} = \mfld{m003}(-2,3)
 = \mfld{m019}(2,1)$. The cusp field of \mfld{m003} has Galois group
-$\Z/2$; the cusp field of \mfld{m019} has Galois group $S_4$. We
-prove these two cusp fields are linearly disjoint over $\Q$, and
-that the Galois group of the Galois closure of their compositum is
-$S_4\times\Z/2$, order 48. We report a negative result: a systematic search over
-9 candidate manifolds with $S_4$-type cusp fields, at Dehn surgery
-slopes $|p|,|q|\le 15$, finds no dual filling description of the
-companion manifold $M_{\mathrm{CKM}}$. We note, without asserting
-a physical derivation, that the group $S_4\times\Z/2$ is
-abstractly isomorphic to $\Weyl(\SU(4))\times\Weyl(\SU(2))$.
+$\Z/2$, while those of \mfld{m019} and \mfld{m006} (the cusped
+parent of the companion manifold $M_{\mathrm{CKM}}$) have Galois
+groups $S_4$ and $S_3$. We prove that the $\mfld{m003}$ field is
+linearly disjoint from each of the latter two, with Galois closures
+giving direct-product groups
+\[
+\Z/2\times S_4 \quad\text{and}\quad \Z/2\times S_3,
+\]
+of orders 48 and 12. Disjointness in each case follows from the
+distinct quadratic fields $\Q(\sqrt{-3})$, $\Q(\sqrt{-283})$, and
+$\Q(\sqrt{-59})$ occurring in the respective Galois closures --
+conceptual arguments, not merely computational identifications. We
+also report a negative result: a systematic search over 9 candidate
+manifolds with $S_4$-type cusp fields, at Dehn surgery slopes
+$|p|,|q|\le 15$, finds no dual filling description of
+$M_{\mathrm{CKM}}$ analogous to the $M_{\mathrm{PMNS}}$ case. We
+note, without asserting a physical derivation, that these groups
+admit the corresponding Weyl-group identifications
+$\Z/2\times S_4\cong\Weyl(\SU(2))\times\Weyl(\SU(4))$ and
+$\Z/2\times S_3\cong\Weyl(\SU(2))\times\Weyl(\SU(3))$.
 All computations are verified by SnapPy and Sage at 300-bit
 precision.
 \end{abstract}
@@ -208,19 +219,24 @@ produce the same closed manifold $M_{\mathrm{PMNS}}$.}
 
 \begin{proof}[Proof of Theorem~\ref{thm:disjoint}]
 Let $K_1=\Q(\sqrt{-3})$ (Proposition~\ref{prop:m003}, degree 2) and
-$K_2=\Q[x]/(x^4-x-1)$ (Proposition~\ref{prop:m019}, degree 4). The
-compositum $K_1K_2$, computed directly in Sage via
-\texttt{composite\_fields}, has degree 8 over $\Q$. Since
-$8 = 2\times 4 = [K_1:\Q]\cdot[K_2:\Q]$, the two fields are linearly
-disjoint over $\Q$.
+$K_2=\Q[x]/(x^4-x-1)$ (Proposition~\ref{prop:m019}, degree 4), with
+Galois closure $K_2^{\rm gal}$ of degree 24 and group $S_4$. Since
+$S_4$ has a unique subgroup of index 2 (namely $A_4$, as
+$S_4^{\rm ab}\cong\Z/2$), $K_2^{\rm gal}$ has a unique quadratic
+subfield, namely $\Q(\sqrt{\disc(x^4-x-1)})=\Q(\sqrt{-283})$, since
+$\disc(x^4-x-1)=-283$. Because $-283/-3=283/3$ is not the square of
+a rational, $\Q(\sqrt{-283})\ne\Q(\sqrt{-3})$: the two quadratic
+fields differ, so $K_1$ and $K_2^{\rm gal}$ share no common
+subfield beyond $\Q$ and are therefore linearly disjoint. Their
+compositum has Galois group $\Z/2\times S_4$, order 48.
 
-The compositum $K_1K_2$ is not itself Galois over $\Q$. Its Galois
-closure $L$ has degree 48. Computing $\Gal(L/\Q)$ directly in Sage
-gives a group of GAP small-group id $[48,48]$. An independently
-constructed group, $S_4\times\Z/2$ (via \texttt{SymmetricGroup(4)}
-direct product with \texttt{CyclicPermutationGroup(2)}), has the
-same GAP small-group id $[48,48]$, confirming
-$\Gal(L/\Q)\cong S_4\times\Z/2$.
+This is independently confirmed by direct computation in Sage: the
+compositum $K_1K_2$, computed via \texttt{composite\_fields}, has
+degree 8 over $\Q$ (consistent with $8=2\times4$), and the Galois
+closure $L$ of $K_1K_2$ has degree 48 with $\Gal(L/\Q)$ of GAP
+small-group id $[48,48]$, the same id as an independently
+constructed $S_4\times\Z/2$
+(\texttt{SymmetricGroup(4)}$\times$\texttt{CyclicPermutationGroup(2)}).
 \end{proof}
 
 \begin{corollary}\label{cor:group}
