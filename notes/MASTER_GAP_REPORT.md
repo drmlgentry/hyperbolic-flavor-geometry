@@ -502,6 +502,74 @@ its own regardless of rank.
      level → exact index-1 match) is fully worked and precise; m010's
      needs the correct prime-power-with-two-primes normalizer theory,
      which hasn't been sourced from a primary reference.
+   - **GPT's reduced-discriminant table received and reconciled — no new
+     arithmetic required, the already-computed result was reinterpreted
+     correctly.** `Status: [Conjecture] pending Cowork computation` →
+     resolved. The Gram/trace-pairing quantity computed by
+     `order_closure.sage` (disc(R)=det(Trd(e_i·adj(e_j)))) is the
+     classical *trace* discriminant, whose valuation is double the
+     *reduced* discriminant's for an Eichler order (disc(R)=𝔫² relative
+     to the maximal order; reduced discriminant rd(R)=𝔫). This is
+     exactly consistent with — not a correction to — the halving already
+     applied in `order_index_predictions.sage` before treating the
+     exponents as level exponents, confirmed by the existing baseline
+     calibration (disc(M₂(O_K))=1, the 𝔫=∅ case). Converting the already-
+     converged values:
+     - m009: disc(R) valuations (v_𝔭,v_𝔭̄)=(0,4) → reduced discriminant
+       exponents **(a,b)=(0,2)**.
+     - m010: disc(R) valuations (v_𝔭,v_𝔭̄)=(4,4) → reduced discriminant
+       exponents **(a,b)=(2,2)**.
+     m009's (0,2) is exactly the table's flagged "case to look for" — and
+     independently already produced the exact index-1 volume match above,
+     *before* this table arrived. m010's (2,2) is exactly the table's
+     "essentially dead" cell — consistent with the already-found
+     non-integer 1/3 index. Two independently derived routes (direct
+     Sage computation; relayed index-formula table) agree — genuine
+     cross-validation, not new information content.
+     **Still NOT checked: local Eichler/Bass/Gorenstein type at 𝔭, 𝔭̄.**
+     Only the necessary even-valuation condition has been verified for
+     either manifold. This matters specifically because 𝔭, 𝔭̄ lie over
+     p=2 — the field is dyadic there (2=𝔭𝔭̄ splits) — where Eichler-order
+     behavior has known extra subtlety absent at odd primes. Jun & Kim,
+     "On the Orders in a Quaternion Algebra over a Dyadic Local Field"
+     (Honam Math. J., 2009) — citation verified real via the Korea
+     Science index — is the directly relevant reference and has not yet
+     been read. Maclachlan–Reid's two cited works (*Orders in Quaternion
+     Algebras*; *Commensurable Arithmetic Groups and Volumes*) have not
+     yet been verified or read either.
+     **Torsion-freeness of N(R) for m009 — the conditional logic is
+     sound, but the antecedent is still open.** The index-1 numerical
+     match (vol(m009)=covol(N(R)) to 15 digits) is strong evidence for,
+     but does not by itself establish, the literal containment
+     Γ_009⊆N(R): covol(N(R)) was computed from index-formula arithmetic
+     applied to T₇, not from an explicit embedding of Γ_009 inside N(R).
+     *If* that containment holds, matching covolume forces index exactly
+     1 (Γ_009=N(R) as groups), and since Γ_009 is torsion-free (a
+     manifold group), N(R) would be torsion-free too automatically — no
+     separate torsion computation needed. That conditional argument is
+     correct. What remains open is the antecedent itself — an actual
+     containment/embedding proof, not a covolume coincidence — the same
+     gap this item has carried since the T₇-non-containment result first
+     forced the "which maximal lattice" question.
+     **m010's (2,2) asymmetry — one hypothesis ruled out, one has partial
+     evidence, one remains live.** (c) A different conjugating matrix
+     giving a lower level is not viable in general: the reduced
+     discriminant is invariant under GL₂(K)-conjugation (an inner
+     automorphism of the ambient algebra) whenever the conjugating
+     matrix itself yields a K-rational embedding, so no further
+     conjugation search is warranted. (a) Non-minimal/non-closed basis
+     already has partial evidence against it: the two-round closure
+     check in `order_closure.sage` gave identical discriminants both
+     times for m010 specifically, not just m009 — evidence of
+     convergence, not an exhaustive proof. (b) m010's holonomy order
+     genuinely not Eichler is the live open question, and converges with
+     the not-yet-done local-type classification above. Also: two
+     manifolds sharing a commensurability class, trace field, and even
+     volume are not required to share a local type relative to a fixed
+     maximal order — different subgroups of one commensurability class
+     routinely sit at different local positions. The (0,2) vs (2,2)
+     split is not inherently in tension with m009/m010 sharing a
+     commensurability class.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
