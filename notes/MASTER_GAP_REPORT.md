@@ -570,6 +570,32 @@ its own regardless of rank.
      routinely sit at different local positions. The (0,2) vs (2,2)
      split is not inherently in tension with m009/m010 sharing a
      commensurability class.
+   - **Jun–Kim citation confirmed and full local-order question set
+     precisely stated — status: next arithmetic calculation, not yet
+     attempted.** Full citation: Sungtae Jun and Insuk Kim, "On the
+     orders in a quaternion algebra over a dyadic local field," *Honam
+     Mathematical Journal* 31 (2009), no. 4, pp. 611– (closing page not
+     given in the relayed citation, recorded as received rather than
+     guessed), DOI: 10.5831/HMJ.2009.31.4.611. This is the reference for
+     the still-open local classification flagged above.
+     **m009 — two precise local questions:**
+     Q1: is R_𝔭̄ ≅ an Eichler order of level 𝔭̄² locally?
+     Q2: is R_𝔭 ≅ M₂(O_{K,𝔭}) (maximal) locally?
+     If both hold, containment Γ_009⊆N(R) would then force Γ_009=N(R)
+     (covolume equality already established + torsion-free, per the
+     conditional argument above).
+     **m010 — one precise local question:**
+     are R_𝔭, R_𝔭̄ both Eichler of level 𝔭², 𝔭̄² respectively? If not,
+     classify as Bass / Gorenstein / non-Eichler. The level-(2,2)
+     non-integer volume ratio found above means either the order is
+     non-Eichler at one or both primes, or the correct arithmetic parent
+     is not the standard Eichler normalizer construction used for m009.
+     **Method for both:** apply Jun–Kim's dyadic local classification
+     directly to R_𝔭, R_𝔭̄ (not yet attempted — this is genuinely new
+     computation, distinct from the discriminant/index arithmetic
+     already converged above, which should not be repeated further; the
+     missing information is local isomorphism type, not more volume
+     numerology).
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
