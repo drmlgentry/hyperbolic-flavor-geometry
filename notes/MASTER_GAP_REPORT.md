@@ -773,18 +773,63 @@ its own regardless of rank.
 
 5. **Census-wide rarity of the C₂×S₄×C₂×S₃ configuration — needs a
    methodological redesign, not just more CPU time.** Running
-   (`census_disjoint_ramification_scan.sage.py`), currently deep in the
-   census's `s`-family where most manifolds fail to resolve under the
-   current bounds — this is a **non-random missingness problem**: any
-   "`x`% of the census has property P" claim from this scan alone would
-   be biased toward low-complexity trace fields. The scan currently only
-   estimates `P(disjoint support | field successfully resolved)`; a
-   defensible rarity claim also needs `P(field resolved | tetrahedron
-   count, degree, volume, census family)` — the selection function of
-   the computation itself. A companion scan (`census_uniqueness_scan.py`,
+   (`census_disjoint_ramification_scan.sage.py`), now in the census's
+   `o9`-family (9-tetrahedron orientable census) — this is a
+   **non-random missingness problem**: any "`x`% of the census has
+   property P" claim from this scan alone would be biased toward
+   low-complexity trace fields. The scan currently only estimates
+   `P(disjoint support | field successfully resolved)`; a defensible
+   rarity claim also needs `P(field resolved | tetrahedron count,
+   degree, volume, census family)` — the selection function of the
+   computation itself. A companion scan (`census_uniqueness_scan.py`,
    testing whether m010 is uniquely the minimal-volume manifold with
    maximal cusp order) did not have this bias and has **completed — see
    COMPLETED item 32**.
+   - **`[Computed]` Preliminary selection-function result, 25.4%
+     checkpoint (54,025/212,641 manifolds).** Pulled directly from the
+     scan's own checkpoint JSON (read-only, live process untouched) —
+     these are measured numbers, not estimates. Family-dependent
+     recognition rates:
+     - m-family: 92/301 = **30.6%** resolved
+     - s-family: 95/962 = **9.9%** resolved
+     - v-family: 135/3,552 = **3.8%** resolved
+     - t-family: 304/12,846 = **2.4%** resolved
+     - o-family: 121/36,364 = **0.3%** resolved
+     - Overall: 747/54,025 = **1.4%** resolved
+     This is a ~100× spread in ascertainment probability from m-family
+     to o-family — the resolved sample is not a random 1.4% slice of
+     the census, it is heavily selected toward early/low-complexity
+     families. Failure-mode breakdown (dominant cause throughout is the
+     same underlying condition, `find_field()` failing to resolve):
+     `field_not_recognized` 73.6%, the pre-patch `AttributeError` (same
+     semantic failure, different label, from before the worker-script
+     fix) 19.4%, `timeout` 6.0%, closure-degree-bound exceeded ~1%.
+     Among the 747 resolved manifolds, 102 distinct invariant trace
+     fields: degree distribution quartic (62), sextic (20), cubic (12),
+     quadratic (4); Galois closure groups S4 (48), D4 (14), S3 (12),
+     C2×S4 (11); most common single field `x³+2x−1` (S3, ramified only
+     at 59), 21 manifolds; m009 and m010 both confirmed mapping to
+     `x²−x+2`=K, consistent with everything else established this
+     session.
+     **On the C2×S4 count specifically — stated carefully, not
+     over-claimed.** 11/102=10.8% of *distinct resolved fields* have
+     closure group C2×S4 — this must NOT be read as a census-wide
+     percentage. Correct framing: among the 102 distinct invariant
+     trace fields successfully resolved in the first 54,025 census
+     entries, 11 have Galois closure group C2×S4.
+     **This sharpens (not just restates) the rarity question into two
+     separate estimands:** `P(configuration | field resolved)`
+     (measurable now, from the resolved subset) and `P(field resolved |
+     census features)` (needs modeling — not yet attempted; a
+     stratified table or logistic regression of resolution probability
+     against family/tetrahedron-count/volume would determine whether
+     the family effect is a proxy for triangulation complexity or a
+     genuinely sharp recognizer boundary). Only after the second is
+     understood can `P(configuration)` be estimated responsibly for the
+     whole census. This is a real result about the *instrument*, not
+     yet about the census — worth stating explicitly in the eventual
+     paper rather than leaving a reviewer to find it. Status:
+     `[Computed]`, preliminary, Job 2 still running.
 
 6. **Dual surgery paper (SSRN 7277458) — revision + venue.** AGT
    rejected (scope, not a math error). Needs explicit prior-unknown
