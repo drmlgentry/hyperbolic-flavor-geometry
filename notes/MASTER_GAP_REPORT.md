@@ -781,6 +781,59 @@ its own regardless of rank.
      covolume-index question, and the local Eichler classification at
      𝔭̄), and this report's standing practice is not to write results as
      closed until they are.
+   - **Local Eichler classification at 𝔭̄ — RESOLVED, in the negative:
+     R_𝔭̄ is proved NOT Eichler at any level.** Ran the Bruhat-Tits
+     branch enumeration (`reproduce/m009_bruhat_tits_eichler_check.sage`):
+     vertices of the tree ↔ maximal orders in M₂(K_𝔮); the branch of a
+     local order is the (connected) subtree of maximal orders
+     containing it; for a genuine Eichler order of level 𝔮^n the branch
+     is a path of exactly n+1 vertices. A real bug was caught and fixed
+     before trusting any output: the relayed template's third
+     "neighbor-direction" matrix `[[1,1],[0,2]]` generates the *same*
+     sublattice of Z₂² as the second direction `[[1,0],[0,2]]` (one
+     elementary column operation apart), so two of the three supposed
+     tree-directions collapsed onto each other — the code could never
+     find a genuine third vertex from any interior point. Corrected to
+     `[[1,0],[1,2]]` (the line spanned by (1,1) mod 2, the actually-missing
+     direction). **Calibration check** (`reproduce/bt_calibration_check.sage`):
+     re-ran the identical pipeline on the known maximal order M₂(O_K)
+     itself — correctly gives branch size exactly 1 at *both* primes,
+     confirming the corrected methodology is sound before trusting it
+     on R.
+     **Result on the actual R (m009):** at 𝔭, branch size = 1 (seed at
+     distance 0) — consistent with, and no stronger than, the
+     already-known fact that unit local discriminant forces maximality.
+     At 𝔭̄, branch size = **2** (not 3): both vertices in the branch have
+     exactly one neighbor containing R (each other) — verified directly,
+     printing the actual failing entries for the non-members (clean,
+     non-marginal valuations like −1, not precision noise; PREC=300 was
+     far more than enough to rule out marginal-precision artifacts).
+     **This is a direct contradiction with Eichler-of-level-𝔭̄²**: a
+     length-2 Eichler branch requires 3 vertices (distance 2), but R_𝔭̄'s
+     branch has only 2 vertices (distance 1) — while its independently
+     and repeatedly confirmed reduced discriminant valuation at 𝔭̄ is 2,
+     which for a genuine Eichler order would require the branch to have
+     3 vertices, not 2. Branch length and discriminant valuation are
+     mismatched, which cannot happen for a standard Eichler order.
+     **Conclusion: R_𝔭̄ is definitively not Eichler of level 𝔭̄², nor of
+     any other level — the order is some other (Bass/Gorenstein/other)
+     dyadic type**, exactly the possibility this whole item has been
+     flagging as live since the dyadic subtlety was first identified.
+     **Consequence for the earlier index-1 covolume match:** the
+     original "vol(m009)=covol(N(R)) to 15 digits" computation applied
+     the classical Eichler-order index/Atkin-Lehner formulas to level
+     𝔭̄² — formulas that presume R is Eichler. Since R_𝔭̄ is now proved
+     *not* Eichler, that computation rested on a false premise; the
+     15-digit numerical match, while real and still unexplained, can no
+     longer be read as evidence for Γ_009=N(R) via that route. This does
+     **not** affect the separately and directly proved `[Proved]`
+     Γ_009⊆N(R) containment result, which never depended on R being
+     Eichler. Status update: Γ_009=N(R) moves from `[Conditional]
+     pending classification` to `[Open]` — the classification is no
+     longer pending, it has returned negative, and a different argument
+     (or a genuine non-Eichler normalizer computation, e.g. via Jun–Kim's
+     actual dyadic order classification, not merely testing the Eichler
+     hypothesis) is needed to settle equality.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
