@@ -272,11 +272,19 @@ the dihedral group of order 12, confirmed by Sage's
 \end{proof}
 
 \begin{remark}
-Since $D_6$ is not a direct product of $\Z/2$ and $S_3$, this
-result does \emph{not} extend the Pati--Salam correspondence of
-Corollary~\ref{cor:group} to a third gauge factor. We record it
-here as a proved, honestly-scoped result that does not fit the
-physical narrative of this paper, rather than omit it.
+$D_6$ (order 12) is in fact isomorphic to $S_3\times\Z/2$: writing
+$D_6=\mathrm{Dih}(6)$, the general splitting
+$\mathrm{Dih}(2n)\cong\mathrm{Dih}(n)\times\Z/2$ holds whenever $n$
+is even, and $n=6$ is even here, giving
+$\mathrm{Dih}(6)\cong\mathrm{Dih}(3)\times\Z/2=S_3\times\Z/2$
+(confirmed directly: both groups have GAP small-group id
+$[12,4]$, and an explicit isomorphism exists). This result
+therefore \emph{does} extend the Pati--Salam correspondence of
+Corollary~\ref{cor:group} to a third gauge factor: the Galois
+closure of $K_{\mfld{m003}}\cdot K_{\mfld{m006}}$ has group
+$S_3\times\Z/2\cong W(SU(3))\times\Z/2$, mirroring the
+$S_4\times\Z/2$ structure of Corollary~\ref{cor:group} with the
+same $\Z/2$ factor contributed by $K_{\mfld{m003}}$.
 \end{remark}
 
 \section{The CKM Negative Result}\label{sec:ckm-negative}
@@ -350,8 +358,10 @@ a proved arithmetic independence result with an explicitly computed
 Galois group (Theorem~\ref{thm:disjoint}), a proved linear
 disjointness result for a second field pair (Proposition~\ref{prop:d6}),
 and a clearly bounded negative result (Proposition~\ref{prop:ckm-negative}).
-Three questions remain explicitly open and are not addressed by this
-paper:
+Two questions remain explicitly open and are not addressed by this
+paper. A third point, on linear disjointness with a third field,
+is resolved below and in fact extends rather than limits the
+correspondence:
 
 \begin{itemize}
 \item \textbf{The $\SU(2)_R$ factor.} The group
@@ -367,16 +377,18 @@ construction along the lines of the Dimofte--Gaiotto--Gukov 3d-3d
 correspondence \cite{DGG} could supply such a mechanism is an
 open research question, not addressed here.
 
-\item \textbf{Linear disjointness with a third field.}
+\item \textbf{Linear disjointness with a third field, resolved.}
 Proposition~\ref{prop:d6} shows that $K_{\mfld{m003}}$ and
 $K_{\mfld{m006}}$ are also linearly disjoint over $\Q$, with
-Galois closure $D_6$ (dihedral, order 12) -- not $S_3\times\Z/2$.
-Because $D_6$ is not a direct product of the individual Weyl
-groups $\Z/2$ and $S_3$, this result does \emph{not} extend the
-Pati--Salam correspondence of Corollary~\ref{cor:group} to a third
-gauge factor. We record it as a proved, honestly-scoped result
-that does not fit the physical narrative of this paper, rather
-than omit it.
+Galois closure $D_6$ (dihedral, order 12). $D_6$ is in fact
+isomorphic to $S_3\times\Z/2\cong\Weyl(\SU(3))\times\Z/2$ (the
+splitting $\mathrm{Dih}(2n)\cong\mathrm{Dih}(n)\times\Z/2$ for even
+$n$, here $n=6$; confirmed directly, both groups share GAP
+small-group id $[12,4]$). This result therefore \emph{does} extend
+the Pati--Salam correspondence of Corollary~\ref{cor:group} to a
+third gauge factor, with the same $\Z/2$ contributed by
+$K_{\mfld{m003}}$ pairing with $\Weyl(\SU(4))$ in one compositum
+and $\Weyl(\SU(3))$ in the other.
 \end{itemize}
 
 No claim in this paper extends beyond what is directly verified by
