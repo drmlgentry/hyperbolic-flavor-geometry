@@ -596,6 +596,44 @@ its own regardless of rank.
      already converged above, which should not be repeated further; the
      missing information is local isomorphism type, not more volume
      numerology).
+   - **First attempt at Q1/Q2 for m009, via `reproduce/dyadic_local_order_test.sage`
+     — one part inconclusive, one part genuinely upgraded.** Reused the
+     converged `basis_R` from `order_closure.sage` (not the raw
+     generators, which are merely elements of R in an arbitrary spanning
+     set) and computed entry-level 𝔭/𝔭̄-adic valuations directly.
+     **Q2 (maximality at 𝔭): no stronger than already known.** No basis
+     entry has negative 𝔭-valuation anywhere — consistent with, but not
+     independent confirmation beyond, the standard fact that unit local
+     discriminant (v_𝔭(disc R)=0, already established) forces R to be
+     maximal at 𝔭.
+     **Q1 (Eichler-ness at 𝔭̄): test as run is inconclusive, not
+     confirming.** The basis entries show a mixed pattern, not the clean
+     upper-triangular-mod-𝔭̄² shape an Eichler order presents in a good
+     basis — notably `basis_R[2][1,0]` has v_𝔭̄=**−1** (a literal pole,
+     not merely a non-negative valuation). This means the specific
+     O_K-basis found by HNF is not in local normal form at 𝔭̄, so this
+     entry-level test cannot distinguish Eichler from a non-Eichler order
+     of the same discriminant — exactly the dyadic subtlety Jun–Kim's
+     paper is needed to resolve. Q1 remains open.
+     **Containment (Step 2): genuinely proved for a subgroup, not
+     numerical.** For every γ∈{a²,b²,ab,ba} and every basis element b of
+     R, γ·b·γ⁻¹ was verified via exact O_K-arithmetic (solve over K,
+     check coefficients lie in O_K — no floating point) to lie in the
+     O_K-span of `basis_R`. All 16 checks passed. This proves
+     Γ′=⟨a²,b²,ab,ba⟩ ⊆ N(R) — an actual containment, not a covolume
+     coincidence.
+     **Important scope limit — do not overclaim.** Γ′ is the same
+     restricted generating set used throughout this investigation
+     precisely because the *raw* generators a,b were never brought to
+     O_K-integral (or confirmed even K-rational) form under this
+     conjugation (found earlier this session to carry literal ±i
+     entries). So this proves Γ′⊆N(R), a finite-index subgroup
+     containment, **not** the full Γ_009=⟨a,b⟩⊆N(R). Promoting the m009
+     result to `[Proved] Γ_009=N(R_𝔭̄²)` still requires resolving a,b's
+     own matrix realization and testing those directly — a distinct,
+     still-open obstacle. Status stays `[Computed]` (index-1 covolume
+     match) + `[Proved, restricted]` (Γ′⊆N(R)), not yet `[Proved]` for
+     the full group.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
