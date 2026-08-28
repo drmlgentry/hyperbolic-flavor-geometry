@@ -1025,6 +1025,44 @@ its own regardless of rank.
      $N(R)\subseteq N(E)$, or now more sharply $N(R)$ acting on the
      complete finite overorder poset $\{R,E,M_0,M_1\}$) — deliberately
      not attempted in the same pass; reported back per instruction.
+   - **Independent 67-subspace Bass certificate — confirms BASS(R) = YES
+     via a second, differently-structured computation**
+     [Computed — exact, exhaustive] (new script,
+     `m009_dyadic_bass_certificate.sage`). Per GPT's/webclaude's
+     "$R^\#=\tfrac12R$" reformulation, re-derived the setup from scratch
+     in a fresh file (same holonomy/BT-tree/trace-dual machinery,
+     independently re-run rather than imported) and, before relying on
+     it, **independently re-verified $R^\#=\tfrac12R$ a third time** (a
+     new direct lattice-equality check, distinct from the two earlier
+     derivations) — confirmed. Then enumerated **all $67$
+     $\mathbf F_2$-subspaces of $V=R^\#/R\cong\mathbf F_2^4$ in one
+     unified pass** (dimensions $0,1,2,3,4$; counts $1,15,35,15,1$
+     verified exactly against the Gaussian binomials), rather than
+     separately handling lines and planes. This closes a real gap the
+     earlier enumeration left untested: **dimension $3$ ($15$
+     candidates) and dimension $4$ ($1$ candidate, i.e. $R^\#$ itself)
+     were never actually checked before** — both are now confirmed to
+     give **zero** multiplicatively-closed candidates (consistent with,
+     but not merely assumed from, $v(\mathrm{disc}_{\mathrm{tr}})=4-2d$
+     going negative). Exactly $4$ of the $67$ subspaces survive
+     closure — dimensions $0,1,2,2$ — and each survivor's
+     $v(\mathrm{disc}_{\mathrm{tr}})$ was checked against the predicted
+     $4-2d$ formula individually (all matched). The two dimension-$2$
+     survivors were then **individually identified** against $M_0$
+     ($=M_2(\Z_2)$) and $M_1$ ($=h\cdot M_2(\Z_2)\cdot h^{-1}$)
+     explicitly by lattice equality — not just counted as "two maximal
+     orders" as before. Re-running the general SNF-based Gorenstein test
+     (same corrected algorithm, freshly re-invoked) on all four
+     survivors reproduced the identical result: $R,E,M_0,M_1$ all
+     Gorenstein, elementary-divisor patterns and generators matching the
+     earlier run exactly. Full clean run, no assertion failures, no
+     exceptions:
+     $$\boxed{\text{BASS}(R_{\bar{\mathfrak p}}) = \text{YES}}
+     \quad\text{(independently re-confirmed, 67-subspace sweep)}$$
+     This is a genuine second certificate, not a restatement: different
+     enumeration code, a new lattice re-check of $R^\#=\tfrac12R$, and
+     two previously-untested dimensions (3 and 4) now explicitly ruled
+     out rather than assumed impossible.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
