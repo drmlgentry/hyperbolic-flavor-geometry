@@ -876,13 +876,49 @@ its own regardless of rank.
      (its $R$-basis coordinates are all integral — directly checked).
      Since $E/R$ has order 2 and $e$'s class is nonzero, $E=R+\mathcal
      O_K\cdot e$ follows immediately (the two cosets $R,R+e$ exhaust
-     $E$) — no further computation needed for that last part. **Not yet
-     done: Gorenstein/Bass type classification of $R_{\bar{\mathfrak
-     p}}$ from this $E/R\cong\mathbf F_2$ structure, and the resulting
-     non-Eichler normalizer $N(R)$ computation via
-     $N(R)\subseteq N(E)$ acting on the codimension-1 subspaces of
-     $E/\bar{\mathfrak p}E$** — the next two steps in the chain GPT/
-     webclaude proposed, deliberately not attempted in the same pass.
+     $E$) — no further computation needed for that last part.
+   - **Gorenstein/Bass classification, Steps 1–2: $R^\#$ computed
+     explicitly, $R^\#/R\cong\mathbf F_2^4$ exactly (a strong indicator
+     against Gorenstein, not yet the formal proof)** [Computed — exact]
+     (same script, extended). **Trace-pairing convention corrected
+     before use**: the relayed task spec said "reduced trace = matrix
+     trace," i.e. $T(x,y)=\mathrm{trace}(xy)$ with no conjugation — but
+     the standard pairing for quaternion-order discriminant/Gorenstein
+     theory (Voight, *Quaternion Algebras*; the framework Jun–Kim's
+     paper builds on) is $T(x,y)=\mathrm{Trd}(x\bar y)=\mathrm{trace}
+     (x\cdot\mathrm{adj}(y))$ — the same convention `order_closure.sage`
+     already used throughout this investigation. Computed both; both
+     happened to give the same discriminant valuation (4), so that
+     check alone couldn't discriminate — used the adjugate convention
+     as the mathematically correct one, not the literal relayed
+     instruction, and said so explicitly rather than silently
+     switching. $R^\#$'s explicit dual basis computed via
+     $r^\#_i=\sum_j(T^{-1})_{ij}r_j$, sanity-checked directly against
+     $T(r^\#_i,r_j)=\delta_{ij}$.
+     **A self-caught bug before reporting anything**: the first attempt
+     printed "$R\not\subseteq R^\#$," which is impossible for a genuine
+     order ($\mathrm{Trd}(r\bar{r'})\in\mathcal O_K$ automatically for
+     $r,r'\in R$) — traced to having the change-of-basis direction
+     backwards, fixed, rerun. Corrected result: $R\subset R^\#$
+     confirmed directly (all entries of the change-of-basis matrix $P$
+     integral), $[R^\#:R]=2^4=16$ — consistent with, and numerically
+     matching, $v_{\bar{\mathfrak p}}(\mathrm{disc}_{\mathrm{tr}}R)=4$
+     computed independently via $T_{\mathrm{adj}}$'s determinant.
+     **Sharper structural fact, independently verified**: every nonzero
+     entry of $P$ has valuation exactly 1 (not just $\det P$ having
+     valuation 4) — confirmed rigorously by checking $P/2$ is invertible
+     over $\Z_2$ (determinant valuation 0), giving Smith normal form
+     $\mathrm{diag}(2,2,2,2)$ exactly. **$R^\#/R\cong\mathbf F_2^4$, not
+     cyclic.** Since a Gorenstein order requires $R^\#$ to be a cyclic
+     $R$-module, and cyclic-as-$R$-module implies cyclic-as-$\Z_2$-module,
+     this already rules out Gorenstein — but this is stated as a strong
+     structural indicator here, not yet the formal proof GPT's Step 4
+     specifies (via $J(R)$ and the length comparison
+     $\mathrm{length}(R^\#/R)=\mathrm{length}(R/J(R))$), which is the
+     next step, deliberately not done in the same pass. **Also not yet
+     done: Bass criterion (moot if non-Gorenstein confirmed), the
+     15-hyperplane enumeration, and $N(R)$** — reported back per
+     instruction before continuing further.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,

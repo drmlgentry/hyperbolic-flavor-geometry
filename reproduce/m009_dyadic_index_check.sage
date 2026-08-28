@@ -608,3 +608,149 @@ print(f"Explicit generator (actual frame, via g0): e = {e_actual.list()}")
 print(f"Verified: pbar*e = 2e is in R (e_in_R={e_in_R}), e itself is NOT in R.")
 print(f"Hence E = R + O_K*e, pbar*e subset R -- the index-2 extension is exact")
 print(f"and explicit.")
+
+######################################################################
+# 12. GORENSTEIN/BASS CLASSIFICATION -- STEP 1: TRACE DUAL R#
+#     Two candidate pairings tested against the ALREADY-ESTABLISHED
+#     disc_tr(R) valuation (4 at pbar, confirmed repeatedly this
+#     session) to determine which is the correct convention before
+#     trusting anything built on it:
+#       T (x,y)  = trace(x*y)            -- naive, as literally
+#                                            specified in the relayed task
+#       T'(x,y) = trace(x*adj(y))        -- standard quaternion-order
+#                                            trace pairing (Trd(x*ybar)),
+#                                            same convention already used
+#                                            in order_closure.sage /
+#                                            m009_bruhat_tits_eichler_check.sage
+######################################################################
+print()
+print("=" * 60)
+print("GORENSTEIN/BASS -- STEP 1: TRACE DUAL R# (checking pairing convention)")
+print("=" * 60)
+
+
+def adjugate2(m2x2):
+    a_, b_, c_, d_ = m2x2[0, 0], m2x2[0, 1], m2x2[1, 0], m2x2[1, 1]
+    return matrix(Q2, [[d_, -b_], [-c_, a_]])
+
+
+# Use R_std (the pulled-back, "std frame" basis of R -- 4 elements)
+r_basis = R_std
+
+T_naive = matrix(Q2, 4, 4, lambda i, j: (r_basis[i] * r_basis[j]).trace())
+T_adj = matrix(Q2, 4, 4, lambda i, j: (r_basis[i] * adjugate2(r_basis[j])).trace())
+
+print()
+print("T_naive = trace(r_i * r_j):")
+print(T_naive)
+print()
+print("T_adj = trace(r_i * adj(r_j)):")
+print(T_adj)
+
+det_naive = T_naive.det()
+det_adj = T_adj.det()
+print()
+print("det(T_naive):", det_naive, " valuation:", (det_naive.valuation() if det_naive != 0 else "inf/zero"))
+print("det(T_adj):  ", det_adj, " valuation:", (det_adj.valuation() if det_adj != 0 else "inf/zero"))
+print()
+print("Already-established disc_tr(R) valuation at pbar (from prior scripts,")
+print("order_closure.sage / m009_bruhat_tits_eichler_check.sage): 4")
+print("(v_p=0, v_pbar=4 was asserted and confirmed multiple times this session)")
+
+print()
+print("Both pairings give the same valuation here (4) -- doesn't discriminate.")
+print("Using T_adj = trace(x*adj(y)) going forward: this is the standard")
+print("reduced-trace pairing Trd(x*ybar) for quaternion-order discriminant/")
+print("Gorenstein theory (Voight, 'Quaternion Algebras'; matches the exact")
+print("convention already used in order_closure.sage and")
+print("m009_bruhat_tits_eichler_check.sage throughout this investigation),")
+print("NOT the naive trace(xy) as literally written in the relayed task spec.")
+
+# Verify T_adj is symmetric (expected for this pairing -- a real check,
+# not assumed):
+is_symmetric = (T_adj == T_adj.transpose())
+print()
+print("T_adj symmetric:", is_symmetric)
+assert is_symmetric, "T_adj unexpectedly not symmetric -- convention error"
+
+######################################################################
+# 13. EXPLICIT BASIS OF R# (dual lattice under T_adj)
+######################################################################
+Tinv = T_adj.inverse()
+print()
+print("T_adj^-1:")
+print(Tinv)
+
+# Dual basis: r#_i = sum_j (Tinv)_{ij} * r_j
+Rsharp_basis = []
+for i in range(4):
+    elt = sum(Tinv[i, j] * r_basis[j] for j in range(4))
+    Rsharp_basis.append(elt)
+
+print()
+print("Explicit basis of R# (dual lattice, entries as Q2 matrices):")
+for i, e in enumerate(Rsharp_basis):
+    print(f"  r#_{i+1} =", e.list())
+
+# Sanity check: T_adj(r#_i, r_j) should be delta_ij
+print()
+print("Sanity check T_adj(r#_i, r_j) == delta_ij:")
+for i in range(4):
+    row = [(Rsharp_basis[i] * adjugate2(r_basis[j])).trace() for j in range(4)]
+    print("  ", [str(c) for c in row])
+
+######################################################################
+# 14. STRUCTURE OF R#/R -- express R# basis in R's own basis
+#     coordinates (clean valuation summary, not raw Q2 series).
+######################################################################
+print()
+print("=" * 60)
+print("GORENSTEIN/BASS -- STEP 2: STRUCTURE OF R#/R")
+print("=" * 60)
+
+Rsharp_flat = matrix(Q2, [flat(e) for e in Rsharp_basis])
+R_flat = matrix(Q2, [flat(r) for r in r_basis])
+
+# Since R is an order, R subset R# ALWAYS holds (for r,r' in R,
+# Trd(r*r'bar) is automatically integral). So the correct direction is:
+# express R's basis in terms of R#'s (larger) basis -- that matrix P
+# should be integral, and [R#:R] = 2^v(det P).
+P = R_flat * Rsharp_flat.inverse()  # R basis in R#-basis coordinates
+print()
+print("R expressed in R#-basis coordinates -- valuations only (clean form):")
+for row in P.rows():
+    print("  ", [c.valuation() if c != 0 else "inf" for c in row])
+
+print()
+print("R subset R#? (all entries of P should be integral, i.e. valuation>=0):")
+r_in_rsharp = all((c == 0) or (c.valuation() >= 0) for row in P.rows() for c in row)
+print("  ", r_in_rsharp)
+assert r_in_rsharp, "R not contained in R# -- this should be impossible for a genuine order; bug"
+
+detP = P.det()
+vP = detP.valuation() if detP != 0 else "inf"
+print()
+print("det(P) valuation:", vP)
+print(f"[R# : R] = 2^{vP} = {2**vP if vP != 'inf' else 'undefined'}")
+
+# Verify the elementary-divisor claim rigorously: if every nonzero entry
+# of P has valuation exactly 1, then P = 2*P' with P' having unit or
+# zero entries; confirm P' is invertible over Z2 (det valuation 0),
+# which gives Smith normal form of P = diag(2,2,2,2) exactly.
+Pprime = P / 2
+print()
+print("P/2 entries (should be units or exactly 0):")
+for row in Pprime.rows():
+    print("  ", [c.valuation() if c != 0 else "inf(zero)" for c in row])
+detPprime = Pprime.det()
+vPprime = detPprime.valuation() if detPprime != 0 else "inf"
+print("det(P/2) valuation:", vPprime, " (want 0, i.e. P/2 in GL_4(Z2))")
+assert vPprime == 0, "P/2 not invertible over Z2 -- elementary divisors NOT all equal to 2"
+print()
+print("CONFIRMED: Smith normal form of P is diag(2,2,2,2) exactly.")
+print("R#/R = (Z2/2Z2)^4 = F2^4 as an abelian group -- NOT cyclic (Z/16).")
+print("This is a strong structural indicator (not yet a proof) against")
+print("R being Gorenstein, since a Gorenstein order requires R# to be a")
+print("CYCLIC R-module -- and R#/R failing to be cyclic even as an")
+print("abelian group rules that out immediately (cyclic-as-R-module")
+print("implies cyclic-as-Z2-module, a fortiori).")
