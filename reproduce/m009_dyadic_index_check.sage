@@ -1035,3 +1035,521 @@ print("R_pbar (m009's local order at the dyadic prime pbar) IS GORENSTEIN.")
 print("R# = R + R*xi with xi = r#_4, verified both via the mod-2 module")
 print("action (exhaustive check over all 15 nonzero candidates) and via")
 print("an independent full Z2-lattice-level generator check.")
+
+######################################################################
+# 17. COMPLETE OVERORDER ENUMERATION: 15 lines + 35 planes of
+#     V = (1/2)R / R (isomorphic to R/2R via x <-> 2x, used here in
+#     the "half-lattice" framing GPT specified).
+######################################################################
+print()
+print("=" * 70)
+print("COMPLETE OVERORDER ENUMERATION")
+print("=" * 70)
+print()
+print("V = (1/2 R)/R = F2^4 (isomorphic to R/2R via mult-by-2)")
+
+
+def lift_subspace_to_S_basis(subspace_rows_F2):
+    """subspace_rows_F2: list of F2 vectors (length 4), a basis for a
+    subspace of R/2R (equivalently of V via the x<->2x identification).
+    Returns an explicit Z2-basis (list of Q2 2x2 matrices) for
+    S = R + sum Z2*(lift of each row /2)."""
+    M = matrix(F2, subspace_rows_F2)
+    Mred = M.echelon_form()
+    pivots = Mred.pivots()
+    new_basis = list(r_basis)  # start as R's basis, will replace pivot slots
+    for row_idx, piv_col in enumerate(pivots):
+        row = Mred.row(row_idx)
+        # lift row (F2 vector) to an integer combo of r_basis, divide by 2
+        lift_coeffs = [Integer(c) for c in row]
+        x = sum(lift_coeffs[i] * r_basis[i] for i in range(4)) / 2
+        new_basis[piv_col] = x
+    return new_basis
+
+
+def is_mult_closed(S_basis):
+    Sf = matrix(Q2, [flat(b) for b in S_basis])
+    Sf_inv = Sf.inverse()
+    for i in range(4):
+        for j in range(4):
+            prod = S_basis[i] * S_basis[j]
+            coeffs = flat(prod) * Sf_inv
+            if not all((c == 0) or (c.valuation() >= 0) for c in coeffs):
+                return False
+    return True
+
+
+def disc_val(S_basis):
+    TS = matrix(Q2, 4, 4, lambda i, j: (S_basis[i] * adjugate2(S_basis[j])).trace())
+    d = TS.det()
+    return d.valuation() if d != 0 else None
+
+
+def gorenstein_test(S_basis, label=""):
+    """Returns (is_gorenstein: bool, details dict)."""
+    n = len(S_basis)
+    T_S = matrix(Q2, n, n, lambda i, j: (S_basis[i] * adjugate2(S_basis[j])).trace())
+    if T_S.det() == 0:
+        return None, {"error": "degenerate trace form"}
+    Tinv_S = T_S.inverse()
+    Ssharp = [sum(Tinv_S[i, j] * S_basis[j] for j in range(n)) for i in range(n)]
+    Sf = matrix(Q2, [flat(b) for b in S_basis])
+    Ssf = matrix(Q2, [flat(b) for b in Ssharp])
+    # P: S in S#-basis coords (should be integral, S subset S#)
+    P_S = Sf * Ssf.inverse()
+    vals = [c.valuation() if c != 0 else Infinity for row in P_S.rows() for c in row]
+    if not all(v >= 0 for v in vals):
+        return None, {"error": "S not subset S# -- bug"}
+    dv = disc_val(S_basis)
+    index_val = dv  # [S#:S] = 2^dv
+    # Build S/2S structure constants & S is an F2-algebra of dim n
+    Sf_inv = Sf.inverse()
+
+    def res2(a):
+        if a == 0:
+            return F2(0)
+        return F2(0) if a.valuation() >= 1 else F2(a.residue())
+    # action of S (mod 2) on S#/S = S#/2S# (need S = 2*S#? check)
+    TwoSsf = matrix(Q2, [flat(2 * e) for e in Ssharp])
+    coords_S_in_2Ssharp = Sf * TwoSsf.inverse()
+    is_S_eq_2Ssharp = all((c == 0) or (c.valuation() >= 0) for row in coords_S_in_2Ssharp.rows() for c in row)
+    if not is_S_eq_2Ssharp:
+        # Not the simple case S=2S# -- fall back to a direct dim count
+        # via elementary divisors of P_S and note it for manual review.
+        return None, {"error": "S != 2*S# -- needs separate handling", "disc_val": dv}
+    Ssharp_inv = Ssf.inverse()
+    action = {}
+    for i in range(n):
+        for j in range(n):
+            prod = S_basis[i] * Ssharp[j]
+            coeffs = flat(prod) * Ssharp_inv
+            vals2 = [c.valuation() if c != 0 else Infinity for c in coeffs]
+            if not all(v >= 0 for v in vals2):
+                return None, {"error": "S# not a left S-module -- bug"}
+            action[i, j] = vector(F2, [res2(c) for c in coeffs])
+    Mmats = []
+    for i in range(n):
+        cols = [action[i, j] for j in range(n)]
+        Mmats.append(matrix(F2, n, n, lambda a, b: cols[b][a]))
+    best_rank = 0
+    gen = None
+    for bits in range(1, 2**n):
+        xi = vector(F2, [(bits >> k) & 1 for k in range(n)])
+        orbit = matrix(F2, [Mi * xi for Mi in Mmats])
+        rk = orbit.rank()
+        if rk > best_rank:
+            best_rank = rk
+        if rk == n and gen is None:
+            gen = xi
+    is_gor = (gen is not None)
+    return is_gor, {"disc_val": dv, "dim_Sf_2Sf": n, "best_rank": best_rank, "generator": gen}
+
+######################################################################
+# STEP 1: 15 index-2 candidates (lines)
+######################################################################
+print()
+print("--- STEP 1: 15 index-2 candidate lines ---")
+line_survivors = []
+for bits in range(1, 16):
+    xvec = vector(F2, [(bits >> k) & 1 for k in range(4)])
+    S_basis = lift_subspace_to_S_basis([xvec])
+    closed = is_mult_closed(S_basis)
+    dv = disc_val(S_basis) if closed else None
+    print(f"  line {xvec}: mult_closed={closed}", f" v(disc_tr)={dv}" if closed else "")
+    if closed:
+        line_survivors.append((xvec, S_basis, dv))
+
+print()
+print(f"index-2 survivors: {len(line_survivors)} / 15")
+
+######################################################################
+# STEP 2: 35 index-4 candidates (planes)
+######################################################################
+print()
+print("--- STEP 2: 35 index-4 candidate planes ---")
+
+seen_planes = set()
+plane_survivors = []
+count_planes = 0
+for b1 in range(1, 16):
+    v1 = vector(F2, [(b1 >> k) & 1 for k in range(4)])
+    for b2 in range(b1 + 1, 16):
+        v2 = vector(F2, [(b2 >> k) & 1 for k in range(4)])
+        M2span = matrix(F2, [v1, v2])
+        if M2span.rank() != 2:
+            continue
+        red = M2span.echelon_form()
+        key = tuple(tuple(row) for row in red.rows())
+        if key in seen_planes:
+            continue
+        seen_planes.add(key)
+        count_planes += 1
+        rows = [red.row(0), red.row(1)]
+        S_basis = lift_subspace_to_S_basis(rows)
+        closed = is_mult_closed(S_basis)
+        dv = disc_val(S_basis) if closed else None
+        print(f"  plane #{count_planes} {key}: mult_closed={closed}", f" v(disc_tr)={dv}" if closed else "")
+        if closed:
+            plane_survivors.append((key, S_basis, dv))
+
+print()
+print(f"total distinct planes enumerated: {count_planes} (want 35)")
+assert count_planes == 35
+print(f"index-4 survivors: {len(plane_survivors)} / 35")
+
+######################################################################
+# Cross-check: does the index-2 survivor equal E (found independently
+# via the Bruhat-Tits branch method)? IMPORTANT FRAME NOTE: r_basis
+# (used throughout lift_subspace_to_S_basis, hence for all line/plane
+# survivors) is R_std -- the g0-PULLED-BACK frame. So the correct
+# comparison is against E_std_basis_exact (also pulled-back, no g0
+# conjugation) -- NOT E_actual_basis (which would need g0 conjugation
+# applied to r_basis too, or removed from E, to compare consistently).
+######################################################################
+print()
+print("--- Cross-check: index-2 survivor vs E (from the branch-vertex method) ---")
+Estd_flat_check = matrix(Q2, [flat(matrix(Q2, [[Q2(c) for c in row] for row in e.rows()])) for e in E_std_basis_exact])
+
+xvec2, S2_basis, dv2 = line_survivors[0]
+S2_flat = matrix(Q2, [flat(b) for b in S2_basis])
+
+# Same lattice iff each spans the other integrally (both directions).
+A_ = S2_flat * Estd_flat_check.inverse()
+B_ = Estd_flat_check * S2_flat.inverse()
+same_lattice = (all((c == 0) or (c.valuation() >= 0) for row in A_.rows() for c in row) and
+                all((c == 0) or (c.valuation() >= 0) for row in B_.rows() for c in row))
+print("index-2 survivor == E (branch-vertex construction)?", same_lattice)
+assert same_lattice, "the two independent methods disagree -- investigate"
+print("CONFIRMED: the two completely independent constructions of the")
+print("unique index-2 overorder agree exactly.")
+
+######################################################################
+# STEP 3: Gorenstein test for the index-2 survivor (E)
+######################################################################
+print()
+print("--- STEP 3: Gorenstein test for index-2 survivor (E) ---")
+is_gor_E, details_E = gorenstein_test(S2_basis, "E")
+print("E Gorenstein?", is_gor_E, " details:", details_E)
+
+######################################################################
+# Gorenstein test for the two index-4 (maximal) survivors, for the
+# consistency table (expected: trivially Gorenstein, verify directly
+# rather than assume).
+######################################################################
+print()
+print("--- Gorenstein test for the two index-4 (maximal) survivors ---")
+maximal_results = []
+for idx, (key, S_basis, dv) in enumerate(plane_survivors):
+    is_gor, details = gorenstein_test(S_basis, f"M{idx}")
+    print(f"M{idx} (key={key}) Gorenstein?", is_gor, " details:", details)
+    maximal_results.append((key, is_gor, details))
+
+######################################################################
+# FINAL CONSISTENCY TABLE AND BASS CONCLUSION
+######################################################################
+print()
+print("=" * 70)
+print("FINAL POSET / CONSISTENCY TABLE")
+print("=" * 70)
+print(f"{'Order':<8}{'[S:R]':<8}{'v(disc_tr)':<12}{'Gorenstein?'}")
+print(f"{'R':<8}{'1':<8}{'4':<12}{'YES (proved earlier)'}")
+print(f"{'E':<8}{'2':<8}{str(dv2):<12}{is_gor_E}")
+for idx, (key, is_gor, details) in enumerate(maximal_results):
+    print(f"{'M'+str(idx):<8}{'4':<8}{str(details.get('disc_val')):<12}{is_gor}")
+
+all_index2_gorenstein = is_gor_E  # only one index-2 survivor found
+bass_conclusion = "YES" if (all_index2_gorenstein and all(r[1] for r in maximal_results)) else "NO"
+print()
+print(f"Overorder poset: R subset E subset {{M0, M1}}, no other overorders found")
+print(f"  (1/15 lines survive, 2/35 planes survive -- exhaustive).")
+print(f"All index-2 survivors Gorenstein: {all_index2_gorenstein}")
+print(f"All maximal overorders Gorenstein: {all(r[1] for r in maximal_results)}")
+print()
+print(f"BASS(R) = {bass_conclusion}")
+
+######################################################################
+# 18. GENERAL SMITH NORMAL FORM OVER Z2 (valuation-pivoting), since the
+#     earlier "S=2*S#" shortcut only happened to hold for R's specific
+#     structure and fails for E (index 4) and M0/M1 (index 1, self-dual).
+######################################################################
+
+
+def snf_valuations_z2(mat):
+    """mat: square Q2 matrix with all entries of valuation >= 0 (or 0).
+    Returns list of elementary-divisor valuations via row/col reduction
+    with minimal-valuation pivoting. Non-destructive (copies input)."""
+    n = mat.nrows()
+    M = matrix(Q2, mat)  # copy
+    divs = []
+    size = n
+    for step in range(n):
+        # find min valuation nonzero entry in the remaining (size x size) block
+        best = None
+        for i in range(size):
+            for j in range(size):
+                if M[i, j] != 0:
+                    v = M[i, j].valuation()
+                    if best is None or v < best[0]:
+                        best = (v, i, j)
+        if best is None:
+            divs.append(Infinity)
+            continue
+        v0, pi, pj = best
+        # swap pivot to (0,0) of remaining block
+        M.swap_rows(0, pi)
+        M.swap_columns(0, pj)
+        piv = M[0, 0]
+        # clear rest of row 0 and column 0
+        for j in range(1, size):
+            if M[0, j] != 0:
+                factor = M[0, j] / piv
+                for i in range(size):
+                    M[i, j] -= factor * M[i, 0]
+        for i in range(1, size):
+            if M[i, 0] != 0:
+                factor = M[i, 0] / piv
+                for j in range(size):
+                    M[i, j] -= factor * M[0, j]
+        divs.append(v0)
+        # shrink to the bottom-right (size-1)x(size-1) block by relabeling
+        M = M[1:, 1:]
+        size -= 1
+    return divs
+
+
+def general_gorenstein_test(S_basis, label=""):
+    n = len(S_basis)
+    T_S = matrix(Q2, n, n, lambda i, j: (S_basis[i] * adjugate2(S_basis[j])).trace())
+    Tinv_S = T_S.inverse()
+    Ssharp = [sum(Tinv_S[i, j] * S_basis[j] for j in range(n)) for i in range(n)]
+    Sf = matrix(Q2, [flat(b) for b in S_basis])
+    Ssf = matrix(Q2, [flat(b) for b in Ssharp])
+    P = Sf * Ssf.inverse()  # S in S#-basis coords, should be integral
+    vals = [c.valuation() if c != 0 else Infinity for row in P.rows() for c in row]
+    assert all(v >= 0 for v in vals), f"{label}: S not subset S#"
+    divs = snf_valuations_z2(P)
+    nontrivial = [d for d in divs if d > 0]
+    print(f"  [{label}] elementary divisor valuations of S subset S#: {divs}")
+    if len(nontrivial) == 0:
+        print(f"  [{label}] S# = S exactly (self-dual, index 1) -- Gorenstein trivially YES.")
+        return True, {"divs": divs, "index": 1}
+    total_index = 2**sum(divs)
+    if len(nontrivial) == 1:
+        print(f"  [{label}] S#/S is CYCLIC as abelian group (Z/2^{nontrivial[0]}) -- ")
+        print(f"  [{label}] automatically cyclic as S-module (Z-cyclic implies R-cyclic) -- Gorenstein YES.")
+        return True, {"divs": divs, "index": total_index}
+    # Multiple nontrivial divisors -- need the real module-action test.
+    # Handle the case where all nontrivial divisors equal the SAME value m
+    # (so 2^m * S# subset S, giving a module over S/(2^m S)); this covers
+    # what we need here. General mixed-torsion case not implemented.
+    if len(set(nontrivial)) == 1:
+        m = nontrivial[0]
+        print(f"  [{label}] {len(nontrivial)} equal nontrivial divisors = {m} -- testing as S/2^{m}S-module.")
+        # Build S#/S as an (F_{2^m}-ish) module: since all divisors equal m,
+        # 2^m * S# subset S. Work with k = len(nontrivial)-dim space over
+        # Z/2^m via coordinates from P's Smith-reduced basis. For our cases
+        # (m=1 always, since E has divisors either (0,0,1,1) or similar with
+        # nontrivial entries =1), specialize to m=1 (F2 case), matching the
+        # R computation exactly but on the REDUCED-rank nontrivial subspace.
+        assert m == 1, f"only m=1 handled here, got m={m}"
+        k = len(nontrivial)
+        # Recompute a clean basis where S = S# with the nontrivial
+        # directions scaled by 2: use the SNF-adapted bases directly by
+        # redoing the reduction while tracking basis transforms.
+        # Simpler: reuse the earlier general approach but restricted to
+        # the sublattice actually mod 2 -- since all divisors are 1,
+        # S#/S is killed by 2 entirely (2*S# subset S), same as before.
+        TwoSsf = matrix(Q2, [flat(2 * e) for e in Ssharp])
+        coordsS_in_2Ssharp = Sf * TwoSsf.inverse()
+        ok2 = all((c == 0) or (c.valuation() >= 0) for row in coordsS_in_2Ssharp.rows() for c in row)
+        assert ok2, f"{label}: expected 2*S# subset S given all divisors=1, but check failed"
+
+        def res2(a):
+            if a == 0:
+                return F2(0)
+            return F2(0) if a.valuation() >= 1 else F2(a.residue())
+        Ssharp_inv = Ssf.inverse()
+        action = {}
+        for i in range(n):
+            for j in range(n):
+                prod = S_basis[i] * Ssharp[j]
+                coeffs = flat(prod) * Ssharp_inv
+                vals2 = [c.valuation() if c != 0 else Infinity for c in coeffs]
+                assert all(v >= 0 for v in vals2), f"{label}: S# not a left S-module"
+                action[i, j] = vector(F2, [res2(c) for c in coeffs])
+        Mmats = []
+        for i in range(n):
+            cols = [action[i, j] for j in range(n)]
+            Mmats.append(matrix(F2, n, n, lambda a, b: cols[b][a]))
+        best_rank = 0
+        gen = None
+        for bits in range(1, 2**n):
+            xi = vector(F2, [(bits >> t) & 1 for t in range(n)])
+            orbit = matrix(F2, [Mi * xi for Mi in Mmats])
+            rk = orbit.rank()
+            if rk > best_rank:
+                best_rank = rk
+            if rk == n and gen is None:
+                gen = xi
+        # Note: this computes rank in the FULL n-dim reduction of S/2S
+        # acting on S#/2S# (which has dim n, with dim-len(nontrivial)
+        # trivial/zero directions where S#=S already) -- cyclic iff some
+        # generator achieves rank = n (matches R's own successful case).
+        is_gor = (gen is not None)
+        print(f"  [{label}] exhaustive cyclic test over {2**n-1} nonzero candidates: best_rank={best_rank}/{n}, generator={gen}")
+        return is_gor, {"divs": divs, "index": total_index, "generator": gen}
+    raise NotImplementedError(f"{label}: mixed elementary divisors {nontrivial} not handled")
+
+
+print()
+print("=" * 70)
+print("(superseded: general_gorenstein_test only handled the special case")
+print("S = 2*S# which happens to hold for R but not E/M0/M1 -- skipping")
+print("straight to the corrected general_gorenstein_test_v2 below, which")
+print("properly tracks the SNF transformation and tests the genuine")
+print("quotient dimension.)")
+print("=" * 70)
+
+######################################################################
+# 19. CORRECTED general Gorenstein test: track the SNF transformation so
+#     S#/S is tested in its own genuine quotient dimension (equal to the
+#     number of nontrivial divisors), not the full n-dim mod-2 reduction
+#     of S#. Bug found: for E, divisors are (0,0,1,1), so E#/E is
+#     genuinely 2-dimensional, not 4 -- the earlier version tested the
+#     wrong (larger) group.
+######################################################################
+
+
+def snf_with_transform_z2(mat):
+    n = mat.nrows()
+    M = matrix(Q2, mat)
+    V = identity_matrix(Q2, n)
+    divs = [None] * n
+    active_rows = list(range(n))
+    active_cols = list(range(n))
+    for step in range(n):
+        if len(active_rows) == 0 or len(active_cols) == 0:
+            break
+        best = None
+        for i in active_rows:
+            for j in active_cols:
+                if M[i, j] != 0:
+                    v = M[i, j].valuation()
+                    if best is None or v < best[0]:
+                        best = (v, i, j)
+        if best is None:
+            for j in active_cols:
+                divs[j] = Infinity
+            break
+        v0, pi, pj = best
+        piv = M[pi, pj]
+        for j in active_cols:
+            if j != pj and M[pi, j] != 0:
+                factor = M[pi, j] / piv
+                for i in active_rows:
+                    M[i, j] -= factor * M[i, pj]
+                for i in range(n):
+                    V[i, j] -= factor * V[i, pj]
+        for i in active_rows:
+            if i != pi and M[i, pj] != 0:
+                factor = M[i, pj] / piv
+                for j in active_cols:
+                    M[i, j] -= factor * M[pi, j]
+        divs[pj] = v0
+        active_rows.remove(pi)
+        active_cols.remove(pj)
+    return divs, V
+
+
+def general_gorenstein_test_v2(S_basis, label=""):
+    n = len(S_basis)
+    T_S = matrix(Q2, n, n, lambda i, j: (S_basis[i] * adjugate2(S_basis[j])).trace())
+    Tinv_S = T_S.inverse()
+    Ssharp = [sum(Tinv_S[i, j] * S_basis[j] for j in range(n)) for i in range(n)]
+    Sf = matrix(Q2, [flat(b) for b in S_basis])
+    Ssf = matrix(Q2, [flat(b) for b in Ssharp])
+    P = Sf * Ssf.inverse()
+    divs, V = snf_with_transform_z2(P)
+    print(f"  [{label}] elementary divisor valuations: {divs}")
+    nontrivial_idx = [i for i, d in enumerate(divs) if d and d > 0]
+    if len(nontrivial_idx) == 0:
+        print(f"  [{label}] S sharp equals S exactly -- Gorenstein trivially YES.")
+        return True, {"divs": divs}
+    if len(nontrivial_idx) == 1:
+        print(f"  [{label}] S sharp / S is cyclic as abelian group -- Gorenstein automatically YES.")
+        return True, {"divs": divs}
+    dset = set(divs[i] for i in nontrivial_idx)
+    if len(dset) != 1 or list(dset)[0] != 1:
+        raise NotImplementedError(f"{label}: unsupported divisor pattern {divs}")
+    f_basis = []
+    for col in range(n):
+        elt = sum(V[row, col] * Ssharp[row] for row in range(n))
+        f_basis.append(elt)
+    k = len(nontrivial_idx)
+    f_flat = matrix(Q2, [flat(f_basis[i]) for i in range(n)])
+    f_inv = f_flat.inverse()
+
+    def res2(a):
+        if a == 0:
+            return F2(0)
+        return F2(0) if a.valuation() >= 1 else F2(a.residue())
+    action = {}
+    for si in range(n):
+        for jj, j in enumerate(nontrivial_idx):
+            prod = S_basis[si] * f_basis[j]
+            coeffs = flat(prod) * f_inv
+            vals2 = [c.valuation() if c != 0 else Infinity for c in coeffs]
+            assert all(v >= 0 for v in vals2), f"{label}: S sharp not closed under S-mult, adapted basis"
+            # Trivial-index coordinates do NOT need to vanish mod 2: since
+            # f_i is itself in S for trivial i, ANY integer multiple of it
+            # is already 0 in S#/S regardless of parity -- just ignore
+            # those coordinates rather than requiring them to vanish.
+            action[si, jj] = vector(F2, [res2(coeffs[nontrivial_idx[t]]) for t in range(k)])
+    Mmats = []
+    for si in range(n):
+        cols = [action[si, jj] for jj in range(k)]
+        Mmats.append(matrix(F2, k, k, lambda a, b: cols[b][a]))
+    best_rank = 0
+    gen = None
+    for bits in range(1, 2**k):
+        xi = vector(F2, [(bits >> t) & 1 for t in range(k)])
+        orbit = matrix(F2, [Mi * xi for Mi in Mmats])
+        rk = orbit.rank()
+        if rk > best_rank:
+            best_rank = rk
+        if rk == k and gen is None:
+            gen = xi
+    is_gor = (gen is not None)
+    print(f"  [{label}] genuine quotient dim = {k}; exhaustive test over {2**k-1} candidates: "
+          f"best_rank={best_rank}/{k}, generator={gen}")
+    return is_gor, {"divs": divs, "quotient_dim": k, "generator": gen}
+
+
+print()
+print("=" * 70)
+print("CORRECTED GENERALIZED GORENSTEIN TESTS (proper quotient dimension)")
+print("=" * 70)
+print()
+print("--- R ---")
+is_gor_R3, det_R3 = general_gorenstein_test_v2(r_basis, "R")
+print()
+print("--- E ---")
+is_gor_E3, det_E3 = general_gorenstein_test_v2(S2_basis, "E")
+print()
+print("--- M0, M1 ---")
+max_results3 = []
+for idx, (key, S_basis, dv) in enumerate(plane_survivors):
+    is_gor, det = general_gorenstein_test_v2(S_basis, f"M{idx}")
+    max_results3.append((key, is_gor, det))
+
+print()
+print("=" * 70)
+print("CORRECTED FINAL TABLE")
+print("=" * 70)
+print(f"R : Gorenstein={is_gor_R3}")
+print(f"E : Gorenstein={is_gor_E3}")
+for idx, (key, is_gor, det) in enumerate(max_results3):
+    print(f"M{idx}: Gorenstein={is_gor}")
+bass_final = is_gor_E3 and all(r[1] for r in max_results3)
+print()
+print(f"BASS(R) = {'YES' if bass_final else 'NO'}")

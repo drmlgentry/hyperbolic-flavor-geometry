@@ -964,10 +964,67 @@ its own regardless of rank.
      which is why it pointed the wrong way; not corrected in the
      relayed instructions, caught here by running the direct test
      instead of trusting the shortcut.
-     **Not yet done: Bass criterion** (now the live question, since
-     Gorenstein is a prerequisite — check whether $E$, $M_0$, $M_1$ are
-     all Gorenstein too), **the 15-hyperplane enumeration, and $N(R)$**
-     — reported back per instruction before continuing further.
+     **Not yet done: Bass criterion**, addressed next below.
+   - **Complete overorder enumeration and Bass classification: BASS(R)
+     = YES** [Computed — exact, exhaustive] (same script, extended).
+     Reframed as GPT specified: $V=(\tfrac12R)/R\cong\mathbf F_2^4$;
+     enumerated all $15$ one-dimensional and all $35$ two-dimensional
+     $\mathbf F_2$-subspaces of $V$ (both counts verified exactly — a
+     bug-check in itself), lifted each to a candidate order
+     $S=R+\mathcal O_K x$ (or $+\mathcal O_K x+\mathcal O_K y$), and
+     tested genuine multiplicative closure directly (not assumed).
+     **Result: exactly $1/15$ lines survive and exactly $2/35$ planes
+     survive** — i.e. the overorder poset is exhaustively
+     $R\subset E\subset\{M_0,M_1\}$ with **no other overorders**,
+     matching GPT's prediction cleanly. **Cross-checked against the
+     independent Bruhat-Tits branch-vertex construction of $E$ from
+     earlier**: the two completely different constructions of the
+     unique index-2 survivor were verified to be the *same lattice* —
+     a real bug was caught and fixed first (a frame mismatch: $E$'s
+     branch-vertex basis was in the wrong conjugation frame relative to
+     $R$'s own basis; comparing against the correctly-framed version
+     confirmed agreement). The two index-4 survivors both have
+     $v(\mathrm{disc}_{\mathrm{tr}})=0$, confirming they are maximal
+     (i.e. $M_0,M_1$), also as predicted.
+     **Gorenstein-tested all four orders via a corrected, fully general
+     Smith-Normal-Form method** — building this correctly required
+     catching and fixing two more real bugs, not glossed over: (1) the
+     ad-hoc "$S=2S^\#$" shortcut that worked for $R$ (by coincidence of
+     its specific elementary-divisor pattern) fails for $E$ (divisors
+     $(0,0,1,1)$) and for $M_0,M_1$ (divisors $(0,0,0,0)$, self-dual) —
+     replaced with a proper Smith Normal Form over $\Z_2$ with
+     transformation tracking (an initial version of this also had a
+     row/column-index bookkeeping bug, caught by a `None` appearing
+     among the computed divisor valuations, fixed); (2) an incorrect
+     assumption that the *trivial*-divisor coordinates of a
+     module-action computation must vanish mod 2 — false: a trivial
+     direction is already entirely inside $S$, so any integer multiple
+     of it is automatically zero in $S^\#/S$ regardless of parity; the
+     assertion enforcing this was simply wrong and removed.
+     **Results, fully exhaustive**: $R$ — Gorenstein (re-derived via the
+     new general method, exactly reproducing the earlier ad-hoc-method
+     result: quotient dimension $4$, generator $(0,0,0,1)$, rank $4/4$
+     — a clean cross-check of the two independent implementations). $E$
+     — Gorenstein (quotient dimension $2$, all $3$ nonzero candidates
+     tested, generator $(1,1)$ achieves rank $2/2$ — matches the
+     standard fact that Eichler orders are always Gorenstein, an
+     independent confirmation of known theory rather than an assumed
+     citation of it). $M_0$, $M_1$ — Gorenstein trivially (both have
+     divisors $(0,0,0,0)$, i.e. $M_i^\#=M_i$ exactly, self-dual, as
+     expected for maximal orders).
+     $$\boxed{\text{BASS}(R_{\bar{\mathfrak p}}) = \text{YES}}$$
+     Consistency table:
+     | Order | $[S:R]$ | $v(\mathrm{disc}_{\mathrm{tr}})$ | Gorenstein |
+     |---|---|---|---|
+     | $R$ | 1 | 4 | YES |
+     | $E$ | 2 | 2 | YES |
+     | $M_0$ | 4 | 0 | YES |
+     | $M_1$ | 4 | 0 | YES |
+     Not yet done: the 15/35-enumeration and overorder poset are now
+     the natural substrate for the $N(R)$ computation (GPT's proposed
+     $N(R)\subseteq N(E)$, or now more sharply $N(R)$ acting on the
+     complete finite overorder poset $\{R,E,M_0,M_1\}$) — deliberately
+     not attempted in the same pass; reported back per instruction.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
