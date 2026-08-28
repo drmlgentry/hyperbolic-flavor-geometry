@@ -474,3 +474,137 @@ print(f"  confirmed contained in both M0 and M1.")
 print(f"R_pbar subset E_pbar confirmed (all entries integral above).")
 print(f"[E_pbar : R_pbar] = {2**v_detX} exactly (v_2(det X) = {v_detX}).")
 
+
+######################################################################
+# 10. E/R EXACT CERTIFICATE, WORKING MOD pbar (not Smith form over the
+#     Q2 field, which trivializes since Q2 is a field -- work in
+#     GF(2) = O_K/pbar directly instead, per the reduction-mod-pbar
+#     approach.)
+######################################################################
+print()
+print("=" * 60)
+print("E/R EXACT CERTIFICATE (mod pbar)")
+print("=" * 60)
+
+F2 = GF(2)
+
+# E/pbar*E: E_std has an EXACT integral basis {E11, 2*E12, E21, E22}
+# (E_std_basis_exact from step 5). Reducing coefficients mod 2 gives a
+# 4-dim F2 vector space with the standard basis images e1,e2,e3,e4.
+print()
+print("dim_k(E/pbar*E) = 4 (trivial: E_std has an exact rank-4 integral")
+print("basis over Z, so E/2E = F2^4 with basis = images of E_std basis).")
+
+# (R + pbar*E)/pbar*E: spanned by the mod-2 reductions of R_std's basis
+# vectors expressed in E_std coordinates -- i.e. the rows of X (already
+# computed in step 7), reduced mod 2. Each row entry of X is a Q2/Z2
+# element; reduce via .residue() (valid since every entry has
+# valuation >= 0, already confirmed).
+
+
+def residue_mod2(a):
+    if a == 0:
+        return F2(0)
+    v = a.valuation()
+    if v >= 1:
+        return F2(0)
+    return F2(a.residue())  # v == 0 case: well-defined residue in F2
+
+
+X_rows_mod2 = []
+for row in X.rows():
+    X_rows_mod2.append([residue_mod2(c) for c in row])
+
+print()
+print("Rows of X reduced mod 2 (each = an R-basis vector's E-coordinates mod pbar):")
+for r in X_rows_mod2:
+    print("  ", r)
+
+RmodE = matrix(F2, X_rows_mod2)
+dim_RmodE = RmodE.rank()
+print()
+print(f"dim_k((R+pbar*E)/pbar*E) = rank of this matrix over F2 = {dim_RmodE}")
+
+assert dim_RmodE == 3, f"expected dimension 3, got {dim_RmodE}"
+print("CONFIRMED: dim = 3 exactly, as predicted.")
+
+dim_ER = 4 - dim_RmodE
+print()
+print(f"By the short exact sequence 0 -> (R+pbarE)/pbarE -> E/pbarE -> E/R -> 0")
+print(f"(valid since R subset E subset pbarE-preimage... more precisely")
+print(f"E/R surjects from E/pbarE with kernel (R+pbarE)/pbarE):")
+print(f"dim_k(E/R) = 4 - {dim_RmodE} = {dim_ER}")
+assert dim_ER == 1
+print(f"CONFIRMED: E/R is 1-dimensional over F2, i.e. E/R = F2 exactly.")
+
+######################################################################
+# 11. EXPLICIT GENERATOR e IN E \ R
+######################################################################
+print()
+print("--- explicit generator e of E/R ---")
+
+# Row space of RmodE (3-dim subspace of F2^4). Find a standard basis
+# vector of F2^4 NOT in that row space -- that's our candidate index
+# for e among E_std_basis_exact.
+row_space = RmodE.row_space()
+e_index = None
+for i in range(4):
+    std_vec = vector(F2, [1 if j == i else 0 for j in range(4)])
+    if std_vec not in row_space:
+        e_index = i
+        break
+assert e_index is not None, "no standard basis vector found outside the row space -- unexpected"
+print(f"E_std basis vector index {e_index} (0-indexed) is NOT in (R+pbarE)/pbarE.")
+print(f"  -> its class generates E/R.")
+
+e_std = E_std_basis_exact[e_index]
+print(f"e (in std/pulled-back frame, i.e. relative to g0) = {e_std.list()}")
+
+# Pull e back to the ACTUAL ambient frame (un-pull-back through g0):
+e_actual = g0_exact * e_std * g0_exact_inv
+print(f"e (actual, un-pulled-back through g0) = {e_actual.list()}")
+
+# Verify p_bar * e is in R: 2*e_std should be expressible as a Z2-linear
+# combination of R_std's basis (i.e. its E-coordinates, doubled, should
+# have valuation >= 1 in the "missing" direction and match R exactly --
+# simplest direct check: 2*e_std's coordinate vector in E_std-basis is
+# 2*(standard basis vector e_index), which has valuation 1 there and 0
+# elsewhere (trivially in R's E-span, since R's own row e_index of X had
+# valuation exactly 1 there and R is a Z2-module i.e. closed under
+# scalar mult by 1/unit -- confirmed already in Sec 8's determinant
+# structure). We verify directly: is 2*e_std in R_std (the actual Z2
+# lattice), by solving for its R_std-coordinates and checking they're
+# in Z2.
+Rstd_mat = matrix(Q2, [flat(r) for r in R_std])
+two_e_flat = flat(matrix(Q2, [[Q2(c) for c in row] for row in (2 * e_std).rows()]))
+coeffs_in_R = two_e_flat * Rstd_mat.inverse()
+print()
+print("pbar*e = 2*e expressed in R_std-basis coordinates:")
+print(" ", list(coeffs_in_R))
+print("valuations:", [c.valuation() if c != 0 else "inf" for c in coeffs_in_R])
+pbar_e_in_R = all((c == 0) or (c.valuation() >= 0) for c in coeffs_in_R)
+print("pbar*e in R:", pbar_e_in_R)
+assert pbar_e_in_R, "pbar*e is NOT in R -- generator claim fails"
+
+# Verify e itself is NOT in R (coordinates in R_std-basis should have a
+# negative-valuation / non-integral entry).
+e_flat = flat(matrix(Q2, [[Q2(c) for c in row] for row in e_std.rows()]))
+coeffs_e_in_R = e_flat * Rstd_mat.inverse()
+print()
+print("e itself expressed in R_std-basis coordinates:")
+print(" ", list(coeffs_e_in_R))
+print("valuations:", [c.valuation() if c != 0 else "inf" for c in coeffs_e_in_R])
+e_in_R = all((c == 0) or (c.valuation() >= 0) for c in coeffs_e_in_R)
+print("e in R:", e_in_R, " (want False)")
+assert not e_in_R, "e unexpectedly lies in R -- generator claim fails"
+
+print()
+print("=" * 60)
+print("E/R CERTIFICATE: COMPLETE")
+print("=" * 60)
+print(f"dim_k(E/pbarE) = 4, dim_k((R+pbarE)/pbarE) = 3  =>  E/R = k = F2.")
+print(f"Explicit generator (std frame): e = {e_std.list()}")
+print(f"Explicit generator (actual frame, via g0): e = {e_actual.list()}")
+print(f"Verified: pbar*e = 2e is in R (e_in_R={e_in_R}), e itself is NOT in R.")
+print(f"Hence E = R + O_K*e, pbar*e subset R -- the index-2 extension is exact")
+print(f"and explicit.")

@@ -858,16 +858,31 @@ its own regardless of rank.
      computed by hand *before* running the script, then matched exactly.
      This confirms GPT's "working prediction is 2" from the relayed
      discussion — but as an independently *derived and computed* result,
-     not adopted on the collaborator's say-so. From the valuation
-     pattern, $E/R\cong\Z/2$ (a single elementary divisor 2, cyclic — the
-     Smith-normal-form call over the Q₂ *field* in the script trivializes,
-     as expected, since it needs the Z₂ *ring*; the cyclic structure is
-     read directly off the valuation pattern instead, not yet from a
-     ring-level Smith form call). **Not yet done: Gorenstein/Bass type
-     classification of $R_𝔭̄$ from this $E/R\cong\Z/2$ structure, and the
-     resulting non-Eichler normalizer $N(R)$ computation** — the next two
-     steps in the chain GPT proposed, deliberately not attempted in the
-     same pass.
+     not adopted on the collaborator's say-so.
+   - **$E/R\cong\mathbb F_2$ exact certificate, with an explicit generator**
+     [Computed — exact] (extension of the same script). Worked mod
+     $\bar{\mathfrak p}$ directly (via $k=\mathcal O_K/\bar{\mathfrak p}
+     \cong\mathbf F_2$, using Sage's `GF(2)` on the exact integral
+     $E$-basis) rather than the Q₂-field Smith form, which trivializes
+     since $\mathbb Q_2$ is a field. $\dim_k(E/\bar{\mathfrak p}E)=4$
+     (trivial, exact integral basis); $\dim_k((R+\bar{\mathfrak
+     p}E)/\bar{\mathfrak p}E)=3$ (computed as the rank over $\mathbf F_2$
+     of $R$'s basis coordinates in $E$'s basis, reduced mod 2 — matches
+     the prediction exactly, not assumed). Short exact sequence gives
+     $E/R\cong\mathbf F_2$. **Explicit generator found and verified**:
+     $e=E_{11}$ (in the branch-vertex-pulled-back frame) satisfies
+     $e\notin R$ (its $R$-basis coordinates have a valuation$-1$ entry —
+     directly checked, not inferred) and $\bar{\mathfrak p}e=2e\in R$
+     (its $R$-basis coordinates are all integral — directly checked).
+     Since $E/R$ has order 2 and $e$'s class is nonzero, $E=R+\mathcal
+     O_K\cdot e$ follows immediately (the two cosets $R,R+e$ exhaust
+     $E$) — no further computation needed for that last part. **Not yet
+     done: Gorenstein/Bass type classification of $R_{\bar{\mathfrak
+     p}}$ from this $E/R\cong\mathbf F_2$ structure, and the resulting
+     non-Eichler normalizer $N(R)$ computation via
+     $N(R)\subseteq N(E)$ acting on the codimension-1 subspaces of
+     $E/\bar{\mathfrak p}E$** — the next two steps in the chain GPT/
+     webclaude proposed, deliberately not attempted in the same pass.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
