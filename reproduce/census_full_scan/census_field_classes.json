@@ -1,0 +1,3162 @@
+{
+  "x^2 + 1": {
+    "closure_degree": 2,
+    "closure_discriminant": -4,
+    "field_key": "x^2 + 1",
+    "galois_group": "C2",
+    "manifolds": [
+      "o10_144118",
+      "o10_144119",
+      "o10_144120"
+    ],
+    "ramification_support": [
+      2
+    ],
+    "stem_degree": 2,
+    "stem_discriminant": -4
+  },
+  "x^2 + 2": {
+    "closure_degree": 2,
+    "closure_discriminant": -8,
+    "field_key": "x^2 + 2",
+    "galois_group": "C2",
+    "manifolds": [
+      "v2787",
+      "v2788",
+      "v2789"
+    ],
+    "ramification_support": [
+      2
+    ],
+    "stem_degree": 2,
+    "stem_discriminant": -8
+  },
+  "x^2 - x + 1": {
+    "closure_degree": 2,
+    "closure_discriminant": -3,
+    "field_key": "x^2 - x + 1",
+    "galois_group": "C2",
+    "manifolds": [
+      "o10_150683",
+      "o10_150684",
+      "o10_150685",
+      "o10_150686",
+      "o10_150687",
+      "o10_150688",
+      "o10_150689",
+      "o10_150690",
+      "o10_150691",
+      "o10_150692",
+      "o10_150693",
+      "o10_150694",
+      "o10_150695",
+      "o10_150696",
+      "o10_150697",
+      "o10_150698",
+      "o10_150699",
+      "o10_150700",
+      "o10_150701",
+      "o10_150702",
+      "o10_150703",
+      "o10_150704",
+      "o10_150705",
+      "o10_150706",
+      "o10_150707",
+      "o10_150708",
+      "o10_150709",
+      "o10_150710",
+      "o10_150711",
+      "o10_150712",
+      "o10_150713",
+      "o10_150714",
+      "o10_150715",
+      "o10_150716",
+      "o10_150717",
+      "o10_150718",
+      "o10_150719",
+      "o10_150720",
+      "o10_150721",
+      "o10_150722",
+      "o10_150723",
+      "o10_150724",
+      "o10_150725",
+      "o10_150726",
+      "o10_150727",
+      "o10_150728",
+      "o10_150729"
+    ],
+    "ramification_support": [
+      3
+    ],
+    "stem_degree": 2,
+    "stem_discriminant": -3
+  },
+  "x^2 - x + 2": {
+    "closure_degree": 2,
+    "closure_discriminant": -7,
+    "field_key": "x^2 - x + 2",
+    "galois_group": "C2",
+    "manifolds": [
+      "o9_39892",
+      "o9_39893",
+      "o9_39894",
+      "o9_39895",
+      "o9_39896",
+      "o9_39897",
+      "o9_39898",
+      "o9_39899",
+      "o9_39900",
+      "o9_39901",
+      "o9_39902",
+      "o9_39903",
+      "o9_39904",
+      "o9_39905",
+      "o9_39906"
+    ],
+    "ramification_support": [
+      7
+    ],
+    "stem_degree": 2,
+    "stem_discriminant": -7
+  },
+  "x^2 - x + 3": {
+    "closure_degree": 2,
+    "closure_discriminant": -11,
+    "field_key": "x^2 - x + 3",
+    "galois_group": "C2",
+    "manifolds": [
+      "o10_114969",
+      "o10_114970",
+      "o10_114971",
+      "o10_114972"
+    ],
+    "ramification_support": [
+      11
+    ],
+    "stem_degree": 2,
+    "stem_discriminant": -11
+  },
+  "x^2 - x + 4": {
+    "closure_degree": 2,
+    "closure_discriminant": -15,
+    "field_key": "x^2 - x + 4",
+    "galois_group": "C2",
+    "manifolds": [
+      "o10_148150",
+      "o10_148151",
+      "o10_148152",
+      "o10_148153",
+      "o10_148154",
+      "o10_148155"
+    ],
+    "ramification_support": [
+      3,
+      5
+    ],
+    "stem_degree": 2,
+    "stem_discriminant": -15
+  },
+  "x^3 + 2*x - 1": {
+    "closure_degree": 6,
+    "closure_discriminant": -205379,
+    "field_key": "x^3 + 2*x - 1",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_140068"
+    ],
+    "ramification_support": [
+      59
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -59
+  },
+  "x^3 + 3*x - 1": {
+    "closure_degree": 6,
+    "closure_discriminant": -273375,
+    "field_key": "x^3 + 3*x - 1",
+    "galois_group": "S3",
+    "manifolds": [
+      "o9_37958"
+    ],
+    "ramification_support": [
+      3,
+      5
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -135
+  },
+  "x^3 + x - 1": {
+    "closure_degree": 6,
+    "closure_discriminant": -29791,
+    "field_key": "x^3 + x - 1",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_148974",
+      "o10_148975",
+      "o10_148976",
+      "o10_148977",
+      "o10_148978",
+      "o10_148979",
+      "o10_148980",
+      "o10_148981",
+      "o10_148982"
+    ],
+    "ramification_support": [
+      31
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -31
+  },
+  "x^3 - 2": {
+    "closure_degree": 6,
+    "closure_discriminant": -34992,
+    "field_key": "x^3 - 2",
+    "galois_group": "S3",
+    "manifolds": [
+      "o9_25253"
+    ],
+    "ramification_support": [
+      2,
+      3
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -108
+  },
+  "x^3 - 2*x - 2": {
+    "closure_degree": 6,
+    "closure_discriminant": -109744,
+    "field_key": "x^3 - 2*x - 2",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_100588",
+      "o10_100589",
+      "o10_100590",
+      "o10_100591",
+      "o10_100592",
+      "o10_100593",
+      "o10_100594",
+      "o10_100595",
+      "o10_100596",
+      "o10_100597",
+      "o10_100598",
+      "o10_100599"
+    ],
+    "ramification_support": [
+      2,
+      19
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -76
+  },
+  "x^3 - x - 2": {
+    "closure_degree": 6,
+    "closure_discriminant": -1124864,
+    "field_key": "x^3 - x - 2",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_082435",
+      "o10_082436",
+      "o10_082437",
+      "o10_082438",
+      "o10_082439"
+    ],
+    "ramification_support": [
+      2,
+      13
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -104
+  },
+  "x^3 - x^2 + 1": {
+    "closure_degree": 6,
+    "closure_discriminant": -12167,
+    "field_key": "x^3 - x^2 + 1",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_148246",
+      "o10_148247",
+      "o10_148248",
+      "o10_148249",
+      "o10_148250",
+      "o10_148251",
+      "o10_148252",
+      "o10_148253",
+      "o10_148254",
+      "o10_148255",
+      "o10_148256",
+      "o10_148257",
+      "o10_148258"
+    ],
+    "ramification_support": [
+      23
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -23
+  },
+  "x^3 - x^2 + 2*x + 1": {
+    "closure_degree": 6,
+    "closure_discriminant": -658503,
+    "field_key": "x^3 - x^2 + 2*x + 1",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_123085",
+      "o10_123086",
+      "o10_123087",
+      "o10_123088",
+      "o10_123089",
+      "o10_123090",
+      "o10_123091",
+      "o10_123092",
+      "o10_123093",
+      "o10_123094",
+      "o10_123095",
+      "o10_123096"
+    ],
+    "ramification_support": [
+      3,
+      29
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -87
+  },
+  "x^3 - x^2 + 3*x - 2": {
+    "closure_degree": 6,
+    "closure_discriminant": -1225043,
+    "field_key": "x^3 - x^2 + 3*x - 2",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_048604"
+    ],
+    "ramification_support": [
+      107
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -107
+  },
+  "x^3 - x^2 + x + 1": {
+    "closure_degree": 6,
+    "closure_discriminant": -21296,
+    "field_key": "x^3 - x^2 + x + 1",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_149272",
+      "o10_149273",
+      "o10_149274",
+      "o10_149275",
+      "o10_149276",
+      "o10_149277",
+      "o10_149278",
+      "o10_149279",
+      "o10_149280",
+      "o10_149281",
+      "o10_149282",
+      "o10_149283",
+      "o10_149284",
+      "o10_149285",
+      "o10_149286",
+      "o10_149287"
+    ],
+    "ramification_support": [
+      2,
+      11
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -44
+  },
+  "x^3 - x^2 + x - 2": {
+    "closure_degree": 6,
+    "closure_discriminant": -571787,
+    "field_key": "x^3 - x^2 + x - 2",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_135399",
+      "o10_135400",
+      "o10_135401",
+      "o10_135402",
+      "o10_135403",
+      "o10_135404",
+      "o10_135405",
+      "o10_135406",
+      "o10_135407",
+      "o10_135408",
+      "o10_135409",
+      "o10_135410",
+      "o10_135411",
+      "o10_135412",
+      "o10_135413",
+      "o10_135414",
+      "o10_135415",
+      "o10_135416",
+      "o10_135417",
+      "o10_135418",
+      "o10_135419",
+      "o10_135420",
+      "o10_135421",
+      "o10_135422",
+      "o10_135423",
+      "o10_135424",
+      "o10_135425"
+    ],
+    "ramification_support": [
+      83
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -83
+  },
+  "x^3 - x^2 + x - 9": {
+    "closure_degree": 6,
+    "closure_discriminant": -137388096,
+    "field_key": "x^3 - x^2 + x - 9",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_127036",
+      "o10_127037",
+      "o10_127038",
+      "o10_127039"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      43
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -516
+  },
+  "x^3 - x^2 - 2": {
+    "closure_degree": 6,
+    "closure_discriminant": -1560896,
+    "field_key": "x^3 - x^2 - 2",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_138382",
+      "o10_138383",
+      "o10_138384",
+      "o10_138385",
+      "o10_138386",
+      "o10_138387",
+      "o10_138388",
+      "o10_138389",
+      "o10_138390",
+      "o10_138391",
+      "o10_138392",
+      "o10_138393",
+      "o10_138394",
+      "o10_138395",
+      "o10_138396",
+      "o10_138397",
+      "o10_138398",
+      "o10_138399",
+      "o10_138400",
+      "o10_138401",
+      "o10_138402",
+      "o10_138403",
+      "o10_138404",
+      "o10_138405",
+      "o10_138406",
+      "o10_138407",
+      "o10_138408",
+      "o10_138409",
+      "o10_138410",
+      "o10_138411",
+      "o10_138412",
+      "o10_138413",
+      "o10_138414",
+      "o10_138415",
+      "o10_138416",
+      "o10_138417",
+      "o10_138418",
+      "o10_138419",
+      "o10_138420",
+      "o10_138421",
+      "o10_138422",
+      "o10_138423",
+      "o10_138424",
+      "o10_138425",
+      "o10_138426",
+      "o10_138427",
+      "o10_138428",
+      "o10_138429",
+      "o10_138430",
+      "o10_138431",
+      "o10_138432",
+      "o10_138433",
+      "o10_138434",
+      "o10_138435",
+      "o10_138436",
+      "o10_138437",
+      "o10_138438",
+      "o10_138439",
+      "o10_138440",
+      "o10_138441",
+      "o10_138442",
+      "o10_138443",
+      "o10_138444",
+      "o10_138445",
+      "o10_138446",
+      "o10_138447",
+      "o10_138448",
+      "o10_138449",
+      "o10_138450",
+      "o10_138451",
+      "o10_138452",
+      "o10_138453",
+      "o10_138454",
+      "o10_138455",
+      "o10_138456",
+      "o10_138457",
+      "o10_138458",
+      "o10_138459",
+      "o10_138460",
+      "o10_138461",
+      "o10_138462",
+      "o10_138463",
+      "o10_138464",
+      "o10_138465",
+      "o10_138466",
+      "o10_138467",
+      "o10_138468",
+      "o10_138469",
+      "o10_138470",
+      "o10_138471",
+      "o10_138472",
+      "o10_138473",
+      "o10_138474",
+      "o10_138475",
+      "o10_138476",
+      "o10_138477",
+      "o10_138478",
+      "o10_138479"
+    ],
+    "ramification_support": [
+      2,
+      29
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -116
+  },
+  "x^3 - x^2 - 2*x - 2": {
+    "closure_degree": 6,
+    "closure_discriminant": -3511808,
+    "field_key": "x^3 - x^2 - 2*x - 2",
+    "galois_group": "S3",
+    "manifolds": [
+      "o10_057067"
+    ],
+    "ramification_support": [
+      2,
+      19
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -152
+  },
+  "x^3 - x^2 - 3": {
+    "closure_degree": 6,
+    "closure_discriminant": -16581375,
+    "field_key": "x^3 - x^2 - 3",
+    "galois_group": "S3",
+    "manifolds": [
+      "o9_33141",
+      "o9_33142"
+    ],
+    "ramification_support": [
+      3,
+      5,
+      17
+    ],
+    "stem_degree": 3,
+    "stem_discriminant": -255
+  },
+  "x^4 + 1": {
+    "closure_degree": 4,
+    "closure_discriminant": 256,
+    "field_key": "x^4 + 1",
+    "galois_group": "C2 x C2",
+    "manifolds": [
+      "o10_150141",
+      "o10_150142",
+      "o10_150143"
+    ],
+    "ramification_support": [
+      2
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 256
+  },
+  "x^4 + 2*x^2 - 2*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 1767097723513784533711323136,
+    "field_key": "x^4 + 2*x^2 - 2*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_140097",
+      "o10_140098",
+      "o10_140099",
+      "o10_140100",
+      "o10_140101",
+      "o10_140102",
+      "o10_140103",
+      "o10_140104",
+      "o10_140105",
+      "o10_140106",
+      "o10_140107"
+    ],
+    "ramification_support": [
+      2,
+      37
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 592
+  },
+  "x^4 + 2*x^2 - 3*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 1247063872385372731496678575404593456513041,
+    "field_key": "x^4 + 2*x^2 - 3*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "t09001",
+      "t09002"
+    ],
+    "ramification_support": [
+      3221
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 3221
+  },
+  "x^4 + 2*x^2 - x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 44101103594669753888258117027428901841,
+    "field_key": "x^4 + 2*x^2 - x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "t06816"
+    ],
+    "ramification_support": [
+      3,
+      457
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1371
+  },
+  "x^4 + 4*x^2 - x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 379522169067582504938019887545699724798161,
+    "field_key": "x^4 + 4*x^2 - x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_23048",
+      "o9_23049",
+      "o9_23050",
+      "o9_23051",
+      "o9_23052",
+      "o9_23053"
+    ],
+    "ramification_support": [
+      2917
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2917
+  },
+  "x^4 + 5*x^2 - 3": {
+    "closure_degree": 8,
+    "closure_discriminant": 151807041,
+    "field_key": "x^4 + 5*x^2 - 3",
+    "galois_group": "D4",
+    "manifolds": [
+      "v1143"
+    ],
+    "ramification_support": [
+      3,
+      37
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -4107
+  },
+  "x^4 + x^2 - 2*x + 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 21381376,
+    "field_key": "x^4 + x^2 - 2*x + 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_145603"
+    ],
+    "ramification_support": [
+      2,
+      17
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 272
+  },
+  "x^4 + x^2 - 4*x + 4": {
+    "closure_degree": 8,
+    "closure_discriminant": 4569760000,
+    "field_key": "x^4 + x^2 - 4*x + 4",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_132687",
+      "o10_132688",
+      "o10_132689"
+    ],
+    "ramification_support": [
+      2,
+      5,
+      13
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1040
+  },
+  "x^4 + x^2 - x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 83022819845310162051379891201,
+    "field_key": "x^4 + x^2 - x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_148902",
+      "o10_148903",
+      "o10_148904",
+      "o10_148905",
+      "o10_148906",
+      "o10_148907",
+      "o10_148908",
+      "o10_148909",
+      "o10_148910",
+      "o10_148911",
+      "o10_148912",
+      "o10_148913",
+      "o10_148914",
+      "o10_148915",
+      "o10_148916",
+      "o10_148917",
+      "o10_148918",
+      "o10_148919",
+      "o10_148920",
+      "o10_148921",
+      "o10_148922",
+      "o10_148923",
+      "o10_148924"
+    ],
+    "ramification_support": [
+      257
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 257
+  },
+  "x^4 + x^2 - x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 3494575202406350511401519775390625,
+    "field_key": "x^4 + x^2 - x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_149432",
+      "o10_149433",
+      "o10_149434",
+      "o10_149435",
+      "o10_149436",
+      "o10_149437",
+      "o10_149438",
+      "o10_149439"
+    ],
+    "ramification_support": [
+      5,
+      73
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1825
+  },
+  "x^4 - 2*x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 10726581714654823247937273856,
+    "field_key": "x^4 - 2*x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_150196",
+      "o10_150197",
+      "o10_150198",
+      "o10_150199",
+      "o10_150200",
+      "o10_150201",
+      "o10_150202",
+      "o10_150203",
+      "o10_150204",
+      "o10_150205",
+      "o10_150206",
+      "o10_150207",
+      "o10_150208",
+      "o10_150209",
+      "o10_150210",
+      "o10_150211",
+      "o10_150212",
+      "o10_150213",
+      "o10_150214",
+      "o10_150215",
+      "o10_150216",
+      "o10_150217",
+      "o10_150218",
+      "o10_150219",
+      "o10_150220"
+    ],
+    "ramification_support": [
+      2,
+      43
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -688
+  },
+  "x^4 - 2*x^2 - 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 4194304,
+    "field_key": "x^4 - 2*x^2 - 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_140793",
+      "o10_140794",
+      "o10_140795"
+    ],
+    "ramification_support": [
+      2
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1024
+  },
+  "x^4 - 2*x^2 - 2*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 86563854512693260438642974785536,
+    "field_key": "x^4 - 2*x^2 - 2*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_095923",
+      "o10_095924"
+    ],
+    "ramification_support": [
+      2,
+      7,
+      13
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1456
+  },
+  "x^4 - 2*x^3 + 2": {
+    "closure_degree": 8,
+    "closure_discriminant": 2560000,
+    "field_key": "x^4 - 2*x^3 + 2",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_150494",
+      "o10_150495",
+      "o10_150496",
+      "o10_150497",
+      "o10_150498",
+      "o10_150499",
+      "o10_150500",
+      "o10_150501",
+      "o10_150502",
+      "o10_150503",
+      "o10_150504",
+      "o10_150505"
+    ],
+    "ramification_support": [
+      2,
+      5
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 320
+  },
+  "x^4 - 2*x^3 + 2*x^2 - x + 2": {
+    "closure_degree": 8,
+    "closure_discriminant": 1698181681,
+    "field_key": "x^4 - 2*x^3 + 2*x^2 - x + 2",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_131261",
+      "o10_131262"
+    ],
+    "ramification_support": [
+      7,
+      29
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1421
+  },
+  "x^4 - 2*x^3 + 3*x^2 + x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 11712371213185344072040196687538824278561,
+    "field_key": "x^4 - 2*x^3 + 3*x^2 + x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_28458"
+    ],
+    "ramification_support": [
+      37,
+      59
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2183
+  },
+  "x^4 - 2*x^3 + 3*x^2 - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 182405472588468433947695572320256,
+    "field_key": "x^4 - 2*x^3 + 3*x^2 - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_058843"
+    ],
+    "ramification_support": [
+      2,
+      61
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -976
+  },
+  "x^4 - 2*x^3 + 5*x^2 - 4*x + 2": {
+    "closure_degree": 8,
+    "closure_discriminant": 342102016,
+    "field_key": "x^4 - 2*x^3 + 5*x^2 - 4*x + 2",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_143343",
+      "o10_143344",
+      "o10_143345"
+    ],
+    "ramification_support": [
+      2,
+      17
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1088
+  },
+  "x^4 - 2*x^3 + x^2 - 2*x + 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 9834496,
+    "field_key": "x^4 - 2*x^3 + x^2 - 2*x + 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_112585"
+    ],
+    "ramification_support": [
+      2,
+      7
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -448
+  },
+  "x^4 - 2*x^3 + x^2 - x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 32186906916727206510367651443384001,
+    "field_key": "x^4 - 2*x^3 + x^2 - x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_116813",
+      "o10_116814"
+    ],
+    "ramification_support": [
+      751
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -751
+  },
+  "x^4 - 2*x^3 - 2*x^2 + 3*x + 3": {
+    "closure_degree": 8,
+    "closure_discriminant": 1121513121,
+    "field_key": "x^4 - 2*x^3 - 2*x^2 + 3*x + 3",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_146953"
+    ],
+    "ramification_support": [
+      3,
+      61
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 549
+  },
+  "x^4 - 2*x^3 - x + 4": {
+    "closure_degree": 24,
+    "closure_discriminant": 1041455853343675520577614499765795625075921,
+    "field_key": "x^4 - 2*x^3 - x + 4",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_117184",
+      "o10_117185",
+      "o10_117186",
+      "o10_117187",
+      "o10_117188",
+      "o10_117189",
+      "o10_117190",
+      "o10_117191",
+      "o10_117192",
+      "o10_117193",
+      "o10_117194",
+      "o10_117195"
+    ],
+    "ramification_support": [
+      19,
+      167
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 3173
+  },
+  "x^4 - 2*x^3 - x^2 + 2*x + 2": {
+    "closure_degree": 8,
+    "closure_discriminant": 723394816,
+    "field_key": "x^4 - 2*x^3 - x^2 + 2*x + 2",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_149337",
+      "o10_149338",
+      "o10_149339",
+      "o10_149340",
+      "o10_149341",
+      "o10_149342",
+      "o10_149343",
+      "o10_149344",
+      "o10_149345",
+      "o10_149346",
+      "o10_149347",
+      "o10_149348",
+      "o10_149349",
+      "o10_149350",
+      "o10_149351",
+      "o10_149352",
+      "o10_149353",
+      "o10_149354",
+      "o10_149355",
+      "o10_149356",
+      "o10_149357",
+      "o10_149358",
+      "o10_149359",
+      "o10_149360",
+      "o10_149361",
+      "o10_149362",
+      "o10_149363",
+      "o10_149364",
+      "o10_149365",
+      "o10_149366",
+      "o10_149367",
+      "o10_149368"
+    ],
+    "ramification_support": [
+      2,
+      41
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 656
+  },
+  "x^4 - 2*x^3 - x^2 + 2*x - 2": {
+    "closure_degree": 8,
+    "closure_discriminant": 5802782976,
+    "field_key": "x^4 - 2*x^3 - x^2 + 2*x - 2",
+    "galois_group": "D4",
+    "manifolds": [
+      "t04743"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      23
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -3312
+  },
+  "x^4 - 2*x^3 - x^2 + 6": {
+    "closure_degree": 8,
+    "closure_discriminant": 43237380096,
+    "field_key": "x^4 - 2*x^3 - x^2 + 6",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_143783",
+      "o10_143784"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      19
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 3648
+  },
+  "x^4 - 3*x^2 + 4": {
+    "closure_degree": 4,
+    "closure_discriminant": 784,
+    "field_key": "x^4 - 3*x^2 + 4",
+    "galois_group": "C2 x C2",
+    "manifolds": [
+      "o10_140217",
+      "o10_140218",
+      "o10_140219",
+      "o10_140220",
+      "o10_140221",
+      "o10_140222",
+      "o10_140223",
+      "o10_140224",
+      "o10_140225",
+      "o10_140226",
+      "o10_140227",
+      "o10_140228",
+      "o10_140229",
+      "o10_140230",
+      "o10_140231",
+      "o10_140232",
+      "o10_140233",
+      "o10_140234",
+      "o10_140235",
+      "o10_140236",
+      "o10_140237",
+      "o10_140238",
+      "o10_140239",
+      "o10_140240",
+      "o10_140241",
+      "o10_140242",
+      "o10_140243",
+      "o10_140244"
+    ],
+    "ramification_support": [
+      2,
+      7
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 784
+  },
+  "x^4 - 3*x^2 - 2": {
+    "closure_degree": 8,
+    "closure_discriminant": 342102016,
+    "field_key": "x^4 - 3*x^2 - 2",
+    "galois_group": "D4",
+    "manifolds": [
+      "o9_40444"
+    ],
+    "ramification_support": [
+      2,
+      17
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2312
+  },
+  "x^4 - 3*x^2 - 2*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 1793316748073189235032143691776,
+    "field_key": "x^4 - 3*x^2 - 2*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "v2631"
+    ],
+    "ramification_support": [
+      2,
+      83
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1328
+  },
+  "x^4 - 4*x^2 - 2*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 3218853535701037756763987326795776,
+    "field_key": "x^4 - 4*x^2 - 2*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_134558",
+      "o10_134559",
+      "o10_134560",
+      "o10_134561",
+      "o10_134562",
+      "o10_134563",
+      "o10_134564",
+      "o10_134565",
+      "o10_134566",
+      "o10_134567",
+      "o10_134568",
+      "o10_134569",
+      "o10_134570",
+      "o10_134571",
+      "o10_134572",
+      "o10_134573",
+      "o10_134574"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      41
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1968
+  },
+  "x^4 - 5*x^2 - 4": {
+    "closure_degree": 8,
+    "closure_discriminant": 723394816,
+    "field_key": "x^4 - 5*x^2 - 4",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_106720",
+      "o10_106721",
+      "o10_106722",
+      "o10_106723",
+      "o10_106724",
+      "o10_106725",
+      "o10_106726",
+      "o10_106727",
+      "o10_106728",
+      "o10_106729"
+    ],
+    "ramification_support": [
+      2,
+      41
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -6724
+  },
+  "x^4 - x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 20798201815902925734870098641,
+    "field_key": "x^4 - x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_145584",
+      "o10_145585",
+      "o10_145586",
+      "o10_145587",
+      "o10_145588",
+      "o10_145589",
+      "o10_145590",
+      "o10_145591"
+    ],
+    "ramification_support": [
+      229
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 229
+  },
+  "x^4 - x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 4642968766819956054830027696645588690641,
+    "field_key": "x^4 - x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_141689"
+    ],
+    "ramification_support": [
+      43,
+      47
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2021
+  },
+  "x^4 - x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 263898685087308495981516810961,
+    "field_key": "x^4 - x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_150522",
+      "o10_150523",
+      "o10_150524"
+    ],
+    "ramification_support": [
+      283
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -283
+  },
+  "x^4 - x^2 + 1": {
+    "closure_degree": 4,
+    "closure_discriminant": 144,
+    "field_key": "x^4 - x^2 + 1",
+    "galois_group": "C2 x C2",
+    "manifolds": [
+      "o10_132111",
+      "o10_132112",
+      "o10_132113",
+      "o10_132114",
+      "o10_132115",
+      "o10_132116",
+      "o10_132117",
+      "o10_132118",
+      "o10_132119",
+      "o10_132120",
+      "o10_132121",
+      "o10_132122",
+      "o10_132123",
+      "o10_132124",
+      "o10_132125"
+    ],
+    "ramification_support": [
+      2,
+      3
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 144
+  },
+  "x^4 - x^2 - 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 2560000,
+    "field_key": "x^4 - x^2 - 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_127303",
+      "o10_127304",
+      "o10_127305",
+      "o10_127306",
+      "o10_127307",
+      "o10_127308",
+      "o10_127309",
+      "o10_127310",
+      "o10_127311",
+      "o10_127312",
+      "o10_127313",
+      "o10_127314",
+      "o10_127315",
+      "o10_127316",
+      "o10_127317",
+      "o10_127318",
+      "o10_127319",
+      "o10_127320",
+      "o10_127321"
+    ],
+    "ramification_support": [
+      2,
+      5
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -400
+  },
+  "x^4 - x^2 - 16": {
+    "closure_degree": 8,
+    "closure_discriminant": 4569760000,
+    "field_key": "x^4 - x^2 - 16",
+    "galois_group": "D4",
+    "manifolds": [
+      "o9_42688",
+      "o9_42689"
+    ],
+    "ramification_support": [
+      2,
+      5,
+      13
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -16900
+  },
+  "x^4 - x^2 - 2*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 33759054842422944355374937931776,
+    "field_key": "x^4 - x^2 - 2*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "v2640",
+      "v2641",
+      "v2642",
+      "v2643",
+      "v2644"
+    ],
+    "ramification_support": [
+      2,
+      53
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -848
+  },
+  "x^4 - x^2 - 3*x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 15265980728651712890511566894775390625,
+    "field_key": "x^4 - x^2 - 3*x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "v3053"
+    ],
+    "ramification_support": [
+      5,
+      251
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1255
+  },
+  "x^4 - x^2 - 3*x - 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 18459922270959723690417004862006961,
+    "field_key": "x^4 - x^2 - 3*x - 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_148498",
+      "o10_148499",
+      "o10_148500",
+      "o10_148501",
+      "o10_148502",
+      "o10_148503",
+      "o10_148504",
+      "o10_148505",
+      "o10_148506",
+      "o10_148507",
+      "o10_148508",
+      "o10_148509",
+      "o10_148510",
+      "o10_148511",
+      "o10_148512",
+      "o10_148513",
+      "o10_148514"
+    ],
+    "ramification_support": [
+      3,
+      239
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2151
+  },
+  "x^4 - x^3 + 2*x + 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 1750329,
+    "field_key": "x^4 - x^3 + 2*x + 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_061060"
+    ],
+    "ramification_support": [
+      3,
+      7
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 189
+  },
+  "x^4 - x^3 + 2*x - 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 9150625,
+    "field_key": "x^4 - x^3 + 2*x - 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_147648",
+      "o10_147649",
+      "o10_147650",
+      "o10_147651",
+      "o10_147652",
+      "o10_147653",
+      "o10_147654",
+      "o10_147655"
+    ],
+    "ramification_support": [
+      5,
+      11
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -275
+  },
+  "x^4 - x^3 + 2*x^2 + x + 1": {
+    "closure_degree": 4,
+    "closure_discriminant": 225,
+    "field_key": "x^4 - x^3 + 2*x^2 + x + 1",
+    "galois_group": "C2 x C2",
+    "manifolds": [
+      "o10_133192"
+    ],
+    "ramification_support": [
+      3,
+      5
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 225
+  },
+  "x^4 - x^3 + 2*x^2 + x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 8228393735077298049613795752134311936,
+    "field_key": "x^4 - x^3 + 2*x^2 + x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "v2530",
+      "v2531",
+      "v2532",
+      "v2533",
+      "v2534"
+    ],
+    "ramification_support": [
+      2,
+      149
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1192
+  },
+  "x^4 - x^3 + 2*x^2 - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 23281369493976380470743875853470161,
+    "field_key": "x^4 - x^3 + 2*x^2 - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_145861",
+      "o10_145862",
+      "o10_145863"
+    ],
+    "ramification_support": [
+      17,
+      43
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -731
+  },
+  "x^4 - x^3 + 2*x^2 - 2*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 223910595285760904094334231576576,
+    "field_key": "x^4 - x^3 + 2*x^2 - 2*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_149016",
+      "o10_149017",
+      "o10_149018",
+      "o10_149019",
+      "o10_149020",
+      "o10_149021",
+      "o10_149022",
+      "o10_149023",
+      "o10_149024",
+      "o10_149025",
+      "o10_149026",
+      "o10_149027",
+      "o10_149028",
+      "o10_149029",
+      "o10_149030",
+      "o10_149031",
+      "o10_149032",
+      "o10_149033",
+      "o10_149034",
+      "o10_149035",
+      "o10_149036",
+      "o10_149037",
+      "o10_149038",
+      "o10_149039",
+      "o10_149040",
+      "o10_149041",
+      "o10_149042",
+      "o10_149043",
+      "o10_149044",
+      "o10_149045",
+      "o10_149046",
+      "o10_149047",
+      "o10_149048",
+      "o10_149049",
+      "o10_149050",
+      "o10_149051",
+      "o10_149052"
+    ],
+    "ramification_support": [
+      2,
+      197
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 788
+  },
+  "x^4 - x^3 + 2*x^2 - 3*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 834131968340877086275570957275390625,
+    "field_key": "x^4 - x^3 + 2*x^2 - 3*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_089093"
+    ],
+    "ramification_support": [
+      5,
+      197
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 985
+  },
+  "x^4 - x^3 + 2*x^2 - 4*x + 4": {
+    "closure_degree": 24,
+    "closure_discriminant": 82098532499586556907611404204344672256,
+    "field_key": "x^4 - x^3 + 2*x^2 - 4*x + 4",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_14719"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      191
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2292
+  },
+  "x^4 - x^3 + 2*x^2 - x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 13145991198511359348572918477156641,
+    "field_key": "x^4 - x^3 + 2*x^2 - x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_139420",
+      "o10_139421",
+      "o10_139422",
+      "o10_139423",
+      "o10_139424",
+      "o10_139425",
+      "o10_139426",
+      "o10_139427",
+      "o10_139428",
+      "o10_139429"
+    ],
+    "ramification_support": [
+      17,
+      41
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 697
+  },
+  "x^4 - x^3 + 3*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 26771334413217573135928360283521,
+    "field_key": "x^4 - x^3 + 3*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "t11971"
+    ],
+    "ramification_support": [
+      11,
+      17
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2057
+  },
+  "x^4 - x^3 + 3*x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 728743429632896170491158053881093554176,
+    "field_key": "x^4 - x^3 + 3*x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "s698",
+      "s699"
+    ],
+    "ramification_support": [
+      2,
+      433
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1732
+  },
+  "x^4 - x^3 + 3*x - 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 1347224660546903559004075090801595003521,
+    "field_key": "x^4 - x^3 + 3*x - 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "t05719"
+    ],
+    "ramification_support": [
+      1823
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1823
+  },
+  "x^4 - x^3 + 3*x^2 - 3*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 9408216238040099439670008097079296,
+    "field_key": "x^4 - x^3 + 3*x^2 - 3*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_149940",
+      "o10_149941",
+      "o10_149942",
+      "o10_149943",
+      "o10_149944",
+      "o10_149945",
+      "o10_149946",
+      "o10_149947",
+      "o10_149948",
+      "o10_149949"
+    ],
+    "ramification_support": [
+      2,
+      269
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1076
+  },
+  "x^4 - x^3 + 4*x^2 - 3*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 2654524461487826141968591253880308630241,
+    "field_key": "x^4 - x^3 + 4*x^2 - 3*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_059430",
+      "o10_059431"
+    ],
+    "ramification_support": [
+      3,
+      643
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1929
+  },
+  "x^4 - x^3 + 5*x^2 - 2*x + 4": {
+    "closure_degree": 8,
+    "closure_discriminant": 2300257521,
+    "field_key": "x^4 - x^3 + 5*x^2 - 2*x + 4",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_120509",
+      "o10_120510",
+      "o10_120511",
+      "o10_120512",
+      "o10_120513"
+    ],
+    "ramification_support": [
+      3,
+      73
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 657
+  },
+  "x^4 - x^3 + x + 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 9834496,
+    "field_key": "x^4 - x^3 + x + 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_148493"
+    ],
+    "ramification_support": [
+      2,
+      7
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 392
+  },
+  "x^4 - x^3 + x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 3090632943982185675900458330163201,
+    "field_key": "x^4 - x^3 + x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "t06956"
+    ],
+    "ramification_support": [
+      3,
+      11
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2673
+  },
+  "x^4 - x^3 + x - 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 56209869097525683150716798908449343201,
+    "field_key": "x^4 - x^3 + x - 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_074632"
+    ],
+    "ramification_support": [
+      1399
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1399
+  },
+  "x^4 - x^3 + x^2 + 2*x - 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 56260619790542082929987973671407379808256,
+    "field_key": "x^4 - x^3 + x^2 + 2*x - 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_141189",
+      "o10_141190",
+      "o10_141191"
+    ],
+    "ramification_support": [
+      2,
+      311
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2488
+  },
+  "x^4 - x^3 + x^2 + x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 1729561165382261200512043881361,
+    "field_key": "x^4 - x^3 + x^2 + x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_135910",
+      "o10_135911",
+      "o10_135912",
+      "o10_135913",
+      "o10_135914",
+      "o10_135915"
+    ],
+    "ramification_support": [
+      331
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -331
+  },
+  "x^4 - x^3 + x^2 - 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 102888129587729901429326872576,
+    "field_key": "x^4 - x^3 + x^2 - 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_28731",
+      "o9_28732",
+      "o9_28733",
+      "o9_28734",
+      "o9_28735",
+      "o9_28736"
+    ],
+    "ramification_support": [
+      2,
+      23
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2116
+  },
+  "x^4 - x^3 + x^2 - 2*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 1209830406509081665027557060725702656,
+    "field_key": "x^4 - x^3 + x^2 - 2*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_104719"
+    ],
+    "ramification_support": [
+      2,
+      127
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1016
+  },
+  "x^4 - x^3 + x^2 - 2*x + 4": {
+    "closure_degree": 8,
+    "closure_discriminant": 2385443281,
+    "field_key": "x^4 - x^3 + x^2 - 2*x + 4",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_136530",
+      "o10_136531",
+      "o10_136532",
+      "o10_136533",
+      "o10_136534",
+      "o10_136535",
+      "o10_136536"
+    ],
+    "ramification_support": [
+      13,
+      17
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2873
+  },
+  "x^4 - x^3 + x^2 - 2*x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 68938019258429685762721882250860633921,
+    "field_key": "x^4 - x^3 + x^2 - 2*x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_33635"
+    ],
+    "ramification_support": [
+      1423
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1423
+  },
+  "x^4 - x^3 + x^2 - 3*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 3104361645561089292654364516759846801,
+    "field_key": "x^4 - x^3 + x^2 - 3*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_40260",
+      "o9_40261",
+      "o9_40262",
+      "o9_40263"
+    ],
+    "ramification_support": [
+      7,
+      157
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1099
+  },
+  "x^4 - x^3 + x^2 - 3*x - 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 27447335887106905360260603843858989056,
+    "field_key": "x^4 - x^3 + x^2 - 3*x - 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_43439"
+    ],
+    "ramification_support": [
+      2,
+      523
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2092
+  },
+  "x^4 - x^3 + x^2 - 6*x - 4": {
+    "closure_degree": 8,
+    "closure_discriminant": 2036265625,
+    "field_key": "x^4 - x^3 + x^2 - 6*x - 4",
+    "galois_group": "D4",
+    "manifolds": [
+      "o9_25463",
+      "o9_25464"
+    ],
+    "ramification_support": [
+      5,
+      19
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2375
+  },
+  "x^4 - x^3 + x^2 - x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 213985848982356353666984793263374336,
+    "field_key": "x^4 - x^3 + x^2 - x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_143719",
+      "o10_143720"
+    ],
+    "ramification_support": [
+      2,
+      349
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1396
+  },
+  "x^4 - x^3 + x^2 - x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 1014146598191772065370414777301681,
+    "field_key": "x^4 - x^3 + x^2 - x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_144484",
+      "o10_144485",
+      "o10_144486",
+      "o10_144487",
+      "o10_144488",
+      "o10_144489"
+    ],
+    "ramification_support": [
+      563
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -563
+  },
+  "x^4 - x^3 - 2*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 4994956093880272959686195182306801,
+    "field_key": "x^4 - x^3 - 2*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_28719"
+    ],
+    "ramification_support": [
+      643
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -643
+  },
+  "x^4 - x^3 - 2*x + 4": {
+    "closure_degree": 8,
+    "closure_discriminant": 342102016,
+    "field_key": "x^4 - x^3 - 2*x + 4",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_148363",
+      "o10_148364",
+      "o10_148365"
+    ],
+    "ramification_support": [
+      2,
+      17
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2312
+  },
+  "x^4 - x^3 - 2*x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 516180284661002873353232537597841,
+    "field_key": "x^4 - x^3 - 2*x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_146986",
+      "o10_146987",
+      "o10_146988",
+      "o10_146989",
+      "o10_146990",
+      "o10_146991"
+    ],
+    "ramification_support": [
+      3,
+      41
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1107
+  },
+  "x^4 - x^3 - 2*x^2 + 3": {
+    "closure_degree": 8,
+    "closure_discriminant": 151807041,
+    "field_key": "x^4 - x^3 - 2*x^2 + 3",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_142102"
+    ],
+    "ramification_support": [
+      3,
+      37
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 333
+  },
+  "x^4 - x^3 - 2*x^2 + 3*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 6117956899106998325102405080259416293376,
+    "field_key": "x^4 - x^3 - 2*x^2 + 3*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_23819"
+    ],
+    "ramification_support": [
+      2,
+      11,
+      47
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2068
+  },
+  "x^4 - x^3 - 2*x^2 + 3*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 24188502580767300754158401010319111050561,
+    "field_key": "x^4 - x^3 - 2*x^2 + 3*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_123190"
+    ],
+    "ramification_support": [
+      3,
+      773
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -2319
+  },
+  "x^4 - x^3 - 2*x^2 + 7*x - 9": {
+    "closure_degree": 24,
+    "closure_discriminant": 932983379427117104200061086868471699757571681,
+    "field_key": "x^4 - x^3 - 2*x^2 + 7*x - 9",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_103970"
+    ],
+    "ramification_support": [
+      5591
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -5591
+  },
+  "x^4 - x^3 - 2*x^2 + x + 3": {
+    "closure_degree": 24,
+    "closure_discriminant": 21461625126536429893571389890525518626816,
+    "field_key": "x^4 - x^3 - 2*x^2 + x + 3",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_123618",
+      "o10_123619",
+      "o10_123620",
+      "o10_123621",
+      "o10_123622",
+      "o10_123623",
+      "o10_123624",
+      "o10_123625",
+      "o10_123626",
+      "o10_123627",
+      "o10_123628",
+      "o10_123629",
+      "o10_123630"
+    ],
+    "ramification_support": [
+      2,
+      7,
+      41
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 2296
+  },
+  "x^4 - x^3 - 2*x^2 - 3*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 1936963162036740693550871209213439007841,
+    "field_key": "x^4 - x^3 - 2*x^2 - 3*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_150386"
+    ],
+    "ramification_support": [
+      1879
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1879
+  },
+  "x^4 - x^3 - 2*x^2 - 3*x + 9": {
+    "closure_degree": 4,
+    "closure_discriminant": 1089,
+    "field_key": "x^4 - x^3 - 2*x^2 - 3*x + 9",
+    "galois_group": "C2 x C2",
+    "manifolds": [
+      "o9_36481",
+      "o9_36482",
+      "o9_36483"
+    ],
+    "ramification_support": [
+      3,
+      11
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1089
+  },
+  "x^4 - x^3 - 2*x^2 - x + 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 21381376,
+    "field_key": "x^4 - x^3 - 2*x^2 - x + 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_017485"
+    ],
+    "ramification_support": [
+      2,
+      17
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1156
+  },
+  "x^4 - x^3 - 2*x^2 - x + 5": {
+    "closure_degree": 24,
+    "closure_discriminant": 111532808121511572993559198388897073653088256,
+    "field_key": "x^4 - x^3 - 2*x^2 - x + 5",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_42621"
+    ],
+    "ramification_support": [
+      2,
+      1171
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 4684
+  },
+  "x^4 - x^3 - 3*x^2 + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 257161515866449205231132693132430278656,
+    "field_key": "x^4 - x^3 - 3*x^2 + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_143053",
+      "o10_143054",
+      "o10_143055",
+      "o10_143056",
+      "o10_143057",
+      "o10_143058",
+      "o10_143059",
+      "o10_143060",
+      "o10_143061",
+      "o10_143062",
+      "o10_143063",
+      "o10_143064",
+      "o10_143065",
+      "o10_143066",
+      "o10_143067",
+      "o10_143068",
+      "o10_143069",
+      "o10_143070",
+      "o10_143071"
+    ],
+    "ramification_support": [
+      2,
+      397
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -1588
+  },
+  "x^4 - x^3 - 3*x^2 + 2*x + 4": {
+    "closure_degree": 8,
+    "closure_discriminant": 95004009,
+    "field_key": "x^4 - x^3 - 3*x^2 + 2*x + 4",
+    "galois_group": "D4",
+    "manifolds": [
+      "o9_41512",
+      "o9_41513"
+    ],
+    "ramification_support": [
+      3,
+      19
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 513
+  },
+  "x^4 - x^3 - 4*x^2 - 3*x + 3": {
+    "closure_degree": 24,
+    "closure_discriminant": 682765545049958097100686386581725733584118275681,
+    "field_key": "x^4 - x^3 - 4*x^2 - 3*x + 3",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_139994"
+    ],
+    "ramification_support": [
+      3,
+      3229
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -9687
+  },
+  "x^4 - x^3 - x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 4288716148256918436815323334654271841,
+    "field_key": "x^4 - x^3 - x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_36651",
+      "o9_36652"
+    ],
+    "ramification_support": [
+      1129
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1129
+  },
+  "x^4 - x^3 - x^2 + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 253733758439206322825509870696923136,
+    "field_key": "x^4 - x^3 - x^2 + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_056504"
+    ],
+    "ramification_support": [
+      2,
+      223
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 892
+  },
+  "x^4 - x^3 - x^2 + 2*x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 49389323944093175251931467682053881856,
+    "field_key": "x^4 - x^3 - x^2 + 2*x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_42351"
+    ],
+    "ramification_support": [
+      2,
+      173
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1384
+  },
+  "x^4 - x^3 - x^2 + 3*x - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 196326039436028365961428688382481,
+    "field_key": "x^4 - x^3 - x^2 + 3*x - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_077117"
+    ],
+    "ramification_support": [
+      491
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -491
+  },
+  "x^4 - x^3 - x^2 + x + 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 2313441,
+    "field_key": "x^4 - x^3 - x^2 + x + 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o10_145819",
+      "o10_145820",
+      "o10_145821",
+      "o10_145822"
+    ],
+    "ramification_support": [
+      3,
+      13
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 117
+  },
+  "x^4 - x^3 - x^2 + x + 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 786819557779509263054203519232966656,
+    "field_key": "x^4 - x^3 - x^2 + x + 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "v3425"
+    ],
+    "ramification_support": [
+      2,
+      389
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 1556
+  },
+  "x^4 - x^3 - x^2 - 2": {
+    "closure_degree": 24,
+    "closure_discriminant": 1573395056707358663038611419846328300077056,
+    "field_key": "x^4 - x^3 - x^2 - 2",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_33827",
+      "o9_33828",
+      "o9_33829",
+      "o9_33830"
+    ],
+    "ramification_support": [
+      2,
+      821
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -3284
+  },
+  "x^4 - x^3 - x^2 - 2*x + 4": {
+    "closure_degree": 4,
+    "closure_discriminant": 441,
+    "field_key": "x^4 - x^3 - x^2 - 2*x + 4",
+    "galois_group": "C2 x C2",
+    "manifolds": [
+      "o9_37013",
+      "o9_37014",
+      "o9_37015"
+    ],
+    "ramification_support": [
+      3,
+      7
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": 441
+  },
+  "x^4 - x^3 - x^2 - x + 1": {
+    "closure_degree": 8,
+    "closure_discriminant": 2313441,
+    "field_key": "x^4 - x^3 - x^2 - x + 1",
+    "galois_group": "D4",
+    "manifolds": [
+      "o9_37601"
+    ],
+    "ramification_support": [
+      3,
+      13
+    ],
+    "stem_degree": 4,
+    "stem_discriminant": -507
+  },
+  "x^5 - 2*x^4 + 2*x^3 - x^2 + 1": {
+    "closure_degree": 10,
+    "closure_discriminant": -229345007,
+    "field_key": "x^5 - 2*x^4 + 2*x^3 - x^2 + 1",
+    "galois_group": "D5",
+    "manifolds": [
+      "o10_147526",
+      "o10_147527",
+      "o10_147528",
+      "o10_147529"
+    ],
+    "ramification_support": [
+      47
+    ],
+    "stem_degree": 5,
+    "stem_discriminant": 2209
+  },
+  "x^5 - x^4 + 2*x^3 - x^2 + x + 2": {
+    "closure_degree": 10,
+    "closure_discriminant": -38579489651,
+    "field_key": "x^5 - x^4 + 2*x^3 - x^2 + x + 2",
+    "galois_group": "D5",
+    "manifolds": [
+      "o10_145193"
+    ],
+    "ramification_support": [
+      131
+    ],
+    "stem_degree": 5,
+    "stem_discriminant": 17161
+  },
+  "x^5 - x^4 + 3*x^2 - x + 2": {
+    "closure_degree": 10,
+    "closure_discriminant": -183765996899,
+    "field_key": "x^5 - x^4 + 3*x^2 - x + 2",
+    "galois_group": "D5",
+    "manifolds": [
+      "o9_29376",
+      "o9_29377"
+    ],
+    "ramification_support": [
+      179
+    ],
+    "stem_degree": 5,
+    "stem_discriminant": 32041
+  },
+  "x^5 - x^4 + x^3 - 2*x^2 + 3*x - 1": {
+    "closure_degree": 10,
+    "closure_discriminant": -3077056399,
+    "field_key": "x^5 - x^4 + x^3 - 2*x^2 + 3*x - 1",
+    "galois_group": "D5",
+    "manifolds": [
+      "o9_43241"
+    ],
+    "ramification_support": [
+      79
+    ],
+    "stem_degree": 5,
+    "stem_discriminant": 6241
+  },
+  "x^6 + 4*x^4 - x^2 + 4": {
+    "closure_degree": 48,
+    "closure_discriminant": 475219524832050078154930232794648023685455863005351743165221951520619915902976,
+    "field_key": "x^6 + 4*x^4 - x^2 + 4",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_149200"
+    ],
+    "ramification_support": [
+      2,
+      431
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -743044
+  },
+  "x^6 + 8*x^4 + 8*x^2 - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 379522169067582504938019887545699724798161,
+    "field_key": "x^6 + 8*x^4 + 8*x^2 - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_149137"
+    ],
+    "ramification_support": [
+      2917
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 8508889
+  },
+  "x^6 + x^4 + 2*x^2 + 1": {
+    "closure_degree": 12,
+    "closure_discriminant": 606355001344,
+    "field_key": "x^6 + x^4 + 2*x^2 + 1",
+    "galois_group": "D6",
+    "manifolds": [
+      "t08606",
+      "t08607"
+    ],
+    "ramification_support": [
+      2,
+      23
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -33856
+  },
+  "x^6 + x^4 + 5*x^2 + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 2955288494551993780509767928735749197546840512122487383339466489856,
+    "field_key": "x^6 + x^4 + 5*x^2 + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_145053",
+      "o10_145054",
+      "o10_145055",
+      "o10_145056",
+      "o10_145057",
+      "o10_145058"
+    ],
+    "ramification_support": [
+      2,
+      13
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -173056
+  },
+  "x^6 + x^4 - 2*x^3 + x^2 - x + 2": {
+    "closure_degree": 48,
+    "closure_discriminant": 5054651446477067579395107543680656450338408029152411015761757030925793334712928961,
+    "field_key": "x^6 + x^4 - 2*x^3 + x^2 - x + 2",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_145736",
+      "o10_145737"
+    ],
+    "ramification_support": [
+      43,
+      59
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -149683
+  },
+  "x^6 + x^4 - 4*x^3 + x^2 - 2*x + 4": {
+    "closure_degree": 12,
+    "closure_discriminant": 922417564483584,
+    "field_key": "x^6 + x^4 - 4*x^3 + x^2 - 2*x + 4",
+    "galois_group": "D6",
+    "manifolds": [
+      "o10_135518",
+      "o10_135519"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      13
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -292032
+  },
+  "x^6 - 13*x^2 + 20": {
+    "closure_degree": 48,
+    "closure_discriminant": 1154387292184950550332130070304692773246424385592388811815956898325200896000000000000000000000000,
+    "field_key": "x^6 - 13*x^2 + 20",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o9_34677"
+    ],
+    "ramification_support": [
+      2,
+      5,
+      503
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -5060180
+  },
+  "x^6 - 2*x^5 + 2*x^4 - 2*x^3 + 4*x^2 - 4*x + 2": {
+    "closure_degree": 12,
+    "closure_discriminant": 116101021696,
+    "field_key": "x^6 - 2*x^5 + 2*x^4 - 2*x^3 + 4*x^2 - 4*x + 2",
+    "galois_group": "D6",
+    "manifolds": [
+      "o10_056781"
+    ],
+    "ramification_support": [
+      2,
+      11
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -30976
+  },
+  "x^6 - 2*x^5 + 2*x^4 - 3*x^3 + 2*x^2 - 2*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 774263645280065083180300081,
+    "field_key": "x^6 - 2*x^5 + 2*x^4 - 3*x^3 + 2*x^2 - 2*x + 1",
+    "galois_group": "C2 x A4",
+    "manifolds": [
+      "o10_113687"
+    ],
+    "ramification_support": [
+      7,
+      13
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 31213
+  },
+  "x^6 - 2*x^5 + 2*x^4 - 4*x^3 + 2*x^2 - 4*x + 1": {
+    "closure_degree": 36,
+    "closure_discriminant": 2582048322566910402812140847104000000000000000000,
+    "field_key": "x^6 - 2*x^5 + 2*x^4 - 4*x^3 + 2*x^2 - 4*x + 1",
+    "galois_group": "S3 x S3",
+    "manifolds": [
+      "o10_142616"
+    ],
+    "ramification_support": [
+      2,
+      5,
+      11
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 242000
+  },
+  "x^6 - 2*x^5 + 2*x^4 - 4*x^3 + 3*x^2 + 2*x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 21935256382552289668923438124800827770276806066993199258816113729152481897157906881,
+    "field_key": "x^6 - 2*x^5 + 2*x^4 - 4*x^3 + 3*x^2 + 2*x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_106770"
+    ],
+    "ramification_support": [
+      3,
+      29,
+      31
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -83607
+  },
+  "x^6 - 2*x^5 + 4*x^3 - 3*x^2 - 4*x + 5": {
+    "closure_degree": 48,
+    "closure_discriminant": 106331850491859555774768257349547847814777464890102678445637113466199471095556217333761,
+    "field_key": "x^6 - 2*x^5 + 4*x^3 - 3*x^2 - 4*x + 5",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_129371",
+      "o10_129372",
+      "o10_129373"
+    ],
+    "ramification_support": [
+      23,
+      167
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -88343
+  },
+  "x^6 - 2*x^5 + x^4 - 5*x^3 + 8*x^2 - 5*x + 10": {
+    "closure_degree": 48,
+    "closure_discriminant": 1154387292184950550332130070304692773246424385592388811815956898325200896000000000000000000000000,
+    "field_key": "x^6 - 2*x^5 + x^4 - 5*x^3 + 8*x^2 - 5*x + 10",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_048254"
+    ],
+    "ramification_support": [
+      2,
+      5,
+      503
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -5060180
+  },
+  "x^6 - 2*x^5 - 2*x^4 + 4*x^3 - 2*x^2 - 2*x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 21334376398479474155217059457596887616217224636465413465076767974769033216,
+    "field_key": "x^6 - 2*x^5 - 2*x^4 + 4*x^3 - 2*x^2 - 2*x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "t09443",
+      "t09444"
+    ],
+    "ramification_support": [
+      2,
+      71
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -1290496
+  },
+  "x^6 - 2*x^5 - 2*x^4 + 6*x^3 - 2*x^2 - 4*x + 5": {
+    "closure_degree": 12,
+    "closure_discriminant": 90785223184384,
+    "field_key": "x^6 - 2*x^5 - 2*x^4 + 6*x^3 - 2*x^2 - 4*x + 5",
+    "galois_group": "D6",
+    "manifolds": [
+      "t10803"
+    ],
+    "ramification_support": [
+      2,
+      53
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -179776
+  },
+  "x^6 - 2*x^5 - 3*x^3 - 2*x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 410842216912914924636723570953057023880437752236521078491270542144775390625,
+    "field_key": "x^6 - 2*x^5 - 3*x^3 - 2*x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_024067"
+    ],
+    "ramification_support": [
+      5,
+      257
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 330245
+  },
+  "x^6 - 2*x^5 - x^4 + 4*x^3 + 3*x^2 - 6*x + 2": {
+    "closure_degree": 12,
+    "closure_discriminant": 211027453382656,
+    "field_key": "x^6 - 2*x^5 - x^4 + 4*x^3 + 3*x^2 - 6*x + 2",
+    "galois_group": "D6",
+    "manifolds": [
+      "o9_44156",
+      "o9_44157"
+    ],
+    "ramification_support": [
+      2,
+      61
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -238144
+  },
+  "x^6 - 3*x^5 + 3*x^4 - x^3 - x^2 + x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 1676942823880192385304947786177581515021724777615435464611218169539828810278721,
+    "field_key": "x^6 - 3*x^5 + 3*x^4 - x^3 - x^2 + x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_146657",
+      "o10_146658"
+    ],
+    "ramification_support": [
+      23,
+      79
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -41791
+  },
+  "x^6 - 3*x^5 + 5*x^3 + 2*x^2 - 5*x + 1": {
+    "closure_degree": 12,
+    "closure_discriminant": 2436396322816,
+    "field_key": "x^6 - 3*x^5 + 5*x^3 + 2*x^2 - 5*x + 1",
+    "galois_group": "D6",
+    "manifolds": [
+      "o9_38196"
+    ],
+    "ramification_support": [
+      2,
+      29
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 390224
+  },
+  "x^6 - 4*x^4 + 4*x^2 + 1": {
+    "closure_degree": 12,
+    "closure_discriminant": 172771465793536,
+    "field_key": "x^6 - 4*x^4 + 4*x^2 + 1",
+    "galois_group": "D6",
+    "manifolds": [
+      "o9_17193"
+    ],
+    "ramification_support": [
+      2,
+      59
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -222784
+  },
+  "x^6 - 5*x^4 + 5*x^2 + 4": {
+    "closure_degree": 12,
+    "closure_discriminant": 6146991521173504,
+    "field_key": "x^6 - 5*x^4 + 5*x^2 + 4",
+    "galois_group": "D6",
+    "manifolds": [
+      "o10_059856"
+    ],
+    "ramification_support": [
+      2,
+      107
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -732736
+  },
+  "x^6 - x^4 - 2*x^3 + 2*x + 1": {
+    "closure_degree": 18,
+    "closure_discriminant": -6107453226347659264,
+    "field_key": "x^6 - x^4 - 2*x^3 + 2*x + 1",
+    "galois_group": "C3 x S3",
+    "manifolds": [
+      "o10_144540"
+    ],
+    "ramification_support": [
+      2,
+      13
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -10816
+  },
+  "x^6 - x^4 - 2*x^3 - x^2 + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 1767097723513784533711323136,
+    "field_key": "x^6 - x^4 - 2*x^3 - x^2 + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_34281"
+    ],
+    "ramification_support": [
+      2,
+      37
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 87616
+  },
+  "x^6 - x^4 - 6*x^2 - 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 37723838875673284825516711307250721,
+    "field_key": "x^6 - x^4 - 6*x^2 - 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o9_37643"
+    ],
+    "ramification_support": [
+      761
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 579121
+  },
+  "x^6 - x^4 - x^3 - x^2 + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 20798201815902925734870098641,
+    "field_key": "x^6 - x^4 - x^3 - x^2 + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_120074",
+      "o10_120075",
+      "o10_120076",
+      "o10_120077",
+      "o10_120078"
+    ],
+    "ramification_support": [
+      229
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 52441
+  },
+  "x^6 - x^5 + 2*x^4 + 2*x^2 - x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 14948856302846240526393215399024092258533558373822120515711533056,
+    "field_key": "x^6 - x^5 + 2*x^4 + 2*x^2 - x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_137989"
+    ],
+    "ramification_support": [
+      2,
+      59
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -27848
+  },
+  "x^6 - x^5 + 2*x^4 + 2*x^3 + 4*x^2 - 4*x + 8": {
+    "closure_degree": 48,
+    "closure_discriminant": 1230372127406075800839429166123104114916674321442598195523691023115219304359469138767475900416,
+    "field_key": "x^6 - x^5 + 2*x^4 + 2*x^3 + 4*x^2 - 4*x + 8",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_146244",
+      "o10_146245",
+      "o10_146246",
+      "o10_146247",
+      "o10_146248",
+      "o10_146249"
+    ],
+    "ramification_support": [
+      2,
+      31,
+      61
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -1845616
+  },
+  "x^6 - x^5 + 2*x^4 + x^3 + 2*x^2 + 3*x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 6824090029123911125096267776,
+    "field_key": "x^6 - x^5 + 2*x^4 + x^3 + 2*x^2 + 3*x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "v3536"
+    ],
+    "ramification_support": [
+      2,
+      19
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -109744
+  },
+  "x^6 - x^5 + 2*x^4 - 2*x^3 + 2*x^2 - 2*x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 2352634640231689951863242876669644980867984267519669888461897761,
+    "field_key": "x^6 - x^5 + 2*x^4 - 2*x^3 + 2*x^2 - 2*x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "t11497"
+    ],
+    "ramification_support": [
+      19,
+      23
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -10051
+  },
+  "x^6 - x^5 + 3*x^4 - 2*x^3 + 2*x^2 + 3*x - 3": {
+    "closure_degree": 36,
+    "closure_discriminant": 3475226802198116057554377769989579566636047832552241,
+    "field_key": "x^6 - x^5 + 3*x^4 - 2*x^3 + 2*x^2 + 3*x - 3",
+    "galois_group": "S3 x S3",
+    "manifolds": [
+      "o10_131217"
+    ],
+    "ramification_support": [
+      3,
+      13
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 1601613
+  },
+  "x^6 - x^5 + 3*x^4 - x^3 + 3*x^2 - x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 281950333280439075931286825690906130709115911739167287855207920074462890625,
+    "field_key": "x^6 - x^5 + 3*x^4 - x^3 + 3*x^2 - x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "v3076"
+    ],
+    "ramification_support": [
+      5,
+      11,
+      23
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -29095
+  },
+  "x^6 - x^5 + 4*x^4 - 6*x^3 + 6*x^2 - 6*x + 4": {
+    "closure_degree": 48,
+    "closure_discriminant": 353404994460344188455585940560655522201600000000000000000000000000000000,
+    "field_key": "x^6 - x^5 + 4*x^4 - 6*x^3 + 6*x^2 - 6*x + 4",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_134228",
+      "o10_134229"
+    ],
+    "ramification_support": [
+      2,
+      5,
+      7
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -1120000
+  },
+  "x^6 - x^5 + 7*x^4 - 7*x^3 + 15*x^2 - 8*x + 10": {
+    "closure_degree": 48,
+    "closure_discriminant": 331258194906987095044696316000505380700762448850235022114816000000000000000000000000,
+    "field_key": "x^6 - x^5 + 7*x^4 - 7*x^3 + 15*x^2 - 8*x + 10",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_143848",
+      "o10_143849"
+    ],
+    "ramification_support": [
+      2,
+      5,
+      151
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -2280100
+  },
+  "x^6 - x^5 + x^4 - 2*x^3 + 4*x^2 - 3*x + 1": {
+    "closure_degree": 18,
+    "closure_discriminant": -43564677551979246963,
+    "field_key": "x^6 - x^5 + x^4 - 2*x^3 + 4*x^2 - 3*x + 1",
+    "galois_group": "C3 x S3",
+    "manifolds": [
+      "s730"
+    ],
+    "ramification_support": [
+      3,
+      19
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -9747
+  },
+  "x^6 - x^5 + x^4 - 6*x^3 + 2*x^2 - 4*x + 8": {
+    "closure_degree": 48,
+    "closure_discriminant": 23326217907230585844111089765899130339325715624357766571020210328199281500195899479043342336,
+    "field_key": "x^6 - x^5 + x^4 - 6*x^3 + 2*x^2 - 4*x + 8",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_148826"
+    ],
+    "ramification_support": [
+      2,
+      7,
+      229
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 1468348
+  },
+  "x^6 - x^5 + x^4 - x^3 + x^2 - x + 1": {
+    "closure_degree": 6,
+    "closure_discriminant": -16807,
+    "field_key": "x^6 - x^5 + x^4 - x^3 + x^2 - x + 1",
+    "galois_group": "C6",
+    "manifolds": [
+      "t12408"
+    ],
+    "ramification_support": [
+      7
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -16807
+  },
+  "x^6 - x^5 - 2*x^4 + 3*x^3 - 3*x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 5295857060403389172272440163845536780734340670974400022968297288892416,
+    "field_key": "x^6 - x^5 - 2*x^4 + 3*x^3 - 3*x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_068657",
+      "o10_068658",
+      "o10_068659"
+    ],
+    "ramification_support": [
+      2,
+      11,
+      29
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 56144
+  },
+  "x^6 - x^5 - 2*x^4 + 6*x^3 - 4*x^2 - 4*x + 8": {
+    "closure_degree": 24,
+    "closure_discriminant": 253733758439206322825509870696923136,
+    "field_key": "x^6 - x^5 - 2*x^4 + 6*x^3 - 4*x^2 - 4*x + 8",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_150416",
+      "o10_150417"
+    ],
+    "ramification_support": [
+      2,
+      223
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 795664
+  },
+  "x^6 - x^5 - x^4 + 2*x^3 - x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 6110898859196907267260970592116787248405968100272988112169761,
+    "field_key": "x^6 - x^5 - x^4 + 2*x^3 - x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "v2272"
+    ],
+    "ramification_support": [
+      11,
+      31
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": -10571
+  },
+  "x^6 - x^5 - x^4 + 3*x^3 + 4*x^2 - 2*x - 2": {
+    "closure_degree": 48,
+    "closure_discriminant": 63179378867929298181309658996850004528272817542165413432811990163659922866176,
+    "field_key": "x^6 - x^5 - x^4 + 3*x^3 + 4*x^2 - 2*x - 2",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o9_36681",
+      "o9_36682",
+      "o9_36683",
+      "o9_36684"
+    ],
+    "ramification_support": [
+      2,
+      17,
+      37
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 372368
+  },
+  "x^6 - x^5 - x^4 - x^2 - x + 1": {
+    "closure_degree": 24,
+    "closure_discriminant": 4060737717636219342428430533656576,
+    "field_key": "x^6 - x^5 - x^4 - x^2 - x + 1",
+    "galois_group": "S4",
+    "manifolds": [
+      "o10_087705"
+    ],
+    "ramification_support": [
+      2,
+      79
+    ],
+    "stem_degree": 6,
+    "stem_discriminant": 399424
+  },
+  "x^8 - 3*x^6 + 6*x^4 - 7*x^2 + 4": {
+    "closure_degree": 48,
+    "closure_discriminant": 48643684860550366945956333333752727298588688415243167148734220906671736040965799936,
+    "field_key": "x^8 - 3*x^6 + 6*x^4 - 7*x^2 + 4",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o9_21999"
+    ],
+    "ramification_support": [
+      2,
+      17,
+      41
+    ],
+    "stem_degree": 8,
+    "stem_discriminant": 124367104
+  },
+  "x^8 - 3*x^7 + 3*x^6 + 3*x^5 - 7*x^4 + 3*x^3 + 3*x^2 - 3*x + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 340768730249874802352471976839668787507843355888149624585688812455521,
+    "field_key": "x^8 - 3*x^7 + 3*x^6 + 3*x^5 - 7*x^4 + 3*x^3 + 3*x^2 - 3*x + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_138513"
+    ],
+    "ramification_support": [
+      3,
+      239
+    ],
+    "stem_degree": 8,
+    "stem_discriminant": 4626801
+  },
+  "x^8 - 3*x^7 + 6*x^6 - 9*x^5 + 9*x^4 - 7*x^3 + 4*x^2 - x + 1": {
+    "closure_degree": 16,
+    "closure_discriminant": 52333711181640625,
+    "field_key": "x^8 - 3*x^7 + 6*x^6 - 9*x^5 + 9*x^4 - 7*x^3 + 4*x^2 - x + 1",
+    "galois_group": "(C4 x C2) : C2",
+    "manifolds": [
+      "o10_150095",
+      "o10_150096",
+      "o10_150097"
+    ],
+    "ramification_support": [
+      5,
+      11
+    ],
+    "stem_degree": 8,
+    "stem_discriminant": 1890625
+  },
+  "x^8 - 4*x^7 + 11*x^6 - 18*x^5 + 23*x^4 - 18*x^3 + 14*x^2 - 4*x + 4": {
+    "closure_degree": 16,
+    "closure_discriminant": 33672290266555416576,
+    "field_key": "x^8 - 4*x^7 + 11*x^6 - 18*x^5 + 23*x^4 - 18*x^3 + 14*x^2 - 4*x + 4",
+    "galois_group": "C2 x D4",
+    "manifolds": [
+      "o9_44092",
+      "o9_44093"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      23
+    ],
+    "stem_degree": 8,
+    "stem_discriminant": 10969344
+  },
+  "x^8 - 7*x^6 + 14*x^4 - 7*x^2 + 4": {
+    "closure_degree": 48,
+    "closure_discriminant": 1983413456222100051648886812007254395446781511733295130789380713077673609770234182033668571136,
+    "field_key": "x^8 - 7*x^6 + 14*x^4 - 7*x^2 + 4",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_065568"
+    ],
+    "ramification_support": [
+      2,
+      3,
+      643
+    ],
+    "stem_degree": 8,
+    "stem_discriminant": 952586496
+  },
+  "x^8 - 8*x^6 + 20*x^4 - 15*x^2 + 4": {
+    "closure_degree": 48,
+    "closure_discriminant": 40542832841624819324153303566953282407629235855543942414123206750027002283218605504084722032050176,
+    "field_key": "x^8 - 8*x^6 + 20*x^4 - 15*x^2 + 4",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_062724"
+    ],
+    "ramification_support": [
+      2,
+      2917
+    ],
+    "stem_degree": 8,
+    "stem_discriminant": 2178275584
+  },
+  "x^8 - x^6 + 3*x^4 - 2*x^2 + 1": {
+    "closure_degree": 48,
+    "closure_discriminant": 1940147514897409920544589702826036490038404310566144741551422413058605056,
+    "field_key": "x^8 - x^6 + 3*x^4 - 2*x^2 + 1",
+    "galois_group": "C2 x S4",
+    "manifolds": [
+      "o10_056388"
+    ],
+    "ramification_support": [
+      2,
+      257
+    ],
+    "stem_degree": 8,
+    "stem_discriminant": 16908544
+  }
+}

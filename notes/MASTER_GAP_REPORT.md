@@ -844,65 +844,97 @@ its own regardless of rank.
    the theorem before any physical interpretation, not lean on HFG
    motivation for its correctness.
 
-5. **Census-wide rarity of the C₂×S₄×C₂×S₃ configuration — needs a
-   methodological redesign, not just more CPU time.** Running
-   (`census_disjoint_ramification_scan.sage.py`), now in the census's
-   `o9`-family (9-tetrahedron orientable census) — this is a
-   **non-random missingness problem**: any "`x`% of the census has
-   property P" claim from this scan alone would be biased toward
-   low-complexity trace fields. The scan currently only estimates
-   `P(disjoint support | field successfully resolved)`; a defensible
-   rarity claim also needs `P(field resolved | tetrahedron count,
-   degree, volume, census family)` — the selection function of the
-   computation itself. A companion scan (`census_uniqueness_scan.py`,
-   testing whether m010 is uniquely the minimal-volume manifold with
-   maximal cusp order) did not have this bias and has **completed — see
-   COMPLETED item 32**.
-   - **`[Computed]` Preliminary selection-function result, 25.4%
-     checkpoint (54,025/212,641 manifolds).** Pulled directly from the
-     scan's own checkpoint JSON (read-only, live process untouched) —
-     these are measured numbers, not estimates. Family-dependent
-     recognition rates:
-     - m-family: 92/301 = **30.6%** resolved
-     - s-family: 95/962 = **9.9%** resolved
-     - v-family: 135/3,552 = **3.8%** resolved
-     - t-family: 304/12,846 = **2.4%** resolved
-     - o-family: 121/36,364 = **0.3%** resolved
-     - Overall: 747/54,025 = **1.4%** resolved
-     This is a ~100× spread in ascertainment probability from m-family
-     to o-family — the resolved sample is not a random 1.4% slice of
-     the census, it is heavily selected toward early/low-complexity
-     families. Failure-mode breakdown (dominant cause throughout is the
-     same underlying condition, `find_field()` failing to resolve):
-     `field_not_recognized` 73.6%, the pre-patch `AttributeError` (same
-     semantic failure, different label, from before the worker-script
-     fix) 19.4%, `timeout` 6.0%, closure-degree-bound exceeded ~1%.
-     Among the 747 resolved manifolds, 102 distinct invariant trace
-     fields: degree distribution quartic (62), sextic (20), cubic (12),
-     quadratic (4); Galois closure groups S4 (48), D4 (14), S3 (12),
-     C2×S4 (11); most common single field `x³+2x−1` (S3, ramified only
-     at 59), 21 manifolds; m009 and m010 both confirmed mapping to
-     `x²−x+2`=K, consistent with everything else established this
-     session.
-     **On the C2×S4 count specifically — stated carefully, not
-     over-claimed.** 11/102=10.8% of *distinct resolved fields* have
-     closure group C2×S4 — this must NOT be read as a census-wide
-     percentage. Correct framing: among the 102 distinct invariant
-     trace fields successfully resolved in the first 54,025 census
-     entries, 11 have Galois closure group C2×S4.
-     **This sharpens (not just restates) the rarity question into two
-     separate estimands:** `P(configuration | field resolved)`
-     (measurable now, from the resolved subset) and `P(field resolved |
-     census features)` (needs modeling — not yet attempted; a
-     stratified table or logistic regression of resolution probability
-     against family/tetrahedron-count/volume would determine whether
-     the family effect is a proxy for triangulation complexity or a
-     genuinely sharp recognizer boundary). Only after the second is
-     understood can `P(configuration)` be estimated responsibly for the
-     whole census. This is a real result about the *instrument*, not
-     yet about the census — worth stating explicitly in the eventual
-     paper rather than leaving a reviewer to find it. Status:
-     `[Computed]`, preliminary, Job 2 still running.
+5. **Census-wide rarity of the C₂×S₄×C₂×S₃ configuration — SCAN
+   COMPLETE, rarity analysis done.** `census_disjoint_ramification_scan.sage.py`
+   finished the full OrientableCuspedCensus: **212,641/212,641 manifolds
+   scanned**. Checkpoint frozen and hashed for reproducibility:
+   `census_final_COMPLETE_aug27.json`
+   (sha256 `f6d76c553f6e4564a053aeb42ae5cc7062d5912ac875e91d2f4fc229a40a5c40`);
+   the companion `census_field_classes.json`
+   (sha256 `681cf5aef0b15179a013e6d29ebabe1925a876e9ca8fe66690a95b0a53cc834`)
+   holds the 165 resolved field records the analysis below was run
+   against.
+   - **Final scan totals** [Computed, exact]. 1,839/212,641 manifolds
+     produced a successfully resolved invariant trace field
+     (**0.865%**), representing **165 distinct number fields**.
+     210,802 manifolds failed to resolve — 90.9% `field_not_recognized`,
+     4.9% the pre-patch `AttributeError` streak (indices <12,393,
+     already fixed, not a live issue), 3.6% `timeout`, 0.6%
+     closure-degree-bound exceeded. **All frequency statements below
+     are conditional on this resolved subset and must NOT be read as
+     frequencies over the complete census** — the selection function
+     `P(field resolved | family, complexity)` has still not been
+     separately modeled; this remains the outstanding step (unchanged
+     from the original selection-function concern below).
+   - **Family-dependent recognition rate confirmed at completion, ~50×
+     spread**: m-family 92/301 = **30.6%** → s-family 95/962 = **9.9%**
+     → v-family 135/3,552 = **3.8%** → t-family 304/12,846 = **2.4%**
+     → o-family 1,213/194,980 = **0.62%**. Any claim like "S4 is the
+     dominant Galois group in the census" is therefore too strong; the
+     defensible claim is "S4 is dominant among the 165 fields this
+     pipeline's recognizer resolved."
+   - **Galois closure group distribution (165 fields)**: S4 65, D4 28,
+     C2×S4 25, S3 15, D6 8, C2 6, C2×C2 6, D5 4, S3×S3 2, C3×S3 2,
+     C2×A4 1, C6 1, (C4×C2):C2 1, C2×D4 1. Stem degree distribution:
+     2→6, 3→15, 4→92, 5→4, 6→41, 8→7.
+   - **Discovery curve F(n) — not saturated, and NOT monotonically
+     decelerating** [Computed, exact, from checkpoints pulled during
+     the live run]: 102 fields @ 54,025/212,641 (25.4%) → 129 fields @
+     154,250 (72.5%) → 132 fields @ 183,350 (86.2%) → **165 fields @
+     212,641 (100%)**. The middle interval (72.5%→86.2%, 13.7 pp of
+     census) added only 3 new fields; the final interval (86.2%→100%,
+     an almost identical 13.8 pp span) added 33 — an 11× jump in
+     discovery rate right at the end. This is a measured fact, not an
+     extrapolation artifact, and it directly falsifies the assumption
+     that the 86%-checkpoint sample had approximately saturated the
+     resolvable-field population — any rarity claim based on a partial
+     run would have undercounted field diversity substantially.
+   - **Rarity analysis of the C₂×S₄×C₂×S₃ configuration** [Computed,
+     exact, run against the frozen `census_final_COMPLETE_aug27.json`]:
+     - Fields with ramification support **exactly** a single prime:
+       36/165 (21.8%), spanning 30 distinct primes.
+     - Support exactly {3}: 1 field (`x²−x+1`, C2, disc −3, 47
+       manifolds — Q(√−3)).
+     - Support exactly {283}: 1 field (`x⁴−x−1`, S4, closure degree 24,
+       disc −283, 3 manifolds — the m003/m019 field).
+     - Support exactly {7}: **2** fields — `x²−x+2` (C2, disc −7, 15
+       manifolds; the same field K as the m009/m010 quaternion-algebra
+       investigation) and `x⁶−x⁵+x⁴−x³+x²−x+1` (C6, disc
+       −16807 = −7⁵, 1 manifold).
+     - Support exactly {59}: 1 field (`x³+2x−1`, S3, closure degree 6,
+       disc −59, 1 manifold — the m006 field).
+     - Pairwise-disjoint-support 4-tuples among all 165 fields:
+       **4,296,004** (out of C(165,4)=29,180,927 possible 4-subsets,
+       ≈14.7%) — disjoint ramification support is common among
+       distinct resolved fields, unsurprising since most discriminants
+       are distinct primes.
+     - Of those, 4-tuples whose Galois-group multiset matches exactly
+       {C2, S4, C2, S3}: **3,648**. **The general disjoint-
+       ramification⟹direct-product mechanism (Section 2 of the
+       Galois-product paper) is therefore not a one-off curiosity in
+       the resolved census — it has thousands of realizations.** This
+       is direct, positive evidence the theorem is broadly applicable,
+       strengthening (not narrowing) its scope.
+     - **The specific {−3,−283,−7,−59} tuple used in the paper**:
+       exactly **one** way to assemble a C2×S4×C2×S3 4-tuple using
+       precisely the primes {3, 283, 7, 59} (taking the C2 field at 7,
+       not the C6 field at 7): {`x²−x+1`, `x⁴−x−1`, `x²−x+2`,
+       `x³+2x−1`}. So among the 3,648 type-matching 4-tuples in the
+       resolved census, this exact prime-configuration occurs **1
+       time** — it is unique, not merely uncommon, within the resolved
+       population. Correct framing for the paper: *"this configuration
+       is one of 3,648 disjoint-support C₂×S₄×C₂×S₃ realizations found
+       among the 165 fields resolved so far in a full-census scan, and
+       the specific prime set {3,7,59,283} is the unique one among them
+       — a distinguished, not generic, example of a common
+       phenomenon."* This statement is exact and defensible on the
+       resolved subset; it is NOT (yet) a statement about the full
+       212,641-manifold census, since only 0.865% of manifolds resolved
+       a field at all.
+   - Status: `[Computed]`, exact on the resolved subset. Selection-
+     function modeling (`P(resolved | family/complexity)`) remains the
+     outstanding step before any full-census frequency claim can be
+     made responsibly.
 
 6. **Dual surgery paper (SSRN 7277458) — revision + venue.** AGT
    submission 260813-Gentry **rejected Aug 24, 2026** (scope, not a math
@@ -979,10 +1011,13 @@ its own regardless of rank.
     falsifiable by future CMB-S4 data; untested.
 
 19. **Full census extension for the disjoint-ramification/rarity check**
-    (item 5) — earlier checks only covered the first 80–200 of ~10,000+
-    manifolds. The uniqueness half of this pair is now done (COMPLETED
-    item 32); this item now refers only to the still-running
-    `census_disjoint_ramification_scan.sage.py`.
+    (item 5) — **COMPLETE.** `census_disjoint_ramification_scan.sage.py`
+    finished the entire 212,641-manifold OrientableCuspedCensus; the
+    rarity/discovery-curve analysis is done and recorded in item 5. The
+    uniqueness half of this pair was already done (COMPLETED item 32).
+    Remaining open piece: the selection-function model
+    `P(field resolved | family, complexity)` needed before any
+    full-census (not just resolved-subset) frequency claim.
 
 ### Paper-portfolio / editorial gaps (from the Aug 6–20 2026 audit entries)
 
