@@ -834,6 +834,40 @@ its own regardless of rank.
      (or a genuine non-Eichler normalizer computation, e.g. via Jun–Kim's
      actual dyadic order classification, not merely testing the Eichler
      hypothesis) is needed to settle equality.
+   - **First concrete step of the actual dyadic classification: [E_𝔭̄:R_𝔭̄]=2,
+     exact** [Computed — exact, two independent derivations]
+     (`reproduce/m009_dyadic_index_check.sage`). The branch at 𝔭̄ has
+     exactly two vertices (already established above); let $M_0,M_1$ be
+     their associated maximal orders and $E=M_0\cap M_1$ — the standard
+     level-1 edge/Iwahori order for two Bruhat-Tits-adjacent vertices.
+     Derived $E$'s explicit basis two ways: (a) analytically, from the
+     exact `NEIGHBOR_STEPS` matrix $h=\mathrm{diag}(2,1)$ connecting the
+     two branch vertices, giving $E=\{a,d\in\Z_2,\ b\in2\Z_2,\
+     c\in\Z_2\}$ in the standard matrix-unit basis; (b) verified
+     independently by direct containment checks of each basis element
+     against both $M_0$ and $M_1$ (not merely trusting the derivation).
+     $R_𝔭̄\subset E$ confirmed directly (all four pulled-back basis
+     vectors of $R$ have integral $E$-coordinates). The change-of-basis
+     matrix $X$ (R's basis in $E$'s coordinates) has three diagonal-type
+     entries of valuation 0 and exactly one of valuation 1, giving
+     $v_2(\det X)=1$ exactly, hence **$[E:R]=2$** — independently
+     confirmed by the discriminant-valuation shortcut
+     ($v_{\bar{\mathfrak p}}(\mathrm{disc}_{\mathrm{tr}}R)=4$,
+     $v_{\bar{\mathfrak p}}(\mathrm{disc}_{\mathrm{tr}}E)=2$ for a
+     level-1 Eichler order, so $4=2k+2\Rightarrow k=1\Rightarrow[E:R]=2$),
+     computed by hand *before* running the script, then matched exactly.
+     This confirms GPT's "working prediction is 2" from the relayed
+     discussion — but as an independently *derived and computed* result,
+     not adopted on the collaborator's say-so. From the valuation
+     pattern, $E/R\cong\Z/2$ (a single elementary divisor 2, cyclic — the
+     Smith-normal-form call over the Q₂ *field* in the script trivializes,
+     as expected, since it needs the Z₂ *ring*; the cyclic structure is
+     read directly off the valuation pattern instead, not yet from a
+     ring-level Smith form call). **Not yet done: Gorenstein/Bass type
+     classification of $R_𝔭̄$ from this $E/R\cong\Z/2$ structure, and the
+     resulting non-Eichler normalizer $N(R)$ computation** — the next two
+     steps in the chain GPT proposed, deliberately not attempted in the
+     same pass.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
