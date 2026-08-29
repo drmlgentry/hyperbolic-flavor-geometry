@@ -1431,9 +1431,43 @@ its own regardless of rank.
      summands. Consequence: $\Gamma_{009}^+=\ker\varepsilon$ is the
      fundamental group of a specific, nameable double cover of $m009$ —
      not the "obvious" torsion-class cover, and not the mod-$2$
-     free-part cover alone, but their combination — a concrete target
-     SnapPy could in principle construct directly (`M.cover(...)` from
-     the explicit kernel), not attempted here.
+     free-part cover alone, but their combination.
+   - **$M^+$ identified: it IS a named census manifold — the link
+     complement L6a1** [Computed] (new scripts,
+     `m009_task2_identify_double_cover*.sage`). First, a real caveat
+     caught before trusting the proposed shortcut: **volume alone cannot
+     identify which cover is $M^+$** — SnapPy's `M.covers(2)` returns
+     *three* degree-$2$ covers, and all three have identical volume
+     $5.33348956689812=2\cdot\mathrm{vol}(m009)$ automatically (true of
+     any degree-$2$ cover, not a distinguishing fact). Distinguished
+     them properly instead via an independent, abstract-group route:
+     computed $H_1(\Gamma_{009}^+)$ directly in GAP from the *already
+     explicit* generators $\langle a^2,ab,ba^{-1}\rangle$ (via
+     `IsomorphismFpGroup` + `AbelianInvariants` on the subgroup itself —
+     also independently re-confirming $[\Gamma_{009}:\Gamma_{009}^+]=2$
+     along the way, matching the earlier Reidemeister–Schreier claim):
+     $$H_1(\Gamma_{009}^+)=\Z\oplus\Z\quad\text{(torsion-free)}$$
+     matching *exactly one* of SnapPy's three reported cover homologies
+     ($\Z/2\oplus\Z/6\oplus\Z$, $\Z/4\oplus\Z$, $\Z\oplus\Z$) — the
+     torsion-free one, unambiguously identifying which cover is $M^+$.
+     That cover is a genuine census manifold:
+     $$M^+ = \texttt{s780(0,0)(0,0)} = \texttt{6\textasciicircum2\_3(0,0)(0,0)}
+     = \texttt{L6a1(0,0)(0,0)}$$
+     i.e. (unfilled, both cusps complete) the complement of the
+     $2$-component hyperbolic link **L6a1** (Thistlethwaite table;
+     $6^2_3$ in Rolfsen's). Both cusps share the identical shape
+     $\approx2.6457513\,i=\sqrt{-7}$ exactly, consistent with everything
+     else this session. **Also structurally informative**: $M^+$ has
+     **two** cusps where $m009$ has one — meaning $m009$'s peripheral
+     (meridian) subgroup lies entirely in $\ker\varepsilon$, i.e.
+     $\varepsilon$ is *trivial on the cusp*, splitting it into two lifts
+     rather than doubling its cross-section. This is a genuine lead, not
+     yet followed up: L6a1's own arithmetic (invariant trace field,
+     quaternion order, any published commensurability data) may already
+     be documented in the literature/census independently of this
+     session's construction, which could make the remaining
+     $[N_K^+(R):\Gamma_{009}^+]$ comparison readable from known L6a1 data
+     rather than computed from scratch — **not attempted here**.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
