@@ -1401,6 +1401,39 @@ its own regardless of rank.
      normalizer) — the genuinely hard remaining piece, now precisely
      isolated and posed as a purely $K$-arithmetic comparison rather
      than one entangled with field-extension bookkeeping.
+   - **Which homomorphism $H_1(m009)\to C_2$ is $\varepsilon$? — resolved,
+     with a correction to how the question was posed**
+     [Computed] (new script, `m009_task2_epsilon_vs_H1.sage`). The
+     literal question "does $\varepsilon$ factor through $H_1(m009)$" is
+     **not something to test** — every homomorphism to an abelian group
+     (here $C_2$) factors through the abelianization automatically, by
+     the universal property; this holds regardless of what
+     $\varepsilon$ turns out to be. The well-posed version — *which* of
+     the (three nontrivial) homomorphisms $H_1(m009)=\Z/2\oplus\Z\to
+     C_2$ does $\varepsilon$ equal — is answered here. Built $\Gamma_{009}$
+     as a GAP finitely-presented group from SnapPy's own presentation
+     (generators `a,b`, single relator `aabABaaBAb`) and computed the
+     abelianization map explicitly via `MaximalAbelianQuotient`,
+     cross-checked independently by hand from the relator's abelianized
+     exponent vector $(2,0)$: **$[a]$ generates the $\Z/2$ torsion
+     summand exactly (order $2$, no constraint from the relator forces
+     anything else); $[b]$ is entirely unconstrained, generating the
+     free $\Z$ summand.** Comparing against the established
+     $\varepsilon(a)=\varepsilon(b)=1$: the "projection onto $\Z/2$"
+     candidate is **rejected** (would force $\varepsilon(b)=0$, contradicted);
+     the "reduction of the free part mod $2$" candidate is **also
+     rejected** (would force $\varepsilon(a)=0$, contradicted); the
+     **third, "sum" candidate — nontrivial on both the torsion generator
+     and the free generator — matches exactly**:
+     $$\varepsilon = (\text{proj. onto }\Z/2)\ \oplus\ (\text{free part
+     mod }2)$$
+     the unique nontrivial homomorphism $H_1\to C_2$ nonzero on *both*
+     summands. Consequence: $\Gamma_{009}^+=\ker\varepsilon$ is the
+     fundamental group of a specific, nameable double cover of $m009$ —
+     not the "obvious" torsion-class cover, and not the mod-$2$
+     free-part cover alone, but their combination — a concrete target
+     SnapPy could in principle construct directly (`M.cover(...)` from
+     the explicit kernel), not attempted here.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
