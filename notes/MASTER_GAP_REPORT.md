@@ -1154,18 +1154,54 @@ its own regardless of rank.
      $$\text{No candidate globalizes} \Rightarrow \text{evidence FOR }
      N(R_{\bar{\mathfrak p}})=\Gamma_{009}\text{ globally (no index-2
      extension found)}$$
-     **This is evidence, not a closed proof** — it rules out the
-     complete relevant local coset (a real, meaningful, non-trivial
-     search, not a token attempt) but a genuine non-existence proof
-     would need separate machinery (e.g. an adelic double-coset /ideal
-     class argument), not attempted here. What it *does* establish
-     firmly: the specific "$[N(R):\Gamma_{009}]=2$,
-     $\mathrm{covol}(N(R))\approx1.3334$, and a resulting $Z/2$ explaining
-     $H_1(m009)=\Z\oplus\Z/2$" narrative from the relayed messages rests
-     on a circular volume argument and is **not supported** by the actual
-     search — record as an open question with negative-leaning evidence,
-     not as a result, and do not connect it to the $H_1$ torsion without
-     independent justification.
+     **CORRECTION (caught by the user, confirmed valid):** the framing
+     above overstates what nine matrix representatives can show. The
+     local normalizer $N(R_{\bar{\mathfrak p}})$ is an infinite (pro-$2$)
+     group; each of the four residue classes mod $2E$ tested has
+     infinitely many representatives differing by the (infinite)
+     congruence kernel, and only nine specific representatives were
+     tried. "No candidate globalizes" is therefore **not** valid evidence
+     either way about whether the coset globalizes — retracted as stated.
+   - **Discriminant scoping computation — decisive, and changes the
+     picture** [Computed] (new script,
+     `m009_global_discriminant_scan.sage`). The right next question,
+     per a relayed strong-approximation argument (standard theory —
+     Kneser/Platonov strong approximation for $\mathrm{SL}_2$, legitimate
+     and correctly invoked in general form): is $\bar{\mathfrak p}$ the
+     *only* prime where $R$ is non-maximal globally? If so, the
+     "admissible determinant squareclass at every other bad prime"
+     condition the argument needs is checked at zero primes — vacuously
+     true — since away from $\bar{\mathfrak p}$, $\pi=1-w$ is a local unit
+     and a maximal order's normalizer determinant image contains all
+     local units automatically. Computed the global reduced-trace
+     discriminant of $R$ directly from the exact $K$-basis (Gram matrix
+     $T_{ij}=\mathrm{Trd}(r_i\bar r_j)$, $\det T=3w-1$) and factored the
+     resulting ideal in $\mathcal O_K$ (class number $1$, so this
+     factorization is unambiguous):
+     $$(\det T) = (\bar{\mathfrak p})^4,\qquad\text{no other prime
+     factors}$$
+     matching the already-certified local valuation $4$ exactly, with
+     **nothing else in the factorization**. So $R$ is maximal at *every*
+     finite prime other than $\bar{\mathfrak p}$, and the
+     strong-approximation criterion's "check every other bad place" step
+     is genuinely vacuous — there are no other places. Modulo the
+     (essentially automatic, by construction) bookkeeping at
+     $\bar{\mathfrak p}$ itself, this makes global existence of a
+     branch-swapping element of $N(R)$ **plausible via strong
+     approximation** — a real, meaningful update, not a restatement.
+     **Still NOT a completed proof**: strong approximation is an
+     existence theorem, not a construction — it would give an element of
+     $N_K(R)$ without necessarily an explicit nice matrix (consistent
+     with why the nine tried representatives found nothing simple), and
+     the precise technical argument (matching $\mathrm{PGL}_2\to
+     \mathrm{SL}_2$ reduction via $\det=[\pi]$, invoking strong
+     approximation for $\mathrm{SL}_2/K$ rigorously rather than just
+     citing the strategy) has not been carried out here — this is a
+     genuine next step, not yet done. **Do not record
+     $[N(R):\Gamma_{009}]=2$ or the $H_1(m009)=\Z\oplus\Z/2$ torsion
+     connection as established** — both remain open, though the balance
+     of evidence has now shifted from "leans against globalizing" to
+     "plausibly does globalize, pending the completed argument."
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
