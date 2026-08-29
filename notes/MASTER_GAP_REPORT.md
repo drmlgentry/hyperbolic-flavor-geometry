@@ -1202,6 +1202,91 @@ its own regardless of rank.
      connection as established** — both remain open, though the balance
      of evidence has now shifted from "leans against globalizing" to
      "plausibly does globalize, pending the completed argument."
+   - **Globalization THEOREM — complete existence proof, the two
+     remaining gaps closed** [Proved] (new script,
+     `m009_strong_approx_local_check.sage`, plus the discriminant scan
+     above). The strong-approximation argument had two open pieces
+     before it could be called complete; both closed:
+
+     **(1) The $\bar{\mathfrak p}$-local bookkeeping, computed
+     explicitly, not just cited as plausible.** Need: an element of the
+     branch-swapping coset whose determinant matches $[\pi]_{\bar{\mathfrak
+     p}}=[1-w]_{\bar{\mathfrak p}}$ in $K_{\bar{\mathfrak
+     p}}^\times/(K_{\bar{\mathfrak p}}^\times)^2\cong\mathbf Q_2^\times/(\mathbf
+     Q_2^\times)^2$ (order $8$). Proved directly (not cited) that
+     diagonal matrices $\mathrm{diag}(u,1)$, $u\in\Z_2^\times$, lie in
+     $E^\times\subset N^+(R_{\bar{\mathfrak p}})$ — they commute with
+     $h=\begin{pmatrix}2&0\\0&1\end{pmatrix}$, so they normalize $M_0$
+     and $M_1$ *individually* by pure commutativity, no computation
+     needed beyond that observation — and their determinants sweep *all*
+     of $\Z_2^\times$, hence all $4$ unit squareclasses (verified
+     directly against $M_0,M_1$ for all $4$ representatives). Since
+     $w_{\mathrm{local}}=\begin{pmatrix}0&2\\1&0\end{pmatrix}$
+     (already-verified branch-swapper) has $\det=-2$, odd valuation
+     matching $\pi$'s, computed explicitly which unit closes the gap:
+     $u_0\equiv5\pmod8$, giving
+     $$g_{\bar{\mathfrak p}}=w_{\mathrm{local}}\cdot\mathrm{diag}(5,1),
+     \qquad \det(g_{\bar{\mathfrak p}})/\pi\ \text{is an exact }2\text{-adic
+     square (verified via }\mathrm{Qp.is\_square()}\text{, to }300\text{
+     digits)}.$$
+
+     **(2) Every other finite place, closed by the discriminant scan
+     above, not merely assumed "as the picture suggests."** Since
+     $\mathrm{disc}_{\mathrm{tr}}(R)=(\bar{\mathfrak p})^4$ exactly with
+     *no other prime factors* (computed), $R_{\mathfrak q}$ is maximal at
+     every $\mathfrak q\ne\bar{\mathfrak p}$, and $\pi$ is a unit there.
+     For a maximal order $M_2(\mathcal O_{K_{\mathfrak q}})$, its unit
+     group is exactly $\{x\in M_2(\mathcal O_{K_{\mathfrak
+     q}}):\det x\in\mathcal O_{K_{\mathfrak q}}^\times\}$ — an elementary
+     fact ($x^{-1}=\det(x)^{-1}\mathrm{adj}(x)$ stays integral iff $\det
+     x$ is a unit) — so its determinant image is the *entire* unit group,
+     and $\pi$ being a unit there trivially lands in it: no further
+     per-prime check is needed, and there are no other primes to check
+     regardless.
+
+     **Assembling the strong-approximation argument.** With $d=\begin{pmatrix}\pi&0\\0&1\end{pmatrix}$,
+     $d^{-1}g_{\mathfrak q}$ has trivial determinant squareclass at
+     every finite $\mathfrak q$ (by (1) and (2)), hence is represented
+     by an element of $SL_2(K_{\mathfrak q})$. $K=\mathbf Q(\sqrt{-7})$
+     has $K_\infty=\mathbf C$, so $SL_2(K_\infty)$ is non-compact —
+     the classical hypothesis for strong approximation for the simply
+     connected group $SL_2$ (Kneser/Platonov–Rapinchuk; the same
+     technique used throughout the arithmetic-Kleinian-group literature,
+     e.g. Maclachlan–Reid). $SL_2(K)$ is therefore dense in
+     $SL_2(\mathbb A_{K,f})$: choosing the open target set to be a small
+     neighborhood of $d^{-1}g_{\bar{\mathfrak p}}$ at $\bar{\mathfrak p}$
+     and *the full compact group* $SL_2(\mathcal O_{K,\mathfrak q})$ at
+     every other place (legitimate since there is no other place needing
+     a nontrivial condition, by (2)) gives $s\in SL_2(K)$ landing in that
+     set — meaning $s$ is $\mathcal O_{K,\mathfrak q}$-integral at *every*
+     $\mathfrak q\ne\bar{\mathfrak p}$ by construction, and close enough to
+     $d^{-1}g_{\bar{\mathfrak p}}$ at $\bar{\mathfrak p}$ that
+     $\alpha:=ds\in N(R_{\bar{\mathfrak p}})$ there (normalizers of orders
+     are open subgroups, so a close-enough approximation suffices).
+     $$\boxed{\exists\,\alpha\in N_K(R)\subset PGL_2(K):\ \alpha R_{\mathfrak
+     q}\alpha^{-1}=R_{\mathfrak q}\ \forall\mathfrak q,\ \text{and }\alpha
+     \text{ swaps }M_0,M_1\text{ at }\bar{\mathfrak p}}$$
+     i.e. **the local branch-swapping coset globalizes.** This directly
+     answers "Task 1" from the relayed strong-approximation program in
+     the affirmative, superseding both the earlier "no candidate
+     globalizes" overclaim (retracted above) and its own
+     "plausibly globalizes" hedge — this is now a genuine existence
+     proof, modulo only the standard citation of $SL_2$ strong
+     approximation itself (foundational, not re-derived here).
+
+     **What this does NOT establish — explicitly out of scope here,
+     "Task 2" of the relayed program, not attempted:** whether this
+     $\alpha$ lies in $\Gamma_{009}$ or not, whether
+     $\Gamma_{009}^+\subseteq N_K^+(R)$ is equality or strict, and hence
+     $[N(R):\Gamma_{009}]$ (if finite at all) — strong approximation
+     proves *existence* of *some* global normalizing element, not its
+     relationship to the specific holonomy group $\Gamma_{009}$, which
+     requires separately determining whether the actual holonomy
+     generators $a,b$ preserve or swap $\{M_0,M_1\}$ (a distinct,
+     tractable-looking but unattempted computation) and comparing
+     $\Gamma_{009}$ against $N_K(R)$ as concrete subgroups. Do not
+     record $[N(R):\Gamma_{009}]=2$, the covolume-halving claim, or the
+     $H_1(m009)=\Z\oplus\Z/2$ torsion connection from that.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
