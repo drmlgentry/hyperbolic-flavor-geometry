@@ -1063,6 +1063,54 @@ its own regardless of rank.
      enumeration code, a new lattice re-check of $R^\#=\tfrac12R$, and
      two previously-untested dimensions (3 and 4) now explicitly ruled
      out rather than assumed impossible.
+   - **Local normalizer: $N(R_{\bar{\mathfrak p}})=N(E_{\bar{\mathfrak
+     p}})$ — proved rigorously, not just checked against a hand-supplied
+     abstract group** [Proved locally] (new script,
+     `m009_normalizer_certificate.sage`). A first pass at this (a
+     free-standing Sage script asserting properties of three hand-typed
+     $4\times4$ matrices) was rejected before being recorded: it never
+     connected those matrices to $R_{\bar{\mathfrak p}}$ or
+     $E_{\bar{\mathfrak p}}$ at all, so its passing proved nothing about
+     the actual order. Redone properly: the whole claim reduces to
+     **one falsifiable lattice identity** — $R=\{x\in E:\mathrm{tr}(x)\in
+     2\Z_2\}$ exactly — checked directly from the real, previously
+     certified $R_{\mathrm{std}}$/$E_{\mathrm{std}}$ bases (not
+     hand-picked matrices): $2E\subset R$ confirmed, all four basis
+     traces confirmed even, and the mod-$2$ image of $R$ in $E/2E$
+     confirmed to be *exactly* the $3$-dimensional kernel of
+     $\mathrm{tr}\bmod2$ (not merely contained in it). Given that one
+     fact, both inclusions are then elementary and were stated as such:
+     $N(R)\subseteq N(E)$ from the already-certified complete overorder
+     poset (conjugation permutes overorders preserving index, and $E$ is
+     the *unique* index-$2$ overorder, so it must be fixed); $N(E)\subseteq
+     N(R)$ from the cyclic-trace identity $\mathrm{tr}(gxg^{-1})=\mathrm{tr}(x)$
+     (always true) combined with the lattice fact just verified. As a
+     second, independent, fully concrete check (not required for the
+     proof, but run anyway): the three candidate generators $u_B=\begin{pmatrix}1&2\\0&1\end{pmatrix}$,
+     $u_C=\begin{pmatrix}1&0\\1&1\end{pmatrix}$, $w=\begin{pmatrix}0&2\\1&0\end{pmatrix}$
+     were each independently verified to normalize *both* $E$ and $R$ at
+     the full $\Z_2$-lattice level (not just mod $2$) by direct
+     conjugation — this also checks, for the first time, that $u_B,u_C,w$
+     actually lie in $N(E)$ at all (never verified before). Their mod-$2$
+     conjugation action on $E/2E$ was then *derived* from the real
+     conjugation (not copied) and found to match GPT's hand-supplied
+     $T_B,T_C,W$ exactly, element for element — a genuine independent
+     confirmation of that derivation, not a restatement of it. The
+     generated group has order $8$ and its image stabilizes the actual
+     $R/2E$ subspace exactly (confirmed, not assumed).
+     $$\boxed{N(R_{\bar{\mathfrak p}}) = N(E_{\bar{\mathfrak p}})}
+     \quad\text{(local, at }\bar{\mathfrak p}\text{, rigorously proved)}$$
+     **Explicitly NOT established, and not to be recorded as proved:**
+     (1) whether $\{u_B,u_C,w\}$ generate the *entire* image of $N(E)$ on
+     $E/2E$ (the $D_8$ description is illustrative, not load-bearing for
+     the equality above, which holds regardless); (2) the **global**
+     claim — whether the local Atkin–Lehner element $w$ globalizes to an
+     actual $K$-rational normalizer element, whether local normalizers
+     are trivial at every other finite place, and hence whether
+     $[N(R):\Gamma_{009}]=2$ and $\mathrm{covol}(N(R))\approx1.3334$ hold
+     globally. GPT's own relay flagged this as needing separate,
+     dedicated verification before promotion to theorem; that has not
+     been done and nothing about it is recorded as proved here.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
