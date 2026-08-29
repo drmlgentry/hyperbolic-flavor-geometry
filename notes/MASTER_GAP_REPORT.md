@@ -1316,6 +1316,58 @@ its own regardless of rank.
      itself this session, not a quick add-on. **Deliberately not
      attempted in this pass** — flagging and stopping here rather than
      open a second major sub-project without a checkpoint.
+   - **$\varepsilon(a)=\varepsilon(b)=1$ — resolved, after a real bug
+     was found and fixed, and cross-validated independently** [Computed]
+     (new script, `m009_task2_epsilon_v2.sage`, superseding
+     `m009_task2_epsilon_final.sage`, kept with a header explaining why).
+     Identified the field $L=\mathbf Q[y]/(y^4-y^3+y+1)$ that $a,b$'s
+     entries live in (via `number_field_elements_from_algebraics`), but
+     the **first attempt to build the exact matrices $a,b\in L$ by
+     identifying all $8$ entries independently was wrong** — verified by
+     the decisive check $a^2\overset{?}{=}$ the already-trusted exact
+     $K$-matrix for `aa`: **failed**. Diagnosed as a wrong-root pick
+     among close candidates when matching $8$ separate `algdep` outputs
+     independently. **Fixed with a far more robust construction**: since
+     `aa`$=a^2$ is already exact over $K$ (tested all session) and
+     $\det(a)=1$, Cayley–Hamilton gives $a=(a^2+I)/\mathrm{tr}(a)$
+     exactly — needing only *one* new algebraic number ($\mathrm{tr}(a)$)
+     identified per generator instead of four. Verified numerically to
+     $\sim90$ digits against the actual holonomy matrix before trusting
+     it. **A second correction surfaced along the way**: the
+     $\bar{\mathfrak p}$-behavior in $L$ is *embedding-dependent* — the
+     specific embedding $K\hookrightarrow L$ actually consistent with
+     the verified $a,b$ (not just any of Sage's two listed embeddings)
+     gives $\bar{\mathfrak p}$ **ramified** ($e=2,f=1$), not inert as
+     first (wrongly) reported — corrected the completion accordingly
+     (built via completing the square to an Eisenstein $Y^2-d$ form,
+     since Sage's $p$-adic `extension()` needs Eisenstein or unramified
+     input specifically). Rebuilt the $\bar{\mathfrak p}$ branch inside
+     this corrected completion (branch size $2$, matching every prior
+     computation) and tested conjugation by $a$, by $b$, directly:
+     $$\varepsilon(a)=1,\qquad\varepsilon(b)=1\qquad\text{(both
+     branch-swapping)}$$
+     **Independently cross-validated** via a completely different,
+     much simpler route: $ab$ is already exact in $K$ (no $L$ needed at
+     all), directly testable in the original $\mathbf Q_2$ pipeline —
+     predicted $\varepsilon(ab)=\varepsilon(a)\oplus\varepsilon(b)=0$
+     (fixes), computed independently: **fixes — exact match.**
+     **Consequence for the normalizer problem**: $\varepsilon:\Gamma_{009}\to
+     C_2$ is *already surjective from the generators alone* —
+     $\Gamma_{009}$ contains branch-swapping elements natively, so the
+     elaborate strong-approximation existence proof from earlier, while
+     still a valid and independent achievement in its own right, was not
+     actually *needed* to exhibit a swapping element of $N_K(R)$: $a$
+     itself already is one (standard theory — $\Gamma_{009}$ normalizes
+     $R$ since $\Gamma^{(2)}_{009}\trianglelefteq\Gamma_{009}$ — makes
+     this automatic, not a new computation). This resolves the
+     branch-swap half of the normalizer problem outright and, per the
+     exact-sequence framing proposed earlier, reduces the entire
+     remaining index question to a single comparison:
+     $$[N_K(R):\Gamma_{009}] = [N_K^+(R):\Gamma_{009}^+]$$
+     **Not yet attempted**: computing $\Gamma_{009}^+=\ker\varepsilon$
+     explicitly (Reidemeister–Schreier or equivalent) and comparing it
+     against $N_K^+(R)$ — the genuinely hard remaining piece, now
+     precisely isolated rather than entangled with the swap question.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
