@@ -1111,6 +1111,61 @@ its own regardless of rank.
      globally. GPT's own relay flagged this as needing separate,
      dedicated verification before promotion to theorem; that has not
      been done and nothing about it is recorded as proved here.
+   - **Global Atkin–Lehner check — attempted; found NO evidence of
+     globalization, contradicting the relayed "[N(R):Γ₀₀₉]=2" claim**
+     [Computed] (new script, `m009_atkin_lehner_global.sage`). Before
+     running anything, flagged and rejected a relayed "verification"
+     that divided $\mathrm{vol}(m009)=2.6667\ldots$ by
+     $\mathrm{covol}(N(E)):=\tfrac32\mathrm{covol}(T_7)=1.3334\ldots$
+     and got $2.000\ldots$ — this is **circular**: both numbers were
+     *defined* assuming the index-$2$ extension exists, so the division
+     recovers $2$ by algebra alone regardless of any fact about the real
+     order; it cannot distinguish globalizes from doesn't. Two real
+     checks were run instead. **(a)** $\mathrm{vol}(m009)$ (SnapPy,
+     direct) vs. $3\cdot\mathrm{covol}(T_7)$ (covol$(T_7)$ computed
+     independently via Sage's own Dedekind zeta function, Humbert's
+     formula, not copied) — these agree to $\sim16$ significant figures
+     ($2.66674478\ldots$ both sides), confirming $\Gamma_{009}$ has
+     *exactly* the covolume of the level-$\bar{\mathfrak p}$ Eichler
+     congruence subgroup $\Gamma_0(\bar{\mathfrak p})\subset T_7$ (the
+     classical index formula $[T_7:\Gamma_0(\bar{\mathfrak
+     p})]=N(\bar{\mathfrak p})+1=3$, standard orbit-stabilizer on
+     $\mathbf P^1(\mathcal O_K/\bar{\mathfrak p})$, not something taken
+     on faith). **This is itself informative**: it shows $\Gamma_{009}$
+     already accounts for the *entire* covolume of $\Gamma_0(\bar{\mathfrak
+     p})$, not merely half of it — i.e. it is NOT a proper index-$2$
+     subgroup waiting to be doubled. **(b)** An actual search for a
+     global lift of the local Atkin–Lehner swap: since the branch seed
+     $g_0$ (from the certified BT-tree computation) is an *exact
+     rational* matrix, not merely a $2$-adic limit object, the local
+     swap element $w_{\mathrm{local}}=\begin{pmatrix}0&2\\1&0\end{pmatrix}$
+     (already verified this session to normalize both $E_{\mathrm{std}}$
+     and $R_{\mathrm{std}}$ locally) was honestly conjugated back to
+     global coordinates via $g_0\,w_{\mathrm{local}}\,g_0^{-1}$ — a
+     genuine $K$-rational candidate, not a frame guess. Recognizing that
+     $w_{\mathrm{local}}$ is only *one* of the four local elements that
+     swap the branch (the full nontrivial coset of the already-certified
+     order-$8$ normalizer image), **all four** were tested this way
+     ($g_0\,w\,g_0^{-1}$, $g_0\,u_Bw\,g_0^{-1}$, $g_0\,u_Cw\,g_0^{-1}$,
+     $g_0\,u_Bu_Cw\,g_0^{-1}$), plus five additional naive candidates for
+     context. **All nine fail** the exact $\mathcal O_K$-integrality test
+     for global normalization of $R$ (not just approximately — exact
+     arithmetic, no candidate came close).
+     $$\text{No candidate globalizes} \Rightarrow \text{evidence FOR }
+     N(R_{\bar{\mathfrak p}})=\Gamma_{009}\text{ globally (no index-2
+     extension found)}$$
+     **This is evidence, not a closed proof** — it rules out the
+     complete relevant local coset (a real, meaningful, non-trivial
+     search, not a token attempt) but a genuine non-existence proof
+     would need separate machinery (e.g. an adelic double-coset /ideal
+     class argument), not attempted here. What it *does* establish
+     firmly: the specific "$[N(R):\Gamma_{009}]=2$,
+     $\mathrm{covol}(N(R))\approx1.3334$, and a resulting $Z/2$ explaining
+     $H_1(m009)=\Z\oplus\Z/2$" narrative from the relayed messages rests
+     on a circular volume argument and is **not supported** by the actual
+     search — record as an open question with negative-leaning evidence,
+     not as a result, and do not connect it to the $H_1$ torsion without
+     independent justification.
 
 4. **576-element paper — finish as pure mathematics, keep the physical
    reading permanently separated.** The arithmetic chain (discriminants,
