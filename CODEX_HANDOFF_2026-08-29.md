@@ -519,6 +519,371 @@ and \(M_i=d_iM_2(\mathcal O_K)d_i^{-1}\). The script then:
 
 - 7adde4e597655a28fe4bdeb3508fa93607ed435d
 
+## 2026-08-29 - Determinant-image certification checkpoint
+
+The repository-owning user created the exact three-file checkpoint after
+the successful determinant-image run.
+
+- Commit: `0d8346b928cef1b88190b95586f515100674edaf`.
+- Parent: `52bc85ef692b98423daba2adec602be6f6fb976c`.
+- Message: `Certify m009 determinant squareclass image`.
+- Commit contents:
+  - `CODEX_HANDOFF_2026-08-29.md`
+  - `reproduce/m009_determinant_image_certificate.log`
+  - `reproduce/m009_determinant_image_certificate.sage`
+- Verification: the staged-name list contained exactly those three files;
+  `git diff --cached --check` returned no errors.
+
+This is the authoritative determinant-image anchor. It certifies
+
+\[
+\delta(N_K^+(R))=\{[1],[-1]\},\qquad
+|\delta(N_K^+(R))|=2,
+\]
+
+and reduces the remaining target to
+
+\[
+[N_K^+(R):\Gamma_{009}^+]
+=2[N^{+,0}:\Gamma_{009}^+]
+\]
+
+whenever the remaining index is finite.
+
+## 2026-08-29 - Square-determinant stabilizer certificate prepared
+
+**Objective.** Construct the square-determinant simultaneous stabilizer
+intrinsically and compare it exhaustively with
+\(\Gamma_{009}^+=\langle a^2,ab,ba^{-1}\rangle\).
+
+**Classification.** EXACT THEOREM DERIVATION AND GAP CERTIFICATE PREPARED;
+NEW SCRIPT NOT YET EXECUTED. No new equality or numerical index is promoted
+from this entry.
+
+**File prepared.**
+
+- `reproduce/m009_square_stabilizer_certificate.sage`
+
+**Structural derivation encoded.** Put
+
+\[
+d_0=\operatorname{diag}(1-w,1),\qquad
+t=d_0^{-1}d_1=\operatorname{diag}(1-w,1).
+\]
+
+In the \(M_0\)-frame, \(L_0=\mathcal O_K^2\) and
+\(L_1=t\mathcal O_K^2\). For
+
+\[
+A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL_2(\mathcal O_K),
+\]
+
+one has exactly
+
+\[
+t^{-1}At=
+\begin{pmatrix}
+a&b/(1-w)\\
+(1-w)c&d
+\end{pmatrix}.
+\]
+
+Thus \(A\) preserves \(L_1\) exactly iff
+\(b\in\bar{\mathfrak p}=(1-w)\). The script also records the projective
+homothety argument: if \(AL_1=\alpha L_1\) and \(\det A=1\), then
+\(\alpha^2\) is a unit, hence \(\alpha\) is a unit. Therefore no additional
+order stabilizers arise from non-unit homotheties. The expected structural
+identification, pending the script's successful assertions, is
+
+\[
+N^{+,0}=d_0\Gamma^0(\bar{\mathfrak p})d_0^{-1},
+\]
+
+where
+
+\[
+\Gamma^0(\bar{\mathfrak p})=
+\left\{
+\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL_2(\mathcal O_K):
+b\in\bar{\mathfrak p}
+\right\}/\{\pm I\}.
+\]
+
+**Exact generator matrices to be asserted in the \(M_0\)-frame.**
+
+\[
+a^2\sim
+\begin{pmatrix}1-2w&-1-w\\w-1&w\end{pmatrix},\quad
+ab\sim
+\begin{pmatrix}2-w&-1-w\\-1&w\end{pmatrix},
+\]
+
+\[
+ba^{-1}\sim
+\begin{pmatrix}w&w-1\\1-w&2-w\end{pmatrix}.
+\]
+
+All three have determinant one and upper-right entry in
+\(\bar{\mathfrak p}\), subject to the prepared exact assertions.
+
+**Independent ambient presentation.** The script uses Tanner Reese's
+presentation of \(PSL_2(\mathcal O_{-7})\), already used and provenance-
+audited in `reproduce/bianchi_d7_lowindex.g`:
+
+\[
+\langle A,B,U\mid B^2,(BA)^3,[A,U],(BAU^{-1}BU)^2\rangle,
+\]
+
+with \(A=T_1\), \(B=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\),
+and \(U=T_w\). Every relator is also checked against the exact matrices.
+
+Reduction modulo \(\bar{\mathfrak p}\) maps this group onto
+\(PSL_2(\mathbf F_2)\cong S_3\). The prepared GAP computation defines
+\(\Gamma^0(\bar{\mathfrak p})\) as the exact preimage of the stabilizer of
+the projective line \(e_2\), and asserts its ambient index is three.
+
+**Exact word derivation prepared.** A norm-Euclidean algorithm in
+\(\mathcal O_{-7}\) expresses the three matrices as words in \(A,B,U\),
+checking each matrix identity projectively. The hand-derived words, which
+the script will independently reproduce, are
+
+\[
+\begin{aligned}
+a^2&=A^{-2}BA^{-1}UBA U^{-1},\\
+ab&=A^{-2}UBU^{-1},\\
+ba^{-1}&=A^{-1}BA^{-1}UBA.
+\end{aligned}
+\]
+
+**Result-neutral exhaustion.** GAP computes
+\([\Gamma^0(\bar{\mathfrak p}):\Gamma_{009}^+]\) without using candidate
+\(2\) as an input. The script accepts and prints any positive finite exact
+index. It also tests the explicit candidate
+
+\[
+x=T_{1-w},\qquad
+d_0xd_0^{-1}=
+\begin{pmatrix}1&(1-w)^2\\0&1\end{pmatrix},
+\]
+
+and separately enumerates both
+
+\[
+[\langle\Gamma_{009}^+,x\rangle:\Gamma_{009}^+]
+\quad\text{and}\quad
+[\Gamma^0(\bar{\mathfrak p}):
+\langle\Gamma_{009}^+,x\rangle].
+\]
+
+This certifies non-membership and exhaustion if the corresponding exact
+indices warrant those conclusions; the existence of \(x\) alone is not
+used to infer the answer.
+
+**Execution boundary.** There is no log and no new certificate yet. Run in
+the WSL Conda environment `sage`:
+
+    set -o pipefail
+    sage reproduce/m009_square_stabilizer_certificate.sage 2>&1 \
+    | tee reproduce/m009_square_stabilizer_certificate.log
+    echo "SAGE_EXIT=$?"
+
+Promote only after `SAGE_EXIT=0`, every assertion passes, GAP returns a
+positive finite index, and the complete conclusion footer is present.
+
+**Still open until that run.**
+
+\[
+[N^{+,0}:\Gamma_{009}^+],\qquad
+[N_K^+(R):\Gamma_{009}^+].
+\]
+
+**Program repo HEAD before this uncommitted script/handoff update.**
+
+- `0d8346b928cef1b88190b95586f515100674edaf`.
+
+**Corpus repo HEAD.**
+
+- `7adde4e597655a28fe4bdeb3508fa93607ed435d`.
+
+## 2026-08-29 - Square-determinant stabilizer executed successfully
+
+**Objective.** Execute and audit
+`reproduce/m009_square_stabilizer_certificate.sage`, identify
+\(N^{+,0}\) independently, and exhaust its quotient by
+\(\Gamma_{009}^+\).
+
+**Classification.** THEOREM + CERTIFIED EXACT COMPUTATION + EXHAUSTIVE GAP
+COSET ENUMERATION.
+
+**Execution status.** EXECUTED - PASS. The user reported `SAGE_EXIT=0`.
+Codex independently read the complete 4,244-byte saved log and found the
+conclusion footer, no traceback, no assertion failure, and no error line.
+
+**Certificate files.**
+
+- `reproduce/m009_square_stabilizer_certificate.sage`
+- `reproduce/m009_square_stabilizer_certificate.log`
+
+**Exact structural identification.** In the \(M_0\)-frame,
+
+\[
+L_0=\mathcal O_K^2,\qquad
+L_1=\operatorname{diag}(1-w,1)\mathcal O_K^2.
+\]
+
+For
+
+\[
+A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL_2(\mathcal O_K),
+\]
+
+the exact conjugation formula is
+
+\[
+\operatorname{diag}(1-w,1)^{-1}A
+\operatorname{diag}(1-w,1)=
+\begin{pmatrix}
+a&b/(1-w)\\
+(1-w)c&d
+\end{pmatrix}.
+\]
+
+Thus simultaneous stabilization is exactly the upper-right congruence
+condition \(b\in\bar{\mathfrak p}=(1-w)\). The determinant-one homothety
+argument excludes additional projective lattice homotheties. Therefore
+
+\[
+\boxed{
+N^{+,0}=d_0\Gamma^0(\bar{\mathfrak p})d_0^{-1}
+},
+\]
+
+where
+
+\[
+\Gamma^0(\bar{\mathfrak p})=
+\left\{
+\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL_2(\mathcal O_K):
+b\in\bar{\mathfrak p}
+\right\}/\{\pm I\}.
+\]
+
+**Independent ambient-group certificate.** The script uses Tanner Reese's
+presentation of \(PSL_2(\mathcal O_{-7})\), with every relator also checked
+against the exact matrices. Reduction modulo \(\bar{\mathfrak p}\) maps
+onto \(PSL_2(\mathbf F_2)\cong S_3\). GAP constructs
+\(\Gamma^0(\bar{\mathfrak p})\) as the preimage of a projective-point
+stabilizer and returns exactly
+
+\[
+[PSL_2(\mathcal O_K):\Gamma^0(\bar{\mathfrak p})]=3.
+\]
+
+**Exact embedded generators.** The exact norm-Euclidean reduction writes
+the certified \(\Gamma_{009}^+\) matrices as the following words in the
+presented Bianchi group (GAP prints its generators as \(f_1,f_2,f_3\)):
+
+\[
+\begin{aligned}
+a^2&=f_1^{-2}f_2^{-1}f_3f_1^{-1}f_2^{-1}f_1f_3^{-1},\\
+ab&=f_3f_1^{-2}f_2^{-1}f_3^{-1},\\
+ba^{-1}&=f_1^{-1}f_2^{-1}f_3f_1^{-1}f_2^{-1}f_1.
+\end{aligned}
+\]
+
+Every word-to-matrix identity is asserted exactly up to the central sign.
+
+**Exhaustive quotient.** GAP returns
+
+\[
+\boxed{
+[\Gamma^0(\bar{\mathfrak p}):\Gamma_{009}^+]=2
+}.
+\]
+
+Combining this with the independently certified determinant image at commit
+`0d8346b928cef1b88190b95586f515100674edaf`,
+
+\[
+|\delta(N_K^+(R))|=2,
+\]
+
+gives the final exact answer
+
+\[
+\boxed{
+[N_K^+(R):\Gamma_{009}^+]=4
+}.
+\]
+
+There is no remaining finiteness assumption: GAP's finite coset enumeration
+certifies the square-determinant factor, and the determinant-image factor was
+already exhausted exactly.
+
+**Explicit-candidate correction.** The prepared candidate
+
+\[
+x=T_{1-w}
+\]
+
+does fix both endpoints, but GAP proves
+
+\[
+[\langle\Gamma_{009}^+,x\rangle:\Gamma_{009}^+]=1,
+\qquad
+[\Gamma^0(\bar{\mathfrak p}):
+\langle\Gamma_{009}^+,x\rangle]=2.
+\]
+
+Hence
+
+\[
+\boxed{x\in\Gamma_{009}^+}.
+\]
+
+It is not a representative of the nontrivial coset. This disconfirmation is
+recorded explicitly and does not affect the exhaustive index computation.
+Printing a simpler representative of the nontrivial coset would be useful
+certificate hardening, but it is not a gap in the index proof.
+
+### FINAL CURRENT STATE
+
+**Certified theorem/computation.**
+
+\[
+\delta(N_K^+(R))=\{[1],[-1]\},
+\]
+
+\[
+N^{+,0}=d_0\Gamma^0(\bar{\mathfrak p})d_0^{-1},
+\]
+
+\[
+[N^{+,0}:\Gamma_{009}^+]=2,
+\]
+
+and therefore
+
+\[
+\boxed{[N_K^+(R):\Gamma_{009}^+]=4}.
+\]
+
+**Disconfirmed.** \(T_{1-w}\) represents the missing square-determinant
+coset. It lies in \(\Gamma_{009}^+\).
+
+**Remaining optional cleanup, not a mathematical gap.** Print and verify a
+particularly simple explicit representative of the nontrivial coset, and
+append the result to the canonical corpus report after this three-file
+certificate is checkpointed.
+
+**Program repo HEAD before this uncommitted certificate.**
+
+- `0d8346b928cef1b88190b95586f515100674edaf`.
+
+**Corpus repo HEAD.**
+
+- `7adde4e597655a28fe4bdeb3508fa93607ed435d`.
+
 ## 2026-08-29 — Determinant-image exhaustion executed successfully
 
 **Objective.** Execute and audit reproduce/m009_determinant_image_certificate.sage.
