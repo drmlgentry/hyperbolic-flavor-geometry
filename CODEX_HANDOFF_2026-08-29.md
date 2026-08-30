@@ -834,6 +834,41 @@ is instead \(T_{-1-w}\).
 
 - `7adde4e597655a28fe4bdeb3508fa93607ed435d`.
 
+## 2026-08-29 - Explicit-coset hardening checkpoint
+
+The repository-owning user created the exact three-file checkpoint after the
+successful transversal and quotient-action run.
+
+- Full commit: `363e2c7eaed19b87ba1f718af353824c789774f3`.
+- Parent: `c744ee8b1a97a148dc229b009783ef8dcf6f730c`.
+- Message: `Harden m009 square stabilizer coset certificate`.
+- Commit contents:
+  - `CODEX_HANDOFF_2026-08-29.md`
+  - `reproduce/m009_square_stabilizer_coset_rep.log`
+  - `reproduce/m009_square_stabilizer_coset_rep.sage`
+- Verification: the staged-name list contained exactly those files and
+  `git diff --cached --check` returned no errors. The LF/CRLF notice for the
+  log was a Git line-ending warning only and did not produce a cached-diff
+  error.
+
+This is the authoritative hardening anchor for
+
+\[
+y=T_{-1-w},\qquad
+N^{+,0}/\Gamma_{009}^+
+=\{\Gamma_{009}^+,y\Gamma_{009}^+\},
+\]
+
+and the independent degree-two quotient-action kernel check. The arithmetic
+theorem remains closed at
+
+\[
+\boxed{[N_K^+(R):\Gamma_{009}^+]=4}.
+\]
+
+The canonical `MASTER_GAP_REPORT.md` append is the remaining documentation
+step; it does not affect theorem status.
+
 ## 2026-08-29 - Final index-certificate checkpoint
 
 The repository-owning user created the exact three-file checkpoint for the
