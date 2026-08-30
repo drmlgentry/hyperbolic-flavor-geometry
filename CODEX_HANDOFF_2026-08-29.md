@@ -519,6 +519,254 @@ and \(M_i=d_iM_2(\mathcal O_K)d_i^{-1}\). The script then:
 
 - 7adde4e597655a28fe4bdeb3508fa93607ed435d
 
+## 2026-08-29 — Determinant-image exhaustion executed successfully
+
+**Objective.** Execute and audit reproduce/m009_determinant_image_certificate.sage.
+
+**Classification.** THEOREM + CERTIFIED EXACT FIELD/ORDER COMPUTATION.
+
+**Execution status.** EXECUTED — PASS. The shell reported SAGE_EXIT=0. Codex independently read the complete 4,221-byte log and found the exact conclusion footer, no traceback, and no assertion failure.
+
+**Output log.** reproduce/m009_determinant_image_certificate.log
+
+**Exact computational dependencies confirmed.**
+
+\[
+\operatorname{signature}(K)=(0,1),\qquad
+h_K=1,\qquad
+|\mu(K)|=2,\qquad
+-1\notin K^{\times2}.
+\]
+
+The loaded global-order certificate also reran successfully, reconfirming the exact \(M_0,M_1,E,R,J\) assertions.
+
+**Exhaustion proof.** Since \(N_K^+(R)\) fixes \(M_0\) individually,
+
+\[
+N_K^+(R)\subseteq N_{PGL_2(K)}(M_0).
+\]
+
+Writing \(M_0=\operatorname{End}_{\mathcal O_K}(L_0)\), a normalizing element sends \(L_0\) to an \(M_0\)-stable lattice. Matrix units show every such full lattice is \(I L_0\) for a fractional ideal \(I\). Since \(h_K=1\), \(I\) is principal, so projectively
+
+\[
+N_{PGL_2(K)}(M_0)
+=d_0PGL_2(\mathcal O_K)d_0^{-1}.
+\]
+
+Conjugation and projective scalar rescaling preserve determinant squareclass. Hence every determinant class in \(N_K^+(R)\) is represented by a unit of \(\mathcal O_K\). Dirichlet’s unit theorem plus the exact root-of-unity count gives
+
+\[
+\mathcal O_K^\times=\{\pm1\}.
+\]
+
+Therefore
+
+\[
+\delta(N_K^+(R))\subseteq\{[1],[-1]\}.
+\]
+
+The identity realizes \([1]\), while the globally certified \(J\) realizes the distinct class \([-1]\). Both bounds match.
+
+**Certified conclusion.**
+
+\[
+\boxed{\delta(N_K^+(R))=\{[1],[-1]\}},\qquad
+\boxed{|\delta(N_K^+(R))|=2}.
+\]
+
+Consequently, assuming the remaining index is finite,
+
+\[
+\boxed{
+[N_K^+(R):\Gamma_{009}^+]
+=2\,[N^{+,0}:\Gamma_{009}^+]
+}.
+\]
+
+**Still open.**
+
+\[
+[N^{+,0}:\Gamma_{009}^+]
+\]
+
+is the sole remaining numerical factor. The full index is not assigned a number until this square-determinant factor is certified.
+
+### CURRENT STATE
+
+**Established since handoff**
+
+- Exact global \(M_0,M_1,E,R,J\) structure.
+- \(\delta(N_K^+(R))=\{[1],[-1]\}\) exactly.
+- The full index is twice the square-determinant index, assuming finiteness.
+
+**Disconfirmed since handoff**
+
+- The determinant image cannot be larger than two classes; all suggested larger determinant-image possibilities are ruled out by maximal-order normalization, class number \(1\), and the unit group.
+
+**Still open**
+
+- \([N^{+,0}:\Gamma_{009}^+]\).
+- The resulting full numerical index.
+
+**Current best evidence for the index**
+
+- Determinant factor exactly \(2\).
+- Candidate square-determinant factor \(2\) remains conjectural and would imply total index \(4\), but neither value is promoted.
+
+**Next exact computation**
+
+- Construct \(N^{+,0}\) intrinsically as the determinant-square part of the individual global endpoint stabilizer and compare it exhaustively with \(\Gamma_{009}^+\), by exact cosets or an independently derived covolume.
+
+**Files/logs Claude should inspect**
+
+- reproduce/m009_determinant_image_certificate.sage
+- reproduce/m009_determinant_image_certificate.log
+- reproduce/m009_endpoint_global_orders.sage
+- reproduce/m009_endpoint_global_orders.log
+- CODEX_HANDOFF_2026-08-29.md
+
+**Program repo HEAD**
+
+- 52bc85ef692b98423daba2adec602be6f6fb976c
+
+**Corpus repo HEAD**
+
+- 7adde4e597655a28fe4bdeb3508fa93607ed435d
+
+## 2026-08-29 — Post-global-orders certification checkpoint
+
+The repository-owning user created the exact three-file checkpoint after the successful Sage run.
+
+- Commit: 52bc85ef692b98423daba2adec602be6f6fb976c
+- Parent provenance anchor: 4d338ecd447db2acad0177c92b1a9af220b2c4c4
+- Message: “Certify m009 global endpoint orders and determinant class”
+- Commit contents:
+  - CODEX_HANDOFF_2026-08-29.md
+  - reproduce/m009_endpoint_global_orders.sage
+  - reproduce/m009_endpoint_global_orders.log
+- Summary: 3 files changed, 864 insertions; the script and log were created in this commit.
+- Verification: the staged-name list contained exactly these three files and the cached-diff whitespace check returned no errors.
+
+This commit is the authoritative post-global-orders certification anchor. Subsequent work on determinant-image exhaustion and the square-determinant index should cite 52bc85e as its starting point.
+
+## 2026-08-29 — Determinant-image exhaustion certificate prepared
+
+**Objective.** Determine the exact finite subgroup
+
+\[
+\delta(N_K^+(R))\subset K^\times/K^{\times2}
+\]
+
+from the global stabilizer conditions.
+
+**Classification.** THEOREM DERIVATION ENCODED; SAGE DEPENDENCIES NOT YET EXECUTED IN THIS NEW SCRIPT.
+
+**File created.** reproduce/m009_determinant_image_certificate.sage
+
+**Key reduction.** Since every element of \(N_K^+(R)\) fixes \(M_0\) individually,
+
+\[
+N_K^+(R)\subseteq N_{PGL_2(K)}(M_0).
+\]
+
+Writing \(M_0=\operatorname{End}_{\mathcal O_K}(L_0)\), an element normalizing \(M_0\) sends \(L_0\) to an \(M_0\)-stable lattice. Matrix units imply every such lattice is \(I L_0\) for a fractional ideal \(I\). Class number \(1\) makes \(I\) principal, so projectively
+
+\[
+N_{PGL_2(K)}(M_0)=d_0PGL_2(\mathcal O_K)d_0^{-1}.
+\]
+
+Therefore every determinant squareclass in \(N_K^+(R)\) is represented by a unit of \(\mathcal O_K\).
+
+For the imaginary quadratic field \(K=\mathbb Q(\sqrt{-7})\), Dirichlet’s unit theorem and the exact root-of-unity count give
+
+\[
+\mathcal O_K^\times=\{\pm1\}.
+\]
+
+Thus
+
+\[
+\delta(N_K^+(R))\subseteq\{[1],[-1]\}.
+\]
+
+The identity realizes \([1]\), while the certified global \(J\) realizes the distinct class \([-1]\). Subject only to the new script’s exact rechecks of class number, signature, roots of unity, and the prior global assertions, the expected exhaustive conclusion is
+
+\[
+\delta(N_K^+(R))=\{[1],[-1]\},\qquad
+|\delta(N_K^+(R))|=2.
+\]
+
+**Execution boundary.** The new script has not yet run. Do not promote the equality from this entry alone. Run:
+
+    set -o pipefail
+    sage reproduce/m009_determinant_image_certificate.sage 2>&1 \
+      | tee reproduce/m009_determinant_image_certificate.log
+    echo "SAGE_EXIT=$?"
+
+Promote only if the shell reports SAGE_EXIT=0, every assertion passes, the exact field facts print as expected, and the full exhaustion proof/conclusion footer appears.
+
+**What a clean run would settle.**
+
+\[
+|\delta(N_K^+(R))|=2
+\]
+
+and, assuming the remaining index is finite,
+
+\[
+[N_K^+(R):\Gamma_{009}^+]
+=2\,[N^{+,0}:\Gamma_{009}^+].
+\]
+
+**Still open after a prospective pass.**
+
+\[
+[N^{+,0}:\Gamma_{009}^+]
+\]
+
+and therefore the numerical full index until that factor is determined.
+
+### CURRENT STATE
+
+**Established since handoff**
+
+- Global \(M_0,M_1,E,R,J\) certificate at 52bc85e.
+- Determinant-image upper-bound proof has been reduced to exact class-number and unit-group facts and encoded for execution.
+
+**Disconfirmed since handoff**
+
+- Nothing new.
+
+**Still open**
+
+- The new determinant-image script’s execution.
+- The square-determinant index.
+- The final numerical index.
+
+**Current best evidence for the index**
+
+- Certified lower bound \(|\delta|\ge2\).
+- Mathematical exhaustion argument predicts exactly \(|\delta|=2\), pending the script’s exact dependency checks.
+
+**Next exact computation**
+
+- Run reproduce/m009_determinant_image_certificate.sage with pipefail and audit the resulting log.
+
+**Files/logs Claude should inspect**
+
+- reproduce/m009_determinant_image_certificate.sage
+- reproduce/m009_endpoint_global_orders.sage
+- reproduce/m009_endpoint_global_orders.log
+- CODEX_HANDOFF_2026-08-29.md
+
+**Program repo HEAD**
+
+- 52bc85ef692b98423daba2adec602be6f6fb976c
+
+**Corpus repo HEAD**
+
+- 7adde4e597655a28fe4bdeb3508fa93607ed435d
+
 ## 2026-08-29 — Execution and post-pass checkpoint protocol
 
 **Classification.** REPRODUCIBILITY CLEANUP; no new mathematical result.
