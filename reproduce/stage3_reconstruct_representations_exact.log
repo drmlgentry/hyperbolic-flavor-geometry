@@ -1,0 +1,37 @@
+DEPENDENCY-FREE PYTHON EXACT CERTIFICATE RUN
+============================================
+EXACT CHECK: PASS
+base det(A)=det(B)=1
+base tr(A) = [(0) + (1)*u + (0)*u^2] + [(0) + (0)*u + (0)*u^2]*s
+base tr(B) = [(1) + (1)*u + (0)*u^2] + [(0) + (0)*u + (0)*u^2]*s
+base tr(AB)= [(0) + (1)*u + (0)*u^2] + [(0) + (0)*u + (0)*u^2]*s
+base relator=I
+base tr(mu)=+2, tr(lambda)=-2, [mu,lambda]=I
+twist relator=I
+twist tr(A)=-u, tr(B)=u+1, tr(AB)=-u
+twist tr(mu)=-2, tr(lambda)=+2
+m006 character surface vanishes at (u,u+1,u)
+the second peripheral-equation branch (u,u^2-2,u+4) is rejected by the character surface
+irreducibility discriminant = 3*u^2+u-5 != 0 in Q[u]/(u^3+u^2-u-2)
+PYTHON_EXIT=0
+
+SAGE EXACT CERTIFICATE RUN
+==========================
+==============================================================================
+STAGE 3 REPRESENTATION-LIFT AUDIT — EXACT CERTIFICATE PASS
+==============================================================================
+q(u) = X^3 + X^2 - X - 2
+disc(q) = -59
+base character (tr A, tr B, tr AB) = (u, u + 1, u)
+base peripheral traces = (2, -2)
+twisted character = (-u, u + 1, -u)
+twisted peripheral traces = (-2, 2)
+relator and peripheral commutation checks: PASS
+irreducibility discriminant = 3*u^2 + u - 5
+alternate peripheral branch rejected by surface = -16*u - 64
+
+CLASSIFICATION: CHARACTER DETERMINED / REPRESENTATION RECONSTRUCTIBLE
+VERDICT: SHORT-WORD TRACES ARE FUNCTIONS OF EXISTING CHARACTER DATA
+PROJECTIVE CONSEQUENCE: central spin-twist pairs are identical in PGL2
+==============================================================================
+SAGE_EXIT=0
