@@ -705,6 +705,228 @@ positive finite index, and the complete conclusion footer is present.
 
 - `7adde4e597655a28fe4bdeb3508fa93607ed435d`.
 
+## 2026-08-29 - Explicit square-part coset hardening executed successfully
+
+**Objective.** Execute and audit
+`reproduce/m009_square_stabilizer_coset_rep.sage`, extract the nonidentity
+coset representative from GAP, convert it to exact matrices, and verify the
+degree-two quotient action independently.
+
+**Classification.** CERTIFIED EXACT COMPUTATION / CERTIFICATE HARDENING. The
+index theorem at commit `c744ee8b1a97a148dc229b009783ef8dcf6f730c`
+is unchanged.
+
+**Execution status.** EXECUTED - PASS. The user reported `SAGE_EXIT=0`.
+Codex independently read the complete 5,481-byte saved log and found the
+hardening conclusion footer, no traceback, no assertion failure, and no
+error line.
+
+**Certificate files.**
+
+- `reproduce/m009_square_stabilizer_coset_rep.sage`
+- `reproduce/m009_square_stabilizer_coset_rep.log`
+
+**Exact GAP transversal output.** For
+
+\[
+G=\Gamma^0(\bar{\mathfrak p}),\qquad H=\Gamma_{009}^+,
+\]
+
+the exact right transversal has two elements. GAP returns the unique
+representative outside \(H\) as
+
+\[
+\boxed{y=f_1^{-1}f_3^{-1}}.
+\]
+
+With the Reese generators \(f_1=A=T_1\) and \(f_3=U=T_w\), this is
+
+\[
+y=A^{-1}U^{-1}=T_{-1-w}.
+\]
+
+Direct GAP membership checks certify
+
+\[
+\boxed{y\notin\Gamma_{009}^+},\qquad
+\boxed{y^2\in\Gamma_{009}^+}.
+\]
+
+**Exact matrices.** The GAP external word converts to the determinant-one
+matrix
+
+\[
+Y=\begin{pmatrix}1&-1-w\\0&1\end{pmatrix}
+\]
+
+in the \(M_0\)-frame. Its upper-right entry lies in
+\(\bar{\mathfrak p}=(1-w)\), so \([Y]\in\Gamma^0(\bar{\mathfrak p})\).
+In the original global frame,
+
+\[
+\boxed{
+Y_{\rm glob}=d_0Yd_0^{-1}
+=\begin{pmatrix}1&w-3\\0&1\end{pmatrix}
+}.
+\]
+
+Every exact global predicate printed `True`:
+
+\[
+Y_{\rm glob}M_0Y_{\rm glob}^{-1}=M_0,
+\qquad
+Y_{\rm glob}M_1Y_{\rm glob}^{-1}=M_1,
+\]
+
+\[
+Y_{\rm glob}RY_{\rm glob}^{-1}=R,
+\qquad
+\delta(Y_{\rm glob})=[1].
+\]
+
+**Independent quotient-action cross-check.** GAP's action of \(G\) on the
+two right cosets has image of order two. Its kernel was checked by mutual
+subgroup containment and is exactly \(H\). The explicit representative has
+image \((1,2)\), while its square has trivial image. GAP printed the images
+of its Iwahori generators as:
+
+- \(f_1^{-2}\mapsto(1,2)\);
+- \(f_3f_1^{-1}\mapsto()\);
+- \(f_1f_2f_1^{-1}\mapsto(1,2)\).
+
+This independently verifies the degree-two quotient and its kernel rather
+than merely repeating the direct `Index` output.
+
+**Certified hardening conclusion.**
+
+\[
+\boxed{
+N^{+,0}/\Gamma_{009}^+
+=\{\Gamma_{009}^+,\ y\Gamma_{009}^+\}
+},
+\]
+
+with \(y\), \(Y\), and \(Y_{\rm glob}\) explicit above.
+
+**Theorem status, unchanged.**
+
+\[
+[N^{+,0}:\Gamma_{009}^+]=2,
+\qquad
+|\delta(N_K^+(R))|=2,
+\]
+
+and therefore
+
+\[
+\boxed{[N_K^+(R):\Gamma_{009}^+]=4}.
+\]
+
+The old guess \(T_{1-w}\) remains separately disconfirmed as the missing
+representative because it lies in \(\Gamma_{009}^+\). The extracted element
+is instead \(T_{-1-w}\).
+
+**Program repo HEAD before this uncommitted hardening certificate.**
+
+- `c744ee8b1a97a148dc229b009783ef8dcf6f730c`.
+
+**Corpus repo HEAD before the append-only canonical chronology update.**
+
+- `7adde4e597655a28fe4bdeb3508fa93607ed435d`.
+
+## 2026-08-29 - Final index-certificate checkpoint
+
+The repository-owning user created the exact three-file checkpoint for the
+square-stabilizer theorem.
+
+- Full commit: `c744ee8b1a97a148dc229b009783ef8dcf6f730c`.
+- Parent: `0d8346b928cef1b88190b95586f515100674edaf`.
+- Message: `Certify m009 square stabilizer index`.
+- Commit contents:
+  - `CODEX_HANDOFF_2026-08-29.md`
+  - `reproduce/m009_square_stabilizer_certificate.log`
+  - `reproduce/m009_square_stabilizer_certificate.sage`
+- Verification: the staged-name list contained exactly those files;
+  `git diff --cached --check` returned no errors; the three committed paths
+  were clean afterward.
+
+The exact arithmetic frontier is CLOSED at this commit:
+
+\[
+\boxed{[N_K^+(R):\Gamma_{009}^+]=4}.
+\]
+
+## 2026-08-29 - Explicit square-part coset hardening prepared
+
+**Objective.** Extract the nonidentity element of the already-certified
+two-coset quotient directly from GAP, convert its Reese word to exact
+matrices, and cross-check the quotient by its degree-two permutation action.
+
+**Classification.** CERTIFICATE HARDENING PREPARED; SCRIPT NOT YET EXECUTED.
+This does not reopen or change the theorem at commit `c744ee8`.
+
+**File prepared.**
+
+- `reproduce/m009_square_stabilizer_coset_rep.sage`
+
+**Prepared exact checks.** The script loads the committed square-stabilizer
+certificate and reuses its exact GAP objects
+
+\[
+G=\Gamma^0(\bar{\mathfrak p}),\qquad H=\Gamma_{009}^+.
+\]
+
+It then:
+
+1. constructs `RightTransversal(G,H)` and asserts it has two elements;
+2. selects the unique representative \(y\notin H\) by exact GAP membership,
+   rather than guessing a matrix;
+3. asserts \(y^2\in H\);
+4. prints \(y\) as a Reese-generator word;
+5. converts the GAP external word representation back to an exact matrix
+   \(Y\in SL_2(\mathcal O_K)\);
+6. asserts \(Y_{12}\in\bar{\mathfrak p}\);
+7. independently constructs the action of \(G\) on \(G/H\), asserts its
+   image has order two, and asserts its kernel equals \(H\);
+8. asserts the image of \(y\) is the nonidentity permutation;
+9. forms \(Y_{\rm glob}=d_0Yd_0^{-1}\) and checks exact stabilization of
+   \(M_0,M_1,R\) plus trivial determinant squareclass.
+
+The degree-two quotient is defined on the Iwahori group \(G\), not on all of
+\(PSL_2(\mathcal O_K)\). Accordingly the script prints the quotient images
+of GAP's generators of \(G\), expressed as Reese words; it does not
+incorrectly apply the quotient map to Reese generators lying outside
+\(G\).
+
+**Execution boundary.** There is no hardening log and no explicit
+representative certificate yet. Run in the WSL Conda environment `sage`:
+
+    set -o pipefail
+    sage reproduce/m009_square_stabilizer_coset_rep.sage 2>&1 \
+    | tee reproduce/m009_square_stabilizer_coset_rep.log
+    echo "SAGE_EXIT=$?"
+
+Promote only after `SAGE_EXIT=0`, all assertions pass, the direct membership
+and quotient-action checks agree, and the exact global lattice predicates
+all print `True`.
+
+**Theorem status during this hardening boundary.**
+
+- Certified and unchanged:
+  \([N^{+,0}:\Gamma_{009}^+]=2\).
+- Certified and unchanged:
+  \([N_K^+(R):\Gamma_{009}^+]=4\).
+- Pending optional hardening only: a printed exact representative of the
+  nontrivial square-part coset.
+
+**Program repo HEAD before this uncommitted hardening script.**
+
+- `c744ee8b1a97a148dc229b009783ef8dcf6f730c`.
+
+**Corpus repo HEAD.**
+
+- `7adde4e597655a28fe4bdeb3508fa93607ed435d`.
+
 ## 2026-08-29 - Square-determinant stabilizer executed successfully
 
 **Objective.** Execute and audit
