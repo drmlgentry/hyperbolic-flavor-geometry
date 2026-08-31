@@ -1832,3 +1832,269 @@ its own regardless of rank.
   programme) — does not exist in any primary source and directly
   contradicts an already-published URL slug using "programme."
   "Programme" spelling stands.
+
+---
+
+## Addendum - 2026-08-29: m009 endpoint-preserving arithmetic normalizer CLOSED
+
+**Status: COMPLETED THEOREM + CERTIFIED EXACT COMPUTATION + EXHAUSTIVE GAP
+COSET ENUMERATION.** This append-only entry is newer than, and supersedes as
+current status, the earlier historical discussions of a candidate index
+\(2\), local-only normalizer evidence, failed finite matrix searches, and
+the provisional Eichler/covolume picture elsewhere in this report. Those
+entries are retained as research chronology; they must not be read as the
+present theorem status.
+
+Let
+
+\[
+K=\mathbf Q(w),\qquad w^2-w+2=0,
+\qquad \bar{\mathfrak p}=(1-w),
+\]
+
+and let \(M_0,M_1\) be the two exact global maximal overorders containing
+the m009 order \(R\). Define the individual-endpoint stabilizer
+
+\[
+N_K^+(R)=\{[g]\in PGL_2(K):
+gM_0g^{-1}=M_0,\ gM_1g^{-1}=M_1\}
+\]
+
+and
+
+\[
+\Gamma_{009}^+=\langle a^2,ab,ba^{-1}\rangle.
+\]
+
+The endpoint and cover certificates preceding this addendum establish
+
+\[
+\varepsilon(a)=\varepsilon(b)=1,\qquad
+\varepsilon(ab)=\varepsilon(ba^{-1})=0,
+\]
+
+\[
+[\Gamma_{009}:\Gamma_{009}^+]=2,\qquad
+H_1(\Gamma_{009}^+)\cong\mathbf Z^2,
+\]
+
+and identify the corresponding double cover with \(L6a1=s780\).
+
+### Exact global order structure
+
+The exact global lattice certificate proves
+
+\[
+E=M_0\cap M_1,\qquad [E:R]=2,
+\]
+
+and
+
+\[
+R=\{x\in E:\operatorname{tr}(x)\in\bar{\mathfrak p}\}.
+\]
+
+It also proves that
+
+\[
+J=\operatorname{diag}(-1,1)
+\]
+
+fixes \(M_0,M_1\) individually and normalizes \(R\) globally.
+
+### Determinant-squareclass factor
+
+For
+
+\[
+\delta:PGL_2(K)\longrightarrow K^\times/K^{\times2},
+\qquad [g]\longmapsto\det(g)\bmod K^{\times2},
+\]
+
+the exact determinant-image certificate uses \(h_K=1\),
+\(\mathcal O_K^\times=\{\pm1\}\), and the global element \(J\) to prove
+
+\[
+\boxed{\delta(N_K^+(R))=\{[1],[-1]\}},
+\qquad
+\boxed{|\delta(N_K^+(R))|=2}.
+\]
+
+The three generators of \(\Gamma_{009}^+\) have square determinant class.
+Writing
+
+\[
+N^{+,0}=N_K^+(R)\cap\ker\delta,
+\]
+
+one therefore has \(\Gamma_{009}^+\subset N^{+,0}\).
+
+### Intrinsic square-determinant stabilizer
+
+In the exact \(M_0\)-lattice frame,
+
+\[
+d_0^{-1}d_1=\operatorname{diag}(1-w,1).
+\]
+
+For
+
+\[
+A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL_2(\mathcal O_K),
+\]
+
+the simultaneous \(M_0,M_1\) condition is exactly
+
+\[
+b\in\bar{\mathfrak p}.
+\]
+
+The determinant-one homothety argument proves that this loses no projective
+order stabilizers. Consequently
+
+\[
+\boxed{
+N^{+,0}=d_0\Gamma^0(\bar{\mathfrak p})d_0^{-1}
+},
+\]
+
+where
+
+\[
+\Gamma^0(\bar{\mathfrak p})=
+\left\{
+\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL_2(\mathcal O_K):
+b\in\bar{\mathfrak p}
+\right\}/\{\pm I\}.
+\]
+
+Using Tanner Reese's presentation of \(PSL_2(\mathcal O_{-7})\), with every
+relator also audited against the exact generator matrices, reduction modulo
+\(\bar{\mathfrak p}\) realizes this Iwahori as the preimage of a point
+stabilizer in \(PSL_2(\mathbf F_2)\cong S_3\). GAP verifies
+
+\[
+[PSL_2(\mathcal O_K):\Gamma^0(\bar{\mathfrak p})]=3.
+\]
+
+The exact norm-Euclidean word conversion embeds the three certified
+\(\Gamma_{009}^+\) matrices into this independently presented group. GAP's
+exhaustive coset enumeration then proves
+
+\[
+\boxed{[N^{+,0}:\Gamma_{009}^+]=2}.
+\]
+
+The independent action on the two right cosets has image \(C_2\) and kernel
+exactly \(\Gamma_{009}^+\), providing a separate verification of the direct
+index computation.
+
+### Explicit nontrivial square-part coset
+
+The GAP transversal supplies, rather than guesses, the nonidentity coset
+representative
+
+\[
+\boxed{y=f_1^{-1}f_3^{-1}=A^{-1}U^{-1}=T_{-1-w}}.
+\]
+
+Direct GAP membership checks give
+
+\[
+y\notin\Gamma_{009}^+,\qquad y^2\in\Gamma_{009}^+.
+\]
+
+The exact matrices are
+
+\[
+Y=\begin{pmatrix}1&-1-w\\0&1\end{pmatrix}
+\]
+
+in the \(M_0\)-frame and
+
+\[
+\boxed{
+Y_{\mathrm{glob}}=d_0Yd_0^{-1}
+=\begin{pmatrix}1&w-3\\0&1\end{pmatrix}
+}
+\]
+
+in the original global frame. Exact lattice tests certify that
+\(Y_{\mathrm{glob}}\) fixes \(M_0,M_1\), normalizes \(R\), and has trivial
+determinant squareclass. Thus
+
+\[
+\boxed{
+N^{+,0}/\Gamma_{009}^+
+=\{\Gamma_{009}^+,y\Gamma_{009}^+\}
+}.
+\]
+
+The earlier guessed element \(T_{1-w}\) is exactly certified to lie in
+\(\Gamma_{009}^+\); it is not the missing representative. This negative
+result is retained because it demonstrates that the quotient was exhausted
+rather than arranged around a successful guess.
+
+### Final exact index
+
+Combining the two independently certified factors gives
+
+\[
+\boxed{
+[N_K^+(R):\Gamma_{009}^+]
+=|\delta(N_K^+(R))|\,[N^{+,0}:\Gamma_{009}^+]
+=2\cdot2=4
+}.
+\]
+
+There is no remaining finiteness assumption and no open arithmetic factor.
+The former "sole arithmetic frontier" is CLOSED.
+
+### Reproducibility and provenance
+
+Program repository: `C:\dev\hyperbolic-flavor-geometry`.
+
+Exact certificate chain:
+
+- `52bc85ef692b98423daba2adec602be6f6fb976c` - global endpoint orders,
+  trace-kernel structure, and global \(J\);
+- `0d8346b928cef1b88190b95586f515100674edaf` - determinant image exactly
+  \(\{[1],[-1]\}\);
+- `c744ee8b1a97a148dc229b009783ef8dcf6f730c` - intrinsic Iwahori and
+  exhaustive square-part index \(2\), hence full index \(4\);
+- `363e2c7eaed19b87ba1f718af353824c789774f3` - explicit nontrivial coset
+  representative and independent degree-two quotient-action hardening.
+
+Primary scripts and successful logs:
+
+- `reproduce/m009_endpoint_global_orders.sage` and `.log`;
+- `reproduce/m009_determinant_image_certificate.sage` and `.log`;
+- `reproduce/m009_square_stabilizer_certificate.sage` and `.log`;
+- `reproduce/m009_square_stabilizer_coset_rep.sage` and `.log`;
+- `CODEX_HANDOFF_2026-08-29.md` for the full theorem/computation/conjecture
+  chronology, including failed approaches and promotion boundaries.
+
+All four certificate stages were promoted only after successful exact Sage
+runs with every assertion passing. The final hardening run reported
+`SAGE_EXIT=0`.
+
+---
+
+## Addendum note (Claude, this session): synchronization fix + independent audit
+
+This addendum (Codex, written directly to the `HFG-CORPUS` copy of this
+file on 2026-08-30) was **briefly and accidentally overwritten** when this
+session copied its own edit of the `hyperbolic-flavor-geometry` copy over
+`HFG-CORPUS` without first checking for content that had diverged between
+the two copies — a direct violation of the standing rule (stated in
+`CODEX_HANDOFF_2026-08-29.md`) not to silently modify this file. Caught and
+fixed within the same session, before being reported to the user: the
+`HFG-CORPUS` history (`c341610`) was inspected, this addendum recovered
+verbatim, and it is now present in both copies, which are back in sync.
+Substantively, this session independently re-verified (not merely
+re-transcribed) the closing claim of this addendum, $[N_K^+(R):\Gamma_{009}^+]=4$,
+using fresh, separately-written code rather than trusting Codex's own
+success banners — see item 3's bullet above ("computed over a background
+session... independently re-audited and confirmed here") for the full
+account of what was checked and how, and the one external dependency
+(completeness of the cited Bianchi-group presentation) flagged there.
