@@ -2264,3 +2264,45 @@ open.**
 Also corrected: the relayed message's date label ("Aug 25 2026") again —
 third occurrence of the same stale date this session; use the real
 timeline (commits from roughly Aug 29–31, 2026).
+
+---
+
+## `gentry-torsion-plb.tex`'s homology classifier is invalid — confirmed
+## independently, exact certificate, manuscript NOT yet edited
+
+Per explicit instruction, this is a certificate only — **the manuscript
+itself has not been touched.**
+
+The paper's Table 1 (spectral floors per homology class, $m006$/$m003$)
+classifies loxodromic words by
+$[w]=\sum_i\varepsilon(g_i)\bmod5$ — i.e. treats every occurrence of $a$
+or $b$ (signed by case) as contributing equally to a single count. This
+implicitly assumes $[a]=[b]$ in $H_1=\mathbf Z/5$. **That assumption is
+false for both manifolds**, confirmed here from scratch
+(`torsion_homology_correction_certificate.sage`), not by trusting the
+relayed claim: pulled the actual SnapPy presentations for
+`OrientableClosedCensus[43]` ($m006$) and `[1]` ($m003$) directly, built
+the exponent-sum matrix from the real relators, took Smith normal form
+(confirms $H_1=\mathbf Z/5$ for both, matching SnapPy's own
+`.homology()`), and used Sage's own quotient-module machinery (not a
+hand-rolled formula) to read off the genuine images of $[a],[b]$:
+$$m006:\ [a]=2[b],\qquad m003:\ [a]=3[b]\quad\text{in }\mathbf Z/5$$
+— matching the relayed claim exactly, now independently derived rather
+than copied. **The decisive check, and the one that matters most**: does
+the old classifier even send the manifold's defining relators to zero?
+$$m006\text{, relator 2}:\ n_a+n_b=1+8=9\equiv4\not\equiv0\pmod5$$
+$$m003\text{, relator 2}:\ n_a+n_b=1+2=3\not\equiv0\pmod5$$
+**It does not, for either manifold.** This is not a normalization
+question — a map that doesn't kill the relator is not a homomorphism
+$\pi_1(M)\to\mathbf Z/5$ at all, so it isn't merely mislabeling classes,
+it was never well-defined on the group in the first place. The corrected
+map ($[a]\mapsto2,[b]\mapsto1$ for $m006$; $[a]\mapsto3,[b]\mapsto1$ for
+$m003$) was verified to kill *every* relator for both manifolds exactly.
+
+**Consequence, not yet acted on**: every homology-class label in the
+paper's Table 1 (and the resulting "4:2:1 hierarchy" built on those
+labels) rests on an invalid classifier. Per instruction, the manuscript
+is not being edited and the "4:2:1" claim is not being declared refuted
+in the paper — only this certificate is recorded. The next steps (canonical
+primitive-geodesic length-spectrum census, replacing word-length
+enumeration entirely) are queued but not started.
