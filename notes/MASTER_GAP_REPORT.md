@@ -2098,3 +2098,53 @@ success banners — see item 3's bullet above ("computed over a background
 session... independently re-audited and confirmed here") for the full
 account of what was checked and how, and the one external dependency
 (completeness of the cited Bianchi-group presentation) flagged there.
+
+---
+
+## Addendum (Claude): the full-group index, correctly derived — and one
+## claim from a relayed message corrected before recording
+
+A relayed "final theorem" message proposed writing
+$[N_K(R):\Gamma_{009}]=4$ (dropping the endpoint-preserving "+" markers
+throughout) as though it were simply the same statement as
+$[N_K^+(R):\Gamma_{009}^+]=4$ already proved. **It is the same number, but
+not for free — this needed one more real (if easy) step, derived and
+checked here** (`claude_verify_full_index_and_quotient.sage`), not copied
+from the relay:
+
+$$[N_K(R):\Gamma_{009}] = 4$$
+
+**Derivation.** Index is multiplicative along a chain of subgroups. Two
+chains run from $\Gamma_{009}^+$ up to $N_K(R)$:
+$$\Gamma_{009}^+\subset\Gamma_{009}\subset N_K(R),\qquad
+\Gamma_{009}^+\subset N_K^+(R)\subset N_K(R).$$
+Both must give the same value for $[N_K(R):\Gamma_{009}^+]$. The second
+chain gives $[N_K(R):N_K^+(R)]\cdot 4$; the first gives
+$[N_K(R):\Gamma_{009}]\cdot2$ (using the already-certified
+$[\Gamma_{009}:\Gamma_{009}^+]=2$). And $[N_K(R):N_K^+(R)]=2$ exactly — a
+free, general fact: $N_K(R)$ acts on the $2$-element set $\{M_0,M_1\}$ by
+conjugation, and any group acting on a $2$-set has its individual-point
+stabilizer at index $1$ or $2$; the action here is *not* trivial
+($\Gamma_{009}$ itself already contains branch-swapping elements, e.g.
+$\varepsilon(a)=1$, certified earlier), forcing index exactly $2$. Equating
+the two chains: $[N_K(R):\Gamma_{009}]\cdot2 = 2\cdot4=8$, so
+$[N_K(R):\Gamma_{009}]=4$.
+
+**The $C_2\times C_2$ vs.\ $C_4$ question — the relayed message flagged this
+itself as unverified, and it is correct to do so: it remains open.**
+Checked one piece of it directly in GAP: $\Gamma_{009}^+$ is normal in
+$N^{+,0}$ with quotient $C_2$ — but this is automatic for *any* index-$2$
+subgroup (a general fact, not a new discovery) and only concerns the
+square-determinant, endpoint-preserving corner of the picture. It does
+**not** settle whether $\Gamma_{009}$ itself is normal in the *full*
+$N_K(R)$, nor — if it is — whether the resulting order-$4$ quotient is
+$C_2\times C_2$ or $C_4$. That would need the full group (combining the
+determinant-squareclass extension and the branch-swap extension
+consistently, not just the $N^{+,0}$ corner already modeled in GAP), which
+has not been built. **Do not record a specific quotient-group structure**
+— only the index, $4$, which is now derived rather than merely asserted.
+
+**Also corrected in passing**: the relayed message's suggested commit/date
+label ("Aug 25 2026") is well behind this session's actual timeline —
+these results were produced roughly Aug 29–30, 2026, per the actual git
+commit history. Use the real dates.
