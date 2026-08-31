@@ -2306,3 +2306,87 @@ is not being edited and the "4:2:1" claim is not being declared refuted
 in the paper — only this certificate is recorded. The next steps (canonical
 primitive-geodesic length-spectrum census, replacing word-length
 enumeration entirely) are queued but not started.
+
+---
+
+## Primitive-geodesic census, $L_{\max}=6$ — completed, with one real
+## bug fixed and one false audit claim corrected; formal completeness
+## certification attempted and found not straightforward at this scale
+
+**A parallel review (Codex) raised four points. Two were substantive and
+independently checked here; one was based on a false premise about this
+session's own implementation — corrected, not assumed either way.**
+
+**False premise, corrected**: the claim that this census "directly
+applies (2,1)/(3,1) to `length_spectrum` words" (the simplified
+2-generator weights) is **not what was done**. `length_spectrum(...,
+include_words=True)` returns words in SnapPy's *unsimplified*
+Dirichlet-domain presentation — confirmed directly: $m006$ uses generators
+$\{a,b,c,d\}$, $m003$ uses $\{a,b,c\}$, neither matching the simplified
+$\{a,b\}$ presentation the first certificate covered. Built a **separate,
+independently-certified classifier natively for each unsimplified
+presentation** (`torsion_homology_correction_certificate_4gen.sage`, same
+methodology as the original: exponent-sum matrix, Smith normal form,
+exact quotient-module lookup, every relator verified to vanish):
+$$m006:\ \{a{:}1,b{:}4,c{:}2,d{:}2\},\qquad m003:\ \{a{:}1,b{:}3,c{:}4\}
+\quad(\bmod\ 5)$$
+The census script asserts `set(G.generators())==set(coeffs.keys())` before
+classifying anything — this would have raised immediately had there been
+a mismatch, and did not. No "presentation transfer" was performed or
+needed, because no transfer was used.
+
+**A real bug, found and fixed independently of the audit**: `fold_psi`
+(computing $\psi=\mathrm{dist}(\arg\lambda,\pi\mathbb Z)$) initially used
+Python's `%` operator, which **silently returns its input completely
+unchanged** — no error — for Sage's `RealNumber` type specifically (the
+type produced by ordinary arithmetic like division), even though it works
+correctly for the closely-related `RealLiteral` type. First run's
+`psi_floor` values came out negative, close to $-\pi/2$ — caught because
+that's outside the claimed $[0,\pi/2]$ range, not because anything crashed.
+Fixed by forcing a plain Python `float` and using an explicit
+floor-based reduction instead of relying on `%` on a Sage numeric type.
+The pre-fix run's log was not committed (kept local as a diagnostic only,
+per the "preserve failed attempts" instruction — not deleted, just not
+part of the canonical record).
+
+**The `length_spectrum_alt(verified=True)` question — genuine, checked
+directly, found not straightforward at the needed scale.** SnapPy's
+plain `length_spectrum` (used here) is the standard geodesic-tracing
+enumeration, not formally interval-certified for completeness; the `_alt`
+variant with `verified=True` gives an actual proof (via interval
+arithmetic) that no geodesic below the cutoff is missed. Tested it
+directly rather than assuming it "just works": at `max_len=2.0` it
+succeeds (9 geodesics, ~30s at 212 or 300 bits precision); at
+`max_len=3.0` it **fails outright** at both precision levels tried, with
+two different internal errors (`ValueError: floor() on infinity or NaN`;
+`InsufficientPrecisionError: start point too close to 1-skeleton`) —
+not simply "needs more precision," but real robustness limits in this
+SnapPy version for this manifold. Given the growth in entry count with
+cutoff (order-of-magnitude per unit length) and that $L_{\max}=6$ is the
+target, reaching a working verified run would need real debugging of
+SnapPy's own tiling code, not a parameter tweak — **not attempted
+further this session; disclosed as a genuine limitation rather than
+silently used anyway.**
+
+**Completed census** (`primitive_geodesic_census.sage`, $L_{\max}=6.0$,
+plain `length_spectrum`, both sanity checks required and passing):
+$$m006:\ 2128\text{ primitive geodesics},\qquad m003:\ 638$$
+Sanity check 1 (homology class invariant under cyclic rotation of the
+word — i.e. under conjugation): **0/2766 failures.** Sanity check 2
+(inversion sends class $\mapsto-$class exactly): **0/2766 failures.**
+Full table, manifest (frozen $L_{\max}$, precision, presentations, exact
+classifier coefficients), and a sha256 of the complete table written to
+`reproduce/primitive_geodesic_census_{table,manifest}.json`.
+
+**Per protocol, no statistic is defined and no pattern is interpreted
+here** — class-resolved counts and psi-floors are printed as structural
+output only, not as a claim.
+
+**Status for the decision tree**: the census is real and internally
+self-consistent (both required sanity checks pass), but its
+*completeness* rests on SnapPy's standard (unverified) enumeration, not
+a formal interval-arithmetic proof — this should be weighed before
+calling it the frozen canonical dataset. Both the false presentation-
+transfer concern and the real verified-spectrum limitation are recorded
+here for whoever reviews this next, including another instance of
+Claude.

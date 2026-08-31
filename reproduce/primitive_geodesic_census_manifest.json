@@ -1,0 +1,42 @@
+{
+  "generated": "2026-08-31 13:22:08.773940",
+  "L_max": "6.00000000000000",
+  "precision_bits": "212",
+  "manifolds": {
+    "m006": {
+      "snappy_name": "m006",
+      "census_index": "43",
+      "volume": "2.02885309147492",
+      "presentation_generators": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "presentation_relators": [
+        "cbb",
+        "DCA",
+        "DDAbAc",
+        "BCaAbAAbBCaBCaAbAAbBCaBCa"
+      ],
+      "homology_map": "{'a': 1, 'b': 4, 'c': 2, 'd': 2} (mod 5) -- certified in torsion_homology_correction_certificate_4gen.sage"
+    },
+    "m003": {
+      "snappy_name": "m003",
+      "census_index": "1",
+      "volume": "0.981368828892232",
+      "presentation_generators": [
+        "a",
+        "b",
+        "c"
+      ],
+      "presentation_relators": [
+        "BCaC",
+        "AbCbA",
+        "CbaABCbABCbCbaABCb"
+      ],
+      "homology_map": "{'a': 1, 'b': 3, 'c': 4} (mod 5) -- certified in torsion_homology_correction_certificate_4gen.sage"
+    }
+  },
+  "sha256_of_full_table": "415e13615a36ea3151696e14b6e61bbc323cc4d4509e2ea4db2c8c99f65f6aca"
+}
