@@ -2148,3 +2148,60 @@ has not been built. **Do not record a specific quotient-group structure**
 label ("Aug 25 2026") is well behind this session's actual timeline —
 these results were produced roughly Aug 29–30, 2026, per the actual git
 commit history. Use the real dates.
+
+---
+
+## Two review items completed (Claude), 2026-08-31
+
+**(1) `STAGE3_T4_ADMISSION_AUDIT.md` / `STAGE3_REPRESENTATION_LIFT_AUDIT.md`
+— reviewed, re-run, holds up.** These reject a proposed flavor observable
+(a normalized higher Reidemeister torsion $\mathcal T_4(m006;\eta)$) as
+failing a pre-registered "Gate 2" (must carry information independent of
+the already-used Fricke character) — a **negative** result: the candidate
+is rejected before ever touching fit data. Re-ran
+`reproduce/stage3_reconstruct_representations.sage` fresh:
+`SAGE_EXIT=0`, output identical to the log on file. The script is genuinely
+self-verifying — every mathematical claim in the audit doc (the exact
+cubic trace field, character-surface containment, uniqueness of the
+character point via elimination of the false peripheral branch,
+irreducibility, exact matrix reconstruction satisfying the relator, and
+the central-twist trace computation) is backed by an `assert` on exact
+number-field arithmetic, not asserted in prose alone. The core logical
+argument (an irreducible $2$-generator $SL_2$ character determines the
+representation up to conjugacy $\Rightarrow$ Reidemeister torsion, being a
+conjugation-invariant function of the representation, is therefore already
+determined by that character $\Rightarrow$ no new information $\Rightarrow$
+Gate 2 fails) is standard and correctly applied. **No corrections needed.**
+Citations (Menal-Ferrer–Porti, Porti, Yamaguchi) were not independently
+checked for existence/content — only the self-contained exact computation
+was re-verified.
+
+**(2) L6a1's own arithmetic — real data found, one unconfirmed lead
+flagged.** Pulled directly from SnapPy (`reproduce/l6a1_invariants.sage`),
+independently, not from any external claim:
+- **Invariant trace field = trace field = $K=\mathbf Q(\sqrt{-7})$ exactly**
+  (defining polynomial $x^2-x+2$) — the *same* field as $m009$ throughout
+  this entire session, confirmed directly, not inferred.
+- Both cusps share shape $\approx1+\sqrt{-7}\,i$ (i.e. $\tau\sim\sqrt{-7}$ up
+  to the standard $\tau\mapsto\tau+1$ equivalence) — consistent with
+  $m009$'s own cusp field throughout.
+- Symmetry group $(\mathbf Z/2)^3$, order $8$ — worth noting given the
+  order-$8$ local normalizer structure found earlier this session, though
+  no connection between the two is established.
+- **A specific external claim could NOT be confirmed and should not be
+  repeated as fact**: a web search summary asserted "L6a1 is of arithmetic
+  type $\Gamma_{-7}(6)$" and linked it to a tetrahedral-manifold census
+  entry `otet04_00001`. Multiple direct fetches of the papers this seemed
+  to reference (Baker–Reid on arithmetic alternating links; Baker–Goerner–Reid
+  on principal congruence links; the tetrahedral-manifold census paper)
+  **found no such passage** — and the tetrahedral census's own manifolds are
+  stated to cover the discriminant $-3$ Bianchi orbifold specifically,
+  which is inconsistent with L6a1's confirmed discriminant $-7$ invariant
+  trace field. This looks like a search-summarizer conflation, not a real
+  citation — **do not treat "$\Gamma_{-7}(6)$" or "otet04" as established.**
+- **No published paper was found studying L6a1's specific quaternion order
+  or its relationship to $R$/$\Gamma_{009}$** — this session's own
+  construction (identifying $M^+\cong$ L6a1 as $\ker\varepsilon$'s cover)
+  appears to be new, not a rediscovery of documented work. The
+  $[N_K^+(R):\Gamma_{009}^+]=4$ result was not "readable from known L6a1
+  data" as originally hoped — it was computed from scratch this session.
