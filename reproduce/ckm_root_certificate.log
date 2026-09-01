@@ -23,20 +23,6 @@ imag part diameter: 5.469342069864132e-84
 STEP 4: isolate the unique root of qa consistent with this trace,
 via interval-Newton contraction (NOT algdep -- a rigorous method)
 ========================================================================
-qa has 10 numerical roots (high-precision, not yet certified):
-   -2.25126749789254406076707295109903921244877511876173489877733129122052929199943463669407512
-   -1.27657325943751238102955309776054253953198867426934357494976977807308545228430802095345442
-   -1.21180050273319791614549894347007673166949677440613246582001092006323602651776647052598220
-   -0.595133949089274252452587195214788064417627194991556963902649077733413537737435583242411939
-   -0.256039688559282198091300010946141426278013888626183813511686573088080362091989986714271635
-   0.507874975446894814970270805377814515155141221464561210892802756523192319305131573516786793
-   1.23260741551392238515272206985290453464405456069719283120904685663678369734801180688392044
-   1.37220006125687937803109422851568449242285199951024777875276780512312612721824274554891516
-   1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609028646 - 0.811420692354659156018561268252391117394345909041748675235987884355681626092734448572603268*I
-   1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609028646 + 0.811420692354659156018561268252391117394345909041748675235987884355681626092734448572603268*I
-
-nearest root to trace center: 1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609028646 + 0.811420692354659156018561268252391117394345909041748675235987884355681626092734448572603268*I  distance: 9.889016209773941e-17
-second-nearest root distance: 0.8114463975964089  (separation margin confirms roots are well-isolated at this scale)
 
 initial Newton box (trace interval, slightly widened):
   1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609? + 0.81142069235465915601856126825239111739434590904174867523598788435568162609273444857?*I
@@ -48,24 +34,36 @@ CERTIFIED: qa has a UNIQUE root strictly inside the initial box,
 and that root is enclosed by N(box) = 1.2390662227470571151659625473720922160619269346914749480534151109476212633797742860902865? + 0.8114206923546591560185612682523911173943459090417486752359878843556816260927344485726033?*I
 
 ========================================================================
-STEP 5: verify trace_interval is contained in the certified root box,
-and disjoint from all other roots
+STEP 5: disjointness from the other 9 roots -- by counting, not by
+individually certified enclosures (targeted fix, replacing the
+earlier ComplexField(300).roots()-based numerical distance check,
+which was never the proof-bearing step and used a non-certified
+method for a fact already implied rigorously by what STEP 4 proved)
 ========================================================================
 trace_interval was used (widened by 2^-280) to construct the Newton box
-directly, so trace_interval subset box by construction -- the substantive
-claim is that box (hence trace_interval) contains a UNIQUE root of qa,
-established by the Newton contraction above, not by this containment alone.
+directly, so trace_interval subset box by construction.
 
-distances from trace center to all OTHER 9 roots (all >> box radius):
-  -2.25126749789254406076707295109903921244877511876173489877733129122052929199943463669407512: distance 3.583410808352176
-  -1.27657325943751238102955309776054253953198867426934357494976977807308545228430802095345442: distance 2.643264183600868
-  -1.21180050273319791614549894347007673166949677440613246582001092006323602651776647052598220: distance 2.581695420851891
-  -0.595133949089274252452587195214788064417627194991556963902649077733413537737435583242411939: distance 2.0056654283169317
-  -0.256039688559282198091300010946141426278013888626183813511686573088080362091989986714271635: distance 1.7011011804135796
-  0.507874975446894814970270805377814515155141221464561210892802756523192319305131573516786793: distance 1.0922656179289365
-  1.23260741551392238515272206985290453464405456069719283120904685663678369734801180688392044: distance 0.8114463975964089
-  1.37220006125687937803109422851568449242285199951024777875276780512312612721824274554891516: distance 0.8222701252858904
-  1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609028646 - 0.811420692354659156018561268252391117394345909041748675235987884355681626092734448572603268*I: distance 1.6228413847093184
+The disjointness argument, made explicit:
+  (1) qa is irreducible over Q (verified, Step 2) and Q has
+      characteristic 0, so qa is automatically SEPARABLE: an
+      irreducible polynomial sharing a repeated root with itself
+      would share a nonzero common factor with its own derivative,
+      contradicting irreducibility (the derivative cannot vanish
+      identically in characteristic 0 for a nonconstant polynomial).
+      Hence qa, having degree 10, has EXACTLY 10 DISTINCT complex roots.
+  (2) STEP 4's interval-Newton contraction rigorously certifies
+      that EXACTLY ONE of those 10 roots lies in box.
+  (3) By (1) and (2), the remaining 9 roots -- wherever they are --
+      are, by elementary counting, NOT in box. This requires no
+      numerical information about their locations at all.
+
+qa.degree() == 10: True
+qa.is_squarefree() (exact, formal separability certificate): True
+
+UNIQUENESS CERTIFIED: exactly one qa root lies in the box containing
+the certified trace interval. Disjointness from the other 9 roots
+follows from uniqueness + separability + degree count, not from
+individual root enclosures.
 
 ========================================================================
 RESULT
@@ -73,8 +71,10 @@ RESULT
 PASS: tr(rho(a)) for M_CKM=m006(-5,2), computed via a CERTIFIED
 (interval-arithmetic, not algdep) holonomy representation, is proven
 via interval-Newton contraction to lie in a box containing EXACTLY
-ONE root of qa(x)=p(-x), well-separated (distance > 1e-3, vs. box
-radius ~2^-280) from all 9 other roots.
+ONE of qa(x)=p(-x)'s 10 distinct roots -- the other 9 are excluded
+from that box by an exact counting argument (irreducibility over a
+characteristic-0 field forces separability), not by numerical
+distance to non-certified approximations of them.
 
 This is a substantial rigor upgrade over algdep-based recognition:
 an explicit, arbitrarily-improvable numerical certificate with a
@@ -82,4 +82,4 @@ provable error bound, via interval Newton -- NOT yet a symbolic/exact
 algebraic proof that tr(rho(a)) is EXACTLY a root of qa (that would
 require an exact identity on the character variety, as in Q-001).
 
-sha256 of summary: 5acca2af407db5748e26935cee517382b4ad8da519c532d0111c7424f9455b03
+sha256 of summary: e0a8d6b6241012e58de3c689f42427a57e8a3b9a76ff11eecf253cb7cd1af625

@@ -8,7 +8,17 @@
 # explicit, arbitrarily-improvable numerical precision (here 300 bits),
 # that the true geometric trace tr(rho(a)) lies inside an interval that
 # provably contains EXACTLY ONE root of the claimed degree-10
-# polynomial qa, and that this is nowhere near any of qa's other roots.
+# polynomial qa. Disjointness from qa's other 9 roots is established by
+# an EXACT counting argument (irreducibility over a characteristic-0
+# field forces separability, so qa has exactly 10 distinct roots; the
+# interval-Newton contraction certifies exactly 1 is in the box; the
+# other 9 are therefore outside it, with no need to individually locate
+# them) -- NOT by numerical distance to non-certified approximations of
+# those other roots. (An earlier version of this script did use such a
+# distance check via ComplexField(300).roots(); removed as a targeted
+# fix, since it was never the proof-bearing step and introduced a
+# non-certified method for a fact the counting argument already gives
+# rigorously.)
 # This is a substantial upgrade over algdep-based recognition (which
 # carries no rigorous error bound at all) but it is still a NUMERICAL
 # certificate, not a symbolic/exact algebraic proof that tr(rho(a)) is
@@ -17,8 +27,8 @@
 # this distinction explicitly rather than blurring it.
 
 import snappy
-from sage.all import (PolynomialRing, QQ, ComplexIntervalField, ComplexField,
-                       RealIntervalField, Infinity)
+from sage.all import (PolynomialRing, QQ, ComplexIntervalField,
+                       RealIntervalField)
 import hashlib
 
 BITS_PREC = 300
@@ -63,36 +73,6 @@ print("=" * 72)
 print("STEP 4: isolate the unique root of qa consistent with this trace,")
 print("via interval-Newton contraction (NOT algdep -- a rigorous method)")
 print("=" * 72)
-
-CF = ComplexField(BITS_PREC)
-qa_numeric = qa.change_ring(CF)
-all_roots_numeric = qa_numeric.roots(multiplicities=False)
-print("qa has", len(all_roots_numeric), "numerical roots (high-precision, not yet certified):")
-for r in all_roots_numeric:
-    print("  ", r)
-
-# Find the numeric root nearest the certified trace interval's center.
-tc_re = (float(trace_interval.real().lower()) + float(trace_interval.real().upper())) / 2.0
-tc_im = (float(trace_interval.imag().lower()) + float(trace_interval.imag().upper())) / 2.0
-trace_center = CF(tc_re, tc_im)
-distances = [(abs(r - trace_center), r) for r in all_roots_numeric]
-distances.sort(key=lambda t: t[0])
-nearest_dist, nearest_root = distances[0]
-second_dist = distances[1][0]
-print()
-print("nearest root to trace center:", nearest_root, " distance:", float(nearest_dist))
-print("second-nearest root distance:", float(second_dist),
-      " (separation margin confirms roots are well-isolated at this scale)")
-assert nearest_dist < 1e-10, "trace does not appear to match any root of qa at high precision"
-# NOTE: Sage's generic ComplexField(300).roots() does not actually
-# converge to the full 300 bits requested for this degree-10 polynomial
-# (observed nearest-root distance ~1e-16, i.e. only double-precision
-# accuracy) -- this is a limitation of that convenience root-finder, not
-# of the certificate itself. This numeric root is only used to SEED the
-# interval-Newton contraction below, which is the actual rigorous step
-# and does not depend on the seed being more precise than "close enough
-# to converge" -- confirmed by the contraction succeeding regardless.
-assert second_dist > 1e-3, "roots of qa are not well-separated -- unexpected for an irreducible degree-10 field polynomial"
 
 CIF = ComplexIntervalField(BITS_PREC)
 qa_interval_poly = qa.change_ring(CIF)
@@ -144,28 +124,40 @@ print("and that root is enclosed by N(box) =", N_box)
 
 print()
 print("=" * 72)
-print("STEP 5: verify trace_interval is contained in the certified root box,")
-print("and disjoint from all other roots")
+print("STEP 5: disjointness from the other 9 roots -- by counting, not by")
+print("individually certified enclosures (targeted fix, replacing the")
+print("earlier ComplexField(300).roots()-based numerical distance check,")
+print("which was never the proof-bearing step and used a non-certified")
+print("method for a fact already implied rigorously by what STEP 4 proved)")
 print("=" * 72)
 # trace_interval was literally used to build 'box' (widened by an
-# infinitesimal margin), so containment is by construction; state this
-# plainly rather than treat it as an independent check.
+# infinitesimal margin), so containment is by construction.
 print("trace_interval was used (widened by 2^-%d) to construct the Newton box" % (BITS_PREC - 20))
-print("directly, so trace_interval subset box by construction -- the substantive")
-print("claim is that box (hence trace_interval) contains a UNIQUE root of qa,")
-print("established by the Newton contraction above, not by this containment alone.")
-
-disjoint_from_others = []
-for r in all_roots_numeric:
-    if r == nearest_root:
-        continue
-    d = abs(CF(r) - CF(trace_center))
-    disjoint_from_others.append((r, float(d)))
-    assert d > 1e-3, f"root {r} suspiciously close to the certified trace -- investigate"
+print("directly, so trace_interval subset box by construction.")
 print()
-print("distances from trace center to all OTHER 9 roots (all >> box radius):")
-for r, d in disjoint_from_others:
-    print(f"  {r}: distance {d}")
+print("The disjointness argument, made explicit:")
+print("  (1) qa is irreducible over Q (verified, Step 2) and Q has")
+print("      characteristic 0, so qa is automatically SEPARABLE: an")
+print("      irreducible polynomial sharing a repeated root with itself")
+print("      would share a nonzero common factor with its own derivative,")
+print("      contradicting irreducibility (the derivative cannot vanish")
+print("      identically in characteristic 0 for a nonconstant polynomial).")
+print("      Hence qa, having degree 10, has EXACTLY 10 DISTINCT complex roots.")
+print("  (2) STEP 4's interval-Newton contraction rigorously certifies")
+print("      that EXACTLY ONE of those 10 roots lies in box.")
+print("  (3) By (1) and (2), the remaining 9 roots -- wherever they are --")
+print("      are, by elementary counting, NOT in box. This requires no")
+print("      numerical information about their locations at all.")
+assert qa.degree() == 10
+assert qa.is_squarefree()  # formal certificate of separability, exact, not numerical
+print()
+print("qa.degree() == 10:", qa.degree() == 10)
+print("qa.is_squarefree() (exact, formal separability certificate):", qa.is_squarefree())
+print()
+print("UNIQUENESS CERTIFIED: exactly one qa root lies in the box containing")
+print("the certified trace interval. Disjointness from the other 9 roots")
+print("follows from uniqueness + separability + degree count, not from")
+print("individual root enclosures.")
 
 print()
 print("=" * 72)
@@ -174,8 +166,10 @@ print("=" * 72)
 print("PASS: tr(rho(a)) for M_CKM=m006(-5,2), computed via a CERTIFIED")
 print("(interval-arithmetic, not algdep) holonomy representation, is proven")
 print("via interval-Newton contraction to lie in a box containing EXACTLY")
-print("ONE root of qa(x)=p(-x), well-separated (distance > 1e-3, vs. box")
-print("radius ~2^-%d) from all 9 other roots." % (BITS_PREC - 20))
+print("ONE of qa(x)=p(-x)'s 10 distinct roots -- the other 9 are excluded")
+print("from that box by an exact counting argument (irreducibility over a")
+print("characteristic-0 field forces separability), not by numerical")
+print("distance to non-certified approximations of them.")
 print()
 print("This is a substantial rigor upgrade over algdep-based recognition:")
 print("an explicit, arbitrarily-improvable numerical certificate with a")
@@ -186,10 +180,10 @@ print("require an exact identity on the character variety, as in Q-001).")
 output_summary = {
     'trace_interval': str(trace_interval),
     'qa': str(qa),
-    'nearest_root': str(nearest_root),
     'N_box': str(N_box),
     'contracted': contracted,
-    'second_nearest_root_distance': float(second_dist),
+    'qa_degree': qa.degree(),
+    'qa_squarefree': bool(qa.is_squarefree()),
 }
 log_text = str(output_summary)
 h = hashlib.sha256(log_text.encode()).hexdigest()
