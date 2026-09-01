@@ -1,0 +1,288 @@
+{
+  "m006": [
+    {
+      "word": "aaBcbAc",
+      "homology_class": "0",
+      "primary_class_pm": [
+        "0"
+      ],
+      "length_lower": 0.37609666886003157,
+      "length_upper": 0.3760966688600316,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.3464100601715936,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "bc",
+      "homology_class": "1",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 0.490574696797381,
+      "length_upper": 0.4905746967973811,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.5560729779417444,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "abAbAcDCaB",
+      "homology_class": "2",
+      "primary_class_pm": [
+        "2",
+        "3"
+      ],
+      "length_lower": 0.9415956815195939,
+      "length_upper": 0.941595681519594,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 0.980400632404586,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "ac",
+      "homology_class": "3",
+      "primary_class_pm": [
+        "2",
+        "3"
+      ],
+      "length_lower": 0.9415956815195939,
+      "length_upper": 0.941595681519594,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 0.980400632404586,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "abcddCaBcD",
+      "homology_class": "1",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 1.4224296970153785,
+      "length_upper": 1.4224296970153787,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.2174442465447881,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "aBDDCBddC",
+      "homology_class": "4",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 1.4224296970153785,
+      "length_upper": 1.4224296970153787,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.2174442465447881,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "aBaBacddCdC",
+      "homology_class": "4",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 1.729003432986102,
+      "length_upper": 1.7290034329861022,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 0.5867832490261538,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "abdCaBaBacdC",
+      "homology_class": "2",
+      "primary_class_pm": [
+        "2",
+        "3"
+      ],
+      "length_lower": 1.7717157040956681,
+      "length_upper": 1.7717157040956684,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.5273917820204717,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "cDD",
+      "homology_class": "3",
+      "primary_class_pm": [
+        "2",
+        "3"
+      ],
+      "length_lower": 1.7717157040956681,
+      "length_upper": 1.7717157040956684,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.5273917820204717,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    }
+  ],
+  "m003": [
+    {
+      "word": "bCC",
+      "homology_class": "0",
+      "primary_class_pm": [
+        "0"
+      ],
+      "length_lower": 0.5780824355318555,
+      "length_upper": 0.5780824355318556,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.0662153180770892,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "abCAcBCAbC",
+      "homology_class": "4",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 0.7215683663144467,
+      "length_upper": 0.7215683663144468,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 0.575606494937769,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "a",
+      "homology_class": "1",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 0.8894429972125507,
+      "length_upper": 0.8894429972125508,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.4709295235113689,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "abAcAcBCAbC",
+      "homology_class": "1",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 0.8894429972125507,
+      "length_upper": 0.8894429972125508,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.4709295235113689,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "acBacBCaCC",
+      "homology_class": "3",
+      "primary_class_pm": [
+        "2",
+        "3"
+      ],
+      "length_lower": 0.9983251885367371,
+      "length_upper": 0.9983251885367372,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.4605088928926562,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "acBacBCBC",
+      "homology_class": "3",
+      "primary_class_pm": [
+        "2",
+        "3"
+      ],
+      "length_lower": 0.9983251885367371,
+      "length_upper": 0.9983251885367372,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.4605088928926562,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "aaBAcBacbC",
+      "homology_class": "3",
+      "primary_class_pm": [
+        "2",
+        "3"
+      ],
+      "length_lower": 1.0403151250687663,
+      "length_upper": 1.0403151250687666,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 0.49118594514060343,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "abAcbAbCCAbCAbCC",
+      "homology_class": "1",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 1.7938008425243406,
+      "length_upper": 1.7938008425243408,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 0.7784355241113046,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "aBaccBacBacbCaBC",
+      "homology_class": "4",
+      "primary_class_pm": [
+        "1",
+        "4"
+      ],
+      "length_lower": 1.7938008425243406,
+      "length_upper": 1.7938008425243408,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 0.7784355241113046,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    },
+    {
+      "word": "abCAccBacBacAbCC",
+      "homology_class": "0",
+      "primary_class_pm": [
+        "0"
+      ],
+      "length_lower": 1.8222796995026174,
+      "length_upper": 1.8222796995026176,
+      "boundary_status": "CERTAIN_BELOW",
+      "psi": 1.2067695128441676,
+      "multiplicity": 1,
+      "topology": "circle",
+      "parity": "orientation-preserving"
+    }
+  ]
+}

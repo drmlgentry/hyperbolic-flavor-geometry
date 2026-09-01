@@ -1,0 +1,57 @@
+{
+  "generated": "2026-08-31 21:00:20.136489",
+  "L_star": "2.00000000000000",
+  "bits_prec": "300",
+  "method": "length_spectrum_alt(verified=True)",
+  "frozen_diagnostic_script_sha256": "c830b75602dc040cbe91d34efc45ced43b34c24117c592505a3865608d5007bc",
+  "manifolds": {
+    "m006": {
+      "snappy_name": "m006",
+      "census_index": "43",
+      "volume": "2.02885309147492",
+      "presentation_generators": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "presentation_relators": [
+        "cbb",
+        "DCA",
+        "DDAbAc",
+        "BCaAbAAbBCaBCaAbAAbBCaBCa"
+      ],
+      "native_classifier": {
+        "a": "1",
+        "b": "4",
+        "c": "2",
+        "d": "2"
+      },
+      "order": "5",
+      "transfer_unit_u": "4"
+    },
+    "m003": {
+      "snappy_name": "m003",
+      "census_index": "1",
+      "volume": "0.981368828892232",
+      "presentation_generators": [
+        "a",
+        "b",
+        "c"
+      ],
+      "presentation_relators": [
+        "BCaC",
+        "AbCbA",
+        "CbaABCbABCbCbaABCb"
+      ],
+      "native_classifier": {
+        "a": "1",
+        "b": "3",
+        "c": "4"
+      },
+      "order": "5",
+      "transfer_unit_u": "2"
+    }
+  },
+  "sha256_of_full_table": "5ff3a5107b3b3dcd309fce1eaf7788cdbc13fef7c53bc5282bd5816d15170b74"
+}

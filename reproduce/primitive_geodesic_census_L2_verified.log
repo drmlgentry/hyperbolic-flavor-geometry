@@ -1,0 +1,55 @@
+========================================================================
+STEP 3: inverse-orbit fix/swap check for each manifold's unit u
+========================================================================
+m006: u=4, orbits=[(1, 4), (2, 3)]
+    orbit [1, 4] -> FIXED (maps to itself)
+    orbit [2, 3] -> FIXED (maps to itself)
+m003: u=2, orbits=[(1, 4), (2, 3)]
+    orbit [1, 4] -> MAPPED to [2, 3]
+    orbit [2, 3] -> MAPPED to [1, 4]
+
+========================================================================
+m006 (m006), vol=2.02885309147492, L*=2.00000000000000, bits_prec=300
+========================================================================
+length_spectrum_alt(max_len=2.00000000000000, verified=True) entries: 9
+sanity check 1 (rotation invariance) failures: 0 / 9
+sanity check 2 (inversion -> -class) failures: 0 / 9
+entries whose length interval STRADDLES the cutoff (flagged, not silently included/excluded): 0
+BOTH REQUIRED SANITY CHECKS PASS.
+
+Complete verified table (no minima, no epsilon, no ranking -- full listing):
+  word=aaBcbAc              class=0 pm_class=[0] length=[0.376097,0.376097] psi=1.346410 status=CERTAIN_BELOW mult=1
+  word=bc                   class=1 pm_class=[1, 4] length=[0.490575,0.490575] psi=1.556073 status=CERTAIN_BELOW mult=1
+  word=abAbAcDCaB           class=2 pm_class=[2, 3] length=[0.941596,0.941596] psi=0.980401 status=CERTAIN_BELOW mult=1
+  word=ac                   class=3 pm_class=[2, 3] length=[0.941596,0.941596] psi=0.980401 status=CERTAIN_BELOW mult=1
+  word=abcddCaBcD           class=1 pm_class=[1, 4] length=[1.422430,1.422430] psi=1.217444 status=CERTAIN_BELOW mult=1
+  word=aBDDCBddC            class=4 pm_class=[1, 4] length=[1.422430,1.422430] psi=1.217444 status=CERTAIN_BELOW mult=1
+  word=aBaBacddCdC          class=4 pm_class=[1, 4] length=[1.729003,1.729003] psi=0.586783 status=CERTAIN_BELOW mult=1
+  word=abdCaBaBacdC         class=2 pm_class=[2, 3] length=[1.771716,1.771716] psi=1.527392 status=CERTAIN_BELOW mult=1
+  word=cDD                  class=3 pm_class=[2, 3] length=[1.771716,1.771716] psi=1.527392 status=CERTAIN_BELOW mult=1
+
+========================================================================
+m003 (m003), vol=0.981368828892232, L*=2.00000000000000, bits_prec=300
+========================================================================
+length_spectrum_alt(max_len=2.00000000000000, verified=True) entries: 10
+sanity check 1 (rotation invariance) failures: 0 / 10
+sanity check 2 (inversion -> -class) failures: 0 / 10
+entries whose length interval STRADDLES the cutoff (flagged, not silently included/excluded): 0
+BOTH REQUIRED SANITY CHECKS PASS.
+
+Complete verified table (no minima, no epsilon, no ranking -- full listing):
+  word=bCC                  class=0 pm_class=[0] length=[0.578082,0.578082] psi=1.066215 status=CERTAIN_BELOW mult=1
+  word=abCAcBCAbC           class=4 pm_class=[1, 4] length=[0.721568,0.721568] psi=0.575606 status=CERTAIN_BELOW mult=1
+  word=a                    class=1 pm_class=[1, 4] length=[0.889443,0.889443] psi=1.470930 status=CERTAIN_BELOW mult=1
+  word=abAcAcBCAbC          class=1 pm_class=[1, 4] length=[0.889443,0.889443] psi=1.470930 status=CERTAIN_BELOW mult=1
+  word=acBacBCaCC           class=3 pm_class=[2, 3] length=[0.998325,0.998325] psi=1.460509 status=CERTAIN_BELOW mult=1
+  word=acBacBCBC            class=3 pm_class=[2, 3] length=[0.998325,0.998325] psi=1.460509 status=CERTAIN_BELOW mult=1
+  word=aaBAcBacbC           class=3 pm_class=[2, 3] length=[1.040315,1.040315] psi=0.491186 status=CERTAIN_BELOW mult=1
+  word=abAcbAbCCAbCAbCC     class=1 pm_class=[1, 4] length=[1.793801,1.793801] psi=0.778436 status=CERTAIN_BELOW mult=1
+  word=aBaccBacBacbCaBC     class=4 pm_class=[1, 4] length=[1.793801,1.793801] psi=0.778436 status=CERTAIN_BELOW mult=1
+  word=abCAccBacBacAbCC     class=0 pm_class=[0] length=[1.822280,1.822280] psi=1.206770 status=CERTAIN_BELOW mult=1
+
+========================================================================
+Manifest and full VERIFIED L*=2.0 table written.
+sha256 of table: 5ff3a5107b3b3dcd309fce1eaf7788cdbc13fef7c53bc5282bd5816d15170b74
+========================================================================

@@ -2442,3 +2442,87 @@ $L_{\max}=6$ census with its completeness caveat disclosed, or accept a
 formally-verified but much smaller $L_*=2.0$ dataset (18 total primitive
 geodesics across both manifolds) that may be too sparse to see any
 class-resolved structure at all.
+
+**User decision (options put explicitly, both stated): go with the
+verified $L_*=2.0$ census as canonical.** (The alternative — push
+$L_{\max}=6$ with the caveat disclosed — was the other option on the
+table; recorded here so the choice and its reasoning aren't lost, not as
+a live option.)
+
+---
+
+## FINAL TORSION TASK — verified $L_*=2.0$ census, stop rule applied,
+## torsion search CLOSED
+
+**Step 1 — script frozen.** The $L_{\max}=6$ diagnostic script copied
+verbatim to `primitive_geodesic_census_FROZEN_aug31_2026.sage`
+(sha256 `c830b75602dc040cbe91d34efc45ced43b34c24117c592505a3865608d5007bc`,
+recorded *before* the canonical run, per instruction) — preserved as
+provenance, not used for any claim.
+
+**Step 3 — inverse-orbit fix/swap, verified computationally (not
+asserted) from the certified units** ($u{=}4$ for $m006$, $u{=}2$ for
+$m003$, from the transfer certificate above): for each manifold, computed
+$u\cdot\{c,-c\}$ for both nontrivial $\mathbf Z/5$ orbits directly.
+$$m006\ (u{=}4\equiv-1):\ \{1,4\}\to\{1,4\},\ \{2,3\}\to\{2,3\}\quad
+\text{(both FIXED)}$$
+$$m003\ (u{=}2):\ \{1,4\}\to\{2,3\},\ \{2,3\}\to\{1,4\}\quad
+\text{(SWAPPED)}$$
+confirming exactly the relayed claim: for $m003$ specifically, a class
+label computed in one coordinate system is *not* automatically the same
+labeled coordinate in the other — real, and now verified, not assumed.
+
+**Step 2 — the verified census** (`primitive_geodesic_census_L2_verified.sage`,
+`length_spectrum_alt(verified=True, bits_prec=300, max_len=2.0)`, native
+unsimplified classifiers, primary class recorded as $\bar c=\{\pm c\}$,
+every interval explicitly classified — **zero** entries straddled the
+cutoff for either manifold, so no silent boundary judgment call was
+needed):
+$$m006:\ 9\text{ geodesics},\qquad m003:\ 10\text{ geodesics}\qquad
+(19\text{ total})$$
+Both required sanity checks (rotation-invariance, inversion$\to-$class):
+**0 failures** across all 19. Full table, manifest, sha256
+(`5ff3a5107b3b3dcd309fce1eaf7788cdbc13fef7c53bc5282bd5816d15170b74`) written.
+
+Class-resolved counts (structural, not a claim): $m006$:
+$\{0\}{:}1,\{1,4\}{:}4,\{2,3\}{:}4$; $m003$: $\{0\}{:}2,\{1,4\}{:}5,\{2,3\}{:}3$.
+
+**Step 4 — stop rule applied.** Looked for an *exact* algebraic/geometric
+coincidence stateable without picking a threshold after seeing the data —
+the only kind of pattern the rule permits promoting. Found none: the one
+notable structural fact (two $m006$ geodesics — `abAbAcDCaB`, `ac` — share
+an exactly-identical length interval and $\psi$, both in class-pair
+$\{2,3\}$) is an isospectral coincidence between two *specific* geodesics,
+not a class-level statement, and with only $9$–$10$ points per manifold
+there is no honest way to assert a class-resolved pattern that wasn't
+selected by inspection. **Per the rule: this counts as "only suggestive
+numerical patterns," not an exact pre-specified coincidence.**
+$$\boxed{\text{TORSION SEARCH CLOSED — no conjecture promoted}}$$
+
+### TORSION INVESTIGATION STATUS — final
+
+**CORE FINDING [Proved]**: the published $4{:}2{:}1$ hierarchy in
+`gentry-torsion-plb.tex` is unsupported — the classifier used to produce
+it did not descend to $H_1$ (fails to send the manifold's own relator to
+$0$, for both $m006$ and $m003$; a well-defined-homomorphism failure, not
+a normalization issue). A generator-dependent word-length truncation
+(rather than genuine geodesic length) was a second, independent
+methodological defect.
+
+**CANONICAL REPLACEMENT ATTEMPTED**: a formally-verified primitive-geodesic
+census at the largest jointly-feasible cutoff, $L_*=2.0$ — $19$ geodesics
+total, internally self-consistent (both sanity checks, $0$ failures), but
+too sparse to responsibly support any class-resolved claim.
+
+**STOP RULE APPLIED**: no exact, threshold-free algebraic/geometric
+coincidence was found in the verified $L_*=2.0$ table. Per the pre-agreed
+rule, **the torsion search is closed** — not paused, not "needs more data
+before deciding," closed. The manuscript is not edited as part of this
+closure (per standing instruction); whether/how to write this up (a
+correction, a negative-result note, or retirement of the paper) is a
+separate, not-yet-made decision.
+
+**NEXT**: CKM paper rebuild, following theorem → exact certificate →
+finite computation → statistical observation → physical conjecture, with
+no migration upward between those categories without proof — the same
+discipline this torsion investigation was run under.
