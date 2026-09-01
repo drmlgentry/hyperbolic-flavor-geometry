@@ -2390,3 +2390,55 @@ calling it the frozen canonical dataset. Both the false presentation-
 transfer concern and the real verified-spectrum limitation are recorded
 here for whoever reviews this next, including another instance of
 Claude.
+
+---
+
+## Simplified↔unsimplified transfer certificate — clean pass
+
+Bounded follow-up task: does the natively-derived unsimplified classifier
+(above) agree with the classifier obtained by *transferring* the
+already-certified simplified $\{a,b\}$ classifier through SnapPy's own
+tracked correspondence (`G.original_generators()`, unsimplified
+generators expressed as words in the simplified ones)? Built
+(`torsion_homology_transfer_certificate.sage`) rather than hand-checked:
+$$m006:\ \text{transferred}=4\times\text{native}\pmod5,\qquad
+m003:\ \text{transferred}=2\times\text{native}\pmod5$$
+— a single global unit $u\in(\mathbf Z/5)^\times$ relates the two maps
+**exactly, for every generator simultaneously**, for both manifolds. This
+is a genuine cross-validation: the native classifier came from the
+unsimplified presentation's own relators (Smith normal form), the
+transferred one came via a completely different route (simplified
+relators + SnapPy's generator correspondence) — their agreeing up to a
+scalar (the expected residual freedom from $\mathrm{Aut}(\mathbf Z/5)$
+not being pinned down identically by two independent Smith-normal-form
+computations) is strong evidence both are correct, not an assumption.
+
+---
+
+## `length_spectrum_alt(verified=True)` feasibility probe — result:
+## $L_*=2.0$, limited by m006
+
+Bounded, feasibility-only (`length_spectrum_alt_feasibility_probe.sage`)
+— no geodesic/class data extracted or inspected, only success/failure and
+timing, at `bits_prec` $\in\{212,300\}$, escalating cutoff until both
+precisions fail for a manifold:
+
+| Manifold | Largest working cutoff | Notes |
+|---|---|---|
+| $m006$ | $2.0$ | fails at $2.5$ (both precisions: `ValueError` at 212, `InsufficientPrecisionError` at 300) |
+| $m003$ | $3.5$ (at `bits_prec=300` only) | $212$ fails from cutoff $2.0$ on; $300$ itself fails at $4.0$ after **4797s ($\approx80$min)** |
+
+$$\boxed{L_*=2.0}\quad\text{(conservative common cutoff — limited by }m006\text{)}$$
+
+This is **far short of the $L_{\max}=6$** used in the (diagnostic,
+unverified) census recorded above ($2128+638$ geodesics there vs. $9+9$
+at $L_*=2.0$ here). Also notable: $m003$'s cost exploded nonlinearly with
+cutoff ($16.8\text{s}\to52.3\text{s}\to148.8\text{s}\to451.5\text{s}$ for
+$2.0\to2.5\to3.0\to3.5$ at 300 bits) — a verified run at $L_{\max}=6$
+looks impractical at these precisions even where it doesn't outright
+fail. **Stopping here per instruction — no replacement census
+generated.** The real choice this poses: accept the unverified
+$L_{\max}=6$ census with its completeness caveat disclosed, or accept a
+formally-verified but much smaller $L_*=2.0$ dataset (18 total primitive
+geodesics across both manifolds) that may be too sparse to see any
+class-resolved structure at all.
