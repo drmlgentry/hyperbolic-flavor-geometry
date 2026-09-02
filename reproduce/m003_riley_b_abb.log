@@ -1,0 +1,57 @@
+
+==============================================================================
+STEP 1: exact tr(B), tr(Abb) as polynomials in x,y,z
+==============================================================================
+tr(B) raw = y  (matches y trivially: True )
+tr(Abb) reduced (pure x,y,z) = x*y^2 - y*z - x
+
+==============================================================================
+STEP 2: exact m003 relator (from SnapPy, not assumed) -- the
+==============================================================================
+presentation-only Riley variety, no filling imposed
+Riley variety (presentation only) generators, pure x,y,z:
+  x^2 + y - 1
+  2*y^2*z + x*z^2 - 2*x*y - 2*x - z
+  2*x*y*z + y*z^2 - x*z - z^2 + 2*y
+  y*z^3 - x*z^2 - z^3 - 4*y*z + 4*x + 4*z
+  x*z^3 - 4*x*z + z^2 - 4
+
+y^2 - tr(Abb)^2 = (-1) * (-x*y^2 + y*z + x - y) * (-x*y^2 + y*z + x + y)
+reduces to 0 on the general Riley variety (i.e. an identity for
+EVERY representation of m003, not filling-specific)? False
+
+==============================================================================
+STEP 3: exact locus -- impose the (-2,3) filling and test both signs
+==============================================================================
+m003(-2,3) filled character variety, generators (pure x,y,z):
+  z^2 + x + y - 1
+  y*z - x - z
+  x*z + 1
+  y^2 - y + z - 1
+  x*y - x - y - z + 1
+  x^2 + y - 1
+
+condition: y - tr(Abb) = 0
+  forces the UNIT ideal (no solution at all)? False
+  leaves the filled variety UNCHANGED (exact consequence of relator+filling alone, holds at every point)? True
+
+condition: y + tr(Abb) = 0
+  forces the UNIT ideal (no solution at all)? True
+  leaves the filled variety UNCHANGED (exact consequence of relator+filling alone, holds at every point)? False
+
+==============================================================================
+CONCLUSION
+==============================================================================
+tr^2(B) = tr^2(Abb) is NOT an identity on the general m003 Riley
+variety -- it is FILLING-SPECIFIC to (-2,3), confirmed exactly.
+
+Stronger than the atlas's numeric finding: the UNSQUARED identity
+tr(B) = tr(Abb) (not just tr^2) is an EXACT ALGEBRAIC CONSEQUENCE
+of the presentation relator + the (-2,3) filling relation alone --
+it holds at EVERY point of the filled character variety (all
+Galois conjugates, not just the discrete-faithful geometric point),
+proved by exact ideal containment, no floating point anywhere in
+this step. The opposite sign tr(B)=-tr(Abb) is exactly impossible
+(forces the unit ideal).
+
+RILEY IDENTITY INVESTIGATION: COMPLETE
