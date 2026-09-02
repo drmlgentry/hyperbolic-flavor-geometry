@@ -2633,3 +2633,83 @@ error was found anywhere checked. A separate manuscript draft,
 `gentry-ckm-v4.2-theorem-centered-figures.tex/.pdf`, exists in the
 author's Downloads folder built on this result; it is not yet tracked in
 either repository.
+
+**Update (Sep 2 2026):** the v4.2 manuscript above is now committed to
+the main repo, `papers/04_new_needs_journal/gentry-ckm-v4.2-theorem-
+centered-figures.tex` plus its two figures, commit `cef7720`. Verified
+before committing: compiles clean with pdflatex (2 passes, 0 warnings,
+10 pages); every invariant it states was independently cross-checked
+against this session's own from-scratch computation, not just against
+the manuscript's own claims. `gentry-ckm-v3.tex` untouched.
+
+---
+
+## PMNS invariant trace field — Gates F1/F2 CLOSED (Sep 2 2026)
+
+**[PROVED]** $k_{\rm inv}(m003(-2,3))\cong K_{283}$, the quartic field
+of discriminant $-283$, signature $(2,1)$ — via the CKM-style
+presentation-elimination pattern (not algdep), for the first two of the
+four gates a full CKM-style closure would need (presentation elimination
++ certified geometric root; the reduced-algebra upper/lower inclusion
+gates, analogous to CKM's Q-001 step, were not attempted here).
+
+Certificate: `reproduce/pmns_itf_certificate.sage` (log:
+`pmns_itf_certificate.log`, sha256
+`519B36B5D3FDF41565D42E0CD411FB0C158008664FB336B229461A35635691DA`),
+`EXIT=0`.
+
+**Presentation pulled directly from SnapPy, not assumed**: relator
+$r=\mathtt{abAAbabbb}$, $\mu=\mathtt{ABABB}$, $\lambda=\mathtt{ABAbab}$
+— genuinely different from the relayed task text's guessed
+`aabAbAB` (offered there only as a hedge). $H_1(m003(-2,3))\cong\Z/5$
+confirmed directly.
+
+**A genuine discrepancy surfaced and resolved, not glossed over.** The
+presentation-only elimination (same technique as `ckm_presentation_
+elimination.sage`: relator + filling equations into an ideal, lex
+Groebner eliminate to $\Q[T]$, $T=\operatorname{tr}\rho(\mu)$, the
+historical candidate never inserted) gave
+
+$$E(T)=T^4+3T^3-5T^2-11T+13,$$
+
+which does **not** divide, nor equal up to sign flip, the historically
+claimed $x^4+x^3-1$ — a real mismatch, not a rounding artifact
+(`candidate divides E(T) = False` in both sign conventions). Checked
+directly rather than assumed wrong or right: `NumberField(E)` and
+`NumberField(x^4+x^3-1)` have the **same** discriminant ($-283$) and
+signature $(2,1)$, and Sage's `is_isomorphic` confirms they are the same
+field. Conclusion: $E(T)$ is the exact minimal polynomial of
+$\operatorname{tr}\rho(\mu)$ (the actual meridian word); the historical
+$x^4+x^3-1$ is almost certainly $\operatorname{tr}\rho(a)$'s minimal
+polynomial instead (a quick `algdep` sanity check on $\operatorname{tr}(a)$
+found $x^4-x^3-1$, the sign-flip convention of the candidate) — same
+field, different generator, exactly the kind of sign/generator
+convention difference CKM's own manuscript flags in its own Remark 3.4.
+**The claimed field is correct; the specific polynomial attached to it
+in circulating summaries was for the wrong trace.**
+
+**A second, separate bug found and fixed**: the first certified-root
+attempt failed outright — `verify_hyperbolicity`'s default holonomy
+used a *different* internal filled-group presentation (different
+relators, `('ababAbbAb','abAbaabAbaBAB')`) than the cusped relator the
+ideal was built from, despite both nominally using generator letters
+`a,b`. `E(T_\mu)$ evaluated to $\approx 88$, nowhere near zero — a real,
+diagnosed discrepancy, not a numerical tolerance issue. Fix: pass
+`fundamental_group_args=(True,False,True,False)` to force the filled
+group to actually use the cusped presentation (the identical fix
+already used, and already commented on, in `m009_full_normalizer_
+closure.sage`'s bridge logic) — confirmed directly by asserting the
+exact cusped relator is visibly present in `rho`'s own relator list
+after the fix. Interval-Newton then contracted cleanly (matches to
+$\sim\!10^{-85}$).
+
+**Not yet done**: the reduced character-algebra upper/lower inclusion
+(CKM's Q-001-style gates F3/F4) that would make this a *complete*
+four-gate closure rather than exact-elimination-plus-geometric-root; the
+Borel/phenomenology redesign proposed alongside this (target-free
+structure atlas, matched-manifold null controls, stability scoring) —
+methodologically reasonable but not started, and should not proceed
+until the flagged fitness discrepancy (0.005087 vs. 0.019 in circulating
+summaries, different Haar-mean values) is itself traced to a specific
+canonical script and raw output, not assumed resolved by this ITF
+result.

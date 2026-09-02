@@ -1,0 +1,98 @@
+
+==============================================================================
+PMNS PRESENTATION-ONLY ELIMINATION CERTIFICATE (m003(-2,3))
+==============================================================================
+/tmp/sage_6qyagyx4/pmns_itf_certificate7pzgiu4j.sage.py:47: DeprecationWarning: Use sage.version.version instead.
+See https://github.com/sagemath/sage/issues/39015 for details.
+  print("Sage version =", version())
+Sage version = SageMath version 10.9, Release Date: 2026-05-04
+Python = 3.13.14
+generators from SnapPy: ('a', 'b')
+relators from SnapPy: ('abAAbabbb',)
+peripheral curves from SnapPy: (('ABABB', 'ABAbab'),)
+PROVENANCE RULE: candidate quartic is not used in the presentation ideal.
+relator = abAAbabbb
+mu = ABABB
+longitude = ABAbab
+filling word mu^(-2)*longitude^3 = bbababbabaABAbabABAbabABAbab
+
+==============================================================================
+PRESENTATION-ONLY IDEAL GENERATORS
+==============================================================================
+Number of generators: 10
+GENERATOR 0 total degree = 2  SHA256 = 3B3ACF917C0239F64F45327D0581B30B0E54FDF6BD8656590ABAAC4092555225
+GENERATOR 1 total degree = 9  SHA256 = 5B1274320F98EB5C75279A94E1A203059B69829F683B865ED3DA8CD8F1FF70F3
+GENERATOR 2 total degree = 9  SHA256 = 6D1B676DB477570EB6B2AEAB8CE3C5168A26933B9FCD3A9B187E24694D0F4173
+GENERATOR 3 total degree = 8  SHA256 = 8060A5B91D380C06C90A4FA4F2A875F0390770137A0375862FFBC4E3D7F0A726
+GENERATOR 4 total degree = 8  SHA256 = F590361923958963C95587D65C168A25DDAC8AC4764251338F57379547A55436
+GENERATOR 5 total degree = 20  SHA256 = 5AB5D7C975F0A4A9281880639E1DBE5B8D4E42FFC802D3EEBD083169EB70C1FA
+GENERATOR 6 total degree = 21  SHA256 = F4AAB883A1679CBBB66FF92BF617CF76174A574F5E89621D1621E3599183298E
+GENERATOR 7 total degree = 20  SHA256 = C82D4AE63C2182F7330FC6935FC9444E2138ED30D75C0798B94B7863629B9164
+GENERATOR 8 total degree = 21  SHA256 = 54182AB8076A61D4CC3F4AC242643CB888C9162142D3268F9206522913E5DCB4
+GENERATOR 9 total degree = 4  SHA256 = ACA682B0FFDA509B564D1D3CCC164160501AEC7AB0C44BC4561622B8D7490DF5
+all-generators coefficient-text SHA256 = 29AFAD846EF92AF79B2D2E2E4881AA042567BCC639D150B0EA62A91F280E5DDD
+candidate quartic inserted into presentation ideal = False
+
+==============================================================================
+LEXICOGRAPHIC GROEBNER ELIMINATION
+==============================================================================
+Starting exact lex Groebner basis at Wed Sep  2 16:21:40 2026
+Groebner basis completed at Wed Sep  2 16:21:40 2026
+Groebner wall seconds = 0.08950066566467285
+Groebner basis length = 5
+Univariate T-polynomials found: 1
+UNIVARIATE_S 0 degree = 4  = T^4 + 3*T^3 - 5*T^2 - 11*T + 13
+
+==============================================================================
+PRESENTATION-DERIVED ELIMINANT
+==============================================================================
+E(T) degree = 4
+E(T) = T^4 + 3*T^3 - 5*T^2 - 11*T + 13
+E(T) coefficient-text SHA256 = 2780DF63163089B8F4E8B140EDE31501008702AA77DFAE095A66887A412F0703
+E(T) factorization = T^4 + 3*T^3 - 5*T^2 - 11*T + 13
+E(T) is irreducible: the presentation determines a SINGLE degree-4 field.
+historical candidate(T) = T^4 + T^3 - 1
+candidate irreducible over Q = True
+candidate divides E(T) exactly (same polynomial) = False
+disc(K_E from presentation) = -283
+disc(K_candidate) = -283
+K_E isomorphic to K_candidate (same field, different generator) = True
+
+CONCLUSION OF STEP 4: E(T) (exact, presentation-derived, degree 4)
+generates a field isomorphic to the historical candidate's field,
+but is NOT the same polynomial -- E(T) is tr(mu)'s exact minimal
+polynomial; the historical x^4+x^3-1 is a different generator's
+(almost certainly tr(a)'s) minimal polynomial of the SAME field.
+
+==============================================================================
+CERTIFIED GEOMETRIC mu-TRACE AND FACTOR SELECTION
+==============================================================================
+rho's own relators (should include the exact cusped relator): ('abAAbabbb', 'abABAbabbbbabbbb')
+verify_hyperbolicity(holonomy=True, bits_prec=300) = True
+certified T_mu = tr(rho('ABABB')) = -2.795657246607083280002738232660063077325649689566758213936037340389884052568738278308? - 0.111757928226303285780612756790021061568909055028565837110171455233713538403261753517?*I
+T_mu real diameter = 1.42159912215959266593356065190299239399776570165165389109593654925622795784400739237824369e-85
+T_mu imag diameter = 3.55285204662090172751406461103916118016458979089791817304760831530611311769409441169407604e-84
+irreducibility discriminant interval = -0.9713214093466532301264782147989499069429382630481628716190312486719609665823814308981? - 1.9484557239436942126554793756615634799481613267339355535939684243882587176194029409452?*I
+irreducibility discriminant excludes 0 = True
+widened certified T_mu box = -2.79565724660708328000273823266006307732564968956675821393603734038988405256873827831? - 0.11175792822630328578061275679002106156890905502856583711017145523371353840326175352?*I
+candidate interval-Newton N(box) = -2.79565724660708328000273823266006307732564968956675821393603734038988405256873827830748373? - 0.1117579282263032857806127567900210615689090550285658371101714552337135384032617535164876?*I
+N(box) strictly contained in box = True
+C(T_mu box) = 1
+C(T_mu box) excludes 0 = True
+
+==============================================================================
+CERTIFICATE SUMMARY
+==============================================================================
+E(T) derived from presentation only: YES
+candidate divides E(T): True
+v_candidate(E): 1
+T_mu box contains exactly one candidate root: YES
+T_mu box contains no root of E/candidate^v: YES
+candidate NEVER inserted into presentation ideal: YES
+geometric character irreducible / chart applicable: YES
+CONCLUSION: candidate(tr rho_geom(mu)) = 0
+PROVENANCE: exact presentation elimination + verified interval arithmetic;
+            no algdep, PSLQ, or numerical polynomial recognition used
+INDEPENDENT DERIVATION CERTIFICATE: PASS
+
+sha256 of summary: 3095ec83dfb55147f7b5c0513c1d2290ccf42b431d117d196529fbae031d3ee8
