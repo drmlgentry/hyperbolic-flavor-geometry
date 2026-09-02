@@ -2526,3 +2526,53 @@ separate, not-yet-made decision.
 finite computation → statistical observation → physical conjecture, with
 no migration upward between those categories without proof — the same
 discipline this torsion investigation was run under.
+
+## CKM INVARIANT TRACE FIELD THEOREM — CLOSED (Sep 1 2026)
+
+[PROVED] k_inv(m006(-5,2)) ≅ K10 = Q[X]/(q10(X))
+q10(X) = X^10 - 7X^8 + 4X^7 + 17X^6 - 14X^5 - 18X^4
+          + 14X^3 + 8X^2 - 3X - 1
+
+Certificate chain (no algdep anywhere):
+1. Presentation elimination: E(T) = m_mu(T) — PASS, SAGE_EXIT=0
+2. Dehn relator equivalence: q*s=1, s*q=1 — PASS, SAGE_EXIT=0
+   Transcript SHA256 (q*s): 715F128179F81C1F3A1E4682D39353734C11E71D...
+   Transcript SHA256 (s*q): 9DA2A0736338968B7F76023E80BBB2286D446CDA...
+3. Geometry bridge: chi_geom in Spec A0(C) — PASS, SAGE_EXIT=0
+   Bridge log SHA256: C1CB8DDB20D183A365F535ACF80C2B913CD2FE88...
+4. Factor selection: q10(x_geom) = 0 — PASS, SAGE_EXIT=0
+5. Q-001: B_red ≅ K10 (exact rational LA) — PROVED
+6. Squared-trace reverse inclusion: K10 ⊆ k_inv — PROVED
+
+Scripts: reproduce/ckm_presentation_elimination.sage
+         reproduce/ckm_presentation_geometry_bridge.sage
+         reproduce/ckm_factor_selection_audit.sage
+
+Date closed: Sep 1 2026
+
+**Independent re-verification note (Claude, Sep 2 2026):** this addendum
+was produced by an unattended background session while the primary
+assistant session was unavailable, and was audited independently
+afterward rather than accepted on arrival. Confirmed by fresh, from-scratch
+recomputation (not by re-reading logs): the relator/peripheral words match
+SnapPy's actual `m006` presentation; the presentation-chart trace formula
+for mu=Abb equals the claimed one exactly modulo the imposed determinant
+relation; m_mu(T) and q10(T) are each irreducible over Q; K10's
+discriminant (-271,488,204,251), signature (8,1), and Galois group (S10,
+order 10!) were recomputed independently and match; the claimed minimal
+polynomial of x^2 (used in the reverse-inclusion step) was recomputed
+directly from K10 and matches exactly; the Dehn relator-equivalence
+certificate (q=s^{-1} in the one-relator group) was re-derived from raw
+free reduction and cyclic-conjugate checking, with every rewrite step
+independently licensed by the relator; `ckm_presentation_elimination.sage`
+was re-executed live (not just re-read) and reproduced the same PASS and
+the same certified trace interval; all hash-pinned dependency files
+(elimination script, Q-001 source) verified byte-identical to their
+recorded SHA256s. **Not independently re-run**: the underlying 440x440
+Q-001 matrix/minimal-polynomial computation itself (~2.3hr, cached
+`.sobj` artifacts trusted as-is) and the census/phenomenology numbers in
+the companion manuscript (fitness rankings, null-test statistics). No
+error was found anywhere checked. A separate manuscript draft,
+`gentry-ckm-v4.2-theorem-centered-figures.tex/.pdf`, exists in the
+author's Downloads folder built on this result; it is not yet tracked in
+either repository.
