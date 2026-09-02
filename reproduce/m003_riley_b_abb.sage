@@ -129,5 +129,58 @@ print("Galois conjugates, not just the discrete-faithful geometric point),")
 print("proved by exact ideal containment, no floating point anywhere in")
 print("this step. The opposite sign tr(B)=-tr(Abb) is exactly impossible")
 print("(forces the unit ideal).")
+
+banner("STEP 4: WHY -- what does 'relator + y=tr(Abb)' actually define?")
+print("Not just THAT the filled variety satisfies it -- what IS the locus")
+print("'relator alone + y=tr(Abb)', and how does (-2,3) sit inside it?")
+
+I_extra = R.ideal(gens_riley + [y - trAbb])
+Iel_extra = I_extra.elimination_ideal([u])
+PD = Iel_extra.primary_decomposition()
+print("primary decomposition of (relator + y=tr(Abb)): %d component(s)" % len(PD))
+for i, comp in enumerate(PD):
+    print(" component", i, "generators:")
+    for g in comp.gens():
+        print("   ", g)
+
+comp_sets = [set(comp.gens()) for comp in PD]
+filled_set = set(filled_gens)
+matches_filled = [i for i, s in enumerate(comp_sets) if s == filled_set]
+print()
+print("Component(s) with generator set EXACTLY equal to the (-2,3) filled")
+print("variety's own generators:", matches_filled)
+assert len(PD) == 2 and matches_filled == [0], (
+    "Expected exactly 2 components with the (-2,3) filled variety as "
+    "component 0 -- structure changed, do not trust the summary below."
+)
+
+banner("STEP 5: what is the OTHER component?")
+Comm = A*B*Ai*Bi
+trComm = det_ideal.reduce(Comm[0, 0] + Comm[1, 1])
+kappa = trComm - 2  # tr[A,B]-2: classical Fricke reducibility indicator, =0 iff reducible
+print("tr[A,B]-2 (Fricke reducibility indicator; 0 iff the representation")
+print("is reducible / has a common eigenvector) =", kappa)
+other_comp = PD[1]
+kappa_on_other = other_comp.reduce(kappa)
+print("kappa reduced on the OTHER component =", kappa_on_other)
+is_reducible_locus = (kappa_on_other == 0)
+print("Is the other component ENTIRELY reducible representations?", is_reducible_locus)
+assert is_reducible_locus
+
+banner("FINAL ANSWER: why the (-2,3) filling forces tr(B)=tr(Abb)")
+print("The locus {relator=I, tr(B)=tr(Abb)} -- imposed on the bare group")
+print("presentation, with NO filling assumed -- splits into exactly two")
+print("irreducible components:")
+print("  (1) a component IDENTICAL, generator-for-generator, to the full")
+print("      (-2,3)-filled character variety (all 4 Galois conjugates);")
+print("  (2) a degree-2 component consisting entirely of REDUCIBLE")
+print("      representations (the generic degenerate/abelian-image branch")
+print("      every one-relator group's character variety carries).")
+print()
+print("So tr(B)=tr(Abb) is not a coincidence discovered AT (-2,3) -- among")
+print("IRREDUCIBLE representations, it is an exact algebraic")
+print("CHARACTERIZATION of the (-2,3) Dehn filling itself: the filling")
+print("relation, reduced using the group relator, is exactly equivalent,")
+print("as a condition on the representation, to forcing tr(B)=tr(Abb).")
 print()
 print("RILEY IDENTITY INVESTIGATION: COMPLETE")

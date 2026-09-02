@@ -54,4 +54,51 @@ proved by exact ideal containment, no floating point anywhere in
 this step. The opposite sign tr(B)=-tr(Abb) is exactly impossible
 (forces the unit ideal).
 
+==============================================================================
+STEP 4: WHY -- what does 'relator + y=tr(Abb)' actually define?
+==============================================================================
+Not just THAT the filled variety satisfies it -- what IS the locus
+'relator alone + y=tr(Abb)', and how does (-2,3) sit inside it?
+primary decomposition of (relator + y=tr(Abb)): 2 component(s)
+ component 0 generators:
+    z^2 + x + y - 1
+    y*z - x - z
+    x*z + 1
+    y^2 - y + z - 1
+    x*y - x - y - z + 1
+    x^2 + y - 1
+ component 1 generators:
+    y + z + 1
+    x + z + 1
+    z^2 + z - 1
+
+Component(s) with generator set EXACTLY equal to the (-2,3) filled
+variety's own generators: [0]
+
+==============================================================================
+STEP 5: what is the OTHER component?
+==============================================================================
+tr[A,B]-2 (Fricke reducibility indicator; 0 iff the representation
+is reducible / has a common eigenvector) = -x*y*z + x^2 + y^2 + z^2 - 4
+kappa reduced on the OTHER component = 0
+Is the other component ENTIRELY reducible representations? True
+
+==============================================================================
+FINAL ANSWER: why the (-2,3) filling forces tr(B)=tr(Abb)
+==============================================================================
+The locus {relator=I, tr(B)=tr(Abb)} -- imposed on the bare group
+presentation, with NO filling assumed -- splits into exactly two
+irreducible components:
+  (1) a component IDENTICAL, generator-for-generator, to the full
+      (-2,3)-filled character variety (all 4 Galois conjugates);
+  (2) a degree-2 component consisting entirely of REDUCIBLE
+      representations (the generic degenerate/abelian-image branch
+      every one-relator group's character variety carries).
+
+So tr(B)=tr(Abb) is not a coincidence discovered AT (-2,3) -- among
+IRREDUCIBLE representations, it is an exact algebraic
+CHARACTERIZATION of the (-2,3) Dehn filling itself: the filling
+relation, reduced using the group relator, is exactly equivalent,
+as a condition on the representation, to forcing tr(B)=tr(Abb).
+
 RILEY IDENTITY INVESTIGATION: COMPLETE

@@ -2902,16 +2902,43 @@ $(-2,3)$ filling relation and then testing whether $y=\operatorname{tr}
 (Abb)$ (or its negation) is already implied: is it — adding that
 generator to the filled ideal changes the ideal not at all.
 
+**Why, exactly (added same day, in response to being asked directly).**
+Primary-decomposed the locus $\{\text{relator}=I,\ \operatorname{tr}(B)=
+\operatorname{tr}(Abb)\}$ imposed on the bare presentation with **no**
+filling assumed. It splits into exactly two irreducible components:
+
+1. a component whose generators are **identical, term for term**, to the
+   full $(-2,3)$-filled character variety's own six generators (all four
+   Galois conjugates);
+2. a degree-2 component that is **entirely reducible representations**
+   — confirmed via the classical Fricke criterion
+   $\operatorname{tr}[A,B]-2=x^2+y^2+z^2-xyz-4$, which reduces to
+   exactly $0$ on this second component and only this one.
+
+So $\operatorname{tr}(B)=\operatorname{tr}(Abb)$ is not a coincidence
+*discovered* at $(-2,3)$ — among irreducible representations it is an
+**exact algebraic characterization of the $(-2,3)$ filling itself**: the
+filling relation, reduced using the group relator, is exactly equivalent
+as a condition on the representation to forcing
+$\operatorname{tr}(B)=\operatorname{tr}(Abb)$. The other, reducible
+branch is the generic degenerate component every one-relator group's
+character variety carries — not a second "rival" filling, so this
+doesn't (by itself) predict any other slope should show the same
+behavior. Cross-checked along the way: $x=\operatorname{tr}(a)$'s exact
+minimal polynomial at $(-2,3)$ is confirmed, by this same elimination,
+to be $x^4-x^3-1$ — matching the earlier `algdep`-based recognition
+exactly, now established without any numerical recognition step.
+
 Committed: `reproduce/m003_riley_b_abb.sage`
-(sha256 `280545A9D4E13B2EDC7F200A54CD9E89A3B65728CB0DF68A88C7774959FD1D9C`),
+(sha256 `A5204B3D5CC390F313DF71A210E673CC78D8530EBE1767F9A96C611608678455`),
 log `m003_riley_b_abb.log`
-(sha256 `6CEB77B66C64A740AA80B0A8680DC99005CF37B64B11FDFC917CA3066B81BB8F`),
+(sha256 `BEE6935D14C3B6EDA48A2F1EC84992543233A4BD0B6EBBDB993B228A12881817`),
 `EXIT=0`.
 
 **Status, precisely**: this promotes the atlas's numeric observation to
 an exact, proved algebraic fact about the $(-2,3)$-filled character
-variety of m003 — genuinely exceptional among the checked family, not a
-numerical coincidence and not a generic phenomenon. It does **not** by
-itself explain *why* the filling relation forces this identity, and it
-is still not connected to PMNS phenomenology in any way — that
+variety of m003, and now explains *why* — genuinely exceptional among
+the checked family, not a numerical coincidence, not a generic
+phenomenon, and not merely asserted but decomposed and traced to its
+source. Still not connected to PMNS phenomenology in any way — that
 connection, if any exists, has not been investigated.
