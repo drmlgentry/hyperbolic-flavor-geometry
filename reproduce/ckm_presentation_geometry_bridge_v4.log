@@ -1,0 +1,95 @@
+
+==============================================================================
+CKM FINAL PRESENTATION/GEOMETRY PROVENANCE BRIDGE
+==============================================================================
+Sage version = 10.9
+SnapPy fundamental_group_args = [True, False, True, False]
+fillings_may_affect_generators = False
+try_hard_to_shorten_relators = False
+source = /mnt/c/dev/hyperbolic-flavor-geometry/reproduce/q001_fricke_collapse_m006.sage
+source SHA256 = 29D8D4917AF10B4C49417832761D9719D9089479BF99BBEDAEA5DBE556F3616D
+elimination script = /mnt/c/Users/Your Name Here/Documents/Codex/ckm_presentation_elimination.sage
+elimination script SHA256 = A2D729E5F59A40B6D130AB7A38CBF705F834E9B4C99302797311CA750DC8DA74
+elimination log = /tmp/ckm_presentation_elimination.log
+elimination log SHA256 = CD457DF128E5719C2B8052906EA02939039DDB3E364A146289829F876EA8546B
+elimination PASS marker present = True
+
+==============================================================================
+EXACT CUSPED PRESENTATION COORDINATES
+==============================================================================
+cusped generators = ('a', 'b')
+cusped relators = ('ababbAAbb',)
+cusped peripheral curves = (('Abb', 'AAbA'),)
+indices matching hard-coded relator up to cyclic/inverse cyclic = [0]
+derived slope (-5,2) word = BBaBBaBBaBBaBBaAAbAAAbA
+
+==============================================================================
+FILLED PRESENTATION WITH CUSP GENERATORS PRESERVED
+==============================================================================
+filled generators = ('a', 'b')
+filled relators = ('ababbAAbb', 'aBabbAbbAbbaBabbAbb')
+filled peripheral curves = (('Abb', 'AAbA'),)
+filled relator indices matching r = [0]
+filled relator indices matching slope word = []
+
+==============================================================================
+EXACT SHORTENED-RELATOR EQUIVALENCE
+==============================================================================
+non-r relator indices = [1]
+shortened filling relator q = aBabbAbbAbbaBabbAbb
+q*s initial word = aBabbAbbAbbaBaaBBaBBaBBAbAAAbA
+q*s step 1 position 12 'BaaBB' -> 'baba' using relator cycle BaaBBABAB result aBabbAbbAbbababaaBBaBBAbAAAbA
+q*s step 2 position 8 'Abbabab' -> 'aB' using relator cycle AbbababbA result aBabbAbbaBaaBBaBBAbAAAbA
+q*s step 3 position 9 'BaaBB' -> 'baba' using relator cycle BaaBBABAB result aBabbAbbababaaBBAbAAAbA
+q*s step 4 position 5 'Abbabab' -> 'aB' using relator cycle AbbababbA result aBabbaBaaBBAbAAAbA
+q*s step 5 position 6 'BaaBBA' -> 'bab' using relator cycle BaaBBABAB result aBabbababbAAAbA
+q*s step 6 position 3 'bbababbAA' -> '' using relator cycle bbababbAA result <empty>
+q*s finite Dehn reduction: PASS
+s*q initial word = BBaBBaBBaBBaBBAbAAbbAbbAbbaBabbAbb
+s*q step 1 position 15 'bAAbb' -> 'BABA' using relator cycle bAAbbabab result BBaBBaBBaBBaBBABABAAbbAbbaBabbAbb
+s*q step 2 position 11 'aBBABAB' -> 'Ab' using relator cycle aBBABABBa result BBaBBaBBaBBAbAAbbAbbaBabbAbb
+s*q step 3 position 12 'bAAbb' -> 'BABA' using relator cycle bAAbbabab result BBaBBaBBaBBABABAAbbaBabbAbb
+s*q step 4 position 8 'aBBABAB' -> 'Ab' using relator cycle aBBABABBa result BBaBBaBBAbAAbbaBabbAbb
+s*q step 5 position 9 'bAAbba' -> 'BAB' using relator cycle bAAbbabab result BBaBBaBBABABBabbAbb
+s*q step 6 position 5 'aBBABABBa' -> '' using relator cycle aBBABABBa result <empty>
+s*q finite Dehn reduction: PASS
+q = s^(-1) in <a,b | r>: PASS
+normal_closure(r,q) = normal_closure(r,s): PASS
+
+==============================================================================
+VERIFIED SL(2,C) HOLONOMY IN THE SAME PRESENTATION
+==============================================================================
+verify_hyperbolicity(..., holonomy=True, bits_prec=300) = True
+rho generators = ('a', 'b')
+rho relators = ('ababbAAbb', 'aBabbAbbAbbaBabbAbb')
+rho peripheral curves = (('Abb', 'AAbA'),)
+rho(relator) =
+[1.0000000000000000000000000000000000000000000000000000000000000000000000000000000? + 0.?e-79*I                                                                            0.?e-79 + 0.?e-79*I]
+[                                                                           0.?e-79 + 0.?e-79*I 1.0000000000000000000000000000000000000000000000000000000000000000000000000000000? + 0.?e-79*I]
+rho(filling word) =
+[1.00000000000000000000000000000000000000000000000000000000000000000000000000000? + 0.?e-77*I                                                                          0.?e-77 + 0.?e-77*I]
+[                                                                         0.?e-77 + 0.?e-77*I 1.00000000000000000000000000000000000000000000000000000000000000000000000000000? + 0.?e-77*I]
+rho(relator) interval contains +I = True
+rho(relator) interval contains -I = False
+rho(filling word) interval contains +I = True
+rho(filling word) interval contains -I = False
+T_x = 1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609? + 0.81142069235465915601856126825239111739434590904174867523598788435568162609273444858?*I
+T_y = -0.03033589532555413963385295162608107789394127921563548865966287929835332241200198851? - 0.49545512024915493216774895525514843838403872288354419996830513482273169998918299440?*I
+T_z = 1.2390662227470571151659625473720922160619269346914749480534151109476212633797742861? + 0.8114206923546591560185612682523911173943459090417486752359878843556816260927344486?*I
+T_mu = -1.930912474976026840272772966303406206435007859419947384168903866575043140339605892? - 0.334094700037524235032128937288117534597257192256581724770854803184110980626287469?*I
+irreducibility discriminant = -3.460456485567656777670884662615476843089290926700704419423349550000784684997513541? + 4.547131158920688963337764218321165824673781465353426186547086589452771021434135431?*I
+irreducibility discriminant contains 0 = False
+
+==============================================================================
+FINAL PROVENANCE VERDICT
+==============================================================================
+cusped presentation words match elimination chart: PASS
+filled presentation preserves a,b coordinates: PASS
+slope (-5,2) kills mu^(-5)*longitude^2 in those coordinates: PASS
+verified rho uses exactly that filled presentation: PASS
+relator lift sign is +I, not -I: PASS
+filling-word lift sign is +I, not -I: PASS
+geometric character is irreducible; exact chart applies: PASS
+COMBINED WITH PRESENTATION ELIMINATION E(T)=m_mu(T):
+m_mu(tr rho_geom(mu)) = 0
+FINAL PRESENTATION/GEOMETRY PROVENANCE CERTIFICATE: PASS
