@@ -1,0 +1,112 @@
+{
+  "bits_prec": 300,
+  "contains_historical_pmns_word_selection": false,
+  "contains_pmns_target": false,
+  "created_utc": "2026-09-02T23:28:33.833910+00:00",
+  "cusped_presentation_fingerprint": {
+    "generators": [
+      "a",
+      "b"
+    ],
+    "peripheral_curves": [
+      [
+        "ABABB",
+        "ABAbab"
+      ]
+    ],
+    "relators": [
+      "abAAbabbb"
+    ]
+  },
+  "farey_h1_Z5_ray": [
+    [
+      -2,
+      3
+    ],
+    [
+      -3,
+      5
+    ],
+    [
+      -4,
+      7
+    ],
+    [
+      -5,
+      9
+    ],
+    [
+      -6,
+      11
+    ],
+    [
+      -7,
+      13
+    ]
+  ],
+  "fundamental_group_args": [
+    true,
+    false,
+    true,
+    false
+  ],
+  "homology_classifier_pmns": "h = 3*n_a + n_b mod 5",
+  "max_word_length": 6,
+  "outputs": {
+    "filling_summary": {
+      "path": "./m003_filling_summary.csv",
+      "rows": 13,
+      "sha256": "1C67DFAB5C701F325DB41653EC7EEE48C33D7E62C426D39EDEE9C6F80843F364"
+    },
+    "pair_atlas": {
+      "path": "./m003_pair_atlas.csv",
+      "rows": 1768,
+      "sha256": "5526F10824138736272F8E9E42D1D60A9EDA1B556718A3FB09AA777C623B7B0F"
+    },
+    "word_atlas": {
+      "path": "./m003_word_atlas.csv",
+      "rows": 1287,
+      "sha256": "4BB3B589BA55AB30F63D27FFCBC0DCCE84452EE05811F18A801064E848C1BB35"
+    }
+  },
+  "pair_word_class_count": 17,
+  "pair_word_length": 4,
+  "purpose": "target-free structural atlas of m003",
+  "python_version": "3.13.14",
+  "q_family": [
+    [
+      -2,
+      3
+    ],
+    [
+      -2,
+      5
+    ],
+    [
+      -2,
+      7
+    ],
+    [
+      -2,
+      9
+    ],
+    [
+      -2,
+      11
+    ],
+    [
+      -2,
+      13
+    ],
+    [
+      -2,
+      15
+    ]
+  ],
+  "sage_version": "10.9",
+  "script_sha256": "51DA04EE0D1542FECD75DC122C089EB6958A7C8FFD6F86F6662D51EB8672BF5D",
+  "snappy_version": "3.3.2",
+  "status": "computational/exploratory; not exact ITF certificate",
+  "word_class_count": 99,
+  "word_equivalence": "freely reduced + cyclically reduced; quotient by cyclic rotation and inverse; cyclic proper powers excluded"
+}

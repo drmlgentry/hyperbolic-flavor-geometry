@@ -2788,3 +2788,74 @@ alternative. Recommend `hyperbolic-flavor-scan/analysis/results_summary.py`
 either be updated to the canonical Nelder-Mead numbers or deleted, since
 it is the one place the stale value is still presented as a "canonical
 results summary."
+
+---
+
+## m003 target-free structure atlas — real finding, one summary number
+
+## corrected (Sep 2 2026)
+
+**[COMPUTED, target-free, not yet an exact theorem]** $m003(-2,3)$ shows
+genuine trace-squared degeneracy not shared by its Farey-ray/$(-2,q)$
+neighbors: an **exact-to-precision** identity
+$\operatorname{tr}^2\rho(B)=\operatorname{tr}^2\rho(Abb)$ (numeric
+difference `0.00000...000`, ~35 digits, vs. differences of 5.9–10.9 at
+every one of the 12 other fillings/cusp checked), and 77 of 99 length-≤6
+primitive word classes falling into squared-trace collision groups of
+size ≥2 (largest groups of size 7, 7, 5) versus 66 words / max group
+size 4 at every other $(-2,q)$-family and Farey-ray filling checked.
+
+Built by a background session (script + logs recovered from
+`Documents\Codex\2026-09-02\...\outputs\`, outside any repo) in response
+to "build the invariant atlas of m003." **Independently re-verified
+before recording**, not accepted from the session's own summary
+paragraph:
+
+- Read the actual script (`m003_structure_atlas.sage`, now committed).
+  It is genuinely target-free (no PMNS matrix anywhere in it — checked
+  directly), uses the correct homology classifier ($h=3n_a+n_b\bmod5$,
+  matching this session's own PMNS-ITF work), and — notably — already
+  uses `fundamental_group_args=(True,False,True,False)` with a hard
+  `RuntimeError` basis-drift guard on every filling: the exact fix this
+  session had to separately discover for the PMNS ITF certificate,
+  applied here from the start.
+- All reported SHA256 hashes verified byte-exact against the actual
+  files.
+- **Independently recomputed the collision-group tally directly from
+  the raw `m003_word_atlas.csv`** (own script, `m003_atlas_collision_
+  check.py`, committed) rather than trusting the session's downstream
+  summary. Result: **the core claim about $m003(-2,3)$ (77 words, groups
+  of 7,7,5) is confirmed exactly.** The comparison numbers for most
+  $(-2,q)$/Farey-ray fillings (66 words, max group 4) are also confirmed.
+  **One number in the circulating summary is wrong**: it reported the
+  cusp at 62 words in collision groups with max group size ≤4; the
+  actual figure, computed directly, is **70 words, with a group of
+  size 6** — meaning the "controls" framing holds cleanly for the
+  *filled* $(-2,q)$/Farey-ray family specifically, but not, as stated,
+  for the cusp itself (which is measurably more degenerate than the
+  other non-target fillings, just still less than $(-2,3)$). Also:
+  $m003(-3,5)$, nominally a Farey-ray control, shows 68 words (not the
+  modal 66) — a minor but real exception worth noting, not folded into
+  "most controls."
+- Independently confirmed the specific $\operatorname{tr}^2(B)=
+  \operatorname{tr}^2(Abb)$ identity directly from `m003_pair_atlas.csv`:
+  exact zero difference at $(-2,3)$, nowhere close to zero (5.9 to 10.9)
+  at any of the other 12 fillings.
+
+**Status, precisely**: this is real, target-free, numerically-exact-to-
+precision evidence of exceptional character-variety degeneracy at
+$m003(-2,3)$ specifically among the checked family — not yet an exact
+algebraic identity (no Riley/Fricke polynomial derivation has been
+attempted for the $B,Abb$ pair), and not yet connected to the PMNS
+phenomenology in any way (correctly — this atlas was built before any
+such connection was proposed, precisely to avoid that ordering problem).
+
+Committed: `reproduce/m003_structure_atlas.sage`,
+`m003_structure_atlas_PROTOCOL.md`, `m003_atlas_run.log`,
+`m003_atlas_manifest.json`, `m003_word_atlas.csv`, `m003_pair_atlas.csv`,
+`m003_filling_summary.csv`, `m003_atlas_collision_check.py` (this
+session's independent audit script) and its log.
+
+**Next, if pursued**: the Riley/Fricke trace-polynomial identity for
+$(B,Abb)$ and its exact filling locus (the script's own stated next
+step) — not started.

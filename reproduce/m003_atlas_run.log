@@ -1,0 +1,16 @@
+==============================================================================
+m003 TARGET-FREE INVARIANT ATLAS
+==============================================================================
+word classes: 99
+pair word classes: 17
+fillings/controls attempted: 13
+BITS: 300
+contains PMNS target: FALSE
+contains historical PMNS word selection: FALSE
+manifest: ./m003_atlas_manifest.json
+manifest SHA256: 1E6DB64B7837410C79F0E8D6922DDB0532B4D022FBD5527D9115BEDB1A379193
+word atlas SHA256: 4BB3B589BA55AB30F63D27FFCBC0DCCE84452EE05811F18A801064E848C1BB35
+pair atlas SHA256: 5526F10824138736272F8E9E42D1D60A9EDA1B556718A3FB09AA777C623B7B0F
+filling summary SHA256: 1C67DFAB5C701F325DB41653EC7EEE48C33D7E62C426D39EDEE9C6F80843F364
+ATLAS COMPUTATION: PASS
+SAGE_EXIT=0
