@@ -2267,6 +2267,63 @@ timeline (commits from roughly Aug 29–31, 2026).
 
 ---
 
+## $N_K(R)/\Gamma_{009}$ — FULL GROUP, CLOSED (Sep 2 2026)
+
+**[PROVED]** $\Gamma_{009}\trianglelefteq N_K(R)$, $[N_K(R):\Gamma_{009}]=4$,
+and
+$$\boxed{N_K(R)/\Gamma_{009}\cong C_2\times C_2}$$
+
+This resolves the item left open immediately above: the raw generator $a$
+(and $b$) were finally worked with directly. Certificate:
+`reproduce/m009_full_normalizer_closure.sage` (log:
+`m009_full_normalizer_closure.log`, sha256
+`E32A6D6A6D1DBEE208598F4FCCB3500FF7FC76F8C7CFC8EE6D2CF25F47B98876`),
+built by loading the already-certified endpoint/square-stabilizer chain
+and adding four new steps:
+
+1. **Exact $a,b$.** $a^2,b^2$ are already K-rational (certified). By
+   Cayley–Hamilton, $\operatorname{tr}(a)^2=\operatorname{tr}(a^2)+2=:D_a$,
+   which is **not** a square in $K$ ($D_a=3-w$) — $a$ is only rational
+   over $L=K(\sqrt{D_a})$, a genuine quartic-over-$\mathbf Q$ field, not
+   $K$. Built $a=(a^2+I)/\sqrt{D_a}$ exactly, fixed the sign against the
+   certified 300-bit holonomy (matches to $\sim10^{-90}$), and
+   cross-validated against the *already K-rationally certified* product
+   $ab$: $a\cdot b = (ab)$ exactly. Found $D_a\cdot D_b=16$, i.e. $b$ lives
+   in the *same* $L$.
+2. **$a\in N_K(R)\setminus N_K^+(R)$.** Certified $a\,R\,a^{-1}=R$ and
+   $a$ swaps $M_0\leftrightarrow M_1$ (does not fix either). Structural
+   fact used throughout: $a=\sqrt{D_a}\cdot A_0$ for a $K$-rational $A_0$
+   ($\sqrt{D_a}$ central), so any conjugation sandwich
+   $g\,a\,g^{-1}a^{-1}$ has the two copies of $\sqrt{D_a}$ multiply to
+   $D_a\in K$ — automatically $K$-rational, letting every remaining check
+   reuse the existing Euclidean-word + GAP membership machinery with no
+   new infrastructure.
+3. **Normality.** $J,Y$ (the two $N_K^+(R)$ generators) both normalize
+   $\Gamma_{009}^+$ on its named generators $a^2,ab,ba^{-1}$ (6 GAP
+   membership checks, all PASS), and $JaJ^{-1}a^{-1}$,
+   $YaY^{-1}a^{-1}$ are both exactly $K$-rational and both certified in
+   $\Gamma_{009}^+$ — so $JaJ^{-1},YaY^{-1}\in\Gamma_{009}$. Since $a,b$
+   trivially conjugate $\Gamma_{009}=\langle a,b\rangle$ into itself, and
+   $N_K(R)=N_K^+(R)\cdot\{1,a\}=\langle J,Y,\Gamma_{009}^+,a\rangle$,
+   every generator normalizes $\Gamma_{009}$.
+4. **Quotient type.** $J^2,Y^2,[J,Y]\in\Gamma_{009}^+$ (GAP-certified
+   directly here, matching the already-proved $C_2\times C_2$ structure
+   of the "+" quotient). $\Gamma_{009}=\Gamma_{009}^+\sqcup\Gamma_{009}^+a$
+   splits exactly by $K$- vs.\ $L$-rationality (every element of the
+   second part genuinely needs $\sqrt{D_a}$); $J,Y,JY$ are $K$-rational,
+   so can only be in $\Gamma_{009}$ via $\Gamma_{009}^+$ — ruled out by
+   determinant squareclass ($J,JY$ non-square det, all $\Gamma_{009}^+$
+   generators square det) and direct GAP membership ($Y$). So $J,Y,JY$
+   give three pairwise-distinct nontrivial order-$\le2$, commuting images
+   in $N_K(R)/\Gamma_{009}$ — Klein four, not $C_4$.
+
+Re-run twice from a fresh `polished_holonomy` call each time (script is
+not idempotent-by-caching); identical result both times, `SAGE_EXIT=0`.
+The m009 endpoint/global-normalizer frontier — full group, not just the
+"+" subgroup — is now closed.
+
+---
+
 ## `gentry-torsion-plb.tex`'s homology classifier is invalid — confirmed
 ## independently, exact certificate, manuscript NOT yet edited
 
