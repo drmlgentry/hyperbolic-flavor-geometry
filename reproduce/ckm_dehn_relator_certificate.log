@@ -1,0 +1,70 @@
+==============================================================================
+CKM FINITE DEHN RELATOR-EQUIVALENCE CERTIFICATE
+==============================================================================
+Python version = 3.13.14
+r = ababbAAbb
+mu = Abb
+lambda = AAbA
+s_raw = mu^(-5) lambda^2 = BBaBBaBBaBBaBBaAAbAAAbA
+s_freely_reduced = BBaBBaBBaBBaBBAbAAAbA
+q = aBabbAbbAbbaBabbAbb
+exp(s) = (-1, -8)
+exp(q) = (1, 8)
+abelianization check exp(q) = -exp(s): PASS
+
+==============================================================================
+q*s = 1 in <a,b | r>
+==============================================================================
+initial freely reduced word = aBabbAbbAbbaBaaBBaBBaBBAbAAAbA
+initial length = 30
+step 1: pos 12, 'BaaBB' -> 'baba'; relator cycle = BaaBBABAB
+        result = aBabbAbbAbbababaaBBaBBAbAAAbA
+step 2: pos 8, 'Abbabab' -> 'aB'; relator cycle = AbbababbA
+        result = aBabbAbbaBaaBBaBBAbAAAbA
+step 3: pos 9, 'BaaBB' -> 'baba'; relator cycle = BaaBBABAB
+        result = aBabbAbbababaaBBAbAAAbA
+step 4: pos 5, 'Abbabab' -> 'aB'; relator cycle = AbbababbA
+        result = aBabbaBaaBBAbAAAbA
+step 5: pos 6, 'BaaBBA' -> 'bab'; relator cycle = BaaBBABAB
+        result = aBabbababbAAAbA
+step 6: pos 3, 'bbababbAA' -> ''; relator cycle = bbababbAA
+        result = <empty>
+final word = <empty>
+steps = 6
+transcript SHA256 = 715F128179F81C1F3A1E4682D39353734C11E71DA076DF2F41854FC33906F79B
+q*s = 1 in <a,b | r>: PASS
+
+==============================================================================
+s*q = 1 in <a,b | r>
+==============================================================================
+initial freely reduced word = BBaBBaBBaBBaBBAbAAbbAbbAbbaBabbAbb
+initial length = 34
+step 1: pos 15, 'bAAbb' -> 'BABA'; relator cycle = bAAbbabab
+        result = BBaBBaBBaBBaBBABABAAbbAbbaBabbAbb
+step 2: pos 11, 'aBBABAB' -> 'Ab'; relator cycle = aBBABABBa
+        result = BBaBBaBBaBBAbAAbbAbbaBabbAbb
+step 3: pos 12, 'bAAbb' -> 'BABA'; relator cycle = bAAbbabab
+        result = BBaBBaBBaBBABABAAbbaBabbAbb
+step 4: pos 8, 'aBBABAB' -> 'Ab'; relator cycle = aBBABABBa
+        result = BBaBBaBBAbAAbbaBabbAbb
+step 5: pos 9, 'bAAbba' -> 'BAB'; relator cycle = bAAbbabab
+        result = BBaBBaBBABABBabbAbb
+step 6: pos 5, 'aBBABABBa' -> ''; relator cycle = aBBABABBa
+        result = <empty>
+final word = <empty>
+steps = 6
+transcript SHA256 = 9DA2A0736338968B7F76023E80BBB2286D446CDA94D21743CA71B0270E2B5519
+s*q = 1 in <a,b | r>: PASS
+
+==============================================================================
+CERTIFIED CONCLUSION
+==============================================================================
+q*s = 1 and s*q = 1 modulo the normal closure of r.
+Therefore q = s^(-1) in <a,b | r>.
+Therefore <<r,q>> = <<r,s>> in the free group <a,b>.
+The shortened filled presentation and the peripheral-slope presentation
+define the same marked quotient on the generators a,b.
+Knuth-Bendix invoked = False
+finitely-presented-group element equality invoked = False
+heuristic Tietze simplification invoked = False
+FINITE DEHN RELATOR-EQUIVALENCE CERTIFICATE: PASS
