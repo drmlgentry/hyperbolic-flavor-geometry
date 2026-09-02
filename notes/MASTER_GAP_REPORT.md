@@ -2713,3 +2713,78 @@ until the flagged fitness discrepancy (0.005087 vs. 0.019 in circulating
 summaries, different Haar-mean values) is itself traced to a specific
 canonical script and raw output, not assumed resolved by this ITF
 result.
+
+---
+
+## PMNS fitness 0.005087 vs. 0.019 — RESOLVED (Sep 2 2026)
+
+**Not a live discrepancy.** `0.019` is a stale value from a superseded
+methodology, deliberately archived by the author before this session;
+`0.005087` is the current canonical result and reproduces live.
+
+The task's assumed reproducer path (`reproduce/hfg_reproduce.py` inside
+`hyperbolic-flavor-geometry`) does not exist in either tracked repo —
+checked directly (`git log`, filesystem search across both repos,
+Downloads, Documents/Codex), not assumed. The real file lives in a
+**separate, sibling repository**, `C:\dev\hyperbolic-flavor-scan` (the
+same one cited in both manuscripts' Data Availability sections,
+`github.com/drmlgentry/hyperbolic-flavor-scan`), at both `hfg_reproduce.py`
+(repo root) and `reproduce/hfg_reproduce.py` (byte-identical).
+
+**Ran it live** (raw output copied to
+`reproduce/pmns_fitness_discrepancy_trace.log`, sha256
+`2281E507CC881D94E5EF26E9852C74A75CA83EB9D46E579F337915C1EE56472D`):
+`python3 hfg_reproduce.py`, `EXIT=0`,
+`Fitness vs PDG 2024: 0.005087 (target: 0.005087)`, words
+`['aa','aaB','baa']`, method "Borel Nelder-Mead (column permutation)".
+Environment logged: Python 3.13.14, NumPy 2.5.1, SciPy 1.18.0, SnapPy
+3.3.2. Its own docstring: *"Theoretical minimum fitness with free
+$L_m$: 0.005087 (confirmed: free optimization); all 40 sign/scale
+starting points converge to the same minimum; triangulation-independent,
+std=0.000 across 20 random retriangulations."* This is a materially
+**different claim** than the "beats 50,000 Haar-random unitaries" framing
+in the circulating summary — the canonical script's own documentation
+never mentions a Haar control at all for PMNS.
+
+**Traced `0.019` to `hyperbolic-flavor-scan/analysis/results_summary.py`**
+(docstring: *"PMNS: m003 ..., Borel triangular QR, fitness 0.019"*) and
+the `archive/scans/pmns_borel_*.py` family. Reading the actual code
+resolves every diagnostic question at once — this is not the same
+construction with a different label, it is a **different construction
+on a different input**:
+- **Different word triple**: `aa/ab/aB`, not the canonical `aa/aaB/baa`.
+- **Different construction**: a hand-fixed numeric lower-triangular
+  matrix (`l21=0.443245, l31=-0.529672, l32=0.431594`, hardcoded
+  constants, no live holonomy call at all) fed through `qr()`, versus
+  the canonical script's free Nelder-Mead optimization over $L_m$ with
+  live `rho(word)` calls.
+- **Same metric family** (Frobenius norm on $|U|-\text{target}$, best
+  column permutation) — the earlier "different metric, angle-space"
+  characterization in circulating summaries is itself imprecise; the
+  actual difference is the construction feeding the metric, not the
+  metric.
+- **No sigma** for PMNS in either version (correct — $\sigma$ is CKM-only
+  in both).
+- **Different PDG target snapshot**: the old script's hardcoded 3-digit
+  `PMNS` array is a rougher constant than the canonical script's own
+  `PMNS_PDG` array.
+
+**This was already resolved once, by the author, before this session**:
+commit `c0dc7a8` in `hyperbolic-flavor-scan` — *"Reorganize: reproduce/
+with 3 canonical scripts, all scan files -> archive/. Referee can run
+one command per paper."* — is the exact commit that moved the
+`0.019`-producing scripts into `archive/`. The immediately following
+canonical-script commit `68fcdfd`'s own message states the result
+directly: *"PMNS=0.005087 CKM=0.016482 vs PDG 2024; Borel NM confirmed
+theoretical minimum."* `analysis/results_summary.py` (outside
+`reproduce/`, never moved to `archive/`, is the one loose end — a stale
+snapshot left un-updated after the reorganization, and the likely direct
+source of the `0.019` value re-entering circulating summaries.
+
+**Conclusion**: `0.005087` is correct and current. `0.019` is not a
+competing measurement of the same thing — treat any future reference to
+it as referring to the abandoned triangular-QR construction, not a live
+alternative. Recommend `hyperbolic-flavor-scan/analysis/results_summary.py`
+either be updated to the canonical Nelder-Mead numbers or deleted, since
+it is the one place the stale value is still presented as a "canonical
+results summary."
