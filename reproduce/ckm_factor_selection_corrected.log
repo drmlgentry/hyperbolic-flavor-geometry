@@ -1,0 +1,62 @@
+==============================================================================
+CKM FACTOR-SELECTION CERTIFICATE — CORRECTED READ-ONLY AUDIT
+==============================================================================
+repo = /mnt/c/dev/hyperbolic-flavor-geometry
+q001_Mx.sobj SHA256 = 61BABEC48AA63C8859D6642534AC4298FD8F13F088A9CD6B73244D32C2DBF855
+q001_px.sobj SHA256 = 1772F206369C790BC6FB5D4C78B84AD52AAA552B2760D0043B84389BBF854473
+q001_px_factors.sobj SHA256 = 34FA86845426764102E422099FEC824DB928CDD21221C4C98886C9F52D84FFD6
+
+dim A0 = 440
+minpoly source = exact saved q001_px.sobj
+To recompute from Mx, rerun with --recompute-minpoly.
+minpoly(Mx) degree = 430
+minpoly(Mx) coefficient-text SHA256 = D60B93375F55BCE1F6096020655C3093B4B64900DE3A89631D797B9846A49716
+factorization summary:
+  degree 10 multiplicity 3 irreducible = True polynomial = x^10 - 7*x^8 + 4*x^7 + 17*x^6 - 14*x^5 - 18*x^4 + 14*x^3 + 8*x^2 - 3*x - 1
+  degree 200 multiplicity 1 irreducible = True coefficient-text SHA256 = 0A264004181613D2F126F8274E445250DDB54A64B68267EB05D89972DABB4FE3
+  degree 200 multiplicity 1 irreducible = True coefficient-text SHA256 = 4F3F442A10BA648512C06C7AA6644FB15355E5D69B34B8B7A909681DDA1D8C99
+
+q10 irreducible = True
+q10 divides mu exactly = True
+multiplicity of q10 in mu = 3
+degree r_comp = degree(mu // q10^3) = 400
+gcd(q10, r_comp) = 1
+q10 divides r_comp = False
+r_comp coefficient-text SHA256 = C8F9A7357C4364ECDFD90BC25B098280DDA34113C415969C390ECACABEAE11A4
+r_comp factorization summary:
+  degree 200 multiplicity 1 irreducible = True coefficient-text SHA256 = 0A264004181613D2F126F8274E445250DDB54A64B68267EB05D89972DABB4FE3
+  degree 200 multiplicity 1 irreducible = True coefficient-text SHA256 = 4F3F442A10BA648512C06C7AA6644FB15355E5D69B34B8B7A909681DDA1D8C99
+
+==============================================================================
+CERTIFIED TRACE BOX AND q10 ROOT ISOLATION
+==============================================================================
+verify_hyperbolicity(holonomy=True, bits_prec=300) = True
+T_a = 1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609? + 0.81142069235465915601856126825239111739434590904174867523598788435568162609273444858?*I
+Newton box = 1.23906622274705711516596254737209221606192693469147494805341511094762126337977428609? + 0.81142069235465915601856126825239111739434590904174867523598788435568162609273444857?*I
+N(box) = 1.2390662227470571151659625473720922160619269346914749480534151109476212633797742860902865? + 0.8114206923546591560185612682523911173943459090417486752359878843556816260927344485726033?*I
+N(box) strictly contained in box = True
+q10 roots in T_a box = exactly one (interval-Newton certificate)
+
+==============================================================================
+CERTIFIED EXCLUSION OF THE FULL COMPLEMENTARY FACTOR
+==============================================================================
+r_comp(T_a) = 2.69983?e81 + 7.71094?e80*I
+real projection contains 0 = False
+imag projection contains 0 = False
+complex interval contains 0 = False
+
+==============================================================================
+FACTOR-SELECTION VERDICT
+==============================================================================
+q10 divides mu exactly: PASS
+valuation v_q10(mu) = 3: PASS
+T_a contains exactly one q10 root: PASS
+T_a contains no root of r_comp = mu/q10^3: PASS
+FACTOR SELECTION CERTIFICATE: PASS
+
+SCOPE: this selects the q10-supported x-value among the distinct factor
+supports of the exact multiplication polynomial.  It does not explain
+the q10-primary multiplicity three, and it does not by itself replace
+the separate logical requirement connecting the verified geometric
+trace to an exact point of the character algebra.
+END OF CERTIFICATE — ALL ASSERTIONS PASSED
