@@ -2942,3 +2942,52 @@ the checked family, not a numerical coincidence, not a generic
 phenomenon, and not merely asserted but decomposed and traced to its
 source. Still not connected to PMNS phenomenology in any way — that
 connection, if any exists, has not been investigated.
+
+---
+
+## Why the OTHER three atlas collisions recur at every filling (Sep 2 2026)
+
+**[PROVED, exact]** The atlas separately found three word-pair collisions
+($A\sim ABBB$, $AB\sim ABB$, $AAb\sim AABB$, squared-trace equal)
+recurring at every one of its 13 checked fillings and the cusp, with no
+exceptions. Asked directly why. Answer, by the same method as the
+$B/Abb$ investigation:
+
+None is a free-group identity, and none vanishes identically on the
+*whole* bare Riley variety (relator only, no filling) — checked exactly,
+matching the $B/Abb$ case's earlier negative result. But **the bare
+Riley variety is not irreducible**: primary decomposition splits it into
+exactly three components — two discrete (isolated point-pairs) and one
+genuine positive-dimensional curve. **All three collisions vanish
+identically on that one curve component, and only on it.** Confirmed
+directly that the $(-2,3)$-filled variety is a sub-locus of that same
+curve component (every one of the curve's defining equations reduces to
+$0$ on the filled variety) — and since every Dehn filling representation,
+of any slope, lives on that same canonical/geometric component (standard
+Thurston Dehn-surgery deformation theory), these three identities are
+forced at *every* filling and the cusp automatically, with no exceptions
+possible — exactly matching what the atlas found empirically across all
+13 points. Not a coincidence repeated 13 times; a single algebraic fact
+about the whole component.
+
+Cross-checked for consistency: $\operatorname{tr}(B)=\operatorname{tr}
+(Abb)$ is confirmed nonzero on **all three** components (including the
+same geometric curve) — genuinely filling-specific to $(-2,3)$, not a
+component-wide fact, which is exactly why it does not recur at the other
+12 fillings the way these three do. The two investigations are
+consistent with, and sharpen, each other: same underlying variety,
+different pieces of it responsible for each phenomenon.
+
+Committed: `reproduce/m003_three_universal_identities.sage`
+(sha256 `8D36F7D48035D67ECCCF3FD9E59D54A0F13E310F216427163E9D2CBB8925253F`),
+log `m003_three_universal_identities.log`
+(sha256 `311B61F4448ACC34CC70985EA467E675996D73DAB58F587EA49C108E99850D03`),
+`EXIT=0`.
+
+**Status, precisely**: this settles the "positive control" question the
+$B/Abb$ investigation raised — the three recurrent collisions are
+universal on the geometric component (a fact about m003's character
+variety as a whole), while $B/Abb$ is a genuine $(-2,3)$-specific
+degeneracy (a fact about one filling). Both proved, both explained, by
+the same primary-decomposition method applied to the same underlying
+object.
