@@ -4107,3 +4107,83 @@ $\sigma_{\rm opt}$ is still a genuine, better-than-median fact (rank
 the "unique among independent constraints" framing needs to be either
 narrowed to what's actually proved or re-argued with a real, not stale
 or false, third leg.
+
+## Correction: the CKM-side comparisons above used a stale, superseded
+## CKM result — the canonical script itself was out of date. Fixed and
+## pushed live.
+
+Flagged directly: "0.016 is also antiquated" — checked, correct.
+`ckm_sigma_optimality_check.py` (previous entry) used
+`hfg_reproduce.py`'s live default at the time: word triple
+$\{\mathtt{aaB},\mathtt{AbA},\mathtt{AAb}\}$, $\sigma=0.49$,
+$\mathcal F=0.016482$. That is not the current CKM result. The actual
+**published** result — already committed to this repo earlier this
+session, in `papers/04_new_needs_journal/
+gentry-ckm-v4.2-theorem-centered-figures.tex` — is triple
+$\{\mathtt{aaab},\mathtt{aabb},\mathtt{bAbAB}\}$ at
+$\sigma=0.47$, $\mathcal F=0.002728$ (line 33-34 of that manuscript,
+committed `cef7720`). A further, not-yet-published continuous
+refinement exists in
+`reproduce/sigma_continuous_refine.py` (already in this repo, dated by
+its own docstring to a 2026-07-26 methodological-gap check): the true
+continuous optimum is $\sigma^*=0.469328362$, $\mathcal F^*=0.002330647$
+— confirmed by running it live (`EXIT` clean, 1 local minimum found in
+a step-0.001 scan over $[0.05,2.00]$, refined by bounded Brent to
+14-digit precision). This is the "refined to 6-7 significant figures"
+value.
+
+**Redone with the correct CKM result**
+(`reproduce/ckm_sigma_optimality_check.py`, already committed, re-run
+with the corrected triple): $\sigma_{\rm opt}=0.716634$ gives CKM
+fitness $0.4975$ against the *correct*, current PDG target and triple —
+even further from optimal than the earlier (stale-triple) check found
+(that one showed $\sim$27$\times$ worse than optimal; the correct
+comparison is $\sim$213$\times$ worse than the true optimum
+$0.002331$, or $\sim$182$\times$ worse than the published $0.002728$).
+**The "same $\sigma$ that minimises the CKM fitness" claim is refuted
+more strongly, not less, once the correct CKM result is used** — the
+qualitative conclusion from the entry above stands; only the outdated
+numbers it was expressed against needed replacing.
+
+**The deeper issue this surfaced: `hfg_reproduce.py` — cited in the
+Data Availability section of *both* manuscripts as the reproducibility
+source — was itself stale**, silently reproducing the superseded
+$\sigma=0.49$/$\mathcal F=0.016482$ CKM result rather than the actual
+published $0.002728$. Anyone following the paper's own reproducibility
+link would get a materially worse, wrong number, with no indication
+anything had changed. **Fixed directly, in the actual canonical script,
+not just documented**: updated `ckm_gaussian()`'s target array (the old
+`CKM_PDG` was a less precise, superseded snapshot — replaced with the
+5-decimal array that actually produces $0.002728$, matching
+`verify_new_global_best.py`), switched its permutation search from a
+row+column joint permutation (`U[np.ix_(p,p)]`, which does *not*
+reproduce $0.002728$ even with the correct triple/$\sigma$ — verified
+directly, it gives $0.003159$) to column-only (`U[:,list(p)]`, already
+the convention used for PMNS in the same file — now consistent), and
+updated the `Main` section's word triple, $\sigma$, and target
+comments. Verified the corrected script reproduces $\mathcal
+F=0.002728$ exactly, matching the published matrix bit-for-bit; PMNS
+output ($0.005087$) unaffected.
+
+**Pushed live to GitHub**, not left as a local fix: `hfg_reproduce.py`
+lives in a separate repository (`hyperbolic-flavor-scan`) that is
+itself a subfolder of a much larger repo rooted at `C:\dev` (established
+earlier in this report). That repo's local `main` and `origin/main` were
+found, in the course of pushing, to have **genuinely diverged
+histories** — matching commit messages at different hashes across many
+commits, not simply "local is behind" — almost certainly from an
+earlier rebase or parallel-history event predating this session, and
+**not attempted to be reconciled here** (out of scope, and risky to
+touch blindly on a repo with citable published content). The fix itself
+was pushed cleanly and safely: extracted as a patch, applied in a fresh
+`git worktree` checked out directly from `origin/main` (avoiding the
+780+ pre-existing locally-modified, unrelated files entirely), verified
+there independently, committed, and pushed as a fast-forward
+(`d0949ab..79f30b0`). Confirmed live: GitHub's raw content for
+`hyperbolic-flavor-scan/hfg_reproduce.py` now hashes identically to the
+local fixed copy
+(sha256 `af15675bc61ec53f9c509940f82fcb11d6940a6bf851a7a22355336bbc52d205`).
+The local `main` branch of the `C:\dev` repo still points at a different
+commit (`258ee70`, an earlier, non-fast-forwardable attempt at the same
+fix) and was left as-is — its divergence from `origin/main` predates
+this session and is not this fix's problem to solve.
