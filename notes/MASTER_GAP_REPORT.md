@@ -3071,3 +3071,18 @@ Committed: `reproduce/m003_squared_locus_and_conjugacy.sage`
 log `m003_squared_locus_and_conjugacy.log`
 (sha256 `FC94C54BABE38C079D99C5927FA715EDBD2901E008CCB9B38503DB474FBF5606`),
 `EXIT=0`.
+
+**Scope closed here (Sep 2 2026).** Four results from this branch of the
+atlas are established and safe to write up: Theorem A (three universal
+identities on $X_0$), the *signed* $(-2,3)$ characterization
+($\operatorname{tr}(B)=\operatorname{tr}(Abb) \iff \chi\in
+X_{-2,3}^{\rm irr}$, not squared), the exact group-conjugacy result
+($B\sim Abb^{-1}$ via $g=\mathtt{BaBA}$), and the $\mathtt{aaB}=\mathtt{AAb}$
+PMNS-word overlap. **Do not write the squared-trace strengthening**
+($X^{\rm irr}\cap V(\operatorname{tr}^2B-\operatorname{tr}^2Abb)=
+X_{-2,3}^{\rm irr}$) **into any manuscript** — it was tested, not merely
+left undone, and it is false as stated: the $C_-$ branch's non-reducible
+component $Y_-$ is confirmed distinct from both $X_{-2,3}$ and the
+reducible locus. The identity of $Y_-$ is the one remaining open item on
+this branch. It blocks nothing above and is not being pursued further
+unless it turns out to matter structurally.
