@@ -3217,3 +3217,48 @@ hash on it (`013f63a`/`9d78c1b`, `4ff56a8`/`f9e8fa3`, `10d7734`/`1955c18`,
 certainty — that specific claim has not been independently re-verified
 with a rigorous certificate this session (it predates today's
 exact-methodology work); everything else on it checks out.
+
+---
+
+## Cusped m003 invariant trace field — rigorously verified (Sep 2 2026)
+
+**[PROVED]** $k_{\rm inv}(m003)\cong\Q(\sqrt{-3})$ (disc $-3$), by the same
+presentation-elimination + certified-interval methodology as everywhere
+else this session — the previously-flagged caveat on the figure's
+"arithmetic correction" panel is now resolved, not just noted.
+
+**Method.** The complete cusped structure is the point of the bare Riley
+variety (relator only, **no** filling equation) where the meridian $\mu$
+is parabolic: $\operatorname{tr}\rho(\mu)=\pm2$. Imposing this exactly on
+the presentation-only ideal gives a $\dim_\Q=4$ locus — **reducible**, not
+prime (unlike the clean $(-2,3)$ case) — that splits under primary
+decomposition into two degree-2 components,
+$V(y{+}z{-}1,\,x{-}z{-}1,\,z^2{+}z{+}1)$ and
+$V(y{-}z{-}1,\,x{-}z{+}1,\,z^2{-}z{+}1)$. Matched the certified 300-bit
+geometric holonomy ($T_a=-0.5-0.866\ldots i$, $T_b=1.5-0.866\ldots i$,
+$T_{ab}=0.5-0.866\ldots i$) against both **numerically** — residual
+$\sim\!10^{-90}$ on the second component, $\sim\!6$ (i.e. not even close)
+on the first — identifying the true geometric component unambiguously,
+not by assumption.
+
+On that component: $z=\operatorname{tr}(ab)$ satisfies $T^2-T+1=0$
+exactly (disc $-3$), with $x=z-1$, $y=z+1$ — plain integer shifts, so
+$\Q(x)=\Q(y)=\Q(z)$ trivially. **Closes to the same full standard as the
+$(-2,3)$ case**: $R/I_{\rm geometric}$ is $\dim_\Q=2$, radical, prime —
+directly $K=\Q(\sqrt{-3})$, no localization needed. Upper inclusion via
+Fricke trace algebra (every trace lies in $K$); lower inclusion since
+$\deg(z)=2=[K:\Q]$. Certified via interval-Newton contraction of the
+exact minimal polynomial at the certified $T_{ab}$ box, same as every
+other geometric-root step this session.
+
+Committed: `reproduce/m003_cusp_itf_certificate.sage`
+(sha256 `0F315A8D626D27B716FA4F149DC17217393AE15C2434D48FFB8CD9545123FA50`),
+log `m003_cusp_itf_certificate.log`
+(sha256 `3CD3A960EAD87761D9963FF3ABB634E63180C4A7C623F6DBE257459519C81F6F`),
+`EXIT=0`.
+
+**Status**: both halves of the m003 arithmetic package — cusped
+$k_{\rm inv}(m003)=\Q(\sqrt{-3})$ and filled $k_{\rm inv}(m003(-2,3))=
+K_{283}$ — are now independently, rigorously certified to the same
+standard. No claim in the figure or the gap report rests on an
+unverified inheritance from earlier relayed context anymore.

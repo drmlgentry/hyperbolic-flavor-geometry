@@ -1,0 +1,82 @@
+
+==============================================================================
+m003 exact cusped presentation (from SnapPy, verified this session)
+==============================================================================
+relator = abAAbabbb  mu = ABABB  longitude = ABAbab
+bare Riley variety generators (pure x,y,z): [x^2 + y - 1, 2*y^2*z + x*z^2 - 2*x*y - 2*x - z, 2*x*y*z + y*z^2 - x*z - z^2 + 2*y, y*z^3 - x*z^2 - z^3 - 4*y*z + 4*x + 4*z, x*z^3 - 4*x*z + z^2 - 4]
+
+==============================================================================
+STEP 1: exact trace formula for the meridian mu = ABABB
+==============================================================================
+tr(mu) reduced (pure x,y,z) = y*z^2 - x*z - y
+
+==============================================================================
+STEP 2: certified geometric holonomy (which sign, exact traces)
+==============================================================================
+verify_hyperbolicity(holonomy=True, bits_prec=300) = True
+certified T_mu = -2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000? + 0.?e-83*I
+certified T_a  = -0.50000000000000000000000000000000000000000000000000000000000000000000000000000000000000? - 0.86602540378443864676372317075293618347140262690519031402790348972596650845440001854058?*I
+certified T_b  = 1.5000000000000000000000000000000000000000000000000000000000000000000000000000000000000? - 0.8660254037844386467637231707529361834714026269051903140279034897259665084544000185406?*I
+certified T_ab = 0.5000000000000000000000000000000000000000000000000000000000000000000000000000000000000? - 0.8660254037844386467637231707529361834714026269051903140279034897259665084544000185406?*I
+
+==============================================================================
+STEP 3: impose the parabolic condition on the correct sign
+==============================================================================
+dim_Q(coordinate ring, tr(mu)=-2 branch) = 4
+radical? True  prime? False
+
+==============================================================================
+STEP 4: primary decomposition -- find the geometric component
+==============================================================================
+number of components: 2
+ component 0 generators: [y + z - 1, x - z - 1, z^2 + z + 1]
+   numeric residual at certified point: 5.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999998
+ component 1 generators: [y - z - 1, x - z + 1, z^2 - z + 1]
+   numeric residual at certified point: 9.66045361954962106272354300324103907418925519311275579014986612302963259649747606906579685e-90
+   ==> THIS is the geometric component.
+
+==============================================================================
+STEP 5: exact field of the geometric component
+==============================================================================
+exact minimal polynomial of z=tr(ab): T^2 - T + 1
+degree: 2
+K = Q(z), [K:Q] = 2
+disc(K) = -3
+
+historical candidate Q(sqrt(-3)): disc = -3
+K isomorphic to Q(sqrt(-3))? True
+
+==============================================================================
+STEP 6: certified interval-Newton root isolation
+==============================================================================
+interval-Newton contraction of p_z at certified T_ab box: True
+
+==============================================================================
+STEP 7: full closure, same standard as the (-2,3) filled case
+==============================================================================
+dim_Q(R/I_geometric) = 2  (matches [K:Q] = 2 )
+radical? True  prime? True
+
+R/I_geometric is a finite-dimensional integral domain over Q, hence
+a field -- and its dimension matches [K:Q] exactly, so R/I_geometric
+= K directly, no localization needed (same clean pattern as the
+(-2,3) filled case). Upper inclusion: x,y,z all lie in R/I_geometric
+= K (in fact x=z-1, y=z+1, integer shifts of z, on this component),
+so by Fricke trace algebra every word trace, hence k_inv(m003),
+lies in K. Lower inclusion: z=tr(ab) has exact degree 2 = [K:Q],
+so Q(z) subset k_inv(m003) already equals K. Both inclusions close.
+
+==============================================================================
+CONCLUSION
+==============================================================================
+k_inv(m003) [cusped] = Q(z)/(T^2 - T + 1) = K, [K:Q]=2, disc(K)=-3
+Isomorphic to the historically-claimed Q(sqrt(-3)): True
+
+Full four-gate closure, same standard as (-2,3): presentation-only
+elimination (F1), certified geometric root via interval-Newton (F2),
+reduced algebra R/I_geometric = K exactly, radical+prime (F3 upper
+inclusion), and deg(z)=[K:Q] (F4 lower inclusion). No algdep/PSLQ
+anywhere in this chain.
+
+CUSPED m003 ITF CERTIFICATE: FULL CLOSURE, PASS
+SAGE_EXIT=0
