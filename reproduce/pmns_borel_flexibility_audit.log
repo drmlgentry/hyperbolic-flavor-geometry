@@ -1,0 +1,51 @@
+=================================================================
+HFG MIXING MATRICES -- CANONICAL REPRODUCIBILITY SCRIPT
+=================================================================
+PMNS: m003  vol=0.981369
+      isosig: cPcbbbdxm_BaBb(-2,3)
+CKM:  m006   vol=2.028853
+      isosig: dLQacccjnjs_aBbB(-5,2)
+
+PMNS words: ['aa', 'aaB', 'baa']  method: Borel Nelder-Mead (column permutation)
+Fitness vs PDG 2024: 0.005087  (target: 0.005087)
+[[0.823355 0.548538 0.145577]
+ [0.284137 0.620475 0.730942]
+ [0.491276 0.560461 0.666732]]
+Angles: θ12=33.67°  θ23=47.63°  θ13=8.37°
+PDG:    θ12=33.65°   θ23=47.64°   θ13=8.57°
+
+CKM  words: ['aaB', 'AbA', 'AAb']  method: Gaussian kernel sigma=0.49
+Fitness vs PDG 2024: 0.016482  (target: 0.016482)
+[[0.974394 0.22458  0.010966]
+ [0.223807 0.973416 0.048709]
+ [0.021614 0.045007 0.998753]]
+
+=================================================================
+ENVIRONMENT
+=================================================================
+Python: 3.13.14
+NumPy:  2.5.1
+SciPy:  1.18.0
+SnapPy: 3.3.2
+dim(parameter space) = 3
+dim(O(3)) = 3 (the manifold |Q| lives on, up to sign/entry-abs)
+=> the model has full LOCAL dimension relative to its own target
+   manifold. A ~12%% hit rate for matching an arbitrary point in a
+   3-dimensional manifold, from a 3-parameter smooth family, is NOT
+   surprising by dimension count alone -- no additional exotic
+   geometric mechanism is needed to explain the ORDER of p~0.1.
+
+======================================================================
+Direct check: Jacobian rank of (p0,p1,p2) -> |Q| at several points
+======================================================================
+p=[0.0, 0.0, 0.0]: Jacobian rank = 3/3, singular values = [1.4142 1.4142 1.4142]
+p=[-1.0, -1.0, 1.0]: Jacobian rank = 3/3, singular values = [1.5259 1.0563 0.5272]
+p=[0.5, -0.3, 0.8]: Jacobian rank = 3/3, singular values = [1.2251 1.0846 0.7457]
+p=[-1.131144, -1.021736, 1.096306]: Jacobian rank = 3/3, singular values = [1.7248 0.5209 0.4211]
+
+======================================================================
+Where the PDG-optimal point sits: is it in a low-sensitivity
+(nearly-degenerate Jacobian) region, or a generic one?
+======================================================================
+singular values at the fitted optimum: [1.72475492 0.52087466 0.4211144 ]
+condition number: 4.095692070717158

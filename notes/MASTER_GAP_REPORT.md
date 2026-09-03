@@ -3369,3 +3369,55 @@ number reproduces live and is real — but the claim that it is
 family can achieve against an arbitrary target is **not supported** by
 the corrected test. This is a substantive finding about the manuscript's
 central phenomenological claim, not a footnote.
+
+---
+
+## Flexibility audit + one exact algebra check (Sep 2 2026)
+
+**Correction to a relayed proposal, before building anything on it.** A
+proposal for explaining the $p\approx0.125$ flexibility posited an
+"invariant critical scale" $L_*$ from a single-bandwidth Gaussian-kernel
+model $K_{ij}(L)=\exp(-d_{ij}^2/2L^2)$. Checked directly against the real
+code (`hfg_reproduce.py`'s `pmns_borel`): **that is not the PMNS
+construction.** It's the *CKM* construction (`ckm_gaussian`, same file,
+uses `sigma`). The real PMNS model has **no kernel and no scalar scale
+at all** — it's a direct 3-real-parameter lower-triangular matrix,
+QR-decomposed straight to $|Q|$. The entire scale-selection apparatus in
+that proposal doesn't apply to the model actually being audited.
+
+**The real, simpler account of the flexibility** (`reproduce/pmns_borel_
+flexibility_audit.py`, sha256
+`29E00C7EA12B273152618BD92D8955F98A366453DB3B872F257910C60E6DE7FD`; log
+sha256 `2C610AAA5C18095FDC0514C52B5D1CD36D86256C91CE7CB4229AB1C3B5B40555`;
+`EXIT=0`): the map $(p_0,p_1,p_2)\mapsto|Q|$ has **full rank $3/3$** at
+every point checked, including the fitted PDG optimum (condition number
+$\approx4.1$, not close to degenerate) — a genuine local diffeomorphism
+onto (a chart of) the 3-dimensional target manifold $|Q|,\ Q\in\mathrm
+O(3)$. A 3-parameter family with full local dimension relative to its
+own 3-dimensional target is *expected* to land near a sizeable fraction
+of random points — dimension-counting alone accounts for $p$ of order
+$10^{-1}$, no exotic invariant geometry required.
+
+**One exact sub-question tested on its own merits** (independent of the
+construction mismatch — a genuine extension of the already-proven m003
+identities): does $\operatorname{tr}^2(AAb)=\operatorname{tr}^2(AABB)$ on
+$X_0$ strengthen to the cross-correlation
+$\Xi(AAb,w)=\Xi(AABB,w)$ for $w\in\{aa,baa\}$, where
+$\Xi(A,B)=(2z-xy)^2/((x^2-4)(y^2-4))$? First verified the $\Xi$ formula
+itself symbolically ($2z-xy=2\operatorname{tr}(A_0B_0)$ for traceless
+parts — confirmed exactly, not assumed). Result:
+**false for both $w$** — cross-multiplied difference reduces to a
+genuinely nonzero degree-11 polynomial in $y$ on $X_0$, for both
+$w=aa$ and $w=baa$
+(`reproduce/m003_gram_cross_correlation_check.sage`, sha256
+`3C79AE1CE1E891C12394867368EDAD64B4FC8D5DE0E11C488395B2A279FA53DC`; log
+sha256 `BB8000A56CFD68C802AA27FF476D274283755A63BFD2193C9973E273B310A3EF`;
+`EXIT=0`). The universal trace identity does not promote to this
+stronger Gram-geometry statement.
+
+**Status**: the $p\approx0.125$ flexibility finding does not need, and
+is not helped by, an exotic invariant-geometry explanation — a direct
+Jacobian-rank check already accounts for it. The one genuinely new,
+well-posed algebraic question the proposal raised was tested exactly and
+came back negative. The 50,000-trial null-test run (tighter estimate of
+the $p\approx0.125$ figure) is still in progress in the background.
