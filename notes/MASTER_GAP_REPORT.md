@@ -3791,3 +3791,198 @@ That refinement would be worth real consideration only for a
 **corrected, non-degenerate** overlap-to-unitary map — not yet
 attempted, and not undertaken here since it would be new construction
 work, not an audit of what already exists.
+
+## Is the reported $F_{\rm PMNS}=0.005087$ actually produced by a
+## 1-parameter $\lambda\!\cdot\!s_{ij}\!\cdot\!(\hat n_i\!\cdot\!\hat n_j)$
+## construction instead of `pmns_borel`'s free 3-parameter fit? **No —
+## checked directly, decisively refuted.**
+
+A relayed claim proposed that the null test above (`k=6625/50000,
+p=0.1325`) tested the wrong construction: that the manuscript's real,
+historical construction is $\ell_{ij}=\lambda\cdot s_{ij}\cdot(\hat
+n_i\cdot\hat n_j)$ — a single continuous scale $\lambda$ (grid,
+$[0.1,5.0]$, 50 values) times a sign $s_{ij}\in\{\pm1\}$ (8
+combinations) times the manifold-fixed dot product — i.e. a
+**1-parameter family**, not `pmns_borel`'s free, unconstrained
+$(p_0,p_1,p_2)\in\mathbb R^3$. If true, this would mean the corrected
+null test (which optimized all three freely) tested a strictly more
+flexible, and therefore easier-to-fool, family than the one that
+actually produced $0.005087$.
+
+**The formula is real** — it is not fabricated. It is
+`archive/scans/pmns_borel_scan.py`'s `borel_fitness()` helper
+(already read and quoted above), used there to cheaply *search* many
+word triples. The genuine question is whether it, not `pmns_borel`,
+is what actually produced the reported $0.005087$ for the specific,
+frozen triple $\{\mathtt{aa},\mathtt{aaB},\mathtt{baa}\}$.
+
+**Checked directly, decisively, on the real data**
+(`reproduce/pmns_lambda_sign_construction_check.py`, sha256
+`b3ea985f1692c70e60b603bbc0834ab328a0355698845cb7b18a9e5a9b3a2300`,
+`EXIT=0`). Real, verified dot products for
+$\{\mathtt{aa},\mathtt{aaB},\mathtt{baa}\}$ on $m003(-2,3)$:
+$d_{12}=-0.722810,\ d_{13}=-0.952584,\ d_{23}=0.883595$. Against the
+precise PDG-2024 target (the one that gives $0.005087$, not the crude
+3-decimal array):
+- $\lambda\cdot s_{ij}\cdot d_{ij}$ grid (50 $\lambda$ values ×
+  8 sign combinations = 400 points): **best fitness $0.238893$** — off
+  by a factor of ~47 from the claimed $0.005087$.
+- `pmns_borel`'s free, unconstrained continuous optimization on the
+  identical triple/manifold: **$0.005087$**, matching the manuscript
+  exactly, as established throughout this report.
+
+**These do not match. The $\lambda$-and-signs construction cannot be
+what produced $0.005087$ for this triple** — no single scale
+$\lambda$ times the fixed dot products, with any of the 8 sign choices,
+reaches anywhere near it; the actual optimum
+$(p_0,p_1,p_2)\approx(-0.867,-1.143,-1.060)$ found by the free
+optimizer is not proportional to $(d_{12},d_{13},d_{23})$ by any common
+factor. The most plausible reading of the codebase's own history: the
+cheap $\lambda$-and-signs grid in `pmns_borel_scan.py` was used only to
+*search* efficiently among many candidate word triples (`combinations`
+over up to 50 unique axes); once a winning triple was identified, the
+reported fitness for it came from a genuinely free, unconstrained
+refinement — exactly what `pmns_borel` (and `pmns_borel_confirmed.py`'s
+`borel_fit_continuous`, also continuous/unconstrained) actually compute,
+and exactly what is cited as the canonical, currently-live construction
+in `hfg_reproduce.py`.
+
+**Consequence for the null test**: the corrected null test
+(`e38e41e`/`3a4b07b`, $k=6625/50000$, $p=0.1325$) used the free,
+unconstrained optimization — the *same* construction that genuinely
+reproduces $0.005087$ for the real triple, checked here directly. That
+is the correct matched-procedure null. Re-running the null under the
+$\lambda$-and-signs construction, as proposed, would test a
+*different* and *weaker* family that does not even reproduce the
+paper's own headline number for its own canonical triple — it would not
+be a fix, it would be testing the wrong thing on both counts.
+
+This does not reopen the separate, larger finding above (every live
+PMNS-Borel construction in the codebase, including this free
+optimization, is manifold-independent by construction) — it only
+settles, in the free optimization's favor, which specific historical
+formula the reported number actually comes from.
+
+## Correction to the above: that check answered a narrower question
+## than it appeared to. The full history, traced to the actual primary
+## source, is more interesting and more specific than either "decisively
+## refuted" or the relayed claim as originally stated.
+
+Pushed, correctly, to actually trace history rather than stop at
+comparing two present-day candidate constructions against each other.
+The entry above tested $\lambda\cdot s_{ij}\cdot d_{ij}$ against the
+**wrong pairing**: the *later* canonical triple
+$\{\mathtt{aa},\mathtt{aaB},\mathtt{baa}\}$ against the *later*, precise
+PDG-2024 target. That comparison is correct on its own terms (and the
+null-test consequence drawn from it stands), but it is not what the
+$\lambda$-and-signs construction was originally claimed for, and so does
+not settle "how it was done in the first place."
+
+**Found the actual primary source**: `hyperbolic-flavor-scan` is not its
+own git repo — it is a subfolder of a much larger repo rooted at
+`C:\dev` (established earlier in this report). That repo's *first*
+substantive commits include a complete, dated PMNS paper draft,
+`framework/papers/hyperbolic-flavor-pmns/gentry-hyperbolic-flavor-pmns.tex`
+(812 lines, commit `e5731d1`, **March 15 2026** — the earliest commit
+in the whole repository's tracked history to mention PMNS-Borel fitness
+at all, predating *every* script examined in this report by weeks).
+Read directly (not relayed), it states, unambiguously, in its own
+Definition~2.1 and \S\ref{sec:construction}:
+$$\ell_{ij} = \lambda\cdot s_{ij}\cdot(\hat n_i\cdot\hat n_j),\quad
+\lambda\in[0.1,5.0]\text{ (50 values)},\ s_{ij}\in\{\pm1\}^3\text{ (8 combos)}.$$
+**This is exactly the relayed claim's formula, verbatim, from the
+primary source** — not fabricated, not a misreading of an intermediate
+search-helper script. The relayed claim was right that this is real and
+historically prior.
+
+The same draft's target matrix (Eq.~\ref{eq:U_pmns_pdg}, and again in
+its appendix) is the **crude 3-decimal array**
+$[[0.821,0.550,0.148],[0.357,0.339,0.871],[0.442,0.762,0.471]]$ — the
+same array used throughout `results_summary.py` and the three
+`archive/scans/pmns_borel_*.py` files, *not* the precise PDG-2024 array
+that gives $0.005087$ in the canonical script. Its own
+"Theoretical minimum" section (5000 unconstrained Nelder-Mead starts,
+zero manifold input — the same kind of computation independently
+confirmed live earlier in this report) gives
+$\mathcal F_\mathrm{min}=0.018968$ at
+$(\ell_{21},\ell_{31},\ell_{32})=(0.443,-0.530,0.432)$. Its results
+table then reports, for real census manifolds under the actual
+$\lambda$-and-signs **scan** (not the unconstrained optimizer): **m003,
+words aa/ab/aB, fitness 0.01897** — the same value, for this triple,
+under the honestly-constrained construction. And critically, spelled
+out explicitly in the paper's own prose (line 364-366): the reported
+solution uses $\lambda=1.0$ exactly (not tuned) and signs $(+,-,+)$,
+i.e. $(\ell_{21},\ell_{31},\ell_{32})$ **is just the raw axis dot
+products of $\{\mathtt{aa},\mathtt{ab},\mathtt{aB}\}$ themselves**, up
+to sign — no fitting at all in this specific reported instance.
+
+**That specific, sharp, checkable claim was tested directly**
+(`reproduce/pmns_original_2026_triple_check.py`, sha256
+`b383df3ee1ff475f12412a82c4145384f7b37c8b3c5594bc2605fce1e3315f6a`,
+`EXIT=0`): computed the real, live axis dot products for
+$\{\mathtt{aa},\mathtt{ab},\mathtt{aB}\}$ on $m003(-2,3)$ today, under
+both SnapPy's default `polished_holonomy()` and the explicit
+cusp-preserving `fundamental_group_args=[True,False,True,False]`
+convention used for rigorous work throughout this report. **Neither
+reproduces the paper's values**:
+- default: $(d_{12},d_{13},d_{23})=(+0.961,+0.921,+0.801)$ — raw
+  ($\lambda=1$) fitness $0.424$; full grid search on these same real
+  axes only reaches $0.101$.
+- explicit cusp-preserving: $(d_{12},d_{13},d_{23})=(+0.925,+0.386,+0.010)$
+  — raw fitness $0.756$; full grid search reaches only $0.375$.
+
+Neither is remotely close to $0.443/{-0.530}/0.432$, nor to fitness
+$0.01897$, under either convention available today.
+
+**This is not a new problem — it is the exact one the original author
+already found and documented, within a month.** The very next
+PMNS-Borel commit in the repository's history after this paper draft,
+`71bea06` (April 12 2026, *"PMNS Borel construction confirmed:
+fitness=0.01897"*), states directly in its own commit message: *"Paper
+words \{aa,ab,aB\} used different generator convention... Construction
+verified independently of paper implementation"* — and responds by
+introducing a **different** word triple,
+$\{\mathtt{aBAb},\mathtt{baba},\mathtt{bABa}\}$, reproducing
+$0.01897$ via genuinely **free, unconstrained continuous optimization**
+instead (`borel_fit_continuous`, already read and quoted earlier in
+this report) — not the $\lambda$-and-signs construction. That free-
+optimization style is what all subsequent work (including
+`pmns_borel_confirmed.py`'s full word-triple search, the May 10 fix to
+the precise PDG-2024 target in commit `6bec2da`, and the final canonical
+`pmns_borel` in `hfg_reproduce.py`) carries forward — plausibly *because*
+the original $\lambda$-and-signs construction's own headline numerical
+claim had already stopped being independently reproducible within a
+month of being written down.
+
+**The complete, honest answer, stated plainly:**
+1. The relayed claim was correct that $\ell_{ij}=\lambda\cdot
+   s_{ij}\cdot(\hat n_i\cdot\hat n_j)$ is a real, primary-source,
+   chronologically prior construction — not fabricated, not confined to
+   an incidental search-helper script. It is Definition 2.1 of the
+   original March 2026 paper draft.
+2. That construction's own headline numerical claim
+   ($\{\mathtt{aa},\mathtt{ab},\mathtt{aB}\}$ on m003, raw dot products
+   $\approx(0.443,-0.530,0.432)$, fitness $0.01897$) is **not
+   independently reproducible today**, under either generator convention
+   tried — and this exact irreproducibility was already flagged by the
+   paper's own author in April 2026, one commit later, as a known,
+   named issue ("different generator convention"), not something this
+   session is the first to notice.
+3. Every construction that *is* independently, currently reproducible —
+   `pmns_borel_confirmed.py`'s free search (April), the canonical
+   `pmns_borel` (current, GitHub-verified) — uses free, unconstrained
+   continuous optimization, not the $\lambda$-and-signs family, and (per
+   the manifold-independence finding earlier in this report) is
+   manifold-independent regardless of which word triple or manifold
+   feeds it.
+4. So the corrected null test's methodology
+   ($k=6625/50000$, $p=0.1325$, free optimization) remains the right
+   match for the construction that is *actually, currently, verifiably*
+   producing $0.005087$ — that conclusion from the entry above still
+   stands. What changes is the historical account: the
+   $\lambda$-and-signs construction is not a fabrication or a
+   misattributed search-helper artifact, it is the genuine origin of the
+   *project's* Borel-construction idea — it simply appears to have
+   broken, on its own specific numerical claim, before this project's
+   git history had gone even one month, for reasons (a SnapPy version
+   or generator-labeling change) not further diagnosed here.
