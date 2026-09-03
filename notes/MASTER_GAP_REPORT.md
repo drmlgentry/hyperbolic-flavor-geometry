@@ -3086,3 +3086,51 @@ component $Y_-$ is confirmed distinct from both $X_{-2,3}$ and the
 reducible locus. The identity of $Y_-$ is the one remaining open item on
 this branch. It blocks nothing above and is not being pursued further
 unless it turns out to matter structurally.
+
+---
+
+## PMNS invariant trace field — FULL FOUR-GATE CLOSURE (Sep 2 2026)
+
+**[PROVED]** $k_{\rm inv}(m003(-2,3)) \cong K_{283}$, completing gates
+F3/F4 (reduced character algebra) on top of the F1/F2 result already
+certified (`pmns_itf_certificate.sage`). Genuinely simpler than CKM's
+analogous closure: no nilpotent thickening to quotient away.
+
+Directly computed $R/I_{\rm filled}$ (the coordinate ring of the
+$(-2,3)$-filled character variety, already derived): $\dim_\Q = 4$
+exactly (matching $[K_{283}:\Q]$, no extra multiplicity), **radical**
+(no nilpotents — unlike CKM, which needed $u=z-x$, $u^2=0$ stripped
+out first) and **prime**. A finite-dimensional integral domain over a
+field is automatically a field, so $R/I_{\rm filled}$ **is** $K_{283}$
+directly — no localization step needed at all.
+
+- **Gate F3 (upper inclusion)**: every word trace is a Fricke polynomial
+  in $x,y,z$ (standard fact); at the geometric point $x,y,z\in
+  R/I_{\rm filled}=K_{283}$, so every squared trace does too — hence
+  $k_{\rm inv}(M_{\rm PMNS})\subseteq K_{283}$.
+- **Gate F4 (lower inclusion)**: $x^2=\operatorname{tr}^2\rho(a)$ is
+  manifestly in $k_{\rm inv}$ by definition; its exact minimal polynomial
+  is $T^4-T^3-2T^2+1$, degree $4=[K_{283}:\Q]$, so $\Q(x^2)=\Q(x)=K_{283}$
+  — giving $K_{283}\subseteq k_{\rm inv}(M_{\rm PMNS})$.
+
+Together: $k_{\rm inv}(M_{\rm PMNS})=K_{283}$ exactly. Re-derived and
+re-confirmed gates F1 (presentation-only elimination) and F2 (certified
+geometric root, interval-Newton on the exact minimal polynomial
+$x^4-x^3-1$ of $\operatorname{tr}(a)$, contracted at the certified
+300-bit holonomy) inside the same script, for a single self-contained
+four-gate record.
+
+Committed: `reproduce/pmns_itf_reduced_algebra.sage`
+(sha256 `F680AC87EA956EF8A9BC069B37CD620B2B74F9D33F87F4A282760F7022751D23`),
+log `pmns_itf_reduced_algebra.log`
+(sha256 `46DE41A7CCC142D59CF11401382ADF0A7AED6DEF73A7E514C2D38E4380AD0D7B`),
+`EXIT=0`. Same class of bug hit and fixed along the way as elsewhere this
+session: a raw multivariate-to-univariate polynomial coercion across
+different ring objects fails silently-then-loudly in this Sage version
+(`TypeError: ... is not a constant polynomial`) — needs an explicit ring
+homomorphism, not a bare cast.
+
+**Status**: the PMNS invariant trace field theorem is now proved to the
+same standard as CKM's — full four-gate closure, no algdep/PSLQ anywhere
+in the proof chain. The PMNS Borel/phenomenology work (fitness, null
+tests, scan redesign) remains untouched and separate, as designed.
