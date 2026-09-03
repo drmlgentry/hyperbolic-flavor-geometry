@@ -3421,3 +3421,79 @@ Jacobian-rank check already accounts for it. The one genuinely new,
 well-posed algebraic question the proposal raised was tested exactly and
 came back negative. The 50,000-trial null-test run (tighter estimate of
 the $p\approx0.125$ figure) is still in progress in the background.
+
+---
+
+## PMNS CP-phase invariance audit — one real, serious problem found
+
+## (Sep 3 2026)
+
+The manuscript's zero-free-parameter CP phase, $\delta_{\rm HFG}=(\pi+
+\varphi(\mathtt{aaB})+\varphi(\mathtt{baa}))\bmod360^\circ=195.91^\circ$
+with $\varphi(\gamma)=\operatorname{Im}\log\lambda(\gamma)$ ($\lambda$
+the dominant eigenvalue of $\rho(\gamma)$), was audited for four
+invariance properties before any significance/census testing —
+following the recommendation that this cheap audit should come first.
+Result: **three pass cleanly, one fails badly and is exactly why the
+paper's number came out the way it did.**
+
+Certificate: `reproduce/pmns_cp_invariance_audit.sage`
+(sha256 `6F7476437FD29F418B3AECC55581E4D7ADE93D801528EE6C05FF54C173415D3F`),
+log sha256 `A04B3ED9A0AB711FFD046AF14F6163C8F552CB74F3BE4D8A0918CC18AB14E02F`,
+`EXIT=0`, 150-bit precision (matching the manuscript's stated precision).
+
+- **Conjugation invariance: PASS**, exactly ($0.000\ldots0^\circ$ diff
+  under $\rho\to g\rho g^{-1}$ for a fixed test $g$) — as expected
+  mathematically, confirmed rather than assumed.
+- **Word-inverse convention: PASS**, and not the way one might guess —
+  $\varphi(w)=\varphi(w^{-1})$ **exactly** (not antisymmetric), because
+  the "dominant" (larger-$|\cdot|$) eigenvalue selection picks the *same*
+  complex number for $w$ and $w^{-1}$, not its reciprocal.
+- **Central-sign/lift dependence: real in principle, not live in
+  practice.** Confirmed a twist $\rho(w)\to-\rho(w)$ shifts $\varphi(w)$
+  by *exactly* $-\pi$ (verified to full precision) — this would be
+  catastrophic if the sign were ambiguous. But $H^1(m003(-2,3);\Z/2)=0$
+  (already established: $H_1\cong\Z/5$ has odd order) rules out any such
+  ambiguity for the closed group's genuine $\mathrm{SL}_2(\mathbb C)$
+  representation. Checked, not assumed — and it's fine.
+- **Generator-basis dependence: FAILS, and matches the manuscript's own
+  number.** `SnapPy`'s **default** `polished_holonomy()` (no
+  `fundamental_group_args`) gives filled relators
+  `('ababAbbAb','abAbaabAbaBAB')` — **different generators than the
+  actual cusped presentation** (`'abAAbabbb'`, independently verified
+  via SnapPy's own cusped `fundamental_group()` output repeatedly this
+  session). Under this default basis: $\varphi(\mathtt{aaB})=
+  -176.731^\circ$, $\varphi(\mathtt{baa})=-167.362^\circ$ —
+  **matches the manuscript's stated values to 3 decimal places
+  exactly**, and $\delta_{\rm HFG}=195.907^\circ$, matching $195.91^\circ$.
+  Under the **explicit, verified-correct** basis
+  (`fundamental_group_args=(True,False,True,False)`, the same one used
+  throughout this session's rigorous work, preserving the actual cusped
+  relator): $\varphi(\mathtt{aaB})=+135.399^\circ$,
+  $\varphi(\mathtt{baa})=+168.556^\circ$, and
+  $$\delta_{\rm HFG}=123.955^\circ.$$
+  **A completely different number**, $72^\circ$ away from the claimed
+  value, from the *same* manifold and the *same* nominal words
+  $\mathtt{aaB},\mathtt{baa}$ — because those letters denote different
+  actual group elements depending on which generating set SnapPy happens
+  to hand back.
+
+**What this means, stated plainly**: "$\mathtt{aaB}$" and "$\mathtt{baa}$"
+are not well-defined without specifying a generating set, and the
+manuscript never documents which one it used. The "zero free parameters"
+framing has an undocumented, highly consequential methodological choice
+hiding inside it — one that happens to be the choice producing the
+number close to the PDG value. This is a serious problem with
+Theorem~\ref{thm:cp} as stated, independent of and prior to any
+significance/census testing (which should not proceed until this is
+resolved, per the proposed sequencing). It does not by itself mean
+$195.91^\circ$ is "wrong" — it means the claim as stated is not yet
+well-posed, and whichever basis is used needs to be stated and justified,
+not left implicit.
+
+**Not yet done**: identifying *why* SnapPy's default call picks that
+particular non-cusp-preserving generating set (deterministic vs.
+triangulation-dependent), and whether there's a principled reason to
+prefer one basis over the other beyond "which one was used." The
+census-level CP significance tests proposed alongside this should wait
+on that resolution.
