@@ -3305,3 +3305,67 @@ the **already-selected** word triple, confirmed via 40-start convergence
 construction" oversells this if read as covering triple selection too.
 Suggested fix: "minimum within the reported physical-target word/$\sigma$
 scan," matching what was actually tested.
+
+---
+
+## SUPERSEDES THE ABOVE: the null test used the wrong construction —
+
+## real result is p≈0.13, not p<1e-4 (Sep 2 2026, same day)
+
+**The $k=0/50{,}000$ result immediately above is WRONG — wrong
+construction, not just an incomplete run — and must not be cited or
+promoted.** Caught by the user asking directly "are you using the
+correct construction?" before this got written into anything more
+permanent than the gap report.
+
+**The error**: the first null-test script froze the *entire* fitted
+matrix, including the $L_m$ Nelder–Mead optimization, and only varied
+the Haar target — testing "does a random target happen to land near one
+fixed point," a far weaker and less meaningful null than what the
+manuscript actually describes. Re-reading the manuscript's own text
+closely: *"it asks whether the already-selected canonical triple's
+construction is special relative to Haar-random targets... not whether
+the full search procedure itself is expressive enough to fit an
+arbitrary target well"* — contrasted explicitly against CKM's per-target
+re-search. What that sentence freezes is the **word triple**
+($\{\mathtt{aa},\mathtt{aaB},\mathtt{baa}\}$, never re-searched) — it
+says nothing about freezing $L_m$ too. The correct null re-optimizes
+$L_m$ fresh for every Haar target (word triple held fixed), exactly as
+"the construction" is defined and actually used against the real PDG
+target.
+
+**Corrected result, 2000 trials** (`reproduce/pmns_null_test_correct_
+construction.py`, sha256
+`AC59E65A2C4DADC90BF322B26E8BD858F9267B33E62EB716138D25CFD6F68206`; log
+`pmns_null_test_correct_construction_2000.log`, sha256
+`D12DB499C64FEE7BDC92E577A97EF3F873557D2612EC19E26A7371FB0098D74E`;
+`EXIT=0`): re-derived the real fitness fresh ($0.00508727\ldots$,
+matches), then re-optimized $L_m$ against $2000$ fresh Haar targets.
+
+$$\boxed{k=250/2000,\quad \hat p \approx 0.125}$$
+
+null distribution mean $0.084$, std $0.079$, minimum effectively $0$.
+**Not remotely close to $p<10^{-4}$.** Sanity-checked directly, not just
+trusted: printed five actual trials, including one (fitness $0.0006$)
+that *beats* the real PMNS fit against a random target, with the
+achieved and target matrices visibly matching entry-by-entry after
+permutation — this is a genuine flexibility of the 3-parameter
+$L_m\to QR\to|Q|$ family, not a bug.
+
+**Full $50{,}000$-trial run in progress** (background, ~1.6hr estimated,
+`--seed 20260902`, same construction) — will supersede the 2000-trial
+number with a tighter estimate when it completes; the qualitative
+conclusion ($p$ of order $10^{-1}$, not $10^{-4}$) is already
+statistically unambiguous from 2000 trials and is not expected to change
+in kind.
+
+**What this means, stated plainly**: the manuscript's claimed
+significance for the PMNS Borel fitness ($p<10^{-4}$) rests on a null
+test that measured the wrong thing. The corrected, properly-scoped null
+test does not support that significance claim. This does **not** mean
+$\mathcal F_{\rm PMNS}=0.005087$ is wrong as a fitted value — that
+number reproduces live and is real — but the claim that it is
+*statistically special* relative to what this 3-parameter construction
+family can achieve against an arbitrary target is **not supported** by
+the corrected test. This is a substantive finding about the manuscript's
+central phenomenological claim, not a footnote.
