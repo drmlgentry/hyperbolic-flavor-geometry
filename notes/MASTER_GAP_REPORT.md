@@ -3173,7 +3173,47 @@ log `m003_identify_Y_minus.log`
 **This closes the m003 $B/Abb$ branch completely** — no open items
 remain. All five results now stand: Theorem A, the signed $(-2,3)$
 characterization, the exact conjugacy proof, the PMNS-word overlap, and
-now the full identification of $Y_-$. (The *squared*-trace strengthening
-remains correctly marked false as stated — $Y_-$ being a sign-lift of
-$X_{-2,3}$ doesn't change that the squared locus has two components, it
-just means both of them are, in the relevant sense, "the same" filling.)
+now the full identification of $Y_-$.
+
+**Corrected, precise squared-trace statement (Sep 2 2026, same day).**
+With $Y_-$ now identified exactly as $\iota(X_{-2,3}^+)$ for the sign
+involution $\iota(x,y,z)=(-x,y,-z)$, the earlier "false as stated, do not
+publish" verdict on the squared-trace theorem is refined, not reversed:
+
+- **At the $\mathrm{SL}_2(\mathbb C)$ level**, the theorem as originally
+  proposed (single component) is still false — there are genuinely two
+  components, $X_{-2,3}^{+,\rm irr}$ and $X_{-2,3}^{-,\rm irr}=\iota
+  (X_{-2,3}^{+,\rm irr})$. **Do not write the single-component $\mathrm
+  {SL}_2$ version.**
+- **At the $\mathrm{PSL}_2(\mathbb C)$ level**, projection identifies
+  $+I$ and $-I$, and squared traces are invariant under $\iota$ (which
+  only ever flips signs). So on **irreducible projective characters**,
+  $$\operatorname{tr}^2\rho(B)=\operatorname{tr}^2\rho(Abb)
+  \iff \chi_\rho \in X_{-2,3}^{\rm irr}\ (\text{projectively}),$$
+  which **is** true and safe to publish, with the SL₂/PSL₂ distinction
+  stated explicitly.
+
+**One terminology correction adopted**: do not describe $Y_-$ as "the
+other $\mathrm{SL}_2(\mathbb C)$ lift of the closed manifold
+representation" (language used in the identification commit above) — its
+filling word maps to $-I$, not $+I$, so it is not an
+$\mathrm{SL}_2(\mathbb C)$ representation of the closed group
+$\pi_1(m003(-2,3))$ at all. Precise statement: $Y_-$ is the sign-twisted
+$\mathrm{SL}_2(\mathbb C)$ lift *of the cusped group* $\pi_1(m003)$,
+whose underlying $\mathrm{PSL}_2(\mathbb C)$ representation is the same
+one that factors through the $(-2,3)$ filling. Consistent with
+$H^1(m003(-2,3);\mathbb Z/2)=0$ (forced since $H_1\cong\mathbb Z/5$ has
+odd order) — the *closed* group genuinely has no nontrivial sign
+character, so no such twist exists once you're actually on the filled
+manifold; the twist lives one level up, on the cusped group, before
+filling is imposed.
+
+A visual summary (`ChatGPT Image Sep 2, 2026, 10_53_10 PM.png`, in the
+author's Downloads) was checked against this record: every provenance
+hash on it (`013f63a`/`9d78c1b`, `4ff56a8`/`f9e8fa3`, `10d7734`/`1955c18`,
+`dbcc03d`/`4d6ea1d`) matches the real commits exactly. One caveat: its
+"arithmetic correction" panel states $k_{\rm inv}(m003)=\Q(\sqrt{-3})$
+(the *cusped* field) alongside the filled-field result with equal visual
+certainty — that specific claim has not been independently re-verified
+with a rigorous certificate this session (it predates today's
+exact-methodology work); everything else on it checks out.
