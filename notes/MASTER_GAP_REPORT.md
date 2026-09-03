@@ -3419,8 +3419,24 @@ stronger Gram-geometry statement.
 is not helped by, an exotic invariant-geometry explanation — a direct
 Jacobian-rank check already accounts for it. The one genuinely new,
 well-posed algebraic question the proposal raised was tested exactly and
-came back negative. The 50,000-trial null-test run (tighter estimate of
-the $p\approx0.125$ figure) is still in progress in the background.
+came back negative.
+
+**Update — the full $50{,}000$-trial run has completed** (log
+`pmns_null_test_correct_construction_50000.log`, sha256
+`1B71E3033B13577D7C8744831E60D98BBD24488C5F01DEB8CF3B8AD953C7E198`; raw
+fitness array `pmns_null_correct_50000.npy`, sha256
+`95C1B9F93BCE19BB4442682774144F3FFFD347932D076BB04A005443EBE394E4`;
+`EXIT=0` — wall time $\approx8$hr, a late chunk ran far slower than
+projected, machine contention overnight, not a computation issue):
+
+$$\boxed{k=6625/50{,}000,\quad p=0.1325}$$
+
+Null distribution mean $0.0844$, std $0.0816$, min $\approx0$, max
+$0.436$. Extremely consistent with the $2000$-trial estimate
+($p\approx0.125$), now with a far tighter interval. **Definitively not
+$p<10^{-4}$.** This is the final number for the corrected PMNS Borel
+null test; no further reruns planned unless the construction itself
+changes.
 
 ---
 

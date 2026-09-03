@@ -1,0 +1,62 @@
+=================================================================
+HFG MIXING MATRICES -- CANONICAL REPRODUCIBILITY SCRIPT
+=================================================================
+PMNS: m003  vol=0.981369
+      isosig: cPcbbbdxm_BaBb(-2,3)
+CKM:  m006   vol=2.028853
+      isosig: dLQacccjnjs_aBbB(-5,2)
+
+PMNS words: ['aa', 'aaB', 'baa']  method: Borel Nelder-Mead (column permutation)
+Fitness vs PDG 2024: 0.005087  (target: 0.005087)
+[[0.823355 0.548538 0.145577]
+ [0.284137 0.620475 0.730942]
+ [0.491276 0.560461 0.666732]]
+Angles: θ12=33.67°  θ23=47.63°  θ13=8.37°
+PDG:    θ12=33.65°   θ23=47.64°   θ13=8.57°
+
+CKM  words: ['aaB', 'AbA', 'AAb']  method: Gaussian kernel sigma=0.49
+Fitness vs PDG 2024: 0.016482  (target: 0.016482)
+[[0.974394 0.22458  0.010966]
+ [0.223807 0.973416 0.048709]
+ [0.021614 0.045007 0.998753]]
+
+=================================================================
+ENVIRONMENT
+=================================================================
+Python: 3.13.14
+NumPy:  2.5.1
+SciPy:  1.18.0
+SnapPy: 3.3.2
+======================================================================
+PMNS BOREL NULL TEST -- CORRECT CONSTRUCTION (re-optimize per target)
+======================================================================
+Python: 3.13.14
+NumPy: 2.5.1  SciPy: 1.18.0
+SnapPy: 3.3.2
+N_TRIALS = 50000  SEED = 20260902
+
+Re-deriving the real fitness against PDG (sanity check):
+fitness vs PDG = 0.00508727434217879
+  5000/50000 done, 601.6s elapsed, est total 6016.4s
+  10000/50000 done, 1155.4s elapsed, est total 5777.1s
+  15000/50000 done, 1726.5s elapsed, est total 5755.1s
+  20000/50000 done, 2268.7s elapsed, est total 5671.8s
+  25000/50000 done, 2793.1s elapsed, est total 5586.2s
+  30000/50000 done, 3483.7s elapsed, est total 5806.2s
+  35000/50000 done, 4054.1s elapsed, est total 5791.5s
+  40000/50000 done, 4602.5s elapsed, est total 5753.2s
+  45000/50000 done, 5152.1s elapsed, est total 5724.6s
+  50000/50000 done, 28845.8s elapsed, est total 28845.8s
+
+======================================================================
+RESULT (CORRECT CONSTRUCTION)
+======================================================================
+N_TRIALS = 50000
+target fitness (re-optimized vs PDG) = 0.00508727434217879
+exact exceedance count k = 6625
+exact empirical p = k/50000 = 0.132500
+null distribution: mean=0.084381  std=0.081584  min=0.000000  max=0.435778
+wall time: 28845.9 sec
+saved raw fitnesses to reproduce/pmns_null_correct_50000.npy
+EXIT=0
+EXIT=0
