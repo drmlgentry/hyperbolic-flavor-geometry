@@ -3513,3 +3513,126 @@ triangulation-dependent), and whether there's a principled reason to
 prefer one basis over the other beyond "which one was used." The
 census-level CP significance tests proposed alongside this should wait
 on that resolution.
+
+## Census-wide PMNS + CP audit — the PMNS fitness statistic is
+## **manifold-independent** (disqualifying, not just non-significant);
+## the CP result is real and striking (rank 1/134) but inherits the
+## generator-basis caveat above
+
+Proceeding with the recommended sequencing (invariance audit first, done
+above), ran the requested census-wide test against the 134-manifold
+$H_1\cong\Z/5$ census (`data/h1z5_manifold_list.json` — the same dataset
+already used for CKM's own rank-82/134 census result), using SnapPy's
+*default* `polished_holonomy()` uniformly (the convention shown above to
+match what the manuscript's own $\delta_{\rm HFG}=195.91^\circ$ actually
+used — not claimed to be geometrically canonical) and the frozen,
+historical word triple `aa,aaB,baa` (not re-searched per manifold — this
+is the cheap "historical replication" test, not the more expensive
+"full-selection null").
+
+Certificate: `reproduce/pmns_cp_census_audit.py`
+(sha256 `09e37a8eabc5264e50e761026a3122d19ebdd44806f7f6a1c5e54b50e9543b66`),
+results `reproduce/pmns_cp_census_results.json`
+(sha256 `b8ade2d18e45b3aefb748569109d954813ef7a1b224a7f43297b6a55756d7f76`),
+`EXIT=0`, 0/134 failures, wall time 19.2s.
+
+**PMNS fitness result — degenerate, not merely non-significant.**
+$F_M = 0.005087274$ for **every single one of the 134 manifolds**, to 9
+decimal places: min = p10 = median = p90 = max, all identical. This is
+not "not significant" — it is traced to an exact cause:
+
+- `pmns_borel`'s Nelder–Mead objective `f(p)` is built from the free
+  parameter $p=(p_0,p_1,p_2)$ and the fixed `PMNS_PDG` target only; the
+  manifold-derived quantities $d_{12},d_{13},d_{23}$ (dot products of
+  the geodesic axes of `aa`,`aaB`,`baa`) are computed but used **only**
+  to seed one of four Nelder-Mead starting points — two of the other
+  three (`[-1,-1,1]`,`[-2,-2,1]`) don't depend on the manifold at all.
+- Verified directly
+  (`reproduce/pmns_borel_manifold_independence_check.py`,
+  sha256 `5ae546f2766358cdcdc77c48c4cddd20f70f3203946d67e09ba495ca8cb89492`,
+  `EXIT=0`): substituting **literally random unit vectors** for the
+  manifold's holonomy-derived axes still gives fitness $=0.005087274$ to
+  9 decimals, across 6 independent random trials. A **single**
+  Nelder-Mead restart from `x0=[0,0,0]` — zero manifold information at
+  all — reproduces the identical value.
+- Confirmed by calling the literal, unmodified `pmns_borel(M, words)`
+  (not a reimplementation) on 5 different census manifolds
+  (`reproduce/pmns_borel_direct_call_check.py`,
+  sha256 `ecb845f7c925eaffc48e4dfd7dcc15e45c080a8530e6b1dee044d04142fee4ce`,
+  `EXIT=0`): fitness $=0.005087274$, identical, for all 5.
+
+**Conclusion**: the "$0.005087$" statistic is the global minimum
+distance from `PMNS_PDG` to the 3-parameter matrix family
+$\{|QR(L_m)|\}$ — a fact purely about that family's shape relative to
+the fixed PDG target, carrying **zero information about $m003(-2,3)$'s
+hyperbolic geometry, or any manifold's holonomy whatsoever**. This was
+half-documented already in `pmns_borel`'s own docstring ("confirmed:
+free optimization recovers identical params to constrained scan")
+without recognizing this as disqualifying rather than a robustness
+feature. It retroactively explains the earlier flexibility-audit finding
+(Jacobian full rank 3/3 everywhere, condition number $\approx4.1$) and
+the corrected null-test result ($p\approx0.13$, not vanishingly small):
+both were detecting the same underlying fact — a free, unconstrained,
+manifold-independent optimization against a fixed target — through
+different lenses, without isolating the root cause until now.
+
+This **supersedes** every previous framing of the PMNS Borel result as a
+geometric-encoding claim. The census rank this run computed (21st/134,
+all 134 values exactly tied, order set only by float/dict comparison
+tie-breaking) is void for the same reason — there is no meaningful rank
+among 134 identical numbers. Any claim that "$m003(-2,3)$ uniquely/
+specially reproduces PMNS via its Borel-parameter geometry" is **not
+supported** by this statistic as constructed: a genuine geometric-
+encoding claim would need an objective whose value actually depends on
+the manifold's holonomy, which `hfg_reproduce.py`'s `pmns_borel` as
+written does not provide.
+
+**CP phase census result — real (not degenerate), and striking, but
+inherits the generator-basis caveat from the invariance audit above.**
+$\varphi(g)=\mathrm{Im}\log\lambda(g)$ is a direct, deterministic
+function of the representation — no free optimization, no parametrized
+family to trivially minimize against — so it does not suffer the PMNS
+statistic's degeneracy.
+
+Result: $\delta_{m003}=195.907^\circ$ (matches the manuscript exactly,
+as expected under this basis), circular distance to the PDG target
+$\delta_{CP}=197.0^\circ$ is $d_{CP}(m003)=1.093^\circ$ — **rank 1st out
+of 134**, the single closest manifold in the census to the PDG value.
+Census distribution of $d_{CP}$: min$=1.09^\circ$ ($=m003$ itself),
+p10$=32.1^\circ$, median$=102.5^\circ$, p90$=165.0^\circ$,
+max$=179.7^\circ$ — roughly consistent with $d_M$ behaving close to
+uniform on $[0^\circ,180^\circ]$ across generic census manifolds, against
+which $m003$'s $1.09^\circ$ stands out sharply.
+
+**Caveats, stated plainly:**
+1. This is the cheap "historical replication" test (frozen word triple,
+   not re-searched per manifold), not the more expensive
+   "full-selection null" — per the proposed sequencing, the correct
+   first step, but not the final word.
+2. Uses SnapPy's *default* generator basis uniformly, chosen because it
+   matches what the manuscript actually computed for $m003$ itself — not
+   because it has been shown geometrically canonical. The invariance
+   audit above found the alternative, cusp-preserving, verified-correct
+   basis gives $\delta_{\rm HFG}=123.955^\circ$ for $m003$ instead —
+   $72^\circ$ away. **This census has not yet been re-run under that
+   alternative basis**; whether $m003$ stays rank-1/134 there is
+   untested, and could differ, since both the target-relative distance
+   and the whole comparison pool would change together.
+3. "Rank 1/134" alone corresponds to an empirical one-sided estimate of
+   roughly $1/134\approx0.0075$ under an exchangeability null — suggestive,
+   but this is a raw empirical rank from one 134-manifold run, not a
+   fitted distributional $p$-value, and should not be inflated into a
+   "$p<10^{-4}$"-class claim.
+
+**Bottom line for the proposed reset-phenomenology sequencing**: Test A
+(PMNS census) returns a **degenerate, uninterpretable result** — not
+"PMNS fails the census test," but "the test as implemented cannot probe
+PMNS at all, because the statistic never depended on the manifold."
+Test B (CP census, historical-replication mode) returns a genuine,
+striking result (rank 1/134) that survives this round of scrutiny,
+carrying forward the one open caveat (generator-basis choice) already
+flagged above. The proposed joint test (Fisher combination of A and B)
+is **not meaningful until Test A is either replaced by a genuinely
+manifold-dependent PMNS statistic, or dropped** — combining a degenerate
+statistic with a real one does not produce a meaningful joint
+significance.
