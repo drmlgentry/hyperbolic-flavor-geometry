@@ -2991,3 +2991,83 @@ variety as a whole), while $B/Abb$ is a genuine $(-2,3)$-specific
 degeneracy (a fact about one filling). Both proved, both explained, by
 the same primary-decomposition method applied to the same underlying
 object.
+
+---
+
+## $B/Abb$: complete squared locus, exact group conjugacy, PMNS link
+
+## (Sep 2 2026)
+
+Three follow-ups, one corrected overclaim risk, one real connection to
+PMNS found and reported honestly (not oversold).
+
+**1. Complete squared-trace locus — corrects a would-be overclaim before
+it happened.** Primary-decomposed *both* signed branches
+($\operatorname{tr}(Abb)\mp\operatorname{tr}(B)$), not just the one
+already done. Result: the full non-reducible locus of
+$\operatorname{tr}^2(B)=\operatorname{tr}^2(Abb)$ has **two** components,
+not one — $X_{-2,3}$ exactly (as before), plus a second, distinct
+irreducible component from the other branch. An identification attempt
+(is it $m003(2,-3)$, the same unoriented slope as $(-2,3)$ under the
+standard $(p,q)\sim(-p,-q)$ relabeling?) was tried and came back
+inconclusive — a bug in that specific comparison, not a finding — so no
+claim is made about which slope, if any, the second component
+corresponds to. **The correct statement is "two components," not "exactly
+$X_{-2,3}$"** — a stronger, cleaner-sounding claim was on the table and
+is explicitly not being made. Does not affect the atlas's own empirical
+claim (unique among the 13 *checked* fillings), which was never a claim
+about the complete algebraic locus.
+
+**2. Exact group-theoretic conjugacy — the strong mechanism, proved.**
+Tested whether $B$ and $Abb$ are literally conjugate in
+$\pi_1(m003(-2,3))$, not just trace-equal. Two independent routes:
+
+- *GAP's general `IsConjugate`* on the infinite finitely-presented group:
+  timed out at 180s (a real script bug — API mismatch,
+  `gapQ(B)`/`gapQ.IsConjugate` are not valid coercions in this Sage
+  version — was fixed first; the *fixed* version is what timed out).
+  Inconclusive by this method, exactly the risk flagged going in (same
+  class of issue as the CKM normal-closure attempt).
+- **Faithful-representation route (successful, exact)**: searched
+  numerically (certified 300-bit discrete-faithful holonomy) for a short
+  conjugator, found $g=\mathtt{BaBA}$ (length 4) with
+  $gBg^{-1}=Abb^{-1}$ to $\sim\!10^{-30}$; then verified this **exactly**
+  via the Fricke chart — $gBg^{-1}(Abb)^{-1}$ reduces to the zero matrix
+  modulo the $(-2,3)$ filled ideal, at *every* point of the filled
+  variety, not just numerically at one. Since the discrete-faithful
+  representation is **faithful** (injective — standard for a complete
+  finite-volume hyperbolic structure), an exact matrix identity there
+  already proves the abstract group identity
+  $$\mathtt{BaBA}\cdot B\cdot(\mathtt{BaBA})^{-1} = (Abb)^{-1}
+  \quad\text{in } \pi_1(m003(-2,3)),$$
+  with no word-problem solver needed. $B$ and $Abb$ are genuinely
+  conjugate (via the inverse) in the filled group itself — not merely
+  equal in trace, and not merely true at one representation. This is
+  strictly stronger than the character-variety result: it means
+  $\operatorname{tr}(B)=\operatorname{tr}(Abb)$ for *every* $\mathrm{SL}_2
+  (\mathbb C)$ representation of the filled group whatsoever, not only
+  the ones already checked on the character variety.
+
+**3. A real, concrete connection to PMNS — reported precisely, not
+oversold.** The historical PMNS Borel construction's word triple is
+$\{\mathtt{aa},\mathtt{aaB},\mathtt{baa}\}$. Canonicalizing (the same
+cyclic/inverse equivalence the atlas itself uses): $\mathtt{aaB}$ is
+*literally the same conjugacy class as* $\mathtt{AAb}$ — one of the two
+words in the proven-universal identity $AAb\equiv AABB$ (holds at
+*every* hyperbolic Dehn filling of m003, not just $(-2,3)$; see the
+entry immediately above). $\mathtt{aa}$ is correctly absent from the
+atlas (it is a proper cyclic power of the length-1 word $\mathtt a$,
+excluded by the atlas's own dedup rule — not an omission). This is a
+genuine, checkable fact, found by canonicalizing real words against the
+already-committed atlas data — **not** evidence that the PMNS
+construction's fitness is explained by, or depends on, this structure.
+It shows one of the three historically-selected words happens to sit
+inside a mathematically distinguished (but filling-independent, hence
+not $(-2,3)$-specific) identity — worth recording, not worth building a
+narrative on without further work.
+
+Committed: `reproduce/m003_squared_locus_and_conjugacy.sage`
+(sha256 `3EDD1A182EE842965EFF4B03AEC462142905CA8C798B02B07FF2FE5AD7BBC44C`),
+log `m003_squared_locus_and_conjugacy.log`
+(sha256 `FC94C54BABE38C079D99C5927FA715EDBD2901E008CCB9B38503DB474FBF5606`),
+`EXIT=0`.

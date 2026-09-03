@@ -1,0 +1,98 @@
+
+==============================================================================
+PART 1: complete squared-trace locus -- both signed branches
+==============================================================================
+Cplus  = tr(Abb) - tr(B) = x*y^2 - y*z - x - y
+Cminus = tr(Abb) + tr(B) = x*y^2 - y*z - x + y
+
+==============================================================================
+Branch: C_plus (tr(Abb)=tr(B))
+==============================================================================
+unit ideal (no solutions at all on the bare presentation)? False
+number of irreducible components: 2
+ component 0: generators = [z^2 + x + y - 1, y*z - x - z, x*z + 1, y^2 - y + z - 1, x*y - x - y - z + 1, x^2 + y - 1]
+   equals the (-2,3) filled variety exactly: True
+   entirely reducible representations: False
+ component 1: generators = [y + z + 1, x + z + 1, z^2 + z - 1]
+   equals the (-2,3) filled variety exactly: False
+   entirely reducible representations: True
+
+==============================================================================
+Branch: C_minus (tr(Abb)=-tr(B))
+==============================================================================
+unit ideal (no solutions at all on the bare presentation)? False
+number of irreducible components: 2
+ component 0: generators = [z^2 - x + y - 1, y*z - x - z, x*z + 1, y^2 - y - z - 1, x*y - x + y - z - 1, x^2 + y - 1]
+   equals the (-2,3) filled variety exactly: False
+   entirely reducible representations: False
+ component 1: generators = [y - z + 1, x + z - 1, z^2 - z - 1]
+   equals the (-2,3) filled variety exactly: False
+   entirely reducible representations: True
+
+==============================================================================
+IDENTIFYING the extra C_minus non-reducible component
+==============================================================================
+C_minus has a component that is neither reducible NOR the (-2,3)
+filled variety as this script built it. Do not gloss over this --
+identify it exactly rather than weaken the theorem silently.
+mystery component generators: [z^2 - x + y - 1, y*z - x - z, x*z + 1, y^2 - y - z - 1, x*y - x + y - z - 1, x^2 + y - 1]
+mystery component's own x-polynomial (in its lex ring): [x^4 + x^3 - 1]
+
+==============================================================================
+PART 1 CONCLUSION (complete and honest)
+==============================================================================
+The complete non-reducible squared-trace locus of tr(B)^2=tr(Abb)^2
+has TWO components, not one: X_{-2,3} exactly (component 0 of the
+C_plus branch), and a second, distinct irreducible component (from
+the C_minus branch) whose exact geometric identity (which slope, if
+any specific one) is NOT established here -- an identification
+attempt was tried and found inconclusive, and is reported as such
+rather than asserted. Both reducible components (one per branch) are
+confirmed genuinely reducible via the exact Fricke criterion.
+
+This means the STRONGER claim 'the complete exact locus equals
+X_{-2,3} alone' is NOT what was found -- report two components. The
+atlas's original empirical claim (unique among the 13 CHECKED points)
+is untouched by this, since it was never a claim about the full
+algebraic locus, only about those 13 specific fillings.
+
+==============================================================================
+PART 2: strong group-theoretic mechanism -- is B conjugate to
+==============================================================================
+Abb or Abb^-1 in pi_1(m003(-2,3)) itself, not just equal in trace?
+
+Numeric search (certified 300-bit discrete-faithful holonomy) found
+a length-4 candidate: g = BaBA, with g*B*g^-1 = Abb^-1 numerically
+(matched to ~1e-30, far beyond doubt at this precision). Verifying
+EXACTLY via the Fricke chart, reduced modulo the (-2,3) filled ideal:
+  (g B g^-1 - Abb^-1)[0,0] reduced mod filled ideal = 0
+  (g B g^-1 - Abb^-1)[0,1] reduced mod filled ideal = 0
+  (g B g^-1 - Abb^-1)[1,0] reduced mod filled ideal = 0
+  (g B g^-1 - Abb^-1)[1,1] reduced mod filled ideal = 0
+
+g B g^-1 = Abb^-1 EXACTLY, at EVERY point of the (-2,3) filled
+variety (all Galois conjugates, not just the geometric point): True
+
+==============================================================================
+PART 2 CONCLUSION
+==============================================================================
+Since the identity g B g^-1 (Abb)^-1 = 1 (g=BaBA) holds as an exact
+polynomial consequence at EVERY representation on the (-2,3) filled
+variety, it holds in particular at the discrete-faithful geometric
+representation. That representation is FAITHFUL (a standard fact
+for the holonomy of a complete finite-volume hyperbolic structure),
+so an exact matrix identity there already proves the abstract group
+identity
+
+   (BaBA) * B * (BaBA)^-1 = (Abb)^-1   in pi_1(m003(-2,3)),
+
+i.e. B and Abb are CONJUGATE (via the inverse) in the filled group
+itself -- not merely equal in trace, and not merely true at one
+representation. This is the strong group-theoretic mechanism: since
+conjugate elements automatically have equal trace under ANY
+representation of the group, tr(B)=tr(Abb) for the (-2,3)-filled
+group follows for every SL2(C) representation whatsoever, not just
+the ones on the character variety already checked.
+
+GROUP-THEORETIC EXPLANATION: EXACT PASS (inverse-conjugacy)
+SQUARED-LOCUS AND CONJUGACY CERTIFICATE: COMPLETE
