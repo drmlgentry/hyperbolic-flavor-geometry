@@ -1,0 +1,56 @@
+=================================================================
+HFG MIXING MATRICES -- CANONICAL REPRODUCIBILITY SCRIPT
+=================================================================
+PMNS: m003  vol=0.981369
+      isosig: cPcbbbdxm_BaBb(-2,3)
+CKM:  m006   vol=2.028853
+      isosig: dLQacccjnjs_aBbB(-5,2)
+
+PMNS words: ['aa', 'aaB', 'baa']  method: Borel Nelder-Mead (column permutation)
+Fitness vs PDG 2024: 0.005087  (target: 0.005087)
+[[0.823355 0.548538 0.145577]
+ [0.284137 0.620475 0.730942]
+ [0.491276 0.560461 0.666732]]
+Angles: θ12=33.67°  θ23=47.63°  θ13=8.37°
+PDG:    θ12=33.65°   θ23=47.64°   θ13=8.57°
+
+CKM  words: ['aaB', 'AbA', 'AAb']  method: Gaussian kernel sigma=0.49
+Fitness vs PDG 2024: 0.016482  (target: 0.016482)
+[[0.974394 0.22458  0.010966]
+ [0.223807 0.973416 0.048709]
+ [0.021614 0.045007 0.998753]]
+
+=================================================================
+ENVIRONMENT
+=================================================================
+Python: 3.13.14
+NumPy:  2.5.1
+SciPy:  1.18.0
+SnapPy: 3.3.2
+======================================================================
+PMNS BOREL NULL TEST -- EXACT COUNT (not just '<5')
+======================================================================
+Python: 3.13.14
+NumPy: 2.5.1  SciPy: 1.18.0
+SnapPy: 3.3.2
+RNG: numpy.random.default_rng(seed=20260902) -- explicit, since no
+     original seed is documented anywhere found in either repo.
+
+Fitting the canonical construction once (same as hfg_reproduce.py):
+U_fixed fitness vs PDG 2024: 0.00508727434217879
+[[0.823355 0.548538 0.145577]
+ [0.284137 0.620475 0.730942]
+ [0.491276 0.560461 0.666732]]
+
+======================================================================
+RESULT
+======================================================================
+N_TRIALS = 50000
+target fitness (U_fixed vs PDG) = 0.00508727434217879
+exact exceedance count k = 0
+exact empirical p = k/50000 = 0.000000
+null distribution: mean=0.544971  std=0.183341  min=0.018312
+
+For comparison, the manuscript's own claim: 'fewer than 5 of
+50,000', i.e. k<5, p<1e-4.
+EXIT=0

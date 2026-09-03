@@ -3262,3 +3262,46 @@ $k_{\rm inv}(m003)=\Q(\sqrt{-3})$ and filled $k_{\rm inv}(m003(-2,3))=
 K_{283}$ — are now independently, rigorously certified to the same
 standard. No claim in the figure or the gap report rests on an
 unverified inheritance from earlier relayed context anymore.
+
+---
+
+## PMNS Borel null test — exact count, not "fewer than 5" (Sep 2 2026)
+
+The manuscript reports "fewer than 5 of 50,000" Haar exceedances with no
+exact count, RNG seed, or committed script (a real gap, correctly flagged
+by relayed review). Ran it directly: reused the canonical, already-fitted
+construction (`hyperbolic-flavor-scan/hfg_reproduce.py`'s `pmns_borel`,
+re-verified live here, fitness $0.005087$ again) against $50{,}000$ fresh
+Haar-random $\mathrm{U}(3)$ targets (Mezzadri-corrected QR method, a
+genuine Haar measure — plain QR without the phase correction is not
+Haar-distributed), scoring the **fixed** matrix against each target
+(no re-optimization per target — matches the manuscript's own stated
+protocol, not a full search-space re-run).
+
+**Exact result: $k=0$ of $50{,}000$**, not merely $<5$. Null distribution
+mean $0.545$, std $0.183$, minimum $0.0183$ — the single closest random
+target was still $3.6\times$ worse than the real PMNS fit. Stronger than
+the manuscript's own claim, not weaker.
+
+**Honesty about scope**: no original RNG seed is documented anywhere
+found in either repo, so this is not a byte-identical reproduction of
+whatever produced "<5" — it's a fresh, explicitly-seeded
+(`numpy.random.default_rng(20260902)`, stated so it's independently
+reproducible) run of the protocol *as described in the manuscript text*.
+
+Committed: `reproduce/pmns_null_test_exact_count.py`
+(sha256 `C6FBE5ED46969A822A5C2812ED64DCFCB343D5D2E696434A28EEBAB7D74E9D65`),
+log `pmns_null_test_exact_count.log`
+(sha256 `08E8D608A526281EB8EE6155D2D57A5E378C2C48CA04192CDABB3E0BB7467C98`),
+`EXIT=0`.
+
+**Separately, a real wording issue found and worth fixing (not yet
+edited into the manuscript)**: `gentry-pmns-plb.tex` calls $0.005087$
+"the global minimum of the Borel construction" in four places (lines 48,
+229, 406, and the abstract). The canonical script's own docstring is
+more precise: *"theoretical minimum fitness **with free $L_m$**"* for
+the **already-selected** word triple, confirmed via 40-start convergence
+— not a search over word triples. "Global minimum of the Borel
+construction" oversells this if read as covering triple selection too.
+Suggested fix: "minimum within the reported physical-target word/$\sigma$
+scan," matching what was actually tested.
