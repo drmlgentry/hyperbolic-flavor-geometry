@@ -3636,3 +3636,158 @@ is **not meaningful until Test A is either replaced by a genuinely
 manifold-dependent PMNS statistic, or dropped** — combining a degenerate
 statistic with a real one does not produce a meaningful joint
 significance.
+
+## Full audit of every live PMNS-Borel script in `hyperbolic-flavor-scan`
+## — every construction found either manifold-independent (established
+## above) or **broken by construction** (new), never merely undocumented
+
+Prompted by a legitimate challenge (had never actually checked the
+canonical script against the **online** GitHub repo, only a local
+checkout sitting inside a much larger, 780-dirty-path, un-pushed tree at
+`C:\dev`) and a subsequent, correct request to check every other script
+this session has pulled from `hyperbolic-flavor-scan`. Fetched the real
+GitHub content (`main`, the only branch) directly and diffed every file
+against the local copy: `hfg_reproduce.py` (both paths it exists at,
+`hyperbolic-flavor-scan/hfg_reproduce.py` and
+`hyperbolic-flavor-scan/reproduce/hfg_reproduce.py`, byte-identical to
+each other and to GitHub), `analysis/results_summary.py`,
+`archive/scans/pmns_borel_confirmed.py`, `pmns_borel_scan.py`, and
+`pmns_borel_scan_v2.py` — **all five confirmed byte-identical to
+GitHub's `main`** (an initial "DIFFERS" on three of them was purely
+CRLF-vs-LF, resolved with `diff <(tr -d '\r' ...)`). Not a stale-copy
+problem. Then actually **read and ran** each one to elucidate its
+methodology, not just hash-check it — full results below.
+
+**`analysis/results_summary.py`**: not a live construction at all. Both
+the CKM overlap axes and the PMNS lower-triangular entries
+(`l21=0.443245, l31=-0.529672, l32=0.431594`) are **hardcoded numeric
+literals** — no `snappy` import, no holonomy call, nothing manifold-
+derived. It just prints precomputed numbers. Its own claimed floor
+analysis (*"Symmetric QR floor (PMNS): 0.300379 [proven, kernel-
+independent]... Triangular QR floor (PMNS): 0.018968 [5000-start
+Nelder-Mead]"*) is consistent with, and now explained by, everything
+below — but nothing in this file computes anything live.
+
+**`archive/scans/pmns_borel_confirmed.py`**: free continuous Nelder-Mead
+optimization over `(l21,l31,l32)`, same degeneracy class as the
+canonical `pmns_borel` (manifold axes seed only the starting point).
+Its own docstring already half-admits this: *"Best fitness: 0.005087
+(words aa/aaB/baa **or many equivalent triples**)"* — independent
+corroboration, from the archive itself, that many different word
+triples reach the identical floor.
+
+**`archive/scans/pmns_borel_scan.py`**: the clearest and most honest of
+the family, structurally. It explicitly computes a **"theoretical
+minimum"** in its own dedicated section, titled as such, **before any
+manifold is even loaded** — 200 Nelder-Mead restarts from
+`np.random.uniform(-3,3,3)`, zero manifold information whatsoever,
+against the same crude 3-decimal `PMNS` target array used throughout
+this archive family. Ran this section directly
+(sed lines 1–81, `EXIT` clean): reproduces **exactly**
+`Theoretical minimum: 0.01897`, matching its own `"Paper reports:
+0.01897"` comment, with optimal point
+`(l21,l31,l32) = (6.438, 3.500, 0.837)`. **This is the genuine, live
+origin of the "0.01897" figure** — and it settles a structural question
+left open above: the optimum lies **far outside `[-1,1]³`**, the range
+any actual dot product of two unit vectors can ever take. No real
+geodesic-axis pair, on any manifold, could ever realize this optimum
+through a raw dot-product construction — only an unconstrained
+free-parameter version (exactly what the canonical `pmns_borel` and
+`pmns_borel_confirmed.py` both do) can reach it, and that version is
+already established above as manifold-independent.
+
+**`archive/scans/pmns_borel_scan_v2.py`**: a *structurally different*
+construction — `L[i,j] = axis_i . axis_j` directly (real geodesic dot
+products, genuinely manifold-dependent inputs, **no free-parameter
+optimization at all**). This looked, on first read, like the one
+surviving non-degenerate candidate in the whole family — worth testing
+properly rather than assuming either way. It is not:
+
+- **Mathematically broken by construction, independent of any
+  manifold.** `borel_to_unitary` calls `Q, R = qr(L.T)`. Since `L` is
+  lower-triangular, `L.T` is **already upper-triangular** — and QR of
+  an already-triangular matrix is forced, for *any* input whatsoever,
+  to return `Q = diag(±1)`, i.e. the identity up to sign. Verified
+  directly (`reproduce/pmns_borel_boxconstrained_floor_check.py`,
+  sha256 `343724ece86e0007f4c8dfcbce72855b4635eabf42f76ad62f526cf2ef1a2883`,
+  `EXIT=0`): 5 independent random `(c12,c13,c23)` triples, magnitudes
+  up to ±5, all give `Q` equal to the identity to 10 decimals. This
+  means `borel_to_unitary` **can never produce anything but a
+  permutation matrix** (`|U|` after the sign-fix and column
+  permutation) — regardless of the manifold, the words, or the axes.
+- The best any 3×3 permutation matrix can do against the crude PMNS
+  target is a fixed number, computed 3 independent ways with zero
+  manifold information (`differential_evolution`, a 21³ grid scan, and
+  500-restart clipped Nelder-Mead, all in
+  `reproduce/pmns_borel_boxconstrained_floor_check.py`): **1.043698**,
+  every method agreeing to 6 decimals.
+- Confirmed empirically against real geodesics two ways:
+  (a) `reproduce/pmns_fixed_triple_census.py`
+  (sha256 `bf84fd7f9b18af4c90c41eef1a3178637990277674f227ce03d45d3886648000`,
+  results sha256
+  `c0b5863df3e6607548524db67c7f5a097c7af8b28859e66c92b94e77d814c37a`,
+  `EXIT=0`) evaluates the exact historical triple `(aa,ab,aB)`, fixed
+  permutation `(0,2,1)`, **no search of any kind**, on all 134
+  `H_1\cong\Z/5` census manifolds — **all 134 give `F_geom=1.043698`
+  exactly**, m003 included (its own resulting `|U|` is the literal
+  permutation matrix `[[1,0,0],[0,0,1],[0,1,0]]`).
+  (b) A full word-triple *search* version (up to 60 words/manifold,
+  `reproduce/pmns_borel_no_optimization_census.py`, sha256
+  `6329602efec0d6aac7115047cc3f57e971e6c6aea74e6b76f687c3bed485e61a`)
+  reached the same `1.04370` on **49/49 manifolds** before being killed
+  early (see process note below) — consistent with, not contradicting,
+  the exact mechanism just proven: searching more words just searches
+  among more permutation-matrix candidates, which is still bounded by
+  the same fixed floor.
+- **Ran the actual, unmodified script directly** (not a
+  reimplementation) — `python3 pmns_borel_scan_v2.py --max-len 3` on
+  m003, its own default manifold and word length:
+  **0 of 140,608 triples scored under its own 0.05 fitness threshold.**
+  Its final `print(f"\nBest known: aa/ab/aB  F=0.01897 ...")` is a
+  **hardcoded literal string in the script**, entirely disconnected
+  from its own computed `results` DataFrame (which was empty). This is
+  not stale documentation someone forgot to update — it is a number the
+  script's own code, run as published, never produces and cannot
+  produce, confirmed by the QR-triviality proof above.
+
+**Process note, for honesty about method, not just result**: the first
+attempt at the full 134-manifold word-search census (no word-count cap,
+default multi-threaded BLAS) stalled for **~4 hours of wall-clock time**
+with zero visible progress (stdout fully buffered until process exit,
+and — diagnosed after the fact — 8 OpenBLAS threads thrashing on
+trivially small 3×3 linear-algebra ops instead of doing real work). It
+was killed (confirmed via `ps`/task-notification exit code 9) and
+rewritten with `OPENBLAS_NUM_THREADS=1`, unbuffered flushed per-manifold
+logging, and a defensive word-list cap — after which it correctly showed
+49/49 manifolds tying at the same floor within minutes, which is what
+prompted the QR-triviality investigation that found the actual root
+cause, superseding the census script entirely (no need to finish that
+run once the mechanism was proven directly).
+
+**Bottom line — every live PMNS-Borel-family script in this codebase's
+history is now accounted for.** None support a "$m003(-2,3)$
+geometrically encodes PMNS" claim:
+- Canonical `pmns_borel` (`hfg_reproduce.py`) and
+  `pmns_borel_confirmed.py`: genuinely manifold-independent, via free
+  continuous optimization washing out the axis-derived starting point
+  (established earlier in this report).
+- `pmns_borel_scan.py`'s "theoretical minimum" section: the same
+  manifold-independent floor, computed even more transparently (no
+  manifold loaded at all for that section) — and its optimum is
+  **provably unreachable** by any real dot-product-based construction.
+- `pmns_borel_scan_v2.py`: not merely manifold-independent but
+  **mathematically incapable of encoding any geometric information**,
+  due to a QR-of-an-already-triangular-matrix construction bug; its
+  headline "0.01897" result is not computed by its own code.
+- `results_summary.py`: not computing anything live in the first place.
+
+This also resolves, by mooting it, the "homology-constrained matched
+word-search" refinement proposed as a next step for the dot-product
+construction: restricting the word search by $H_1(M;\Z/5)$ class would
+still only ever search among candidates for the *same* broken
+`borel_to_unitary` function, which can only ever emit permutation
+matrices regardless of which words (or which homology classes) feed it.
+That refinement would be worth real consideration only for a
+**corrected, non-degenerate** overlap-to-unitary map — not yet
+attempted, and not undertaken here since it would be new construction
+work, not an audit of what already exists.
