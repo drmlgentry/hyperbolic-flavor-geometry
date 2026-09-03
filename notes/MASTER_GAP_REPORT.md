@@ -3134,3 +3134,46 @@ homomorphism, not a bare cast.
 same standard as CKM's — full four-gate closure, no algdep/PSLQ anywhere
 in the proof chain. The PMNS Borel/phenomenology work (fitness, null
 tests, scan redesign) remains untouched and separate, as designed.
+
+---
+
+## $Y_-$ identified — CLOSED (Sep 2 2026)
+
+**[PROVED, exact]** $Y_-$ (the $C_-$ branch's non-reducible, non-$X_{-2,3}$
+component, left open as the one genuine loose thread from the $B/Abb$
+work) is **exactly the image of $X_{-2,3}$ under the sign twist**
+$(x,y,z)\mapsto(-x,y,-z)$ — checked by direct Sage ideal equality, not
+inferred from matching invariants. That twist is $\varepsilon(a)=-1,\
+\varepsilon(b)=+1$, a genuine character of the *cusped* group
+$\pi_1(m003)$ (verified: it respects the bare relator exactly,
+$\varepsilon(\text{relator})=+1$, forced since the relator has
+$a$-exponent-sum $0$ and $b$-exponent-sum $5$). Applied to the $(-2,3)$
+filling curve $\mu^{-2}\lambda^3$, this same character evaluates to
+$\varepsilon=-1$.
+
+So $Y_-$ is **not** a different manifold, slope, or genuinely new
+exceptional locus. It is the *same* closed hyperbolic structure on
+$m003(-2,3)$, reached via the *other* principal $\mathrm{SL}_2(\mathbb C)$
+lift of the identical $\mathrm{PSL}_2(\mathbb C)$ discrete-faithful
+holonomy — the lift sending the filling curve to $-I$ rather than $+I$
+(both projectively trivial, both genuinely representing the same closed
+3-manifold group). Structurally: $C_-$ has a non-reducible component at
+all not because there's a second exceptional filling out there, but
+because it's the unavoidable sign-lift shadow of the *same* $(-2,3)$
+locus already found on the $C_+$ branch — $\operatorname{tr}(B)$ and
+$\operatorname{tr}(Abb)$ both flip sign under a twist that leaves
+$\operatorname{tr}(ab)=z$ consistently signed.
+
+Committed: `reproduce/m003_identify_Y_minus.sage`
+(sha256 `56BC03DDA9700416DBEA60AAE4E64974BF1E3DB07066B3DFED962D4E9A0BEF19`),
+log `m003_identify_Y_minus.log`
+(sha256 `E34A4D145F73DA2428321F97482DDA7FB3DDD762674942A795221B4F8EE53534`),
+`EXIT=0`.
+
+**This closes the m003 $B/Abb$ branch completely** — no open items
+remain. All five results now stand: Theorem A, the signed $(-2,3)$
+characterization, the exact conjugacy proof, the PMNS-word overlap, and
+now the full identification of $Y_-$. (The *squared*-trace strengthening
+remains correctly marked false as stated — $Y_-$ being a sign-lift of
+$X_{-2,3}$ doesn't change that the squared locus has two components, it
+just means both of them are, in the relevant sense, "the same" filling.)

@@ -1,0 +1,45 @@
+==============================================================================
+Testing: is Y_- the image of X_{-2,3} under a sign twist?
+==============================================================================
+twisted X_{-2,3} generators: [z^2 - x + y - 1, -y*z + x + z, x*z + 1, y^2 - y - z - 1, -x*y + x - y + z + 1, x^2 + y - 1]
+Y_-              generators: [z^2 - x + y - 1, y*z - x - z, x*z + 1, y^2 - y - z - 1, x*y - x + y - z - 1, x^2 + y - 1]
+twisted X_{-2,3} == Y_- exactly (Sage ideal equality)? True
+
+==============================================================================
+Is (x,y,z)->(-x,y,-z) a genuine character of pi_1(m003)?
+==============================================================================
+relator a,b-exponent sums: 0 5
+eps(relator) with eps(a)=-1, eps(b)=+1: 1  (must be +1 to respect the relator)
+
+==============================================================================
+What does this twist do to the (-2,3) FILLING curve?
+==============================================================================
+filling word (mu^-2 lambda^3) a,b-exponent sums: 1 9
+eps(filling word): -1
+
+==============================================================================
+CONCLUSION
+==============================================================================
+Y_- = X_{-2,3} twisted by eps(a)=-1, eps(b)=+1 -- a genuine
+character of the CUSPED group pi_1(m003) (confirmed: it respects
+the bare relator exactly, eps(relator)=+1). This twist sends the
+(-2,3) filling curve to eps=-1, i.e. the twisted representation
+maps that curve to -I rather than +I.
+
+Y_- is therefore NOT a different manifold, slope, or genuinely new
+character-variety phenomenon. It is the SAME closed hyperbolic
+structure on m003(-2,3), reached via the OTHER principal SL2(C)
+lift of the identical PSL2(C) discrete-faithful holonomy -- the
+lift sending the filling curve to -I instead of +I, both of which
+are projectively trivial (PSL2(C)-trivial) and so both genuinely
+represent the same closed 3-manifold group.
+
+This also explains, structurally, why C_minus (tr(Abb)+tr(B)=0)
+has a non-reducible component at all: it is not evidence of a
+second, unrelated exceptional filling -- it is the unavoidable
+sign-lift shadow of the SAME (-2,3) exceptional locus found on the
+C_plus branch, forced to appear because tr(B), tr(Abb) both flip
+sign under a twist that fixes tr(ab)=z up to sign consistently.
+
+Y_- IDENTIFICATION: COMPLETE
+SAGE_EXIT=0
