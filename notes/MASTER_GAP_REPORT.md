@@ -3986,3 +3986,124 @@ month of being written down.
    broken, on its own specific numerical claim, before this project's
    git history had gone even one month, for reasons (a SnapPy version
    or generator-labeling change) not further diagnosed here.
+
+## Documentation this session should have found before "rediscovering"
+## the manifold-independence result — found now, and a real, three-part
+## error uncovered in the *current* manuscript's replacement claim
+
+Prompted, correctly, by being told this session was reinventing already-
+documented work rather than searching for it. It was — partly. Two real,
+pre-existing documents settle part of this immediately:
+
+**`papers/09_submission_docs/correction_letter_RINP_00328_PMNS.txt`** —
+an actual drafted author correction letter to the journal (undated in
+the file itself), stating precisely the manifold-independence finding
+this report re-derived at length above: *"the fitness value 0.005087...
+is reachable by any manifold's holonomy given sufficient optimization.
+The fitness value alone does not select $m003(-2,3)$."* It proposes
+replacing the fitness-based framing with a three-part **geometric**
+selection argument instead: (i) minimal volume (Gabai–Meyerhoff–Milley,
+a real theorem, not in question), (ii) a "Lucas-pure covering tower,"
+(iii) a geodesic at $\sigma_{\rm opt}$. This should have been found and
+read before any of the manifold-independence work above — it already
+says the headline conclusion.
+
+**`notes/CONFIRMED_abstracts.md`** — a maintained, self-correcting
+ledger of this project's ~30 SSRN preprints, tracking which claims were
+later retracted or corrected. Following it to the primary sources shows
+the correction letter's own three-part replacement is **not simply
+settled either** — two of its three legs have their own history:
+
+- **$\sigma_{\rm opt}$**: corrected from $(3/2)\log\varphi$ to
+  $(3/2)\log\sqrt{13/5}$ (a 0.69% change) in later work; the *current*
+  live manuscript already uses the corrected formula name. Good — this
+  leg looked settled. (It isn't, fully — see below.)
+- **"Lucas-pure covering tower"**: `papers/lucas-structure/
+  gentry_lucas_structure_v4.tex` (already merged into this repo)
+  **explicitly retracts** the v1 "prime dictionary $\{2,3,7,11,29\}$"
+  and the Lucas-purity conjecture the correction letter's language
+  echoes: *"We do not reassert the Lucas-purity conjecture here."* The
+  v1 scan conflated genuine algebraic covers with unrelated
+  commensurability-class coincidences. In its place, v4 proves a
+  narrower, different, but unconditional fact: within $m003(-2,3)$'s
+  *own* Farey tower specifically ($M_n=m003(-(n{+}1),2n{+}1)$, not the
+  500-manifold census), exactly one cover prime is a Lucas number
+  ($11=L_5$), forced by an elementary congruence
+  ($n\equiv1,9\bmod11$) — a real, proved, but much narrower statement.
+  A census-wide re-scan under the corrected algebraic/commensurable
+  distinction is explicitly flagged in v4 as **open, not done**.
+  The current live manuscript (`gentry-pmns-plb.tex:158-161`) already
+  reflects the corrected single-prime fact ($\{11\}=\{L_5\}$, not the
+  retracted five-prime dictionary) — but still says "through degree 9,"
+  which is the *retracted* v1 scan's scope, not the *proved* v4
+  theorem's (degree 6, and specific to the Farey tower, not the
+  census). A real, precise, previously-unflagged wording gap in the
+  current manuscript.
+
+**New, decisive problem found in the current manuscript's own text**,
+not present in either the correction letter or the relayed account:
+the "Quarter-Lucas geodesic" bullet
+(`gentry-pmns-plb.tex:162-165`, live, current, unedited this session)
+states *"$\MPMNS$ contains a geodesic of length
+$\sigma_{\rm opt}=\frac32\log\sqrt{13/5}=0.7218$ (second shortest, to
+$0.03\%$)---the same $\sigma$ that minimises the CKM fitness."* Checked
+directly, computationally, in three independent parts — **all three
+fail**:
+
+1. **The printed number doesn't match its own formula.**
+   $(3/2)\log\sqrt{13/5}=0.716634$, not $0.7218$.
+   $0.7218=(3/2)\log\varphi$ — the *old*, explicitly superseded value
+   (per `CONFIRMED_abstracts.md`, `SSRN 6840322`'s own correction note).
+   The manuscript updated the formula's name to the corrected expression
+   but kept the old number.
+2. **Under the actually-correct number, m003 is not uniquely close.**
+   Census-wide check across all 134 $H_1\cong\Z/5$ manifolds
+   (`reproduce/sigma_opt_geodesic_census.py`, sha256
+   `b0246c4a64f1efdbf2c121c1b57ccc297b63f7469bf81fd5babc31b48e44c11d`,
+   results sha256
+   `d42319c994b475b835b21ebf582e335adecf9347ccaeabc1bb10df03c0742c96`,
+   `EXIT=0`, using SnapPy's proper `length_spectrum`, not word-based
+   extraction): m003's second-shortest geodesic is $0.721568$, a
+   $0.69\%$ gap from the correct $\sigma_{\rm opt}=0.716634$ — not
+   $0.03\%$ (that figure only matches the *stale* $0.7218$ number).
+   And m003 is not even the closest: **rank 5th of 134**, behind
+   `m260(-1,2)` ($0.086\%$), `s572(-6,1)` ($0.093\%$),
+   `s912(5,1)` ($0.107\%$), and `v3188(-1,2)` ($0.148\%$) — all closer
+   to the true $\sigma_{\rm opt}$ than m003. (It remains well inside
+   the tail of the census distribution — median gap $13.9\%$ — so this
+   is a real, if non-unique, geometric fact, not nothing; just not the
+   "0.03%, essentially the second-shortest geodesic exactly" framing
+   claimed.)
+3. **"The same $\sigma$ that minimises the CKM fitness" is false,
+   checked directly.** (`reproduce/ckm_sigma_optimality_check.py`,
+   sha256
+   `aa2f4d6eaffbd3d86d1a730f3aa29d6672bf495a53516254e33db65c050fe4e1`,
+   `EXIT=0`, using the live, canonical `ckm_gaussian` formula on the
+   real $m006(-5,2)$ holonomy and its own word triple
+   $\{\mathtt{aaB},\mathtt{AbA},\mathtt{AAb}\}$): scanning $\sigma$
+   directly, the true CKM-optimal value is
+   $\sigma\approx0.4877$ (fitness $0.015752$), matching the live,
+   already-published canonical default $\sigma=0.49$ (fitness
+   $0.016482$) almost exactly. At $\sigma=0.716634$ (correct
+   $\sigma_{\rm opt}$) or $\sigma=0.7218$ (the manuscript's printed,
+   stale number), CKM fitness is $0.439$ / $0.448$ — roughly **27–28
+   times worse** than the true optimum, nowhere near minimal.
+   $\sigma_{\rm opt}$ and the CKM-optimal $\sigma$ are simply different
+   numbers; the manuscript's cross-referencing claim does not hold.
+
+**Bottom line**: the correction letter's proposed replacement framing
+was the right instinct — grounding manifold selection in geometry
+rather than a manifold-independent fitness value — and two of its three
+legs (minimal volume; the *narrowed*, v4-corrected cover-prime fact)
+hold up. But as currently stated in the live manuscript, the third leg
+("Quarter-Lucas geodesic," including its claimed link to CKM's $\sigma$)
+is wrong on three independent, directly-checked counts: a stale printed
+number, a false uniqueness claim once the correct number is used, and a
+false cross-reference to CKM's actual optimal $\sigma$. This is not a
+reason to abandon the geometric-selection program — minimal volume is
+solid, and m003's real (if non-unique) closeness to the corrected
+$\sigma_{\rm opt}$ is still a genuine, better-than-median fact (rank
+5/134) — but the manuscript's specific wording needs correction, and
+the "unique among independent constraints" framing needs to be either
+narrowed to what's actually proved or re-argued with a real, not stale
+or false, third leg.
