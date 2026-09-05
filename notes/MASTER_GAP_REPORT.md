@@ -4187,3 +4187,40 @@ The local `main` branch of the `C:\dev` repo still points at a different
 commit (`258ee70`, an earlier, non-fast-forwardable attempt at the same
 fix) and was left as-is — its divergence from `origin/main` predates
 this session and is not this fix's problem to solve.
+
+## CKM PERMUTATION CONVENTION FORK (documented Sep 2 2026)
+
+Two CKM constructions coexist in the record, differing in permutation
+convention and both reproducing exactly:
+
+**v1 (`ckm_gaussian_v1`):**
+- $\mathcal F=0.016482$, $\sigma=0.49$
+- words `aaB`/`AbA`/`AAb`
+- row+column joint permutation
+- 5-dec PDG target
+- Cited by: `correction_letter_RINP_00327_CKM.txt`
+- Claim scope: best among $H_1=\Z/5$ + Lucas-pure manifolds
+
+**v2 (`ckm_gaussian`):**
+- $\mathcal F=0.002728$, $\sigma=0.47$
+- words `aaab`/`aabb`/`bAbAB`
+- column-only permutation
+- 5-dec PDG target
+- Origin: commit `b169562`, `verify_new_global_best.py`
+- Cited by: current CKM manuscript
+- Claim scope: global best, census rank 1
+
+These are **NOT** competing values for the same quantity. They are
+different constructions with different permutation conventions and
+different word triples. Any comparison between them must state which
+convention.
+
+Continuous refinement of v2: $\sigma^*=0.469328362$,
+$\mathcal F^*=0.00233065$ (`sigma_continuous_refine.py`).
+
+Both constructions are preserved as separate, named functions in
+`hfg_reproduce.py` (`ckm_gaussian_v1`, `ckm_gaussian`) rather than one
+overwriting the other — see the two entries immediately above this one
+for the full account of why, and of the git-history verification
+(`b169562`) that pins down v2's genuine origin and permutation
+convention rather than one reverse-engineered to match the target.
