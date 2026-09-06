@@ -4224,3 +4224,75 @@ overwriting the other — see the two entries immediately above this one
 for the full account of why, and of the git-history verification
 (`b169562`) that pins down v2's genuine origin and permutation
 convention rather than one reverse-engineered to match the target.
+
+## New canonical PMNS manuscript: `papers/gentry-m003-arithmetic-v4.tex`
+## (commit `aa2383a`) — reformatted around what's actually proved; one
+## real error found and fixed before committing
+
+A complete reformatting of the PMNS work, built around this session's
+actual established record rather than the phenomenology: the surgery
+law $|H_1(m003(p,q))|=5|2p+q|$ proved from the presentation; $\kinv(M)
+\cong K_{283}$ via the four-gate closure; the presentation-geometry
+bridge; the target-free atlas and its three universal identities on
+$X_0$; the signed/squared $(-2,3)$ characterizations; the sign-twist
+and $BaBA$ conjugacy theorems; the Borel fit reported as a reproducible
+computation, explicitly downstream of and separate from the exact
+results; the corrected null calibration ($p=0.1325$, not $p<10^{-4}$).
+An explicit "what this paper does not claim" section (§1.1) removes:
+global volume minimality (corrected to minimality within the
+$H_1\cong\Z/5$ stratum — see below), $\Q(\sqrt{-3})$ as the *closed*
+manifold's ITF (belongs to the cusped parent only), Lucas-purity/
+$\sigma_{\rm opt}$ as selectors, and $p<10^{-4}$.
+
+**Not accepted at face value** — cross-checked against the session's
+actual record before committing, and one real error found:
+
+- **Weeks-vs-Meyerhoff volume claim, checked and correctly stated in
+  the draft**: confirmed directly (`snappy`, live): Weeks manifold
+  (`m003(-3,1)`) has $\mathrm{vol}=0.942707$, $H_1\cong\Z/5\oplus\Z/5$
+  — smaller than Meyerhoff ($M_{\rm PMNS}=m003(-2,3)$,
+  $\mathrm{vol}=0.981369$, $H_1\cong\Z/5$) and excluded from the
+  $\Z/5$-only census by its rank-2 torsion. This matches, and does not
+  contradict, this project's own prior correction
+  (`C:\dev` commit `7881e1f`, *"M\_PMNS is second-smallest globally,
+  unique minimum with H1=Z/5"*) — a claim from a relayed message
+  earlier this session had reintroduced the pre-correction error
+  (global minimality), caught and corrected before it reached this
+  document.
+- **Peripheral words in §2.1 — one real error found and fixed.**
+  Checked live against `M.fundamental_group(True,False,True,False)`
+  and `M.polished_holonomy(fundamental_group_args=[...])`: relator
+  `abAAbabbb` and meridian `ABABB` were correct as drafted; the
+  longitude was **wrong** — drafted as `AAbA`, but SnapPy actually
+  returns `ABAbab`. Confirmed these are genuinely different group
+  elements (their holonomy matrices are neither equal nor equal up to
+  sign, not a rounding artifact). **The underlying theorem is
+  unaffected**: `reproduce/pmns_itf_certificate.sage`'s own header
+  comment already states the correct longitude (`ABAbab`) and uses it
+  throughout Gate F1's actual derivation — this was a manuscript
+  transcription error only. Fixed the one line.
+- **Gate F1's filling relation, verified directly.** Confirmed the
+  filling word $\mu^{-2}\lambda^3$ (with the correct longitude) has
+  exponents matching the $(-2,3)$ slope exactly (meridian to $-2$,
+  longitude to $+3$ — the standard $p\mu+q\lambda=0$ convention), and
+  evaluates to **$+I$, not $-I$**, under 300-bit certified holonomy
+  (off-diagonal entries $\sim10^{-89}$, diagonal $1.0000\ldots$ to
+  $\sim90$ digits) — matching the manuscript's claimed sign convention
+  exactly, not merely asserted.
+- **New §7.4, "Historical provenance of the Borel construction"
+  — added, with a genuine, systematic recovery attempt, not just a
+  citation of the earlier problem.** States the March 2026
+  one-parameter construction $\ell_{ij}=\lambda s_{ij}(\hat n_i\cdot
+  \hat n_j)$ plainly, and reports searching **all sixteen boolean
+  `fundamental_group_args` combinations plus the plain default**
+  (`reproduce/find_march2026_generator_convention.py`, `EXIT=0`) for
+  one reproducing the historically-reported axis data
+  $(0.443,-0.530,0.432)$ — **none comes within an order of magnitude**
+  (closest: $(0.604,0.379,-0.320)$). The historical generator
+  convention remains unrecovered; no numerical claim is made from that
+  construction. This is a documented negative result, not silence.
+
+`papers/01_active_plb/gentry-pmns-plb.tex` is **not deleted or
+modified** — still cited by the JKTR submission and possibly
+PLB-D-26-01006; both manuscripts coexist, with v4 as the going-forward
+document.
