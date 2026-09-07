@@ -4369,3 +4369,89 @@ elsewhere in this report. It establishes the requested mathematical
 object cleanly and reports exactly what it gives — no claim is made
 that any of this bears on actual electric charge, fractional quark
 charges, or the electroweak charge lattice; that remains entirely open.
+
+## Atlas-wide homology-inversion enrichment test — a clean dichotomy,
+## not just an enrichment ratio
+
+Stage 1 of the proposed three-stage program (exhaustive atlas
+enrichment → signed trace factorization → search for an exact
+involution). Uses the frozen, target-free atlas exactly as it already
+existed (`m003_word_atlas.csv`'s `exp_a`/`exp_b`, `m003_pair_atlas.csv`'s
+`near_equal_tr2`) — none of this analysis existed when that data was
+generated (manifest: `contains_historical_pmns_word_selection=false`,
+`contains_pmns_target=false`), so this is genuinely not a post-hoc
+construction.
+
+**Found, in passing, the origin of the earlier wrong `3n_a+n_b`
+claim**: the atlas manifest's own `homology_classifier_pmns` field
+records the *intended* formula as `"h = 3*n_a + n_b mod 5"` — this was
+never a fabrication by a relayed source, it is a real, recorded design
+decision, left uncomputed (the `h_pmns_mod5` column is present in the
+CSV but empty throughout). It is still wrong, for the reason already
+established: since $[a]=[b]$ in $H_1(M_{\rm PMNS})$, the correct
+weighting is $1{:}1$, not $3{:}1$.
+
+**Method, and a bug caught before trusting it**: computing each of the
+13 fillings' own character map (each has a different $H_1$: $\Zfive$
+for 7 of them, $\Zfive\oplus\Z$ for the cusp, $\Z/15,\Zfive\oplus\Zfive,
+\Z/35,\Z/45,\Z/55$ for the rest — per `m003_filling_summary.csv`,
+confirmed independently by every computed invariant matching exactly).
+A first attempt hand-rolled a 2-column integer Smith-normal-form
+routine in pure Python; checked against the already Sage-verified
+$(-2,3)$ character before trusting it on the other 12 — **it disagreed
+outright** (e.g. gave $\chi(\mathtt{aa})=0$ where the verified value is
+$2$). Discarded without being committed. Replaced with the same
+Sage `FreeModule` quotient method already validated
+(`reproduce/m003_per_filling_characters.sage`, sha256
+`b6b75ebe1a03d90cd4d8e261d665e72cd5bd9d691832fd03a06a56beb7daab66`,
+results `reproduce/m003_per_filling_characters.json`, sha256
+`d212552e2298cf96000227178411271603d08c650c092a7bd5c096b4eff80a44`,
+`SAGE_EXIT=0`) — re-checked against the same known values (all match
+exactly) before use.
+
+**Result** (`reproduce/m003_atlas_homology_enrichment.py`, sha256
+`b12022194a4f7d0f5991f74a9af7d2e75321f1f1054446cd2fc7fceb714f9edf`,
+results sha256
+`fdf6edc3edf54684e88bff25dba6753a057b9ef4db76fad94774578768f75b78`,
+`EXIT=0`; 1768 word-pairs classified across all 13 fillings):
+
+$$P(\text{collide}\mid[u]=-[v]) = 0.1236,\qquad
+P(\text{collide}\mid[u]\neq-[v]) = 0.0113,\qquad E\approx10.9.$$
+
+But the per-filling breakdown is sharper than the pooled ratio:
+- **All 7 fillings with $H_1\cong\Zfive$**
+  ($(-2,3),(-2,5),(-3,5),(-4,7),(-5,9),(-6,11),(-7,13)$): **every**
+  squared-trace collision found is an inverse-homology pair — $22$
+  collisions, $22$ inverse, $0$ same, $0$ other. No exceptions.
+- **All 6 fillings with a different $H_1$** (cusp, and the five
+  non-$\Zfive$ closed fillings): **every** collision is neither
+  same- nor inverse-homology — $18$ collisions, $0$ inverse, $0$ same,
+  $18$ other. No exceptions.
+
+This is a categorical dichotomy across the full frozen atlas, not a
+statistical tendency with exceptions: **inverse-homology pairing of a
+squared-trace collision occurs if and only if $H_1(\text{filling})
+\cong\Zfive$.** This answers the proposed three-way discriminator more
+sharply than any of the three original options (everywhere / only on
+$X_0$ / spikes at $(-2,3)$) — it is neither universal nor
+$(-2,3)$-specific, but tied to the $\Zfive$-homology stratum
+specifically.
+
+**Self-consistency bonus, not independently sought**: $(-2,3)$ has $4$
+collisions (all inverse-type) while the other six $\Zfive$ fillings
+each have exactly $3$ (all inverse-type) — reproducing, from a
+completely different computation, the already-established distinction
+between the **three universal identities** (present at every filling)
+and the **fourth, exceptional $B/Abb$ identity** (present only at
+$(-2,3)$). Both facts were derived independently in different parts of
+this report and agree without being forced to.
+
+**Explicitly not yet done**: stage 2 (signed trace factorization —
+determining whether each universal identity is really $\tr w=\tr w'$
+or $\tr w=-\tr w'$ on $X_0$) and stage 3 (searching for an exact
+group-theoretic involution mechanism generalizing the proven $BaBA$
+conjugacy) remain open, proposed next steps. As with the character-map
+work above, this is exploratory theory-building toward a speculative
+physics question — the dichotomy found here is a genuine, clean,
+verified computational fact, but it is not yet a theorem with a known
+mechanism, and no claim is made that it bears on electric charge.

@@ -1,0 +1,287 @@
+{
+  "per_filling": [
+    {
+      "filling": "m003(cusp)",
+      "invariants": [
+        5,
+        0
+      ],
+      "n_pairs_used": 136,
+      "n_S": 2,
+      "n_I": 0,
+      "n_O": 134,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 2,
+        "I_collide": 0,
+        "I_not": 0,
+        "O_collide": 3,
+        "O_not": 131
+      },
+      "p_collide_given_I": null,
+      "p_collide_given_not_I": 0.022058823529411766,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-2,3)",
+      "invariants": [
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 21,
+      "n_I": 24,
+      "n_O": 91,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 21,
+        "I_collide": 4,
+        "I_not": 20,
+        "O_collide": 0,
+        "O_not": 91
+      },
+      "p_collide_given_I": 0.16666666666666666,
+      "p_collide_given_not_I": 0.0,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-2,5)",
+      "invariants": [
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 21,
+      "n_I": 24,
+      "n_O": 91,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 21,
+        "I_collide": 3,
+        "I_not": 21,
+        "O_collide": 0,
+        "O_not": 91
+      },
+      "p_collide_given_I": 0.125,
+      "p_collide_given_not_I": 0.0,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-2,7)",
+      "invariants": [
+        15
+      ],
+      "n_pairs_used": 136,
+      "n_S": 3,
+      "n_I": 8,
+      "n_O": 125,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 3,
+        "I_collide": 0,
+        "I_not": 8,
+        "O_collide": 3,
+        "O_not": 122
+      },
+      "p_collide_given_I": 0.0,
+      "p_collide_given_not_I": 0.0234375,
+      "enrichment": 0.0
+    },
+    {
+      "filling": "m003(-2,9)",
+      "invariants": [
+        5,
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 2,
+      "n_I": 2,
+      "n_O": 132,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 2,
+        "I_collide": 0,
+        "I_not": 2,
+        "O_collide": 3,
+        "O_not": 129
+      },
+      "p_collide_given_I": 0.0,
+      "p_collide_given_not_I": 0.022388059701492536,
+      "enrichment": 0.0
+    },
+    {
+      "filling": "m003(-2,11)",
+      "invariants": [
+        35
+      ],
+      "n_pairs_used": 136,
+      "n_S": 2,
+      "n_I": 0,
+      "n_O": 134,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 2,
+        "I_collide": 0,
+        "I_not": 0,
+        "O_collide": 3,
+        "O_not": 131
+      },
+      "p_collide_given_I": null,
+      "p_collide_given_not_I": 0.022058823529411766,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-2,13)",
+      "invariants": [
+        45
+      ],
+      "n_pairs_used": 136,
+      "n_S": 2,
+      "n_I": 0,
+      "n_O": 134,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 2,
+        "I_collide": 0,
+        "I_not": 0,
+        "O_collide": 3,
+        "O_not": 131
+      },
+      "p_collide_given_I": null,
+      "p_collide_given_not_I": 0.022058823529411766,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-2,15)",
+      "invariants": [
+        55
+      ],
+      "n_pairs_used": 136,
+      "n_S": 2,
+      "n_I": 0,
+      "n_O": 134,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 2,
+        "I_collide": 0,
+        "I_not": 0,
+        "O_collide": 3,
+        "O_not": 131
+      },
+      "p_collide_given_I": null,
+      "p_collide_given_not_I": 0.022058823529411766,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-3,5)",
+      "invariants": [
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 21,
+      "n_I": 24,
+      "n_O": 91,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 21,
+        "I_collide": 3,
+        "I_not": 21,
+        "O_collide": 0,
+        "O_not": 91
+      },
+      "p_collide_given_I": 0.125,
+      "p_collide_given_not_I": 0.0,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-4,7)",
+      "invariants": [
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 21,
+      "n_I": 24,
+      "n_O": 91,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 21,
+        "I_collide": 3,
+        "I_not": 21,
+        "O_collide": 0,
+        "O_not": 91
+      },
+      "p_collide_given_I": 0.125,
+      "p_collide_given_not_I": 0.0,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-5,9)",
+      "invariants": [
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 21,
+      "n_I": 24,
+      "n_O": 91,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 21,
+        "I_collide": 3,
+        "I_not": 21,
+        "O_collide": 0,
+        "O_not": 91
+      },
+      "p_collide_given_I": 0.125,
+      "p_collide_given_not_I": 0.0,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-6,11)",
+      "invariants": [
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 21,
+      "n_I": 24,
+      "n_O": 91,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 21,
+        "I_collide": 3,
+        "I_not": 21,
+        "O_collide": 0,
+        "O_not": 91
+      },
+      "p_collide_given_I": 0.125,
+      "p_collide_given_not_I": 0.0,
+      "enrichment": null
+    },
+    {
+      "filling": "m003(-7,13)",
+      "invariants": [
+        5
+      ],
+      "n_pairs_used": 136,
+      "n_S": 21,
+      "n_I": 24,
+      "n_O": 91,
+      "counts": {
+        "S_collide": 0,
+        "S_not": 21,
+        "I_collide": 3,
+        "I_not": 21,
+        "O_collide": 0,
+        "O_not": 91
+      },
+      "p_collide_given_I": 0.125,
+      "p_collide_given_not_I": 0.0,
+      "enrichment": null
+    }
+  ],
+  "grand_table": {
+    "S_collide": 0,
+    "S_not": 160,
+    "I_collide": 22,
+    "I_not": 156,
+    "O_collide": 18,
+    "O_not": 1412
+  }
+}
