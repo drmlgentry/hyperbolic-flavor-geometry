@@ -4713,45 +4713,99 @@ they stood unchallenged, not after.
 
 The proposed cleaner diagnostic: for loxodromic $W=\rho(w)$,
 $T=\rho(w'^{-1})$ (equal trace, from stage 2), the set of ambient
-$\mathrm{SL}_2(\mathbb C)$ conjugators $\{C:CWC^{-1}=T\}$ is a coset
-$C_0\cdot Z(W)$, where $Z(W)$ is the $1$-complex-dimensional
-centralizer of $W$. Rather than measure distance to *one* fixed point
-$C_0$ in that coset (conflating "wrong choice of centralizer element"
-with "not conjugate at all" — a real gap in the stage-3 test), test
-coset **membership** directly: $g$ is a genuine conjugator iff
-$C_0^{-1}\rho(g)$ commutes with $W$, i.e.
-$\|[C_0^{-1}\rho(g),W]\|_F=0$.
+$\mathrm{SL}_2(\mathbb C)$ conjugators $\{C:CWC^{-1}=T\}$ is a *single*
+coset $C_0\cdot Z(W)$, where $Z(W)\cong\mathbb C^\times$ is the
+$1$-complex-dimensional centralizer of $W$ — there is not, in general,
+a second component from swapping which eigenvalue of $W$ maps to which
+eigenvalue of $T$: since both have the same eigenvalue pair
+$\{\lambda,\lambda^{-1}\}$, mapping $\lambda\to\lambda$ gives the
+genuine $C_0$, while $\lambda\to\lambda^{-1}$ generically gives
+$CWC^{-1}=T^{-1}$, not $T$. (An earlier version of this entry
+mislabeled the two eigenvalue pairings tried during construction as
+"two candidate conjugator families" — corrected here: the pairing
+landing at $O(10)$ residual is exactly this $T^{-1}$ case, a sanity
+check confirming the algebra, not a second solution branch.)
+Membership in the genuine coset is exact:
+$G\in C_0Z(W)\iff C_0^{-1}G\in Z(W)\iff[C_0^{-1}G,W]=0$.
 
-**Computed and tested**
-(`reproduce/m003_stage3p1_conjugator_coset.sage`, sha256
+**First pass** (`reproduce/m003_stage3p1_conjugator_coset.sage`, sha256
 `b42ff36c94efe6c344cbf080acc89798608d59da72d2c3c125ea0194e7b90e2c`,
-`EXIT=0`): for each pair, both possible eigenvalue pairings were tried
-to build $C_0$ (via simultaneous eigendecomposition); exactly one
-pairing per pair gives a genuine conjugator, confirmed by its own
-construction check landing at machine precision
-($1.7\times10^{-14}$, $2.4\times10^{-15}$, $6.7\times10^{-15}$
-respectively for the three pairs), with the other pairing clearly
-invalid (residuals $13$–$20$) — a clean internal sanity check on the
-method itself, not just the final answer. Re-ranked all $118{,}096$
-length-$\le10$ candidates by the commutator norm
-$\|[C_0^{-1}\rho(g),W]\|_F$ (minimized over the valid pairing):
+`EXIT=0`) used the raw commutator norm $\|[C_0^{-1}\rho(g),W]\|_F$ as
+the ranking measure — a valid *zero-test* for membership, but (per
+review) not intrinsically a properly-normalized distance (it depends
+on $C_0$'s conditioning and the ambient norm choice), so the resulting
+values ($1.10$, $1.68$, $3.21$) show the best candidates are
+numerically nonzero without licensing a claim about geometric
+"farness."
 
-| $(w,w')$ | best commutator norm | best $g$ |
+**Refined** (`reproduce/m003_stage3p1b_centralizer_lindep.sage`, sha256
+`8c68674100f772bc12f061be681ba9c1e0dac9b7beaceb8da031b950044b32d2`,
+`EXIT=0`) to avoid this and avoid eigendecomposition entirely: for
+non-scalar $W$, the *full matrix* centralizer in $M_2(\mathbb C)$ is
+exactly $Z_{M_2}(W)=\operatorname{span}_{\mathbb C}\{I,W\}$, a genuine
+$2$-complex-dimensional linear subspace — note this is the *linear*
+matrix centralizer, not literally the determinant-one
+$Z_{\mathrm{SL}_2}(W)=\{\alpha I+\beta W:\det(\alpha I+\beta W)=1\}$
+(a $1$-complex-dimensional subvariety inside that plane); the
+zero-test logic is unaffected either way
+($d(H)>0\Rightarrow H\notin Z_{M_2}(W)\Rightarrow H\notin
+Z_{\mathrm{SL}_2}(W)\Rightarrow G\notin C_0Z_{\mathrm{SL}_2}(W)$), but
+the reported numbers below are precisely **Frobenius distances to the
+linear centralizer subspace**, not distances to the conjugator coset
+itself. For each candidate $g$, set $H=C_0^{-1}\rho(g)$ and compute the
+least-squares Frobenius distance from $H$ to
+$\operatorname{span}_{\mathbb C}\{I,W\}$:
+
+| $(w,w')$ | Frobenius distance to $Z_{M_2}(W)$ | best $g$ |
 |---|---|---|
-| $(A,ABBB)$ | $1.103684$ | `bAABAAAAA` |
-| $(AB,ABB)$ | $1.684648$ | `bABaaBABBa` |
-| $(AAb,AABB)$ | $3.208269$ | `AABaaBABBB` |
+| $(A,ABBB)$ | $1.141613$ | `bAABBABBBa` |
+| $(AB,ABB)$ | $0.633472$ | `AABaaBABBB` |
+| $(AAb,AABB)$ | $0.576409$ | `bbbabAAABB` |
 
-**Same conclusion, now via the geometrically correct measure**: still
-$\mathcal O(1)$, not decreasing toward $0$, for all three pairs — this
-was not an artifact of the earlier, cruder fixed-point test. No
-element up to length $10$ lies in, or comes close to, the actual
-ambient conjugator coset for any of the three pairs. The status from
-the previous entry stands unchanged: **filled-group search through
-$|g|\le10$ — EXHAUSTIVE NUMERICAL NEGATIVE; global filled-group
-conjugacy — OPEN.** Per the proposed sequencing, this is where the
-bounded-search line of attack is frozen — the two next moves (search
-for a systematic length-dependence trend suggesting a longer conjugator
-exists, or seek an actual group-theoretic non-conjugacy obstruction)
-would need a genuinely different method, not more brute force at this
-one.
+Smaller than the raw commutator norms (as expected for a normalized
+measure) but still clearly $\mathcal O(1)$, not approaching $0$, for
+all three pairs — legitimate numerical exclusions for the best of
+$118{,}096$ enumerated candidates, confirming the negative result is
+not an artifact of either the original fixed-target test or the
+unnormalized commutator version.
+
+**Status, in the precise form this warrants**:
+- **Stage 3A — cusped-group mechanism: EXACTLY RULED OUT** for the
+  three universal pairs.
+- **Stage 3B — fixed-target filled search, $|g|\le10$: EXHAUSTIVE
+  NUMERICAL NEGATIVE.**
+- **Stage 3.1 — centralizer/coset test, $|g|\le10$: EXHAUSTIVE
+  NUMERICAL NEGATIVE.** For each pair, an ambient conjugator
+  $C_0\in\mathrm{SL}_2(\mathbb C)$ was constructed with
+  $C_0WC_0^{-1}=T$; a filled-group element $G=\rho(g)$ can be a
+  conjugator only if $C_0^{-1}G\in Z_{M_2}(W)$. Exhaustive enumeration
+  of all $118{,}096$ nonempty freely-reduced words of length $\le10$
+  found no such element — a methodologically independent confirmation
+  of Stage 3B via a different, geometrically correct measure, not a
+  strengthening of the underlying claim or anything about lengths
+  beyond $10$.
+- **Global filled-group conjugacy: OPEN.** This is a finite numerical
+  exclusion, not a proof of global non-conjugacy.
+
+The contrast with $B/Abb$ is worth preserving precisely: there, the
+filled relation yields an *actual, exact* group conjugator (proved,
+not searched for). Here, two independent numerical formulations have
+failed through the same finite depth — increasingly suggestive that
+the three universal identities have a different mechanism from the
+filling-specific $B/Abb$ identity, but **one exact obstruction short of
+being a theorem**. Per the proposed sequencing, the bounded-search line
+of attack is frozen here — this is intended to be the last numerical
+conjugator search unless a specific reason emerges to reopen
+enumeration. The productive next step (Stage 3.2, not attempted) is an
+**exact conjugacy-class obstruction** in $\Gamma_{\rm fill}$ itself
+(not another representation invariant — ordinary $\mathrm{SL}_2$
+character data is deliberately blind here, since trace equality is
+exactly what stage 2 already established) — a certified conjugacy
+decision using the filled presentation, aiming to prove
+$A\not\sim(ABBB)^{-1}$, $AB\not\sim(ABB)^{-1}$,
+$AAb\not\sim(AABB)^{-1}$ outright. If that succeeds, Stage 3 closes
+with the sharper and more interesting conclusion
+$\tr(w)=\tr(w'),\ [w']=-[w]\ \not\Rightarrow\ w'\sim w^{-1}$ — that the
+universal $X_0$ identities and the filling-specific $B/Abb$ identity
+genuinely arise from different structures despite the identical
+trace/homology signature. Not yet attempted.
