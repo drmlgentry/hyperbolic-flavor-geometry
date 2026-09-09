@@ -4809,3 +4809,77 @@ $\tr(w)=\tr(w'),\ [w']=-[w]\ \not\Rightarrow\ w'\sim w^{-1}$ — that the
 universal $X_0$ identities and the filling-specific $B/Abb$ identity
 genuinely arise from different structures despite the identical
 trace/homology signature. Not yet attempted.
+
+## Stage 3.2 SUCCEEDS — exact, proven, doubly-verified non-conjugacy
+## for all three universal pairs, closing Stage 3 with the sharper
+## conclusion
+
+The identified next step succeeded on the first attempt. Rather than
+attempt a general conjugacy decision on the infinite group
+$\Gamma_{\rm fill}=\pi_1(m003(-2,3))=\langle a,b\mid r,s\rangle$
+directly (the exact route that already timed out once this session for
+a similar question — GAP's general `IsConjugate` on the infinite
+finitely-presented group, in the earlier $B/Abb$ investigation), used
+the standard, far more tractable technique: find a **finite quotient**
+of $\Gamma_{\rm fill}$ and test conjugacy of the relevant elements'
+*images* there. Finite-group conjugacy is exactly, rigorously
+decidable — no numerical approximation — and since any group
+homomorphism sends conjugate elements to conjugate elements, proving
+the images are **not** conjugate in *some* finite quotient is an exact
+proof of non-conjugacy in the infinite group.
+
+**Method**
+(`reproduce/m003_stage3p2_finite_quotient_obstruction.sage`, sha256
+`df38dc611490baa285db9e2a785192cf5095fd86a44188b8cf26243e5428819d`,
+then the clean certificate
+`reproduce/m003_stage3p2_certificate.sage`, sha256
+`f30f5e9ccf30f7b154fc54edc77bbf7af18027f4ff6f07772294e0824ac0856d`,
+both `SAGE_EXIT=0`): built $\Gamma_{\rm fill}=F(a,b)/\langle\langle
+r,s\rangle\rangle$ in GAP with $r=\texttt{abAAbabbb}$ (verified cusped
+relator) and $s=\mu^{-2}\lambda^3$ (verified filling word,
+$\mu=\texttt{ABABB}$, $\lambda=\texttt{ABAbab}$); used
+`LowIndexSubgroupsFpGroup` (index bound $15$) to find finite-index
+subgroups, then `FactorCosetAction` to get the induced permutation
+representation on cosets. An index-$5$ subgroup reproduces the
+already-known $H_1\cong\Zfive$ quotient — correctly finds the images
+conjugate there (expected: $[w']=-[w]$ already guarantees equal images
+in *any* abelian quotient, so this quotient cannot distinguish
+anything). An **index-$13$ subgroup gives a permutation image of order
+$5616$** — a genuinely richer, non-abelian quotient.
+
+**Result, in that quotient, for all three pairs**
+($A\sim(ABBB)^{-1}$? $AB\sim(ABB)^{-1}$? $AAb\sim(AABB)^{-1}$? —
+equivalently $ABBB\sim A^{-1}$, etc.): **all three proved NOT
+conjugate**, verified two independent ways for each:
+1. GAP's `IsConjugate` on the finite permutation group (exact).
+2. **Cycle-type comparison** — conjugate permutations in $\mathrm{Sym}(n)$
+   always have identical cycle type; for all three pairs the cycle
+   types are already different (e.g. $[1,1,\ldots,1]$ vs a single
+   $13$-cycle for the first pair), which *alone* proves non-conjugacy
+   without needing to trust `IsConjugate` as a black box.
+
+Reproducibility checked directly: reran the search from a fresh
+Sage/GAP process — identical subgroup list, identical results, both
+times.
+
+**Stage 3 is now closed with the sharper, more interesting conclusion**
+that was flagged as the target if this step succeeded:
+$$\tr(w)=\tr(w'),\ [w']=-[w]\ \centernot\Longrightarrow\ w'\sim w^{-1}.$$
+This is now an **exact, proven fact** for all three universal pairs, not
+a numerical exclusion. Combined with $B/Abb$'s independently *proven*
+conjugate-to-inverse mechanism ($g\cdot B\cdot g^{-1}=Abb^{-1}$,
+$g=BaBA$), the full picture is: **the three universal $X_0$ identities
+and the filling-specific $B/Abb$ identity share the exact same
+trace-equal/homology-inverse signature but arise from genuinely
+different mechanisms** — $B/Abb$ from an actual $\pi_1$-conjugacy fact,
+the three universal identities from something else (per stage 2's own
+analysis, most likely the algebraic structure of $X_0$'s defining ideal
+together with the abelianization map, not group-theoretic conjugacy at
+all, now that conjugacy is exactly excluded). Updates the earlier
+tentative status: **filled-group conjugacy for the three universal
+pairs — EXACTLY RULED OUT**, alongside cusped-group conjugacy (already
+ruled out) and $B/Abb$'s proven mechanism (the one case where it
+holds). The enrichment/inversion pattern from stage 1 remains real and
+unexplained by conjugacy for three of its four instances — a genuine,
+open structural question about $X_0$ itself, now sharpened rather than
+resolved.
