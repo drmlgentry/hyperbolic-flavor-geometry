@@ -4496,3 +4496,45 @@ and the closed structure remains exactly
 $|H_1(m003(p,q))|=5|Q_0(p,q)|$, and needs no further refinement of
 this particular shape. The peripheral-lattice charge idea remains open
 in principle but this specific proposed test of it is closed.
+
+## Stage 2 of the enrichment program: signed trace factorization — all
+## four pairs are trace-*equal*, not trace-negated, while all four are
+## homology-*inverse* — pointing directly at a single mechanism
+
+For each of the three universal identities, factored
+$D_{w,w'}=\tr^2w-\tr^2w'=(\tr w-\tr w')(\tr w+\tr w')$ and reduced each
+signed factor separately modulo the defining ideal of the already-
+identified geometric component $X_0$
+(`reproduce/m003_signed_trace_factorization.sage`, sha256
+`ebade634c6cb10191d224599396066978e1b8d572fef4b1df172e01be5eedda1`,
+`SAGE_EXIT=0`, reconstructing the same primary decomposition as
+`m003_three_universal_identities.sage` verbatim rather than assuming
+component indices carry over). Result, for all three:
+
+$$\tr(A)=\tr(ABBB),\qquad\tr(AB)=\tr(ABB),\qquad\tr(AAb)=\tr(AABB)$$
+
+exactly on $X_0$ — in every case the "$+$" factor
+($2x$, $2z$, $-2y^2+2$ respectively) does **not** vanish, only the
+"$-$" factor does. None is the negated form $\tr w=-\tr w'$. Re-checked
+the already-established fourth pair the same way: $\tr(B)=\tr(Abb)$
+(not the negated form either) on the $(-2,3)$-specific locus, matching
+`m003_squared_locus_and_conjugacy.sage`'s $C_+$ result exactly.
+
+**So all four known pairs share the same sign type (trace-equal), while
+all four share the same homology type (inverse, $[w]=-[w']$, from the
+atlas dichotomy above) — a consistent split across every known case,
+not a coincidence repeated four times.** This is precisely the
+signature the *already-proven* $B/Abb$ mechanism produces automatically:
+$g\cdot B\cdot g^{-1}=Abb^{-1}$ means $Abb$ is conjugate to $B^{-1}$,
+and for any pair related this way, trace is preserved
+(conjugation-invariant, and $\tr(w^{-1})=\tr(w)$ in $\mathrm{SL}_2$)
+while the homology class is forced to negate (abelianization kills
+conjugation but sends inverses to $-[w]$). One mechanism would explain
+both observed patterns at once, for all four pairs, if it holds.
+
+**Directly testable, not yet tested**: is $ABBB$ conjugate to $A^{-1}$
+in $\pi_1(M)$? Is $ABB$ conjugate to $(AB)^{-1}$? Is $AABB$ conjugate to
+$(AAb)^{-1}$? This is exactly stage 3 of the proposed program (search
+for an exact involution/conjugacy mechanism), now with a concrete,
+well-motivated hypothesis to check directly rather than search blindly
+for.
