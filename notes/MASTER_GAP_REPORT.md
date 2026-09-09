@@ -4628,13 +4628,17 @@ a geometric fact**:
   negligible differences that six-decimal printing simply hid.
 - More to the point: fingerprinting each top-10 candidate's resulting
   matrix $\rho(g)\rho(w)\rho(g)^{-1}$ to 10 significant digits finds
-  **exactly 1 distinct matrix among the 10** for every pair. The
-  "flat landscape" is just $10$ different letter-strings representing
-  the *same* discrete-group element (or landing at the same product),
-  not $10$ independent near-misses — an entirely mundane consequence
-  of a one-relator-plus-filling group having many free-group words
-  collapse to few actual elements, not evidence about the conjugacy
-  question either way.
+  **exactly 1 distinct matrix among the 10** for every pair — the
+  top-10 strings represent the same holonomy matrix to that fingerprint
+  precision, not $10$ independent near-misses. Because $\rho_{\rm
+  geom}$ is faithful *projectively*, this is strong evidence they are
+  redundant representatives of the same $\mathrm{PSL}_2(\mathbb C)$
+  group element (a mundane consequence of a one-relator-plus-filling
+  group collapsing many free-group words to few actual elements) —
+  but the fingerprint was not certified exact and does not track the
+  possible central $\pm I$ lift, so this is not yet promoted to an
+  exact equality of $\mathrm{SL}_2$ group elements, and it is not
+  evidence about the conjugacy question either way.
 - The centralizer-dimension aside in the retracted version of this
   paragraph (framed loosely around a "continuous conjugating locus")
   is also removed — for a generic loxodromic element the correct
@@ -4648,24 +4652,33 @@ a geometric fact**:
 pair, lengths $8$–$10$ uniformly — gives medians of
 $116$, $145$, $160$ respectively (maxima in the thousands), while the
 *minimum* of each random sample lands on exactly the same value the
-exhaustive search found ($4.601875$, $3.416394$, $3.212899$). So the
-exhaustive search's best candidates are genuinely the effective minimum
-at this word length (not an artifact of an incomplete search missing
-better options), and are a real $\sim30$–$50\times$ improvement over a
-*typical* short word — but still an $\mathcal O(1)$ quantity, nowhere
-near the $\approx0$ a genuine solution requires.
+exhaustive search found ($4.601875$, $3.416394$, $3.212899$). To state
+this precisely: exhaustive enumeration already establishes
+$r_{\min}^{(|g|\le10)}=\min_{|g|\le10}\|\rho(gwg^{-1})-\rho(w'^{-1})\|_F$
+exactly, on its own — the random control adds nothing to *that* fact.
+Its actual value is calibration: it shows $r_{\min}\ll r_{\rm
+median}^{\rm random}$, roughly the reported $30$–$50\times$ factor,
+i.e. how atypical the enumerated minimum is relative to ordinary short
+conjugators — not confirmation that it is "the true minimum," which
+exhaustive search already gave for free. Still an $\mathcal O(1)$
+quantity, nowhere near the $\approx0$ a genuine solution requires.
 
 **Conclusion, precisely scoped, in the three-part status this warrants**:
-- **Cusped-group conjugacy mechanism ($w'=gw^{-1}g^{-1}$ in
-  $\Gamma_{\rm cusp}=\pi_1(m003)$) — EXACTLY RULED OUT** for the three
-  universal pairs, because their trace identities do not hold on the
-  full cusped character variety (only on $X_0$).
-- **Filled-group conjugacy search through $|g|\le10$
-  ($118{,}096$ nonempty freely-reduced words per pair) — NO CANDIDATE
-  FOUND**, with the best candidates now shown (via the random control)
-  to be genuine local minima at this length, not search gaps — a
-  substantially stronger statement than the bare non-finding alone,
-  but still not a proof.
+- **Cusped-group conjugate-to-inverse mechanism
+  ($w'=gw^{-1}g^{-1}$ in $\Gamma_{\rm cusp}=\pi_1(m003)$) — EXACTLY
+  RULED OUT** for the three universal pairs, because their trace
+  identities do not hold on the full cusped character variety/every
+  component (only on $X_0$).
+- **Filled-group search through $|g|\le10$
+  ($118{,}096$ nonempty freely-reduced words per pair) —
+  EXHAUSTIVE NUMERICAL NEGATIVE**: no near-zero candidate among all
+  $118{,}096$ strings per pair, with the random control showing the
+  best found is a real, substantial ($\sim30$–$50\times$) improvement
+  over typical short conjugators — the group contains short elements
+  that move the relevant matrices notably closer to the ambient
+  conjugacy locus than generic short elements do, but none realizes
+  conjugacy. This says nothing about whether a longer conjugator
+  exists.
 - **Global filled-group conjugacy — OPEN**, pending either an exact
   conjugator at greater length or an actual group-theoretic
   non-conjugacy certificate (neither attempted here). A checked
@@ -4694,3 +4707,51 @@ not yet attempted. Recorded honestly as a negative result, exactly as
 the proposed program called for ("if it dies, record the negative
 result"), with the specific over-claims caught and corrected before
 they stood unchallenged, not after.
+
+## Stage 3.1: the ambient conjugator coset, computed and tested directly
+## — same negative conclusion, through the geometrically correct measure
+
+The proposed cleaner diagnostic: for loxodromic $W=\rho(w)$,
+$T=\rho(w'^{-1})$ (equal trace, from stage 2), the set of ambient
+$\mathrm{SL}_2(\mathbb C)$ conjugators $\{C:CWC^{-1}=T\}$ is a coset
+$C_0\cdot Z(W)$, where $Z(W)$ is the $1$-complex-dimensional
+centralizer of $W$. Rather than measure distance to *one* fixed point
+$C_0$ in that coset (conflating "wrong choice of centralizer element"
+with "not conjugate at all" — a real gap in the stage-3 test), test
+coset **membership** directly: $g$ is a genuine conjugator iff
+$C_0^{-1}\rho(g)$ commutes with $W$, i.e.
+$\|[C_0^{-1}\rho(g),W]\|_F=0$.
+
+**Computed and tested**
+(`reproduce/m003_stage3p1_conjugator_coset.sage`, sha256
+`b42ff36c94efe6c344cbf080acc89798608d59da72d2c3c125ea0194e7b90e2c`,
+`EXIT=0`): for each pair, both possible eigenvalue pairings were tried
+to build $C_0$ (via simultaneous eigendecomposition); exactly one
+pairing per pair gives a genuine conjugator, confirmed by its own
+construction check landing at machine precision
+($1.7\times10^{-14}$, $2.4\times10^{-15}$, $6.7\times10^{-15}$
+respectively for the three pairs), with the other pairing clearly
+invalid (residuals $13$–$20$) — a clean internal sanity check on the
+method itself, not just the final answer. Re-ranked all $118{,}096$
+length-$\le10$ candidates by the commutator norm
+$\|[C_0^{-1}\rho(g),W]\|_F$ (minimized over the valid pairing):
+
+| $(w,w')$ | best commutator norm | best $g$ |
+|---|---|---|
+| $(A,ABBB)$ | $1.103684$ | `bAABAAAAA` |
+| $(AB,ABB)$ | $1.684648$ | `bABaaBABBa` |
+| $(AAb,AABB)$ | $3.208269$ | `AABaaBABBB` |
+
+**Same conclusion, now via the geometrically correct measure**: still
+$\mathcal O(1)$, not decreasing toward $0$, for all three pairs — this
+was not an artifact of the earlier, cruder fixed-point test. No
+element up to length $10$ lies in, or comes close to, the actual
+ambient conjugator coset for any of the three pairs. The status from
+the previous entry stands unchanged: **filled-group search through
+$|g|\le10$ — EXHAUSTIVE NUMERICAL NEGATIVE; global filled-group
+conjugacy — OPEN.** Per the proposed sequencing, this is where the
+bounded-search line of attack is frozen — the two next moves (search
+for a systematic length-dependence trend suggesting a longer conjugator
+exists, or seek an actual group-theoretic non-conjugacy obstruction)
+would need a genuinely different method, not more brute force at this
+one.
