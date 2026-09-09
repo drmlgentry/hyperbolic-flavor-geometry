@@ -1,0 +1,191 @@
+[
+  {
+    "w": "A",
+    "wprime": "ABBB",
+    "target": "a",
+    "top10": [
+      {
+        "g": "ababAbAbb",
+        "len": 9,
+        "residual": 4.601874757255366
+      },
+      {
+        "g": "abaaBABBAb",
+        "len": 10,
+        "residual": 4.601874757255366
+      },
+      {
+        "g": "Baabbbaba",
+        "len": 9,
+        "residual": 4.601874757255367
+      },
+      {
+        "g": "ababAbAbbA",
+        "len": 10,
+        "residual": 4.601874757255367
+      },
+      {
+        "g": "Ababbabaaa",
+        "len": 10,
+        "residual": 4.601874757255367
+      },
+      {
+        "g": "BBBBABaaBB",
+        "len": 10,
+        "residual": 4.601874757255367
+      },
+      {
+        "g": "aBBABabAbb",
+        "len": 10,
+        "residual": 4.601874757255369
+      },
+      {
+        "g": "BBaaBABBBB",
+        "len": 10,
+        "residual": 4.601874757255369
+      },
+      {
+        "g": "abABaBaBBa",
+        "len": 10,
+        "residual": 4.601874757255371
+      },
+      {
+        "g": "abABaBaBB",
+        "len": 9,
+        "residual": 4.601874757255372
+      }
+    ],
+    "best_g": "ababAbAbb",
+    "best_g_len": 9,
+    "numeric_residual": 4.601874757255366,
+    "exact_word": "ababAbAbbABBaBaBABAABBB",
+    "exact_residual": 29.788574167765127,
+    "exact_pass": false
+  },
+  {
+    "w": "AB",
+    "wprime": "ABB",
+    "target": "ba",
+    "top10": [
+      {
+        "g": "Bababababa",
+        "len": 10,
+        "residual": 3.4163941250417493
+      },
+      {
+        "g": "BaaaBABBa",
+        "len": 9,
+        "residual": 3.4163941250418457
+      },
+      {
+        "g": "BaBBABaaa",
+        "len": 9,
+        "residual": 3.416394125041866
+      },
+      {
+        "g": "Babababa",
+        "len": 8,
+        "residual": 3.4163941250418666
+      },
+      {
+        "g": "BabABaBaBA",
+        "len": 10,
+        "residual": 3.416394125041868
+      },
+      {
+        "g": "BBabAbAbaa",
+        "len": 10,
+        "residual": 3.416394125041868
+      },
+      {
+        "g": "ABaBaBAbaa",
+        "len": 10,
+        "residual": 3.4163941250418683
+      },
+      {
+        "g": "BBaBaBAbab",
+        "len": 10,
+        "residual": 3.4163941250418683
+      },
+      {
+        "g": "AbaBABabba",
+        "len": 10,
+        "residual": 3.4163941250418697
+      },
+      {
+        "g": "ABaBaBAbaB",
+        "len": 10,
+        "residual": 3.4163941250418697
+      }
+    ],
+    "best_g": "Bababababa",
+    "best_g_len": 10,
+    "numeric_residual": 3.4163941250417493,
+    "exact_word": "BababababaABABABABABAbABB",
+    "exact_residual": 14.144284197853613,
+    "exact_pass": false
+  },
+  {
+    "w": "AAb",
+    "wprime": "AABB",
+    "target": "Baa",
+    "top10": [
+      {
+        "g": "Babbbaaa",
+        "len": 8,
+        "residual": 3.2128989413539792
+      },
+      {
+        "g": "BBaaabbbab",
+        "len": 10,
+        "residual": 3.212898941353984
+      },
+      {
+        "g": "BBaaBaa",
+        "len": 7,
+        "residual": 3.212898941353985
+      },
+      {
+        "g": "BAbaBABaba",
+        "len": 10,
+        "residual": 3.2128989413539997
+      },
+      {
+        "g": "abAAbabaa",
+        "len": 9,
+        "residual": 3.2128989413540077
+      },
+      {
+        "g": "Babbbab",
+        "len": 7,
+        "residual": 3.2128989413540117
+      },
+      {
+        "g": "BabABaBaBa",
+        "len": 10,
+        "residual": 3.2128989413540143
+      },
+      {
+        "g": "BaBABabAba",
+        "len": 10,
+        "residual": 3.2128989413540143
+      },
+      {
+        "g": "BBaa",
+        "len": 4,
+        "residual": 3.212898941354016
+      },
+      {
+        "g": "BAAbAAbAAb",
+        "len": 10,
+        "residual": 3.212898941354016
+      }
+    ],
+    "best_g": "Babbbaaa",
+    "best_g_len": 8,
+    "numeric_residual": 3.2128989413539792,
+    "exact_word": "BabbbaaaAAbAAABBBAbAABB",
+    "exact_residual": 21.561998485616073,
+    "exact_pass": false
+  }
+]

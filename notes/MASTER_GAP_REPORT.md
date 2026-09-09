@@ -4538,3 +4538,159 @@ $(AAb)^{-1}$? This is exactly stage 3 of the proposed program (search
 for an exact involution/conjugacy mechanism), now with a concrete,
 well-motivated hypothesis to check directly rather than search blindly
 for.
+
+## Stage 3: the conjugate-to-inverse hypothesis fails a proper search —
+## and a real error in this report's own first attempt is corrected
+## here, transparently, not silently
+
+Tested the concrete hypothesis stage 2 motivated: is each
+universal-identity pair related by conjugation-to-inverse in
+$\pi_1(M)=\pi_1(m003(-2,3))$, the same mechanism already proven for
+$B/Abb$ ($g\cdot B\cdot g^{-1}=Abb^{-1}$)?
+
+**Correction of an error in this report's own first pass at this
+question.** The first attempt
+(`reproduce/m003_stage3_conjugacy_search.sage`, sha256
+`cec89970e18f3e79b90910f04b0d8a8779ec78bb35f05fb281866fbc1e802f47`)
+found no conjugator up to length 8 and additionally claimed this was
+*provably* impossible at any length, citing
+`m003_three_universal_identities.sage`'s "Step 0" (the raw polynomial
+$\tr^2(w)-\tr^2(w')$ is nonzero in $\Q[x,y,z]$, i.e. false for a fully
+unconstrained representation with no relator imposed at all). **That
+citation proves the wrong thing.** Step 0 rules out the identity
+holding as a fact independent of *any* relation whatsoever — but the
+actual question is whether $w'\sim w^{-1}$ holds in
+$\pi_1(m003(-2,3))$ specifically, the *closed*, filled group, which
+carries the filling relation *in addition to* the cusped relator. That
+is exactly analogous to $B/Abb$ itself: false on all of $X_0$, true
+only after the $(-2,3)$ filling relation is additionally imposed. An
+abstract conjugacy fact using both relations need only hold at
+representations satisfying both — i.e. only at the single $(-2,3)$
+point, not on the whole bare Riley variety or even all of $X_0$ — so
+Step 0 (and even the full-Riley-variety check in Step 2) does not
+address it. The "provably impossible" claim is **retracted**; only the
+length-8 non-finding stood, and even that was reported as a bare
+threshold pass/fail rather than showing how close the best candidates
+actually came.
+
+**Sharpened statement of what's actually ruled out versus open** (the
+precise form): $\Gamma_{\rm cusp}=\pi_1(m003)$ versus
+$\Gamma_{\rm fill}=\pi_1(m003(-2,3))=\Gamma_{\rm cusp}/\langle\!\langle
+s\rangle\!\rangle$. A relation $w'=gw^{-1}g^{-1}$ in $\Gamma_{\rm
+cusp}$ would force the trace identity on *every* representation of
+$\Gamma_{\rm cusp}$, hence on every component of the full character
+variety — ruled out for the three universal pairs, since the identity
+holds only on $X_0$, not the other components. But this does **not**
+rule out the same relation holding in $\Gamma_{\rm fill}$ specifically,
+since the extra slope relation $s=1$ can create new word equalities not
+present before filling — exactly what happens for $B/Abb$ (more
+precisely stated: $\tr(B)-\tr(Abb)$ is *not* identically zero on
+$X_0$, but vanishes on the proper $(-2,3)$-filling sublocus *inside*
+$X_0$, since the filled geometric point itself lies on $X_0$). So:
+**cusped-group conjugacy ruled out for the three universal pairs;
+filled-group conjugacy genuinely open; a numerical search in
+$\rho_{\rm geom}(\Gamma_{\rm fill})$ is the legitimate next test.**
+
+**Redone properly**
+(`reproduce/m003_stage3_conjugacy_search_v2.sage`, sha256
+`f9b5681bcee548999a00f6974aa192907a94f566d497d3490dbc213fa36254b2`,
+results sha256
+`20012d252bfdd04aaf94192754e1dc9d261abfcf3faec111d89470265b53b7d4`,
+`EXIT=0`): certified holonomy of $M_{\rm PMNS}=\Gamma_{\rm fill}$ at
+$300$ bits, exhaustive search over freely-reduced conjugating words $g$
+up to length $10$ ($118{,}096$ nonempty words $+1$ empty $=118{,}097$
+candidates per pair), **ranked by residual**
+$\|\rho(g)\rho(w)\rho(g)^{-1}-\rho(w'^{-1})\|_F$ (top 10 kept per pair,
+not just the winner), with numeric discovery kept separate from exact
+verification (the exact word $g\cdot w\cdot g^{-1}\cdot w'$ checked
+against the identity via SnapPy's own certified `rho()` call, not the
+fast double-precision search chain):
+
+| $(w,w')$ | $g_{\rm best}$ | $\lvert g\rvert$ | $\|\rho(gwg^{-1})-\rho(w'^{-1})\|_F$ | exact check |
+|---|---|---|---|---|
+| $(A,ABBB)$ | `ababAbAbb` | 9 | $4.601875$ | FAIL (residual $29.79$) |
+| $(AB,ABB)$ | `Bababababa` | 10 | $3.416394$ | FAIL (residual $14.14$) |
+| $(AAb,AABB)$ | `Babbbaaa` | 8 | $3.212899$ | FAIL (residual $21.56$) |
+
+**A second self-correction, caught before overclaiming further**: this
+report's own first pass at these numbers claimed the top-10 candidates
+per pair "tie at the identical residual to 6 decimal places... a flat
+landscape," and read that as *additional* negative evidence (no
+gradient toward a solution anywhere nearby). Checked directly before
+that claim was allowed to stand
+(`reproduce/m003_stage3_flatness_diagnostic.sage`, sha256
+`cfb95058a08904206ebe7e20580a857a81decc1ffca6c1a875223585aefc7e33`,
+`EXIT=0`) — **it was a rounding artifact compounding a redundancy, not
+a geometric fact**:
+- Full-precision residuals are *not* tied — they differ starting
+  around the $14$th–$15$th significant digit (e.g.
+  $4.601874757255366\ldots$ vs $4.601874757255372\ldots$), utterly
+  negligible differences that six-decimal printing simply hid.
+- More to the point: fingerprinting each top-10 candidate's resulting
+  matrix $\rho(g)\rho(w)\rho(g)^{-1}$ to 10 significant digits finds
+  **exactly 1 distinct matrix among the 10** for every pair. The
+  "flat landscape" is just $10$ different letter-strings representing
+  the *same* discrete-group element (or landing at the same product),
+  not $10$ independent near-misses — an entirely mundane consequence
+  of a one-relator-plus-filling group having many free-group words
+  collapse to few actual elements, not evidence about the conjugacy
+  question either way.
+- The centralizer-dimension aside in the retracted version of this
+  paragraph (framed loosely around a "continuous conjugating locus")
+  is also removed — for a generic loxodromic element the correct
+  statement is that its centralizer in $\mathrm{SL}_2(\mathbb C)$ is
+  $1$-complex-dimensional, not the vaguer claim given before, and the
+  point is moot in any case once the "flat landscape" premise itself
+  is gone.
+
+**What does properly calibrate the result**: a random-word control
+(same script) — residuals for $3000$ random freely-reduced words per
+pair, lengths $8$–$10$ uniformly — gives medians of
+$116$, $145$, $160$ respectively (maxima in the thousands), while the
+*minimum* of each random sample lands on exactly the same value the
+exhaustive search found ($4.601875$, $3.416394$, $3.212899$). So the
+exhaustive search's best candidates are genuinely the effective minimum
+at this word length (not an artifact of an incomplete search missing
+better options), and are a real $\sim30$–$50\times$ improvement over a
+*typical* short word — but still an $\mathcal O(1)$ quantity, nowhere
+near the $\approx0$ a genuine solution requires.
+
+**Conclusion, precisely scoped, in the three-part status this warrants**:
+- **Cusped-group conjugacy mechanism ($w'=gw^{-1}g^{-1}$ in
+  $\Gamma_{\rm cusp}=\pi_1(m003)$) — EXACTLY RULED OUT** for the three
+  universal pairs, because their trace identities do not hold on the
+  full cusped character variety (only on $X_0$).
+- **Filled-group conjugacy search through $|g|\le10$
+  ($118{,}096$ nonempty freely-reduced words per pair) — NO CANDIDATE
+  FOUND**, with the best candidates now shown (via the random control)
+  to be genuine local minima at this length, not search gaps — a
+  substantially stronger statement than the bare non-finding alone,
+  but still not a proof.
+- **Global filled-group conjugacy — OPEN**, pending either an exact
+  conjugator at greater length or an actual group-theoretic
+  non-conjugacy certificate (neither attempted here). A checked
+  "high-precision `rho()` residual of order $10$" is a **numerically
+  excluded candidate**, not an exact algebraic non-conjugacy proof —
+  that would require reducing the corresponding relation in the filled
+  character algebra symbolically, which was not done for these
+  (unlike $B/Abb$'s own conjugacy, which *is* an exact, algebraically
+  certified fact).
+
+If a genuine conjugator is ever found, the exact-certification path is
+already validated (SL$_2(\mathbb C)$ faithfulness of $\rho_{\rm geom}$
+promotes an exact matrix identity at the certified representation to
+an abstract group identity — the same promotion that made the $B/Abb$
+theorem meaningful) and would immediately explain *both* stage 1 and
+stage 2 for that pair at once. Absent that, the more likely
+explanation — given the pattern holds on the whole $X_0$ curve rather
+than a single point — is that it lies in the algebraic structure of
+$X_0$'s defining ideal together with the abelianization map, not in
+$\pi_1$-conjugacy at all. A cleaner geometric diagnostic than more
+brute-force search — solving explicitly for one ambient conjugator $C$
+with $C\rho(w)C^{-1}=\rho(w'^{-1})$ and testing
+$\rho(\Gamma_{\rm fill})\cap C\cdot Z_{\mathrm{SL}_2(\mathbb C)}
+(\rho(w))\overset{?}{\neq}\varnothing$ directly — was proposed and is
+not yet attempted. Recorded honestly as a negative result, exactly as
+the proposed program called for ("if it dies, record the negative
+result"), with the specific over-claims caught and corrected before
+they stood unchallenged, not after.
