@@ -4455,3 +4455,44 @@ work above, this is exploratory theory-building toward a speculative
 physics question — the dichotomy found here is a genuine, clean,
 verified computational fact, but it is not yet a theorem with a known
 mechanism, and no claim is made that it bears on electric charge.
+
+## Peripheral integral character: real, but the proposed mod-5 descent
+## test is vacuous — resolved, not merely unresolved
+
+A relayed critique correctly identified a fatal flaw in an even earlier
+proposal (a map $\Zfive\to\Z$, $1\mapsto-3$): no such nonzero
+homomorphism exists, since $\operatorname{Hom}(\Zfive,\Z)=0$ — an
+elementary, decisive fact. In its place it proposed a genuine
+peripheral integral character
+$Q_0(p\mu+q\lambda)=2p+q$ on $H_1(\partial m003;\Z)\cong\Z^2$, noted
+this is (up to sign) forced to be the *unique* bulk-induced integer
+character (since any $Q_{\rm bulk}:H_1(m003)\to\Z$ must kill the
+$\Zfive$ generator $b$, by the same $\operatorname{Hom}$ vanishing),
+and that $|H_1(m003(p,q))|=5|Q_0(p,q)|$ is just the surgery law
+restated. All of this checked out directly against this session's own
+independently-derived peripheral data ($[\mu]=-2a-3b$, $[\lambda]=-a+b$,
+matching exactly) and is correct.
+
+It then posed a sharp, well-defined open question: does $Q_0$ descend
+mod $5$ to match the closed character $\chi$, via a commutative square
+$H_1(\partial M)\to H_1(M_{\rm closed})$ over $\Z\to\Zfive$? **Checked
+directly and resolved — the question is vacuous, not merely open**
+(`reproduce/m003_peripheral_descent_check.sage`, sha256
+`65098ff71ad61e305b26f14c378e5e55aba193503512cbd09c14ca3f2f70ecc1`,
+`SAGE_EXIT=0`): both peripheral generators $\mu,\lambda$ map to the
+**trivial class** in $H_1(m003(-2,3))=\Zfive$ (confirmed by direct
+quotient-module computation). This is not special to this manifold —
+it is the general fact that Dehn filling kills the entire peripheral
+subgroup's image in the closed manifold's homology (the meridian
+bounds the filling solid torus's meridian disk, hence is
+null-homologous after filling; since $\mu,\lambda$ generate the whole
+peripheral $\Z^2$, the entire peripheral image dies). Consequently
+"$Q_0$ restricted to the peripheral image, reduced mod 5" is
+identically $0$ for *any* filling and *any* choice of $Q_0$ — it
+cannot fail or succeed in an interesting way along this specific route,
+so there is no hidden commutative-diagram content to find here. The
+one genuinely meaningful, already-established connection between $Q_0$
+and the closed structure remains exactly
+$|H_1(m003(p,q))|=5|Q_0(p,q)|$, and needs no further refinement of
+this particular shape. The peripheral-lattice charge idea remains open
+in principle but this specific proposed test of it is closed.
