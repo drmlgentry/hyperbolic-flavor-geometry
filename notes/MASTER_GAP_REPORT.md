@@ -4883,3 +4883,134 @@ holds). The enrichment/inversion pattern from stage 1 remains real and
 unexplained by conjugacy for three of its four instances — a genuine,
 open structural question about $X_0$ itself, now sharpened rather than
 resolved.
+
+## Stage 3.3: no new phenomenon to explain — the earlier "40-collision"
+## enrichment was 4 distinct facts counted 13 times; the properly
+## deduplicated statistic reveals a genuine, small-sample reverse
+## enrichment instead
+
+**A first attempt at this stage had real methodological problems,
+caught and corrected before any conclusion was drawn from it, not
+after**: it pooled all 13 fillings (with genuinely different $H_1$
+structures — $\Zfive$, $\Zfive\oplus\Z$, $\Z/15$, $\Zfive\oplus\Zfive$,
+$\Z/35$, $\Z/45$, $\Z/55$) into one statistic, used a numerical
+tolerance on the atlas's decimal `tr_re`/`tr_im` columns while calling
+the result a comparison rather than flagging it as a candidate needing
+exact certification, and didn't separate the degenerate $\chi=0$/
+$\tau=0$ cases (where "same" and "opposite" coincide) from genuine
+same/inverse/opposite relations. Kept for provenance, not deleted
+(`reproduce/m003_stage3p3_signed_trace_homology_correlation.py`, sha256
+`8e28e10186cbb5e5ab2d68c511c22f9a33c520c0cdda26fc1e24750aa7e0f107`) —
+superseded by the two scripts below.
+
+**Step 1 — deduplicate by distinct word-pair, not per-filling
+occurrence, before drawing any conclusion**
+(`reproduce/m003_stage3p3_dedup_scan.py`, sha256
+`bac905e3cae82de41a5d45973c6355e4aa2de150900535e52c2aba1da3108604`,
+`EXIT=0`): the atlas's $136$ curated pairs per filling are the *same*
+$136$ pairs at every filling (confirmed directly, $\binom{17}{2}=136$,
+matching the atlas's own $17$-word curated comparison set). For each
+distinct pair, checked at how many of the $13$ fillings the numerical
+signed-trace relation holds. Result: **exactly $4$ distinct word-pairs
+show numerical trace equality anywhere in the entire atlas** — the
+three already-known universal pairs, each holding at *all* $13$
+fillings, and $B/Abb$, holding at *exactly* $1$ filling ($(-2,3)$) —
+and **zero** pairs anywhere show the negated relation
+$\tau_u=-\tau_v$ (universal, partial, or single-filling). This
+directly confirms what the review anticipated: the earlier pooled
+count of "$22$ inverse-type $+18$ other-type $=40$ collisions" was
+these same **4** distinct facts, each counted once per filling it
+holds at ($3\times13+1=40$, exactly) — not $40$ independent instances.
+**No new trace identities exist in this atlas beyond the four already
+investigated and already exactly certified**
+(`m003_three_universal_identities.sage` for the three universal ones;
+`m003_riley_b_abb.sage`/`m003_squared_locus_and_conjugacy.sage` for
+$B/Abb$) — so the "candidates $\to$ exact reduction mod $I(X_0)$" step
+of the proposed pipeline has nothing new to certify; it terminates
+here honestly rather than manufacturing additional work.
+
+**Precise scope of the "no NEG" finding, stated exactly**: among the
+$136$ curated word pairs tested at each of the $13$ fillings (not the
+full $\binom{99}{2}=4851$ pairs among all $99$ word classes — this is
+a curated $17$-word comparison set, $\binom{17}{2}=136$), no
+$\tau_u=-\tau_v$ occurrence was detected. Scope stays exact; no claim
+is made about the full word-class set.
+
+**Step 2 — the properly deduplicated, correctly-categorized
+contingency table, for $m003(-2,3)$ specifically (not pooled)**
+(`reproduce/m003_stage3p3_contingency_table.py`, sha256
+`c07abdea30887a0f4b0558a7cec62be7ca152c4f85754bb5aa39c5602c6de8cb`,
+`EXIT=0`), using the non-overlapping categories
+$H_0$ (both classes zero), $H_-$ (inverse, nonzero), $H_=$ (same,
+nonzero), $H_{\rm other}$, and analogously $T_0,T_+,T_-,T_{\rm other}$
+for the signed trace relation, over all $136$ curated pairs, with an
+explicit assertion that the partitions are exhaustive and disjoint
+($\sum_{i,j}N_{ij}=136$, checked in code, not just asserted in prose —
+exactly the guard needed to prevent the $\chi=0$/$\tau=0$ ambiguity
+that contaminated the earlier attempt):
+
+| | $T_0$ | $T_+$ | $T_-$ | $T_{\rm other}$ | Total |
+|---|---|---|---|---|---|
+| $H_0$ | 0 | 0 | 0 | 3 | 3 |
+| $H_-$ | 0 | **4** | 0 | 20 | 24 |
+| $H_=$ | 0 | 0 | 0 | 18 | 18 |
+| $H_{\rm other}$ | 0 | 0 | 0 | 91 | 91 |
+| Total | 0 | 4 | 0 | 132 | 136 |
+
+Both conditional quantities, kept as genuinely different claims and
+**neither read as causal**:
+$$P(T_+\mid H_-)=\frac{N_{H_-,T_+}}{\sum_jN_{H_-,T_j}}=\frac{4}{24}\approx17\%$$
+— descriptive enrichment inside this frozen curated word set, *not*
+"homology inversion causes trace equality." And, more interesting:
+$$P(H_-\mid T_+)=\frac{N_{H_-,T_+}}{\sum_iN_{H_i,T_+}}=\frac{4}{4}=1.$$
+Even this should not be stated as a general law — the accurate
+statement is: **all four distinct trace-equal word pairs in the
+curated $(-2,3)$ atlas have nonzero, inverse $\Zfive$ homology
+classes.** Four identities are four identities.
+
+**Evidence hierarchy — separating what's exact from what's a finite
+numerical scan, since the four interesting pairs already have exact
+certificates elsewhere in this report**:
+
+| Finding | Status |
+|---|---|
+| Three universal $T_+$ identities | **EXACT** on $X_0$ (`m003_three_universal_identities.sage`) |
+| $B/Abb$ $T_+$ at $(-2,3)$ | **EXACT**, filling-specific (conjugacy-to-inverse on the $+I$ branch) |
+| All four have $H_-$ | **EXACT** integer/mod-$5$ computation (homology classes are exact exponent-count arithmetic, not numerically approximated) |
+| No additional $T_+$ among the $136$ curated pairs | Numerical finite scan |
+| No $T_-$ among the $136$ curated pairs | Numerical finite scan (not worth exact-reducing all $132$ sums $\tr(u)+\tr(v)$ across every coordinate ring unless "$T_-=0$" ever becomes theorem-critical) |
+| General $T_+\Rightarrow H_-$ law | **NOT ESTABLISHED** |
+
+**Sign-twist parity control, verified directly, not just computed as a
+label** (same script, extended): for each of the $4$ $T_+$ pairs,
+checked whether the twisted traces
+$\tau^\varepsilon(w)=(-1)^{n_a(w)}\tau(w)$ (for
+$\varepsilon(a){=}{-1},\varepsilon(b){=}{+1}$) preserve or flip the
+relation. The three universal pairs (even parity) are **unchanged**
+under the twist; $B/Abb$ (odd parity) **flips to $T_-$ exactly** —
+verified numerically ($|\tau^\varepsilon_u+\tau^\varepsilon_v|<10^{-6}$
+after the twist, where before it was the $\tau_u=\tau_v$ relation that
+held). **This is the important, clarifying point**: it shows directly
+that "$T_-=0$" among the untwisted pairs is a property of the
+*sampled component/lift* ($\rho_{\rm geom}$ specifically), not a
+prohibition intrinsic to $X_0$ as a whole — the twisted component
+$\rho^\varepsilon$ supplies the missing $T_-$ branch for exactly the
+pair that has odd parity. The parity split otherwise happens to line
+up with the stage-3.2 conjugacy split (even parity $\leftrightarrow$
+proven non-conjugate; odd parity $\leftrightarrow$ proven conjugate),
+reported as a real, cheaply-verified correlate, not a proposed cause.
+
+**Bottom line for stage 3.3**: no larger phenomenon was hiding in this
+atlas waiting to be explained algebraically — the honest population,
+once deduplicated, is $4$ distinct facts, not $40$ occurrences. That
+correction is itself the useful negative result: it says not to invent
+an $X_0$ involution to explain a pattern whose apparent breadth came
+entirely from repeated specializations across $13$ fillings of the
+same handful of identities. What survives, precisely stated: all four
+known trace-equal pairs happen to have inverse, nonzero homology
+classes, and the untwisted representation's "$T_-$ never occurs" is
+shown (not just suspected) to be a property of that specific
+component. Extending the word-length bound beyond $6$ or the curated
+pair set beyond $17$ words, to see whether the $4$-for-$4$ pattern
+holds with a larger sample, is the natural next computation, not yet
+attempted.
