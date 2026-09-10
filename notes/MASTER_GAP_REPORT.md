@@ -5014,3 +5014,54 @@ component. Extending the word-length bound beyond $6$ or the curated
 pair set beyond $17$ words, to see whether the $4$-for-$4$ pattern
 holds with a larger sample, is the natural next computation, not yet
 attempted.
+
+## Stage 3 — consolidated conclusion (frozen)
+
+The five sub-stages form one logical progression:
+
+- **Stage 3A** — conjugate-to-inverse in the *cusped* group
+  $\pi_1(m003)$: **EXACTLY RULED OUT** for the three universal pairs
+  (their trace identities hold only on $X_0$, not on the full cusped
+  character variety, so no relation independent of representation can
+  produce them).
+- **Stages 3B / 3.1** — filled-group $\pi_1(m003(-2,3))$: two
+  independent **bounded numerical negatives** ($|g|\le10$, $118{,}096$
+  words; fixed-target search and properly-normalized centralizer/coset
+  membership), calibrated against a random-word control.
+- **Stage 3.2** — upgrades that to **EXACT non-conjugacy** in the
+  filled group, via the order-$5616$ finite permutation quotient
+  (index-$13$ subgroup), doubly verified (`IsConjugate` + cycle-type),
+  reproducible.
+- **Stage 3.3** — the apparent broader trace/homology enrichment
+  **collapses under deduplication** to the same four already-known
+  identities ($40$ occurrences $=3\times13+1$).
+
+**Canonical statement**: **STAGE 3.3 — BROADER TRACE/HOMOLOGY LAW NOT
+SUPPORTED.** Subsidiary:
+- $4$ distinct certified $T_+$ identities; no additional identities
+  discovered.
+- Within the curated $(-2,3)$ set: $P(H_-\mid T_+)=4/4$,
+  $P(T_+\mid H_-)=4/24$ — inverse homology is nowhere near sufficient
+  to produce trace equality, so whatever generates the three universal
+  identities is far more selective than abelianization.
+- The $\varepsilon$-twist converts $B/Abb$: $T_+\to T_-$ while
+  preserving the three universal $T_+$ identities — so "no $T_-$" is a
+  property of the sampled lift/component, not intrinsic character
+  geometry.
+
+**The clean comparison the whole of Stage 3 establishes**:
+
+| pair type | $\tr(w)=\tr(w')$ | $[w']=-[w]$ | $w'\sim w^{-1}$ | under $\varepsilon$ |
+|---|---|---|---|---|
+| 3 universal $X_0$ pairs | ✓ | ✓ | ✗ (exact) | $T_+$ preserved |
+| $B/Abb$ | ✓ | ✓ | ✓ (exact) | $T_+\to T_-$ |
+
+**Stopping rule** (adopted): Stage 3.3 does *not* automatically lead to
+a Stage 3.4. The question it opened — whether the apparent broader
+correlation demanded a new $X_0$ mechanism — has a negative answer. The
+only remaining unexplained fact is *why those three specific universal
+identities hold on $X_0$*: a legitimate algebraic-geometry problem
+(their exact certificates exist; a common factor/syzygy of the trace-
+difference ideal modulo $I(X_0)$ would be where to look), to be opened
+as a new problem only if explaining them becomes important to the HFG
+theorem spine. This branch is otherwise closed.
