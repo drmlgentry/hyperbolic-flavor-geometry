@@ -1,0 +1,162 @@
+
+==============================================================================
+1. I(X_0): redundant generator, complete intersection, rational param
+==============================================================================
+  y*z - x - z                         = -x + y*z - z
+  -x*(x*z+1) + z*(x^2+y-1)            = -x + y*z - z
+  redundant generator identity holds:  True
+  x*z+1      at (t, 1-t^2, -1/t) = 0   vanishes: True
+  x^2+y-1    at (t, 1-t^2, -1/t) = 0   vanishes: True
+  y*z-x-z    at (t, 1-t^2, -1/t) = 0   vanishes: True
+
+  Groebner basis of <y*z-x-z, x*z+1, x^2+y-1>: [x**2 + y - 1, x*z + 1, -x + y*z - z]
+  Groebner basis of <x*z+1, x^2+y-1>          : [x**2 + y - 1, x*z + 1, -x + y*z - z]
+  ideals equal: True
+
+==============================================================================
+2. the six trace polynomials, in x,y,z and pulled back to t
+==============================================================================
+  tr(A    ) = x
+          (t) = t
+  tr(ABBB ) = -x*y + y**2*z - z
+          (t) = t
+  tr(AB   ) = z
+          (t) = -1/t
+  tr(ABB  ) = -x + y*z
+          (t) = -1/t
+  tr(AAb  ) = x**2*y - x*z - y
+          (t) = t**2*(2 - t**2)
+  tr(AABB ) = -x**2 + x*y*z - y**2 + 2
+          (t) = 1 - (t**2 - 1)**2
+
+==============================================================================
+3. each identity as a rational-function identity in t
+==============================================================================
+  tr(A) - tr(ABBB)  =  0   (identically 0: True)
+  tr(AB) - tr(ABB)  =  0   (identically 0: True)
+  tr(AAb) - tr(AABB)  =  0   (identically 0: True)
+
+==============================================================================
+4. trace-difference polys D_i, factorization, gcd, ideal vs I(X_0)
+==============================================================================
+  D[A,ABBB] = x*y + x - y**2*z + z
+       factored: (y + 1)*(x - y*z + z)
+  D[AB,ABB] = x - y*z + z
+       factored: x - y*z + z
+  D[AAb,AABB] = x**2*y + x**2 - x*y*z - x*z + y**2 - y - 2
+       factored: (y + 1)*(x**2 - x*z + y - 2)
+
+  gcd(D1, D2, D3) = 1
+  D[A,ABBB] mod I(X_0)  ->  0   (in I(X_0): True)
+  D[AB,ABB] mod I(X_0)  ->  0   (in I(X_0): True)
+  D[AAb,AABB] mod I(X_0)  ->  0   (in I(X_0): True)
+
+  Groebner basis of J = <D1,D2,D3>: [x**3 + x**2*z + x*y - 2*x*z**2 - 2*z, x**2*y - 2*x*z + y**2 - y - 2, -x + y*z - z]
+  x*z+1      mod J  ->  x*z + 1   (in J: False)
+  x^2+y-1    mod J  ->  x**2 + y - 1   (in J: False)
+  J == I(X_0) as ideals: False
+  (J radical check) sqrt-membership of x*z+1: False
+  D[A,ABBB] in <other two D's, I(X_0)>: True
+  D[AB,ABB] in <other two D's, I(X_0)>: True
+  D[AAb,AABB] in <other two D's, I(X_0)>: True
+
+==============================================================================
+5. the structural picture: D_2 IS the redundant generator; (y+1) ties all three
+==============================================================================
+  D_2                       = x - y*z + z
+  -(y*z - x - z)            = x - y*z + z
+  D_2 == -(y*z-x-z):         True
+  D_2 == x*(x*z+1) - z*(x^2+y-1):  True
+
+  D_1 == (y+1)*D_2:          True
+  D_3 == (y+1)*((x^2+y-1)-(x*z+1)):  True
+
+  D_1 = (A,ABBB):  f = x*y + x ,  g = -y*z - z   exact: True
+  D_2 = (AB,ABB):  f = x ,  g = -z   exact: True
+  D_3 = (AAb,AABB):  f = -y - 1 ,  g = y + 1   exact: True
+
+  (y+1) | D_1 : True
+  (y+1) | D_2 : False
+  (y+1) | D_3 : True
+
+  F_1 = D_1/(y+1) = x - y*z + z
+  F_2 = D_2       = x - y*z + z
+  F_3 = D_3/(y+1) = x**2 - x*z + y - 2
+  F_1 == F_2 (== -g_1 == x*g_2 - z*g_3):  True
+  F_3 == g_3 - g_2 == (x^2+y-1) - (x*z+1):  True
+  F_1 mod I(X_0) = 0
+  F_2 mod I(X_0) = 0
+  F_3 mod I(X_0) = 0
+
+==============================================================================
+6. V(J_D):  is sqrt(J_D) = I(X_0), or X_0 plus spurious components?
+==============================================================================
+  <D1,D2,D3> Groebner: [x**3 + x**2*z + x*y - 2*x*z**2 - 2*z, x**2*y - 2*x*z + y**2 - y - 2, -x + y*z - z]
+  <g1,(y+1)(g3-g2)> Groebner: [x**3 + x**2*z + x*y - 2*x*z**2 - 2*z, x**2*y - 2*x*z + y**2 - y - 2, -x + y*z - z]
+  J_D == <g1, (y+1)(g3-g2)>:  True
+  line L (y=-1, x=-2z): lies in V(J_D): True ;  lies in X_0: False
+  line M (y=2, x=z): lies in V(J_D): True ;  lies in X_0: False
+
+  I(X_0) cap I(L) cap I(M) Groebner: [x**3 + x**2*z + x*y - 2*x*z**2 - 2*z, x**2*y - 2*x*z + y**2 - y - 2, -x + y*z - z]
+  J_D subset (I(X_0) cap I(L) cap I(M)) : True
+  K-generator x**3 + x**2*z + x*y - 2*x*z**2 - 2*z:  lies in sqrt(J_D) at power 1
+  K-generator x**2*y - 2*x*z + y**2 - y - 2:  lies in sqrt(J_D) at power 1
+  K-generator -x + y*z - z:  lies in sqrt(J_D) at power 1
+
+  => in the ambient Fricke A^3 the three universal identities cut out
+     X_0 TOGETHER WITH the two spurious lines L (y=-1, x=-2z) and
+     M (y=2, x=z).  sqrt(J_D) = I(X_0) cap I(L) cap I(M), a proper
+     SUB-ideal of I(X_0): V(J_D) = X_0 u L u M strictly contains X_0.
+
+==============================================================================
+6b. inside the bare Riley variety: does J_D + I_Riley cut out exactly X_0?
+==============================================================================
+  sqrt(I_Riley) = comp0 cap comp1 cap X_0, Groebner basis:
+     x*z**3 - 4*x*z + z**2 - 4
+     -x*z**2 + 4*x + y*z**3 - 4*y*z - z**3 + 4*z
+     2*x*y*z - x*z + y*z**2 + 2*y - z**2
+     -2*x*y + x*z**2 - 2*x + 2*y**2*z - z
+     x**2 + y - 1
+
+  A := sqrt(I_Riley) + <D1,D2,D3>, Groebner basis:
+     x**2 + y - 1
+     x*z + 1
+     -x + y*z - z
+
+  A subset I(X_0):                 True
+  x^2+y-1 in sqrt(A) at power:     1
+  x*z+1   in sqrt(A) at power:     1
+  => sqrt(A) == I(X_0):            True
+  line L: contained in Riley variety: False ; L cap X_0 solves x*z+1 = 1 - 2 s^2 = 0  ->  [{sL: -sqrt(2)/2}, {sL: sqrt(2)/2}]
+  line M: contained in Riley variety: False ; M cap X_0 solves x*z+1 = s^2 + 1 = 0  ->  [{sM: -I}, {sM: I}]
+
+  => V(sqrt(I_Riley)) cap V(J_D) = X_0 AS VARIETIES:
+     - comp0, comp1 (golden-ratio points) contribute NO points to
+       V(J_D): y^2+y-1 != 0 at y=-1 (L) and y=2 (M).
+     - L, M meet X_0 only in the finite sets above, which are on X_0.
+     At the certified-radical level this is also an ideal equality:
+     (comp0 cap comp1 cap X_0) + <D1,D2,D3> = I(X_0)  (GBs coincide).
+     No claim is made about the un-radicalised relator ideal.
+
+==============================================================================
+7. the mechanism: Phi : Q[x,y,z] -> Q[t,t^-1], ker Phi = I(X_0)
+==============================================================================
+  Phi: Q[x,y,z] -> Q[t,t^-1], (x,y,z) |-> (t, 1-t^2, -1/t), ker Phi = I(X_0).
+  NOT an independent explanation (Q[t,t^-1] has infinitely many distinct
+  functions); this is the one-variable shadow of blocks 2-3, where the D_i
+  are shown to lie in ker Phi = I(X_0) for explicit algebraic reasons.
+  The six words give only THREE images under Phi:
+    T_A    (t) = t
+    T_ABBB (t) = t
+    T_AB   (t) = -1/t
+    T_ABB  (t) = -1/t
+    T_AAb  (t) = -t**4 + 2*t**2
+    T_AABB (t) = -t**4 + 2*t**2
+
+    T_A  ==  T_ABBB  :  True
+    T_AB  ==  T_ABB  :  True
+    T_AAb  ==  T_AABB  :  True
+
+  T_AAb = T_AABB = 2 t^2 - t^4 = 1 - (t^2 - 1)^2  : True
+
+PY_EXIT=0

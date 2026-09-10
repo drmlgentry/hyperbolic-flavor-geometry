@@ -5065,3 +5065,208 @@ identities hold on $X_0$*: a legitimate algebraic-geometry problem
 difference ideal modulo $I(X_0)$ would be where to look), to be opened
 as a new problem only if explaining them becomes important to the HFG
 theorem spine. This branch is otherwise closed.
+
+---
+
+## Stage 4 — the algebraic origin of the three universal identities on $X_0$
+
+**Problem.** Stage 3 closed the *representation-theoretic* question:
+the three recurrent atlas identities
+$$\tr(A)=\tr(ABBB),\qquad \tr(AB)=\tr(ABB),\qquad \tr(AAb)=\tr(AABB)$$
+(word convention: lowercase $=$ generator, UPPERCASE $=$ inverse; the
+exact uppercase/lowercase word parser is used throughout — $\tr(M^{-1})
+=\tr(M)$ for a whole element only, never for flipping single letters)
+hold identically on the geometric component $X_0$ of the bare Riley
+variety of $\pi_1(m003)$, and this is **not** group conjugacy (cusped:
+exactly ruled out; filled $m003(-2,3)$: exactly non-conjugate via the
+order-$5616$ quotient). What remained: *why do they hold on $X_0$?*
+This stage answers it, exactly.
+
+Reproduce: `reproduce/m003_stage4_x0_identity_origin.py` (+ `.log`).
+sha256 `65c46c142977c99ea642de2c281bd4c10cef06fb25877ea0450cd40410cbf964`
+(script), `02fc81acf9f0b5838078b12f3034ff49f82e0e97d779d2d7572a4ceabe4b4cc5`
+(log). Commutative algebra over $\mathbb{Q}$ in `sympy` (Groebner
+bases, ideal membership by normal form, elimination for ideal
+intersection, factorization); the primary decomposition of the bare
+Riley variety is taken from the already-certified Sage run
+`m003_three_universal_identities.log`.
+
+### 4.1 $X_0$ is the multiplicative group $\mathbb{G}_m$
+
+Fricke coordinates $x=\tr(a),\ y=\tr(b),\ z=\tr(ab)$; auxiliary SL$_2$
+variable $u$ eliminated via $u^2+zu+1=0$. From the certified primary
+decomposition, the geometric component is
+$$I(X_0)=\langle\, y z - x - z,\ \ x z + 1,\ \ x^2 + y - 1\,\rangle .$$
+The first generator is **redundant** — the exact syzygy
+$$y z - x - z \;=\; -x\,(x z + 1) \;+\; z\,(x^2 + y - 1)$$
+holds in $\mathbb{Z}[x,y,z]$ — so
+$$\boxed{\,I(X_0)=\langle\, x z + 1,\ \ x^2 + y - 1\,\rangle\,}$$
+a codimension-2 complete intersection. Since $xz=-1$ forces $x\neq0$,
+$$\mathbb{Q}[X_0]\;=\;\mathbb{Q}[x,y,z]/I(X_0)\;\cong\;\mathbb{Q}[x,x^{-1}],
+\qquad y = 1-x^2,\quad z = -x^{-1}.$$
+Thus $X_0\simeq\mathbb{G}_m$ (affine: the multiplicative group; smooth
+projective completion $\mathbb{P}^1$) — sharper than "genus-0 rational
+curve", and the key point is that $\mathbb{Q}[X_0]$ is an **integral
+domain**. Rational parameter $t := x = \tr(a)$, so
+$(x,y,z)=(t,\,1-t^2,\,-t^{-1})$, $t\in\mathbb{G}_m$.
+
+### 4.2 One of the three identities *is* a defining equation of $X_0$
+
+Write $g_1 = y z - x - z$, $g_2 = x z + 1$, $g_3 = x^2 + y - 1$, and let
+$D_i = \tr(w_i)-\tr(w_i')$ be the three trace-difference polynomials
+(reduced to $\mathbb{Q}[x,y,z]$). Then, exactly:
+$$D_2 \;=\; \tr(AB)-\tr(ABB) \;=\; x - y z + z \;=\; -\,g_1
+      \;=\; x\,g_2 - z\,g_3 .$$
+The $AB/ABB$ identity is **literally the redundant Riley-component
+relation written in trace language** — not merely an element of
+$I(X_0)$, but the canonical-component equation itself.
+
+### 4.3 The other two are $(y{+}1)$ times a two-generator combination — the common factor is a red herring
+
+$$D_1 \;=\; \tr(A)-\tr(ABBB) \;=\; (y+1)\,(x - y z + z) \;=\; (y+1)\,D_2 ,$$
+$$D_3 \;=\; \tr(AAb)-\tr(AABB) \;=\; (y+1)\,(x^2 - x z + y - 2)
+      \;=\; (y+1)\,(g_3 - g_2).$$
+So $D_1,D_3$ carry a common factor $y+1 = \tr(b)+1$; $D_2$ does not
+($\gcd(D_1,D_2,D_3)=1$). But on $X_0$, $y+1 = 2-x^2$ is **not**
+identically zero, and $\mathbb{Q}[X_0]$ is a domain, so
+$(y+1)\,F_i \equiv 0$ on $X_0$ $\Rightarrow$ $F_i\equiv 0$ on $X_0$.
+The cofactors are where the content lives, and they are minimal:
+$$F_1 = F_2 = -g_1 = x\,g_2 - z\,g_3, \qquad F_3 = g_3 - g_2 .$$
+Explicit membership certificates $D_i = f_i\,g_2 + h_i\,g_3$
+(all verified exact by expansion):
+
+| $i$ | pair | $f_i$ | $h_i$ |
+|---|---|---|---|
+| 1 | $(A,ABBB)$ | $x y + x$ | $-y z - z$ |
+| 2 | $(AB,ABB)$ | $x$ | $-z$ |
+| 3 | $(AAb,AABB)$ | $-(y+1)$ | $y+1$ |
+
+All three identities are polynomial consequences of the **single**
+pair of complete-intersection generators $x z + 1$ and $x^2 + y - 1$.
+
+### 4.4 In the ambient $\mathbb{A}^3$ the three identities do *not* recover $X_0$
+
+$$J_D := \langle D_1,D_2,D_3\rangle
+      \;=\; \langle\, g_1,\ \ (y+1)(g_3-g_2)\,\rangle
+      \;=\; \langle\, y z - x - z,\ \ (y+1)(x^2 + y - x z - 2)\,\rangle$$
+(Groebner bases of the two presentations coincide). Set-theoretically,
+with $h := g_3 - g_2 = x^2 + y - x z - 2$,
+$$V(J_D) = V(g_1,\,y+1)\ \cup\ V(g_1,\,h).$$
+- **First branch:** $y=-1$ gives $g_1 = -x - 2z$, i.e. the line
+  $$L = V(y+1,\ x+2z),\qquad (x,y,z) = (-2s,\,-1,\,s).$$
+- **Second branch:** on $g_1 = 0$ the relation $g_1 = -x g_2 + z g_3$
+  with $g_3 = g_2$ (from $h=0$) gives $(z-x)\,g_2 = 0$, splitting into
+  - $g_2 = 0 \Rightarrow g_3 = g_2 = 0 \Rightarrow X_0$, and
+  - $z = x \Rightarrow g_1 = x(y-2) = 0$ and $h|_{z=x} = y-2 = 0$, i.e.
+    the line
+    $$M = V(y-2,\ x-z),\qquad (x,y,z) = (s,\,2,\,s).$$
+
+$$\boxed{\,V(J_D) = X_0\ \cup\ L\ \cup\ M\,},\qquad
+\sqrt{J_D} = I(X_0)\cap\langle y+1,x+2z\rangle\cap\langle y-2,x-z\rangle .$$
+All three component ideals are prime ($\mathbb{Q}[X_0]\cong
+\mathbb{Q}[x,x^{-1}]$; $\mathbb{Q}[x,y,z]/I(L)\cong\mathbb{Q}[x,y,z]/I(M)
+\cong\mathbb{Q}[t]$), so the intersection is radical; computationally
+each generator of $I(X_0)\cap I(L)\cap I(M)$ lies in $J_D$ itself (power
+$1$), so in fact $J_D = \sqrt{J_D}$ is already radical and equals that
+triple intersection. $J_D\subsetneq I(X_0)$ is a **proper sub-ideal**:
+neither $x z + 1$ nor $x^2 + y - 1$ lies in $J_D$. The decomposition
+falls straight out of the trace equations: $D_2=0$ imposes $g_1=0$;
+$D_3=0$ then forces $(y+1)(g_3-g_2)=0$, whose two factors give $L$ (from
+$y=-1$) and, together with $g_1=0$, the split $(z-x)g_2=0$ giving $X_0$
+(from $g_2=0$) and $M$ (from $z=x$).
+
+### 4.5 Inside the Riley variety, the three identities *do* characterize $X_0$ (set-theoretically)
+
+The two extra lines are artifacts of the ambient $\mathbb{A}^3$, not
+extra pieces of the character variety. From the certified primary
+decomposition,
+$\sqrt{I_{\mathrm{Riley}}} = \mathrm{comp}_0\cap\mathrm{comp}_1\cap X_0$
+with $\mathrm{comp}_{0,1}=\langle z\mp2,\ x\mp y,\ y^2+y-1\rangle$
+(the two discrete golden-ratio points). Then, as **varieties**,
+$$\boxed{\ V(I_{\mathrm{Riley}})\cap V(J_D) \;=\; X_0\ }$$
+for two independent reasons:
+1. $\mathrm{comp}_0,\mathrm{comp}_1$ contribute **no** points to
+   $V(J_D)$: $y^2+y-1\neq0$ at $y=-1$ (line $L$) and at $y=2$ (line
+   $M$), and the golden-ratio points do not satisfy $I(X_0)$ either
+   (Stage-2: the three identities vanish on $X_0$ and on neither other
+   Riley component).
+2. The parts of $L,M$ that *do* survive the Riley restriction are
+   already points of $X_0$: $L\cap X_0$ is the two points $s^2=\tfrac12$
+   of $(-2s,-1,s)$, and $M\cap X_0$ the two points $s^2=-1$ of
+   $(s,2,s)$ (over $\overline{\mathbb{Q}}$). The lines meet $X_0$ but
+   are not contained in it, and their complements $L\smallsetminus X_0$,
+   $M\smallsetminus X_0$ lie off the Riley variety.
+
+At the level of the certified radical decomposition this is also an
+**ideal** equality: the `sympy` run gives
+$(\mathrm{comp}_0\cap\mathrm{comp}_1\cap X_0) + \langle D_1,D_2,D_3\rangle
+= \langle x^2+y-1,\ x z+1,\ y z - x - z\rangle = I(X_0)$
+(Groebner bases coincide). This is **not** claimed for the
+un-radicalised relator ideal $I_{\mathrm{Riley}}$ itself — no
+scheme-theoretic statement $I_{\mathrm{Riley}} + J_D = I(X_0)$ is made;
+the component-wise argument above is what establishes equality of
+varieties. (The direct $u$-elimination Groebner basis of the raw
+relator-matrix ideal was attempted and abandoned as impractical; the
+script deliberately falls back to the previously certified Sage primary
+decomposition. This is a discarded cross-check, not an open proof
+obligation.)
+
+**Inside $X(m003)$, the simultaneous three universal trace identities
+characterize the geometric component $X_0$ set-theoretically.**
+
+### 4.6 The parametrized form: an independently checkable one-variable proof
+
+Let $\Phi:\mathbb{Q}[x,y,z]\to\mathbb{Q}[t,t^{-1}]$,
+$(x,y,z)\mapsto(t,\ 1-t^2,\ -t^{-1})$, with $\ker\Phi = I(X_0)$. This
+is **not** an independent explanation — one-dimensionality of $X_0$
+does *not* force any two word traces to agree, since
+$\mathbb{Q}[t,t^{-1}]$ carries infinitely many distinct Laurent
+functions. It is the computational shadow of §4.2–4.3: the three
+Fricke trace-differences $D_i$ lie in $\ker\Phi = I(X_0)$ for the
+explicit algebraic reasons given there ($D_2 = -g_1$; $D_1 = (y{+}1)D_2$;
+$D_3 = (y{+}1)(g_3{-}g_2)$). Its value is that the whole proof can be
+rechecked line by line in one variable:
+
+| word $w$ | $\tr(w)$ in $(x,y,z)$ | $\Phi(\tr(w)) \in \mathbb{Q}[t,t^{-1}]$ |
+|---|---|---|
+| $A$    | $x$                     | $t$ |
+| $ABBB$ | $-x y + y^2 z - z$      | $t$ |
+| $AB$   | $z$                     | $-t^{-1}$ |
+| $ABB$  | $-x + y z$              | $-t^{-1}$ |
+| $AAb$  | $x^2 y - x z - y$       | $2t^2 - t^4 = 1-(t^2-1)^2$ |
+| $AABB$ | $-x^2 + x y z - y^2 + 2$ | $2t^2 - t^4 = 1-(t^2-1)^2$ |
+
+$$\Phi(\tr A) = \Phi(\tr{ABBB}),\qquad
+  \Phi(\tr{AB}) = \Phi(\tr{ABB}),\qquad
+  \Phi(\tr{AAb}) = \Phi(\tr{AABB}).$$
+So the six free-group trace polynomials have only **three** distinct
+images under the explicit map $\Phi$ with $\ker\Phi = I(X_0)$.
+
+### Stage 4 — canonical statement (frozen)
+
+$$X_0 \simeq \mathbb{G}_m, \qquad I(X_0) = \langle x z + 1,\ x^2 + y - 1\rangle,
+\qquad \mathbb{Q}[X_0] \cong \mathbb{Q}[x,x^{-1}].$$
+$$D_2 = -\,(y z - x - z) = x\,g_2 - z\,g_3, \qquad
+  D_1 = (y+1)\,D_2, \qquad
+  D_3 = (y+1)\,(g_3 - g_2).$$
+$$J_D = \langle\, y z - x - z,\ (y+1)(x^2 + y - x z - 2)\,\rangle
+     = I(X_0)\cap\langle y{+}1,x{+}2z\rangle\cap\langle y{-}2,x{-}z\rangle
+     \subsetneq I(X_0),$$
+$$V(I_{\mathrm{Riley}})\cap V(J_D) = X_0 \ \text{(as varieties)}.$$
+The three universal identities are **not** three independent facts:
+identity $2$ ($AB/ABB$) is literally the redundant defining equation
+$g_1$ of the canonical component; identity $1$ ($A/ABBB$) is
+$(\tr b + 1)$ times identity $2$; identity $3$ ($AAb/AABB$) is
+$(\tr b + 1)$ times the difference $g_3 - g_2$ of the two
+complete-intersection generators. In the ambient $\mathbb{A}^3$ their
+common zero locus is $X_0\cup L\cup M$; restricting to the certified
+Riley variety removes both other Riley components from consideration and
+the ambient lines meet $X_0$ only in finitely many points already on
+$X_0$, so the simultaneous vanishing selects the geometric component
+exactly. This is strictly stronger than the manuscript's current
+argument (the squared-trace differences "reduce to $0$ modulo $P_0$"):
+there is now an explicit reason *why* they reduce to $0$.
+
+**Status: Stage 4 CLOSED.** The algebraic origin is identified and
+certified (`sympy`; primary decomposition from the certified Sage run).
+No Stage 4.x follow-on is implied.
