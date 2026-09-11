@@ -5362,3 +5362,84 @@ $\pm t^{\pm1}$) words are characterized by anything beyond membership in
 the two known universal classes. Not folded into the manuscript.
 Recorded here as a lead, per the stopping-rule discipline established
 in Stage 3.3.
+
+---
+
+## m006 character-variety structure: the direct analogue of the $m003$ program
+
+A separate program from the $m003$ Stage 1–5 sequence above (same
+method, different manifold — own numbering, not "Stage 6").
+
+**Motivation.** Does $X_0(m006)$ have a comparably clean structure to
+$X_0(m003)\cong\mathbb{G}_m$? If rational, that is a structural fact
+shared by both flavor manifolds; if not, the asymmetry is itself
+informative.
+
+**Scope check, done first.** This targets the *bare* (cusped, unfilled)
+Riley variety of $\pi_1(m006)$ — a different, much smaller object than
+the Q-001 investigation's *filled* $m006(-5,2)$ character algebra
+(dimension $0$, minimal polynomials up to degree $30$), whose full
+`primary_decomposition()` **died from memory exhaustion on every
+attempt** in Sage/Singular (per `reproduce/q001_primdec.sage`'s own
+comments — an algorithmic blowup inside Singular's exact-QQ
+`primdecGTZ`, not an infrastructure failure). That failed computation
+is unrelated to what follows; the bare relator ideal here eliminates
+in $\approx5$ seconds in plain `sympy`.
+
+Reproduce: `reproduce/m006_x0_identity_origin.py` (+ `.log`). sha256
+`84b145ce3b26021468d86a3dbd029a94c0009417b0a7874a94a2a79877268ee7`
+(script), `f0a7b35f3508d004fe19f6d2e1d871dbad155643ca924876b5064069b3827739`
+(log). Relator $r=\mathtt{ababbAAbb}$, cross-checked against three
+independent sources (the active `gentry-ckm-v4.2-theorem-centered-figures.tex`,
+which certifies this same chart for the $K_{10}$ filled-algebra result,
+plus two archived drafts) — all agree. Same Fricke chart/word
+convention as `m003_stage4_x0_identity_origin.py`.
+
+### Exact decomposition of the bare Riley variety
+
+Eliminating $u$ from the bare relator ideal gives three generators in
+$\mathbb{Q}[x,y,z]$ that factor as
+$$g_0 = 2x+y^2z^3-y^2z+yz^3-2yz-3z \ \ (\text{irreducible}), \quad
+g_1 = (y^2+y-1)(yz^2-y-1), \quad
+g_2 = (z-2)(z+2)(yz^2-y-1).$$
+The factor $y^2+y-1$ and the values $z=\pm2$ are **exactly** the same
+golden-ratio/discrete signature found in $m003$'s bare Riley variety
+(its two zero-dimensional components); $yz^2-y-1$ is the factor shared
+by $g_1,g_2$, marking the candidate geometric branch. An explicit
+ideal-intersection computation certifies
+$$\boxed{\,V(I_{\mathrm{Riley}}) = X_0 \cup D_1 \cup D_2\,}$$
+where $X_0 = V(yz^2-y-1,\ x-z)$, $D_1 = V(y^2+y-1,\ x-y,\ z-2)$, and
+$D_2 = V(y^2+y-1,\ x+y,\ z+2)$ ($D_1,D_2$ zero-dimensional, mirroring
+$m003$'s comp0/comp1 exactly) — verified by Gröbner-basis equality with
+the full Riley ideal.
+
+### $X_0(m006)$: rational, but a thrice-punctured sphere (not $\mathbb{G}_m$)
+
+On $X_0$, $x=z$ identically, and $y(x^2-1)=1$ — so $x^2-1$ is a **unit**
+in the coordinate ring, with inverse $y$. Hence
+$$\mathbb{Q}[X_0(m006)] \;\cong\; \mathbb{Q}\bigl[x,\,(x-1)^{-1},\,(x+1)^{-1}\bigr],
+\qquad X_0(m006) \;\cong\; \mathbb{A}^1\smallsetminus\{1,-1\}
+\;\cong\; \mathbb{P}^1\smallsetminus\{1,-1,\infty\}.$$
+$X_0(m006)$ is **rational (genus $0$)**, exactly like $X_0(m003)\cong
+\mathbb{G}_m$ — but with **three** punctures instead of two (a thrice-
+punctured sphere, i.e.\ $\pi_1\cong F_2$, rather than a once-punctured
+one with $\pi_1\cong\mathbb{Z}$). Both flavor manifolds have a rational
+geometric component; the puncture count differs. This is an exact
+structural fact, not a numerical observation.
+
+### What is NOT yet established
+
+That $X_0$ (as identified here) is specifically the component
+containing $m006$'s discrete-faithful character, rather than some other
+component of the same dimension. For $m003$ this was pinned down by
+Sage's certified primary decomposition plus numerical root-matching
+against the certified holonomy; here it rests on the structural
+analogy (the bare Riley variety splits into precisely the same shape —
+two golden-ratio $0$-dimensional branches plus one $1$-dimensional
+branch — as $m003$'s certified comp0/comp1/$X_0$) and has **not** been
+cross-checked against a numerical geometric character (no SnapPy in
+this environment). Treat $X_0(m006)$ as a strong candidate for the
+geometric component, not yet a certified identification. Natural next
+step if pursued further: match against $m006$'s known cubic ITF
+(discriminant $-59$, $\mathrm{Gal}\cong S_3$) or a numerically-obtained
+geometric trace, to confirm.
