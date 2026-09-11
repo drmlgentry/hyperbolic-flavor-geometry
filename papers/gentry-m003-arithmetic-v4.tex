@@ -349,27 +349,126 @@ every filling and at the cusp. The fourth occurs only at $(-2,3)$.
 
 \subsection{Universal identities}
 
-Let $X = X_{\SLtwo}(m003)$ in the Fricke coordinates above, and let
-$X_0$ be the one-dimensional irreducible component containing the
-discrete faithful character. Write $\sigma_w = \tr^2\rho(w)$.
+Let $X = X_{\SLtwo}(m003)$ in the Fricke coordinates above, let $X_0$
+be the one-dimensional irreducible component containing the discrete
+faithful character, and write $\tau_w = \tr\rho(w)$,
+$\sigma_w = \tau_w^2$.
+
+\begin{proposition}[The geometric component is $\mathbb{G}_m$]
+\label{prop:x0gm}
+Exact primary decomposition of the bare relator ideal
+$\langle \rho(r) - I\rangle$ (imposed over $u^2+zu+1=0$, then
+eliminating $u$) has three components: two zero-dimensional, with
+residue field $\Q[y]/(y^2+y-1)$, and the one-dimensional
+\begin{equation}
+X_0 = V(P_0), \qquad
+P_0 = \langle\, xz + 1,\ \ x^2 + y - 1\,\rangle .
+\end{equation}
+The further generator $yz - x - z = -x(xz+1) + z(x^2+y-1)$ is
+redundant, so $P_0$ is a codimension-two complete intersection. It is
+prime, and since $xz = -1$ makes $x$ a unit,
+\begin{equation}
+\Q[X_0] = \Q[x,y,z]/P_0 \;\xrightarrow{\ \sim\ }\; \Q[x,x^{-1}],
+\qquad y \longmapsto 1 - x^2, \quad z \longmapsto -x^{-1}.
+\end{equation}
+Hence $X_0 \cong \mathbb{G}_m$, uniformized by $t = x = \tr\rho(a)$
+through the ring map
+\begin{equation}
+\Phi : \Q[x,y,z] \twoheadrightarrow \Q[t,t^{-1}], \qquad
+(x,y,z) \longmapsto (t,\ 1-t^2,\ -t^{-1}), \qquad
+\ker\Phi = P_0 .
+\end{equation}
+\end{proposition}
 
 \begin{theorem}[Universal identities]
 \label{thm:universal}
-On $X_0$,
+Put $D_1 = \tau_A - \tau_{ABBB}$, $D_2 = \tau_{AB} - \tau_{ABB}$,
+$D_3 = \tau_{AAb} - \tau_{AABB}$. In the Fricke coordinates these
+satisfy the polynomial identities
 \begin{equation}
-\sigma_A = \sigma_{ABBB}, \qquad
-\sigma_{AB} = \sigma_{ABB}, \qquad
-\sigma_{AAb} = \sigma_{AABB},
+D_2 = -(yz - x - z) = x(xz+1) - z(x^2+y-1),
 \end{equation}
-identically as regular functions.
+\begin{equation}
+D_1 = (y+1)\,D_2, \qquad
+D_3 = (y+1)\bigl[(x^2+y-1) - (xz+1)\bigr],
+\end{equation}
+in $\Z[x,y,z]$. Consequently $D_1, D_2, D_3 \in P_0$, and
+\begin{equation}
+\tau_A = \tau_{ABBB}, \qquad
+\tau_{AB} = \tau_{ABB}, \qquad
+\tau_{AAb} = \tau_{AABB}
+\end{equation}
+identically on $X_0$; a fortiori $\sigma_A = \sigma_{ABBB}$,
+$\sigma_{AB} = \sigma_{ABB}$, $\sigma_{AAb} = \sigma_{AABB}$. The
+identities are thus not an unexplained degeneracy of the geometric
+character but explicit membership in the defining ideal of $X_0$:
+$D_2$ is (up to sign) a defining equation of the component, and
+$D_1, D_3$ are $(\tau_B+1)$ times a combination of the two generators
+of $P_0$.
 \end{theorem}
 
 \begin{proof}
-Exact primary decomposition of the defining ideal gives three
-irreducible components: two zero-dimensional, and $X_0 = V(P_0)$ of
-dimension one. Constructing the Fricke trace polynomials exactly and
-reducing each squared-trace difference modulo $P_0$ gives normal form
-zero in all three cases.
+Expanding the Fricke trace polynomials
+$\tau_A = x$, $\tau_{ABBB} = -xy + y^2 z - z$,
+$\tau_{AB} = z$, $\tau_{ABB} = -x + yz$,
+$\tau_{AAb} = x^2 y - xz - y$,
+$\tau_{AABB} = -x^2 + xyz - y^2 + 2$
+(each reduced modulo $u^2 + zu + 1$) and multiplying out the stated
+right-hand sides verifies the three identities in $\Z[x,y,z]$. Each
+$D_i$ is then an explicit $\Q[x,y,z]$-combination of the two
+generators of $P_0$, hence lies in $P_0$ and vanishes on $X_0$.
+Independently, $\Phi$ from Proposition~\ref{prop:x0gm} carries each
+pair to a single Laurent function,
+\begin{equation}
+\Phi(\tau_A) = \Phi(\tau_{ABBB}) = t, \quad
+\Phi(\tau_{AB}) = \Phi(\tau_{ABB}) = -t^{-1}, \quad
+\Phi(\tau_{AAb}) = \Phi(\tau_{AABB}) = 2t^2 - t^4,
+\end{equation}
+a one-variable check of the same fact.
+\end{proof}
+
+\begin{proposition}[Ambient decomposition and Riley characterization]
+\label{prop:jd}
+Let $J_D = \langle D_1, D_2, D_3\rangle
+= \langle\, yz - x - z,\ \ (y+1)(x^2 + y - xz - 2)\,\rangle$. In the
+ambient Fricke $3$-space,
+\begin{equation}
+\sqrt{J_D}
+= P_0 \,\cap\, \langle y+1,\ x+2z\rangle
+      \,\cap\, \langle y-2,\ x-z\rangle ,
+\end{equation}
+an intersection of three primes; that is, $V(J_D) = X_0 \cup L \cup M$
+with $L = V(y+1,\,x+2z)$ and $M = V(y-2,\,x-z)$ two affine lines, each
+meeting $X_0$ in a finite set and neither contained in it. Restricted
+to the relator variety,
+\begin{equation}
+V\bigl(\langle \rho(r) - I\rangle\bigr) \,\cap\, V(J_D) \;=\; X_0
+\end{equation}
+set-theoretically: neither $L$ nor $M$ lies on the relator variety,
+and the two zero-dimensional relator components satisfy no equation of
+$J_D$. The three universal identities therefore characterize the
+geometric component inside $X_{\SLtwo}(m003)$.
+\end{proposition}
+
+\begin{proof}
+From $D_2 = -(yz-x-z)$ and $D_1 = (y+1)D_2$ one has
+$J_D = \langle yz-x-z,\ (y+1)(x^2+y-xz-2)\rangle$ (a Gr\"obner basis
+confirms the two presentations coincide). With
+$g_1 = yz-x-z = -x\,g_2 + z\,g_3$, $g_2 = xz+1$, $g_3 = x^2+y-1$, the
+system $g_1 = 0$, $(y+1)(g_3-g_2) = 0$ splits into $y=-1$ (giving $L$)
+and $g_3 = g_2$; on $g_1=0$ the latter forces $(z-x)g_2 = 0$, i.e.\
+$g_2 = 0$ (giving $X_0$) or $z = x$, which with $g_3-g_2 = y-2 = 0$
+gives $M$. The quotients $\Q[x,x^{-1}]$ and $\Q[t]$ are domains, so
+$P_0$, $\langle y+1,x+2z\rangle$, $\langle y-2,x-z\rangle$ are prime
+and the radical equality follows from an ideal-intersection
+computation. Finally $y^2+y-1 \neq 0$ at $y = -1$ and $y = 2$, so $L$
+and $M$ meet the relator variety only along $L \cap X_0$,
+$M \cap X_0$, and the zero-dimensional relator components do not
+satisfy $P_0$; hence the displayed set equality. At the level of the
+certified radical decomposition
+$\bigl(\bigcap_i C_i\bigr) + J_D = P_0$, with $C_i$ the three relator
+components; no scheme-theoretic claim is made for the unreduced ideal
+$\langle \rho(r) - I\rangle$.
 \end{proof}
 
 \begin{corollary}
@@ -630,6 +729,7 @@ ITF gates F3--F4 (Thm.~\ref{thm:itf}) & \texttt{pmns\_itf\_certificate.sage} & e
 Presentation bridge (Prop.~\ref{prop:bridge}) & \texttt{ckm\_dehn\_relator\_certificate} & exact \\
 Target-free atlas & \texttt{m003\_structure\_atlas.sage} & computed \\
 Universal identities (Thm.~\ref{thm:universal}) & \texttt{m003\_three\_universal\_identities.sage} & exact \\
+Component $\cong \mathbb{G}_m$, ambient decomp.\ (Prop.~\ref{prop:x0gm}, \ref{prop:jd}) & \texttt{m003\_stage4\_x0\_identity\_origin.py} & exact \\
 Signed characterization (Thm.~\ref{thm:signed}) & \texttt{m003\_squared\_locus\_and\_conjugacy.sage} & exact \\
 Sign twist (Thm.~\ref{thm:twist}) & \texttt{m003\_identify\_Y\_minus.sage} & exact \\
 Conjugacy (Thm.~\ref{thm:conj}) & \texttt{m003\_squared\_locus\_and\_conjugacy.sage} & exact \\

@@ -1,0 +1,220 @@
+
+==============================================================================
+1. Phi(tr(w)) for all 99 atlas words: exact Laurent support
+==============================================================================
+  A        len=1  (n_a,n_b)=(-1,+0)  deg=[+1,+1]  span=0  #terms=1  Phi(tr)=t
+  B        len=1  (n_a,n_b)=(+0,-1)  deg=[+0,+2]  span=2  #terms=2  Phi(tr)=1 - t**2
+  AB       len=2  (n_a,n_b)=(-1,-1)  deg=[-1,-1]  span=0  #terms=1  Phi(tr)=-1/t
+  Ab       len=2  (n_a,n_b)=(-1,+1)  deg=[-1,+3]  span=4  #terms=3  Phi(tr)=(-t**4 + t**2 + 1)/t
+  AAB      len=3  (n_a,n_b)=(-2,-1)  deg=[+0,+2]  span=2  #terms=2  Phi(tr)=t**2 - 2
+  AAb      len=3  (n_a,n_b)=(-2,+1)  deg=[+2,+4]  span=2  #terms=2  Phi(tr)=t**2*(2 - t**2)
+  ABB      len=3  (n_a,n_b)=(-1,-2)  deg=[-1,-1]  span=0  #terms=1  Phi(tr)=-1/t
+  Abb      len=3  (n_a,n_b)=(-1,+2)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(t**6 - 2*t**4 - t**2 + 1)/t
+  AAAB     len=4  (n_a,n_b)=(-3,-1)  deg=[-1,+3]  span=4  #terms=3  Phi(tr)=(t**4 - 2*t**2 + 1)/t
+  AAAb     len=4  (n_a,n_b)=(-3,+1)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(-t**6 + 3*t**4 - t**2 - 1)/t
+  AABB     len=4  (n_a,n_b)=(-2,-2)  deg=[+2,+4]  span=2  #terms=2  Phi(tr)=t**2*(2 - t**2)
+  AAbb     len=4  (n_a,n_b)=(-2,+2)  deg=[+0,+6]  span=6  #terms=4  Phi(tr)=t**6 - 3*t**4 + t**2 + 2
+  ABAb     len=4  (n_a,n_b)=(-2,+0)  deg=[-2,+4]  span=6  #terms=3  Phi(tr)=(-t**6 + 3*t**4 - 1)/t**2
+  ABBB     len=4  (n_a,n_b)=(-1,-3)  deg=[+1,+1]  span=0  #terms=1  Phi(tr)=t
+  ABaB     len=4  (n_a,n_b)=(+0,-2)  deg=[-2,+0]  span=2  #terms=2  Phi(tr)=(t**2 - 1)/t**2
+  ABab     len=4  (n_a,n_b)=(+0,+0)  deg=[-2,+4]  span=6  #terms=3  Phi(tr)=(t**6 - 2*t**4 + 1)/t**2
+  Abbb     len=4  (n_a,n_b)=(-1,+3)  deg=[+1,+7]  span=6  #terms=3  Phi(tr)=t*(-t**6 + 3*t**4 - 3)
+  AAAAB    len=5  (n_a,n_b)=(-4,-1)  deg=[+0,+4]  span=4  #terms=3  Phi(tr)=t**4 - 3*t**2 + 3
+  AAAAb    len=5  (n_a,n_b)=(-4,+1)  deg=[+0,+6]  span=6  #terms=4  Phi(tr)=-t**6 + 4*t**4 - 3*t**2 - 1
+  AAABB    len=5  (n_a,n_b)=(-3,-2)  deg=[-1,+5]  span=6  #terms=3  Phi(tr)=(-t**6 + 2*t**4 + 1)/t
+  AAAbb    len=5  (n_a,n_b)=(-3,+2)  deg=[-1,+7]  span=8  #terms=5  Phi(tr)=(t**8 - 4*t**6 + 3*t**4 + 3*t**2 - 1)/t
+  AABAB    len=5  (n_a,n_b)=(-3,-2)  deg=[-1,+1]  span=2  #terms=2  Phi(tr)=2*(1 - t**2)/t
+  AABAb    len=5  (n_a,n_b)=(-3,+0)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(-t**6 + 3*t**4 - t**2 - 1)/t
+  AABBB    len=5  (n_a,n_b)=(-2,-3)  deg=[+0,+6]  span=6  #terms=4  Phi(tr)=t**6 - 3*t**4 + t**2 + 2
+  AABaB    len=5  (n_a,n_b)=(-1,-2)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(-t**6 + 2*t**4 + 2*t**2 - 2)/t
+  AABab    len=5  (n_a,n_b)=(-1,+0)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(t**6 - 2*t**4 - t**2 + 1)/t
+  AAbAB    len=5  (n_a,n_b)=(-3,+0)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(-t**6 + 3*t**4 - t**2 - 1)/t
+  AAbAb    len=5  (n_a,n_b)=(-3,+2)  deg=[+1,+7]  span=6  #terms=4  Phi(tr)=t*(t**6 - 3*t**4 + t**2 + 1)
+  AAbaB    len=5  (n_a,n_b)=(-1,+0)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(t**6 - 2*t**4 - t**2 + 1)/t
+  AAbab    len=5  (n_a,n_b)=(-1,+2)  deg=[+1,+1]  span=0  #terms=1  Phi(tr)=t
+  AAbbb    len=5  (n_a,n_b)=(-2,+3)  deg=[+0,+8]  span=8  #terms=5  Phi(tr)=-t**8 + 4*t**6 - 3*t**4 - 3*t**2 + 2
+  ABABB    len=5  (n_a,n_b)=(-2,-3)  deg=[-2,+2]  span=4  #terms=3  Phi(tr)=(t**4 - t**2 + 1)/t**2
+  ABAbb    len=5  (n_a,n_b)=(-2,+1)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(t**8 - 4*t**6 + 2*t**4 + 3*t**2 - 1)/t**2
+  ABBAb    len=5  (n_a,n_b)=(-2,-1)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(t**8 - 3*t**6 + t**4 + t**2 - 1)/t**2
+  ABBBB    len=5  (n_a,n_b)=(-1,-4)  deg=[-1,+3]  span=4  #terms=3  Phi(tr)=(-t**4 + t**2 + 1)/t
+  ABBaB    len=5  (n_a,n_b)=(+0,-3)  deg=[-2,+0]  span=2  #terms=2  Phi(tr)=(t**2 - 1)/t**2
+  ABBab    len=5  (n_a,n_b)=(+0,-1)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(-t**8 + 3*t**6 - t**4 - 2*t**2 + 1)/t**2
+  ABaBB    len=5  (n_a,n_b)=(+0,-3)  deg=[-2,+0]  span=2  #terms=2  Phi(tr)=(t**2 - 1)/t**2
+  ABabb    len=5  (n_a,n_b)=(+0,+1)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(-t**8 + 3*t**6 - t**4 - 2*t**2 + 1)/t**2
+  AbAbb    len=5  (n_a,n_b)=(-2,+3)  deg=[-2,+8]  span=10  #terms=5  Phi(tr)=(-t**10 + 3*t**8 - 3*t**4 - t**2 + 1)/t**2
+  Abbbb    len=5  (n_a,n_b)=(-1,+4)  deg=[-1,+9]  span=10  #terms=6  Phi(tr)=(t**10 - 4*t**8 + 2*t**6 + 5*t**4 - 2*t**2 - 1)/t
+  AAAAAB   len=6  (n_a,n_b)=(-5,-1)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(t**6 - 4*t**4 + 5*t**2 - 1)/t
+  AAAAAb   len=6  (n_a,n_b)=(-5,+1)  deg=[-1,+7]  span=8  #terms=4  Phi(tr)=(-t**8 + 5*t**6 - 6*t**4 + 1)/t
+  AAAABB   len=6  (n_a,n_b)=(-4,-2)  deg=[+0,+6]  span=6  #terms=4  Phi(tr)=-t**6 + 3*t**4 - 2*t**2 + 1
+  AAAAbb   len=6  (n_a,n_b)=(-4,+2)  deg=[+0,+8]  span=8  #terms=5  Phi(tr)=t**8 - 5*t**6 + 6*t**4 + 2*t**2 - 3
+  AAABAB   len=6  (n_a,n_b)=(-4,-2)  deg=[-2,+2]  span=4  #terms=3  Phi(tr)=(-2*t**4 + 4*t**2 - 1)/t**2
+  AAABAb   len=6  (n_a,n_b)=(-4,+0)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(-t**8 + 4*t**6 - 4*t**4 - t**2 + 1)/t**2
+  AAABBB   len=6  (n_a,n_b)=(-3,-3)  deg=[+1,+7]  span=6  #terms=4  Phi(tr)=t*(t**6 - 3*t**4 + t**2 + 1)
+  AAABaB   len=6  (n_a,n_b)=(-2,-2)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(-t**8 + 2*t**6 + 2*t**4 - 3*t**2 + 1)/t**2
+  AAABab   len=6  (n_a,n_b)=(-2,+0)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(t**8 - 3*t**6 + t**4 + t**2 - 1)/t**2
+  AAAbAB   len=6  (n_a,n_b)=(-4,+0)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(-t**8 + 4*t**6 - 4*t**4 - t**2 + 1)/t**2
+  AAAbAb   len=6  (n_a,n_b)=(-4,+2)  deg=[-2,+8]  span=10  #terms=5  Phi(tr)=(t**10 - 4*t**8 + 3*t**6 + 2*t**4 - 1)/t**2
+  AAAbaB   len=6  (n_a,n_b)=(-2,+0)  deg=[-2,+6]  span=8  #terms=5  Phi(tr)=(t**8 - 3*t**6 + t**4 + t**2 - 1)/t**2
+  AAAbab   len=6  (n_a,n_b)=(-2,+2)  deg=[-2,+2]  span=4  #terms=3  Phi(tr)=(t**4 - t**2 + 1)/t**2
+  AAAbbb   len=6  (n_a,n_b)=(-3,+3)  deg=[+1,+9]  span=8  #terms=5  Phi(tr)=t*(-t**8 + 5*t**6 - 6*t**4 - 3*t**2 + 5)
+  AABAAb   len=6  (n_a,n_b)=(-4,+0)  deg=[+0,+6]  span=6  #terms=4  Phi(tr)=-t**6 + 3*t**4 - 2*t**2 + 1
+  AABABB   len=6  (n_a,n_b)=(-3,-3)  deg=[-1,+3]  span=4  #terms=3  Phi(tr)=(t**4 - 2*t**2 + 1)/t
+  AABAbb   len=6  (n_a,n_b)=(-3,+1)  deg=[-1,+7]  span=8  #terms=5  Phi(tr)=(t**8 - 4*t**6 + 3*t**4 + 2*t**2 - 2)/t
+  AABBAB   len=6  (n_a,n_b)=(-3,-3)  deg=[-1,+3]  span=4  #terms=3  Phi(tr)=(t**4 - 2*t**2 + 1)/t
+  AABBAb   len=6  (n_a,n_b)=(-3,-1)  deg=[+1,+7]  span=6  #terms=4  Phi(tr)=t*(t**6 - 3*t**4 + t**2 + 1)
+  AABBBB   len=6  (n_a,n_b)=(-2,-4)  deg=[+0,+8]  span=8  #terms=5  Phi(tr)=-t**8 + 4*t**6 - 3*t**4 - 3*t**2 + 2
+  AABBaB   len=6  (n_a,n_b)=(-1,-3)  deg=[-1,+7]  span=8  #terms=4  Phi(tr)=(t**8 - 3*t**6 + 4*t**2 - 1)/t
+  AABBab   len=6  (n_a,n_b)=(-1,-1)  deg=[+1,+7]  span=6  #terms=3  Phi(tr)=t*(-t**6 + 3*t**4 - 3)
+  AABaBB   len=6  (n_a,n_b)=(-1,-3)  deg=[-1,+7]  span=8  #terms=4  Phi(tr)=(t**8 - 3*t**6 + 4*t**2 - 1)/t
+  AABaaB   len=6  (n_a,n_b)=(+0,-2)  deg=[+0,+6]  span=6  #terms=3  Phi(tr)=-t**6 + 3*t**4 - 2
+  AABaab   len=6  (n_a,n_b)=(+0,+0)  deg=[+0,+6]  span=6  #terms=4  Phi(tr)=t**6 - 2*t**4 - 2*t**2 + 3
+  AABabb   len=6  (n_a,n_b)=(-1,+1)  deg=[-1,+7]  span=8  #terms=5  Phi(tr)=(-t**8 + 3*t**6 - t**4 - 2*t**2 + 2)/t
+  AAbABB   len=6  (n_a,n_b)=(-3,-1)  deg=[+1,+7]  span=6  #terms=4  Phi(tr)=t*(t**6 - 3*t**4 + t**2 + 1)
+  AAbAbb   len=6  (n_a,n_b)=(-3,+3)  deg=[-1,+9]  span=10  #terms=6  Phi(tr)=(-t**10 + 4*t**8 - 3*t**6 - 3*t**4 + 2*t**2 + 1)/t
+  AAbaBB   len=6  (n_a,n_b)=(-1,-1)  deg=[+1,+7]  span=6  #terms=3  Phi(tr)=t*(-t**6 + 3*t**4 - 3)
+  AAbabb   len=6  (n_a,n_b)=(-1,+3)  deg=[-1,-1]  span=0  #terms=1  Phi(tr)=-1/t
+  AAbbAB   len=6  (n_a,n_b)=(-3,+1)  deg=[-1,+7]  span=8  #terms=5  Phi(tr)=(t**8 - 4*t**6 + 3*t**4 + 2*t**2 - 2)/t
+  AAbbAb   len=6  (n_a,n_b)=(-3,+3)  deg=[-1,+9]  span=10  #terms=6  Phi(tr)=(-t**10 + 4*t**8 - 3*t**6 - 3*t**4 + 2*t**2 + 1)/t
+  AAbbaB   len=6  (n_a,n_b)=(-1,+1)  deg=[-1,+7]  span=8  #terms=5  Phi(tr)=(-t**8 + 3*t**6 - t**4 - 2*t**2 + 2)/t
+  AAbbab   len=6  (n_a,n_b)=(-1,+3)  deg=[-1,-1]  span=0  #terms=1  Phi(tr)=-1/t
+  AAbbbb   len=6  (n_a,n_b)=(-2,+4)  deg=[+2,+10]  span=8  #terms=5  Phi(tr)=t**2*(t**8 - 5*t**6 + 6*t**4 + 3*t**2 - 6)
+  ABABAb   len=6  (n_a,n_b)=(-3,-1)  deg=[-3,+3]  span=6  #terms=4  Phi(tr)=(2*t**6 - 4*t**4 - t**2 + 1)/t**3
+  ABABBB   len=6  (n_a,n_b)=(-2,-4)  deg=[+2,+4]  span=2  #terms=2  Phi(tr)=t**2*(2 - t**2)
+  ABABaB   len=6  (n_a,n_b)=(-1,-3)  deg=[-3,+3]  span=6  #terms=4  Phi(tr)=(t**6 - t**4 - 2*t**2 + 1)/t**3
+  ABABab   len=6  (n_a,n_b)=(-1,-1)  deg=[-3,+3]  span=6  #terms=4  Phi(tr)=(-t**6 + 2*t**4 + t**2 - 1)/t**3
+  ABAbAb   len=6  (n_a,n_b)=(-3,+1)  deg=[-3,+7]  span=10  #terms=5  Phi(tr)=(t**10 - 4*t**8 + 2*t**6 + 4*t**4 - 1)/t**3
+  ABAbaB   len=6  (n_a,n_b)=(-1,-1)  deg=[-3,+3]  span=6  #terms=4  Phi(tr)=(-t**6 + 2*t**4 + t**2 - 1)/t**3
+  ABAbab   len=6  (n_a,n_b)=(-1,+1)  deg=[-3,+1]  span=4  #terms=3  Phi(tr)=(-t**4 - t**2 + 1)/t**3
+  ABAbbb   len=6  (n_a,n_b)=(-2,+2)  deg=[+0,+8]  span=8  #terms=5  Phi(tr)=-t**8 + 5*t**6 - 5*t**4 - 4*t**2 + 4
+  ABBAbb   len=6  (n_a,n_b)=(-2,+0)  deg=[-2,+8]  span=10  #terms=6  Phi(tr)=(-t**10 + 4*t**8 - 3*t**6 - 2*t**4 + 2*t**2 - 1)/t**2
+  ABBBAb   len=6  (n_a,n_b)=(-2,-2)  deg=[+0,+8]  span=8  #terms=5  Phi(tr)=-t**8 + 4*t**6 - 3*t**4 - 3*t**2 + 2
+  ABBBBB   len=6  (n_a,n_b)=(-1,-5)  deg=[-1,+5]  span=6  #terms=4  Phi(tr)=(t**6 - 2*t**4 - t**2 + 1)/t
+  ABBBaB   len=6  (n_a,n_b)=(+0,-4)  deg=[+0,+2]  span=2  #terms=2  Phi(tr)=1 - t**2
+  ABBBab   len=6  (n_a,n_b)=(+0,-2)  deg=[+0,+8]  span=8  #terms=5  Phi(tr)=t**8 - 4*t**6 + 3*t**4 + 3*t**2 - 3
+  ABBaBB   len=6  (n_a,n_b)=(+0,-4)  deg=[-2,+4]  span=6  #terms=4  Phi(tr)=(-t**6 + t**4 + 3*t**2 - 1)/t**2
+  ABBabb   len=6  (n_a,n_b)=(+0,+0)  deg=[-2,+8]  span=10  #terms=6  Phi(tr)=(t**10 - 4*t**8 + 3*t**6 + 3*t**4 - 2*t**2 + 1)/t**2
+  ABaBAb   len=6  (n_a,n_b)=(-1,-1)  deg=[-3,+7]  span=10  #terms=5  Phi(tr)=(t**10 - 3*t**8 - t**6 + 5*t**4 - 1)/t**3
+  ABaBBB   len=6  (n_a,n_b)=(+0,-4)  deg=[+0,+2]  span=2  #terms=2  Phi(tr)=1 - t**2
+  ABaBaB   len=6  (n_a,n_b)=(+1,-3)  deg=[-3,+3]  span=6  #terms=4  Phi(tr)=(-t**6 + 2*t**4 + t**2 - 1)/t**3
+  ABaBab   len=6  (n_a,n_b)=(+1,-1)  deg=[-3,+7]  span=10  #terms=4  Phi(tr)=(-t**10 + 3*t**8 - 4*t**4 + 1)/t**3
+  ABabAb   len=6  (n_a,n_b)=(-1,+1)  deg=[-3,+7]  span=10  #terms=4  Phi(tr)=(-t**10 + 3*t**8 - 4*t**4 + 1)/t**3
+  ABabbb   len=6  (n_a,n_b)=(+0,+2)  deg=[+0,+8]  span=8  #terms=5  Phi(tr)=t**8 - 4*t**6 + 3*t**4 + 3*t**2 - 3
+  AbAbbb   len=6  (n_a,n_b)=(-2,+4)  deg=[+0,+10]  span=10  #terms=6  Phi(tr)=t**10 - 4*t**8 + 2*t**6 + 5*t**4 - t**2 - 2
+  Abbbbb   len=6  (n_a,n_b)=(-1,+5)  deg=[-1,+11]  span=12  #terms=7  Phi(tr)=(-t**12 + 5*t**10 - 5*t**8 - 6*t**6 + 7*t**4 + 2*t**2 - 1)/t
+
+==============================================================================
+2. degree-span vs word length: is span a derived invariant of length?
+==============================================================================
+  length 1: n=  2  span min=0 max=2 mean=1.00  distinct=[0, 2]
+  length 2: n=  2  span min=0 max=4 mean=2.00  distinct=[0, 4]
+  length 3: n=  4  span min=0 max=6 mean=2.50  distinct=[0, 2, 6]
+  length 4: n=  9  span min=0 max=6 mean=4.22  distinct=[0, 2, 4, 6]
+  length 5: n= 24  span min=0 max=10 mean=5.83  distinct=[0, 2, 4, 6, 8, 10]
+  length 6: n= 58  span min=0 max=12 mean=6.90  distinct=[0, 2, 4, 6, 8, 10, 12]
+
+==============================================================================
+3. is span determined by (|n_a|, |n_b|) alone? (candidate closed form)
+==============================================================================
+  span is a function of (|n_a|,|n_b|) alone for all 99 words: False
+    (|n_a|,|n_b|)=(1, 0): spans seen = [0, 6]  (NOT constant)
+    (|n_a|,|n_b|)=(0, 1): spans seen = [2, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(1, 1): spans seen = [0, 4, 6, 8, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(2, 1): spans seen = [2, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(1, 2): spans seen = [0, 6]  (NOT constant)
+    (|n_a|,|n_b|)=(3, 1): spans seen = [4, 6, 8, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(2, 2): spans seen = [2, 4, 6, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(2, 0): spans seen = [6, 8, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(1, 3): spans seen = [0, 6, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(0, 2): spans seen = [2, 6, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(0, 0): spans seen = [6, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(4, 1): spans seen = [4, 6]  (NOT constant)
+    (|n_a|,|n_b|)=(3, 2): spans seen = [2, 6, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(2, 3): spans seen = [4, 6, 8, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(1, 4): spans seen = [4, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(5, 1): spans seen = [6, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(4, 2): spans seen = [4, 6, 8, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(4, 0): spans seen = [6, 8]  (NOT constant)
+    (|n_a|,|n_b|)=(3, 3): spans seen = [4, 6, 8, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(2, 4): spans seen = [2, 8, 10]  (NOT constant)
+    (|n_a|,|n_b|)=(1, 5): spans seen = [6, 12]  (NOT constant)
+    (|n_a|,|n_b|)=(0, 4): spans seen = [2, 6]  (NOT constant)
+
+==============================================================================
+4. leading/trailing coefficients: any pattern (+-1, small integers)?
+==============================================================================
+  leading-coefficient value counts: {-2: 2, -1: 50, 1: 46, 2: 1}
+  trailing-coefficient value counts: {-6: 1, -3: 6, -2: 6, -1: 31, 1: 40, 2: 11, 3: 2, 4: 1, 5: 1}
+
+==============================================================================
+5. collisions: which distinct words share the EXACT same Phi(tr(w))?
+==============================================================================
+  25 distinct Laurent polynomials are shared by >1 word (out of 99 words in 58 distinct classes):
+    ['A', 'AAbab', 'ABBB']  ->  t
+    ['ABBBaB', 'ABaBBB', 'B']  ->  1 - t**2
+    ['AAbabb', 'AAbbab', 'AB', 'ABB']  ->  -1/t
+    ['ABBBB', 'Ab']  ->  (-t**4 + t**2 + 1)/t
+    ['AABB', 'AAb', 'ABABBB']  ->  t**2*(2 - t**2)
+    ['AABab', 'AAbaB', 'ABBBBB', 'Abb']  ->  (t**6 - 2*t**4 - t**2 + 1)/t
+    ['AAAB', 'AABABB', 'AABBAB']  ->  (t**4 - 2*t**2 + 1)/t
+    ['AAAb', 'AABAb', 'AAbAB']  ->  (-t**6 + 3*t**4 - t**2 - 1)/t
+    ['AABBB', 'AAbb']  ->  t**6 - 3*t**4 + t**2 + 2
+    ['ABBaB', 'ABaB', 'ABaBB']  ->  (t**2 - 1)/t**2
+    ['AABBab', 'AAbaBB', 'Abbb']  ->  t*(-t**6 + 3*t**4 - 3)
+    ['AAABBB', 'AABBAb', 'AAbABB', 'AAbAb']  ->  t*(t**6 - 3*t**4 + t**2 + 1)
+    ['AABBBB', 'AAbbb', 'ABBBAb']  ->  -t**8 + 4*t**6 - 3*t**4 - 3*t**2 + 2
+    ['AAAbab', 'ABABB']  ->  (t**4 - t**2 + 1)/t**2
+    ['AAABab', 'AAAbaB', 'ABBAb']  ->  (t**8 - 3*t**6 + t**4 + t**2 - 1)/t**2
+    ['ABBab', 'ABabb']  ->  (-t**8 + 3*t**6 - t**4 - 2*t**2 + 1)/t**2
+    ['AAAABB', 'AABAAb']  ->  -t**6 + 3*t**4 - 2*t**2 + 1
+    ['AAABAb', 'AAAbAB']  ->  (-t**8 + 4*t**6 - 4*t**4 - t**2 + 1)/t**2
+    ['AABAbb', 'AAbbAB']  ->  (t**8 - 4*t**6 + 3*t**4 + 2*t**2 - 2)/t
+    ['AABBaB', 'AABaBB']  ->  (t**8 - 3*t**6 + 4*t**2 - 1)/t
+    ['AABabb', 'AAbbaB']  ->  (-t**8 + 3*t**6 - t**4 - 2*t**2 + 2)/t
+    ['AAbAbb', 'AAbbAb']  ->  (-t**10 + 4*t**8 - 3*t**6 - 3*t**4 + 2*t**2 + 1)/t
+    ['ABABab', 'ABAbaB', 'ABaBaB']  ->  (-t**6 + 2*t**4 + t**2 - 1)/t**3
+    ['ABBBab', 'ABabbb']  ->  t**8 - 4*t**6 + 3*t**4 + 3*t**2 - 3
+    ['ABaBab', 'ABabAb']  ->  (-t**10 + 3*t**8 - 4*t**4 + 1)/t**3
+
+==============================================================================
+6. minimal-span words at each length: a candidate canonical subset
+==============================================================================
+  length 1: min span = 0, achieved by ['A']
+  length 2: min span = 0, achieved by ['AB']
+  length 3: min span = 0, achieved by ['ABB']
+  length 4: min span = 0, achieved by ['ABBB']
+  length 5: min span = 0, achieved by ['AAbab']
+  length 6: min span = 0, achieved by ['AAbabb', 'AAbbab']
+
+==============================================================================
+7. IMPORTANT SCOPE CHECK: what did the original atlas actually scan?
+==============================================================================
+  m003_pair_atlas.csv records 136 pairs at the cusp, over 17 distinct words.
+  Full word universe: 99 words, C(99,2) = 4851 possible pairs.
+  => the original atlas's degeneracy scan (Thm.~thm:universal /
+     manuscript 'four squared-trace degeneracies') is a CURATED
+     136-pair / 17-word subset, NOT an
+     exhaustive check of the full 99-word universe. This
+     script's collision scan (Section 5 above) IS exhaustive over the
+     full universe and is not a contradiction of the atlas result --
+     it completes a check the atlas never performed.
+
+==============================================================================
+8. control test: is X_0's collision density generic to any rank-1 cut?
+==============================================================================
+  X_0 itself: y=1-t^2, z=-1/t               : 58 distinct classes, 25 groups, largest group = 4
+  control A: generic line y=t, z=t          : 33 distinct classes, 29 groups, largest group = 6
+  control B: generic line y=t+1, z=t-1      : 77 distinct classes, 22 groups, largest group = 2
+  control C: same shape, y=t^2, z=1/t       : 80 distinct classes, 18 groups, largest group = 3
+  control D: sign-flipped z, y=1-t^2, z=+1/t: 81 distinct classes, 18 groups, largest group = 2
+  control E: shifted, y=2-t^2, z=-1/t       : 78 distinct classes, 19 groups, largest group = 3
+
+  X_0 is markedly MORE collapsed than the shape-matched-but-arbitrary
+  controls C/D/E (58 vs 78-81 classes), so the collision density is
+  tied to X_0's actual defining constants, not merely 'any 1-parameter
+  cut of similar shape'. But an even more special arbitrary line
+  (control A, y=z=t) collapses further still (33 classes) -- so raw
+  collision COUNT is not by itself a rare/exceptional statistic in
+  this space of substitutions. NOT YET A THEOREM: this motivates but
+  does not establish that X_0's specific collisions are meaningful.
+
+PY_EXIT=0

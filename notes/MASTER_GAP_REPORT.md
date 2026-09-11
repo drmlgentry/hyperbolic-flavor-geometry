@@ -5270,3 +5270,95 @@ there is now an explicit reason *why* they reduce to $0$.
 **Status: Stage 4 CLOSED.** The algebraic origin is identified and
 certified (`sympy`; primary decomposition from the certified Sage run).
 No Stage 4.x follow-on is implied.
+
+---
+
+## Stage 5 — full-universe Laurent word-trace structure on $X_0$ (exploratory, OPEN)
+
+**Motivation.** Following Stage 4 ($X_0\simeq\mathbb{G}_m$, uniformized by
+$\Phi:(x,y,z)\mapsto(t,1-t^2,-t^{-1})$, $\ker\Phi=I(X_0)$), the natural
+next question is whether the Laurent-polynomial images
+$\Phi(\tr\rho(w))\in\mathbb{Q}[t,t^{-1}]$ carry a derived structural
+invariant across the full frozen atlas word universe (all $99$ freely-
+and cyclically-reduced words in $a,A,b,B$ through length $6$, mod
+rotation and inversion) — a candidate geometric word-selection
+principle, rather than a fitted one.
+
+Reproduce: `reproduce/m003_stage5_laurent_word_structure.py` (+ `.log`).
+sha256 `88d486688d736cc3d37231c9d5820e41bac1d64a6b0fb595952ecc381bbd62f8`
+(script), `a6887441009138cd96e44b66c278a6933201ac2d6324d7921543d7e254935192`
+(log). Reuses the certified Stage 4 Fricke/$\Phi$ infrastructure
+verbatim; word list from the frozen `m003_word_atlas.csv` (cusp row,
+$99$ distinct words, matches the atlas protocol exactly).
+
+### 5.1 EXACT: the three known universal classes each have more members
+
+Computing $\Phi(\tr\rho(w))$ for all $99$ words and grouping by exact
+Laurent-polynomial equality (certified — this is the same $\Phi$ whose
+kernel is $I(X_0)$, so equality here is equality on $X_0$, not a
+numerical coincidence) shows the three word-pairs of Theorem
+`thm:universal` are not maximal:
+$$\{A,\ \mathtt{AAbab},\ ABBB\} \mapsto t, \qquad
+  \{AB,\ ABB,\ \mathtt{AAbabb},\ \mathtt{AAbbab}\} \mapsto -t^{-1}, \qquad
+  \{AAb,\ AABB,\ \mathtt{ABABBB}\} \mapsto t^2(2-t^2).$$
+(New members in bold.) These are exact consequences of the same
+certified $\Phi$ used in Stage 4 — no new machinery, just a wider scan.
+
+### 5.2 EXACT: full-universe collision census
+
+Across all $99$ words, $\Phi$ collapses them to **$58$ distinct Laurent
+polynomials** — $25$ collision groups (sizes $2$–$4$), $41$ of the $99$
+words landing in a non-singleton group. Leading/trailing Laurent
+coefficients are small integers throughout ($\{-2,-1,1,2\}$ leading;
+$\{-6,\dots,5\}$ trailing) — consistent with, but not yet explained by,
+the fact that $\mathrm{tr}$ of any word restricted to $X_0$ is built by
+the same Cayley–Hamilton/Chebyshev-type recursion in $t$.
+
+### 5.3 Scope clarification: this is *not* a contradiction of the atlas
+
+The manuscript's atlas records "four squared-trace degeneracies" (three
+universal $+$ one at $(-2,3)$). Checked directly against
+`m003_pair_atlas.csv`: the atlas's degeneracy scan covers **$136$
+curated pairs over $17$ words** at the cusp, not the full $99$-word /
+$\binom{99}{2}=4851$-pair universe. This Stage-5 scan is the first
+*exhaustive* check of the full word universe on $X_0$; §5.1–5.2 extend,
+rather than contradict, the atlas result.
+
+### 5.4 Control test: is the collision density generic, or tied to $X_0$?
+
+Before treating "$58$ classes from $99$ words" as meaningful, the
+obvious null check: does *any* 1-parameter substitution of similar
+shape collapse the same words this much?
+| substitution | classes | groups | max group |
+|---|---|---|---|
+| $X_0$: $y=1-t^2,\ z=-t^{-1}$ | **58** | 25 | 4 |
+| line $y=t,\ z=t$ | 33 | 29 | 6 |
+| line $y=t+1,\ z=t-1$ | 77 | 22 | 2 |
+| same shape, $y=t^2,\ z=t^{-1}$ | 80 | 18 | 3 |
+| sign-flipped, $y=1-t^2,\ z=t^{-1}$ | 81 | 18 | 2 |
+| shifted, $y=2-t^2,\ z=-t^{-1}$ | 78 | 19 | 3 |
+
+$X_0$ is markedly more collapsed than every shape-matched-but-arbitrary
+control ($58$ vs.\ $77$–$81$ classes): the collision density is tied to
+$X_0$'s actual defining constants, not merely "any rank-1 cut of similar
+functional form." But a more special ad hoc line ($y=z=t$) collapses
+further still ($33$ classes) — so raw collision *count* is not by
+itself a rare statistic in this space of substitutions, and the $5$
+hand-picked controls above are not a properly randomized null.
+
+### Stage 5 — status: OPEN, not a theorem
+
+What's certified: §5.1 (exact class-membership extensions) and §5.2
+(the exact census), both direct corollaries of the certified $\Phi$.
+What's **not** established: that $X_0$'s elevated collision density
+(§5.4) is meaningful rather than coincidental, or that it yields any
+selection principle. Before drawing a conclusion this needs: a properly
+randomized control (many random low-degree rational-curve
+substitutions, not $5$ hand-picked ones); an analytic account of *why*
+the specific new members (`AAbab`, `AAbabb`, `AAbbab`, `ABABBB`) join
+each class (plausibly a Chebyshev-recursion identity in $t$, not yet
+derived); and a check of whether the $7$ minimal-span (single-monomial,
+$\pm t^{\pm1}$) words are characterized by anything beyond membership in
+the two known universal classes. Not folded into the manuscript.
+Recorded here as a lead, per the stopping-rule discipline established
+in Stage 3.3.
