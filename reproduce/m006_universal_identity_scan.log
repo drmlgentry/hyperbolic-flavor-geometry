@@ -1,0 +1,159 @@
+
+==============================================================================
+1. Phi_m006(tr(w)) for all 99 words: exact rational-function support
+==============================================================================
+  A        len=1  (n_a,n_b)=(-1,+0)  Phi(tr)=t
+  B        len=1  (n_a,n_b)=(+0,-1)  Phi(tr)=1/(t**2 - 1)
+  AB       len=2  (n_a,n_b)=(-1,-1)  Phi(tr)=t
+  Ab       len=2  (n_a,n_b)=(-1,+1)  Phi(tr)=(-t**3 + 2*t)/(t**2 - 1)
+  AAB      len=3  (n_a,n_b)=(-2,-1)  Phi(tr)=(t**4 - t**2 - 1)/(t**2 - 1)
+  AAb      len=3  (n_a,n_b)=(-2,+1)  Phi(tr)=1 - t**2
+  ABB      len=3  (n_a,n_b)=(-1,-2)  Phi(tr)=(-t**3 + 2*t)/(t**2 - 1)
+  Abb      len=3  (n_a,n_b)=(-1,+2)  Phi(tr)=(-t**5 + t**3 + t)/(t**4 - 2*t**2 + 1)
+  AAAB     len=4  (n_a,n_b)=(-3,-1)  Phi(tr)=(t**5 - 2*t**3)/(t**2 - 1)
+  AAAb     len=4  (n_a,n_b)=(-3,+1)  Phi(tr)=(-t**5 + 3*t**3 - 3*t)/(t**2 - 1)
+  AABB     len=4  (n_a,n_b)=(-2,-2)  Phi(tr)=(-t**6 + 5*t**4 - 6*t**2 + 1)/(t**4 - 2*t**2 + 1)
+  AAbb     len=4  (n_a,n_b)=(-2,+2)  Phi(tr)=1 - t**2
+  ABAb     len=4  (n_a,n_b)=(-2,+0)  Phi(tr)=(-t**6 + 5*t**4 - 6*t**2 + 1)/(t**4 - 2*t**2 + 1)
+  ABBB     len=4  (n_a,n_b)=(-1,-3)  Phi(tr)=(-t**5 + t**3 + t)/(t**4 - 2*t**2 + 1)
+  ABaB     len=4  (n_a,n_b)=(+0,-2)  Phi(tr)=(-2*t**4 + 5*t**2 - 2)/(t**2 - 1)
+  ABab     len=4  (n_a,n_b)=(+0,+0)  Phi(tr)=(2*t**6 - 7*t**4 + 7*t**2 - 1)/(t**4 - 2*t**2 + 1)
+  Abbb     len=4  (n_a,n_b)=(-1,+3)  Phi(tr)=(t**7 - 5*t**5 + 6*t**3 - t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AAAAB    len=5  (n_a,n_b)=(-4,-1)  Phi(tr)=t**4 - 2*t**2 - 1
+  AAAAb    len=5  (n_a,n_b)=(-4,+1)  Phi(tr)=(-t**6 + 4*t**4 - 5*t**2 + 1)/(t**2 - 1)
+  AAABB    len=5  (n_a,n_b)=(-3,-2)  Phi(tr)=(-t**7 + 6*t**5 - 9*t**3 + 3*t)/(t**4 - 2*t**2 + 1)
+  AAAbb    len=5  (n_a,n_b)=(-3,+2)  Phi(tr)=(-t**7 + 4*t**5 - 4*t**3)/(t**4 - 2*t**2 + 1)
+  AABAB    len=5  (n_a,n_b)=(-3,-2)  Phi(tr)=(t**5 - 2*t**3)/(t**2 - 1)
+  AABAb    len=5  (n_a,n_b)=(-3,+0)  Phi(tr)=(-t**7 + 4*t**5 - 4*t**3)/(t**4 - 2*t**2 + 1)
+  AABBB    len=5  (n_a,n_b)=(-2,-3)  Phi(tr)=(-t**8 + 2*t**6 + 3*t**4 - 7*t**2 + 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AABaB    len=5  (n_a,n_b)=(-1,-2)  Phi(tr)=(-2*t**7 + 8*t**5 - 8*t**3 + t)/(t**4 - 2*t**2 + 1)
+  AABab    len=5  (n_a,n_b)=(-1,+0)  Phi(tr)=(2*t**7 - 8*t**5 + 9*t**3 - 2*t)/(t**4 - 2*t**2 + 1)
+  AAbAB    len=5  (n_a,n_b)=(-3,+0)  Phi(tr)=(-t**7 + 4*t**5 - 4*t**3)/(t**4 - 2*t**2 + 1)
+  AAbAb    len=5  (n_a,n_b)=(-3,+2)  Phi(tr)=t**3 - 3*t
+  AAbaB    len=5  (n_a,n_b)=(-1,+0)  Phi(tr)=(2*t**7 - 8*t**5 + 9*t**3 - 2*t)/(t**4 - 2*t**2 + 1)
+  AAbab    len=5  (n_a,n_b)=(-1,+2)  Phi(tr)=-2*t**3 + 4*t
+  AAbbb    len=5  (n_a,n_b)=(-2,+3)  Phi(tr)=t**2 - 2
+  ABABB    len=5  (n_a,n_b)=(-2,-3)  Phi(tr)=1 - t**2
+  ABAbb    len=5  (n_a,n_b)=(-2,+1)  Phi(tr)=(-t**8 + 2*t**6 + 3*t**4 - 7*t**2 + 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABBAb    len=5  (n_a,n_b)=(-2,-1)  Phi(tr)=(t**8 - 5*t**6 + 11*t**4 - 10*t**2 + 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABBBB    len=5  (n_a,n_b)=(-1,-4)  Phi(tr)=(t**7 - 5*t**5 + 6*t**3 - t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABBaB    len=5  (n_a,n_b)=(+0,-3)  Phi(tr)=(-2*t**4 + 4*t**2 - 1)/(t**4 - 2*t**2 + 1)
+  ABBab    len=5  (n_a,n_b)=(+0,-1)  Phi(tr)=(2*t**6 - 8*t**4 + 9*t**2 - 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABaBB    len=5  (n_a,n_b)=(+0,-3)  Phi(tr)=(-2*t**4 + 4*t**2 - 1)/(t**4 - 2*t**2 + 1)
+  ABabb    len=5  (n_a,n_b)=(+0,+1)  Phi(tr)=(2*t**6 - 8*t**4 + 9*t**2 - 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AbAbb    len=5  (n_a,n_b)=(-2,+3)  Phi(tr)=(t**8 - 3*t**6 + 4*t**2 - 1)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  Abbbb    len=5  (n_a,n_b)=(-1,+4)  Phi(tr)=(t**9 - 2*t**7 - 3*t**5 + 7*t**3 - 2*t)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  AAAAAB   len=6  (n_a,n_b)=(-5,-1)  Phi(tr)=(t**7 - 4*t**5 + 3*t**3 + t)/(t**2 - 1)
+  AAAAAb   len=6  (n_a,n_b)=(-5,+1)  Phi(tr)=-t**5 + 4*t**3 - 4*t
+  AAAABB   len=6  (n_a,n_b)=(-4,-2)  Phi(tr)=(-t**6 + 6*t**4 - 8*t**2 + 1)/(t**2 - 1)
+  AAAAbb   len=6  (n_a,n_b)=(-4,+2)  Phi(tr)=(-t**8 + 5*t**6 - 7*t**4 + 3*t**2 - 1)/(t**4 - 2*t**2 + 1)
+  AAABAB   len=6  (n_a,n_b)=(-4,-2)  Phi(tr)=(t**6 - 3*t**4 + 3*t**2 - 2)/(t**2 - 1)
+  AAABAb   len=6  (n_a,n_b)=(-4,+0)  Phi(tr)=(-t**6 + 4*t**4 - 5*t**2 + 1)/(t**2 - 1)
+  AAABBB   len=6  (n_a,n_b)=(-3,-3)  Phi(tr)=(-t**9 + 3*t**7 + t**5 - 7*t**3 + 3*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AAABaB   len=6  (n_a,n_b)=(-2,-2)  Phi(tr)=(-2*t**8 + 10*t**6 - 15*t**4 + 8*t**2 - 2)/(t**4 - 2*t**2 + 1)
+  AAABab   len=6  (n_a,n_b)=(-2,+0)  Phi(tr)=(2*t**6 - 8*t**4 + 8*t**2 - 1)/(t**2 - 1)
+  AAAbAB   len=6  (n_a,n_b)=(-4,+0)  Phi(tr)=(-t**6 + 4*t**4 - 5*t**2 + 1)/(t**2 - 1)
+  AAAbAb   len=6  (n_a,n_b)=(-4,+2)  Phi(tr)=(t**8 - 6*t**6 + 13*t**4 - 11*t**2 + 2)/(t**4 - 2*t**2 + 1)
+  AAAbaB   len=6  (n_a,n_b)=(-2,+0)  Phi(tr)=(2*t**6 - 8*t**4 + 8*t**2 - 1)/(t**2 - 1)
+  AAAbab   len=6  (n_a,n_b)=(-2,+2)  Phi(tr)=(-2*t**6 + 8*t**4 - 9*t**2 + 2)/(t**2 - 1)
+  AAAbbb   len=6  (n_a,n_b)=(-3,+3)  Phi(tr)=(t**9 - 6*t**7 + 14*t**5 - 13*t**3 + 3*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AABAAb   len=6  (n_a,n_b)=(-4,+0)  Phi(tr)=(-t**8 + 3*t**6 - 5*t**2 + 2)/(t**4 - 2*t**2 + 1)
+  AABABB   len=6  (n_a,n_b)=(-3,-3)  Phi(tr)=(-t**7 + 4*t**5 - 4*t**3)/(t**4 - 2*t**2 + 1)
+  AABAbb   len=6  (n_a,n_b)=(-3,+1)  Phi(tr)=(-t**9 + 3*t**7 - t**5 - 2*t**3)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AABBAB   len=6  (n_a,n_b)=(-3,-3)  Phi(tr)=(-t**7 + 4*t**5 - 4*t**3)/(t**4 - 2*t**2 + 1)
+  AABBAb   len=6  (n_a,n_b)=(-3,-1)  Phi(tr)=(t**9 - 6*t**7 + 14*t**5 - 13*t**3 + 3*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AABBBB   len=6  (n_a,n_b)=(-2,-4)  Phi(tr)=(t**10 - 8*t**8 + 19*t**6 - 15*t**4 + t**2 + 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  AABBaB   len=6  (n_a,n_b)=(-1,-3)  Phi(tr)=(-3*t**7 + 11*t**5 - 11*t**3 + 2*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AABBab   len=6  (n_a,n_b)=(-1,-1)  Phi(tr)=(3*t**7 - 12*t**5 + 14*t**3 - 4*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AABaBB   len=6  (n_a,n_b)=(-1,-3)  Phi(tr)=(-3*t**7 + 11*t**5 - 11*t**3 + 2*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AABaaB   len=6  (n_a,n_b)=(+0,-2)  Phi(tr)=-2*t**4 + 5*t**2 - 1
+  AABaab   len=6  (n_a,n_b)=(+0,+0)  Phi(tr)=(2*t**8 - 9*t**6 + 13*t**4 - 7*t**2 + 2)/(t**4 - 2*t**2 + 1)
+  AABabb   len=6  (n_a,n_b)=(-1,+1)  Phi(tr)=(t**7 - 5*t**5 + 6*t**3 - t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AAbABB   len=6  (n_a,n_b)=(-3,-1)  Phi(tr)=(t**9 - 6*t**7 + 14*t**5 - 13*t**3 + 3*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AAbAbb   len=6  (n_a,n_b)=(-3,+3)  Phi(tr)=(t**5 - 2*t**3)/(t**2 - 1)
+  AAbaBB   len=6  (n_a,n_b)=(-1,-1)  Phi(tr)=(3*t**7 - 12*t**5 + 14*t**3 - 4*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AAbabb   len=6  (n_a,n_b)=(-1,+3)  Phi(tr)=(-t**3 + 2*t)/(t**2 - 1)
+  AAbbAB   len=6  (n_a,n_b)=(-3,+1)  Phi(tr)=(-t**9 + 3*t**7 - t**5 - 2*t**3)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AAbbAb   len=6  (n_a,n_b)=(-3,+3)  Phi(tr)=(t**5 - 2*t**3)/(t**2 - 1)
+  AAbbaB   len=6  (n_a,n_b)=(-1,+1)  Phi(tr)=(t**7 - 5*t**5 + 6*t**3 - t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  AAbbab   len=6  (n_a,n_b)=(-1,+3)  Phi(tr)=(-t**3 + 2*t)/(t**2 - 1)
+  AAbbbb   len=6  (n_a,n_b)=(-2,+4)  Phi(tr)=(t**4 - t**2 - 1)/(t**2 - 1)
+  ABABAb   len=6  (n_a,n_b)=(-3,-1)  Phi(tr)=(-t**7 + 6*t**5 - 9*t**3 + 3*t)/(t**4 - 2*t**2 + 1)
+  ABABBB   len=6  (n_a,n_b)=(-2,-4)  Phi(tr)=1 - t**2
+  ABABaB   len=6  (n_a,n_b)=(-1,-3)  Phi(tr)=-2*t**3 + 4*t
+  ABABab   len=6  (n_a,n_b)=(-1,-1)  Phi(tr)=(2*t**7 - 8*t**5 + 9*t**3 - 2*t)/(t**4 - 2*t**2 + 1)
+  ABAbAb   len=6  (n_a,n_b)=(-3,+1)  Phi(tr)=(t**9 - 8*t**7 + 19*t**5 - 16*t**3 + 3*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABAbaB   len=6  (n_a,n_b)=(-1,-1)  Phi(tr)=(2*t**7 - 8*t**5 + 9*t**3 - 2*t)/(t**4 - 2*t**2 + 1)
+  ABAbab   len=6  (n_a,n_b)=(-1,+1)  Phi(tr)=(-2*t**7 + 8*t**5 - 8*t**3 + t)/(t**4 - 2*t**2 + 1)
+  ABAbbb   len=6  (n_a,n_b)=(-2,+2)  Phi(tr)=(t**10 - 8*t**8 + 19*t**6 - 15*t**4 + t**2 + 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  ABBAbb   len=6  (n_a,n_b)=(-2,+0)  Phi(tr)=(t**10 - 6*t**8 + 12*t**6 - 7*t**4 - 2*t**2 + 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  ABBBAb   len=6  (n_a,n_b)=(-2,-2)  Phi(tr)=(t**10 - 6*t**8 + 12*t**6 - 7*t**4 - 2*t**2 + 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  ABBBBB   len=6  (n_a,n_b)=(-1,-5)  Phi(tr)=(t**9 - 2*t**7 - 3*t**5 + 7*t**3 - 2*t)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  ABBBaB   len=6  (n_a,n_b)=(+0,-4)  Phi(tr)=(2*t**8 - 9*t**6 + 12*t**4 - 5*t**2 + 1)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABBBab   len=6  (n_a,n_b)=(+0,-2)  Phi(tr)=(-2*t**10 + 11*t**8 - 21*t**6 + 14*t**4 - 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  ABBaBB   len=6  (n_a,n_b)=(+0,-4)  Phi(tr)=(2*t**6 - 8*t**4 + 9*t**2 - 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABBabb   len=6  (n_a,n_b)=(+0,+0)  Phi(tr)=(2*t**8 - 6*t**6 + 3*t**4 + 3*t**2 - 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  ABaBAb   len=6  (n_a,n_b)=(-1,-1)  Phi(tr)=(2*t**9 - 12*t**7 + 26*t**5 - 22*t**3 + 5*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABaBBB   len=6  (n_a,n_b)=(+0,-4)  Phi(tr)=(2*t**8 - 9*t**6 + 12*t**4 - 5*t**2 + 1)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABaBaB   len=6  (n_a,n_b)=(+1,-3)  Phi(tr)=(2*t**7 - 10*t**5 + 14*t**3 - 5*t)/(t**4 - 2*t**2 + 1)
+  ABaBab   len=6  (n_a,n_b)=(+1,-1)  Phi(tr)=(-2*t**9 + 12*t**7 - 25*t**5 + 20*t**3 - 4*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABabAb   len=6  (n_a,n_b)=(-1,+1)  Phi(tr)=(-2*t**9 + 12*t**7 - 25*t**5 + 20*t**3 - 4*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+  ABabbb   len=6  (n_a,n_b)=(+0,+2)  Phi(tr)=(-2*t**10 + 11*t**8 - 21*t**6 + 14*t**4 - 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  AbAbbb   len=6  (n_a,n_b)=(-2,+4)  Phi(tr)=(-t**10 + 9*t**8 - 24*t**6 + 24*t**4 - 8*t**2 + 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+  Abbbbb   len=6  (n_a,n_b)=(-1,+5)  Phi(tr)=(-t**11 + 8*t**9 - 19*t**7 + 15*t**5 - t**3 - t)/(t**10 - 5*t**8 + 10*t**6 - 10*t**4 + 5*t**2 - 1)
+
+==============================================================================
+2. collisions: distinct words sharing the EXACT same Phi_m006(tr(w))
+==============================================================================
+  99 words -> 55 distinct classes, 28 collision groups
+    ['AAAbb', 'AABABB', 'AABAb', 'AABBAB', 'AAbAB']  ->  (-t**7 + 4*t**5 - 4*t**3)/(t**4 - 2*t**2 + 1)
+    ['AAbabb', 'AAbbab', 'ABB', 'Ab']  ->  (-t**3 + 2*t)/(t**2 - 1)
+    ['AAb', 'AAbb', 'ABABB', 'ABABBB']  ->  1 - t**2
+    ['AAAB', 'AABAB', 'AAbAbb', 'AAbbAb']  ->  (t**5 - 2*t**3)/(t**2 - 1)
+    ['AABabb', 'AAbbaB', 'ABBBB', 'Abbb']  ->  (t**7 - 5*t**5 + 6*t**3 - t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['AABab', 'AAbaB', 'ABABab', 'ABAbaB']  ->  (2*t**7 - 8*t**5 + 9*t**3 - 2*t)/(t**4 - 2*t**2 + 1)
+    ['AAAAb', 'AAABAb', 'AAAbAB']  ->  (-t**6 + 4*t**4 - 5*t**2 + 1)/(t**2 - 1)
+    ['ABBaBB', 'ABBab', 'ABabb']  ->  (2*t**6 - 8*t**4 + 9*t**2 - 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['AAAbbb', 'AABBAb', 'AAbABB']  ->  (t**9 - 6*t**7 + 14*t**5 - 13*t**3 + 3*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['A', 'AB']  ->  t
+    ['AAB', 'AAbbbb']  ->  (t**4 - t**2 - 1)/(t**2 - 1)
+    ['ABBB', 'Abb']  ->  (-t**5 + t**3 + t)/(t**4 - 2*t**2 + 1)
+    ['AABB', 'ABAb']  ->  (-t**6 + 5*t**4 - 6*t**2 + 1)/(t**4 - 2*t**2 + 1)
+    ['AAABB', 'ABABAb']  ->  (-t**7 + 6*t**5 - 9*t**3 + 3*t)/(t**4 - 2*t**2 + 1)
+    ['AABBB', 'ABAbb']  ->  (-t**8 + 2*t**6 + 3*t**4 - 7*t**2 + 2)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['AABaB', 'ABAbab']  ->  (-2*t**7 + 8*t**5 - 8*t**3 + t)/(t**4 - 2*t**2 + 1)
+    ['AAbab', 'ABABaB']  ->  -2*t**3 + 4*t
+    ['ABBaB', 'ABaBB']  ->  (-2*t**4 + 4*t**2 - 1)/(t**4 - 2*t**2 + 1)
+    ['ABBBBB', 'Abbbb']  ->  (t**9 - 2*t**7 - 3*t**5 + 7*t**3 - 2*t)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+    ['AAABab', 'AAAbaB']  ->  (2*t**6 - 8*t**4 + 8*t**2 - 1)/(t**2 - 1)
+    ['AABAbb', 'AAbbAB']  ->  (-t**9 + 3*t**7 - t**5 - 2*t**3)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['AABBBB', 'ABAbbb']  ->  (t**10 - 8*t**8 + 19*t**6 - 15*t**4 + t**2 + 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+    ['AABBaB', 'AABaBB']  ->  (-3*t**7 + 11*t**5 - 11*t**3 + 2*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['AABBab', 'AAbaBB']  ->  (3*t**7 - 12*t**5 + 14*t**3 - 4*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['ABBAbb', 'ABBBAb']  ->  (t**10 - 6*t**8 + 12*t**6 - 7*t**4 - 2*t**2 + 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+    ['ABBBaB', 'ABaBBB']  ->  (2*t**8 - 9*t**6 + 12*t**4 - 5*t**2 + 1)/(t**6 - 3*t**4 + 3*t**2 - 1)
+    ['ABBBab', 'ABabbb']  ->  (-2*t**10 + 11*t**8 - 21*t**6 + 14*t**4 - 1)/(t**8 - 4*t**6 + 6*t**4 - 4*t**2 + 1)
+    ['ABaBab', 'ABabAb']  ->  (-2*t**9 + 12*t**7 - 25*t**5 + 20*t**3 - 4*t)/(t**6 - 3*t**4 + 3*t**2 - 1)
+
+==============================================================================
+3. is there an m006 analogue of m003's THREE universal pairs?
+==============================================================================
+  28 collision group(s) found (listed above). Each is
+  an EXACT identity tr(w)=tr(w') on X_0(m006), certified via the
+  same Phi_m006 whose kernel is I(X_0(m006)).
+
+==============================================================================
+4. control test: is this collision count generic to a rank-1 cut?
+==============================================================================
+  X_0(m006) itself: y=1/(t^2-1), z=t    : 55 classes, 28 groups, largest group = 5
+  X_0(m003): y=1-t^2, z=-1/t            : 58 classes, 25 groups, largest group = 4
+  control A: generic line y=t, z=t      : 33 classes, 29 groups, largest group = 6
+  control B: generic line y=t+1, z=t-1  : 77 classes, 22 groups, largest group = 2
+  control C: same shape, y=1/(t^2-4), z=t: 64 classes, 31 groups, largest group = 4
+  control D: same shape, y=1/(t^2-1), z=2*t: 81 classes, 18 groups, largest group = 2
+  control E: same shape, y=1/(t^2+1), z=t: 64 classes, 31 groups, largest group = 4
+
+  X_0(m003) is reproduced here as a cross-check (should read 58/25/4,
+  matching m003_stage5_laurent_word_structure.log exactly).
+
+PY_EXIT=0

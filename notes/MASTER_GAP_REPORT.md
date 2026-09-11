@@ -5443,3 +5443,56 @@ geometric component, not yet a certified identification. Natural next
 step if pursued further: match against $m006$'s known cubic ITF
 (discriminant $-59$, $\mathrm{Gal}\cong S_3$) or a numerically-obtained
 geometric trace, to confirm.
+
+### Does $m006$ have a universal identity like $m003$? Yes — and more of them.
+
+Reusing the certified $99$-word atlas universe (combinatorics are
+manifold-independent) and $\Phi_{m006}:(x,y,z)\mapsto(t,\,1/(t^2-1),\,t)$
+(kernel $I(X_0(m006))$, from the section above), scanning all $99$ word
+traces for exact collisions:
+
+Reproduce: `reproduce/m006_universal_identity_scan.py` (+ `.log`).
+sha256 `87de30138f576f0a00b63c7d861b6dbdf99cb71a33ea23edcb1145194db34d65`
+(script), `45bbde11903d96bc6da8d11980bc27a6164be3e66241b5e923d981e214910447`
+(log). Cross-check: reproducing $X_0(m003)$'s substitution inside this
+same script recovers $58$ classes / $25$ groups / max size $4$, exactly
+matching `m003_stage5_laurent_word_structure.log` — confirms the shared
+machinery is correct.
+
+**Census**: $99$ words $\to$ **$55$ distinct classes, $28$ collision
+groups**, largest group size $5$ — a *richer* collision structure than
+$m003$'s ($58$ classes, $25$ groups, max $4$).
+
+**The cleanest identity is exact and structurally sharp.** The shortest
+collision, $\{A, AB\}$ (i.e.\ $\tr(a)=\tr(ab)$, lengths $1$ and $2$ —
+shorter than any $m003$ pair), gives
+$$D = \tr(A) - \tr(AB) = x - z,$$
+which is **not** a free-group identity ($D\neq0$ generically), does
+**not** vanish on either discrete branch $D_1,D_2$ (reduces to
+$y-2$ and $2-y$ respectively — both nonzero), and equals the second
+defining generator of $I(X_0(m006)) = \langle yz^2-y-1,\ x-z\rangle$
+**exactly**, with certificate $D = 0\cdot g_1 + 1\cdot g_2$. So
+$\tr(a)=\tr(ab)$ on $X_0(m006)$ *is*, verbatim, the component equation
+$x=z$ — an even more direct version of $m003$'s "identity $=$ defining
+equation" structure (there it took a sign and a linear combination,
+$D_2=-g_1=xg_2-zg_3$; here it's the generator itself). The other $27$
+collision groups have not been individually certified this way — flagged
+as further work, not yet done.
+
+**Control test** (same five substitutions, reused): $X_0(m006)$ gives
+$55$ classes vs.\ $64$–$81$ for the three shape-matched arbitrary
+controls (same functional form, different constants) — elevated
+collision density, consistent with the $m003$ pattern (which gave $58$
+vs.\ $78$–$81$). Neither manifold is as collapsed as the single
+maximally-degenerate ad hoc line (control A, $33$ classes). This
+cross-manifold consistency (both real components show the same
+"elevated but not extreme" signature relative to shape-matched
+controls) is itself a small corroborating data point, but is still not
+a general law — the same caveats from Stage 5 apply: no properly
+randomized null, and no analytic account of why these particular words
+collide.
+
+**Answer to "does $m006$ have a universal identity like $m003$": yes**,
+and it is at least as clean — the simplest one is literally a defining
+equation of $X_0(m006)$, exactly analogous to $m003$'s $D_2=-g_1$
+finding, but here direct rather than up to sign/combination.
