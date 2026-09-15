@@ -5440,7 +5440,7 @@ one with $\pi_1\cong\mathbb{Z}$). Both flavor manifolds have a rational
 geometric component; the puncture count differs. This is an exact
 structural fact, not a numerical observation.
 
-### Geometric-component identification — now certified, not just analogy
+### Geometric-component identification — certified numerically, not just analogy
 
 **Update.** The gap below was closed without a fresh SnapPy run, by
 reusing an already-certified point. Reproduce:
@@ -5466,29 +5466,39 @@ $\sim\!85$ certified significant digits. Substituting directly into
 $X_0(m006)$'s two defining equations:
 $$|T_x - T_z| \approx 2.2\times10^{-83}, \qquad
   |T_y(T_z^2-1) - 1| \approx 5.4\times10^{-83},$$
-both far inside the source data's own certified precision — i.e.\ the
-$(-5,2)$-filled discrete-faithful character satisfies **both**
-generators of $I(X_0(m006))$ exactly, to the limit of the available
-digits. It is also manifestly excluded from $D_1,D_2$ ($T_z$ is
-non-real, while $D_1,D_2$ require $z=\pm2$ exactly), and
-$V(I_{\mathrm{Riley}})=X_0\cup D_1\cup D_2$ was already certified
-exactly (§ above) — so this point is genuinely *on* $X_0$, not merely
-off the other two components.
+both far inside the source data's own certified precision. **Precision
+of claim, stated deliberately:** this residual computation is
+*certified-numerical evidence*, not itself an exact algebraic
+membership certificate — the point values were substituted as
+high-precision numbers, not propagated as rigorous intervals through
+the polynomial evaluation. The exact statement that stands
+independently is the Riley decomposition
+$V(I_{\mathrm{Riley}})=X_0\cup D_1\cup D_2$ (certified exactly, §
+above); this numerical step identifies *which* exact component
+contains the certified geometric filling representation. $T_z$ is also
+non-real, so the point is manifestly excluded from $D_1,D_2$ (which
+require $z=\pm2$ exactly) regardless of precision concerns.
 
-**The logical bridge, stated explicitly and not re-derived here:** by
-Thurston's hyperbolic Dehn surgery theorem, the discrete-faithful
-holonomy of every sufficiently large Dehn filling of a $1$-cusped
-hyperbolic $3$-manifold lies on the same irreducible component of the
-unfilled character variety as the complete structure's discrete-
-faithful character (standard; this is the usual way "the geometric
-component" is identified throughout this literature, e.g.\ in
-$A$-polynomial theory). Given that, the certified $(-5,2)$-filled point
-lying on $X_0$ establishes that $X_0(m006)$ is the component
-containing $m006$'s cusped discrete-faithful character — **no longer
-resting on structural analogy alone.** What remains unverified is only
-Thurston's theorem itself (cited, standard, not re-proved) and SnapPy's
-interval arithmetic (already independently certified as part of the
-CKM ITF proof, not re-certified here).
+**The full epistemic chain, kept explicit rather than compressed into
+one "certified" label:**
+$$\text{exact Riley decomposition} \;+\; \text{certified-numerical
+component identification} \;+\; \text{standard deformation-theoretic
+bridge}.$$
+The third link (not re-derived here): by Thurston's hyperbolic Dehn
+surgery theorem, the discrete-faithful holonomy of every sufficiently
+large Dehn filling of a $1$-cusped hyperbolic $3$-manifold lies on the
+same irreducible component of the unfilled character variety as the
+complete structure's discrete-faithful character (standard; the usual
+way "the geometric component" is identified throughout this
+literature, e.g.\ in $A$-polynomial theory). Together, these three
+links identify $X_0(m006)$ as the component carrying $m006$'s cusped
+geometric deformation — **no longer resting on structural analogy
+alone**, but also not claimed as a from-scratch exact certificate:
+what's independently exact is the decomposition; what's new is a
+certified-numerical pointer to the right component, via a standard
+(cited, not re-proved) theorem. SnapPy's interval arithmetic itself was
+already independently certified as part of the CKM ITF proof, not
+re-certified here.
 
 ### Does $m006$ have a universal identity like $m003$? Yes — and more of them.
 
@@ -5602,3 +5612,30 @@ $y(z^2-1)-1$ as well. This is an exact two-family classification of
 $m006$'s universal identities, directly analogous to (and sharper than)
 $m003$'s three-identity structure — full per-pair certificates
 (the $A,B$ cofactors) are recorded in the `.log`.
+
+### $m003$ vs $m006$ — the comparison, sharpened
+
+$25$-vs-$28$ raw collision groups is retired as the primary
+comparative statistic (kept only as the pre-quotient census); the
+genuinely component-induced counts are the meaningful comparison:
+
+| | $m003$ | $m006$ |
+|---|---|---|
+| $X_0$ | $\mathbb{G}_m$ | $\mathbb{P}^1\setminus\{0,1,\infty\}$ |
+| $\mathcal{O}(X_0)$ | $\mathbb{Q}[t,t^{-1}]$ | $\mathbb{Q}[t,(t-1)^{-1},(t+1)^{-1}]$ |
+| punctures | $2$ | $3$ |
+| $\pi_1(X_0(\mathbb{C}))$ | $\mathbb{Z}$ | $F_2$ |
+| raw collision groups | $25$ | $28$ |
+| ambient (generic $\mathrm{SL}_2$) groups | $8$ | $8$ |
+| **component-induced groups** | **$17$** | **$20$** |
+
+The repeated identical $8$ ambient pairs across both manifolds supply
+a natural, non-arbitrary baseline: the meaningful quantity going
+forward is the restricted trace algebra *modulo* these ambient
+rank-$2$ trace equivalences, not raw collision density against
+hand-picked controls (§5.4's caveat still applies to anything beyond
+this ambient/genuine split). Under that normalization, $m006$'s
+bounded word-trace algebra detects **both** of its component's
+defining equations directly as word identities ($\tr(a)=\tr(ab)$ for
+$x-z$; the $9$ "needs $g_1$" groups for $y(z^2-1)-1$) — a sharper
+finding than "$m006$ also has collisions."
