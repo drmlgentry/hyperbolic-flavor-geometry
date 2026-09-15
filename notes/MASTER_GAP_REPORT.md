@@ -5440,22 +5440,55 @@ one with $\pi_1\cong\mathbb{Z}$). Both flavor manifolds have a rational
 geometric component; the puncture count differs. This is an exact
 structural fact, not a numerical observation.
 
-### What is NOT yet established
+### Geometric-component identification — now certified, not just analogy
 
-That $X_0$ (as identified here) is specifically the component
-containing $m006$'s discrete-faithful character, rather than some other
-component of the same dimension. For $m003$ this was pinned down by
-Sage's certified primary decomposition plus numerical root-matching
-against the certified holonomy; here it rests on the structural
-analogy (the bare Riley variety splits into precisely the same shape —
-two golden-ratio $0$-dimensional branches plus one $1$-dimensional
-branch — as $m003$'s certified comp0/comp1/$X_0$) and has **not** been
-cross-checked against a numerical geometric character (no SnapPy in
-this environment). Treat $X_0(m006)$ as a strong candidate for the
-geometric component, not yet a certified identification. Natural next
-step if pursued further: match against $m006$'s known cubic ITF
-(discriminant $-59$, $\mathrm{Gal}\cong S_3$) or a numerically-obtained
-geometric trace, to confirm.
+**Update.** The gap below was closed without a fresh SnapPy run, by
+reusing an already-certified point. Reproduce:
+`reproduce/m006_x0_geometric_point_certificate.py` (+ `.log`). sha256
+`1f0214f118f9657384592e1132b8aaea1a6dbab7d9a473473c6c725be9c08ebc`
+(script), `60ca811f91a6585007858f148defd013de8cd49e41b40d1ca1d333c33186e030`
+(log). Source: `reproduce/ckm_presentation_geometry_bridge_v4.log`
+(sha256 `c1cb8ddb20d183a365f535acf80c2b913cd2fe8830027350bf2ece58ab24a5d2`
+— matches the hash independently cited for this exact file in
+`notes/HANDOFF_2026-09-08.md` §1.1 step 3, and this filename is cited
+as certified provenance directly in the active CKM manuscript
+`gentry-ckm-v4.2-theorem-centered-figures.tex`), from the $K_{10}$ ITF
+proof chain: $300$-bit Sage interval arithmetic on the identical
+presentation $\langle a,b\mid \mathtt{ababbAAbb}\rangle$ (same
+generators, same relator, same `fundamental_group_args=[True,False,
+True,False]` convention used throughout), certifying
+`rho(relator)` contains $+I$ (excludes $-I$), `rho(filling word)`
+contains $+I$ (excludes $-I$) for the $(-5,2)$ Dehn filling, and
+irreducibility.
+
+That log gives $T_x=\tr\rho(a)$, $T_y=\tr\rho(b)$, $T_z=\tr\rho(ab)$ to
+$\sim\!85$ certified significant digits. Substituting directly into
+$X_0(m006)$'s two defining equations:
+$$|T_x - T_z| \approx 2.2\times10^{-83}, \qquad
+  |T_y(T_z^2-1) - 1| \approx 5.4\times10^{-83},$$
+both far inside the source data's own certified precision — i.e.\ the
+$(-5,2)$-filled discrete-faithful character satisfies **both**
+generators of $I(X_0(m006))$ exactly, to the limit of the available
+digits. It is also manifestly excluded from $D_1,D_2$ ($T_z$ is
+non-real, while $D_1,D_2$ require $z=\pm2$ exactly), and
+$V(I_{\mathrm{Riley}})=X_0\cup D_1\cup D_2$ was already certified
+exactly (§ above) — so this point is genuinely *on* $X_0$, not merely
+off the other two components.
+
+**The logical bridge, stated explicitly and not re-derived here:** by
+Thurston's hyperbolic Dehn surgery theorem, the discrete-faithful
+holonomy of every sufficiently large Dehn filling of a $1$-cusped
+hyperbolic $3$-manifold lies on the same irreducible component of the
+unfilled character variety as the complete structure's discrete-
+faithful character (standard; this is the usual way "the geometric
+component" is identified throughout this literature, e.g.\ in
+$A$-polynomial theory). Given that, the certified $(-5,2)$-filled point
+lying on $X_0$ establishes that $X_0(m006)$ is the component
+containing $m006$'s cusped discrete-faithful character — **no longer
+resting on structural analogy alone.** What remains unverified is only
+Thurston's theorem itself (cited, standard, not re-proved) and SnapPy's
+interval arithmetic (already independently certified as part of the
+CKM ITF proof, not re-certified here).
 
 ### Does $m006$ have a universal identity like $m003$? Yes — and more of them.
 
