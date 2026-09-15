@@ -1,0 +1,42 @@
+
+==============================================================================
+m003:  J_atlas(m003) vs I(X_0(m003)) and N = V(x-z,y-2)
+==============================================================================
+  25 collision groups, 21 distinct nonzero Deltas
+  I(X_0(m003)) Groebner basis: [x**2 + y - 1, x*z + 1, -x + y*z - z]
+  J_atlas(m003) Groebner basis: [x**2 - x*z + y - 2, -x + y*z - z]
+  J_atlas(m003) == I(X_0(m003)): False
+  N ∩ I(X_0(m003)) Groebner basis: [x**2 - x*z + y - 2, -x + y*z - z]
+  J_atlas(m003) == N ∩ I(X_0(m003)): True
+
+==============================================================================
+m006:  J_atlas(m006) vs I(X_0(m006)) and the SAME N = V(x-z,y-2)
+==============================================================================
+  28 collision groups, 26 distinct nonzero Deltas
+  I(X_0(m006)) Groebner basis: [y*z**2 - y - 1, x - z]
+  J_atlas(m006) Groebner basis: [y**2*z**2 - y**2 - 2*y*z**2 + y + 2, x - z]
+  J_atlas(m006) == I(X_0(m006)): False
+  N ∩ I(X_0(m006)) Groebner basis: [y**2*z**2 - y**2 - 2*y*z**2 + y + 2, x - z]
+  J_atlas(m006) == N ∩ I(X_0(m006)): True
+
+==============================================================================
+m006 mechanism: the second generator of J_atlas factors as (y-2)*g1
+==============================================================================
+  J_atlas(m006) generator: y**2*z**2 - y**2 - 2*y*z**2 + y + 2   factored: (y - 2)*(y*z**2 - y - 1)
+  J_atlas(m006) generator: x - z   factored: x - z
+
+==============================================================================
+cross-manifold verdict
+==============================================================================
+  Both J_atlas(m003) and J_atlas(m006) equal I(X_0) ∩ I(N) for the
+  SAME line N = V(x-z, y-2) -- a proper sub-ideal of I(X_0) in both
+  cases. The bounded-length atlas does NOT quite recover the exact
+  component ideal from either manifold's collisions alone; it
+  recovers X_0 together with one universal spurious line, common to
+  both manifolds and identical to the spurious line M found in
+  m003's earlier (3-identity-only) ambient decomposition.
+  N requires y=tr(b)=2, forcing the Fricke matrix B to be parabolic
+  (trace 2, repeated eigenvalue 1) -- a plausible but NOT YET PROVED
+  source of generic, manifold-independent word-trace coincidences.
+
+PY_EXIT=0
