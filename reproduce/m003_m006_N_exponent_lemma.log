@@ -1,0 +1,41 @@
+
+==============================================================================
+1. the trace-power sequence s_n = tr(a^n)
+==============================================================================
+  s_0 = 2
+  s_1 = x
+  s_2 = x**2 - 2
+  s_3 = x**3 - 3*x
+  s_4 = x**4 - 4*x**2 + 2
+  s_5 = x**5 - 5*x**3 + 5*x
+  s_6 = x**6 - 6*x**4 + 9*x**2 - 2
+  s_7 = x**7 - 7*x**5 + 14*x**3 - 7*x
+  degrees strictly increasing (0,1,2,...) => pairwise distinct polynomials
+
+==============================================================================
+2. exact closed form tr(w)|_N = s_{|e_a(w)|}: verified on all 99 atlas words
+==============================================================================
+  matches: 99/99 (this is a consequence of the general proof above,
+  not an independent empirical fact -- included as a concrete check)
+
+==============================================================================
+3. re-derive the 1028/4851 count from the lemma, cross-check against direct computation
+==============================================================================
+  |e_a| value counts: {0: 15, 1: 31, 2: 22, 3: 20, 4: 9, 5: 2}
+  predicted N-vanishing pair count from the lemma (sum of C(count,2) per |e_a| value): 1028
+  direct computation (as in m003_m006_universal_line_N.py): 1028
+  match: True
+
+==============================================================================
+4. light spot-check beyond the frozen length-6 atlas (NOT exhaustive)
+==============================================================================
+  aaaaaaa    (len 7, e_a=7): tr|_N == s_{|e_a|}: True
+  aaaaaab    (len 7, e_a=6): tr|_N == s_{|e_a|}: True
+  aabbbbb    (len 7, e_a=2): tr|_N == s_{|e_a|}: True
+  abababa    (len 7, e_a=4): tr|_N == s_{|e_a|}: True
+  aabbaabb   (len 8, e_a=4): tr|_N == s_{|e_a|}: True
+  (this only re-confirms the general lemma on a few longer words; it
+   does NOT test whether longer-word X_0-collisions with mismatched
+   |e_a| exist -- that open question is not addressed by this script.)
+
+PY_EXIT=0
