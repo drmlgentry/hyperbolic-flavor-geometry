@@ -1,0 +1,27 @@
+EXIT=0
+
+==============================================================================
+0. sanity gate: regenerated word universe must match the frozen atlas at L<=6
+==============================================================================
+  regenerated word classes at length <= 6: 99  (frozen atlas: 99)
+  MATCH -- generator trusted for extension past length 6.
+
+==============================================================================
+1. extend to length <= 8, compute exact restricted traces on X_0(m003)
+==============================================================================
+  4692 word classes at length <= 10 (generation: 2.1s)
+  computed all restricted traces in 532.4s
+
+==============================================================================
+2. hash-based collision search + immediate |e_a| mismatch check
+==============================================================================
+  4692 words -> 1350 distinct trace classes, 1087 collision groups
+
+  COUNTEREXAMPLES (mismatched |e_a| within a collision class): 0
+  NONE FOUND. The conjecture survives the extension to length <= 10 (4692 words, 1087 collision groups checked).
+
+  word classes by length: {1: 2, 2: 2, 3: 4, 4: 9, 5: 24, 6: 58, 7: 156, 8: 405, 9: 1092, 10: 2940}
+
+PY_EXIT=0
+
+[exited with code 0]

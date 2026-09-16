@@ -6094,3 +6094,45 @@ construction from something other than matching the data. What would
 resolve it is unchanged from every earlier entry in this thread: a
 demonstration that the selection was forced by a criterion independent
 of PDG comparison, established before the comparison is made.
+
+### Extended counterexample search: survives to word length 10, 4692 words, zero counterexamples
+
+Per the agreed attack order (aggressive falsification first, no
+physical target, structural proof only if it survives), the
+$I(X_0)\Rightarrow I(N)$ conjecture was pushed well past the frozen
+length-$\le6$/$99$-word atlas. Reproduce:
+`reproduce/m003_N_counterexample_search.py` (+ `.log`). sha256
+`7263f28efad61c5057a20e209b816ef73840a9dec4aa56e2b4aca6f6fc4e960a`
+(script), `211a2f99743c25267c3ef8ad04b5e71b8867721300e524281247db37740f0fc9`
+(log).
+
+**Word universe regenerated from scratch** (not reused from the frozen
+CSV): freely+cyclically reduced words in $\{a,A,b,B\}$, quotiented by
+cyclic rotation and inversion ($w\sim w^{-1}$), proper powers excluded
+— exactly the atlas protocol. **Sanity gate**: the regenerated
+generator reproduces exactly $99$ classes at length $\le6$, matching
+the frozen atlas precisely, before trusting any extension.
+
+**Hash-based collision search** (not $O(n^2)$ pairwise) on the exact
+restricted trace $\tau_w(t)\in\mathbb{Q}[t,t^{-1}]$ for $X_0(m003)$,
+keyed by exact canonical representation:
+
+| word length bound | word classes | collision groups | counterexamples |
+|---|---|---|---|
+| $\le6$ (frozen atlas) | $99$ | $25$ | $0$ |
+| $\le8$ | $660$ | $176$ | $0$ |
+| $\le10$ | $4692$ | $1087$ | $0$ |
+
+**Zero counterexamples at every stage.** Every one of the $1087$
+collision groups found among $4692$ word classes through length $10$
+has matching $|e_a|$ across all members — no exception. This
+significantly strengthens the case for attempting the structural proof
+next: a survival at $4692$ words (not just the original $99$) with
+zero exceptions is a much stronger signal than the original atlas
+alone. Per the agreed protocol, this is reported as strong falsification
+resistance, **not** as a proof — the conjecture is unrestricted in
+principle over all of $F_2$, and this is a finite (if now much larger)
+check. Next step, as originally planned: attempt the structural
+proof (degeneration/symmetry argument connecting $X_0$ and $N$ in the
+trace algebra), or continue extending the search further if a cheap
+further push seems worthwhile.
