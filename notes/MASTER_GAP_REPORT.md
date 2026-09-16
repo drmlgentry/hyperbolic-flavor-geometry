@@ -6258,3 +6258,35 @@ whether the resulting normal-form/state structure forces the exponent
 constraint — converting the question into something closer to a
 finite-state problem for the restricted trace algebra than a blind
 induction over arbitrary words.
+
+### Restricted-recursion attempt: the natural state does not close in bounded dimension
+
+Tested the proposed "carry a small trace-state through letter-by-letter
+extension" idea directly, via the classical Fricke/Vogt three-element
+trace identity (verified exactly, not assumed, by Gröbner reduction
+against the three $\det=1$ constraints for generic $M,P,Q\in
+\mathrm{SL}_2$):
+$$\tr(MPQ)+\tr(MQP) = \tr(M)\tr(PQ)+\tr(P)\tr(MQ)+\tr(Q)\tr(MP)
+  -\tr(M)\tr(P)\tr(Q).$$
+Only the **sum** is determined by the six simpler pairwise/individual
+traces; the two individual values are the roots of a quadratic and are
+generically distinct. Consequence: the natural $3$-tuple state
+$(\tr(M),\tr(Ma),\tr(Mb))$ does not close under one further letter of
+extension — computing $\tr(Mab)$ needs it carried explicitly, and
+extending one letter past that reproduces the identical problem one
+level down. The state needed to close the recursion does not stabilize
+at a small fixed size; it effectively recovers the full $2\times2$
+matrix (already what the existing `tr_xyz` machinery computes). No
+finite-state/normal-form shortcut smaller than direct matrix
+computation was found.
+
+**Status**: this is the fourth distinct structural angle to fail for a
+verified reason rather than an unproductive guess (leading-Laurent
+statistics; symmetry under $t\mapsto1/t$; the ideal-membership argument
+showing $I(X_0)\not\subset I(N)$ generically; now the bounded-state
+recursion). Recorded as a genuine, well-documented research wall — the
+conjecture itself is untouched (still survives $4692$ words with zero
+counterexamples) but no proof route attempted so far has worked.
+Paused here pending a decision on whether to extend the brute-force
+survival search further, try a different structural angle, or set this
+thread aside.
