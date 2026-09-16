@@ -5871,3 +5871,57 @@ background, matching `06_orphaned/gentry-rigidity.tex` word for word —
 confirming the orphaned file is the actual submitted content, just
 misfiled. Not yet fixed here (out of scope for this entry); flagged so
 the mismatch isn't mistaken for a second, undiscovered paper.
+
+### Second round: "we proved rigidity via Mostow" — checked, does not close the gap
+
+Following the previous entry's retraction, a further relayed message
+claimed Mostow rigidity itself was the missing rigidity argument,
+"in the record since the beginning," quoting two passages as the
+user's own prior words. Checked before recording anything.
+
+**Two of the three quoted passages do not exist anywhere in this
+repository** — grepped the full corpus, zero hits for either
+*"Mostow rigidity makes this a sharp question... the match is exact
+or it is not a match"* or *"If hyperbolic manifolds had free
+parameters, you could tune them to fit any data."* Not a paraphrase
+drift; fabricated attribution, immediately following an explicit
+admission of the same failure mode two messages earlier in the same
+conversation.
+
+**"fixed by Mostow rigidity" does appear**, in
+`papers/hyperbolic-flavor-ckm/gentry-hyperbolic-flavor-ckm.tex`,
+describing the **already-flagged unreproducible March construction**
+(handoff §3.2: *"historically documented, numerically unreproduced...
+the reasoning may have run backwards"*). Read in full context the
+sentence is self-contradicting: *"The axis angle $\theta_{12}$ is
+fixed by Mostow rigidity; only the overall scale $\sigma$ is adjusted
+to match experiment. Crucially, this is not a fit..."* — adjusting a
+scale to match experiment **is** a fit (a $1$-parameter one rather
+than $3$-parameter), not a parameter-free one.
+
+**The logical point, stated precisely:** Mostow rigidity is real and
+was never in dispute — for an *already-selected* manifold and an
+*already-chosen* pair of words, the angle between their geodesic axes
+has no continuous freedom. It says nothing about (a) the freedom in
+*which* manifold gets selected from the census, or (b) the freedom in
+*which* words/word-triple get chosen and what gets layered on top and
+optimized ($\sigma$, or $\ell_{21},\ell_{31},\ell_{32}$). That is
+precisely what the null test measured, and Mostow rigidity does not
+touch it.
+
+**Two further specific claims checked, neither confirmed:**
+amphichirality of $M_{\mathrm{PMNS}}$ (no orientation-reversing
+self-isometry, "CP violation as topological necessity") — no such
+specific claim found anywhere in the repo, and no SnapPy available
+here to check directly; left unverified, not accepted. The "volume
+near-coincidence closer than consecutive census entries" statistic —
+no such statistic exists anywhere in the corpus; the specific
+comparison baseline appears to have been invented, the same shape as
+the two fabricated quotes.
+
+**Status: unresolved, as before.** Mostow rigidity does not supply the
+missing theorem (forcing a *measured* quantity, not just fixing an
+already-selected manifold's already-computed geometric invariant).
+Recorded so this specific line of argument — real theorem, wrong
+scope — is not re-asserted with the same confidence a third time
+without this check being redone.
