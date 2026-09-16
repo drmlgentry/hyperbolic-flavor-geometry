@@ -6136,3 +6136,38 @@ check. Next step, as originally planned: attempt the structural
 proof (degeneration/symmetry argument connecting $X_0$ and $N$ in the
 trace algebra), or continue extending the search further if a cheap
 further push seems worthwhile.
+
+### Structural attack, first attempt: leading-Laurent-data functionals all fail
+
+Following the extended survival result, the natural next attempt was
+a functional $E$ on $T_w(t)=\Phi(\tau_w)\in\mathbb{Q}[t,t^{-1}]$ with
+$E(T_w)=|e_a(w)|$, built from the leading (valuation) data at the two
+punctures $t=0,\infty$ — which would finish the theorem immediately if
+found. Tested exhaustively against the full $4692$-word/length-$\le10$
+census. Reproduce: `reproduce/m003_puncture_signature_extractor.py`
+(+ `.log`). sha256
+`7cafa7e87ac71928faa065ecbb57be939995b2fcb61788f9af68f3bd851154fb`
+(script), `c1691296e629e7933638dc7378f7dcacaaaeff411e772fd8f5dd089c58a49f60`
+(log).
+
+**All four candidates fail, decisively:**
+- Full puncture signature $(\nu_0,\mathrm{lc}_0,\nu_\infty,
+  \mathrm{lc}_\infty)$: $188$ of $417$ distinct signatures map to
+  *multiple* $|e_a|$ values (one signature spans $|e_a|\in\{2,4,8\}$).
+- Just the order pair $(\nu_0,\nu_\infty)$, dropping coefficients:
+  still $55$ of $72$ pairs multi-valued.
+- $|e_a| \overset{?}{=} \max(|\nu_0|,|\nu_\infty|)$: matches only
+  $243/4692$.
+- $|e_a| \overset{?}{=}$ half the Laurent width
+  ($(\nu_\infty-\nu_0)/2$ up to sign convention): matches only
+  $260/4692$.
+
+**Conclusion: $|e_a(w)|$ is not recoverable from any leading-order/
+valuation data of $T_w(t)$ at the punctures.** If a mechanism exists it
+is not a scalar statistic on the restricted trace — the proof route
+has to go back through the ambient polynomial $\Delta_{w,v}(x,y,z)$
+and its relationship to $I(X_0)$ and $I(N)$ directly (the way the
+$N$-side of the lemma was actually proven, via the $b\mapsto I$
+specialization), not through post-restriction Laurent asymptotics on
+$X_0$ alone. This rules out an entire family of "simple invariant"
+hypotheses at once; recorded so they are not re-attempted.

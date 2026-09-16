@@ -1,0 +1,88 @@
+
+==============================================================================
+0. regenerate word universe (sanity-gated) and restricted traces
+==============================================================================
+  4692 word classes at length <= 10
+  computed in 533.5s
+
+==============================================================================
+1. extract puncture signatures (nu_0, lc_0, nu_inf, lc_inf)
+==============================================================================
+
+==============================================================================
+2. does (nu_0, lc_0, nu_inf, lc_inf) alone determine |e_a|?
+==============================================================================
+  417 distinct 4-tuples across 4692 words
+  4-tuples mapping to MULTIPLE |e_a| values: 188
+    sig=(-2, -1, -4, -1) -> |e_a| values {0, 2}
+    sig=(-1, -1, -7, 1) -> |e_a| values {1, 3}
+    sig=(0, 2, -8, -1) -> |e_a| values {0, 2, 6}
+    sig=(-2, 1, -6, -1) -> |e_a| values {0, 2, 4}
+    sig=(-2, 1, -8, -1) -> |e_a| values {0, 2, 6}
+    sig=(-1, -1, -9, 1) -> |e_a| values {1, 5, 9}
+    sig=(0, -3, -8, 1) -> |e_a| values {0, 4}
+    sig=(-2, -1, -8, 1) -> |e_a| values {8, 2, 4}
+    sig=(1, 5, -9, -1) -> |e_a| values {1, 3}
+    sig=(-1, 2, -7, -1) -> |e_a| values {1, 5}
+
+==============================================================================
+3. does the PAIR (nu_0, nu_inf) alone determine |e_a|? (drop coefficients)
+==============================================================================
+  72 distinct (nu_0,nu_inf) pairs
+  pairs mapping to multiple |e_a|: 55
+    (nu_0,nu_inf)=(0, -2) -> |e_a| values {0, 2}
+    (nu_0,nu_inf)=(-1, -3) -> |e_a| values {1, 3, 5}
+    (nu_0,nu_inf)=(-1, -5) -> |e_a| values {1, 3, 5, 7}
+    (nu_0,nu_inf)=(0, -6) -> |e_a| values {0, 2, 4, 6}
+    (nu_0,nu_inf)=(-2, -4) -> |e_a| values {0, 2, 4, 6}
+    (nu_0,nu_inf)=(-2, 0) -> |e_a| values {0, 2}
+    (nu_0,nu_inf)=(1, -7) -> |e_a| values {1, 3}
+    (nu_0,nu_inf)=(0, -4) -> |e_a| values {0, 4}
+    (nu_0,nu_inf)=(-1, -7) -> |e_a| values {1, 3, 5, 7}
+    (nu_0,nu_inf)=(0, -8) -> |e_a| values {0, 2, 4, 6, 8}
+
+==============================================================================
+4. simplest candidate: is |e_a| == max(|nu_0|, |nu_inf|) (again, now full census)?
+==============================================================================
+  matches: 243/4692
+
+==============================================================================
+5. is |e_a| == (nu_inf - nu_0)/2, i.e. half the Laurent width?
+==============================================================================
+  width == 2*|e_a| matches: 260/4692
+    A: |e_a|=1, width=0
+    B: |e_a|=0, width=2
+    AB: |e_a|=1, width=0
+    Ab: |e_a|=1, width=4
+    AAB: |e_a|=2, width=2
+    AAb: |e_a|=2, width=2
+    ABB: |e_a|=1, width=0
+    Abb: |e_a|=1, width=6
+    AAAB: |e_a|=3, width=4
+    AABB: |e_a|=2, width=2
+
+==============================================================================
+6. sample data for hand inspection: short words
+==============================================================================
+  A      len=1 |e_a|=1  nu_0=1 lc_0=1  nu_inf=-1 lc_inf=1   T_w=t
+  B      len=1 |e_a|=0  nu_0=0 lc_0=1  nu_inf=-2 lc_inf=-1   T_w=1 - t**2
+  AB     len=2 |e_a|=1  nu_0=-1 lc_0=-1  nu_inf=1 lc_inf=-1   T_w=-1/t
+  Ab     len=2 |e_a|=1  nu_0=-1 lc_0=1  nu_inf=-3 lc_inf=-1   T_w=(-t**4 + t**2 + 1)/t
+  AAB    len=3 |e_a|=2  nu_0=0 lc_0=-2  nu_inf=-2 lc_inf=1   T_w=t**2 - 2
+  AAb    len=3 |e_a|=2  nu_0=2 lc_0=2  nu_inf=-4 lc_inf=-1   T_w=-t**4 + 2*t**2
+  ABB    len=3 |e_a|=1  nu_0=-1 lc_0=-1  nu_inf=1 lc_inf=-1   T_w=-1/t
+  Abb    len=3 |e_a|=1  nu_0=-1 lc_0=1  nu_inf=-5 lc_inf=1   T_w=(t**6 - 2*t**4 - t**2 + 1)/t
+  AAAB   len=4 |e_a|=3  nu_0=-1 lc_0=1  nu_inf=-3 lc_inf=1   T_w=(t**4 - 2*t**2 + 1)/t
+  AAAb   len=4 |e_a|=3  nu_0=-1 lc_0=-1  nu_inf=-5 lc_inf=-1   T_w=(-t**6 + 3*t**4 - t**2 - 1)/t
+  AABB   len=4 |e_a|=2  nu_0=2 lc_0=2  nu_inf=-4 lc_inf=-1   T_w=-t**4 + 2*t**2
+  AAbb   len=4 |e_a|=2  nu_0=0 lc_0=2  nu_inf=-6 lc_inf=1   T_w=t**6 - 3*t**4 + t**2 + 2
+  ABAb   len=4 |e_a|=2  nu_0=-2 lc_0=-1  nu_inf=-4 lc_inf=-1   T_w=(-t**6 + 3*t**4 - 1)/t**2
+  ABBB   len=4 |e_a|=1  nu_0=1 lc_0=1  nu_inf=-1 lc_inf=1   T_w=t
+  ABaB   len=4 |e_a|=0  nu_0=-2 lc_0=-1  nu_inf=0 lc_inf=1   T_w=(t**2 - 1)/t**2
+  ABab   len=4 |e_a|=0  nu_0=-2 lc_0=1  nu_inf=-4 lc_inf=1   T_w=(t**6 - 2*t**4 + 1)/t**2
+  Abbb   len=4 |e_a|=1  nu_0=1 lc_0=-3  nu_inf=-7 lc_inf=-1   T_w=-t**7 + 3*t**5 - 3*t
+  AAAAB  len=5 |e_a|=4  nu_0=0 lc_0=3  nu_inf=-4 lc_inf=1   T_w=t**4 - 3*t**2 + 3
+  AAAAb  len=5 |e_a|=4  nu_0=0 lc_0=-1  nu_inf=-6 lc_inf=-1   T_w=-t**6 + 4*t**4 - 3*t**2 - 1
+  AAABB  len=5 |e_a|=3  nu_0=-1 lc_0=1  nu_inf=-5 lc_inf=-1   T_w=(-t**6 + 2*t**4 + 1)/t
+
+PY_EXIT=0
