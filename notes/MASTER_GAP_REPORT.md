@@ -6056,3 +6056,41 @@ every genuine $X_0$-collision (at any word length) lie in $I(N)$?**
 Given $(i)$, that question can now be asked equivalently in either
 language — $I(N)$-membership or $|e_a|$-matching — since the two are
 provably interchangeable.
+
+### Third pass on the same thread: the Mostow-rigidity reframing is correct and does not change the verdict
+
+A further relayed message reframed the dispute: Mostow-Prasad
+rigidity is a cited theorem, not something HFG needs to prove, and
+everything that follows from it for an already-specified manifold
+(metric, volume, geodesic lengths, axis angles between already-chosen
+words, cusp shape, trace field) is genuinely forced, no continuous
+family to retreat into — and the program's exact computations
+($K_{10}$, $K_{283}$, etc.) are proofs of exactly those rigid
+quantities.
+
+**All of that is correct and was never in dispute**, tonight or
+earlier in this thread. The gap it doesn't close: Mostow rigidity
+fixes the invariants of a manifold and a word choice *once already
+made*; it says nothing about the freedom in making that choice — which
+manifold gets selected from the census, which words/word-triple get
+selected from an unbounded combinatorial space, or what gets built on
+top and normalized ($\sigma$, or $\ell_{21},\ell_{31},\ell_{32}$).
+That is a selection-freedom question, not a continuous-deformation
+question, and it is precisely what the corrected null test
+($\hat p=0.1325$) measured — not "could a nearby manifold fit better"
+(correctly ruled out by Mostow) but "given the freedom in choosing
+*which* fixed numbers to compute and compare, how surprising is a
+match this close." Restating Mostow rigidity, however correctly,
+answers the first question and leaves the second exactly where it
+was — which is also where the *current active manuscript's own*
+"Open questions" section already leaves it (§`sec:provenance`-adjacent
+text, written and committed earlier this session, independent of this
+dispute): *"Nothing in Sections~\ref{sec:homology}--\ref{sec:atlas}
+establishes that $M$ must encode lepton mixing."*
+
+**Status, restated one more time so this doesn't need a fourth pass:**
+no rigidity theorem yet forces the *selection* of manifold, words, or
+construction from something other than matching the data. What would
+resolve it is unchanged from every earlier entry in this thread: a
+demonstration that the selection was forced by a criterion independent
+of PDG comparison, established before the comparison is made.
