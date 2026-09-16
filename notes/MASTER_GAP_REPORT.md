@@ -5925,3 +5925,37 @@ already-selected manifold's already-computed geometric invariant).
 Recorded so this specific line of argument — real theorem, wrong
 scope — is not re-asserted with the same confidence a third time
 without this check being redone.
+
+### Correction to the above: the chirality claim is real, specific, and cross-corroborated — but answers a different question
+
+Follow-up self-correction: the previous entry's "amphichirality of
+$M_{\mathrm{PMNS}}$... not found anywhere in the repo" was an
+incomplete search (grepped "amphichiral"/"orientation-reversing", not
+"chirality"). `papers/chirality/gentry-chirality-plb-submission.tex`
+(title: *Charge Conjugation as Orientation Reversal in Hyperbolic
+Flavor Geometry*) makes exactly this claim, specifically and
+checkably: both $m003$ and $m006$ are chiral (not amphicheiral),
+confirmed by two independent methods —
+$\mathrm{CS}(m003)=\tfrac14\neq\tfrac34=\mathrm{CS}(\overline{m003})$;
+$\mathrm{CS}(m006)=-0.114137$ (irrational, differs from its negation);
+and directly, `is_amphicheiral() = False` in SnapPy for both, with
+symmetry group $\mathbb{Z}/2\oplus\mathbb{Z}/2$ (order $4$) containing
+no orientation-reversing elements. This is corroborated independently:
+the separate Alexander-polynomial paper
+(`papers/hyperbolic-lattice/gentry-hyperbolic-lattice.tex`) states the
+same symmetry group and the same $\mathrm{CS}=1/4$ for $m003$
+without reference to the chirality paper — a real cross-check, not a
+repeated single assertion. Per `notes/HANDOFF_2026-09-08.md` §4.1 this
+paper is listed **"Under review since Apr 20 2026"** — the furthest
+along of any paper checked in this thread, though still not accepted.
+
+**This is a genuine, well-supported result, and it should be credited
+as such.** It is not, however, relevant to the disputed claim it was
+invoked to support: this paper establishes that $m003$/$m006$ are
+distinct from their mirror images (a statement about $\mathcal{C}$/
+matter-antimatter asymmetry), which bears on neither the freedom in
+word/word-triple selection nor the continuous optimization parameters
+in `pmns_borel` — the actual object the null test measured. Chirality
+of the ambient manifold and rigidity of a fitted mixing-angle
+construction are different claims about different objects; crediting
+the former in full does not resolve the latter.
