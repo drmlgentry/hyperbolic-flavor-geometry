@@ -6259,34 +6259,62 @@ constraint — converting the question into something closer to a
 finite-state problem for the restricted trace algebra than a blind
 induction over arbitrary words.
 
-### Restricted-recursion attempt: the natural state does not close in bounded dimension
+### Restricted-recursion attempt: partial retraction — the state closure is prefix-dependent, not a clean yes/no
 
 Tested the proposed "carry a small trace-state through letter-by-letter
-extension" idea directly, via the classical Fricke/Vogt three-element
-trace identity (verified exactly, not assumed, by Gröbner reduction
-against the three $\det=1$ constraints for generic $M,P,Q\in
+extension" idea via the classical Fricke/Vogt three-element trace
+identity (verified exactly, not assumed, by Gröbner reduction against
+the three $\det=1$ constraints, but for **generic** $M,P,Q\in
 \mathrm{SL}_2$):
 $$\tr(MPQ)+\tr(MQP) = \tr(M)\tr(PQ)+\tr(P)\tr(MQ)+\tr(Q)\tr(MP)
   -\tr(M)\tr(P)\tr(Q).$$
-Only the **sum** is determined by the six simpler pairwise/individual
-traces; the two individual values are the roots of a quadratic and are
-generically distinct. Consequence: the natural $3$-tuple state
-$(\tr(M),\tr(Ma),\tr(Mb))$ does not close under one further letter of
-extension — computing $\tr(Mab)$ needs it carried explicitly, and
-extending one letter past that reproduces the identical problem one
-level down. The state needed to close the recursion does not stabilize
-at a small fixed size; it effectively recovers the full $2\times2$
-matrix (already what the existing `tr_xyz` machinery computes). No
-finite-state/normal-form shortcut smaller than direct matrix
-computation was found.
 
-**Status**: this is the fourth distinct structural angle to fail for a
-verified reason rather than an unproductive guess (leading-Laurent
-statistics; symmetry under $t\mapsto1/t$; the ideal-membership argument
-showing $I(X_0)\not\subset I(N)$ generically; now the bounded-state
-recursion). Recorded as a genuine, well-documented research wall — the
-conjecture itself is untouched (still survives $4692$ words with zero
-counterexamples) but no proof route attempted so far has worked.
-Paused here pending a decision on whether to extend the brute-force
-survival search further, try a different structural angle, or set this
-thread aside.
+**Correction, on review, before this stood as originally worded.** The
+conclusion drawn from this ("no finite-state shortcut… matrix is the
+minimal faithful state") overreached in two ways, both fair to flag:
+(1) the identity was checked for a fully generic $M$, not for $M$
+restricted to being an actual word-prefix matrix built from $A,B$ on
+$X_0$ — a much smaller, constrained subvariety, where the generic
+2-fold ambiguity need not survive; (2) "a bounded state exists" is
+trivial regardless (the matrix entries over the function field of
+$X_0$ already are one) — the real question is whether a *smaller*
+state exists, not existence per se.
+
+**Redone correctly, with actual word-prefix matrices** (not a generic
+$M$): tested $\tr(u\cdot ab)$ vs.\ $\tr(u\cdot ba)$ on $X_0(m003)$ for
+$12$ genuine prefixes $u$. Result is neither of the two clean
+extremes: **$8$ of $12$ coincide, $4$ do not**
+(e.g.\ $u=\mathtt{ab}$: $\tr(\mathtt{abab})=(1-2t^2)/t^2 \neq
+-t^4+2t^2=\tr(\mathtt{abba})$; also $u\in\{\mathtt{ba},\mathtt{aab},
+\mathtt{AAb}\}$). So the generic-$M$ ambiguity does **not** universally
+collapse on $X_0$ (ruling out a clean full collapse), but it also
+doesn't persist unconditionally (ruling out "matrix is essential" as
+previously overclaimed) — closure is genuinely prefix-dependent. That
+is itself real structure, not a null result, and narrows the target:
+understanding exactly *when* it collapses may be more tractable than
+either extreme.
+
+**Revised, more conservative status:**
+$$\boxed{\text{the naive 3-trace prefix state does not close
+generically}} \quad\text{(proved)},$$
+while "no bounded trace state exists" and "no useful restricted
+recursion exists on $X_0$" are both **withdrawn** as unproved
+overclaims. The other negative results in this thread stand as
+originally reported and are unaffected (leading-Laurent statistics,
+$t\mapsto1/t$ symmetry, $t=\pm1$ evaluation, the $I(X_0)\not\subset
+I(N)$ ideal-membership argument) — they narrow the easy explanations
+without touching the conjecture, which is still untouched at $4692$
+words / $0$ counterexamples.
+
+**Next concrete direction, not yet attempted**: reframe from "find a
+scalar extractor" to "find generators of the equivalence relation"
+$w\sim_{X_0}v \iff T_w=T_v$. The atlas's word classes already absorb
+cyclic rotation and inversion by construction, so the remaining
+candidate generating moves are: ambient trace equivalence (the
+$\Delta\equiv0$-in-$\mathbb{Q}[x,y,z]$ pairs already catalogued) and
+the three certified Stage-4 $X_0$-identities, applied wherever they
+apply. Precisely formalizing "applied locally" for the latter (trace
+is not compatible with naive substring substitution — replacing a
+letter inside a longer word changes the whole matrix product, not just
+a local factor) needs to be done carefully before this is testable;
+that formalization is the actual next piece of work, not yet done.
