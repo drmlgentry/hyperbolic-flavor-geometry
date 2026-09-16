@@ -1,0 +1,21 @@
+==============================================================================
+0. reducibility check: is X_0(m003) a family of reducible reps?
+==============================================================================
+  kappa = x^2+y^2+z^2-xyz-4, restricted to X_0: (t**6 - 2*t**4 - 2*t**2 + 1)/t**2
+  identically zero (i.e. X_0 all-reducible)? False
+  => X_0 is a genuine family of IRREDUCIBLE reps (generically);
+     no 'b -> I' style degenerate specialization is available here,
+     unlike N (which is exactly the b=I / y=2 locus).
+
+==============================================================================
+1. compute and cache T_w(t) for all length<=10 word classes
+==============================================================================
+  4692 word classes at length <= 10
+    ... 1000/4692 done (70s elapsed)
+    ... 2000/4692 done (172s elapsed)
+    ... 3000/4692 done (300s elapsed)
+    ... 4000/4692 done (444s elapsed)
+  done in 542.8s
+  cached to m003_traces_len10_cache.json
+
+PY_EXIT=0

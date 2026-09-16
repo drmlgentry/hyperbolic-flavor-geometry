@@ -6171,3 +6171,59 @@ $N$-side of the lemma was actually proven, via the $b\mapsto I$
 specialization), not through post-restriction Laurent asymptotics on
 $X_0$ alone. This rules out an entire family of "simple invariant"
 hypotheses at once; recorded so they are not re-attempted.
+
+### Ambient specialization attempt: no shortcut exists; the difficulty is correctly located
+
+Attempted the analogue of $N$'s $b\mapsto I$ specialization for $X_0$
+itself, then ran a further batch of structural hypotheses against the
+cached length-$\le10$ census. Reproduce:
+`reproduce/m003_compute_and_cache_traces.py` (+ `.log`, +
+`m003_traces_len10_cache.json` — the cached trace data, so later
+attempts don't repay the $\approx9$-minute computation), sha256
+`7a4c3452a57fbb29e2eca470a17b0c3a62b711f0205f943501adeed2c3f556ef`
+(script) / `8408a164fa0a831e61836cd96933243d31ba2efbc28cbb979d589db4476a5843`
+(log); `reproduce/m003_structural_hypotheses_batch.py` (+ `.log`),
+sha256 `448ad2fa4170b794bf356dd4a91d0559f53e65bf500b174c5cf6fcbad32c307c`
+(script) / `67468b7351d650d4e9cfca1a4db2686df95e60bcea369cd5d676efb25f8370a1`
+(log).
+
+**No "kill $b$" trick exists for $X_0$.** Checked the classical
+reducibility criterion $\kappa=x^2+y^2+z^2-xyz-4$ directly: restricted
+to $X_0(m003)$ it is $(t^6-2t^4-2t^2+1)/t^2 \not\equiv 0$. $X_0$ is a
+genuine family of *irreducible* representations (generically), unlike
+$N$ (exactly the $b{=}I$/$y{=}2$ locus). So there is no single
+degenerate specialization of $X_0$ analogous to the one that proved
+the $N$-side of the lemma.
+
+**Further hypotheses, all failing, against the same $4692$-word
+census:** sparsity (number of Laurent terms) — $11/11$ term-counts
+multi-valued; evaluation at $t=\pm1$ (the two points where $y=1-t^2=0$)
+— $5/5$ and $5/5$ multi-valued, the pair together still $7/9$;
+symmetry of $T_w(t)$ under $t\mapsto1/t$ — only $3$ of $200$ sampled
+words are symmetric or antisymmetric, no clean global involution;
+whether $T_w(1/t)$ matches some other word's trace with the opposite
+signed $e_a$ — fails hard, $82$ of $99$ sampled words don't even land
+on *any* word's trace under $t\mapsto1/t$.
+
+**Why this keeps failing, established directly rather than guessed:**
+$\Delta_{w,v}\in I(X_0)$ means $\Delta_{w,v}=A\cdot g_2+B\cdot g_3$
+($g_2=xz+1$, $g_3=x^2+y-1$) for some $A,B\in\mathbb{Q}[x,y,z]$.
+Evaluated on $N$ ($x=z=s,\ y=2$), both generators equal $s^2+1$ there,
+giving $\Delta_{w,v}|_N=(s^2+1)\bigl(A(s,2,s)+B(s,2,s)\bigr)$ — vanishing
+identically requires $A(s,2,s)=-B(s,2,s)$, which is **not** automatic
+for a generic element of $I(X_0)$ (already known: $I(X_0)\not\subset
+I(N)$, e.g.\ $g_2$ itself doesn't vanish on $N$). So *if* the
+conjecture is true, it is true only because word-trace differences are
+a highly special subfamily of $I(X_0)$ — the mechanism has to come
+from the Fricke/Cayley–Hamilton trace recursion
+$\tr(UV)+\tr(UV^{-1})=\tr(U)\tr(V)$ governing how traces combine
+combinatorially, not from the ideal structure alone or from any
+post-restriction scalar/symmetry data on $T_w(t)$.
+
+**Status: genuinely hard, correctly diagnosed, not resolved.** Every
+scalar-invariant and symmetry shortcut attempted (Stage 5 onward, this
+entry included) has failed. The remaining route is an induction on
+word length using the trace recursion directly — a real proof attempt
+requiring substantial dedicated effort, not a quick follow-up
+computation. Recorded as the honest stopping point of this attack,
+with the negative results preserved so they are not re-attempted.
