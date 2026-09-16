@@ -5798,3 +5798,63 @@ established so far in this line. What would resolve it: either a
 structural argument connecting $I(X_0)$-membership to the $e_a$-parity
 condition, or a genuine counterexample search at length $>6$ (a proper
 extension of the frozen atlas protocol, not yet attempted).
+
+---
+
+## Rigidity claim checked against primary sources — does not hold as stated
+
+A relayed message proposed that a prior paper closes the program's
+"no rigidity demonstrated" gap: *Discrete Mixing Operators from
+Boundary Sector Geometry* allegedly proves flavor mixing matrices are
+forced discrete by hyperbolic topology, resolving why the null-tested
+`pmns_borel` construction's $3$-parameter flexibility might be "an
+artifact of the implementation, not of the underlying object." Both
+candidate papers were read in full (not summarized) before recording
+anything here.
+
+**`papers/03_active_other/gentry-mixing-jpa.tex`, read completely.**
+The actual theorem (`Theorem~\ref{thm:discrete}`): *given* Assumption
+`ass:discrete` — that the boundary-direction set $\Xi$ is **assumed
+finite** — the resulting mixing-matrix set is finite. The proof is one
+sentence ("a continuous map sends a finite set to a finite set").
+**All substantive content is in the assumption, not derived from
+hyperbolic geometry or the specific manifold.** More importantly: the
+"mixing matrix" this paper defines is a fixed Gram–Schmidt overlap
+between fixed boundary states — **zero free parameters** — which is
+*not* the object that was actually null-tested. `pmns_borel` runs a
+continuous $3$-parameter Nelder–Mead optimization
+($\ell_{21},\ell_{31},\ell_{32}$) to fit PDG values; nothing in this
+paper's framework has an optimization step at all. Its "Connection to
+HFG" section asserts the link only by citing matching fitness numbers,
+without ever showing the Borel-optimization output is an instance of
+its $U_{ST}$. This *confirms*, rather than overturns, the pre-existing
+gap-report entry: *"Different theoretical framework entirely
+(boundary/Hilbert-space vs.\ geodesic-axis) — NOT IN MASTER."*
+Additionally, the paper's own headline justification —
+"$p<10^{-4}$ vs $50{,}000$ Haar-random unitaries" — is the exact PMNS
+significance claim already retracted elsewhere in this corpus
+($\hat p=0.1325$). Status: SSRN preprint, "submitted to J.\ Geom.\
+Phys.\ (JGP13076)" — no indication of acceptance.
+
+**`papers/06_orphaned/gentry-rigidity.tex`, read completely.**
+Mathematically sound, elementary facts about cocompact lattices in
+$\mathbb{H}^3$ (no parabolics; positive systole; small boundary
+perturbations don't change which lattice element is nearest). Proves
+**nothing about mixing matrices or any measured quantity** — only that
+a *combinatorial label* (nearest lattice element) is locally stable.
+Correctly relegated to orphaned.
+
+**`papers/shape-space/gentry-shape-space.tex`**, abstract/opening
+read: classical symmetric-space differential geometry
+($\mathrm{SL}(n,\mathbb{R})/\mathrm{SO}(n)$); no evident bridge to
+forcing physical parameter values.
+
+**Verdict:** none of the three papers invoked demonstrates that any
+measured Standard Model quantity is forced to a specific value by the
+hyperbolic topology. The "not yet demonstrated" assessment for a
+rigidity argument stands — reading the primary sources in full
+sharpens why: the needed theorem doesn't exist; what exists is either
+tautological (discreteness assumed, not derived) or about an
+unconnected, weaker object (label-stability, not observable-value
+forcing). Recorded here so this doesn't get re-asserted with the same
+confidence without this check being redone.
