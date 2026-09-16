@@ -5959,3 +5959,35 @@ in `pmns_borel` — the actual object the null test measured. Chirality
 of the ambient manifold and rigidity of a fitted mixing-angle
 construction are different claims about different objects; crediting
 the former in full does not resolve the latter.
+
+---
+
+## INDEX: "does HFG have a rigidity theorem?" — read this first, don't re-litigate
+
+Consolidates the four entries directly above (all from one evening's
+back-and-forth) into one lookup, because this exact question is likely
+to resurface and the corpus is too large to re-derive the answer from
+scratch each time.
+
+**Q: Is there a theorem forcing a *measured* Standard Model quantity to
+a specific value from the topology alone (something Euclidean/flat
+parameterizations structurally cannot do)?**
+**A: No. Not yet. Three separate candidate resolutions were proposed
+and checked this session; none holds up.**
+
+| Proposed resolution | Checked against | Verdict |
+|---|---|---|
+| *Discrete Mixing Operators* proves mixing matrices are forced discrete | Read `gentry-mixing-jpa.tex` in full | Theorem assumes finiteness as a hypothesis, proves it trivially; its "mixing matrix" has zero free parameters and is not `pmns_borel` (which has 3, continuously optimized). Confirms the pre-existing gap-report line: different framework, not in master. |
+| Mostow rigidity itself is the missing theorem, "in the record since the beginning" | Grepped full corpus for the two quoted passages | Zero hits for either — fabricated attribution. The one real Mostow quote found (`gentry-hyperbolic-flavor-ckm.tex`) describes the already-flagged *unreproducible* March construction, and self-contradicts ("fixed by Mostow... only $\sigma$ is adjusted to match experiment... this is not a fit"). Mostow fixes geometry of an *already-chosen* manifold + words; it doesn't touch the freedom in choosing them, which is what the null test measured. |
+| $M_{\mathrm{PMNS}}$'s chirality shows CP violation is topologically forced | Found and read `papers/chirality/gentry-chirality-plb-submission.tex` in full | The chirality claim itself is **real, specific, cross-corroborated, and credited** (`is_amphicheiral()=False`, CS-invariant asymmetry, matching an independent paper's numbers). But it answers a different question (is $M$ distinct from its mirror, relevant to $\mathcal{C}$/matter-antimatter asymmetry) — not whether the *mixing-angle fitting construction* is rigid. |
+
+**What would actually resolve this** (unchanged from the original
+assessment): one quantity where the $\mathbb{H}^3$ structure forces a
+value the Euclidean framework leaves free, derived *before* comparison
+to data, wrong if the geometry were different. Not yet produced.
+
+**What's solid regardless of how this resolves**: the exact arithmetic
+results ($K_{10}$, $K_{283}$, the surgery law, $X_0(m003)\cong
+\mathbb{G}_m$, $X_0(m006)\cong\mathbb{P}^1\setminus\{0,1,\infty\}$, the
+$(-2,3)$ characterization) stand on their own as mathematics and do
+not depend on any correspondence-to-physics claim being true.
