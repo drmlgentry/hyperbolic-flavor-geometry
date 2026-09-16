@@ -6036,7 +6036,23 @@ file — reuses the exact infrastructure from
 **Scope, stated precisely**: this is an exhaustive check at word
 length $\le6$ on the frozen atlas, for both manifolds — a much
 stronger confirmation than a spot-check, but **not** a proof for all
-word lengths. Unlike the $N$-line lemma itself (proven in full
-generality via the $b\mapsto I$ specialization argument), no general
-mechanism has been found yet for why $X_0$-collision implies matching
-$|e_a|$. That remains the open question.
+word lengths.
+
+**Clarification: this is not a second open question, it's the same one
+restated.** Combining two already-established facts explains the
+zero-exception result completely, rather than leaving it as a fresh
+mystery: (i) $\Delta_{w,v}|_N=0 \iff |e_a(w)|=|e_a(v)|$, proved in full
+generality (the $N$-exponent lemma, all word lengths, via the
+$b\mapsto I$ specialization); (ii) every one of the $46$ genuine
+collision differences from both manifolds' complete scans was checked
+*individually* to satisfy $\Delta_{w,v}|_N=0$
+(`m003_m006_universal_line_N.py`, §2a). $(i)+(ii)$ together are exactly
+why every genuine collision in this atlas has matching $|e_a|$ — a
+logical consequence of two proven/checked facts, not an independent
+coincidence needing its own mechanism. So the open question was never
+"why does $|e_a|$-matching correlate with collision" in isolation; it
+is, and always was, the single question already on record: **why does
+every genuine $X_0$-collision (at any word length) lie in $I(N)$?**
+Given $(i)$, that question can now be asked equivalently in either
+language — $I(N)$-membership or $|e_a|$-matching — since the two are
+provably interchangeable.
