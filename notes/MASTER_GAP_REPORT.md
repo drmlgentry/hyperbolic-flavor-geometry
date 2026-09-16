@@ -5858,3 +5858,16 @@ tautological (discreteness assumed, not derived) or about an
 unconnected, weaker object (label-stability, not observable-value
 forcing). Recorded here so this doesn't get re-asserted with the same
 confidence without this check being redone.
+
+**Filing bug found while checking the above.** `papers/hyperbolic-lattice/`
+carries a cover letter for *"Discrete Weight Spectra and Coordinate
+Rigidity in Cocompact Hyperbolic Group Actions"* (submitted to
+Geometriae Dedicata, Mar 9 2026), but the `.tex` file in that same
+directory is a different paper entirely — *"The Alexander Polynomial
+of the $(-2,3,7)$ Pretzel Knot and the Golden Ratio"* (Mahler measure
+$=\varphi^2$, regulator of $\mathbb{Q}(\sqrt5)$; unrelated content).
+That file's own §2 cites the three rigidity lemmas as standard
+background, matching `06_orphaned/gentry-rigidity.tex` word for word —
+confirming the orphaned file is the actual submitted content, just
+misfiled. Not yet fixed here (out of scope for this entry); flagged so
+the mismatch isn't mistaken for a second, undiscovered paper.
