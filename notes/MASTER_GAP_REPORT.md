@@ -5991,3 +5991,52 @@ results ($K_{10}$, $K_{283}$, the surgery law, $X_0(m003)\cong
 \mathbb{G}_m$, $X_0(m006)\cong\mathbb{P}^1\setminus\{0,1,\infty\}$, the
 $(-2,3)$ characterization) stand on their own as mathematics and do
 not depend on any correspondence-to-physics claim being true.
+
+---
+
+## Correction to the two rigidity entries above: "fabricated" overstated
+
+The two entries above describing a Mostow-rigidity resolution used the
+word "fabricated" for two quoted passages not found anywhere in
+`hyperbolic-flavor-geometry` or `HFG-CORPUS`. That overstates what the
+grep actually established: it shows the passages are not in **these
+two git repos**, not that they were never said in some other AI
+conversation (a webclaude/SciSpace session) this project's user had —
+which this session has no visibility into. Retracting "fabricated" for
+those two lines specifically; "not verifiable from the repos this
+session has access to" is the accurate statement. The substantive
+finding is unaffected: it rests on reading the actual candidate
+primary-source papers directly (the tautological theorem structure in
+`gentry-mixing-jpa.tex`, the self-contradicting sentence in
+`gentry-hyperbolic-flavor-ckm.tex`), not on the quotes' provenance.
+
+### Extending the $N$-exponent lemma toward $X_0$ itself: exhaustively confirmed necessary condition, mechanism still open
+
+Tested directly (not just on $N$): does $\tau_w|_{X_0} = \tau_v|_{X_0}$
+imply $|e_a(w)|=|e_a(v)|$, for actual $X_0$-collisions (not just the
+line $N$)? Checked exhaustively across the full $99$-word atlas for
+**both** manifolds (script: ad hoc, not yet saved as a standalone
+file — reuses the exact infrastructure from
+`m003_stage5_laurent_word_structure.py` /
+`m006_universal_identity_scan.py`):
+
+- **Zero counterexamples for either manifold**: all $25$ ($m003$) and
+  all $28$ ($m006$) collision groups have matching $|e_a|$ across
+  every member, with no exceptions.
+- **Far from sufficient**: within each fixed $|e_a|$ class there are
+  substantial internal collisions (e.g.\ $m003$, $|e_a|=1$: $31$ words
+  $\to$ only $15$ distinct trace values, $9$ separate internal
+  collision clusters) — matching $|e_a|$ does not come close to
+  determining $\tau_w|_{X_0}$.
+- **The naive valuation guess fails**: $|e_a(w)| \overset{?}{=}
+  \max(|\mathrm{ord}_0\tau_w|,|\mathrm{ord}_\infty\tau_w|)$ matches
+  only $16/99$ words for $m003$. Pole/zero order at the punctures does
+  not encode $|e_a|$ this simply.
+
+**Scope, stated precisely**: this is an exhaustive check at word
+length $\le6$ on the frozen atlas, for both manifolds — a much
+stronger confirmation than a spot-check, but **not** a proof for all
+word lengths. Unlike the $N$-line lemma itself (proven in full
+generality via the $b\mapsto I$ specialization argument), no general
+mechanism has been found yet for why $X_0$-collision implies matching
+$|e_a|$. That remains the open question.
