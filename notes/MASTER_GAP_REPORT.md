@@ -6220,10 +6220,41 @@ $\tr(UV)+\tr(UV^{-1})=\tr(U)\tr(V)$ governing how traces combine
 combinatorially, not from the ideal structure alone or from any
 post-restriction scalar/symmetry data on $T_w(t)$.
 
-**Status: genuinely hard, correctly diagnosed, not resolved.** Every
-scalar-invariant and symmetry shortcut attempted (Stage 5 onward, this
-entry included) has failed. The remaining route is an induction on
-word length using the trace recursion directly — a real proof attempt
-requiring substantial dedicated effort, not a quick follow-up
-computation. Recorded as the honest stopping point of this attack,
-with the negative results preserved so they are not re-attempted.
+**Correction to the scope of the two preceding claims** (flagged and
+fixed on review, before this entry was allowed to stand as originally
+worded): the failed scalar tests establish that the *specific
+candidates tried* don't work — not that no scalar extractor
+$E(T_w)=|e_a(w)|$ can exist. And identifying the trace recursion as
+the source of the phenomenon does not establish that a length-induction
+is the *only* viable proof route; it is *a* natural one, motivated by
+where the mechanism has to live, not a demonstrated exclusivity claim.
+
+**A cleaner formulation of the same open question worth recording**:
+$\mathcal{D}=\{\tau_w-\tau_v : \tau_w-\tau_v\in I(X_0)\}$ is not an
+ideal — it is the set of trace-binomial differences in the kernel of
+the restricted trace map, which is why studying all of $I(X_0)$ washes
+out the phenomenon (generic elements of $I(X_0)$ plainly don't vanish
+on $N$; only this special subfamily might). Equivalently, with
+$\Theta_X:[w]\mapsto T_w(t)$, the conjecture is that $|e_a|$ descends
+to the fibers of $\Theta_X$ — a possibly easier target than an explicit
+formula for $E$ on all of $\mathbb{Q}[t,t^{-1}]$, since it only needs to
+hold on $\mathrm{im}\,\Theta_X$, a special subset. This is a
+relabeling of the same conjecture already on record, not new
+mathematical content, but it correctly separates two different-difficulty
+questions: "recover $|e_a|$ from a Laurent statistic" (has taken
+several hits) versus "equal restricted traces have equal $|e_a|$" (has
+survived the full extended search) — these need not be equally hard,
+and a proof of the latter need not produce an explicit formula for $E$.
+
+**Status: hard, correctly diagnosed, not resolved — not yet a
+demonstrated wall.** Every scalar-invariant and symmetry shortcut
+attempted (Stage 5 onward, this entry included) has failed, and this
+is worth keeping in the record precisely because it rules out several
+seductive-but-false explanations rather than silently discarding each
+one. A promising concrete next step, not yet attempted: derive the
+restricted trace recursion directly (how $\tau_u \mapsto \tau_{ua},
+\tau_{ub}$ transform under the relations $xz=-1,\ y=1-x^2$) and ask
+whether the resulting normal-form/state structure forces the exponent
+constraint — converting the question into something closer to a
+finite-state problem for the restricted trace algebra than a blind
+induction over arbitrary words.
