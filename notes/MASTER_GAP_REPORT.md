@@ -6318,3 +6318,63 @@ is not compatible with naive substring substitution — replacing a
 letter inside a longer word changes the whole matrix product, not just
 a local factor) needs to be done carefully before this is testable;
 that formalization is the actual next piece of work, not yet done.
+
+### The 3-trace-state automaton hypothesis is now rigorously dead — exact witness, not generic theory
+
+Following the sharpened test proposal (search for actual state
+collisions $S(u)=S(v)$ among literal prefixes, then check whether the
+*next-step* trace agrees — the real determinism/automaton property,
+strictly stronger than the earlier $\tr(uab)\overset{?}{=}\tr(uba)$
+sampling), this is now settled exactly. Reproduce:
+`reproduce/m003_state_automaton_test.py` (+ `.log`). sha256
+`ba5d8399ac99871cf66b5e6751207272ed7b37a14b555612406ce419fedff5d3`
+(script), `a8fc74ec5507cdf921ffed171fed89d8ef509e424432ad8e2a2d2f0d3787093b`
+(log).
+
+Since $\tr(uA)=x\tr(u)-\tr(ua)$, $\tr(uB)=y\tr(u)-\tr(ub)$,
+$\tr(uaa)=x\tr(ua)-\tr(u)$, $\tr(ubb)=y\tr(ub)-\tr(u)$ are all linear
+in $S(u)=(\tr u,\tr(ua),\tr(ub))$ (established earlier), the entire
+closure question reduces to one scalar: does $S(u)=S(v)$ force
+$\tr(uab)=\tr(vab)$ (equivalently $\tr(uba)=\tr(vba)$)? Searched over
+**literal freely-reduced prefixes** (not the canonicalized atlas — the
+actual free-monoid prefix tree) up to length $7$: $4373$ prefixes,
+$2029$ distinct states, $1856$ state-collision groups, $2344$
+same-state pairs checked directly.
+
+**Result: $4108$ exact witnesses.** The shortest: $S(\mathtt{ab}) =
+S(\mathtt{ba})$ — trivially, since $\mathtt{ab}$ and $\mathtt{ba}$ are
+cyclic rotations of each other and trace is cyclic-invariant, so
+$\tr(u),\tr(ua),\tr(ub)$ match automatically — **but**
+$$\tr(\mathtt{abab}) = \frac{1-2t^2}{t^2} \;\neq\; -t^4+2t^2 =
+\tr(\mathtt{baab}).$$
+Made precise with a single-letter automaton step (correcting the loose
+$g=\mathtt{ab}$ shorthand this entry first used): with $u=\mathtt{ab}$,
+$v=\mathtt{ba}$, and $g=a$,
+$$S(ua)=S(\mathtt{aba})=\bigl(\tr(\mathtt{aba}),\tr(\mathtt{abaa}),
+  \tr(\mathtt{abab})\bigr), \qquad
+  S(va)=S(\mathtt{baa})=\bigl(\tr(\mathtt{baa}),\tr(\mathtt{baaa}),
+  \tr(\mathtt{baab})\bigr),$$
+which differ in their third coordinate exactly
+($\tr(\mathtt{abab})\neq\tr(\mathtt{baab})$), giving
+$S(ua)\neq S(va)$ directly from the definition of $S$ — an explicit,
+minimal, rigorous counterexample to $S(u)=S(v)\Rightarrow S(ug)=S(vg)$
+for the single generator $g=a$. It settles, definitively and on the
+actual $X_0$
+orbit (not generically), that the $3$-trace state
+$S(u)=(\tr(u),\tr(ua),\tr(ub))$ is **not** a deterministic automaton
+state — $\boxed{\text{the 3-trace-state proposal is rigorously dead}}$,
+exactly as anticipated if the test failed. Most of the $1856$
+collision groups are presumably explained the same trivial way (cyclic
+rotation), which is itself informative: state-collisions are not
+mysterious, but propagating past them fails immediately.
+
+**What remains open, correctly scoped**: this kills one specific
+candidate state (the $3$-tuple), not the general question of whether
+*any* useful bounded/structured quotient of the trace algebra exists,
+and it does not touch the original conjecture itself
+($\tau_w|_{X_0}=\tau_v|_{X_0}\Rightarrow|e_a(w)|=|e_a(v)|$), which
+remains untouched — still $0$ counterexamples across the $4692$-word
+census. The next candidate direction on record (not yet attempted):
+generators of the equivalence relation $w\sim_{X_0}v$ directly
+(ambient trace equivalence plus the Stage-4 identities), rather than
+any further bounded-state recursion attempt.

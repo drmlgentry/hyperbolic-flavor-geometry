@@ -1,0 +1,45 @@
+
+==============================================================================
+1. generate literal freely-reduced prefixes, length <= 7
+==============================================================================
+  4373 literal prefixes (length 0..7)
+
+==============================================================================
+2. compute S(u) = (tr(u), tr(ua), tr(ub)) on X_0(m003) for each
+==============================================================================
+    ... 500/4373 (24s)
+    ... 1000/4373 (62s)
+    ... 1500/4373 (107s)
+    ... 2000/4373 (165s)
+    ... 2500/4373 (225s)
+    ... 3000/4373 (285s)
+    ... 3500/4373 (355s)
+    ... 4000/4373 (426s)
+  done in 481.8s
+
+==============================================================================
+3. hash by exact state triple S(u), find collisions among DISTINCT prefixes
+==============================================================================
+  4373 prefixes -> 2029 distinct states, 1856 state-collision groups
+
+==============================================================================
+4. THE DECISIVE TEST: for each state-collision group, does tr(uab), tr(uba) agree?
+==============================================================================
+  checked 2344 same-state prefix pairs in 547.7s
+
+==============================================================================
+5. VERDICT
+==============================================================================
+  4108 WITNESSES FOUND -- the 3-trace state does NOT close, exactly, on the actual m003 orbit:
+    S('ab') == S('ba')  but  tr('abab')=(1 - 2*t**2)/t**2  !=  tr('baab')=-t**4 + 2*t**2
+    S('ab') == S('ba')  but  tr('abba')=-t**4 + 2*t**2  !=  tr('baba')=(1 - 2*t**2)/t**2
+    S('ab') == S('aaBABBB')  but  tr('abab')=(1 - 2*t**2)/t**2  !=  tr('aaBABBBab')=-t**4 + 2*t**2
+    S('ab') == S('aaBABBB')  but  tr('abba')=-t**4 + 2*t**2  !=  tr('aaBABBBba')=(1 - 2*t**2)/t**2
+    S('ab') == S('BBABaaB')  but  tr('abab')=(1 - 2*t**2)/t**2  !=  tr('BBABaaBab')=-t**4 + 2*t**2
+    S('ab') == S('BBABaaB')  but  tr('abba')=-t**4 + 2*t**2  !=  tr('BBABaaBba')=(1 - 2*t**2)/t**2
+    S('aB') == S('Ba')  but  tr('aBab')=(-t**6 + 3*t**4 - 1)/t**2  !=  tr('Baab')=t**2 - 2
+    S('aB') == S('Ba')  but  tr('aBba')=t**2 - 2  !=  tr('Baba')=(-t**6 + 3*t**4 - 1)/t**2
+    S('aB') == S('abbbabA')  but  tr('aBab')=(-t**6 + 3*t**4 - 1)/t**2  !=  tr('abbbabAab')=t**2 - 2
+    S('aB') == S('abbbabA')  but  tr('aBba')=t**2 - 2  !=  tr('abbbabAba')=(-t**6 + 3*t**4 - 1)/t**2
+
+PY_EXIT=0
