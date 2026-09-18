@@ -6378,3 +6378,103 @@ census. The next candidate direction on record (not yet attempted):
 generators of the equivalence relation $w\sim_{X_0}v$ directly
 (ambient trace equivalence plus the Stage-4 identities), rather than
 any further bounded-state recursion attempt.
+
+### Classifying the 1087 length≤10 collision fibers: ambient vs. genuine, plus exact certificates
+
+Following up on the equivalence-relation-generators direction above,
+per the proposed next step: take the $1087$ length-$\le 10$ collision
+groups from the extended counterexample search
+(`reproduce/m003_N_counterexample_search.py`) and split each into
+**ambient** trace equivalences (need no input from $I(X_0)$ at all)
+versus **genuine** ones (created specifically by imposing $X_0$'s
+defining equations), then compute exact ideal-membership certificates
+for the genuine part. Reproduce:
+`reproduce/m003_classify_collision_fibers.py` (+ `.log`
++ `m003_collision_words_trxyz_cache.json`). sha256
+`0901a09158ddc9a3976683a6982da385e8083ce035562ff8b38def249d3ae0e4`
+(script), `df4d16cd8305ba09a63b8d8c132547cb1ca5a46694faefe48e3c17cbaab7c650`
+(log) — both independently recomputed and confirmed 64 hex characters.
+
+**Method.** For each of the $1087$ groups (words sharing the same
+restricted trace $T_w(t)$ on $X_0$), recomputed the raw
+$\tr_{xyz}(w)\in\mathbb Q[x,y,z]$ (not previously cached — only the
+$t$-restricted Laurent form was) for the $4429$ distinct words
+appearing in any group of size $>1$. Within each group, partitioned by
+**exact polynomial equality** of $\tr_{xyz}$ (a literal, order-independent
+notion): if all members of a group share one such "ambient class," the
+whole group is a coincidence requiring nothing from $I(X_0)$; if a
+group splits into $\ge 2$ ambient classes, the cross-class differences
+are collisions genuinely created by $X_0$'s equations.
+
+**Result: $546$ ($50.2\%$) groups are purely ambient, $541$ ($49.8\%$)
+are genuine**, an almost even split. Taking one representative pair per
+pair of ambient classes within each of the $541$ genuine groups gives
+$1316$ certified nonzero differences
+$\Delta_{w,v}=\tr_{xyz}(w)-\tr_{xyz}(v)$, each verified
+$\Delta_{w,v}\in I(X_0)=\langle xz+1,\,x^2+y-1\rangle$.
+
+**Self-caught bug in the certificate computation.** The first attempt
+called `sp.reduced(Delta, [g1,g2], x, y, z)` (natural variable order)
+to extract $f,h$ with $\Delta=f\cdot(xz{+}1)+h\cdot(x^2{+}y{-}1)$, and
+it **failed on the very first pair** ($w=\mathtt A$, $v=\mathtt{ABBB}$)
+with a nonzero remainder $xy+x-y^2z+z$ — even though $\Delta$ is
+genuinely in the ideal. Root cause: $\{xz+1,\,x^2+y-1\}$ is *not* a
+Gröbner basis of $I(X_0)$ under the natural order (Buchberger's
+algorithm there produces a third element $x-yz+z$), so naive division
+against just the two original generators can spuriously fail even for
+true ideal members — this is exactly the classical motivating example
+for why Gröbner bases (not arbitrary generating sets) are needed for
+division-based membership tests. Checked directly: under **lex order
+with $z>y>x$** (also $y>x>z$, $y>z>x$), $\{xz+1,x^2+y-1\}$ *is* already
+a genuine $2$-element Gröbner basis (`sp.groebner` returns exactly
+these two polynomials, unchanged). Re-ran with
+`sp.reduced(Delta, [g1,g2], z, y, x, order='lex')`; all $1316$
+certificates now reduce to remainder $0$, and each was independently
+rebuilt and checked ($f\cdot g_1+h\cdot g_2-\Delta=0$ exactly) as a
+second, order-independent verification.
+
+**Self-caught overreach in the "certificate pattern" census.** A first
+pass bucketed the $1316$ certificates by $(\deg f,\deg h)$ and found
+$28$ distinct shapes concentrated in a handful of degree pairs (top
+three account for $\sim\!50\%$). This is **not** a genuine invariant:
+$I(X_0)$ is a complete intersection, so its syzygy module is generated
+by the single Koszul relation $(g_2,-g_1)$, meaning
+$(f+p\,g_2,\,h-p\,g_1)$ is an equally valid certificate for the same
+$\Delta$ for *any* polynomial $p$ — the $(\deg f,\deg h)$ split from one
+`sp.reduced` call is an artifact of the chosen monomial order, not a
+property of $\Delta$ itself. Retracted this framing before recording it
+as a finding; it is kept in the log only as supplementary, order-dependent
+data, not evidence of "a small number of recurring generators."
+
+**The canonical version of the question — order-independent.** Since a
+single-generator set is trivially its own Gröbner basis under *every*
+order, "$\Delta\in(xz{+}1)$ alone" and "$\Delta\in(x^2{+}y{-}1)$ alone"
+are genuinely well-posed, order-independent tests (this is exactly the
+same trichotomy already used for m006's collision certificates:
+ambient / pure-$g_2$ / needs-both). Applying it to all $1316$ genuine
+certificates:
+
+  - $4$ ($0.3\%$) lie in $(xz+1)$ **alone** (pure-$g_1$), e.g.
+    $w=\mathtt{AAbb}$, $v=\mathtt{AABAAbabab}$;
+  - $6$ ($0.5\%$) lie in $(x^2+y-1)$ **alone** (pure-$g_2$), e.g.
+    $w=\mathtt{ABAbbb}$, $v=\mathtt{AAAAbaab}$;
+  - $\boxed{1306\ (99.2\%)\text{ lie in neither principal ideal — they
+    genuinely need both generators}}$, e.g. the minimal pair
+    $w=\mathtt A$, $v=\mathtt{ABBB}$ with
+    $\Delta=xy+x-y^2z+z=(xy{+}x)(xz{+}1)+(-yz{-}z)(x^2{+}y{-}1)$.
+
+**Interpretation, stated carefully.** At length $\le 10$, m003's
+genuine collisions are overwhelmingly "two-generator" phenomena — the
+$xz+1$ constraint essentially never suffices alone, nor does
+$x^2+y-1$ alone. This is a sharp quantitative contrast with m006's
+collision-certificate census (`reproduce/m006_collision_certificates.py`:
+$8$ ambient / $11$ pure-$g_2$ / $9$ needs-both, out of $28$ genuine-plus-ambient
+groups — there, needs-both was a *minority* ($9/28\approx 32\%$) of the
+non-ambient cases, not a near-totality). No claim is made here about
+*why* the two manifolds differ this way, or that this reveals "the
+generators we were looking for" in the sense the equivalence-relation
+program was hoping for — the trichotomy counts are a real, verified,
+order-independent census of the certificate structure, nothing more.
+The original conjecture and its four failed proof-strategy angles
+remain exactly as they were; this is additional structural data about
+the *genuine* half of the collision fibers, not a new proof strategy.
