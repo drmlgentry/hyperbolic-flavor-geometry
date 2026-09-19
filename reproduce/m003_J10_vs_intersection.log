@@ -1,0 +1,43 @@
+
+==============================================================================
+0. load word data, rebuild collision groups + ambient classes
+==============================================================================
+  1087 groups, 4429 word polynomials loaded
+
+==============================================================================
+1. K = P_0 cap I(N), independently, by elimination
+==============================================================================
+  computed in 0.0s; GB(K) has 2 elements:
+     x**2 - x*z + y - 2
+     -x + y*z - z
+  every GB(K) element verified to lie in P_0 and in I(N)
+
+==============================================================================
+2. J_10 <= K : every Delta lies in I(N) (direct substitution) and reduces to 0 mod GB(K)
+==============================================================================
+  1316 star generators at length <= 10
+  Delta not vanishing on N: 0;  Delta not reducing to 0 mod GB(K): 0
+  ==> J_10 <= K holds: True
+
+==============================================================================
+3. length-graded J_L versus K
+==============================================================================
+  L= 2: no genuine generators (J_L = 0)
+  L= 3:     1 distinct Delta's; J_L <= K: True; K <= J_L: False; GB(J_L) has 1 elements; reduced GB == GB(K): False  (0.0s)
+  L= 4:     3 distinct Delta's; J_L <= K: True; K <= J_L: False; GB(J_L) has 3 elements; reduced GB == GB(K): False  (0.0s)
+  L= 5:     9 distinct Delta's; J_L <= K: True; K <= J_L: True; GB(J_L) has 2 elements; reduced GB == GB(K): True  (0.0s)
+  L= 6:    22 distinct Delta's; J_L <= K: True; K <= J_L: True; GB(J_L) has 2 elements; reduced GB == GB(K): True  (0.0s)
+  L= 7:    53 distinct Delta's; J_L <= K: True; K <= J_L: None; (containment K <= J_L implied by K = J_6 <= J_L when J_6 = K)  (0.0s)
+  L= 8:   154 distinct Delta's; J_L <= K: True; K <= J_L: None; (containment K <= J_L implied by K = J_6 <= J_L when J_6 = K)  (0.0s)
+  L= 9:   399 distinct Delta's; J_L <= K: True; K <= J_L: None; (containment K <= J_L implied by K = J_6 <= J_L when J_6 = K)  (0.0s)
+  L=10:  1113 distinct Delta's; J_L <= K: True; K <= J_L: None; (containment K <= J_L implied by K = J_6 <= J_L when J_6 = K)  (0.0s)
+
+  smallest L with J_L == K: 5
+
+==============================================================================
+4. verdict
+==============================================================================
+  J_10 <= K : True   (this IS the length<=10 conjecture, since Delta in P_0 by construction)
+  K <= J_L  : first at L=5 (monotone thereafter: J_L only grows, and J_L <= K)
+
+PY_EXIT=0

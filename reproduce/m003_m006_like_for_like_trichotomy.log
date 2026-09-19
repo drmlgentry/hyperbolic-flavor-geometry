@@ -1,0 +1,53 @@
+
+==============================================================================
+0. load words; ensure raw tr_xyz for ALL 4692 words
+==============================================================================
+  4692 words; 4429 cached; computing 263 missing
+  done in 14.6s
+
+==============================================================================
+m003, word length <= 6
+==============================================================================
+  collision groups: 25  (purely ambient: 8, genuine: 17)
+  genuine star pairs: 23  (Delta not in P_0: 0 ; Delta not vanishing on N: 0)
+  PAIR level : only (xz+1): 0 (0.0%) | only (x^2+y-1): 0 (0.0%) | needs both: 23 (100.0%)
+  GROUP level: only (xz+1): 0 | only (x^2+y-1): 0 | needs both (any pair): 17 | mixed a-only/b-only: 0   [needs-both share of genuine groups: 100.0%]
+  (1s)
+
+==============================================================================
+m006, word length <= 6
+==============================================================================
+  collision groups: 28  (purely ambient: 8, genuine: 20)
+  genuine star pairs: 26  (Delta not in P_0: 0 ; Delta not vanishing on N: 0)
+  PAIR level : only (x-z): 15 (57.7%) | only (yz^2-y-1): 0 (0.0%) | needs both: 11 (42.3%)
+  GROUP level: only (x-z): 11 | only (yz^2-y-1): 0 | needs both (any pair): 9 | mixed a-only/b-only: 0   [needs-both share of genuine groups: 45.0%]
+  (1s)
+
+==============================================================================
+m003, word length <= 10
+==============================================================================
+  collision groups: 1087  (purely ambient: 546, genuine: 541)
+  genuine star pairs: 1316  (Delta not in P_0: 0 ; Delta not vanishing on N: 0)
+  PAIR level : only (xz+1): 4 (0.3%) | only (x^2+y-1): 6 (0.5%) | needs both: 1306 (99.2%)
+  GROUP level: only (xz+1): 1 | only (x^2+y-1): 2 | needs both (any pair): 538 | mixed a-only/b-only: 0   [needs-both share of genuine groups: 99.4%]
+  (108s)
+
+==============================================================================
+m006, word length <= 10
+==============================================================================
+  collision groups: 1057  (purely ambient: 454, genuine: 603)
+  genuine star pairs: 1429  (Delta not in P_0: 0 ; Delta not vanishing on N: 0)
+  PAIR level : only (x-z): 324 (22.7%) | only (yz^2-y-1): 0 (0.0%) | needs both: 1105 (77.3%)
+  GROUP level: only (x-z): 118 | only (yz^2-y-1): 0 | needs both (any pair): 485 | mixed a-only/b-only: 0   [needs-both share of genuine groups: 80.4%]
+  (103s)
+
+==============================================================================
+summary table
+==============================================================================
+manifold   L groups ambient genuine  pairs pair-both%  grp-both/genuine
+m003       6     25       8      17     23     100.0%       17/17      
+m006       6     28       8      20     26      42.3%        9/20      
+m003      10   1087     546     541   1316      99.2%      538/541     
+m006      10   1057     454     603   1429      77.3%      485/603     
+
+PY_EXIT=0
