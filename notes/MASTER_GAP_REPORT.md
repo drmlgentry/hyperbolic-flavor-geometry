@@ -6550,3 +6550,81 @@ through length $10$ for both manifolds ($V(J_{10})=X_0\cup N$); unproven
 for all lengths. The two-manifold agreement in form
 ($K=P_0\cap I(N)$, finitely generated at short length) is an observation,
 not an explanation.
+
+### PROOF of the permanent-$N$ conjecture (m003 and m006), all word lengths — via the points of $X_0\cap N$; no induction needed
+
+**Status change.** The statement listed above as open,
+$$T_w=T_v \text{ on } X_0\ \Longrightarrow\ |e_a(w)|=|e_a(v)|
+\qquad(\Leftrightarrow \Delta_{w,v}\in P_0\Rightarrow\Delta_{w,v}\in I(N)
+\ \Leftrightarrow\ J_\infty=J_5=P_0\cap I(N)),$$
+is now **proved for all word lengths**, for both m003 and m006. The
+requested induction on word length was not needed. The proof is a direct
+evaluation at the points where the component $X_0$ meets the universal line $N$.
+
+**The two curves meet.** Exactly (Gröbner/solve, log below):
+$V(P_0)\cap N=\{(\pm i,2,\pm i)\}$ for m003 and $\{(\pm r,2,\pm r)\}$,
+$r=\sqrt{3/2}$, for m006. (Earlier "ambient specialization" attempts looked for a
+degenerate specialization *on $X_0$* — none exists, $\kappa\neq0$ — and never
+asked where $X_0$ meets $N$. That was the missed step. Of the scalar
+extractors tested earlier, only $t=\pm1$ was evaluated, never $t=\pm i$.)
+
+**Theorem.** Let $\Delta=\tr_{xyz}(w)-\tr_{xyz}(v)$ with $T_w=T_v$ on $X_0$.
+Then $|e_a(w)|=|e_a(v)|$, hence $\Delta|_N\equiv0$.
+
+*Proof.* (1) $P_0=\ker\Phi$ exactly (verified by elimination for both
+manifolds), so $T_w=T_v$ means $\Delta\in P_0$; therefore $\Delta$ vanishes at
+every point of $V(P_0)$, in particular at $p\in X_0\cap N$.
+(2) At $p\in N$, the proved N-exponent lemma (specialization
+$a\mapsto A_x,\ b\mapsto I$, valid as a polynomial identity on $N$) gives
+$\tr_{xyz}(w)(p)=s_{|e_a(w)|}(x_p)$, with $s_0=2,\ s_1=x,\
+s_n=x s_{n-1}-s_{n-2}$. Writing $n=|e_a(w)|$, $m=|e_a(v)|$:
+$0=\Delta(p)=s_n(x_p)-s_m(x_p)$.
+(3) $n\mapsto s_n(x_p)$ is injective on $n\ge0$:
+*m003*, $x_p=i$: $s_n(i)=(i\varphi)^n+(-i/\varphi)^n=i^n L_n$ with $L_n$ the
+Lucas numbers ($2,1,3,4,7,\dots$), pairwise distinct, and $|s_n(i)|=L_n$.
+*m006*, $x_p=r$, $r^2=3/2$: $s_n(r)=2\cos n\theta$ with $2\cos\theta=r$, so
+$\cos2\theta=-1/4$; if $s_n(r)=s_m(r)$ with $n\neq m$ then
+$(n\mp m)\theta\in2\pi\mathbb Z$ forces $\theta/\pi\in\mathbb Q$, but then
+$2\cos2\theta=-1/2$ would be a rational value of $2\cos(\pi q)$, which
+Niven's theorem restricts to $\{0,\pm1,\pm2\}$ — contradiction.
+(4) So $n=m$, and by the N-exponent lemma $\Delta|_N=0$. $\square$
+
+**Consequences.** Every generator $\Delta_{w,v}$ of $J_\infty$ lies in
+$P_0\cap I(N)=K$, so $J_\infty\subseteq K$; and $K=J_5\subseteq J_\infty$
+(m003; $K=J_4$ for m006, computed exactly above). Hence
+$$J_\infty=J_5=P_0\cap I(N)=\langle x^2-xz+y-2,\ yz-x-z\rangle\quad(\text{m003}),
+\qquad J_\infty=J_4=\langle x-z,\ (y-2)(yz^2-y-1)\rangle\quad(\text{m006}).$$
+The two containments used here (rather than just quoting "iff") are the ones
+spelled out: $J_\infty\subseteq P_0\cap I(N)$ because every generator is in
+$P_0$ and (theorem) in $I(N)$; $J_5\subseteq J_\infty$ because short relations
+are among all relations. It also gives an explicit **scalar extractor**:
+$|e_a(w)|=L^{-1}\bigl(|T_w(i)|\bigr)$ on m003 (Lucas inverse), which is why the
+four earlier failed extractors did not contradict anything — none of them was
+an evaluation at a point of $X_0\cap N$.
+
+**Hand-checkable generators of $K$.** m003, with $h=x^2-xz+y-2$,
+$q=yz-x-z$: $\Delta(\mathtt{AB},\mathtt{ABB})=-q$;
+$\Delta(\mathtt{AAb},\mathtt{AABB})=(y+1)h$;
+$\Delta(\mathtt{AAbb},\mathtt{AABBB})=(y^2+y-1)h$; and
+$h=y\,[(y+1)h]-[(y^2+y-1)h]$. m006: $\Delta(\mathtt A,\mathtt{AB})=x-z$ and
+$\Delta(\mathtt{AAb},\mathtt{AAbb})\equiv-(y-2)(yz^2-y-1)\pmod{x-z}$.
+
+**Verification (exact).** `reproduce/m003_m006_X0_cap_N_point_argument.py`
+(sha256 `92cf89159f657c1e5fac63d0e24761894061245854e6741ef394d0dc809d12fd`; log
+`cd71f8ebfd50547fe90896c0aa98945ac8e085a8509ec9efc65f95927bbe33a5`): (a)
+$\ker\Phi=P_0$ for both manifolds by elimination; (b) $V(P_0)\cap N$ solved
+exactly; (c) for **all $4692$ words**, $\tr_{xyz}(w)(p)=s_{|e_a|}(x_p)$ holds
+exactly ($0$ mismatches for m003 at $p=(i,2,i)$, also $=i^nL_n$; $0$ for m006
+at $p=(r,2,r)$); (d) Lucas distinctness through $n=400$ and a $60$-digit
+check that the $m006$ values $s_n(r)$ are pairwise separated
+(min gap $3.0\times10^{-5}$). The census check in (c) confirms the lemma is
+applied correctly; the proof itself is (1)–(4), not the census.
+
+**What this does not claim.** The result is for these two manifolds' $X_0$
+components. The mechanism is general in form — it needs only that $X_0$ meet
+$N$ at a point $p$ where $n\mapsto s_n(x_p)$ is injective — but I have not
+checked that condition for any other manifold's $X_0$, and nothing here says
+anything about the physical-rigidity questions. The earlier
+"four failed proof-strategy angles" and the equivalence statements above
+remain as history; the conjecture they were aimed at is settled by this
+argument. Not yet done: writing this up as a proposition in the m003 paper.

@@ -1,0 +1,37 @@
+
+==============================================================================
+(a) P_0 = ker(Phi), both manifolds, by elimination of the parameter t
+==============================================================================
+  m003: eliminated ideal = <x - y*z + z, y*z**2 - z**2 + 1> ; equals <xz+1, x^2+y-1>: True
+  m006: eliminated ideal = <x - z, y*z**2 - y - 1> ; equals <x-z, yz^2-y-1>: True
+
+==============================================================================
+(b) V(P_0) cap N exactly
+==============================================================================
+  m003: V(P_0) cap N = [{x: -I, y: 2, z: -I}, {x: I, y: 2, z: I}]
+  m006: V(P_0) cap N = [{x: -sqrt(6)/2, y: 2, z: -sqrt(6)/2}, {x: sqrt(6)/2, y: 2, z: sqrt(6)/2}]
+
+==============================================================================
+(c) every word: tr_xyz(w)(p) == s_{|e_a(w)|}(x_p) exactly
+==============================================================================
+  4692 words with raw tr_xyz(w) available
+  max |e_a| over the census: 9
+  m003 p=(i,2,i): mismatches vs s_n(i): 0; vs i^n*L_n: 0  (4s)
+  m006 p=(r,2,r), r^2=3/2: mismatches vs s_n(r): 0  (5s)
+
+==============================================================================
+(d) injectivity of n -> s_n(x_p) on n >= 0
+==============================================================================
+  Lucas L_0..L_400 pairwise distinct: True  (L_0=2,L_1=1,L_2=3 then strictly increasing)
+  m006: theta = 0.91173829096848763636; cos(2 theta) = -0.25 (= -1/4)
+  m006: min pairwise gap of s_n(r) over n=0..400 is 3.0095e-5  (>0)
+  m006 exact reason (Niven): if 2*theta/pi were rational then 2*cos(2*theta) would be rational and hence in {0,+-1,+-2};
+  but 2*cos(2*theta) = -1/2, so theta/pi is irrational, and n*theta = +-m*theta + 2*pi*k forces n = m.
+
+==============================================================================
+verdict
+==============================================================================
+  All ingredients verified. Combined: T_w = T_v on X_0  ==>  Delta in P_0 = ker(Phi)  ==>  Delta(p)=0
+  ==> s_n(x_p) = s_m(x_p) ==> n = m ==> |e_a(w)| = |e_a(v)|  ==> Delta|_N = 0 (N-exponent lemma).
+
+PY_EXIT=0
