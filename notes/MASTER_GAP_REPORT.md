@@ -6628,3 +6628,50 @@ anything about the physical-rigidity questions. The earlier
 "four failed proof-strategy angles" and the equivalence statements above
 remain as history; the conjecture they were aimed at is settled by this
 argument. Not yet done: writing this up as a proposition in the m003 paper.
+
+### Promotion to a theorem in the m003 paper; refined injectivity criterion; wording correction
+
+**Terminology.** With the all-word proof above, this is no longer the "permanent-$N$
+conjecture" for m003 and m006; it is a theorem (Thm. `thm:collision` in
+`papers/gentry-m003-arithmetic-v4.tex`, new subsection "The collision ideal
+and the line $N$"). Contents: Lemma (specialization to $N$:
+$\tau_w(x,2,x)=S_{|e_a(w)|}(x)$); Proposition (intersection-point criterion);
+Theorem ($J_\infty=J_5=P_0\cap I(N)=\langle h,q\rangle$ and
+$|\Phi(\tau_w)(i)|=L_{|e_a(w)|}$); two remarks (independence from the
+census; the m006 component and other components). The manuscript's proof
+uses no word enumeration; the 4692-word runs are cited only as a regression check.
+
+**Wording correction accepted.** The relay's "Lucas numbers are pairwise
+distinct" skipped the factor $i^n$ in $S_n(i)=i^nL_n$; the argument must
+take absolute values ($|S_n(i)|=L_n$) and use that $L_0=2,L_1=1,L_2=3,\dots$
+is injective on $n\ge0$ ($L_0$ differs from $L_1$ and from $L_n\ge3$, $n\ge2$;
+strictly increasing from $n=1$). The paper states it that way.
+
+**Sharper injectivity criterion (found while formalizing; verified by hand
+and matches both cases).** With $c=\lambda+\lambda^{-1}$ one has
+$S_n(c)-S_m(c)=(\lambda^n-\lambda^m)(1-\lambda^{-n-m})$, so
+$n\mapsto S_n(c)$ is injective on $n\ge0$ **iff $\lambda$ is not a root of
+unity**. This replaces the Niven-based argument: m003, $\lambda=i(1\pm\sqrt5)/2$
+has modulus $\ne1$; m006, $c=\sqrt{3/2}$ is not an algebraic integer
+($2c^2-3=0$) while $\zeta+\zeta^{-1}$ always is. The earlier Niven route for
+m006 remains valid and agrees.
+
+**Short hand proof of $K=P_0\cap I(N)=\langle h,q\rangle$ (m003)**, replacing
+reliance on a Gröbner computation: $h=g_3-g_2$, $q=(z-x)g_2+zh$;
+$P_0=\langle g_2,h\rangle$; on $N$, $h=0$ and $g_2=x^2+1$, so
+$K=\langle h\rangle+I(N)g_2$, and $(x-z)g_2=zh-q$,
+$(y-2)g_2=hg_2-x(x-z)g_2$. Lower bound: $\Delta_{AB,ABB}=-q$,
+$\Delta_{AAb,AABB}=(y+1)h$, $\Delta_{AAbb,AABBB}=(y^2+y-1)h$ (each identity
+re-verified exactly in $\Z[x,y,z]$ for this entry), and
+$h=y\Delta_{AAb,AABB}-\Delta_{AAbb,AABBB}$. The m006 ideal equality
+$P_{006}\cap I(N)=\langle x-z,(y-2)(yz^2-y-1)\rangle$ is still a Gröbner
+computation, not a hand proof.
+
+**Scope and caveats.** Proved only for the geometric components $X_0$ of m003
+and m006; the criterion needs a point $(c,2,c)$ on the component with
+$\lambda$ not a root of unity, unchecked for any other component. **The
+LaTeX edit has not been compiled** (no TeX toolchain in this environment);
+I checked only that environments, braces and `\ref`s in the new subsection
+balance and resolve. The scalar-extractor negative results recorded earlier
+stand as statements about those specific candidates; the successful extractor
+is evaluation at the point $t=i$ of $X_0\cap N$.
