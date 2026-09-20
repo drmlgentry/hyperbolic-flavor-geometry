@@ -6675,3 +6675,29 @@ I checked only that environments, braces and `\ref`s in the new subsection
 balance and resolve. The scalar-extractor negative results recorded earlier
 stand as statements about those specific candidates; the successful extractor
 is evaluation at the point $t=i$ of $X_0\cap N$.
+
+**Addendum (same day): paper sharpened after review; census sweep not run.**
+Adopted the factored form
+$\lambda^n\bigl(S_n(c)-S_m(c)\bigr)=(\lambda^{n-m}-1)(\lambda^{n+m}-1)$
+(verified exactly for $0\le n,m\le8$), which gives the full iff: $n\mapsto S_n(c)$ is
+injective on $n\ge0$ iff $\lambda$ is not a root of unity, i.e. iff
+$c\notin\{2\cos2\pi q: q\in\mathbb Q\}$; the criterion needs no hypothesis on the
+ambient set beyond containing $p$. Paper text now states explicitly: (i) $(c,2,c)$
+runs over *all* of $N$ as $c$ varies, so the polynomial identity of Lemma
+`lem:nexp` needs no density argument; (ii) $S_{-k}=S_k$ is what produces the
+absolute value $|e_a|$; (iii) the two applications of the lemma play different
+roles — the first turns the single-point equality into equality of exponent sums,
+the second upgrades that to $\Delta|_N\equiv0$; (iv) the separation of jobs
+$J_\infty\subseteq P_0\cap I(N)$ (unconditional) plus $P_0\cap I(N)\subseteq J_5$
+(finite certificate). Also verified and recorded: $\kappa=x^2+y^2+z^2-xyz-4$
+vanishes identically on $N$, so $N$ is a line of reducible characters ($b\mapsto I$)
+and $X_0\cap N$ consists of reducible characters on the component.
+
+**Not done:** the suggested sweep over other census manifolds. It needs, per
+manifold, a $2$-generator presentation, the primary decomposition of the relator
+ideal, and identification of the component carrying the discrete faithful
+character (SnapPy/Sage); none is available in this environment and the repo holds no
+precomputed components beyond m003 and m006. Until run, the theorem is established
+for those two components only, and no claim about "generic" or "many" hyperbolic
+manifolds is made. Novelty relative to the literature on reducible characters /
+trace identities has also not been checked, so no priority claim is made.

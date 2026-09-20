@@ -515,10 +515,15 @@ Consequently $\Delta_{w,v}\in I(N)$ if and only if $|e_a(w)|=|e_a(v)|$.
 \begin{proof}
 For $c\in\mathbb{C}$ let $\rho_c(a)=\begin{pmatrix}c&-1\\1&0\end{pmatrix}$
 and $\rho_c(b)=I$. Then $(x,y,z)=(c,2,c)$, and
-$\tr\rho_c(w)=\tr\rho_c(a)^{e_a(w)}$. The Cayley--Hamilton relation
-$A^{k+1}=cA^k-A^{k-1}$ and $\tr A^{-1}=\tr A$ give
-$\tr A^k=S_{|k|}(c)$. Thus $\tau_w(c,2,c)=S_{|e_a(w)|}(c)$ for all
-$c$, hence as polynomials. Since $S_n$ is monic of degree $n$ for
+$\tr\rho_c(w)=\tr\bigl(\rho_c(a)^{e_a(w)}\bigr)$; the sign of the exponent
+is immaterial, since $\tr A^{-1}=\tr A$. The Cayley--Hamilton relation
+$A^{k+1}=cA^k-A^{k-1}$ then gives $\tr A^k=S_{|k|}(c)$ for all
+$k\in\Z$ (equivalently $S_{-k}=S_k$, as $\lambda^k+\lambda^{-k}$ is
+symmetric). Thus $\tau_w(c,2,c)=S_{|e_a(w)|}(c)$ for every
+$c\in\mathbb{C}$. As $c$ runs over $\mathbb{C}$ the point $(c,2,c)$ runs
+over \emph{all} of $N$, so the two polynomials in $x$
+agree at every $c$ and hence identically; no density argument is needed.
+Since $S_n$ is monic of degree $n$ for
 $n\ge1$ and $S_0=2$, the polynomials $S_n$ are pairwise distinct, so
 $\Delta_{w,v}(x,2,x)=S_{|e_a(w)|}-S_{|e_a(v)|}$ vanishes iff
 $|e_a(w)|=|e_a(v)|$; and $I(N)$ is the ideal of polynomials vanishing on
@@ -527,23 +532,33 @@ $N$, since $\langle x-z,y-2\rangle$ is prime.
 
 \begin{proposition}[Intersection-point criterion]
 \label{prop:ipc}
-Let $p=(c,2,c)\in N$ with $c=\lambda+\lambda^{-1}$, and suppose $\lambda$
-is not a root of unity. If $w,v$ are words with $\tau_w(p)=\tau_v(p)$
---- in particular if $\tau_w=\tau_v$ on any set containing $p$ --- then
-$|e_a(w)|=|e_a(v)|$ and $\Delta_{w,v}\in I(N)$.
+Let $p=(c,2,c)\in N$ with $c=\lambda+\lambda^{-1}$. Then
+$n\mapsto S_n(c)$ is injective on $n\ge0$ if and only if $\lambda$ is not
+a root of unity, i.e.\ if and only if $c\notin\{2\cos 2\pi q:\ q\in\Q\}$.
+In that case, if $w,v$ are words with $\tau_w(p)=\tau_v(p)$ --- in
+particular if $\tau_w=\tau_v$ on any set containing $p$, with no
+hypothesis on that set --- then $|e_a(w)|=|e_a(v)|$ and
+$\Delta_{w,v}\in I(N)$.
 \end{proposition}
 
 \begin{proof}
-By Lemma~\ref{lem:nexp}, $\tau_w(p)=S_n(c)$ and $\tau_v(p)=S_m(c)$ with
-$n=|e_a(w)|$, $m=|e_a(v)|$, and $S_k(c)=\lambda^k+\lambda^{-k}$ (induction
-on $k$). For $n,m\ge0$,
+Since $S_k(c)=\lambda^k+\lambda^{-k}$ (induction on $k$), for $n,m\ge0$
 \begin{equation}
-S_n(c)-S_m(c)=(\lambda^n-\lambda^m)\bigl(1-\lambda^{-n-m}\bigr).
+\lambda^{n}\bigl(S_n(c)-S_m(c)\bigr)
+=\lambda^{2n}+1-\lambda^{n+m}-\lambda^{n-m}
+=\bigl(\lambda^{n-m}-1\bigr)\bigl(\lambda^{n+m}-1\bigr).
 \end{equation}
-If this vanishes and $n\ne m$, then $\lambda^{n-m}=1$ or
-$\lambda^{n+m}=1$ with a nonzero exponent, so $\lambda$ is a root of
-unity, a contradiction. Hence $n=m$, and Lemma~\ref{lem:nexp} gives
-$\Delta_{w,v}\in I(N)$.
+If $n\neq m$ then $n-m\neq0$ and $n+m>0$, so the right side vanishes
+only if $\lambda$ is a root of unity; conversely if
+$\lambda^N=1$ with $N\ge1$, then $S_{N}(c)=S_0(c)$, so injectivity
+fails. This proves the equivalence. Now let $\lambda$ be as stated and
+$\tau_w(p)=\tau_v(p)$. By Lemma~\ref{lem:nexp} the two values are
+$S_n(c)$ and $S_m(c)$ with $n=|e_a(w)|$, $m=|e_a(v)|$, so injectivity
+gives $n=m$. \emph{This step turns a single-point equality into an
+equality of exponent sums, which are combinatorial invariants of the
+words}; the second application of Lemma~\ref{lem:nexp} then upgrades
+it to the polynomial identity $\Delta_{w,v}(x,2,x)=S_n-S_m\equiv0$ along
+all of $N$, i.e.\ $\Delta_{w,v}\in I(N)$.
 \end{proof}
 
 \begin{theorem}[Collision ideal of $X_0(m003)$]
@@ -601,6 +616,20 @@ h \;=\; y\,\Delta_{AAb,AABB}-\Delta_{AAbb,AABBB}\ \in J_5,
 and $q\in J_5$, so $K=\langle h,q\rangle\subseteq J_5\subseteq J_\infty$.
 Combining, $J_\infty=J_5=K$.
 \end{proof}
+
+\begin{remark}[Structure of the argument; what $N$ is]
+Two independent jobs are being done. The intersection-point argument
+(Proposition~\ref{prop:ipc}) is unconditional and gives
+$J_\infty\subseteq P_0\cap I(N)$ for words of every length; a finite
+certificate gives $P_0\cap I(N)\subseteq J_5$. Together,
+$J_\infty=J_5$. This is a different kind of statement from
+``the census through length $10$ stabilizes at $J_5$.'' Also, the
+reducibility discriminant $\kappa=x^2+y^2+z^2-xyz-4$ vanishes
+identically on $N$ (substitute $z=x$, $y=2$), so $N$ is a line of
+reducible characters --- those of representations with $b\mapsto I$ ---
+and every point of $X_0\cap N$ is a reducible character lying on the
+component. By contrast $\kappa\not\equiv0$ on $X_0$.
+\end{remark}
 
 \begin{remark}[Independence from computation]
 The proof above uses no enumeration of words. A machine census of all
