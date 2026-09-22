@@ -6908,3 +6908,102 @@ remains unchecked as far as this search found it; a broader search (the
 Ginzburg-Rudnick/Southcott/Wang citation graphs going further, e.g.
 Whittemore 1973, Thompson 1989) was not attempted and no claim of
 exhaustiveness is made.
+
+
+### Whittemore 1973 and Thompson 1989 — partial results; Fox-calculus remark sharpened; two items flagged
+
+**Whittemore 1973 is two papers, not one, both in the same PROC AMS issue
+(vol. 40, back to back).** [W1] "On representations of the group of
+Listing's knot by subgroups of SL(2,C)" (pp. 378-382) was found and read
+in full (`ams.org/journals/proc/1973-040-02/S0002-9939-1973-0316585-3/`,
+downloaded and read directly). It studies representations of one
+specific knot group's presentation, parametrizing them by
+$(x,z)=(\tr A,\tr AB)$ subject to an explicit algebraic relation
+(Theorem 1) — a relator-cut subvariety of a 2-generator character
+variety, structurally adjacent to this session's setting, but the paper
+never considers trace equality between distinct words or a reducible
+specialization line; not directly relevant. [W2] "On special linear
+characters of free groups of rank $n\ge4$" (pp. 383-388) is the one
+actually cited by Southcott ("$I_n(K)$ is not principal for $n\ge4$") and
+is what "Whittemore 1973" refers to in this paper's bibliography and in
+the earlier literature-check entries. **Its full text was not obtained**
+after several direct-URL attempts (guessed DOI suffixes 404'd; the AMS
+issue front-matter file was 27MB, over the read tool's size limit, and
+was deleted after failing rather than kept). Its content is nonetheless
+confirmed by two independent citing sources read in full: Southcott
+1979 (already read) and R. Brown, "Automorphisms of the Fricke
+Characters of Free Groups" (2010, `math.jhu.edu/~brown/Documents/FrickeCharAutos.pdf`,
+downloaded and read in full), whose own bibliography entry reads
+"n$\le$4" (almost certainly an OCR/transcription slip for "n$\ge$4",
+since $\le4$ would contradict both the mathematical content —
+non-principality for *larger* rank is the sensible direction, matching
+Southcott's citation verbatim — and Whittemore's own base cases $n=2,3$
+being trivial/principal per Horowitz, which Brown's Example 6.1 also
+cites her for). Brown's paper is itself substantially about the
+structure of $I_n$ and $\mathrm{Out}(F_n)$-actions on Fricke-coordinate
+affine space; confirmed it does not touch reducible-line intersections,
+subvariety-restricted trace equality, or exponent recovery — it is about
+a different question (kernel of the McCool epimorphism, $\mathrm{Out}(F_n)$
+realized as volume-preserving polynomial automorphisms). Does not change
+the novelty assessment.
+
+**Thompson 1989, "Fricke, free groups and SL2"**
+(De Gruyter, `doi.org/10.1515/9783110848397-015`): **partial access
+only** — the publisher's page shows roughly the introduction (definitions
+of chi-equivalence and "almost separates," a restatement of Horowitz's
+Theorem 8.1 on finite stable multiplicity m(E)) before a paywall
+("$42.00, requires institutional access"); the actual construction (an
+explicit embedding of F into SL_2(C) in which abstract tr-equivalence
+coincides with literal conjugacy, with a remark that Galois theory is
+likely involved in determining m(E)) was not read. From what is
+visible: Thompson's chi-equivalence is still universal (equality for all
+representations of the abstract free group), so even a full reading
+looks unlikely to bear on the subvariety-restricted question — but this
+is inferred from a partial excerpt, not confirmed by reading the
+argument itself, and is recorded as such. **Not purchased**; that would
+be a real payment action requiring the user's explicit authorization,
+which was not sought here.
+
+**Fox-calculus remark sharpened**, per the observation that this gives a
+practically usable route to the hypothesis of the intersection-point
+proposition without first computing the character variety: added a
+paragraph to the paper's Fox-calculus remark stating precisely what it
+does and does not give — it locates *candidate* points of X cap N
+directly from a two-generator presentation (compute the Fox derivative
+at the abelian character, after checking e_a(r)=0; solve for roots;
+test non-cyclotomicity), but does not by itself confirm a given root lies
+on the correct component of the character variety rather than an
+extraneous one, which still needs independent verification (as done here
+by elimination for m003/m006). This is *not* claimed as "practically
+usable on any two-generator manifold" without qualification, as a relayed
+message suggested — that overstates what a Fox-derivative root alone
+establishes.
+
+**Burde-de Rham connection: not added to the paper.** A relayed message
+asserted this is "precisely the Burde-de Rham picture" (the classical
+criterion that a reducible character lies in the closure of irreducibles
+iff the twisted cohomology H^1(pi;C_psi) is nonzero, i.e. the Fox row
+vanishes). This is plausible and consistent with what the Fox-calculus
+script found, but **Burde-de Rham (1967) and Heusener-Porti have not
+been read** in this session — only asserted by relay. The paper's remark
+already states the general shape of this classical condition without
+attributing it to a specific unread citation; no citation to
+Burde-de Rham was added, consistent with this session's standing
+discipline of not citing sources that have not actually been checked.
+
+**Flagged as unverifiable, not incorporated:** a relayed message asserted
+this work is on a "DO NOT RESUBMIT list from the withdrawn 260530-eed65
+submission in May," advising caution before submitting to Proc. AMS.
+No record of any journal submission for this work exists anywhere in
+this session, the gap report, or memory — this paper has never been
+submitted to any venue in the material available here. Treated as an
+unverified (and structurally suspicious — the ID and framing appeared
+with no supporting detail) claim, not recorded as fact, per the
+standing rule against accepting relayed claims at face value.
+
+**HFG-CORPUS remote: not created.** No `gh` CLI is available in this
+environment (checked directly), so the repository cannot be created
+programmatically; creating it requires the user's own GitHub login via
+the web UI. This is flagged to the user as the one outstanding
+infrastructure action, to be completed with their explicit action before
+the remote-add/push commands can run.
