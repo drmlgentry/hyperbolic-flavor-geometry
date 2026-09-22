@@ -7007,3 +7007,58 @@ programmatically; creating it requires the user's own GitHub login via
 the web UI. This is flagged to the user as the one outstanding
 infrastructure action, to be completed with their explicit action before
 the remote-add/push commands can run.
+
+
+### HFG-CORPUS untracked-working-tree triage; submission-register resolves the "withdrawn submission" claim as false
+
+**Triage completed and pushed.** 163 previously-untracked files in HFG-CORPUS
+(no `.gitignore` had ever existed in that repo) were classified and resolved:
+78 files tracked (documentation, provenance, all generator source scripts, the
+`database/*.json` knowledge base, and lecture/monograph deliverable PDFs plus
+mp3 narration audio), the rest covered by a new `.gitignore` (LaTeX build
+byproducts, `__pycache__`, stale `.fuse_hidden*` lock artifacts, large raw
+video/audio renders, and figure images regenerable from the now-tracked
+generator scripts). Four byte-identical duplicate PNG pairs (confirmed via
+sha256 before removal) were deduplicated, keeping the `lecture/figures/`
+copies. Two stale FUSE lock files and a stray `__pycache__` directory were
+deleted. Commit `3d4b6d7`, pushed and confirmed against `origin/main`.
+
+One correction to the original triage, made on the user's instruction and
+adopted: mp3 narration audio and four "deliverable" PDFs (the lecture deck,
+two narration/shoot scripts, and the monograph) were initially classified as
+regenerable/ignorable build output. Corrected: these are the versions
+actually used, not reproducible builds — the lecture PDF and monograph PDF
+won't match a rebuild against drifted LaTeX, and the mp3s depend on an
+external TTS pipeline, so "regenerate it" is not a real option (costs money,
+voice may not match). All five items were tracked instead. Applied the same
+corrected reasoning on discovery of `monograph/` (missed in the first pass of
+triage): tracked `HFG_MONOGRAPH.tex`/`.pdf`, but left
+`monograph/generated/*.tex` ignored, since those ARE genuinely, deterministically,
+cost-free regenerable — `sync.py` (itself now tracked) rebuilds them from
+`database/*.json` (also now tracked) with no external dependency, confirmed by
+reading `sync.py`'s own docstring before classifying.
+
+**The "withdrawn Proc. AMS submission, 260530-eed65" claim from two entries
+ago is resolved: false, and the resolution is important.**
+`HFG_SUBMISSION_REGISTER.md` — now tracked, dated Aug 13 2026, maintained
+with the same verify-before-recording discipline as this file — contains
+exactly one Proc. AMS entry: `gentry-galois-gauge-v4.tex` (SSRN 6845778,
+dual-surgery/Galois-closure content), shown **still under review**, not
+withdrawn. There is no "260530-eed65" anywhere in it and no May withdrawal of
+anything at Proc. AMS. The user traced the claim to their own memory (a line
+asserting a Proc. AMS withdrawal Aug 18-19 to resolve overlap with an AGT
+submission) and, on checking, the primary-source register does not
+corroborate it — memory conflicted with a dated, verified primary artifact,
+and the primary artifact wins. Both the original "DO NOT RESUBMIT" framing
+and the later defense of the specific ID (citing memory over the register)
+were wrong.
+
+**Practical consequence, correctly the opposite of the original claim:**
+there is *no* resubmission ban on Proc. AMS relevant to this m003/collision
+work, since it was never submitted there at all. The real, still-live
+consideration is that a *different* paper from this research programme
+(`gentry-galois-gauge-v4.tex`) may currently be under review at Proc. AMS —
+so before sending the trace-equivalence note (Theorem `thm:collision`) to
+that same journal, check `HFG_SUBMISSION_REGISTER.md`'s current status for
+that entry first. Not because of a ban, but so two papers from the same
+program don't land in front of the same editor unannounced.
