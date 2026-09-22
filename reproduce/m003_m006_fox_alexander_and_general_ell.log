@@ -1,0 +1,36 @@
+
+==============================================================================
+PART 1. Fox calculus: dr/db at psi (a->t, b->1), versus X_0 cap N
+==============================================================================
+
+  m003: r = abAAbabbb, e_a(r)=0, e_b(r)=5
+    precondition e_a(r)=0 (needed since lambda is not a root of unity): True
+    dr/da at psi = 0   (fundamental identity forces 0 when e_a=0 and t != 1)
+    dr/db at psi = (t**2 + 3*t + 1)/t
+    roots t=lambda^2 of dr/db: [-3/2 - sqrt(5)/2, -3/2 + sqrt(5)/2]
+    c^2 = t + 2 + 1/t from Fox roots: [-1]
+    c^2 from X_0 cap N (independent Groebner/solve): [-1]
+    MATCH: True
+    primitive integer polynomial t**2 + 3*t + 1, leading coeff 1: monic
+    monic; root moduli [2.61803398874989, 0.381966011250105] (roots of unity have modulus 1)
+
+  m006: r = ababbAAbb, e_a(r)=0, e_b(r)=5
+    precondition e_a(r)=0 (needed since lambda is not a root of unity): True
+    dr/da at psi = 0   (fundamental identity forces 0 when e_a=0 and t != 1)
+    dr/db at psi = 2*t**2 + t + 2
+    roots t=lambda^2 of dr/db: [-1/4 - sqrt(15)*I/4, -1/4 + sqrt(15)*I/4]
+    c^2 = t + 2 + 1/t from Fox roots: [3/2]
+    c^2 from X_0 cap N (independent Groebner/solve): [3/2]
+    MATCH: True
+    primitive integer polynomial 2*t**2 + t + 2, leading coeff 2: NOT monic, so roots are not algebraic integers, hence not roots of unity
+
+==============================================================================
+PART 2. coordinate-free specialization: tr rho(w) = S_{|ell(w)|}(c)
+==============================================================================
+  ell = 1*e_a + 0*e_b: character (S_1, S_0, S_1); mismatches over 4692 words: 0
+  ell = 0*e_a + 1*e_b: character (S_0, S_1, S_1); mismatches over 4692 words: 0
+  ell = 1*e_a + 1*e_b: character (S_1, S_1, S_2); mismatches over 4692 words: 0
+  ell = 2*e_a + 3*e_b: character (S_2, S_3, S_5); mismatches over 4692 words: 0
+  ell = 1*e_a + -2*e_b: character (S_1, S_2, S_1); mismatches over 4692 words: 0
+
+PY_EXIT=0

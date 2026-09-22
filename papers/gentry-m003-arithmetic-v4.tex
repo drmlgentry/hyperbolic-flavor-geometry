@@ -662,6 +662,55 @@ point exists must be checked component by component, and we have not
 done so beyond $m003$ and $m006$.
 \end{remark}
 
+\begin{remark}[Coordinate-free form]
+Nothing singles out $a$. For integers $\alpha,\beta$ and
+$\ell(w)=\alpha e_a(w)+\beta e_b(w)$, put $\rho(a)=A^{\alpha}$,
+$\rho(b)=A^{\beta}$ with $A$ as in the proof of
+Lemma~\ref{lem:nexp}. Then $\tr\rho(w)=S_{|\ell(w)|}(c)$, and the
+character is $(S_{|\alpha|}(c),S_{|\beta|}(c),S_{|\alpha+\beta|}(c))$,
+a rational curve that is the line $N$ for $(\alpha,\beta)=(1,0)$.
+The proof of Proposition~\ref{prop:ipc} applies verbatim: if a set $X$
+contains such a character with $c=\lambda+\lambda^{-1}$, $\lambda$ not a
+root of unity, then $\tau_w=\tau_v$ on $X$ forces $|\ell(w)|=|\ell(v)|$.
+(The identity $\tau_w(S_{|\alpha|},S_{|\beta|},S_{|\alpha+\beta|})=S_{|\ell(w)|}$
+was also checked, as a regression test, for $(\alpha,\beta)\in\{(1,0),(0,1),
+(1,1),(2,3),(1,-2)\}$ over all $4692$ word classes of length $\le10$.)
+We use only $\ell=e_a$.
+\end{remark}
+
+\begin{remark}[Fox-calculus reading of $X_0\cap N$]
+For the relators $r=abAAbabbb$ ($m003$) and $r=ababbAAbb$ ($m006$) one
+has $e_a(r)=0$, and for the abelian character $\psi:a\mapsto t$, $b\mapsto1$
+the Fox derivatives satisfy $\partial r/\partial a\,(\psi)=0$ and
+\begin{equation}
+\frac{\partial r}{\partial b}(\psi)=t^{-1}(t^2+3t+1)\ \ (m003),\qquad
+\frac{\partial r}{\partial b}(\psi)=2t^2+t+2\ \ (m006).
+\end{equation}
+Writing $t=\lambda^2$ and $c=\lambda+\lambda^{-1}$, so that
+$c^2=t+2+t^{-1}$, the zeros give $c^2=-1$ and $c^2=3/2$ respectively, which
+are exactly the abscissae of the points of $X_0\cap N$ found above by
+elimination. For $m003$ the roots $t=-\varphi^{\pm2}$ ($\varphi$ the golden
+ratio) are not roots of unity because they are real of modulus
+$\ne1$; for $m006$ the polynomial $2t^2+t+2$ is primitive and not monic, so its
+roots are not algebraic integers. This is an observation about two cases: the
+agreement is what the classical necessary condition for a reducible
+character to lie on an irreducible component (vanishing of the Fox row at
+$\psi$, i.e.\ $H^1(\pi;\mathbb{C}_\psi)\ne0$) would predict, but no
+general statement is proved or used here.
+\end{remark}
+
+\begin{remark}[Related classical results]
+That word traces are integral polynomials in $x,y,z$ is due to Horowitz
+\cite{Horowitz1972}, who also studies when distinct words have the same
+character under all representations into $\mathrm{SL}_2$. Southcott
+\cite{Southcott1979} shows that trace polynomials fall into $2^n$
+classes according to the exponent sums of the word modulo $2$. The
+hypotheses here differ in kind: equality is assumed only on a
+subvariety $X$ (not for all representations), and the conclusion concerns
+the absolute exponent sum $|e_a|$ rather than its parity. We make no
+priority claim.
+\end{remark}
+
 \subsection{Characterization of the $(-2,3)$ locus}
 
 Let $B = b^{-1}$ and $Abb = a^{-1}b^2$. In Fricke coordinates
@@ -963,6 +1012,17 @@ The Sage Developers,
 Particle Data Group,
 \emph{Review of Particle Physics},
 Prog. Theor. Exp. Phys. (2024).
+
+\bibitem{Horowitz1972}
+R.~D.~Horowitz,
+\emph{Characters of free groups represented in the two-dimensional
+special linear group},
+Comm. Pure Appl. Math. \textbf{25} (1972), 635--649.
+
+\bibitem{Southcott1979}
+J.~B.~Southcott,
+\emph{Trace polynomials of words in special linear groups},
+J. Austral. Math. Soc. Ser. A \textbf{28} (1979), 401--412.
 
 \bibitem{Porti}
 J.~Porti,

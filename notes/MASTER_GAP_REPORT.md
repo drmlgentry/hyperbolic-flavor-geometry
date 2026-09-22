@@ -6701,3 +6701,75 @@ precomputed components beyond m003 and m006. Until run, the theorem is establish
 for those two components only, and no claim about "generic" or "many" hyperbolic
 manifolds is made. Novelty relative to the literature on reducible characters /
 trace identities has also not been checked, so no priority claim is made.
+
+### Two more checks requested; literature situated; one housekeeping correction
+
+**Algebraic-integer argument for m006 adopted**, replacing Niven in the
+paper's m006 remark: $c=\sqrt{3/2}$ has primitive minimal polynomial
+$2X^2-3$, not monic, so $c$ is not an algebraic integer, while
+$\zeta+\zeta^{-1}$ is one for every root of unity $\zeta$ — three lines,
+no special-function input. (Both arguments are correct; this one is
+shorter and is now what the paper states.)
+
+**Fox-calculus check of $X_0\cap N$** (new:
+`reproduce/m003_m006_fox_alexander_and_general_ell.py`, sha256
+`18d3a36bb2c8346ceca851bf7c7e962bfea51c2411f198551789adb6f37f13e0`; log
+`8ed00bc3f74a0fbd3c926b8fd95f4d0c69e0f669b29f15524965eb05dc7056aa`). For
+the certified relators $r=\mathtt{abAAbabbb}$ (m003) and
+$r=\mathtt{ababbAAbb}$ (m006), both have $e_a(r)=0$ (a necessary
+precondition, checked, not assumed: $\rho_c(r)=A^{e_a(r)}$ must equal
+$I$, forcing $e_a(r)=0$ when $\lambda$ is not a root of unity). Computed
+the Fox derivative $\partial r/\partial b$ at the abelian character
+$\psi:a\mapsto t,\,b\mapsto1$ and solved for its roots; converting
+$t=\lambda^2\mapsto c^2=t+2+t^{-1}$ reproduces $X_0\cap N$'s
+$x$-coordinates *exactly* ($c^2=-1$ for m003, $c^2=3/2$ for m006),
+matching the independent Gröbner/`solve` computation. This is consistent
+with the classical necessary condition for a reducible character to lie
+in the closure of irreducibles (non-vanishing Fox row /
+$H^1(\pi;\mathbb C_\psi)\ne0$, Burde--de Rham-type criterion), **but no
+general theorem of that kind is proved or invoked here** — this is a
+two-case observational match, recorded as a remark, not used in the
+proof of Theorem `thm:collision` (which needs only that $p\in X_0\cap N$
+with the stated coordinate, found directly by elimination). The
+"$-\varphi^{\pm2}$ vs figure-eight's $\varphi^{\pm2}$" sign-twist idea and
+any twisted-Alexander-polynomial computation were **not** pursued —
+that would require identifying which $\Z/5$-twisted representation (if
+any) makes $t=-\varphi^{\pm2}$ the relevant root, which is a separate,
+unverified claim about m003's arithmetic beyond what this script checks.
+
+**Coordinate-free specialization, verified.** For $\ell=\alpha e_a+\beta
+e_b$, $\rho(a)=A^\alpha$, $\rho(b)=A^\beta$: checked
+$\tau_w(S_{|\alpha|},S_{|\beta|},S_{|\alpha+\beta|})=S_{|\ell(w)|}$
+exactly for all $4692$ length-$\le10$ words, at
+$(\alpha,\beta)\in\{(1,0),(0,1),(1,1),(2,3),(1,-2)\}$, $0$ mismatches
+each. Confirms the coordinate-free remark added to the paper: $N$ is the
+$(\alpha,\beta)=(1,0)$ instance of a family, $e_a$ is not privileged.
+
+**Literature: Southcott (1979) and Horowitz (1972), read via abstracts/
+summaries only (no full-text access in this session).** Horowitz proves
+word traces are integral polynomials in $x,y,z$ and studies when two
+words have equal trace under *every* $\mathrm{SL}_2$ representation.
+Southcott refines this to $2^n$ classes by exponent parity mod $2$. Our
+hypothesis (equality only on a subvariety $X$ meeting $N$
+non-cyclotomically) and conclusion (full $|e_a|$, not parity) appear
+different in kind from both, but this was **not confirmed against the
+full text of either paper**, only search-result summaries; downgraded
+from any priority claim to a cited "related classical results" remark
+in the paper, naming both and stating the difference without asserting
+novelty.
+
+**Housekeeping correction.** The instruction to "push HFG-CORPUS before
+next session" was not carried out as stated: `git remote -v` in
+`/c/dev/HFG-CORPUS` returns nothing — this repo has no remote configured
+at all (confirmed by direct check, not assumed), consistent with its
+established local-only status from earlier in the project's history.
+There is nothing to push it to; the local commit history is otherwise
+intact and unaffected. If a remote is wanted, that is a separate,
+explicit decision for the user to make and configure.
+
+**TeX compile: still not done, checked exhaustively this round.**
+Searched for `pdflatex`, `xelatex`, `lualatex`, `latex`, `tectonic`,
+`latexmk` on PATH and scanned `Program Files` for any TeX installation;
+none found anywhere on this machine. The brace/environment/reference
+checks used so far are not a substitute for a real compile and are not
+represented as one.
