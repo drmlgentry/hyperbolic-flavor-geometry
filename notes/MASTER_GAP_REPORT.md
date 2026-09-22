@@ -6839,3 +6839,72 @@ abstracts/search summaries. **Still not done:** the Anderson survey and
 the Southcott paper cite a further chain (Ginzburg-Rudnick 1998, Wang's
 paper — not located in this search, Thompson 1989, Whittemore 1973) that
 has not been checked; no claim of exhaustiveness is made even now.
+
+### Checked Ginzburg-Rudnick (1998) and Wang (2007) in full — Ginzburg-Rudnick independently confirms the same fact; Wang is unrelated to the subvariety question
+
+Per explicit instruction, obtained and read both papers cited in
+Anderson's survey chain, in full (not abstracts).
+
+**Ginzburg-Rudnick, "Stable multiplicities in the length spectrum of
+Riemann surfaces"** (Israel J. Math. 104 (1998), 129-144; PDF from
+Z. Rudnick's own page, `math.tau.ac.il/~rudnick/papers/ginzburg-rudnick.pdf`,
+downloaded and read directly). This independently confirms, via a second
+and arguably cleaner route, the same fact just found in Southcott: their
+Proposition 3.1 uses the reducible-representation transversal
+$A=\mathrm{diag}(a,a^{-1})$, $B=Z\,\mathrm{diag}(b,b^{-1})Z^{-1}$ (their
+parameter $x=0$ is exactly the reducible/common-eigenvector locus,
+directly analogous to our $b\mapsto I$); Proposition 3.2 computes the
+trace polynomial's **constant term** as $c_0(\mathbf r,\mathbf
+m)=a^Rb^M+a^{-R}b^{-M}$ with $R=\sum r_j$, $M=\sum m_j$ the exact signed
+syllable-exponent sums (literally $e_a(w),e_b(w)$ in our notation); their
+Corollary 3.1 then compares this Laurent-monomial identity under
+universal trace equality and gets $(R,M)=\pm(R',M')$ directly from
+algebraic independence of $a,b$ (Proposition 3.1) --- again no
+injectivity-at-a-point argument is needed, since $a,b$ range freely as
+independent transcendentals, giving a polynomial identity rather than a
+numerical coincidence. Their main result (Theorem 1.1/5.1) goes
+considerably further for "non-singular" exponent tuples, identifying the
+*complete* group of syllable permutations preserving the trace (cyclic
+rotation and the $\theta$-reversal involution), using a second-order
+invariant (the "first variation" $c_1$, a derivative of the trace
+polynomial at the reducible locus $x=0$) --- a more refined technique
+than anything used in this session.
+
+**Wang, "A Note on Trace Polynomial"** (Tsinghua Sci. Technol. 12
+(2007), 479-484; open access, obtained via the actual IEEE-hosted PDF
+endpoint after the abstract page's embedded viewer exposed the direct
+file URL through a network-request check --- reading it required finding
+that URL, since the abstract page itself is a viewer, not a download
+link). This is the paper search summaries could not identify by author
+before ("Wang... could not locate"): full name Guizhen Wang, Beijing
+Institute of Technology. Studies the same universal-trace-equality
+question as the other three, from a different angle: defines an
+equivalence relation on words (inverse, cyclic left-shift, mirror),
+proves it is *sufficient* for trace equality (trivial direction), proves
+via Lemma 5 (a direct computation of the trace polynomial's *leading*
+$z$-degree coefficient as a product of Chebyshev polynomials
+$u_{m_i}(x)u_{n_i}(y)$, not a reducible-representation degeneration) a
+necessary condition matching Horowitz's Lemma 6.1, gives two special
+cases (Theorems 3, 4) where the converse (trace equality implies word
+equivalence) holds, and gives an explicit **counterexample** showing the
+general converse fails, plus a conjecture. **This paper does not use
+reducible or abelian representations anywhere** and does not bear on the
+subvariety-restricted question any differently than Horowitz/Southcott
+already do; it is cited for completeness, not because it changes the
+novelty assessment.
+
+**Conclusion, unchanged from the previous correction:** all four papers
+now checked in full (Horowitz 1972, Southcott 1979, Ginzburg-Rudnick
+1998, Wang 2007) work entirely within the free group's own full
+representation variety under universal trace equality; none restricts to
+a subvariety cut out by a specific group's relator, and none needs (or
+could use) an injectivity-at-a-point/non-cyclotomic argument, since their
+free parameters range over all of $\mathrm{SL}_2(\mathbb C)$ (or
+$\mathbb C^\times$ for the diagonal entries) rather than being confined
+to finitely many points of intersection with a fixed subvariety. The
+paper's "Related classical results" remark now cites and precisely
+distinguishes all four. No further literature in this specific chain
+remains unchecked as far as this search found it; a broader search (the
+Ginzburg-Rudnick/Southcott/Wang citation graphs going further, e.g.
+Whittemore 1973, Thompson 1989) was not attempted and no claim of
+exhaustiveness is made.

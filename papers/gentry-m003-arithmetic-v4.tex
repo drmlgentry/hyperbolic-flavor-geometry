@@ -717,7 +717,26 @@ one generator to $I$ and evaluating the other via a recursion
 ($C_0=2,C_1=z,C_m=zC_{m-1}-C_{m-2}$) that is literally our $S_n$. So the
 $b\mapsto I$ device and the recovery of $|e_a|$ (not just its parity) from
 it are Horowitz/Southcott's, not new here; an earlier draft of this remark
-understated this. What is not in either paper, and is the actual content
+understated this. Ginzburg--Rudnick \cite{GinzburgRudnick1998} give an
+independent, arguably cleaner, derivation of the same fact: using the
+reducible-representation transversal $A=\mathrm{diag}(a,a^{-1})$,
+$B=Z\,\mathrm{diag}(b,b^{-1})Z^{-1}$ (their $x=0$ is the reducible locus),
+they compute the trace polynomial's constant term (Proposition 3.2) as
+$c_0=a^R b^M+a^{-R}b^{-M}$ with $R=\sum r_j$, $M=\sum m_j$ the exact
+signed syllable-exponent sums (our $e_a,e_b$); comparing this Laurent
+monomial identity under universal equality forces $(R,M)=\pm(R',M')$
+(their Corollary 3.1) directly from algebraic independence of $a,b$ ---
+again no injectivity argument, since $a,b$ range freely. Their main
+theorem goes further, identifying the complete symmetry group (cyclic
+rotation and reversal) realizing trace equality for ``non-singular''
+exponent tuples. Wang \cite{Wang2007} studies the same universal-equality
+question from a different angle (an explicit equivalence relation on
+words via inverse/shift/mirror operators that is sufficient but, by an
+explicit counterexample, not necessary for trace equality); this paper
+does not use reducible representations and is not more directly relevant
+than the others. All four papers work entirely within the free group's
+own representation variety; none restricts to a subvariety cut out by a
+group relator. What is not in any of them, and is the actual content
 of Proposition~\ref{prop:ipc} and Theorem~\ref{thm:collision}: their
 hypothesis is universal (equality for \emph{every} representation of the
 free group), so the specializing parameter $z=\tau_a(\rho)$ is free as
@@ -732,8 +751,9 @@ identity in a free variable, and matching indices requires the
 non-cyclotomic criterion of Proposition~\ref{prop:ipc}, which has no
 counterpart in the universal setting. The finite-stabilization statement
 $J_\infty=J_5=P_0\cap I(N)$ likewise has no analogue in
-\cite{Horowitz1972,Southcott1979}, which do not consider a relator-cut
-subvariety or its ideal. We make no claim beyond this.
+\cite{Horowitz1972,Southcott1979,GinzburgRudnick1998,Wang2007}, none of
+which considers a relator-cut subvariety or its ideal. We make no claim
+beyond this.
 \end{remark}
 
 \subsection{Characterization of the $(-2,3)$ locus}
@@ -1048,6 +1068,16 @@ Comm. Pure Appl. Math. \textbf{25} (1972), 635--649.
 J.~B.~Southcott,
 \emph{Trace polynomials of words in special linear groups},
 J. Austral. Math. Soc. Ser. A \textbf{28} (1979), 401--412.
+
+\bibitem{GinzburgRudnick1998}
+D.~Ginzburg and Z.~Rudnick,
+\emph{Stable multiplicities in the length spectrum of Riemann surfaces},
+Israel J. Math. \textbf{104} (1998), 129--144.
+
+\bibitem{Wang2007}
+G.~Wang,
+\emph{A note on trace polynomial},
+Tsinghua Sci. Technol. \textbf{12} (2007), no.~4, 479--484.
 
 \bibitem{Porti}
 J.~Porti,
