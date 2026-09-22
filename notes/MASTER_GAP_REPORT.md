@@ -6773,3 +6773,69 @@ Searched for `pdflatex`, `xelatex`, `lualatex`, `latex`, `tectonic`,
 none found anywhere on this machine. The brace/environment/reference
 checks used so far are not a substitute for a real compile and are not
 represented as one.
+
+### Read full text of Horowitz (1972) and Southcott (1979) — significant correction to the novelty claim
+
+Per explicit instruction, obtained and read the actual primary-source text
+(not abstracts) of both papers: Horowitz via J.W. Anderson's 2003 survey
+"Variations on a theme of Horowitz" (which quotes Horowitz's theorems
+verbatim with exact theorem numbers — `eprints.soton.ac.uk/29876`,
+downloaded and read directly, sha256 not recorded as it's an external PDF
+not part of this repo's provenance chain), and Southcott's actual 1979
+paper in full (Cambridge Core, `doi:10.1017/S1446788700012544`, also
+downloaded and read directly).
+
+**Correction, made immediately (this is a real finding, not a relay
+error): Southcott already recovers $|e_a(w)|$ itself, not just its
+parity, by exactly the mechanism used here.** Southcott's Section 6
+("Words with the same trace"), immediately before his Theorem 6.8,
+states: for $u=x^{\alpha_1}y^{\beta_1}\cdots x^{\alpha_r}y^{\beta_r}$,
+universal trace equality $\tr u=\tr v$ (for **every** mapping into
+$\mathrm{SL}_2(K)$) implies $|\sum_i\alpha_i|=|\sum_i\gamma_i|$,
+"from considering mappings which... map $y$ to the identity and $x$ to
+an arbitrary element of $\mathrm{SL}_2(K)$" — this is exactly the
+$b\mapsto I$ specialization used throughout this session (the
+"N-exponent lemma"), and Southcott's subsequent Theorem 6.8 computes
+$\rho(u)$ explicitly using the Chebyshev-type recursion
+$C_0=2,C_1=z,C_m=zC_{m-1}-C_{m-2}$ — verified by direct computation to
+be **literally identical** to the $S_n$ sequence used in this session's
+N-exponent lemma and in `thm:collision`, term for term. So: the
+specialization device, the recursion, and the recovery of the *exact*
+integer $|e_a|$ (not merely $|e_a|\bmod2$, which was Southcott's other,
+main Theorem 4.1) all predate this work by 47 years. The paper's earlier
+"Related classical results" remark understated this — it said Southcott's
+result concerned parity only, which is true of his Theorem 4.1 but not of
+this second, closely-related result stated just before his Theorem 6.8.
+
+**What survives as apparently new (not found in either paper, both of
+which work with universal trace equality over the free group, never a
+relator-cut subvariety):** Southcott's argument works because universal
+equality lets the specializing parameter $z=\tr\rho(a)$ range freely over
+all of $\mathrm{SL}_2(K)$ as $\rho$ varies over *all* representations, so
+$S_n(z)=S_m(z)$ becomes an identity of **polynomials in a free
+indeterminate**, and $n=m$ follows immediately from matching degrees — no
+injectivity argument needed, no root-of-unity condition, nothing like
+Proposition `prop:ipc`. Here the hypothesis is equality restricted to the
+proper subvariety $X_0$ (cut out by a specific 3-manifold's relator), so
+the $b\mapsto I$ family only meets $X_0$ at the finitely many points of
+$X_0\cap N$; the only available equality is a **numerical** coincidence
+$S_n(c)=S_m(c)$ at one fixed complex number, which is exactly why the
+non-cyclotomic-eigenvalue criterion is needed and has no counterpart in
+the universal setting. Likewise, $J_\infty=J_5=P_0\cap I(N)$ (a statement
+about the ideal of a relator-cut subvariety) has no analogue in either
+paper, which don't consider such subvarieties or their ideals at all.
+
+**Paper updated** (`papers/gentry-m003-arithmetic-v4.tex`, "Related
+classical results" remark) to state this precisely: the mechanism and the
+$|e_a|$-recovery are Horowitz/Southcott's; the adaptation to
+subvariety-restricted equality (forcing the numerical/injectivity
+argument in place of the free-parameter polynomial-degree argument) and
+the finite-stabilization ideal statement are what's being claimed here,
+nothing more. This is a correction to a claim made two turns ago in this
+session (that Southcott's result concerned parity only, framed as if
+distinguishing our conclusion of the exact $|e_a|$) — caught by actually
+reading the source as instructed, not by continued reliance on
+abstracts/search summaries. **Still not done:** the Anderson survey and
+the Southcott paper cite a further chain (Ginzburg-Rudnick 1998, Wang's
+paper — not located in this search, Thompson 1989, Whittemore 1973) that
+has not been checked; no claim of exhaustiveness is made even now.

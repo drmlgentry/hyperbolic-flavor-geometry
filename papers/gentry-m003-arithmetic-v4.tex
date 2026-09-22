@@ -701,14 +701,39 @@ general statement is proved or used here.
 
 \begin{remark}[Related classical results]
 That word traces are integral polynomials in $x,y,z$ is due to Horowitz
-\cite{Horowitz1972}, who also studies when distinct words have the same
-character under all representations into $\mathrm{SL}_2$. Southcott
-\cite{Southcott1979} shows that trace polynomials fall into $2^n$
-classes according to the exponent sums of the word modulo $2$. The
-hypotheses here differ in kind: equality is assumed only on a
-subvariety $X$ (not for all representations), and the conclusion concerns
-the absolute exponent sum $|e_a|$ rather than its parity. We make no
-priority claim.
+\cite{Horowitz1972}, who studies when distinct words have the same
+character under \emph{all} representations of $F_2$ into $\mathrm{SL}_2$
+(not on a subvariety), and shows (Lemma 6.1 of \cite{Horowitz1972}) that
+this universal equality forces the multisets of syllable exponents
+$|\alpha_i|$, $|\beta_i|$ to agree up to rearrangement. Southcott
+\cite{Southcott1979} sharpens this in two ways relevant here. His main
+Theorem 4.1 shows trace polynomials fall into $2^n$ classes by exponent
+parity mod $2$ (a different, coarser statement than ours). More directly
+relevant: immediately before his Theorem 6.8, Southcott records that
+universal trace equality $\tau_u=\tau_v$ forces
+$|\sum_i\alpha_i|=|\sum_i\gamma_i|$ --- exactly the quantity $|e_a|$ used
+here, not merely its parity --- \emph{by the identical mechanism}: setting
+one generator to $I$ and evaluating the other via a recursion
+($C_0=2,C_1=z,C_m=zC_{m-1}-C_{m-2}$) that is literally our $S_n$. So the
+$b\mapsto I$ device and the recovery of $|e_a|$ (not just its parity) from
+it are Horowitz/Southcott's, not new here; an earlier draft of this remark
+understated this. What is not in either paper, and is the actual content
+of Proposition~\ref{prop:ipc} and Theorem~\ref{thm:collision}: their
+hypothesis is universal (equality for \emph{every} representation of the
+free group), so the specializing parameter $z=\tau_a(\rho)$ is free as
+$\rho$ ranges over all of $\mathrm{SL}_2$, and $S_n(z)=S_m(z)$ as
+polynomials in the indeterminate $z$ forces $n=m$ immediately, from the
+degree alone --- no injectivity argument is needed. Our hypothesis is
+equality restricted to a proper subvariety $X_0$ cut out by a
+$3$-manifold's relator; the specialization line $N$ meets $X_0$ only at
+isolated points, so the only equality available is the \emph{numerical}
+coincidence $S_n(c)=S_m(c)$ at one fixed $c\in\mathbb C$, not a polynomial
+identity in a free variable, and matching indices requires the
+non-cyclotomic criterion of Proposition~\ref{prop:ipc}, which has no
+counterpart in the universal setting. The finite-stabilization statement
+$J_\infty=J_5=P_0\cap I(N)$ likewise has no analogue in
+\cite{Horowitz1972,Southcott1979}, which do not consider a relator-cut
+subvariety or its ideal. We make no claim beyond this.
 \end{remark}
 
 \subsection{Characterization of the $(-2,3)$ locus}
