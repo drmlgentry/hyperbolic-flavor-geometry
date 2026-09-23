@@ -7128,3 +7128,61 @@ this machine (checked exhaustively already; unchanged).
 **Structural re-check after all edits:** environments/braces/equations
 balanced, all `\ref`s resolve, `Thompson1989` cited exactly once and
 defined exactly once. Still not an actual compile.
+
+
+### Actual compile of the current HEAD — real defect found and fixed, not just a clean exit code
+
+Located a real LaTeX install: WSL Ubuntu on this machine has `pdflatex`
+and `lualatex` (`which` confirmed directly), unlike the Windows side
+(still no toolchain there, unchanged). Compiled the actual current
+`papers/gentry-m003-arithmetic-v4.tex` — not a copy from elsewhere, the
+literal file this session has been editing — three passes, from a clean
+temp directory, twice over (WSL tears its `/tmp` down between separate
+invocations, so the first full attempt had to be redone in one shell
+session to keep the build artifacts alive for inspection).
+
+**First finding: exit code 0 was not the whole story.** All three passes
+exited 0, no undefined references, no pending "Rerun to get
+cross-references right" after the third pass. But reading the actual
+rendered PDF (not just the log) showed the Table 1 "Certificate
+inventory" running off the page: the Status column was truncated to
+"St", script/status cells cut off ("ex", "comp"). The log's 3
+Overfull/Underfull hbox warnings were the symptom; this session's added
+rows (three new script filenames, longer than what the table was
+originally sized for) pushed the plain `tabular{llc}` past `\textwidth`.
+This is exactly the gap between "compiles" and "renders correctly" that
+motivated actually building and reading the output rather than trusting
+an exit code.
+
+**Fix, verified by rebuilding again:** wrapped the table in
+`\resizebox{\textwidth}{!}{...}`. First attempt caused a fatal
+"Undefined control sequence" (`\resizebox` needs `graphicx`, which the
+preamble never loaded) — caught immediately by the following rebuild,
+not assumed to have worked. Added `\usepackage{graphicx}`. Rebuilt a
+third time, three passes: exit 0, no undefined refs, no rerun warning,
+and the Table-1 overfull hbox is gone from the log (two small, unrelated,
+pre-existing overfull hboxes remain — one in the abstract's inline
+surgery-law formula, ~15pt/0.2in, purely cosmetic wrapping, not touched).
+Read the full rendered PDF text directly: Theorem 5.7 (Collision ideal
+of $X_0(m003)$), Lemma 5.5, Proposition 5.6, and all five bibliography
+entries [6]-[10] (Horowitz, Southcott, Ginzburg-Rudnick, Wang, Thompson)
+are present and correctly typeset; the abstract reads "topology and
+peripheral structure" (the corrected wording) and $N$ is described as
+the "abelian (or cyclic-character) specialization line" (the corrected
+naming); the Table 1 Status column is now fully visible ("exact",
+"exact + certified", "computed") with no truncation. 14 pages, clean.
+
+**This is now an actual, verified compile of the current HEAD**, not
+"an earlier version compiled, this one is unverified" — that gap is
+closed. The two structural fixes (`\usepackage{graphicx}` and the
+`\resizebox` wrap around Table 1) are committed to
+`papers/gentry-m003-arithmetic-v4.tex`. The scratch build-check PDF
+copies used for inspection were not committed (deleted after use; not
+provenance, just a verification aid).
+
+**Remaining, per the pre-submission checklist:** Thompson 1989 still
+only partially read (unchanged, optional per prior discussion); the
+Proc. AMS status of `gentry-galois-gauge-v4.tex` should be checked
+before submitting this note to the same journal (per
+`HFG_SUBMISSION_REGISTER.md`, not re-checked this round since nothing
+new happened on that front).

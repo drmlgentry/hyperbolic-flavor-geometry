@@ -4,6 +4,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage{url}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -1024,6 +1025,7 @@ repository.
 \begin{table}[h]
 \centering
 \caption{Certificate inventory.}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llc}
 \toprule
 Result & Script & Status \\
@@ -1044,7 +1046,8 @@ Conjugacy (Thm.~\ref{thm:conj}) & \texttt{m003\_squared\_locus\_and\_conjugacy.s
 Borel fitness (\S\ref{sec:borel}) & \texttt{hfg\_reproduce.py} & computed \\
 Null calibration (\S\ref{sec:null}) & \texttt{pmns\_null\_corrected.py} & computed \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 The atlas protocol, including its word universe, generator-basis guard,
