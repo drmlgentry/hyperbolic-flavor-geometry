@@ -7186,3 +7186,77 @@ Proc. AMS status of `gentry-galois-gauge-v4.tex` should be checked
 before submitting this note to the same journal (per
 `HFG_SUBMISSION_REGISTER.md`, not re-checked this round since nothing
 new happened on that front).
+
+
+### Referee-facing pass: internal HFG correction history removed from the paper; verified against the actual repo file, not the uploaded copy an external tool worked from
+
+A relayed audit argued the manuscript reads as both a research paper and
+a project-provenance/retraction ledger, and proposed a specific edit
+list to separate them. Worked directly against the current repo file
+(`papers/gentry-m003-arithmetic-v4.tex`), checking each item's exact
+current wording first rather than trusting descriptions of an uploaded
+copy the external tool had (which, per its own admission, was not the
+repo HEAD and could not actually write files despite twice claiming to
+have produced a download).
+
+**Applied:**
+- Abstract: dropped "This corrects an earlier claim in which..."; states
+  only that the field is distinct from the cusped Eisenstein field.
+- Replaced "What this paper does not claim" (an itemized list framed as
+  withdrawing statements from unnamed earlier drafts) with a compact
+  "Scope" subsection stating the same facts (stratum-minimality, not
+  global minimality; the two fields are distinct; the Borel section is
+  logically downstream) without the withdrawal framing.
+- Eliminant remark: "different generators of the same quartic field,"
+  dropped "different generator... used in earlier drafts" and "this
+  discrepancy in the historical record is resolved here."
+- Literature remark: dropped "an earlier draft of this remark
+  understated this" (one clause; the substantive Horowitz/Southcott/
+  Ginzburg-Rudnick/Wang comparison itself is untouched).
+- Deleted "Historical provenance of the Borel construction"
+  (`sec:provenance`) entirely --- the March-2026 one-parameter
+  construction, the 16-SnapPy-convention search, the unrecovered
+  generator convention. Checked first that it was referenced only once
+  elsewhere (Open Questions item 2) and fixed that cross-reference
+  rather than leaving it dangling.
+- Open Questions item 2: replaced the now-orphaned "Constrained
+  geometric construction" item (which pointed at the deleted section)
+  with the mathematical generalization question already implicit in
+  Remark 5.10 (which manifolds/components admit a non-cyclotomic
+  intersection point) --- added a label (`rem:m006`) to that remark
+  since it had none, and referenced it correctly (caught and fixed a
+  mislabel of my own mid-edit: first pointed at `rem:structure`, a
+  different remark, before checking).
+
+**Checked and left alone, against the audit's own suggestions:**
+- The Thompson-paywall caveat: this is standard bibliographic-access
+  disclosure ("could not fully verify X"), not internal project history;
+  passes the "would an outside reader need this" test on its own.
+- The null-calibration section's one-sentence mention of the earlier
+  unmatched $p<10^{-4}$ test: kept, since the audit itself said this
+  correction has genuine scientific value and the existing text already
+  states it in one sentence before moving straight to the corrected
+  methodology and result --- not narration, necessary calibration
+  context.
+- Item 1 of Open Questions (CP-phase basis dependence): kept as is; it
+  is a self-contained well-posedness question, not project history.
+
+**Verified by an actual compile**, not just structural balance: three
+passes via the same WSL `pdflatex` used for the previous compile-check,
+clean (exit 0, no undefined refs, no pending rerun, same two
+pre-existing cosmetic overfull hboxes, nothing new). Read the full
+rendered PDF text directly and confirmed every cut landed as intended
+and nothing else moved: table of contents now shows "1.1 Scope" instead
+of "What this paper does not claim," section 6 (Borel) has three
+subsections instead of four, Open Questions item 2 is the generalization
+question, 13 pages (down from 14). Sent the rebuilt PDF to the user.
+
+**Not done / explicitly not accepted:**
+- Did not act on the relayed claim that "Alan Reid was the handling
+  editor" on a since-confirmed real Journal of Topology rejection of a
+  *different* paper (the torsion/loxodromic-twist paper) --- the actual
+  rejection email the user pasted is signed by Oscar Randal-Williams,
+  not Reid. Recorded correctly in `HFG_SUBMISSION_REGISTER.md` (separate
+  entry, HFG-CORPUS repo) with the primary-source email as the citation,
+  not the relayed claim.
+- Did not chase Thompson 1989 further (still partial access, unchanged).

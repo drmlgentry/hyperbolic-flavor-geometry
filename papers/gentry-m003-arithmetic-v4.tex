@@ -57,9 +57,8 @@ a quartic field of discriminant $-283$ and signature $(2,1)$.
 The proof uses exact Gr\"obner elimination from the filled-group
 presentation together with certified interval arithmetic, and
 contains no numerical polynomial recognition (\texttt{algdep} or PSLQ)
-in any load-bearing step. This corrects an earlier claim in which
-the invariant trace field of the closed filling was conflated with
-the Eisenstein field $\Q(\sqrt{-3})$ of the cusped parent.
+in any load-bearing step. This field is distinct from the Eisenstein
+field $\Q(\sqrt{-3})$ of the cusped parent $m003$ (Section~\ref{sec:homology}).
 
 Third, a preregistered target-free short-word atlas over thirteen
 Dehn fillings of $m003$ exposes four squared-trace degeneracies.
@@ -103,32 +102,20 @@ mathematics: it reports a reproducible computation together with a
 null calibration that does not support a claim of statistical
 exceptionality.
 
-\subsection{What this paper does not claim}
+\subsection{Scope}
 
-Several statements that appeared in earlier drafts of this work are
-withdrawn here, and we list them so that no reader reconstructs them
-from context.
-
-\begin{itemize}
-\item We do \emph{not} claim that $M$ is the minimum-volume closed
-orientable hyperbolic 3-manifold. That manifold is the Weeks manifold,
-of volume $0.942707\ldots$, with $H_1 \cong \Zfive \oplus \Zfive$
-\cite{GMM2009}. The correct statement, used below, is that $M$ is of
-minimal volume \emph{within the $H_1 \cong \Zfive$ stratum}.
-
-\item We do \emph{not} claim that $\kinv(M) = \Q(\sqrt{-3})$. The
-Eisenstein field belongs to the cusped parent $m003$; the closed
-filling has the quartic field $K_{283}$ established in
-Section~\ref{sec:itf}.
-
-\item We do \emph{not} claim that a Lucas-prime covering-tower
-condition or a golden-ratio scale parameter selects this manifold.
-Both were investigated and neither survived scrutiny.
-
-\item We do \emph{not} claim that the lepton mixing fit reported in
-Section~\ref{sec:borel} is statistically exceptional. The corrected
-null calibration in Section~\ref{sec:null} rejects that reading.
-\end{itemize}
+$M$ is of minimal volume within the $H_1 \cong \Zfive$ stratum of the
+closed orientable census, not of minimal volume overall; the global
+minimum is the Weeks manifold, of volume $0.942707\ldots$, with
+$H_1 \cong \Zfive \oplus \Zfive$ \cite{GMM2009}. The invariant trace
+field $\kinv(M)$ established below (Section~\ref{sec:itf}) is a
+quartic field distinct from the Eisenstein field $\Q(\sqrt{-3})$ of
+the cusped parent $m003$. The lepton-mixing construction of
+Section~\ref{sec:borel} is logically downstream of the exact results
+in Sections~\ref{sec:homology}--\ref{sec:atlas}: the matched-procedure
+null calibration of Section~\ref{sec:null} finds no evidence of
+statistical exceptionality, and none of the exact results depend on
+that construction in either direction.
 
 \section{The manifold and its homology}
 \label{sec:homology}
@@ -254,11 +241,9 @@ univariate polynomial $E(T) \in \Q[T]$ of degree four, generating
 the same field as $X^4+X^3-1$.
 
 \begin{remark}
-The eliminant $E(T)$ is the minimal polynomial of $\tr\rho(\mu)$,
-which is a different generator of the same field from the one used in
-earlier drafts. Both generate $K_{283}$; the fields are isomorphic and
-the discriminant and signature agree. This discrepancy in the
-historical record is resolved here by naming the generator explicitly.
+The eliminant $E(T)$ and $X^4+X^3-1$ are minimal polynomials of
+different generators of the same quartic field $K_{283}$; the fields
+are isomorphic and the discriminant and signature agree.
 \end{remark}
 
 \subsection{Gate F2: certified geometric root}
@@ -652,6 +637,7 @@ Theorem~\ref{thm:collision}.
 \end{remark}
 
 \begin{remark}[The component of $m006$; other components]
+\label{rem:m006}
 The same argument applies to the geometric component of $m006$,
 $X_0=V(x-z,\ yz^2-y-1)$ with $\ker\Phi=\langle x-z,\,yz^2-y-1\rangle$
 (checked by elimination). Imposing $x=z$, $y=2$ gives $x^2=3/2$, so
@@ -738,8 +724,7 @@ here, not merely its parity --- \emph{by the identical mechanism}: setting
 one generator to $I$ and evaluating the other via a recursion
 ($C_0=2,C_1=z,C_m=zC_{m-1}-C_{m-2}$) that is literally our $S_n$. So the
 $b\mapsto I$ device and the recovery of $|e_a|$ (not just its parity) from
-it are Horowitz/Southcott's, not new here; an earlier draft of this remark
-understated this. Ginzburg--Rudnick \cite{GinzburgRudnick1998} give an
+it are Horowitz/Southcott's, not new here. Ginzburg--Rudnick \cite{GinzburgRudnick1998} give an
 independent, arguably cleaner, derivation of the same fact: using the
 reducible-representation transversal $A=\mathrm{diag}(a,a^{-1})$,
 $B=Z\,\mathrm{diag}(b,b^{-1})Z^{-1}$ (their $x=0$ is the reducible locus),
@@ -914,49 +899,6 @@ We report this overlap as a structural observation. It does not
 establish that the identity explains the fit, nor that it selects the
 triple.
 
-\subsection{Historical provenance of the Borel construction}
-\label{sec:provenance}
-
-The construction reported above is not the first one proposed for this
-manifold. An earlier draft (March 2026) defined a genuinely
-manifold-dependent, one-parameter construction:
-\begin{equation}
-\ell_{ij} = \lambda\, s_{ij}\, (\hat n_i \cdot \hat n_j),
-\end{equation}
-with a single scale $\lambda \in [0.1,5.0]$ optimized over a grid of
-$50$ values and discrete signs $s_{ij} \in \{\pm1\}$ optimized over $8$
-combinations --- unlike the free three-parameter fit of
-Section~\ref{sec:borel}, this family has only one continuous degree of
-freedom once the word triple and manifold are fixed, and would support
-a substantially narrower null distribution.
-
-That draft reported, for the triple $\{\texttt{aa},\texttt{ab},
-\texttt{aB}\}$ on $M$, $\lambda=1$ exactly and signs $(+,-,+)$, giving
-$(\ell_{21},\ell_{31},\ell_{32}) \approx (0.443,-0.530,0.432)$ and
-fitness $\mathcal F \approx 0.019$.
-
-This specific numerical claim is not currently reproducible. We
-searched all sixteen boolean \texttt{fundamental\_group\_args}
-conventions available in the present SnapPy release, plus the plain
-default, computing the live axis dot products for
-$\{\texttt{aa},\texttt{ab},\texttt{aB}\}$ under each; none comes within
-an order of magnitude of $(0.443,-0.530,0.432)$ (closest:
-$(0.604,0.379,-0.320)$, still far from the target in both magnitude
-and pattern). The historical generator convention has therefore not
-been recovered by this search, and no more specific hypothesis (a
-differing SnapPy version, an unrecorded triangulation choice) has been
-confirmed. This is consistent with, and does not go beyond, a
-contemporaneous note in the project's own history flagging that these
-particular words used ``a different generator convention'' without
-further diagnosis.
-
-We therefore make no numerical claim from the March 2026 construction.
-It remains of interest --- being genuinely manifold-dependent, it
-would not be subject to the manifold-independence result that applies
-to the free three-parameter fit --- but recovering its exact
-generator convention is a separate, unresolved archival problem, not
-a mathematical one.
-
 \section{Null calibration}
 \label{sec:null}
 
@@ -1003,11 +945,15 @@ $\texttt{aaB}$ and $\texttt{baa}$ are not well defined without
 specifying the generating set. Until this is resolved the formula is
 not well posed and no value is asserted.
 
-\item \textbf{Constrained geometric construction.} See
-Section~\ref{sec:provenance}: an earlier, genuinely manifold-dependent
-one-parameter construction is documented in the historical record but
-its exact generator convention has not been recovered despite a
-systematic search, so it supports no numerical claim here.
+\item \textbf{Generalizing the intersection criterion.} Proposition~\ref{prop:ipc}
+needs only a point $(c,2,c)$ on a character subvariety $X$ with
+$c=\lambda+\lambda^{-1}$, $\lambda$ not a root of unity; we have verified
+this for the geometric components of $m003$ and $m006$
+(Remark~\ref{rem:m006}) but not for any other manifold or component.
+Characterizing which components of which manifolds' character varieties
+meet the abelian specialization line $N$ at a non-cyclotomic point ---
+and hence enjoy the same collision-ideal closure $J_\infty=J_L$ for some
+finite $L$ --- is open.
 
 \item \textbf{Physical selection.} Nothing in Sections
 \ref{sec:homology}--\ref{sec:atlas} establishes that $M$ must encode
