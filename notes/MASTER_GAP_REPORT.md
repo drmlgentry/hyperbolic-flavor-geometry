@@ -7062,3 +7062,69 @@ so before sending the trace-equivalence note (Theorem `thm:collision`) to
 that same journal, check `HFG_SUBMISSION_REGISTER.md`'s current status for
 that entry first. Not because of a ban, but so two papers from the same
 program don't land in front of the same editor unannounced.
+
+
+### Pre-submission audit received; three concrete fixes applied after independent verification, one compile-status distinction clarified
+
+A detailed pre-submission audit (novelty boundary + mathematical
+consistency) was relayed. Checked each concrete claim against the actual
+repo files before acting, rather than applying any of it on trust.
+
+**Applied, after independent verification:**
+
+1. **Abstract wording corrected.** The abstract said $H_1(M)\cong\Zfive$
+   is "a consequence of the Eisenstein cusp geometry of $m003$." Checked
+   the actual proof of Theorem `thm:surgery` (lines 163-177): it derives
+   $|H_1|=5|2p+q|$ purely from abelianizing the relator's exponent vector
+   and the peripheral curves' abelianized coefficients — a combinatorial
+   argument from the presentation and peripheral structure, with no use
+   of $m003$'s cusp shape or Eisenstein-integer arithmetic anywhere in it.
+   The remark immediately following the proof already says as much
+   ("Both are consequences of the triangulation of $m003$"). The abstract's
+   stronger causal claim was unsupported by its own proof. Changed to "a
+   consequence of the topology and peripheral structure of $m003$."
+2. **$N$ renamed/clarified at first use.** Added a sentence at $N$'s
+   definition (`sec:collision`) stating explicitly that every point of
+   $N$ is the character of a $b\mapsto I$ representation, factoring
+   through the abelianization $F_2\to\Z\langle a\rangle$, and naming it
+   the "abelian (cyclic-character) specialization line" accordingly —
+   more precise than "reducible" alone, since $\kappa$ vanishing on $N$
+   only records reducibility, not the specific cyclic factorization the
+   proof actually uses. (Labeled the existing "Structure of the argument"
+   remark, `rem:structure`, which didn't have a label, to cross-reference it.)
+3. **Explicit novelty sentence + Thompson caveat added** to the "Related
+   classical results" remark: "We are not aware of this restricted-component
+   intersection criterion... elsewhere in the trace-equivalence literature"
+   (not "this is new"), immediately followed by the caveat that Thompson's
+   1989 construction was only accessible through its introduction (paywalled
+   beyond that) and so has not been fully checked. Added the corresponding
+   bibliography entry.
+
+**Checked and found already satisfied, not re-done:** the audit's Item 10
+(explicit Bézout certificate $h=y\Delta_{AAb,AABB}-\Delta_{AAbb,AABBB}$ for
+$P_0\cap I(N)\subseteq J_5$, from $y(y+1)-(y^2+y-1)=1$) is already exactly
+in the proof of `thm:collision`'s "Lower bound" step, verbatim — not a
+Gröbner-basis black box, contrary to how the audit described the risk.
+
+**Not accepted as a correction to anything I said:** the audit describes
+correcting an "overly broad statement that the .tex still hasn't compiled,"
+citing a September 11 Stage-4 build log showing a normal, successful
+compile (only hyperref PDF-string warnings and a float-placement note).
+That log is not in this repository and was not independently checked here
+— it appears to live in the auditing tool's own uploaded-file context, not
+this session's filesystem. More importantly, it doesn't correct anything
+this session actually claimed: every statement recorded here about
+compilation was scoped to *this session's* edits on *this machine*
+("the LaTeX edit has not been compiled — no TeX toolchain in this
+environment"), never to the manuscript's compile history in general. Those
+are two different claims — an earlier Stage-4 version compiling
+successfully at some prior date (unverified here, plausible) does not
+establish that the current HEAD, with this session's added theorem,
+remarks, and four new bibliography entries, compiles. That verification
+gap is exactly as open as it was before this exchange; restated for
+clarity rather than narrowed. Still no TeX toolchain exists anywhere on
+this machine (checked exhaustively already; unchanged).
+
+**Structural re-check after all edits:** environments/braces/equations
+balanced, all `\ref`s resolve, `Thompson1989` cited exactly once and
+defined exactly once. Still not an actual compile.

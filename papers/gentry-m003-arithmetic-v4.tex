@@ -47,8 +47,8 @@ one-cusped manifold $m003$ along the slope $(-2,3)$.
 First, we prove the surgery law
 $|H_1(m003(p,q);\Z)| = 5\,|2p+q|$
 directly from the fundamental-group presentation, so that
-$H_1(M) \cong \Zfive$ is a consequence of the Eisenstein cusp geometry
-of $m003$ rather than an imposed constraint.
+$H_1(M) \cong \Zfive$ is a consequence of the topology and peripheral
+structure of $m003$ rather than an imposed constraint.
 
 Second, we determine the invariant trace field exactly:
 $\kinv(M) \cong \Q[X]/(X^4+X^3-1)$,
@@ -487,7 +487,13 @@ phenomenon: distinct words whose traces agree on $X_0$. This subsection
 determines \emph{all} such coincidences, for words of every length. To
 avoid a clash with the manifold $M$ we write $N = V(x-z,\ y-2)$ for the
 line called $M$ in Proposition~\ref{prop:jd}; its ideal is
-$I(N)=\langle x-z,\ y-2\rangle$.
+$I(N)=\langle x-z,\ y-2\rangle$. Every point of $N$ is the character of a
+representation with $b\mapsto I$, i.e.\ one factoring through the
+abelianization $F_2\twoheadrightarrow\Z\langle a\rangle$; we call $N$ the
+\emph{abelian (or cyclic-character) specialization line} accordingly ---
+more informative than merely ``reducible,'' since $\kappa$ vanishing on
+$N$ (Remark~\ref{rem:structure} below) only records reducibility, not
+this specific cyclic factorization, which is what the proof actually uses.
 
 For a word $w$ in $a^{\pm1},b^{\pm1}$ let $\tau_w\in\Z[x,y,z]$ be the
 Fricke trace polynomial, so that $\tr\rho(w)=\tau_w(x,y,z)$ for every
@@ -618,6 +624,7 @@ Combining, $J_\infty=J_5=K$.
 \end{proof}
 
 \begin{remark}[Structure of the argument; what $N$ is]
+\label{rem:structure}
 Two independent jobs are being done. The intersection-point argument
 (Proposition~\ref{prop:ipc}) is unconditional and gives
 $J_\infty\subseteq P_0\cap I(N)$ for words of every length; a finite
@@ -766,8 +773,14 @@ non-cyclotomic criterion of Proposition~\ref{prop:ipc}, which has no
 counterpart in the universal setting. The finite-stabilization statement
 $J_\infty=J_5=P_0\cap I(N)$ likewise has no analogue in
 \cite{Horowitz1972,Southcott1979,GinzburgRudnick1998,Wang2007}, none of
-which considers a relator-cut subvariety or its ideal. We make no claim
-beyond this.
+which considers a relator-cut subvariety or its ideal. We are not aware
+of this restricted-component intersection criterion, or of the resulting
+collision-ideal closure, elsewhere in the trace-equivalence literature ---
+short of asserting it is new, since one further source in this chain,
+Thompson's construction of a free-group embedding realizing universal
+tr-equivalence as literal conjugacy \cite{Thompson1989}, was accessible to
+us only through its introduction (paywalled beyond that point) and so has
+not been fully checked.
 \end{remark}
 
 \subsection{Characterization of the $(-2,3)$ locus}
@@ -1092,6 +1105,12 @@ Israel J. Math. \textbf{104} (1998), 129--144.
 G.~Wang,
 \emph{A note on trace polynomial},
 Tsinghua Sci. Technol. \textbf{12} (2007), no.~4, 479--484.
+
+\bibitem{Thompson1989}
+J.~G.~Thompson,
+\emph{Fricke, free groups, and $SL_2$},
+in Group Theory: Proceedings of the Singapore Group Theory Conference,
+de Gruyter, Berlin, 1989, 207--214.
 
 \bibitem{Porti}
 J.~Porti,
