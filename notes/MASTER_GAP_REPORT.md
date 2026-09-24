@@ -7260,3 +7260,89 @@ question, 13 pages (down from 14). Sent the rebuilt PDF to the user.
   entry, HFG-CORPUS repo) with the primary-source email as the citation,
   not the relayed claim.
 - Did not chase Thompson 1989 further (still partial access, unchanged).
+
+
+### Thompson 1989: one more legitimate attempt, no further access; phenomenology section deleted entirely from the m003 paper
+
+**Thompson.** Tried Google-style search for a preview/PDF, ResearchGate,
+academia.edu, and Internet Archive (searched for the containing De
+Gruyter proceedings volume by title). Nothing beyond the intro already
+obtained. This 1989 book chapter is still under copyright and evidently
+not digitized anywhere accessible without institutional access or
+payment; not pursued further (no sci-hub-style route attempted, per
+standing policy). Status unchanged from before: intro only, cited with
+that caveat stated explicitly in the paper.
+
+**Phenomenology section deleted entirely**, per explicit instruction,
+going further than the previous referee-facing pass. Removed from
+`papers/gentry-m003-arithmetic-v4.tex`:
+- Abstract's fourth paragraph (Borel construction / null calibration).
+- Introduction's "A fourth section describes..." paragraph.
+- Scope subsection's sentence about the lepton-mixing construction being
+  downstream (no longer applicable once the construction itself is gone).
+- Sections 6 ("A Borel-factor construction for lepton mixing") and 7
+  ("Null calibration") in full — the QR/Frobenius construction, the
+  reported fitness $0.005087$, the historical-provenance material already
+  removed in the prior pass, and the corrected matched-procedure null
+  result $\hat p=0.1325$ all removed together as one unit.
+- Open Questions item 3 ("Physical selection"), which referred to the
+  now-deleted lepton-mixing claim and had nothing left to qualify.
+- **Also removed Open Questions item 1** ("CP phase basis dependence"),
+  on inspection rather than by name in the instruction: checked first
+  whether $\varphi(w)$ (the twist-angle function the item's formula
+  depends on) was defined anywhere else in the remaining paper --- it
+  was not, appearing only in that one item. Once the phenomenology
+  section is gone, this became exactly the same category of orphaned,
+  physics-flavored, undefined-notation content the deletion is about,
+  even though it wasn't named explicitly. Open Questions is now the
+  single remaining mathematical question (generalizing the
+  intersection criterion), stated directly rather than as a one-item
+  list.
+- Reproducibility Table 1: removed the "Borel fitness" and "Null
+  calibration" rows (their cited scripts, `hfg_reproduce.py` and
+  `pmns_null_corrected.py`, are no longer results claimed by this paper).
+- Bibliography: removed the now-fully-orphaned `\bibitem{PDG}` (checked
+  first that it was never actually invoked via `\cite{PDG}` anywhere,
+  even before this round of edits --- a pre-existing loose end, not
+  something this deletion created).
+
+**Verified by an actual compile**, not just structural checks: three
+WSL `pdflatex` passes, clean (exit 0, no undefined refs, no pending
+rerun, same two pre-existing cosmetic overfull hboxes, nothing new).
+Read the full rendered PDF text and confirmed: abstract and
+introduction both consistently describe three results (not four
+anywhere), no mention of Borel/PMNS/lepton mixing/null calibration
+survives, bibliography renumbered correctly and consistently with the
+in-text citation numbers, Table 1 has no orphaned rows, 12 pages (down
+from 13 after the previous pass, 14 originally). The paper is now
+exactly: topology $\to$ surgery law $\to$ exact ITF $\to$
+presentation/geometry bridge $\to X_0$ and the atlas $\to$ three
+universal identities $\to$ cyclic-intersection theorem $\to$
+$J_\infty=J_5=P_0\cap I(N)$, with the $(-2,3)$-locus characterization
+and group-theoretic mechanism as the remaining structural results ---
+one arc, as requested.
+
+**A separate, more serious finding surfaced while checking whether
+$p<10^{-4}$ had been publicly circulated** (per the honesty caveat that
+prompted this deletion): `papers/01_active_plb/gentry-pmns-plb.tex`
+("Lepton Mixing from Borel Structure of Hyperbolic Holonomy"), the
+paper `HFG_SUBMISSION_REGISTER.md` lists as **currently active** at
+Annals of Physics (manuscript \#84438, submitted, editor not yet
+assigned, per the register's Aug 21 entry), still asserts $p<10^{-4}$
+throughout --- abstract, Section~\ref{sec:borel}, and conclusion --- not
+the corrected $\hat p=0.1325$. The register's own claim that this
+submission includes "a corrected (non-overclaiming) null-test protocol
+section (Aug 21)" does not match the file: the last **committed**
+version (`c1a00a7`, Aug 18) has no such section at all, and the current
+**uncommitted** working-tree version (file dated Aug 21, matching the
+register's date) adds a "Null test protocol" subsection that documents
+the same flawed, unmatched methodology (fixed parameters, no per-target
+reoptimization) in more detail and still reports "Result: ...
+$p<10^{-4}$" --- it does not contain the string "0.1325" or
+"matched-procedure" anywhere. This is a separate paper from
+`gentry-m003-arithmetic-v4.tex` and was not touched here; flagged to
+the user directly and immediately (not only recorded after the fact),
+who is handling it. Not committing, not drafting a correction, not
+contacting the journal --- explicitly the user's call.
+
+Sent the rebuilt pure-math PDF to the user.
