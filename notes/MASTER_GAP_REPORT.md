@@ -7346,3 +7346,61 @@ who is handling it. Not committing, not drafting a correction, not
 contacting the journal --- explicitly the user's call.
 
 Sent the rebuilt pure-math PDF to the user.
+
+
+### Five pre-submission proofreading fixes applied and compiled (m003 paper); Downloads `-referee.tex` compared and one paragraph rejected
+
+**Source of the edit list:** relayed SciSpace/WebClaude/Gemini review. Each
+item was checked against the actual repo `.tex` before editing (not the
+relayed description):
+
+1. **Gate F4** -- confirmed real: the text went from `x^2-2 \in k_inv(M)`
+   to `Q(x^2) = K_283 \subseteq k_inv(M)` without the translation step.
+   Added `Q(x^2-2) \subseteq k_inv(M)`, `Q(x^2-2)=Q(x^2)`, and the
+   justification `Q(x^2) \subseteq K_283` (as `x \in A_fill \cong K_283`).
+   Theorem unchanged; proof-writing gap only.
+2. **M/N notation clash** -- confirmed: Prop. 5.3 and its proof called the
+   line `M` (also the manifold); §5.3 then had to say "to avoid a clash we
+   write N". Renamed to `N` at first introduction (statement + proof) and
+   deleted the renaming sentence ("Recall the line N ... of Prop. 5.3").
+3. **Uppercase inverse convention** -- confirmed undeclared; added
+   "We use the standard word notation A=a^{-1}, B=b^{-1}." at §2.1.
+4. **`I_X`** -- confirmed used in Thm 5.14 but never defined; defined at
+   the introduction of `X` (§5.2).
+5. **Vestigial physics provenance in the atlas intro** -- removed "Before
+   any comparison with physical data ... preregistered" and "It computes no
+   fitness score and contains no mixing-matrix target". **Extension beyond
+   the relayed list, same category:** also changed abstract "preregistered
+   target-free short-word atlas" -> "fixed-protocol short-word atlas",
+   subsection title "The target-free atlas" -> "The short-word atlas", and
+   Table 1 row "Target-free atlas" -> "Short-word atlas". The closing
+   Reproducibility sentence (protocol frozen and hashed before Section 5
+   results were examined) is kept: it is a statement about the
+   computational protocol, not about physics.
+
+**Relayed advice not followed:** Gemini's "extraction complaints" (truncated
+relator, broken Section 5 expressions) -- agreed they are PDF-text-extraction
+artifacts; the source and the rendered PDF are both intact (checked by reading
+the rendered pages). Rule adopted: PDF extraction anomaly != LaTeX defect.
+
+**Downloads/`gentry-m003-arithmetic-v4-referee.tex` (17:13, 41140 B):** diffed
+against the repo file before the five edits. Identical except ONE paragraph
+at the end of Remark 5.13: it replaces the Thompson-1989 caveat with "concerns
+the universal setting and does not alter the distinction above." **Not
+adopted.** Thompson 1989 has been read only through its introduction; that
+sentence asserts something about its content that has not been verified. The
+repo wording (accessible only through its introduction, so not fully checked)
+is retained. If Thompson is later read in full, that sentence can be
+strengthened on evidence.
+
+**Compile:** three WSL pdflatex passes from a script file; logs present,
+exit 0, no undefined refs / rerun warnings, no errors, the same 2 pre-existing
+cosmetic overfull hboxes, 12 pages. Read the full rendered PDF; every edit
+visible; §5.3 reads cleanly with N. (A first attempt via inline `bash -lc`
+mis-quoted the loop, produced no logs, and printed false "clean" lines; it was
+discarded and redone properly.)
+
+**Noticed, not changed:** bibliography item [10] (Porti, lecture notes) is
+never cited in the text (pre-existing). Either cite it where the "classical
+necessary condition" is stated in Remark 5.12, after checking those notes, or
+drop it.

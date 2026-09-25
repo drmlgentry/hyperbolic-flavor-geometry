@@ -60,7 +60,7 @@ contains no numerical polynomial recognition (\texttt{algdep} or PSLQ)
 in any load-bearing step. This field is distinct from the Eisenstein
 field $\Q(\sqrt{-3})$ of the cusped parent $m003$ (Section~\ref{sec:homology}).
 
-Third, a preregistered target-free short-word atlas over thirteen
+Third, a fixed-protocol short-word atlas over thirteen
 Dehn fillings of $m003$ exposes four squared-trace degeneracies.
 Exact primary decomposition shows that three of them are identities
 of the geometric component $X_0$ of the $\SLtwo$-character variety,
@@ -102,7 +102,8 @@ the cusped parent $m003$.
 
 \subsection{Presentation}
 
-We fix throughout the two-generator presentation of the cusped
+We use the standard word notation $A = a^{-1}$ and $B = b^{-1}$. We
+fix throughout the two-generator presentation of the cusped
 manifold returned by SnapPy,
 \begin{equation}
 \pi_1(m003) = \langle a, b \mid r \rangle,
@@ -255,10 +256,12 @@ word trace lies in $K_{283}$, giving
 \subsection{Gate F4: lower inclusion}
 
 For $A = \rho_{\mathrm{geom}}(a)$, Cayley--Hamilton gives
-$\tr(A^2) = x^2 - 2$, so $x^2 - 2 \in \kinv(M)$. Exact elimination of
+$\tr(A^2) = x^2 - 2$, so $x^2 - 2 \in \kinv(M)$ and hence
+$\Q(x^2-2) \subseteq \kinv(M)$. Since $\Q(x^2-2) = \Q(x^2)$, it suffices
+to compute the degree of $x^2$. Exact elimination of
 $x$ between the quartic and $S - x^2 = 0$ shows that the minimal
 polynomial of $x^2$ has degree four. Hence
-$[\Q(x^2):\Q] = 4$, and since $\Q(x^2) \subseteq K_{283}$ with both of
+$[\Q(x^2):\Q] = 4$, and since $\Q(x^2) \subseteq K_{283}$ (as $x \in A_{\mathrm{fill}} \cong K_{283}$) with both of
 degree four,
 \begin{equation}
 \Q(x^2) = K_{283} \subseteq \kinv(M).
@@ -299,23 +302,24 @@ with $-I$ excluded, fixing the $\SLtwo$ lift.
 \section{Character-variety structure}
 \label{sec:atlas}
 
-\subsection{The target-free atlas}
+\subsection{The short-word atlas}
 
-Before any comparison with physical data, we computed a preregistered
-structural atlas of $m003$ and thirteen of its Dehn fillings. The
+We computed a fixed structural atlas of $m003$ and thirteen of its
+Dehn fillings. The
 protocol fixes: the word universe (all freely and cyclically reduced
 words in $a,A,b,B$ through length six, quotiented by cyclic rotation
 and inversion, proper powers excluded --- $99$ classes); the
 generator basis, with a hard guard aborting on drift under filling;
 $300$-bit certified hyperbolicity for every filling; and the observable
-set. It computes no fitness score and contains no mixing-matrix target.
+set.
 
 The atlas recorded four squared-trace degeneracies. Three recur at
 every filling and at the cusp. The fourth occurs only at $(-2,3)$.
 
 \subsection{Universal identities}
 
-Let $X = X_{\SLtwo}(m003)$ in the Fricke coordinates above, let $X_0$
+Let $X = X_{\SLtwo}(m003)$ in the Fricke coordinates above, let
+$I_X = I(X) \subset \Q[x,y,z]$ denote its vanishing ideal, let $X_0$
 be the one-dimensional irreducible component containing the discrete
 faithful character, and write $\tau_w = \tr\rho(w)$,
 $\sigma_w = \tau_w^2$.
@@ -403,14 +407,14 @@ ambient Fricke $3$-space,
 = P_0 \,\cap\, \langle y+1,\ x+2z\rangle
       \,\cap\, \langle y-2,\ x-z\rangle ,
 \end{equation}
-an intersection of three primes; that is, $V(J_D) = X_0 \cup L \cup M$
-with $L = V(y+1,\,x+2z)$ and $M = V(y-2,\,x-z)$ two affine lines, each
+an intersection of three primes; that is, $V(J_D) = X_0 \cup L \cup N$
+with $L = V(y+1,\,x+2z)$ and $N = V(y-2,\,x-z)$ two affine lines, each
 meeting $X_0$ in a finite set and neither contained in it. Restricted
 to the relator variety,
 \begin{equation}
 V\bigl(\langle \rho(r) - I\rangle\bigr) \,\cap\, V(J_D) \;=\; X_0
 \end{equation}
-set-theoretically: neither $L$ nor $M$ lies on the relator variety,
+set-theoretically: neither $L$ nor $N$ lies on the relator variety,
 and the two zero-dimensional relator components satisfy no equation of
 $J_D$. The three universal identities therefore characterize the
 geometric component inside $X_{\SLtwo}(m003)$.
@@ -424,12 +428,12 @@ $g_1 = yz-x-z = -x\,g_2 + z\,g_3$, $g_2 = xz+1$, $g_3 = x^2+y-1$, the
 system $g_1 = 0$, $(y+1)(g_3-g_2) = 0$ splits into $y=-1$ (giving $L$)
 and $g_3 = g_2$; on $g_1=0$ the latter forces $(z-x)g_2 = 0$, i.e.\
 $g_2 = 0$ (giving $X_0$) or $z = x$, which with $g_3-g_2 = y-2 = 0$
-gives $M$. The quotients $\Q[x,x^{-1}]$ and $\Q[t]$ are domains, so
+gives $N$. The quotients $\Q[x,x^{-1}]$ and $\Q[t]$ are domains, so
 $P_0$, $\langle y+1,x+2z\rangle$, $\langle y-2,x-z\rangle$ are prime
 and the radical equality follows from an ideal-intersection
 computation. Finally $y^2+y-1 \neq 0$ at $y = -1$ and $y = 2$, so $L$
-and $M$ meet the relator variety only along $L \cap X_0$,
-$M \cap X_0$, and the zero-dimensional relator components do not
+and $N$ meet the relator variety only along $L \cap X_0$,
+$N \cap X_0$, and the zero-dimensional relator components do not
 satisfy $P_0$; hence the displayed set equality. At the level of the
 certified radical decomposition
 $\bigl(\bigcap_i C_i\bigr) + J_D = P_0$, with $C_i$ the three relator
@@ -450,9 +454,8 @@ coincidences.
 
 The identities of Theorem~\ref{thm:universal} are instances of a general
 phenomenon: distinct words whose traces agree on $X_0$. This subsection
-determines \emph{all} such coincidences, for words of every length. To
-avoid a clash with the manifold $M$ we write $N = V(x-z,\ y-2)$ for the
-line called $M$ in Proposition~\ref{prop:jd}; its ideal is
+determines \emph{all} such coincidences, for words of every length. Recall
+the line $N = V(x-z,\ y-2)$ of Proposition~\ref{prop:jd}; its ideal is
 $I(N)=\langle x-z,\ y-2\rangle$. Every point of $N$ is the character of a
 representation with $b\mapsto I$, i.e.\ one factoring through the
 abelianization $F_2\twoheadrightarrow\Z\langle a\rangle$; we call $N$ the
@@ -861,7 +864,7 @@ Surgery law (Thm.~\ref{thm:surgery}) & \texttt{linking\_form.py} & exact \\
 ITF gates F1--F2 (Thm.~\ref{thm:itf}) & \texttt{pmns\_itf\_certificate.sage} & exact + certified \\
 ITF gates F3--F4 (Thm.~\ref{thm:itf}) & \texttt{pmns\_itf\_certificate.sage} & exact \\
 Presentation bridge (Prop.~\ref{prop:bridge}) & \texttt{ckm\_dehn\_relator\_certificate} & exact \\
-Target-free atlas & \texttt{m003\_structure\_atlas.sage} & computed \\
+Short-word atlas &\texttt{m003\_structure\_atlas.sage} & computed \\
 Universal identities (Thm.~\ref{thm:universal}) & \texttt{m003\_three\_universal\_identities.sage} & exact \\
 Component $\cong \mathbb{G}_m$, ambient decomp.\ (Prop.~\ref{prop:x0gm}, \ref{prop:jd}) & \texttt{m003\_stage4\_x0\_identity\_origin.py} & exact \\
 Collision ideal (Lem.~\ref{lem:nexp}, Thm.~\ref{thm:collision}) & \texttt{m003\_m006\_X0\_cap\_N\_point\_argument.py} & exact \\
