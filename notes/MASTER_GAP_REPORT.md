@@ -7404,3 +7404,40 @@ discarded and redone properly.)
 never cited in the text (pre-existing). Either cite it where the "classical
 necessary condition" is stated in Remark 5.12, after checking those notes, or
 drop it.
+
+
+### v5 structural-pass fixes adopted (relayed webclaude review) and compiled; two relayed claims corrected
+
+Downloads `gentry-m003-arithmetic-v5.tex` (7:49 AM 9/25) diffed against repo HEAD
+before adoption: exactly the five changes described in the relay, nothing else.
+- E1 removed unused macros `\Nil, \rank, \disc` (grepped: unused).
+- E2 `\cite{SnapPy}` anchored in the Introduction and Acknowledgments.
+- E3 **real gap, confirmed independently**: `\kinv` was a macro but the invariant
+  trace field was never *defined* anywhere in the paper. Added
+  `k_inv(Gamma)=Q({tr gamma^2 : gamma in Gamma})`, "trace field of Gamma^(2)",
+  commensurability invariant unlike the trace field, `\cite[Ch.~3]{MR}`, and the
+  remark that this is why Gate F4 uses tr(A^2). The chapter pointer was checked
+  against the actual Maclachlan-Reid table of contents (DNB scan): Ch. 3 is
+  "Invariant Trace Fields" (3.1 trace fields, 3.3 invariant trace fields and
+  quaternion algebras, 3.5 generators for trace fields). Correct.
+- E4 `\cite{Sage}` anchored in the Acknowledgments.
+- E5 `\bibitem{Porti}` removed (uncited, unread) -- the same loose end recorded in
+  the previous ledger entry.
+
+**Two relayed claims that are wrong, corrected here:**
+1. "The compile has still never been verified, in any session." False. The paper
+   has been compiled repeatedly in this project (WSL pdflatex, 3 passes, logs
+   checked, rendered PDF read in full). The v5 source was compiled the same way:
+   exit 0 x3, no undefined refs/citations, no errors, the same 2 pre-existing
+   cosmetic overfull hboxes, 12 pages; rendered pages read (definition on p.3,
+   citations [2, Ch. 3], [3], [4], no Porti in references).
+2. "no TeX toolchain ... none previously confirmed on your machine" -- the TeX
+   install is in WSL (Ubuntu), not Windows-native. The relaying session simply
+   could not reach it.
+Also note the relayed message asks the user for HFG_STATUS.md, "script bodies" for a
+supplementary-code appendix, and git mirroring: those are requests to *that*
+container's limitations, not tasks pending here. The commit/mirror is done here.
+The journal-screening remarks (AGT is not AGAG; Experimental Mathematics, JKTR, Geom.
+Dedicata unlisted) were not independently checked against the register in this entry.
+Proc. AMS coordination with gentry-galois-gauge-v4 (SSRN 6845778, under review) still
+stands.
