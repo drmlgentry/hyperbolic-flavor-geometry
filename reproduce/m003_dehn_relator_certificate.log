@@ -1,0 +1,14 @@
+﻿m003(-2,3): Proposition 4.1 certificate (exact, faithful representation)
+sympy = 1.14.0  python = 3.14.2
+s = mu^-2 lambda^3 = bbababbabaABAbabABAbabABAbab (unreduced)
+q = abABAbabbbbabbbb   g = ab
+PASS  rho_0(r) = +I
+PASS  tr rho_0(mu) = -2
+PASS  det rho_0(a) = det rho_0(b) = 1
+PASS  exp(q) = exp(s)   [(1, 9) vs (1, 9)]
+PASS  rho_0(q) = +-rho_0(g s g^-1)   (sign +)
+PASS  q != s   in pi_1 (rho_0(q s^-1) is not +-I)
+PASS  q != s^-1 in pi_1 (rho_0(q s) is not +-I)
+
+CONCLUSION: q = (ab) s (ab)^-1 in pi_1(m003) = <a,b | r>;
+            hence <<r,q>> = <<r,s>>.   PASS

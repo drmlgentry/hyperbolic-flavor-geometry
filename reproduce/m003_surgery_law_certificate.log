@@ -1,0 +1,11 @@
+﻿exponent vectors  r: (0, 5)  mu: (-2, -3)  lambda: (-1, 1)
+PASS  exp(r) = (0,5)
+PASS  exp(mu) = (-2,-3)
+PASS  exp(lambda) = (-1,1)
+presentation matrix: [[0, 5], [-2*p - q, -3*p + q]]
+PASS  det = 5(2p+q) identically in Z[p,q]
+slopes tested (coprime, |p|,|q| <= 30, 2p+q != 0): 2222
+PASS  |H_1| = 5|2p+q| for every tested slope; H_1 = Z/5 iff |2p+q| = 1
+PASS  ray 2p+q = -1 contains (-2,3),(-3,5),(-4,7),(-5,9)
+
+SURGERY-LAW CERTIFICATE: PASS

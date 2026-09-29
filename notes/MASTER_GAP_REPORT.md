@@ -7441,3 +7441,103 @@ The journal-screening remarks (AGT is not AGAG; Experimental Mathematics, JKTR, 
 Dedicata unlisted) were not independently checked against the register in this entry.
 Proc. AMS coordination with gentry-galois-gauge-v4 (SSRN 6845778, under review) still
 stands.
+
+
+### Real bug found and fixed: Proposition 4.1 (presentation-geometry bridge) was mathematically wrong; certificate appendix proposal rejected
+
+**How it was found.** Auditing the relayed "certificate appendix" proposal
+(`appendix_certificates.tex`, `APPENDIX_RECONCILIATION_CHECKLIST.md`, Downloads)
+against the actual repository, contract C4 cites `ckm_dehn_relator_certificate`
+for Prop.~\ref{prop:bridge}. That file is `reproduce/ckm_dehn_relator_certificate.log`
+--- not a script, and not m003's. Its own header reads "CKM FINITE DEHN
+RELATOR-EQUIVALENCE CERTIFICATE" with `r = ababbAAbb`, m006's relator, not
+m003's `abAAbabbb`. The m003 paper's own Prop.~4.1 (`q = s^{-1}$ ... proof: explicit
+rewriting transcripts reduce both $qs$ and $sq$ to the empty word") had
+silently been copied from that m006/CKM certificate's own summary, without
+ever being separately verified for m003's actual words.
+
+**Checked independently, not accepted from the relay's inference.** No SnapPy/Sage
+on this machine, so the claim was tested a different rigorous way: built the
+exact discrete-faithful representation of $\pi_1(m003)$ (cusped) in the
+degree-4 algebra $\Q[z,u]/(z^2-z+1, u^2+zu+1)$ from the certified geometric
+character already on record (`m003_cusp_itf_certificate.log`, component 1,
+disc $=-3$), then tested the matrix identities for $q$ against $s$ directly.
+Result: $\rho_0(qs)\ne\pm I$ and $\rho_0(qs^{-1})\ne\pm I$ --- **the paper's
+stated relation is false for m003.** Confirmed independently by an
+exponent-sum check first (numeric conjugator search via floating-point
+matrices over $\Z\langle a\rangle\backslash F_2$ orbit, `explore_conj.py`,
+scratch): $q = g\,s\,g^{-1}$ for $g=ab$. Re-verified exactly (not
+numerically) in `reproduce/m003_dehn_relator_certificate.py`: PASS on every
+assertion, including the negative controls `q\ne s` and `q\ne s^{-1}`.
+
+**The proposition's conclusion survives**, since a normal closure is
+conjugation-invariant ($\langle\langle s\rangle\rangle=
+\langle\langle gsg^{-1}\rangle\rangle$ for any $g$), so
+$\langle\langle r,q\rangle\rangle=\langle\langle r,s\rangle\rangle$ is still
+true --- but the stated intermediate relation and its "proof" (a rewriting
+transcript that was never actually run for m003) were wrong.
+
+**Fixed in `papers/gentry-m003-arithmetic-v4.tex`:**
+- Proposition~4.1 restated: $q=g\,s\,g^{-1}$, $g=ab$.
+- Proof rewritten to the actually-verified method: the exact matrix identity
+  at the certified discrete-faithful representation, using its injectivity
+  (a technique the paper already uses elsewhere, e.g.\ Gate F2).
+- Reproducibility Table~1: `Presentation bridge` row now cites the real,
+  verified, in-repo script `m003_dehn_relator_certificate.py`, not the
+  nonexistent/wrong-sector `ckm_dehn_relator_certificate`.
+
+**Two more table entries fixed/added while reconciling all eleven appendix
+contracts against source (only C4 was substantively wrong; the rest matched
+the actual scripts):**
+- `Surgery law` row cited `linking_form.py`, which **does not exist in this
+  repository** (it lives in the separate `hyperbolic-flavor-scan` directory
+  and is an empirical SnapPy-homology check over 14 slopes, not the "exact"
+  status claimed). Wrote `reproduce/m003_surgery_law_certificate.py`: exact
+  symbolic determinant identity in $\Z[p,q]$ plus Smith normal form (sympy,
+  not hand-rolled) over 2222 coprime slopes with $|p|,|q|\le30$ --- all PASS.
+  Table now cites this.
+- Added a new row, `Collision ideal, finite certificate eqs. (26)-(27)`:
+  no existing committed script actually verified the printed Bézout
+  identities ($h=y\Delta_{AAb,AABB}-\Delta_{AAbb,AABBB}$, $K=\langle
+  h,q\rangle$) or the m006 analogue ($P_{006}\cap I(N)=J_4$) symbolically ---
+  the existing `m003_m006_X0_cap_N_point_argument.py` only covers the
+  intersection-point/Lucas-injectivity half of Thm.~5.7. Wrote
+  `reproduce/m003_collision_ideal_certificate.py`: verifies every trace
+  polynomial printed in the paper, eqs.~(26)-(27) exactly, $K=\langle h,q\rangle$
+  by independent Gröbner elimination, and the m006 collision-ideal claim ---
+  all PASS. This was a genuine reproducibility gap, independent of the C4 bug.
+
+**The proposed certificate appendix (`appendix_certificates.tex` +
+checklist, both original and the "(1)" revision resent after this session's
+finding was already underway) was NOT adopted.** Both versions still assert
+$q=s^{-1}$ against `ckm_dehn_relator_certificate`, the "(1)" revision with
+*higher* stated confidence ("high (revised)") than the original ("LOW ---
+rewrite expected") --- because it was rewritten from the paper's own
+(buggy) proposition text rather than from the actual script, i.e.\ the
+same error entrenched further, not caught. Splicing that appendix in now
+would have contradicted the fix just made to the proposition itself. The
+appendix's separate structural checks (no lstinputlisting/longtable
+placement issue, balanced braces, etc.) were not exercised, since it was
+never compiled in that session (no TeX there) and is not being used here.
+Its unrelated finding --- that v5 contains zero residual PMNS/CP/statistical
+content --- was independently spot-checked in an earlier ledger entry
+already and stands.
+
+**Verified by an actual compile**, not just structural inspection: three
+WSL `pdflatex` passes, exit 0, no undefined refs/citations, no errors, same
+2 pre-existing cosmetic overfull hboxes, 12 pages. Read the full rendered
+PDF: Prop.~4.1 (page 5) states the corrected relation and proof; Table~1
+(page 11) shows all three corrected/added rows; nothing else moved.
+
+**On submission readiness (the relay's question, answered here with actual
+verification rather than inference):** the real blocker it flagged (C4) was
+worse than it thought --- not a citation ambiguity but a false claim in the
+paper's own text --- and is now fixed and verified, not merely patched. The
+proposed appendix is not being added in any form (neither version is
+correct). The paper itself, independent of any appendix, is compiled clean
+with a verified reproducibility table. Not independently re-checked here:
+whether Experimental Mathematics vs.\ AGT/Geometriae Dedicata is the better
+venue fit (a judgment call, not a correctness question); the relay's
+correction that Proc. AMS concurrent-submission rules don't bar a second,
+different paper by the same author (this sounds right on general practice
+but was not verified against any specific journal's policy page).

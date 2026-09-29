@@ -1,0 +1,25 @@
+﻿sympy 1.14.0 python 3.14.2
+PASS  tau_A equals the polynomial printed in the paper
+PASS  tau_ABBB equals the polynomial printed in the paper
+PASS  tau_AB equals the polynomial printed in the paper
+PASS  tau_ABB equals the polynomial printed in the paper
+PASS  tau_AAb equals the polynomial printed in the paper
+PASS  tau_AABB equals the polynomial printed in the paper
+PASS  tau_AAbb equals the polynomial printed in the paper
+PASS  tau_AABBB equals the polynomial printed in the paper
+PASS  (26a) D_{AB,ABB} = -q
+PASS  (26b) D_{AAb,AABB} = (y+1) h
+PASS  (26c) D_{AAbb,AABBB} = (y^2+y-1) h
+PASS  (27)  h = y D_{AAb,AABB} - D_{AAbb,AABBB}
+K = P0 cap I(N), GB: [x**2 - x*z + y - 2, -x + y*z - z]
+PASS  K = <h,q>  (reduced Groebner bases coincide)
+PASS  pair (AB,ABB) collides on X0:  Phi(tau_w - tau_v) = 0
+PASS  pair (AAb,AABB) collides on X0:  Phi(tau_w - tau_v) = 0
+PASS  pair (AAbb,AABBB) collides on X0:  Phi(tau_w - tau_v) = 0
+P006 cap I(N), GB: [y**2*z**2 - y**2 - 2*y*z**2 + y + 2, x - z]
+PASS  m006: P cap I(N) = <x-z, (y-2)(yz^2-y-1)>
+PASS  m006: D_{A,AB} = x - z
+PASS  m006: D_{AAb,AAbb} lies in P006 (pair collides on X0(m006))
+PASS  m006: D_{AAb,AAbb} = -(y-2)(yz^2-y-1) modulo (x-z)
+
+COLLISION-IDEAL FINITE CERTIFICATE: PASS
