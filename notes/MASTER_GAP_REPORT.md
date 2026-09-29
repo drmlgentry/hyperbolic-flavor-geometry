@@ -7650,3 +7650,13 @@ the source uses `\ref{}` rather than a hard-coded number.
 convention (the file has stayed "v4" through several correction rounds
 already); the user was asked separately whether to rename and has not
 yet said yes.
+
+
+### Renamed: gentry-m003-arithmetic-v4.tex -> v5 (git mv, no content change)
+
+Per explicit user instruction. `git mv` used so full history (17 prior
+commits) stays attached via `--follow`; v4 is retired as the name for the
+last HFG-lineage iteration, and everything going forward is v5. Rebuilt
+under the new filename to confirm the rename itself introduced no build
+regression: 3 clean passes, 14 pp, identical output to the pre-rename
+build. Commit `06a8fd8`, pushed.
