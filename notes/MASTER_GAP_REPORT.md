@@ -7591,3 +7591,62 @@ Bézout-type certificate for its ideal, case by case.
 **Conclusion: no paper edit needed.** The generalization both relay sessions
 were debating is already complete, already verified (more rigorously than
 proposed), and the paper is already exactly as scoped as it should be.
+
+
+### Reframe adopted: title/abstract/introduction rewritten around the collision theorem; new Corollary 5.8 (trivial, correct); nothing mathematical touched
+
+Two relayed proposals argued the paper should lead with the trace-collision
+theorem ($J_\infty=J_5=P_0\cap I(N)$) rather than the surgery law, with a
+new title, a rewritten abstract, and a restructured introduction. A file
+`gentry-m003-arithmetic-v5 (1).tex` was produced against the corrected
+post-`6b9cef9` source (the previous, stale-source attempt was correctly
+declined by the same relay chain once it noticed the source it had was
+still carrying the false $q=s^{-1}$).
+
+**Adopted, after independently verifying the diff line-by-line, not
+trusting the relay's own "no theorem touched" claim.** Diffed the new file
+against the actual repo HEAD:
+- Changed: title, abstract, the entire Introduction (new subsections
+  "Trace equality on a subvariety," "The collision ideal of $m003$,"
+  "Exact arithmetic of the filling," "Scope" (kept, not cut, exactly as
+  the second relay recommended --- the Weeks-manifold disclaimer against
+  overclaiming global volume minimality survives both here and in
+  \S2.3), "Organization" (new)); one disambiguating sentence at the start
+  of \S3.1 about the two live meanings of $A,B$ (word-inverse vs.\ matrix
+  $\rho(a),\rho(b)$ --- a real, if harmless, notational collision the
+  relay caught: no numerical consequence since
+  $\tr\rho(g)=\tr\rho(g^{-1})$, but worth one sentence for a reader);
+  one new Corollary (After Thm.~5.7, "All-word closure from length
+  five").
+- Unchanged, confirmed byte-identical: Proposition~4.1 (the corrected
+  bridge), every other theorem/proposition/proof, Table~1 (all three
+  previously-fixed rows), the full bibliography, \S5.4--5.6, Open
+  Questions.
+
+**The new Corollary was re-derived independently, not taken on faith.**
+Its content --- that $\tau_w-\tau_v$ for any colliding $w,v$ lies in the
+ideal of the three specific short collisions
+$(AB,ABB),(AAb,AABB),(AAbb,AABBB)$ --- follows immediately from
+Theorem~5.7's own already-verified proof: $q=-\Delta_{AB,ABB}$ and
+$h=y\Delta_{AAb,AABB}-\Delta_{AAbb,AABBB}$ give
+$\langle h,q\rangle\subseteq\langle\Delta_1,\Delta_2,\Delta_3\rangle$, and
+conversely $\Delta_1=-q$, $\Delta_2=(y+1)h$,
+$\Delta_3=(y^2+y-1)h$ (eq.~34, already verified in this session's own
+`m003_collision_ideal_certificate.py`) give the reverse inclusion. Zero
+new mathematical risk; the corollary is a correct, purely expository
+restatement.
+
+**Verified by an actual compile of the adopted file at its repo path**,
+not by trusting either relay's "three clean passes" claim: three WSL
+`pdflatex` passes, exit 0, no undefined refs/citations, no errors, same 2
+pre-existing cosmetic overfull hboxes, 14 pages (up from 12, expected
+given the expanded introduction). Read every page of the rendered PDF:
+the LaTeX auto-renumbering cascade through Remarks 5.9--5.14 and
+Theorems 5.15--5.19 (triggered by inserting Corollary~5.8 mid-section)
+resolves correctly everywhere checked, since every cross-reference in
+the source uses `\ref{}` rather than a hard-coded number.
+
+**Filename left as `gentry-m003-arithmetic-v4.tex`** per existing repo
+convention (the file has stayed "v4" through several correction rounds
+already); the user was asked separately whether to rename and has not
+yet said yes.
