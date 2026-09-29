@@ -354,23 +354,28 @@ factorization step), plus an independently found and verified inverse map. Expli
 isomorphism, both directions, exact polynomial-remainder verified:
   alpha |-> alpha^2+alpha^3   (root of f -> root of g)
   gamma |-> gamma^3-1          (root of g -> root of f)
-**Significance, precisely stated:** this is NOT forced by the dual surgery identity
-(entry 1, m003(-2,3) ~= m019(2,1) as the same closed manifold) -- that identity only
-forces k_inv(m003(-2,3)) = k_inv(m019(2,1)), i.e. equality with m019's *own* (2,1)
-filling's invariant trace field, which is a separate, unrecorded quantity here.
-What is checked is the more surprising coincidence: filling m003 (cusp field
-Q(sqrt(-3)), degree 2) at slope (-2,3) *enlarges* the field to degree 4 and lands
-exactly on m019's own *unfilled cusp* field (also degree 4) -- i.e. filling m019 at
-slope (2,1) apparently does not enlarge its trace field at all, while filling m003
-does, to the same target. Flagged for checking by a relayed observation (noted only
-that both fields shared discriminant -283); the isomorphism itself, not merely the
-shared discriminant, is what's established here.
-**Not established:** whether k_inv(m019(2,1)) (the (2,1)-filling's own invariant
-trace field, as opposed to m019's unfilled cusp field) also equals K_283 -- that
-would need the analogous four-gate computation run on m019(2,1) directly, not done
-here. Also not established: any field-theoretic *explanation* (e.g. a Galois-theoretic
-reason the filling doesn't enlarge m019's field at (2,1)) -- this entry records the
-fact, not a mechanism.
+**Significance, precisely stated:** the algebraic isomorphism above is a fact about
+two explicitly given quartics, true independent of any manifold (verified by
+polynomial-remainder arithmetic alone) -- it is a category error to call it a
+*consequence* of the dual surgery identity. What the dual surgery identity (entry 1)
+DOES force, via the standard fact that k_inv is an isometry invariant (Maclachlan-Reid,
+cited as `[2, Ch. 3]` in `gentry-m003-arithmetic-v5.tex`: isometric manifolds have
+discrete-faithful representations conjugate in PSL2(C), and k_inv is manifestly
+conjugation-invariant), is k_inv(m003(-2,3)) = k_inv(m019(2,1)) -- and since
+k_inv(m003(-2,3)) = K_283 (Theorem 3.1 of that paper), this gives
+**k_inv(m019(2,1)) = K_283 as well**, with no fresh computation on m019's own
+presentation needed. Combined with entry 3 (m019's *unfilled* cusp field, also
+K_283, established independently here as isomorphic rather than merely
+disc-matched), the full, now fully resolved picture is: filling m003 (cusp field
+Q(sqrt(-3)), degree 2) at slope (-2,3) *enlarges* the field to degree 4, landing on
+K_283; filling m019 (cusp field already K_283, degree 4) at slope (2,1) leaves the
+field *unchanged*. Both directions are now established, not merely the second.
+**Not established:** any field-theoretic *explanation* (e.g. a Galois-theoretic
+reason the (2,1) filling doesn't enlarge m019's field) -- this entry records the
+fact, not a mechanism. Also not established: a census-wide base-rate check (how
+common a quartic, signature-(2,1), disc-283-type field is among
+`OrientableClosedCensus` manifolds) that would calibrate how surprising the
+coincidence is -- flagged as a legitimate next step, needs SnapPy, not run here.
 **Out of scope for `gentry-m003-arithmetic-v5.tex`:** that paper is deliberately pure
 character-variety/arithmetic mathematics with all HFG/physics motivation removed
 earlier in this same project (see MASTER_GAP_REPORT.md); this cross-manifold,

@@ -7710,3 +7710,35 @@ exactly the scope contamination that removal was meant to prevent. This
 belongs, if anywhere, with the m003/m019 compositum material already
 covered by `gentry-galois-gauge-v4.tex` -- flagged for the user to decide
 whether/where to write it up, not acted on unilaterally.
+
+
+### Resolved: m019(2,1)'s own invariant trace field also equals K_283, by isometry-invariance (no new computation needed)
+
+User asked directly whether m019(2,1)'s own invariant trace field also
+equals K_283 (the open item left in CLAIMS_REGISTER.md entry 19). Answered
+without SnapPy/Sage (still unavailable here) by a standard theorem rather
+than a fresh computation: k_inv is not merely a commensurability invariant
+but in particular an isometry invariant (Maclachlan-Reid, `[2, Ch. 3]`,
+already cited in the paper) -- isometric manifolds have discrete-faithful
+representations conjugate in PSL2(C), and k_inv=Q({tr gamma^2}) is
+manifestly conjugation-invariant. Combining CLAIMS_REGISTER entry 1 (dual
+surgery identity, [Proved], m003(-2,3)~=m019(2,1) as the same closed
+manifold) with `gentry-m003-arithmetic-v5.tex` Theorem 3.1
+(k_inv(m003(-2,3))=K_283) gives k_inv(m019(2,1))=K_283 immediately.
+Updated CLAIMS_REGISTER.md entry 19 to remove the "not established"
+hedge and state the now-complete picture: m003's filling (-2,3) enlarges
+its cusp field from degree 2 to K_283; m019's filling (2,1) leaves its
+cusp field (already K_283, degree 4) unchanged. Both directions
+established.
+
+Also addressed a relayed DeepSeek exchange raising this question: agreed
+with, and had already independently drawn, its category-error point --
+the polynomial isomorphism (pure algebra, verified by remainder
+arithmetic alone, true independent of any manifold) is not "caused by"
+the dual surgery identity; what the identity forces is the manifold-level
+statement. Its suggested census-wide base-rate calibration (how common a
+quartic disc-283 signature-(2,1) field is among `OrientableClosedCensus`)
+needs SnapPy and was not run; recorded in the entry as an open,
+well-scoped next step. Its two word-triple collision checks (PMNS/CKM
+against J_infty=J_5) were not part of the user's actual question this
+turn and were not run against the real corpus.
