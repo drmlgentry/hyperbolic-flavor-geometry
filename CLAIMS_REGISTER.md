@@ -339,3 +339,42 @@ indices (12,18,43,65,75,106) has been attempted. That remains Stage 3, untouched
 **Scripts:** `reproduce/hfg_stage3_binary_spin_selector.py`,
 `reproduce/stage3_spin_lift_continuity_note.md`, Aug 23 2026.
 **Last verified:** Aug 23 2026
+
+## 19. m003(-2,3) invariant trace field is isomorphic to m019's cusp field
+**Claim:** K_283 = Q[X]/(X^4+X^3-1), the invariant trace field of the closed manifold
+M = m003(-2,3) (from `papers/gentry-m003-arithmetic-v5.tex`, Theorem 3.1), is isomorphic
+to Q[x]/(x^4-x-1), the cusp field of m019 (entry 3 above) -- both fields, not merely
+sharing a discriminant.
+**Status:** [Proved]. Exact, not disc-coincidence inference: g(x)=x^4-x-1 acquires a
+linear factor over Q(alpha) for every root alpha of f(x)=x^4+x^3-1 (sympy exact
+factorization over an algebraic extension, all 4 embeddings), independently
+cross-checked by a from-scratch resultant computation
+(Res_alpha(f(alpha), y-alpha^2-alpha^3) = y^4-y-1 exactly, not derived from the
+factorization step), plus an independently found and verified inverse map. Explicit
+isomorphism, both directions, exact polynomial-remainder verified:
+  alpha |-> alpha^2+alpha^3   (root of f -> root of g)
+  gamma |-> gamma^3-1          (root of g -> root of f)
+**Significance, precisely stated:** this is NOT forced by the dual surgery identity
+(entry 1, m003(-2,3) ~= m019(2,1) as the same closed manifold) -- that identity only
+forces k_inv(m003(-2,3)) = k_inv(m019(2,1)), i.e. equality with m019's *own* (2,1)
+filling's invariant trace field, which is a separate, unrecorded quantity here.
+What is checked is the more surprising coincidence: filling m003 (cusp field
+Q(sqrt(-3)), degree 2) at slope (-2,3) *enlarges* the field to degree 4 and lands
+exactly on m019's own *unfilled cusp* field (also degree 4) -- i.e. filling m019 at
+slope (2,1) apparently does not enlarge its trace field at all, while filling m003
+does, to the same target. Flagged for checking by a relayed observation (noted only
+that both fields shared discriminant -283); the isomorphism itself, not merely the
+shared discriminant, is what's established here.
+**Not established:** whether k_inv(m019(2,1)) (the (2,1)-filling's own invariant
+trace field, as opposed to m019's unfilled cusp field) also equals K_283 -- that
+would need the analogous four-gate computation run on m019(2,1) directly, not done
+here. Also not established: any field-theoretic *explanation* (e.g. a Galois-theoretic
+reason the filling doesn't enlarge m019's field at (2,1)) -- this entry records the
+fact, not a mechanism.
+**Out of scope for `gentry-m003-arithmetic-v5.tex`:** that paper is deliberately pure
+character-variety/arithmetic mathematics with all HFG/physics motivation removed
+earlier in this same project (see MASTER_GAP_REPORT.md); this cross-manifold,
+HFG-program-level observation belongs with the m003/m019 compositum material
+(`gentry-galois-gauge-v4.tex`, SSRN 6845778 -- entries 1-3 above), not in that paper.
+**Script:** `reproduce/m003_m019_field_isomorphism_certificate.py`, log committed.
+**Last verified:** Sep 29 2026

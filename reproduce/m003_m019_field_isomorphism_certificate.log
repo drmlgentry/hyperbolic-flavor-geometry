@@ -1,0 +1,33 @@
+﻿f = X^4+X^3-1 (m003(-2,3) invariant trace field, K_283)
+g = X^4-X-1   (m019 cusp field)
+PASS  disc(f) = -283
+PASS  disc(g) = -283
+PASS  f irreducible over Q
+PASS  g irreducible over Q
+PASS  disc = -283 is not a perfect square (necessary, not sufficient, for non-A4 Galois group)
+
+Method 1: factor g over Q(alpha) for each root alpha of f
+  embedding 0: 1 linear factor(s) of g over Q(alpha_0)
+PASS    embedding 0 gives a linear factor (K1 contains a root of g)
+  embedding 1: 1 linear factor(s) of g over Q(alpha_1)
+PASS    embedding 1 gives a linear factor (K1 contains a root of g)
+  embedding 2: 1 linear factor(s) of g over Q(alpha_2)
+PASS    embedding 2 gives a linear factor (K1 contains a root of g)
+  embedding 3: 1 linear factor(s) of g over Q(alpha_3)
+PASS    embedding 3 gives a linear factor (K1 contains a root of g)
+
+Method 2: independent resultant check of the explicit candidate beta = alpha^2+alpha^3
+PASS  g(alpha^2+alpha^3) == 0 mod f(alpha), by exact polynomial remainder
+PASS  Res_alpha(f(alpha), y-alpha^2-alpha^3), normalized, equals g(y) exactly (independent of Method 1)
+  resultant (normalized): y**4 - y - 1
+
+Method 3: explicit inverse map (root of f as a polynomial in a root of g)
+PASS  an inverse map alpha = q(gamma) exists with small integer coefficients
+  explicit inverse map: alpha = gamma**3 - 1
+PASS  f(q(gamma)) == 0 mod g(gamma), independently re-verified
+
+CONCLUSION: K_283 = Q[X]/(X^4+X^3-1) (m003(-2,3) invariant trace field)
+            is ISOMORPHIC to Q[x]/(x^4-x-1) (m019 cusp field).
+Explicit isomorphism, both directions, cross-verified by 3 independent methods:
+  alpha |-> alpha^2 + alpha^3   (root of f  -> root of g)
+  gamma |-> gamma**3 - 1   (root of g  -> root of f)

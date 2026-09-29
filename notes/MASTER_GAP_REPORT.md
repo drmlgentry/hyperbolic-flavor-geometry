@@ -7660,3 +7660,53 @@ last HFG-lineage iteration, and everything going forward is v5. Rebuilt
 under the new filename to confirm the rename itself introduced no build
 regression: 3 clean passes, 14 pp, identical output to the pre-rename
 build. Commit `06a8fd8`, pushed.
+
+
+### New verified finding: m003(-2,3)'s invariant trace field is isomorphic to m019's cusp field (CLAIMS_REGISTER.md entry 19)
+
+A relayed observation noted that K_283 (m003(-2,3)'s invariant trace field,
+X^4+X^3-1) and m019's cusp field (x^4-x-1, `CLAIMS_REGISTER.md` entry 3)
+share discriminant -283, and asked whether this means the fields are
+actually the same -- correctly noting that the m003 paper "doesn't check
+this" (true; that paper is deliberately pure math, HFG content removed
+earlier this session) and that shared discriminant alone doesn't establish
+field isomorphism (also true; distinct fields can share a discriminant).
+
+**Checked exactly, not accepted on the discriminant coincidence.** First
+confirmed both premises are real, previously-verified, dated entries in
+`CLAIMS_REGISTER.md` (not just relayed assertions): entry 1 (dual surgery
+identity, m003(-2,3)~=m019(2,1), [Proved], verified via SnapPy
+`is_isometric_to` + volume match to 15 digits) and entry 3 (m019 cusp
+field x^4-x-1, disc -283, Galois group S4, [Computed], independently
+re-verified Aug 2 2026). Then ran the actual arithmetic check, three
+independent exact methods, all agreeing
+(`reproduce/m003_m019_field_isomorphism_certificate.py`, log committed):
+sympy's exact factorization of g=x^4-x-1 over Q(alpha) for every root
+alpha of f=x^4+x^3-1 (linear factor found at all 4 embeddings); an
+independent from-scratch resultant computation
+Res_alpha(f(alpha), y-alpha^2-alpha^3) = y^4-y-1 exactly (not derived
+from the factorization step); and a bounded search turning up a clean
+inverse map alpha=gamma^3-1, independently verified by exact polynomial
+remainder. **Result: the fields ARE isomorphic**, not merely
+discriminant-matched, with an explicit isomorphism both directions.
+
+**The precise, non-trivial content, stated carefully rather than
+overclaimed:** this is NOT forced by the dual surgery identity, which
+only forces k_inv(m003(-2,3)) = k_inv(m019(2,1)) -- equality with m019's
+OWN (2,1)-filling's field, a quantity not computed here. What's actually
+shown is that filling m003 (cusp field Q(sqrt(-3)), degree 2) enlarges to
+degree 4 and lands exactly on m019's UNFILLED cusp field -- suggesting,
+but not proving, that filling m019 itself at (2,1) does not enlarge its
+own trace field at all. No field-theoretic mechanism is established, only
+the fact. Recorded as `CLAIMS_REGISTER.md` entry 19, [Proved] (the
+isomorphism itself; the "doesn't enlarge under m019's own filling"
+reading is explicitly flagged as unverified/not computed).
+
+**Not added to `papers/gentry-m003-arithmetic-v5.tex`.** That paper had
+its HFG/physics motivation deliberately and completely removed earlier in
+this project specifically to keep it pure character-variety mathematics;
+reintroducing a cross-manifold HFG-program observation would repeat
+exactly the scope contamination that removal was meant to prevent. This
+belongs, if anywhere, with the m003/m019 compositum material already
+covered by `gentry-galois-gauge-v4.tex` -- flagged for the user to decide
+whether/where to write it up, not acted on unilaterally.
