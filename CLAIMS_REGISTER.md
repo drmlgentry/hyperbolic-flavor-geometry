@@ -383,3 +383,39 @@ HFG-program-level observation belongs with the m003/m019 compositum material
 (`gentry-galois-gauge-v4.tex`, SSRN 6845778 -- entries 1-3 above), not in that paper.
 **Script:** `reproduce/m003_m019_field_isomorphism_certificate.py`, log committed.
 **Last verified:** Sep 29 2026
+
+## 20. Trace-collision test of the real PMNS/CKM word triples
+**Claim (this entry only reports what was checked, not a new physical claim):** using
+the ACTUAL historical word triples retrieved from source (not a relayed transcript),
+tested pairwise trace collision on each manifold's own geometric component, via the
+exact ideal-membership machinery of `gentry-m003-arithmetic-v5.tex`.
+**Retrieved, verified against the real files:**
+  - PMNS triple {aa, aaB, baa}, M_PMNS = m003(-2,3) (`gentry-pmns-plb.tex` line 215).
+  - CKM triple {aaB, AbA, AAb}, M_CKM = m006(-5,2), NOT m003 (`gentry-ckm-plb-v3.tex`
+    lines 38, 210). A relayed transcript's claimed CKM triple, {aaab, aabb, bAbAB},
+    does not match the real paper and was not used.
+**Status:** [Computed], exact (sympy Groebner ideal membership, no floating point).
+Result:
+  - PMNS: Delta_{aa,baa} = x^2-xz+y-2 = h exactly, hence aa and baa collide
+    IDENTICALLY on X_0(m003) -- a genuine, previously-unstated fact (baa is not a
+    cyclic rotation or inverse of aa, so this is not a trivial free-group symmetry).
+    It is also a shorter witness for h (length 2/3) than the paper's own proof uses
+    (length 4/5, eq. 34). (aa,aaB) and (aaB,baa) do NOT collide.
+  - CKM: all three words have IDENTICAL trace polynomials (Delta=0 exactly, not
+    merely ideal membership) -- but this is a TRIVIAL fact of free-group trace
+    (tr(uv)=tr(vu) under cyclic rotation, tr(g)=tr(g^{-1}) under inversion): AAb is a
+    cyclic rotation of AbA, and aaB's inverse bAA is also a cyclic rotation of AbA.
+    True on every representation of every group; has nothing to do with m006's
+    arithmetic, its relator, or its character variety.
+**Scope, stated precisely, do not overclaim in either direction:** a positive
+collision result means the two words have identical FRICKE TRACE POLYNOMIALS. It
+does NOT mean the actual Borel/QR "axis direction" construction (papers'
+sec:borel, extracting n_hat(gamma) in S^2 from the Pauli decomposition of
+log(rho(gamma)) -- full matrix data) is insensitive to the words' distinction: trace
+fixes only eigenvalues, not axis position, and both papers report non-degenerate
+angle triples for these exact words, consistent with trace-equal-but-axis-different.
+No claim is made here about whether the Borel construction itself is well-founded,
+selection-biased, or physically meaningful -- only about the specific, narrow,
+now-decidable trace-collision question.
+**Script:** `reproduce/hfg_word_triple_collision_check.py`, log committed.
+**Last verified:** Sep 29 2026

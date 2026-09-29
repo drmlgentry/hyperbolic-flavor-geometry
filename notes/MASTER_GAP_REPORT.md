@@ -7742,3 +7742,45 @@ needs SnapPy and was not run; recorded in the entry as an open,
 well-scoped next step. Its two word-triple collision checks (PMNS/CKM
 against J_infty=J_5) were not part of the user's actual question this
 turn and were not run against the real corpus.
+
+
+### Real PMNS/CKM word triples retrieved and tested for trace collision; relayed CKM triple was fabricated and mis-scoped to the wrong manifold
+
+Per explicit instruction, retrieved the actual historical word assignments
+from source rather than testing a relayed transcript's version.
+
+**PMNS triple {aa, aaB, baa}** (`gentry-pmns-plb.tex` line 215, confirmed
+by reading the file) on M_PMNS=m003(-2,3): exact ideal-membership test
+(sympy Groebner, no floating point) against P0=<xz+1,x^2+y-1> finds
+Delta_{aa,baa}=x^2-xz+y-2=h exactly -- aa and baa collide identically on
+X_0. This is genuine and new: baa is not a cyclic rotation or inverse of
+aa, so it isn't a trivial free-group symmetry, and it's actually a
+shorter witness for h (length 2/3) than the paper's own Theorem 5.7 proof
+uses (length 4/5). (aa,aaB) and (aaB,baa) do not collide.
+
+**CKM triple**: the relayed transcript's claimed triple {aaab, aabb,
+bAbAB} does not match the actual paper and was not used. Retrieved the
+real one from `gentry-ckm-plb-v3.tex` line 210: {aaB, AbA, AAb}, on
+M_CKM=m006(-5,2) -- confirmed at line 38 of the same file to be a
+DIFFERENT manifold from m003, so even a correctly-retrieved CKM triple
+would need m006's own collision ideal (P006=<x-z,yz^2-y-1>, Remark 5.11
+of the m003 paper), not m003's P0, which is what the relayed test
+implicitly used. Tested against P006: all three words have IDENTICAL
+trace polynomials, Delta=0 exactly -- but this is a trivial fact of free-
+group trace (AAb is a cyclic rotation of AbA; aaB's inverse bAA is also a
+cyclic rotation of AbA; tr(uv)=tr(vu) and tr(g)=tr(g^-1) hold for every
+representation of every group), not a discovery about m006's arithmetic.
+
+**Scope stated carefully in both the script and the register entry**: a
+positive trace collision does not mean the actual HFG "Borel construction"
+(papers' sec:borel) is blind to the word distinction. That construction
+extracts an axis direction in S^2 from the Pauli decomposition of the
+full matrix log(rho(gamma)), not from the trace; trace fixes eigenvalues
+only, not axis position, and both papers report non-degenerate angle
+triples for exactly these words, consistent with trace-equal-but-axis-
+different. No claim made about whether the Borel construction itself is
+well-founded or physically meaningful -- only the narrow trace-collision
+question is decided.
+
+Recorded as `CLAIMS_REGISTER.md` entry 20;
+`reproduce/hfg_word_triple_collision_check.py` and its log committed.

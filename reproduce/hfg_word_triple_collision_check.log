@@ -1,0 +1,33 @@
+﻿==============================================================================
+PMNS (real triple, gentry-pmns-plb.tex line 215)  --  words ['aa', 'aaB', 'baa']  on m003 / M_PMNS = m003(-2,3)
+testing ideal membership in P0 = [x*z + 1, x**2 + y - 1]
+==============================================================================
+  tau_aa = x**2 - 2
+  tau_aaB = x**2*y - x*z - y
+  tau_baa = x*z - y
+  Delta_{aa,aaB} = -x**2*y + x**2 + x*z + y - 2
+    lies in P0  =>  tau_aa == tau_aaB identically on X_0 : False
+  Delta_{aa,baa} = x**2 - x*z + y - 2
+    lies in P0  =>  tau_aa == tau_baa identically on X_0 : True
+  Delta_{aaB,baa} = x**2*y - 2*x*z
+    lies in P0  =>  tau_aaB == tau_baa identically on X_0 : False
+
+==============================================================================
+CKM (real triple, gentry-ckm-plb-v3.tex line 210)  --  words ['aaB', 'AbA', 'AAb']  on m006 / M_CKM = m006(-5,2)
+testing ideal membership in P006 = [x - z, y*z**2 - y - 1]
+==============================================================================
+  tau_aaB = x**2*y - x*z - y
+  tau_AbA = x**2*y - x*z - y
+  tau_AAb = x**2*y - x*z - y
+  Delta_{aaB,AbA} = 0
+    lies in P006  =>  tau_aaB == tau_AbA identically on X_0 : True
+  Delta_{aaB,AAb} = 0
+    lies in P006  =>  tau_aaB == tau_AAb identically on X_0 : True
+  Delta_{AbA,AAb} = 0
+    lies in P006  =>  tau_AbA == tau_AAb identically on X_0 : True
+
+REMINDER: a positive collision result above means the two words have
+identical trace polynomials on the geometric component X_0 -- it does
+NOT by itself mean the Borel/QR axis-direction construction (which uses
+full matrix data, not just trace) is insensitive to the distinction.
+See module docstring.
