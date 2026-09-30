@@ -7969,3 +7969,50 @@ sentence.
 
 Committed to `papers/gentry-m003-arithmetic-v5.tex`. PDF sent to user,
 not tracked in git (repo convention).
+
+
+### Correction: SnapPy and Sage were available in WSL the entire time (miniforge3 env "sage", not on PATH); ran both previously-deferred tasks properly
+
+User corrected an incomplete search: `which sage`/`import snappy` in the
+default WSL shell fail, but `~/miniforge3/envs/sage/` contains a fully
+working SnapPy 3.3.2 + SageMath 10.9 install, reachable directly via
+`~/miniforge3/envs/sage/bin/sage`. Confirmed live. Recorded as
+CLAIMS_REGISTER entry 24 so this isn't rediscovered again.
+
+**SU(2)_R / Q(sqrt(-7)) search**: re-verified CLAIMS_REGISTER entry 14
+live rather than trusting the August record -- `snappy.Manifold('m010')`:
+volume 2.66674478344906, 1 cusp, cusp shape minimal polynomial x^2-x+2
+(via `algdep` at degree 2, which is riskless for a quadratic -- unlike
+the quartic ITF work where algdep is explicitly avoided), discriminant
+-7. Matches entry 14 exactly: **m010 is the already-identified SU(2)_R
+candidate**, found in August, not an open item. The relayed claim that
+"the manifold whose cusp field is that quadratic hasn't been found" was
+simply wrong -- it was found and recorded weeks before that message.
+
+**m006 axis-gauge conjugation sweep on REAL holonomy**: now run properly
+(CLAIMS_REGISTER entry 23, full detail there). Loaded M_CKM=m006(-5,2)'s
+actual `polished_holonomy()`, used the actual CKM word triple
+{aaB,AbA,AAb}, and the VERBATIM `get_axis` function copied from
+`hyperbolic-flavor-scan/hfg_reproduce.py` (not a reimplementation).
+Base angles reproduce the published paper exactly (48.16, 77.48, 68.43
+degrees), confirming fidelity to the real construction. Under 30 random
+SL2(C) conjugations of the actual representation: trace and a candidate
+invariant replacement (normalized Killing/trace-form pairing) hold to
+the double-precision floor (~1e-13/1e-14), while the construction's own
+axis angles sweep over 55+-degree-wide ranges -- e.g. theta(aaB,AAb)
+ranges [12.3,89.3] degrees against a published base value of 77.48. This
+is now a decisive, real-data result: the CKM axis angles are not a
+manifold invariant, they depend on an unargued choice of matrix frame.
+
+**Self-correction, recorded rather than hidden**: my first attempt at
+this sweep used the WRONG test -- a from-scratch complex Pauli-coefficient
+derivation whose "Euclidean angle" turned out to be mathematically just a
+disguised copy of the same invariant bilinear pairing as the proposed
+Killing-form replacement, not the actual `get_axis` construction. That
+version found NO gauge dependence at all (a wrong result, from testing
+the wrong quantity) and was caught and corrected before being reported,
+by going back to find and use the real `get_axis` source rather than
+reconstructing my own guess at what it does.
+
+Both new scripts and their logs committed:
+`reproduce/m006_axis_gauge_conjugation_sweep.py`/`.log`.

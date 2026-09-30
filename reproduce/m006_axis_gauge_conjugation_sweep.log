@@ -1,0 +1,48 @@
+/home/your_name_here/miniforge3/envs/sage/lib/python3.13/site-packages/scipy/_lib/_util.py:1136: RuntimeWarning: logm result may be inaccurate, approximate err = 1.3165118898448239e-12
+  return f(*arrays, *other_args, **kwargs)
+/home/your_name_here/miniforge3/envs/sage/lib/python3.13/site-packages/scipy/_lib/_util.py:1136: RuntimeWarning: logm result may be inaccurate, approximate err = 4.0099355950259057e-13
+  return f(*arrays, *other_args, **kwargs)
+
+==============================================================================
+Loading M_CKM = m006(-5,2), real polished holonomy
+==============================================================================
+volume: 2.02885309147492  homology: Z/5
+tr(rho(aaB)) = (0.12311843562865446-2.0108079446693794j)
+tr(rho(AbA)) = (0.1231184356286601-2.010807944669387j)
+tr(rho(AAb)) = (0.12311843562865743-2.0108079446693727j)
+
+==============================================================================
+get_axis (the REAL construction) at the base frame
+==============================================================================
+  n_hat(aaB) = [ 0.23705182 -0.89903318  0.36816542]
+  n_hat(AbA) = [-0.37632706 -0.91079484 -0.16979607]
+  n_hat(AAb) = [0.09080499 0.18370572 0.97877815]
+
+Base pairwise angles theta_ij = arccos(|n_i . n_j|):
+  theta(aaB,AbA) = 48.1554 deg
+  theta(aaB,AAb) = 77.4835 deg
+  theta(AbA,AAb) = 68.4272 deg
+
+Base Killing pairings K_ij (candidate conjugation-invariant replacement):
+  K(aaB,AbA) = (0.21079000748409543+1.1814652283090767j)
+  K(aaB,AAb) = (-2.067743360289342-0.5509446453134144j)
+  K(AbA,AAb) = (-0.210790007484101-1.181465228309076j)
+
+==============================================================================
+Conjugation sweep: rho -> C rho C^-1, SAME random C in SL2(C) for all three words
+==============================================================================
+
+max |trace drift| over 30 random SL2(C) conjugations: 1.787e-14
+max |Killing pairing drift| over the same conjugations (should be ~0):
+  ('aaB', 'AbA'): 5.666e-13
+  ('aaB', 'AAb'): 1.856e-13
+  ('AbA', 'AAb'): 5.801e-13
+
+None-axis occurrences (near-parabolic under conjugation): 0
+
+get_axis Euclidean angle RANGE swept under conjugation (base value in parens):
+  theta('aaB', 'AbA'): [14.33, 84.04] deg   (base: 48.16)
+  theta('aaB', 'AAb'): [12.30, 89.26] deg   (base: 77.48)
+  theta('AbA', 'AAb'): [46.02, 89.68] deg   (base: 68.43)
+
+PY_EXIT=0

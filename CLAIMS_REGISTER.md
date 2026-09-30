@@ -469,3 +469,72 @@ collide exactly on X_0 under the paper's own chart -- the underlying claim is
 genuine even though the relay's summary statistics (54/99) were not accurately
 reported.
 **Last verified:** Sep 29 2026
+
+## 23. Decisive result: the CKM axis-angle construction is gauge-dependent on the REAL m006 holonomy (SnapPy/Sage now confirmed working in WSL, miniforge3 env "sage")
+**Claim:** run on the actual polished holonomy of M_CKM = m006(-5,2) (not generic
+matrices) and the real word triple {aaB,AbA,AAb} (entry 20), using the exact,
+verbatim `get_axis` function from `hyperbolic-flavor-scan/hfg_reproduce.py` (the
+real construction, not a reinterpretation): do the pairwise Euclidean axis angles
+survive the natural SL2(C) conjugation freedom of the discrete-faithful
+representation?
+**Status:** [Computed], exact tooling now available -- SnapPy 3.3.2 and Sage 10.9
+both confirmed working in WSL at `~/miniforge3/envs/sage/` (not on PATH by
+default; previous sessions' "SnapPy/Sage unavailable" conclusion was simply
+wrong -- the tools were present the whole time, just not discovered). Script
+`reproduce/m006_axis_gauge_conjugation_sweep.py`, log committed.
+**Result:**
+  - Base angles reproduce the published paper EXACTLY: theta(aaB,AbA)=48.1554,
+    theta(aaB,AAb)=77.4835, theta(AbA,AAb)=68.4272 degrees (paper: 48.16, 77.48,
+    68.43) -- confirms the script faithfully replicates the real construction,
+    not an approximation of it.
+  - Trace of each generator: invariant under 30 random SL2(C) conjugations to
+    1.8e-14 (double-precision floor), as it must be.
+  - Candidate replacement invariant, the normalized Killing/trace-form pairing
+    K_ij = tr(X_i X_j)/sqrt(tr(X_i^2)tr(X_j^2)) (X_i the traceless part of the
+    det-1-normalized matrix): invariant to 5.8e-13 (floor) -- confirmed
+    conjugation-invariant on the real data, as the algebra requires
+    (tr(CX_iC^-1 CX_jC^-1) = tr(X_iX_j) identically).
+  - **The actual get_axis Euclidean angles used by the construction: NOT
+    invariant.** Under the same 30 conjugations, theta(aaB,AbA) ranges
+    [14.33,84.04] deg, theta(aaB,AAb) ranges [12.30,89.26] deg,
+    theta(AbA,AAb) ranges [46.02,89.68] deg -- each base value is just one
+    point inside a >55-degree-wide swept range. This is the real result on the
+    real manifold and the real word triple, not a generic-matrix analogy.
+**What this establishes, precisely:** the published CKM axis angles (and hence
+the Gaussian-overlap-plus-QR mixing-matrix fit built from them) are not
+determined by the abstract character/conjugacy class of the discrete-faithful
+representation -- they depend on which specific SL2(C) matrix representative
+(frame) SnapPy's `polished_holonomy()` happens to return, an implementation
+detail with no argued geometric significance. A referee-level negative result
+about the framed layer of the HFG construction (entries 21-22's character-layer
+results are unaffected; this concerns only the axis/Borel-QR machinery).
+**Not established:** any claim that the resulting CKM mixing-matrix FIT itself
+is wrong or unreproducible (fitness numbers were separately audited, entries
+elsewhere) -- only that its geometric input (the axis angles) is not a manifold
+invariant.
+**Self-correction recorded in the ledger, not hidden:** the first version of
+this script used an incorrect "invariant" (the complex bilinear Pauli-coefficient
+dot product from a from-scratch matrix-log derivation, which is mathematically
+just a disguised copy of the SAME invariant quantity as the Killing pairing, not
+the real construction's actual get_axis function) and consequently found NO
+gauge dependence at all -- a wrong result from testing the wrong quantity, caught
+before being reported, not after.
+**Script:** `reproduce/m006_axis_gauge_conjugation_sweep.py`, log committed.
+**Last verified:** Sep 30 2026
+
+## 24. Correction: SnapPy and Sage ARE available in this environment (WSL, conda env "sage" under miniforge3)
+**Claim/correction:** prior sessions (including entries and ledger text earlier
+in this same project) repeatedly stated no SnapPy/Sage toolchain was available
+and treated several tasks as blocked on that basis. This was an incomplete
+search, not a fact about the machine: `~/miniforge3/envs/sage` contains a fully
+working SnapPy 3.3.2 + SageMath 10.9 install in WSL, simply not on the default
+PATH (`which sage`/`which conda` fail; the env must be addressed directly via
+`~/miniforge3/envs/sage/bin/sage` or `~/miniforge3/bin/conda env list`).
+**Status:** [Computed]/environment fact, confirmed directly (see entry 23,
+plus a live re-verification of entry 14's m010 claim: volume 2.66674478344906,
+1 cusp, minimal polynomial x^2-x+2, disc -7 -- reproduced exactly).
+**Practical consequence:** tasks previously deferred as "needs SnapPy, not run
+here" (the m006 conjugation sweep; census-wide searches) are not actually
+blocked and should be attempted via this path before being reported as
+unavailable.
+**Last verified:** Sep 30 2026
