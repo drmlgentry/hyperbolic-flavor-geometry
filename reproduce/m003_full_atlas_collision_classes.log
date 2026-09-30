@@ -1,0 +1,37 @@
+﻿Enumerated 99 classes (length<=6, cyclic+inverse+proper-power reduced).
+Matches the paper's stated 99: True
+pairwise ideal-membership checks performed (|ea| match required first): 1028
+nontrivial collision classes (size >= 2): 25
+words covered by a nontrivial collision class: 66 of 99
+classes straddling more than one |e_a| value (should be 0): 0
+
+nontrivial classes, sorted by size:
+  size 4: ['aaBABB', 'aaBBAB', 'ab', 'abb']
+  size 4: ['aBB', 'aaBAb', 'aabAB', 'abbbbb']
+  size 4: ['aaBaB', 'aaBabb', 'aaabbb', 'aabbaB']
+  size 3: ['a', 'aaBAB', 'abbb']
+  size 3: ['abAbbb', 'abbbAb', 'b']
+  size 3: ['aaB', 'aabb', 'ababbb']
+  size 3: ['aaab', 'aababb', 'aabbab']
+  size 3: ['aaBab', 'aaaB', 'aabaB']
+  size 3: ['abAb', 'abAbb', 'abbAb']
+  size 3: ['aBBB', 'aaBAbb', 'aabbAB']
+  size 3: ['aaBBB', 'aabbbb', 'abbbaB']
+  size 3: ['aaaBAb', 'aaabAB', 'abbaB']
+  size 3: ['abAbAb', 'abaBAb', 'ababAB']
+  size 2: ['aB', 'abbbb']
+  size 2: ['aaBB', 'aabbb']
+  size 2: ['aaaBAB', 'ababb']
+  size 2: ['abABB', 'abbAB']
+  size 2: ['aaaabb', 'aabaaB']
+  size 2: ['aaaBab', 'aaabaB']
+  size 2: ['aaBBab', 'aabaBB']
+  size 2: ['aabAbb', 'aabbAb']
+  size 2: ['aaBBAb', 'aabABB']
+  size 2: ['aaBBaB', 'aaBaBB']
+  size 2: ['abABaB', 'abAbAB']
+  size 2: ['abABBB', 'abbbAB']
+
+claimed triple ['ABBaB', 'ABaB', 'ABaBB']: all words present among the 99 reps? False
+
+claimed triple ['AABBAb', 'AAbABB', 'AAbAb']: all words present among the 99 reps? False

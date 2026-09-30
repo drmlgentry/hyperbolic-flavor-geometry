@@ -7858,3 +7858,77 @@ p<10^-4 item flagged earlier this session -- four independently
 documented defects, not one, all still live in a paper under review at a
 real journal. No file touched; no correction drafted; no contact with
 the journal.
+
+
+### K_283 census base rate: existing partial scan found, but severely biased -- no rigorous answer possible from it; two new pure-math results verified in parallel (J_infty=J_3 strengthening; atlas collision-class recount)
+
+**Census base-rate check (the actual requested task).** Found an existing,
+already-computed dataset before running anything new:
+`reproduce/census_full_scan/census_final_COMPLETE_aug27.json` +
+`census_trace_fields.csv`. It DOES contain K_283: field class
+`x^4-x-1, disc=-283, S4`, shared by exactly 3 cusped manifolds
+(`o10_150522/3/4`) -- matching CLAIMS_REGISTER entry 3's m019 field
+exactly (independent confirmation that m019 is not alone in having this
+field, at least among whatever this scan covers).
+
+**But this dataset cannot rigorously answer the question, and I did not
+present it as if it could.** Checked its own completeness: `next_index`
+reached 212641, but 210802 of those attempts FAILED (>99% failure rate;
+sampled failure reasons: `closure degree exceeds bound 48`, `timeout`) --
+only 1839 manifolds got any result, and only 860 of those were folded
+into the 165 field classes actually tallied (the 979-manifold gap between
+the flat list and the per-class tallies is itself unreconciled, noted not
+resolved). This is not a uniform sample: the failure mechanism
+(Galois-closure-degree bound, timeouts) systematically excludes
+harder-to-certify fields, biasing the surviving sample toward simple
+ones. Within that biased 860-manifold sample, K_283 (3 manifolds) sits in
+the "count=3" tier alongside half a dozen other quartic S4/D4 fields of
+comparable |disc| -- unremarkable relative to its neighbors in this
+sample, but 76 field classes have count=1 (far rarer), so this data
+cannot distinguish "K_283 is unremarkable" from "the scan simply hasn't
+reached the manifolds that would show it's rare," given the coverage
+gap. Also a scope mismatch worth flagging: this scan covers CUSPED
+manifolds' own trace fields (the m019-type quantity), not the CLOSED
+H1=Z/5-census invariant-trace-field quantity that m003(-2,3) itself
+carries -- the actually relevant comparison population (the 134-manifold
+H1=Z/5 closed census already used for the CKM/PMNS census tests) has not
+been scanned for this specific question, and doing so needs SnapPy/Sage,
+unavailable on this machine.
+
+**Conclusion, stated at the honesty level this deserves:** no rigorous
+base-rate figure is established here. The existing data is suggestive at
+best (K_283 is not obviously exceptional among comparable-discriminant
+quartic fields in a biased partial sample) and cannot be strengthened
+without a fresh, targeted SnapPy scan over the actually-relevant
+134-manifold population -- flagged as the concrete next step if wanted,
+not run here.
+
+**Two other pure-math items verified while working this (see
+CLAIMS_REGISTER entries 21-22, full detail there, summarized here):**
+- **Entry 21**: J_infty = J_3 (not merely J_5) for X_0(m003) -- a genuine
+  strengthening of the published Theorem 5.7, verified exactly. Rests on
+  Delta_{aa,baa}=h and Delta_{AB,ABB}=-q, both words of length <=3.
+  Prompted by a relayed observation about the real PMNS word pair
+  (aa,baa) from entry 20; independently re-derived and confirmed, not
+  accepted on the relay's say-so. Not yet applied to
+  `gentry-m003-arithmetic-v5.tex` -- deferred pending explicit approval,
+  since it would change a published theorem's stated bound.
+- **Entry 22**: independently re-enumerated the paper's own length<=6
+  atlas (confirms 99 classes exactly) and its trace-collision structure
+  (25 nontrivial collision classes, covering 66 of 99 words -- not "54 of
+  99" as a relayed message claimed; that figure does not reproduce and
+  was not adopted). The relay's two named example triples aren't among
+  this script's own canonical representatives (a labeling-convention
+  difference, not a contradiction) but both were checked directly and do
+  collide exactly on X_0 -- the underlying phenomenon is genuine even
+  though the relay's summary count was wrong.
+
+**Separately, directly answered the user's own question** (not a
+relayed one): whether the "identical fitness across categories" observed
+in an earlier scan reflects Z/5+disc-283 being special. No new
+computation needed -- already established in this exact project months
+ago (this ledger, Sep 2-3 2026 entries): the PMNS Borel fitness statistic
+is proven completely manifold-independent (random unit vectors reproduce
+the identical value to 9 decimals; all 134 H1=Z/5 census manifolds give
+the identical value). The observed "prism" is an optimizer artifact, not
+a Z/5/disc-283 signature.

@@ -419,3 +419,53 @@ selection-biased, or physically meaningful -- only about the specific, narrow,
 now-decidable trace-collision question.
 **Script:** `reproduce/hfg_word_triple_collision_check.py`, log committed.
 **Last verified:** Sep 29 2026
+
+## 21. Strengthening of Theorem 5.7: J_infty = J_3, not merely J_5
+**Claim:** the collision ideal of X_0(m003) stabilizes at word length 3, not 5 --
+J_infty = J_3 = J_4 = J_5 = P0 cap I(N) = <h,q>. This is a strict strengthening of
+the published theorem (which states, correctly but non-optimally, J_infty=J_5).
+**Status:** [Proved], exact (sympy Groebner, no floating point).
+`reproduce/m003_J3_strengthening_certificate.py`, log committed. Rests on two facts:
+  Delta_{aa,baa} = h  exactly (coefficient 1, not (y+1)h or (y^2+y-1)h as in the
+    paper's own length-4/5 witnesses, eq. 26-27)
+  Delta_{AB,ABB} = -q exactly (already eq. 26 of the paper, words of length 2,3)
+Both pairs consist of words of length <= 3 and both independently verified to
+satisfy the defining collision condition (Delta in P0). Combined with the
+already-published upper bound J_L subseteq K for every L (unconditional in L,
+Theorem 5.7's own proof), the chain K subseteq J_3 subseteq J_infty subseteq K
+closes exactly.
+**Provenance:** the word pair aa/baa is the real historical PMNS word triple
+{aa,aaB,baa} (entry 20 above) -- retrieved from the actual HFG corpus, not
+invented for this purpose. A relayed message flagged that this specific
+collision (Delta_{aa,baa}=h, not a multiple of h) implies the stronger
+stabilization bound; independently re-derived and verified in full here rather
+than accepted.
+**Not yet done:** applying this as an edit to `gentry-m003-arithmetic-v5.tex`
+(replacing the length-4/5 Bezout witnesses of eq. 26-27 with the shorter
+length-2/3 pair, and changing "J_infty=J_5" to "J_infty=J_3" throughout,
+including Corollary 5.8's "length five" wording). The math is verified; the
+edit is a judgment call on presentation, deferred pending explicit approval,
+since it changes a published theorem statement.
+**Last verified:** Sep 29 2026
+
+## 22. Independent re-verification of the length<=6 atlas's trace-collision structure
+**Claim:** enumerating the paper's own stated atlas protocol (freely/cyclically
+reduced words in a,A,b,B, length<=6, cyclic rotation + inversion + proper-power
+quotient) and grouping the resulting classes by exact collision on X_0 (ideal
+membership in P0) gives a specific collision structure, checked against a
+relayed claim of "25 collision classes covering 54 of 99 words."
+**Status:** [Computed], exact. `reproduce/m003_full_atlas_collision_classes.py`,
+log committed. Independent enumeration reproduces the paper's stated 99 classes
+exactly. Collision-class count matches the relayed claim (25 nontrivial
+classes) but total word coverage does NOT (66 of 99 here, not 54 of 99 --
+the relayed figure appears to be an error or artifact of a non-matching
+enumeration, not reproduced). Zero classes straddle more than one |e_a| value
+(1028 pairwise checks, |e_a| pre-filter), exactly as Lemma 5.5 forces --
+independent confirmation, not new content. The two specific example triples
+named in the relay, {ABaB,ABBaB,ABaBB} and {AAbAb,AABBAb,AAbABB}, do NOT appear
+among this script's own 99 canonical representatives (a labeling/representative-
+choice artifact, not a contradiction), but both were checked directly and DO
+collide exactly on X_0 under the paper's own chart -- the underlying claim is
+genuine even though the relay's summary statistics (54/99) were not accurately
+reported.
+**Last verified:** Sep 29 2026
