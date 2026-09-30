@@ -7932,3 +7932,40 @@ is proven completely manifold-independent (random unit vectors reproduce
 the identical value to 9 decimals; all 134 H1=Z/5 census manifolds give
 the identical value). The observed "prism" is an optimizer artifact, not
 a Z/5/disc-283 signature.
+
+
+### Applied the J_infty=J_3 strengthening to gentry-m003-arithmetic-v5.tex (CLAIMS_REGISTER entry 21)
+
+Per explicit instruction, patched the manuscript with the verified strengthening.
+Replaced the "Lower bound" step of Theorem 5.7's proof: the old length-4/5
+Bézout witnesses ($(AB,ABB),(AAb,AABB),(AAbb,AABBB)$, combination
+$h=y\Delta_{AAb,AABB}-\Delta_{AAbb,AABBB}$) are gone, replaced by the two
+length-$\le3$ pairs $(aa,baa)$ and $(AB,ABB)$ with $\Delta_{aa,baa}=h$ and
+$\Delta_{AB,ABB}=-q$ directly -- no Bézout combination needed. Updated
+throughout: abstract, \S1.2's boxed theorem and containment chain,
+Organization, Theorem 5.7's statement and proof, Corollary 5.8 (renamed
+"from length three"), Remark 5.9's own conclusion, Remark 5.14's
+finite-stabilization mention, and Table 1 (added a row for the new
+certificate script, kept the old script's row re-scoped to its still-valid
+m006 content, Remark 5.11).
+
+Deliberately left untouched: Remark 5.9's separate sentence "the census
+through length 10 stabilizes at $J_5$" -- this describes a DIFFERENT,
+representative-based regression script's own historical finding (checked:
+`m003_J10_vs_intersection.log` reports "smallest L with J_L==K: 5"), not
+the proof. This is not a contradiction -- that script's methodology picks
+one canonical representative per collision group under its own word
+enumeration convention, and evidently didn't select the same short (aa,baa)
+witness this session found. The paper's own text already frames this as
+"a different kind of statement from" the proof, so the distinction reads
+correctly without alteration. Not rerun/altered here.
+
+Verified by an actual compile: three WSL pdflatex passes, exit 0, no
+undefined refs/citations, no errors, same 2 pre-existing cosmetic overfull
+hboxes, 14 pages (unchanged from before the patch). Read every page of the
+rendered PDF: every occurrence renders correctly and consistently, no
+stale J_5 references remain except the one deliberately-preserved census
+sentence.
+
+Committed to `papers/gentry-m003-arithmetic-v5.tex`. PDF sent to user,
+not tracked in git (repo convention).
