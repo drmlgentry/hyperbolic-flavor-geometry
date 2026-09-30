@@ -7784,3 +7784,77 @@ question is decided.
 
 Recorded as `CLAIMS_REGISTER.md` entry 20;
 `reproduce/hfg_word_triple_collision_check.py` and its log committed.
+
+
+### Relayed "audit" of the PMNS/CKM Borel constructions substantially re-derived (with a garbled citation) work this project already completed Sep 2-3 2026 -- and the actively-submitted paper still contains all of it, uncorrected, plus a fourth independent defect
+
+A relayed message characterized "two different PMNS Borel constructions,"
+one with 3 independently-fitted parameters and one axis-derived, citing a
+nonexistent file ("gentry-m003-arithmetic-v4-stage...", not found by
+search) and describing the fitted construction as merely "not currently
+reproducible across tested SnapPy conventions."
+
+**Checked against the real files, not the relay's characterization.** The
+cited numbers (-1.13114,-1.02174,1.09631) are real, from
+`hyperbolic-flavor-scan/hfg_reproduce.py`'s `pmns_borel` -- but this
+project already fully audited this exact function on Sep 2-3 2026 (this
+ledger, ~line 3375 onward), far more precisely and severely than the
+relay's version:
+
+1. **PMNS fitness 0.005087 is not "flexible" or "not reproducible" -- it
+   is PROVEN completely manifold-independent.** Substituting literally
+   random unit vectors for the holonomy-derived axes reproduces
+   0.005087274 to 9 decimal places across 6 independent trials
+   (`reproduce/pmns_borel_manifold_independence_check.py`); calling the
+   actual unmodified `pmns_borel(M, words)` on all 134 H_1=Z/5 census
+   manifolds gives the identical value for every single one
+   (`reproduce/pmns_cp_census_audit.py`). A single Nelder-Mead restart
+   from `[0,0,0]` -- zero manifold information -- reproduces it. The
+   construction's numerical result does not depend on the manifold at
+   all.
+2. **The CP-phase theorem (delta=195.91 deg, "zero free parameters")
+   depends on an undocumented, verifiably wrong choice of SnapPy
+   generating set.** SnapPy's default `polished_holonomy()` (no
+   `fundamental_group_args`) silently returns a DIFFERENT, non-cusp-
+   preserving generating set than the actual cusped presentation; under
+   that wrong default, aaB/baa give 195.91 deg (matching the paper).
+   Under the explicit, independently-verified-correct basis
+   (`fundamental_group_args=(True,False,True,False)`, used throughout
+   this project's own rigorous m003 work all session), the SAME nominal
+   words give delta=123.955 deg instead -- a completely different
+   number, 72 deg away (`reproduce/pmns_cp_invariance_audit.sage`).
+3. **A third, independent defect not raised by the relay at all**: the
+   paper's "Quarter-Lucas geodesic" bullet
+   (`gentry-pmns-plb.tex:162-165`) states a geodesic length 0.7218,
+   "second shortest to 0.03%," "the same sigma that minimises CKM
+   fitness." All three sub-claims are false, independently checked: the
+   printed 0.7218 doesn't match its own printed formula (which evaluates
+   to 0.716634 -- 0.7218 is the OLD, already-superseded sigma_opt
+   value); under the correct number m003 is not even closest among the
+   134-manifold census (rank 5/134, not "0.03% essentially unique");
+   and the "same sigma minimises CKM fitness" claim is false by direct
+   computation (CKM's real optimum, sigma~=0.4877, is a completely
+   different value; at the claimed sigma, CKM fitness is ~27-28x worse
+   than optimal).
+4. Plus the already-separately-flagged (this session, several turns
+   earlier) retracted **p<10^-4**, corrected p=0.1325 (6625/50000), from
+   the same 50,000-trial null test this Sep 2-3 thread completed.
+
+**All four are independently verified, already-committed findings in
+this project's own history -- not new discoveries by any relay, and not
+re-derived here.** Checked directly against
+`papers/01_active_plb/gentry-pmns-plb.tex` (the file actively submitted
+to Annals of Physics, manuscript #84438, per
+`HFG_SUBMISSION_REGISTER.md`): **all four remain present, uncorrected,
+in the live text** -- the fitness statistic still presented at face value
+("achieves fitness 0.005087---the global minimum of the Borel
+construction"), the CP-phase theorem still stated with no basis
+disclosure, the Quarter-Lucas bullet still printing 0.7218/0.03%/the
+false CKM cross-reference, and p<10^-4 still asserted throughout.
+
+**Not acted on.** This is the user's active submission to manage, flagged
+here in full because it's materially more serious than the single
+p<10^-4 item flagged earlier this session -- four independently
+documented defects, not one, all still live in a paper under review at a
+real journal. No file touched; no correction drafted; no contact with
+the journal.
