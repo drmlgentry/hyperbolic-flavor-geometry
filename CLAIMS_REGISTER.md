@@ -538,3 +538,38 @@ here" (the m006 conjugation sweep; census-wide searches) are not actually
 blocked and should be attempted via this path before being reported as
 unavailable.
 **Last verified:** Sep 30 2026
+
+## 25. k_inv(m010) independently verified equal to Q(sqrt(-7)) -- not conflated with the cusp field
+**Claim:** CLAIMS_REGISTER entry 14 and `gentry-galois-product-theorem.tex` state m010's
+INVARIANT TRACE FIELD (not cusp field) is Q(sqrt(-7)). A relayed caution (correctly)
+flagged that this project already caught one real cusp-field/ITF conflation (entry 19,
+m019) and should not assume the two coincide for m010 without checking.
+**Status:** [Proved], exact (Groebner elimination, not algdep, for the load-bearing
+claim; algdep used only as an independent cross-check that agreed).
+`reproduce/m010_invariant_trace_field_certificate.py`, log committed.
+**Method, mirroring the m003 paper's own Gate F1 at quadratic scale:** got m010's
+presentation directly from SnapPy (relator `aabaBaaBab`, meridian `AbAA`, not assumed);
+built the Fricke-chart relator ideal and primary-decomposed it (5 components: four
+0-dimensional, one 1-dimensional -- the bare cusped relator variety, analogous to
+m003's X_0); confirmed which component the certified discrete-faithful character
+(SnapPy `verify_hyperbolicity`, 300 bits) sits on (residual 1.1e-88, i.e. exact);
+imposed the parabolic/completeness condition on the meridian (tr(mu)^2=4) to cut this
+down to a finite set of points (6 zero-dimensional components), identified which one
+is the actual geometric point (residual 6.0e-89); then computed EXACT minimal
+polynomials by further elimination:
+  tr(a)   satisfies x^4-5x^2+8=0            (the ordinary trace field, degree <=4)
+  tr(a)^2-2  satisfies s^2-s+2=0            (disc -7)
+  tr(b)^2-2  satisfies s^2+6s+16=0          (disc -28 = 4x(-7), same field Q(sqrt(-7)))
+  tr(ab)^2-2 satisfies s^2+7s+14=0          (disc -7)
+All three independently confirm the SAME quadratic field Q(sqrt(-7)) -- not assumed
+equal to the (separately, also live-re-verified) cusp field, and not the same
+computation as the cusp field (that used `cusp_info('shape')`; this used the trace-of-
+squares of the holonomy representation, the actual definition of k_inv).
+**Conclusion:** k_inv(m010) = Q(sqrt(-7)), genuinely independently confirmed, and
+happens to equal m010's cusp field -- unlike the m019/m003(-2,3) case, these two
+different invariants coincide here, checked rather than assumed.
+**Not established:** whether m010 is the CANONICAL/minimal-volume representative of
+this field among all 1-cusped census manifolds -- entry 14 already flags this as open,
+unresolved here, would need the structured census search entry 14 describes to be
+rerun and checked live rather than trusted from August.
+**Last verified:** Sep 30 2026

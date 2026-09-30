@@ -8016,3 +8016,42 @@ reconstructing my own guess at what it does.
 
 Both new scripts and their logs committed:
 `reproduce/m006_axis_gauge_conjugation_sweep.py`/`.log`.
+
+
+### m010: k_inv independently verified = Q(sqrt(-7)), not conflated with the cusp field this time
+
+A relayed message correctly flagged that the earlier live re-verification of
+m010 (this session) only checked the CUSP field (via `cusp_info('shape')` +
+algdep), not the INVARIANT TRACE FIELD that CLAIMS_REGISTER entry 14 and
+`gentry-galois-product-theorem.tex` actually claim -- and that this exact
+project already caught one real conflation of these two different invariants
+(entry 19, m019). Correctly refused to assume they coincide for m010 without
+checking.
+
+Computed k_inv(m010) properly, mirroring the m003 paper's own Gate F1 method
+at quadratic scale (CLAIMS_REGISTER entry 25, full detail there): exact
+Groebner elimination from the actual SnapPy presentation, primary
+decomposition to find the geometric component, imposing the parabolic/
+completeness condition on the meridian to pin down the actual discrete-
+faithful point (not just the 1-dimensional bare relator variety), then exact
+elimination of the minimal polynomials of tr(a)^2-2, tr(b)^2-2, and
+tr(ab)^2-2. All three independently give the same field Q(sqrt(-7))
+(discriminants -7, -28=4x(-7), -7 respectively -- all the same field, not
+three different ones). algdep used only as a cross-check, not the certificate.
+
+Result: k_inv(m010) = Q(sqrt(-7)) is now genuinely independently confirmed,
+via a different computation than the cusp-field check, and this time the two
+invariants happen to agree (unlike m019/m003(-2,3), where they didn't) --
+checked, not assumed. Two bugs hit and fixed along the way, recorded rather
+than hidden: `str(g)` uses `^` for exponentiation (Sage convention), which
+Python's `eval` reads as XOR -- had to replace before evaluating; and Sage's
+QuotientRing has no `vector_space_dimension` method in this version --
+removed, unnecessary once the correct 0-dimensional point was isolated via
+the parabolic condition.
+
+Still open, per entry 14's own honest caveat, not re-resolved here: whether
+m010 is the canonical/minimal-volume representative of this field among all
+1-cusped census manifolds.
+
+Script and log committed:
+`reproduce/m010_invariant_trace_field_certificate.py`/`.log`.

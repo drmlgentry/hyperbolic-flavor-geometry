@@ -1,0 +1,91 @@
+
+==============================================================================
+m010: presentation, directly from SnapPy (not assumed)
+==============================================================================
+volume: 2.66674478344906  num cusps: 1
+generators: ['a', 'b']
+relators: ['aabaBaaBab']
+single relator r = aabaBaaBab
+
+==============================================================================
+Exact Fricke-chart elimination (Groebner), no numerical recognition
+==============================================================================
+eliminating u ...
+eliminated ideal generators (in x,y,z):
+  y^2*z^2 - 4*y^2 - 2*z^4 + 6*z^2 + 8
+  y^4 - 11*y^2 - 4*z^4 + 14*z^2 + 18
+  6*x*z^2 + 6*x + y^3*z - 2*y*z^3 - 8*y*z
+  6*x*y - y^2*z + 2*z^3 - 10*z
+
+==============================================================================
+Primary decomposition to isolate the geometric component
+==============================================================================
+number of primary components: 5
+ component 0: dim=0  gens=[z - 2, y + 1, x + 1]
+ component 1: dim=0  gens=[z - 2, y - 1, x - 1]
+ component 2: dim=0  gens=[z + 2, y + 1, x - 1]
+ component 3: dim=0  gens=[z + 2, y - 1, x + 1]
+ component 4: dim=1  gens=[y^2 - 2*z^2 - 2, x*z^2 + x - y*z, x*y - 2*z]
+
+==============================================================================
+Certified geometric holonomy (SnapPy verify_hyperbolicity)
+==============================================================================
+verify_hyperbolicity: (True, [0.5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000? + 1.3228756555322952952508078768196302128551295915412250901841672296005344116151418138801965?*I, 0.37500000000000000000000000000000000000000000000000000000000000000000000000000000000000000? + 0.33071891388307382381270196920490755321378239788530627254604180740013360290378545347004911?*I, 0.5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000? + 1.3228756555322952952508078768196302128551295915412250901841672296005344116151418138801965?*I])
+certified tr(a) = -1.63224188231190019565507233815730065708478618609583298414217775416599433742595962583924204 + 0.405232726187181294887140836515350073557832118796709161973410300876174392980674920918718915*I
+certified tr(b) = 0.956145157584921855886969234900094605808670795112067841159739701590844277739196431508942313 - 1.38355106966569725130924527290037228881104423384661557868181421114117244735124824428623773*I
+certified tr(ab) = -0.500000000000000000000000000000000000000000000000000000000000000000000000000000000000000007 + 1.32287565553229529525080787681963021285512959154122509018416722960053441161514181388019642*I
+ component 0 residual at certified point: 2.828e+00
+ component 1 residual at certified point: 2.828e+00
+ component 2 residual at certified point: 2.663e+00
+ component 3 residual at certified point: 2.000e+00
+ component 4 residual at certified point: 1.122e-88
+=> geometric component is index 4 (1-dimensional -- the
+   cusped relator variety, analogous to m003's X_0; the trace field
+   is only pinned down once completeness (the cusp/parabolic
+   condition) is also imposed, exactly as in the m003 paper's Gate F1.
+
+==============================================================================
+Impose the parabolic (completeness) condition on the peripheral curve
+==============================================================================
+peripheral curves (meridian, longitude): [('AbAA', 'babA')]
+meridian word mu = AbAA
+tr(mu) as a polynomial in x,y,z,u: x^3*y - x^2*z - 2*x*y + z
+eliminating u ...
+number of 0-dimensional components after imposing completeness: 6
+ component 0: dim=0  gens=[z^2 - z + 2, y^2 - 2*z + 2, 2*x + y*z - 2*y]
+ component 1: dim=0  gens=[z^2 + z + 2, y^2 + 2*z + 2, 2*x + y*z + 2*y]
+ component 2: dim=0  gens=[z + 1, y + 2, x - 1]
+ component 3: dim=0  gens=[z + 1, y - 2, x + 1]
+ component 4: dim=0  gens=[z - 1, y + 2, x + 1]
+ component 5: dim=0  gens=[z - 1, y - 2, x - 1]
+ component 0 residual at certified point: 6.727e+00
+ component 1 residual at certified point: 6.018e-89
+ component 2 residual at certified point: 3.264e+00
+ component 3 residual at certified point: 1.733e+00
+ component 4 residual at certified point: 3.264e+00
+ component 5 residual at certified point: 2.663e+00
+=> geometric point lies on component 1
+
+==============================================================================
+Trace field and invariant trace field, from the pinned-down geometric point
+==============================================================================
+minimal polynomial(s) of x = tr(a) alone:
+  x^4 - 5*x^2 + 8  degree: 4
+
+minimal polynomial candidate(s) of s = x^2-2 = tr(a^2), an element of k_inv:
+  s^2 - s + 2
+
+==============================================================================
+Cross-check via algdep (exploratory only, safe for a quadratic target)
+==============================================================================
+algdep(tr(a)^2-2, 2) = x^2 - x + 2  disc = -7
+
+==============================================================================
+Strengthening: do tr(b)^2-2 and tr(ab)^2-2 ALSO lie in the same Q(sqrt(-7))?
+==============================================================================
+minimal polynomial candidate(s) of s = tr(b)^2-2:
+  s^2 + 6*s + 16
+minimal polynomial candidate(s) of s = tr(ab)^2-2:
+  s^2 + 7*s + 14
+
+PY_EXIT=0
