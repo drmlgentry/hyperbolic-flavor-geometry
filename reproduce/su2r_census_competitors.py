@@ -181,24 +181,58 @@ def main():
     print("Screening OrientableCuspedCensus manifolds up to 7 tetrahedra "
           "(a superset of the August screen's 2-6 range)")
     candidates = []
+    skipped_invalid = []
     checked = 0
     failed = 0
-    def squarefree_kernel(n):
-        n = int(n)
-        sign = -1 if n < 0 else 1
-        n = abs(n)
-        d = 2
-        while d * d <= n:
-            while n % (d * d) == 0:
-                n //= d * d
-            d += 1
-        return sign * n
 
-    assert squarefree_kernel(-28) == -7
-    assert squarefree_kernel(-7) == -7
-    assert squarefree_kernel(-12) == -3
-    assert squarefree_kernel(-4) == -1
+    # --- replaces the earlier coefficient-magnitude cutoff + trial-division
+    # squarefree_kernel, per an external review that correctly flagged both
+    # as wrong: a magic-number coefficient cutoff is not a validity test (it
+    # can reject a genuine large-coefficient relation and admit small-by-luck
+    # noise), and Q(sqrt(a))==Q(sqrt(b)) needs no factoring at all -- it is
+    # exactly "a*b is a perfect square" (d,e squarefree, ab=de*(st)^2 square
+    # iff de square iff, since squarefree, d=e). Verified independently
+    # against all the discriminants this sweep actually produced before
+    # trusting it (see CLAIMS_REGISTER entry 33).
+    import math as _math
 
+    def same_quadratic_field(d1, d2):
+        d1, d2 = int(d1), int(d2)
+        if d1 == 0 or d2 == 0:
+            return d1 == d2
+        n = d1 * d2
+        if n < 0:
+            return False
+        r = _math.isqrt(n)
+        return r * r == n
+
+    # A coefficient-magnitude cutoff (first attempt) is a magic number with
+    # no principled justification. A residual threshold |P(tau)| (relayed
+    # suggestion) was tried next and empirically FAILS on the real
+    # adversarial case: algdep(tau,2) for m006 (whose true cusp field is
+    # not quadratic) returns, at bits_prec=100, a huge-coefficient
+    # polynomial with residual ~3e-10 -- tiny relative to its own
+    # coefficients, because that is exactly what LLL guarantees for
+    # WHATEVER it returns, genuine or not. A residual test alone cannot
+    # tell the two apart.
+    # The actual discriminating signature, verified directly (see
+    # CLAIMS_REGISTER entry 33): a GENUINE relation is IDENTICAL across
+    # precision (m009: x^2+7 at every bits_prec from 100 to 300; m010:
+    # x^2-x+2, same). A SPURIOUS one is a completely different polynomial
+    # at every precision, with coefficients growing roughly exponentially
+    # (m006: ~10^18 at 100 bits, ~10^28 at 150, ~10^38 at 200, ~10^58 at
+    # 300) -- there is no small relation for LLL to lock onto, so it just
+    # tracks the full available precision budget. Stability across two
+    # independent precisions is a structural test with no magic number.
+    def algdep_is_valid(tau_fn, bits_prec_a, bits_prec_b):
+        tau_a = tau_fn(bits_prec_a)
+        tau_b = tau_fn(bits_prec_b)
+        pa = algdep(tau_a, 2)
+        pb = algdep(tau_b, 2)
+        return (pa == pb), pa
+
+    SCREEN_PREC = 100
+    SCREEN_PREC_B = 150
     census = snappy.OrientableCuspedCensus(num_cusps=1)
     for M in census:
         if M.num_tetrahedra() > 7:
@@ -208,26 +242,19 @@ def main():
         if checked % 500 == 0:
             print(f"  ... progress: {checked} checked, {len(candidates)} candidates, current={nm}", flush=True)
         try:
-            tau = M.cusp_info('shape', bits_prec=100)[0]
-            p = algdep(tau, 2)
-            # algdep(tau,2) ALWAYS returns some degree-2 "best fit" via LLL,
-            # even when tau's true minimal polynomial has higher degree --
-            # in that case the coefficients are huge (LLL filling the full
-            # bits_prec budget with no genuine small relation), giving a
-            # discriminant with ~10^18+ digits that is infeasible to factor
-            # by trial division. A genuine quadratic cusp field at this
-            # volume range has small coefficients (e.g. x^2+7, x^2-x+2), so
-            # reject large-coefficient "hits" as LLL noise before factoring.
-            max_coeff = max(abs(int(c)) for c in p.coefficients())
-            if max_coeff > 10**6:
+            tau_fn = lambda prec, _M=M: _M.cusp_info('shape', bits_prec=prec)[0]
+            ok, p = algdep_is_valid(tau_fn, SCREEN_PREC, SCREEN_PREC_B)
+            if not ok:
+                skipped_invalid.append((nm, str(p)))
                 continue
-            if p.degree() == 2 and squarefree_kernel(p.discriminant()) == -7:
+            if p.degree() == 2 and same_quadratic_field(p.discriminant(), -7):
                 vol = M.volume()
                 candidates.append((nm, vol, str(p), int(p.discriminant())))
         except Exception:
             failed += 1
             continue
-    print(f"checked {checked} manifolds (<=7 tetrahedra, 1 cusp), {failed} failed the screen")
+    print(f"checked {checked} manifolds (<=7 tetrahedra, 1 cusp), {failed} failed the screen, "
+          f"{len(skipped_invalid)} rejected as algdep instability (noise) across precision")
     print(f"candidates with cusp field disc=-7: {len(candidates)}")
     candidates.sort(key=lambda t: t[1])
     for nm, vol, poly, disc in candidates[:30]:

@@ -785,3 +785,56 @@ should be tracked in MASTER_GAP_REPORT, not treated as settled here.
 **Last verified:** Sep 2026 (not independently re-run this session; propagated from
 the existing gap report, which is itself the authoritative live record of this
 still-open sub-investigation).
+
+## 33. Census screen's validity test, corrected a second time: a relayed critique of entry 28's fix was partly right and partly wrong, verified independently rather than adopted on say-so; final result unchanged (still 17 candidates)
+**Context:** a relayed message correctly identified that entry 28's fix (reject
+algdep(tau,2) results with coefficients above 10^6, as LLL noise, before factoring)
+used an unjustified magic number -- a coefficient-magnitude cutoff is not a validity
+test in either direction, and could in principle admit small-by-luck noise or reject
+a genuine large-coefficient relation. It proposed two replacements: (a) `Q(sqrt(a))
+== Q(sqrt(b))` iff `a*b` is a perfect square, avoiding factoring entirely; (b) a
+residual test, `|P(tau)|` scaled by coefficient sum and `|tau|^deg`, as the validity
+gate in place of the coefficient cutoff.
+**(a) was checked and is correct, adopted as-is.** Proof: write a=d*s^2, b=e*t^2 with
+d,e squarefree; ab=de*(st)^2 is a perfect square iff de is (forward: d=e implies
+ab=d^2(st)^2; backward: de square plus squarefree forces, prime-by-prime parity, d=e).
+Verified against all discriminants this screen actually produces (-7,-28,-63,-175,-567)
+and a random ~10^18 case (14 microseconds vs. ~785M trial-division steps) -- real,
+substantial, no caveats.
+**(b) was checked and found NOT to work, contrary to the relayed claim.** Tested
+directly against this screen's own real adversarial case (m006, whose true cusp field
+is not quadratic, not the hand-constructed toy example the relayed message used to
+demonstrate it): `algdep(tau,2)` at bits_prec=100 returns a huge-coefficient
+polynomial (~10^18) with residual ~3.2e-10 -- PASSING the proposed residual test,
+because that tiny residual relative to huge coefficients is exactly what LLL
+guarantees for whatever it returns, genuine relation or not. A residual threshold
+cannot structurally distinguish the two cases; this was verified empirically, not
+argued abstractly, before being accepted or rejected.
+**Actual fix, found by testing algdep's behavior directly across precision:** a
+genuine relation is IDENTICAL at every precision (m009: `x^2+7` at bits_prec
+100/150/200/300, no change; m010: `x^2-x+2`, same). A spurious one is a completely
+different polynomial at every precision tried, with coefficients growing roughly
+exponentially (m006: ~10^18 at 100 bits -> ~10^28 at 150 -> ~10^38 at 200 -> ~10^58
+at 300) -- there is no small relation for LLL to lock onto, so it tracks the full
+precision budget instead. Cross-precision stability (same polynomial at two
+independent bits_prec values) is a structural test, not a magnitude threshold, and
+needs no constant to tune.
+**Status:** [Computed], the full <=7-tetrahedra sweep was rerun with this corrected
+test (screening at bits_prec=100 and 150, requiring an exact match) and produced
+the IDENTICAL 17 candidates as entry 27's run (same names, volumes, polynomials,
+discriminants) -- meaning entry 28's original coefficient-cutoff fix happened to be
+right on this specific dataset despite being methodologically unjustified; no
+candidate was silently dropped or wrongly admitted by it in practice. The new test
+is kept going forward as the principled, reusable version.
+**Lesson:** a relayed critique can be right about a real flaw while its own proposed
+replacement is independently, verifiably wrong -- both halves need checking, not just
+the half that sounds authoritative. This is the fourth time this session a plausible-
+sounding claim (one's own or relayed) was corrected only after direct, independent
+testing against real data rather than accepted on the strength of its reasoning
+alone (the others: the WSL-stall misdiagnosis, the "no distinguishing criterion"
+overstatement in entry 26, and the magic-number cutoff itself).
+**Script:** `reproduce/su2r_census_competitors.py`, fixed in place (the squarefree-
+kernel factoring and the coefficient cutoff are both gone; replaced by
+`same_quadratic_field` and the cross-precision `algdep_is_valid`). Log committed,
+reflects this final version.
+**Last verified:** Oct 1 2026

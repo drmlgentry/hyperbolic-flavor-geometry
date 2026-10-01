@@ -36,7 +36,7 @@ Screening OrientableCuspedCensus manifolds up to 7 tetrahedra (a superset of the
   ... progress: 3500 checked, 17 candidates, current=v2342
   ... progress: 4000 checked, 17 candidates, current=v2882
   ... progress: 4500 checked, 17 candidates, current=v3439
-checked 4587 manifolds (<=7 tetrahedra, 1 cusp), 0 failed the screen
+checked 4587 manifolds (<=7 tetrahedra, 1 cusp), 0 failed the screen, 4538 rejected as algdep instability (noise) across precision
 candidates with cusp field disc=-7: 17
   m010          vol=2.66674478344906  poly=x^2 - x + 2  disc=-7
   m009          vol=2.66674478344906  poly=x^2 + 7  disc=-28
