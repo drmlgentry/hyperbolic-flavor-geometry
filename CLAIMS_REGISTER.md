@@ -573,3 +573,215 @@ this field among all 1-cusped census manifolds -- entry 14 already flags this as
 unresolved here, would need the structured census search entry 14 describes to be
 rerun and checked live rather than trusted from August.
 **Last verified:** Sep 30 2026
+
+## 26. m009 and m010 are an EXACT tie on volume and invariant trace field; canonicity of m010 rests on maximal cusp order, not volume -- SELF-CORRECTED below after checking MASTER_GAP_REPORT.md, which already had this
+**Claim:** entry 14 previously dismissed m009 as "not a second independent candidate"
+without an exact k_inv computation. Re-checked exactly, same Gate-F1-style method as
+entry 25, applied to BOTH manifolds side by side in one script.
+**Status:** [Proved]/[Computed], exact where stated.
+**Result (this session's independent re-check):**
+  vol(m009), 300 bits = vol(m010), 300 bits, EXACTLY (difference = 0 to all 300 bits
+    printed: 2.66674478344905979079671246261065004409838388855263953139317180331572348841561131881281222)
+  trace field min poly of tr(a): x^4-5x^2+8 for BOTH (identical, not just same degree)
+  k_inv candidate min poly of tr(a)^2-2: s^2-s+2 for BOTH, i.e. both generate
+    Q(sqrt(-7)) as INVARIANT trace field (not merely cusp field)
+  snappy `is_isometric_to`: False -- genuinely distinct, non-isometric manifolds
+**Self-correction -- this entry originally (first draft, Oct 1 2026) claimed "no
+distinguishing criterion between m009 and m010 has been identified" and that entry
+14's canonicity framing was "not supported." That was WRONG and was caught, before
+being left standing, by reading `notes/MASTER_GAP_REPORT.md` items 30 and 32 (dated
+Aug 24-25 2026, already in this project, never yet propagated to this register --
+see entries 29-30 below) and `papers/galois-product/gentry-galois-product-theorem.tex`
+Proposition "Cusp-Order Distinction for K_3" (already drafted, also pre-dating this
+session's work): a distinguishing criterion DOES already exist and is already proved
+exactly -- tau_{m009}=sqrt(-7) generates the nonmaximal order Z[sqrt(-7)], while
+tau_{m010}=(1+sqrt(-7))/2 generates the maximal order O_K, index 2 apart (verified via
+the exact algebraic identity tau_{m009}=2*tau_{m010}-1). The paper's own wording is
+already careful and correct: "m010 is distinguished at the tied minimal volume by
+realizing the maximal cusp order" -- it does NOT claim m010 is volume-unique, only
+order-unique among the tied-volume pair. This session's independent re-verification
+of the volume/k_inv tie (above) is still a legitimate, useful cross-check (it had not
+been done via this exact Gate-F1 elimination method before), but the claim that
+canonicity was "unsupported" was an error made by not checking the existing gap
+report first.
+**Not established (genuinely open, per MASTER_GAP_REPORT item 32's own open question):**
+whether m010 is the unique minimum-volume manifold among ALL manifolds realizing the
+maximal order O_K census-wide -- item 32 answers this too (yes, checked across the
+full 212,641-manifold census) but that full-census maximal-order result has also not
+yet been propagated to this register; see entry 30 below. Also still open: the
+relayed "m009/m010 are index-3 covers of the Bianchi orbifold" claim -- already
+directly refuted by MASTER_GAP_REPORT item 34 (COMPLETED, exact Humbert-volume
+computation: the volume ratio is exactly 3, but Grunewald-Schwermer's torsion
+obstruction requires index divisible by 6 for any literal embedding in ordinary
+T_7=PSL_2(O_{-7}), so no such embedding exists; the open question is which OTHER
+maximal arithmetic lattice contains them, see MASTER_GAP_REPORT OPEN item 2, not
+reproduced in full here).
+**Script:** `reproduce/su2r_census_competitors.py` (Part 1), log committed.
+**Last verified:** Oct 1 2026
+
+## 27. Partial-census field screen (<=7 tetrahedra): 17 candidates with cusp field = Q(sqrt(-7)), found via an independent method -- cross-checks, and is a strict subset of, the already-existing full-census result (item 32, not yet in this register -- see entry 30)
+**Claim:** this session, before discovering MASTER_GAP_REPORT item 32 already existed
+(a full 212,641-manifold census scan from Aug 24-25 2026 computing the EXACT order
+realized, not just the field), independently re-ran a field-level screen limited to
+<=7 tetrahedra as a fresh cross-check, via a different computational route (direct
+`algdep` on the cusp shape, not the `p,q`-order-coefficient method item 32 used).
+**Status:** [Computed], exact enumeration at the field-screening level (algdep used
+only as a quadratic-degree SCREEN; any hit is a candidate for the same exact Gate-F1
+elimination treatment as m009/m010, not itself a proof of field membership).
+**Method:** screened all 4587 one-cusped OrientableCuspedCensus manifolds with
+<=7 tetrahedra; for each, `algdep(cusp_shape, 2)`, then tested
+`squarefree_kernel(discriminant) == -7` (the correct field-equivalence test, not
+literal equality -- see entry 28 for a bug this introduced and its fix).
+**Result: 17 candidates, in two volume tiers:**
+  minimal volume 2.66674478344906: m009, m010 (the entry-26 tie)
+  exactly double that volume, 5.33348956689812: s772, s773, s775, s777, s778, s779,
+    s781, s783, s784, s786, s787, s788, s789, v1539, v1540 (15 manifolds), via
+    discriminants -7, -28, -63, -175, -567 -- all with squarefree kernel -7, i.e. all
+    genuinely the same field via different generators.
+**Cross-check against the pre-existing full-census result (item 32):** item 32's
+`census_uniqueness_pass2.json` (read directly, not re-trusted on the gap report's
+word alone) independently lists the SAME two volume tiers at <=7 tetrahedra, with
+per-manifold order data (`p,q,index`) this session's simpler field-only screen does
+not compute: m009 has index 2 (nonmaximal order, consistent with entry 26), m010 and
+most of the 5.333-volume tier have index 1 (maximal order O_K) -- e.g. s772-s776,
+s778-s779, s781-s782, s786-s787 are exact index-1 hits, while s783-s785, s788-s789,
+v1539-v1540 are flagged `exact: false` in that file (order not pinned down there,
+though they do pass the field screen here). The two independent methods agree on the
+field-level candidate set at this tetrahedra range -- a genuine, useful cross-check --
+but item 32 is the deeper, already-existing, full-census (not just <=7-tetrahedra) and
+order-resolving (not just field-resolving) result; this entry's sweep does not
+supersede it and should have been checked against it before being reported as new.
+**Not established:** isometry/covering relationships among the 15 double-volume
+manifolds, or between any of them and m009/m010 (e.g. whether they are 2-fold covers);
+not checked here, would need pairwise `is_isometric_to` and/or explicit covering maps.
+**Script:** `reproduce/su2r_census_competitors.py` (Part 2), log committed.
+**Last verified:** Oct 1 2026
+
+## 28. Methodological correction: the multi-hour "WSL/Sage sweep keeps stalling" problem this session was never an environment issue -- it was a trial-division bug triggered by algdep's LLL noise
+**Claim/correction:** across several hours of this session, the census sweep (entry 27)
+stalled repeatedly (90 to 300+ minutes, zero progress output) on multiple reruns. This
+was wrongly diagnosed in real time as a WSL/Sage performance problem, and "fixed" by
+increasingly drastic environment-level interventions: per-manifold signal-alarm
+timeouts, batching into fresh-subprocess chunks, and finally a full `wsl --shutdown`
+(complete VM restart). None of these addressed the actual cause and the restart did
+not reliably fix it either (a post-restart rerun was still stalled at 44+ CPU-minutes
+with zero progress markers when checked).
+**Actual root cause, found by adding timestamped per-step logging to a 10-manifold
+reproduction of the exact loop:** `algdep(tau, 2)` does not fail or flag low
+confidence when a manifold's true cusp field is NOT degree <=2 -- it always returns
+SOME degree-2 polynomial via LLL, and when there is no genuine small relation the
+coefficients are astronomically large (observed for m006, the census's 3rd manifold:
+a discriminant of magnitude ~10^36). The screen's own `squarefree_kernel` helper
+factors the discriminant by trial division incrementing by 1 up to sqrt(|discriminant|)
+-- for a ~10^18-magnitude square root this is computationally infeasible, so the
+process hangs indefinitely on the very first non-quadratic manifold in the census
+order, not from any WSL/Sage/environment cause. (The pre-fix script that completed in
+~9 minutes, entry 27's "old screen," never hit this because it used a cheap literal
+equality check on the discriminant, not a factorization.)
+**Fix:** reject algdep's result as LLL noise (skip, do not factor) when its
+coefficients exceed a generous bound (10^6) before computing the discriminant's
+squarefree kernel -- genuine quadratic-field hits at this volume range have small
+coefficients (x^2-x+1, x^2+7, x^2-x+2, etc.), so this costs nothing real.
+**Lesson for this project's own practice:** before attributing a stall/slowdown to
+the external toolchain (and escalating to environment-level fixes), instrument the
+SAME code path with fine-grained logging to localize exactly where it stops, rather
+than assuming the infrastructure is at fault. Three separate environment-level
+interventions were tried and reported as attempted fixes before this was done.
+**Status:** [Computed]/bug-fix, confirmed by rerun completing in the originally
+expected timeframe (minutes, not hours) after the one-line fix.
+**Script:** `reproduce/su2r_census_competitors.py`, fixed in place; diagnostic
+scripts used to localize the bug were scratch files, not committed.
+**Last verified:** Oct 1 2026
+
+## 29. Cusp-order distinction between m009 and m010 (propagated from MASTER_GAP_REPORT item 30, dated Aug 25 2026 -- not previously in this register)
+**Claim:** m009 and m010 share invariant trace field Q(sqrt(-7)), volume, tetrahedron
+count, and symmetry group, but have cusp shapes generating different orders of the
+same field: tau_{m009}=sqrt(-7) generates the nonmaximal order Z[sqrt(-7)];
+tau_{m010}=(1+sqrt(-7))/2 generates the maximal order O_K, index 2 apart -- confirmed
+via the exact algebraic identity tau_{m009}=2*tau_{m010}-1 in K.
+**Status:** [Proved] (exact algebraic identity, not numerical).
+**Papers:** `papers/galois-product/gentry-galois-product-theorem.tex`, Proposition
+"Cusp-Order Distinction for K_3".
+**Why this was missed initially this session:** this session's own entry 26 (above)
+first (wrongly) claimed no distinguishing criterion between m009/m010 existed, before
+this entry's source was located and checked -- see entry 26's self-correction.
+**Last verified:** Aug 25 2026 (not independently re-run this session; propagated
+from the existing gap report and paper text, both read directly).
+
+## 30. m010 is uniquely the minimum-volume manifold realizing the maximal order O_K, full 212,641-manifold census (propagated from MASTER_GAP_REPORT item 32, dated Aug 25 2026 -- not previously in this register)
+**Claim:** among ALL 1-cusped manifolds in SnapPy's full OrientableCuspedCensus
+(212,641 manifolds, not merely a <=7-tetrahedra slice), exactly 37 share invariant
+trace field Q(sqrt(-7)); of those, 17 realize the maximal order O_K exactly (via an
+exact p+q*sqrt(-7)-style index check, not a numerical approximation); m010
+(vol=2.66674478344906) is uniquely the minimum-volume manifold among those 17 --
+the next-smallest maximal-order realization is at exactly double that volume.
+**Status:** [Computed], exact (not statistical) -- ran to completion, ~5.8 CPU-hours,
+1 error, 0 timeouts.
+**Script:** `reproduce/census_uniqueness_scan.py`; raw output independently spot-
+checked this session (not merely trusted from the gap report's prose) by reading
+`reproduce/census_uniqueness_run/census_uniqueness_pass2.json` directly -- confirms
+m009 at index 2 (consistent with entry 29) and m010 plus several s7xx/o9_xxxx
+manifolds at index 1, across three volume tiers (~2.667, ~5.333, ~8.0002).
+**Relation to entry 27 (this session's own, independent <=7-tetrahedra field screen):**
+entry 27's 17 field-level candidates (a different, smaller "17" -- field-matching
+only, restricted to <=7 tetrahedra) is NOT the same set as this entry's 17
+(order-matching, full census, any tetrahedra count) -- the coincidence in count (17
+and 17) is exactly that, a coincidence between two different filters on overlapping
+but non-identical manifold sets. Do not conflate the two "17"s in future citations.
+**Papers:** upgrades `gentry-galois-product-theorem.tex` Proposition
+"Canonicity of m010" from an earlier ~20,000-manifold slice to a genuine full-census
+result; per the gap report this upgrade has not yet been reflected in the paper's own
+wording either (separate from the CLAIMS_REGISTER propagation done here).
+**Last verified:** Aug 25 2026 (not independently re-run this session; the underlying
+JSON output was read and spot-checked this session, Oct 1 2026).
+
+## 31. m009/m010 arithmeticity evidence (propagated from MASTER_GAP_REPORT item 31, dated Aug 25 2026 -- not previously in this register)
+**Claim:** both m009 and m010's invariant quaternion algebras are (automatically,
+since both are cusped) split, A(Gamma)=M_2(K); trace integrality of Gamma^(2) (the
+subgroup generated by squares, trace field K by the Neumann-Reid construction) was
+checked on all 4 Reidemeister-Schreier generators of Gamma^(2), all 15 ordered
+subset-product traces, and all 64 triple products, for BOTH manifolds: every trace
+checked lands exactly in O_K, no exceptions (78/78 checks total).
+**Status:** [Computed], extensive but explicitly NOT a formal closed-form certificate
+that every element of the infinite group Gamma^(2) has integral trace -- the paper
+states this limitation itself rather than overclaiming a full arithmeticity proof.
+**Papers:** `gentry-galois-product-theorem.tex`, same Proposition as entry 29.
+**Last verified:** Aug 25 2026 (not independently re-run this session).
+
+## 32. m009/m010 are NOT subgroups of the ordinary (or maximally extended) Bianchi group for d=-7 (propagated from MASTER_GAP_REPORT item 34 and OPEN item 2's since-completed sub-results, dated Aug-Sep 2026 -- not previously in this register)
+**Claim:** covol(T_7), T_7=PSL_2(O_{-7}), computed exactly via the Humbert volume
+formula directly in Sage/PARI: 0.888914927816353. vol(m009)=vol(m010)=2.66674478344906.
+Ratio = exactly 3.000000... . A literal embedding of Gamma_009 or Gamma_010 as a
+finite-index subgroup of T_7 would therefore require index exactly 3 -- but
+Grunewald-Schwermer's torsion obstruction requires any torsion-free finite-index
+subgroup of T_7 to have index divisible by 6. 3 is not divisible by 6, so this is
+impossible: m009/m010 are not subgroups of ordinary T_7. Separately, Krieg-Rodriguez-
+Wernz's maximal discrete extension of SL_2(O_K) for d=-7 was identified exactly
+(index exactly 2 over SL_2(O_K), the unique nontrivial extension since d=-7 has one
+prime divisor) and a direct GAP low-index-subgroup search of this maximal extension
+(not just T_7 itself) found 45 index-6 subgroups, 6 torsion-free, none matching
+m009 or m010 (wrong H_1 rank in all 6 cases).
+**Status:** [Computed], exact for the volume-ratio/torsion-obstruction argument
+(a genuine impossibility proof, not a heuristic); [Computed]/GAP-search for the
+maximal-extension non-subgroup result (a completed negative result for the specific
+groups searched, not a proof that NO maximal arithmetic lattice contains them -- see
+below).
+**This directly and pre-emptively refutes a claim relayed to this session** (Oct 1
+2026) that m009/m010 are "index-3 covers of the Bianchi orbifold H^3/PSL_2(O_{-7})"
+via volume-ratio agreement alone -- the volume ratio of 3 is real and was independently
+confirmed, but (as a separate relayed caution had already correctly flagged) a volume
+ratio is not by itself a covering/subgroup certificate, and here the torsion
+obstruction shows the most natural such covering is actually impossible.
+**Not established / genuinely still open (MASTER_GAP_REPORT OPEN item 2, extensive,
+not reproduced in full here):** which OTHER maximal arithmetic lattice (not the
+standard Bianchi group or its one maximal extension) contains Gamma_009 and
+Gamma_010. Substantial partial progress exists (exact Eichler-order level computation
+via reduced-discriminant Gram determinants, converged and calibrated: m009's level
+works out to an exact index-1 match with its predicted Eichler-order normalizer;
+m010's analogous level-(4) computation does NOT give an integer index and is
+explicitly flagged as unresolved, needing a two-prime prime-power normalizer theory
+not yet sourced from a primary reference) -- this remains open, in progress, and
+should be tracked in MASTER_GAP_REPORT, not treated as settled here.
+**Last verified:** Sep 2026 (not independently re-run this session; propagated from
+the existing gap report, which is itself the authoritative live record of this
+still-open sub-investigation).

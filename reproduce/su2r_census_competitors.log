@@ -1,0 +1,59 @@
+
+==============================================================================
+PART 1: exact k_inv(m009), compared to k_inv(m010)
+==============================================================================
+
+--- m009 ---
+  volume (300 bits): 2.66674478344905979079671246261065004409838388855263953139317180331572348841561131881281222
+  relator: aabABaaBAb
+  trace field min poly(s) of x=tr(a): [x^4 - 5*x^2 + 8]
+  k_inv candidate min poly(s) of tr(a)^2-2: [s^2 - s + 2]
+
+--- m010 ---
+  volume (300 bits): 2.66674478344905979079671246261065004409838388855263953139317180331572348841561131881281222
+  relator: aabaBaaBab
+  trace field min poly(s) of x=tr(a): [x^4 - 5*x^2 + 8]
+  k_inv candidate min poly(s) of tr(a)^2-2: [s^2 - s + 2]
+
+==============================================================================
+Volume comparison: m009 vs m010, to 300 bits, and difference
+==============================================================================
+vol(m009) = 2.66674478344905979079671246261065004409838388855263953139317180331572348841561131881281222
+vol(m010) = 2.66674478344905979079671246261065004409838388855263953139317180331572348841561131881281222
+difference = 0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+is_isometric_to check: False
+
+==============================================================================
+PART 2: census sweep, 1-cusped manifolds, cusp field screen for disc=-7
+==============================================================================
+Screening OrientableCuspedCensus manifolds up to 7 tetrahedra (a superset of the August screen's 2-6 range)
+  ... progress: 500 checked, 2 candidates, current=s213
+  ... progress: 1000 checked, 2 candidates, current=s735
+  ... progress: 1500 checked, 15 candidates, current=v0300
+  ... progress: 2000 checked, 15 candidates, current=v0800
+  ... progress: 2500 checked, 15 candidates, current=v1318
+  ... progress: 3000 checked, 17 candidates, current=v1840
+  ... progress: 3500 checked, 17 candidates, current=v2342
+  ... progress: 4000 checked, 17 candidates, current=v2882
+  ... progress: 4500 checked, 17 candidates, current=v3439
+checked 4587 manifolds (<=7 tetrahedra, 1 cusp), 0 failed the screen
+candidates with cusp field disc=-7: 17
+  m010          vol=2.66674478344906  poly=x^2 - x + 2  disc=-7
+  m009          vol=2.66674478344906  poly=x^2 + 7  disc=-28
+  s772          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  s787          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  s788          vol=5.33348956689812  poly=4*x^2 + x + 11  disc=-175
+  s789          vol=5.33348956689812  poly=4*x^2 - x + 11  disc=-175
+  s775          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  s783          vol=5.33348956689812  poly=4*x^2 + 3*x + 36  disc=-567
+  s786          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  v1540         vol=5.33348956689812  poly=4*x^2 - x + 11  disc=-175
+  s777          vol=5.33348956689812  poly=x^2 + 7  disc=-28
+  s778          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  s781          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  s784          vol=5.33348956689812  poly=2*x^2 + x + 8  disc=-63
+  s773          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  s779          vol=5.33348956689812  poly=x^2 - x + 2  disc=-7
+  v1539         vol=5.33348956689812  poly=4*x^2 + x + 11  disc=-175
+
+PY_EXIT=0

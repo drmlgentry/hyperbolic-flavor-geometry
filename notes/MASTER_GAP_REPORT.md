@@ -236,9 +236,13 @@ be right for the wrong stated reason.
     all 17 — the next-smallest maximal-order manifolds are all at
     exactly double that volume. Upgrades
     `gentry-galois-product-theorem.tex` Proposition 3.2 from an early
-    ~20,000-manifold slice to a genuine full-census result. Not yet
-    propagated into `CLAIMS_REGISTER.md` or the paper's own wording —
-    both still open, see below.
+    ~20,000-manifold slice to a genuine full-census result. Propagated
+    into `CLAIMS_REGISTER.md` entry 30 (Oct 1 2026, along with items 30,
+    31, 34 as entries 29, 31, 32) — found and fixed when this session's
+    own fresh m009/m010 work (entry 26) first wrongly claimed no
+    distinguishing criterion existed, before this item was located. The
+    paper's own wording (Proposition "Canonicity of m010") still has not
+    been updated to cite the full-census figure — that remains open.
 34. **m009/m010 cannot be subgroups of ordinary T_7=PSL₂(O_{−7})**
     [Computed — exact]. covol(T_7) independently computed this session
     via the Humbert volume formula directly in Sage/PARI (not taken from
