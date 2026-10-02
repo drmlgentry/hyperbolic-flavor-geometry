@@ -838,3 +838,25 @@ kernel factoring and the coefficient cutoff are both gone; replaced by
 `same_quadratic_field` and the cross-precision `algdep_is_valid`). Log committed,
 reflects this final version.
 **Last verified:** Oct 1 2026
+
+## 34. m003 paper v5: "finite stabilization J_inf = J_L" is automatic (Noetherian), so the paper's claim is now the explicit limit plus certified length
+**Claim/correction:** v5's Open Questions sentence said non-cyclotomic components would
+"enjoy the same collision-ideal closure J_inf = J_L for some finite L". A relayed review
+first called this an overstatement; a second relay showed it is the reverse -- vacuous.
+Q[x,y,z] is Noetherian and J_1 <= J_2 <= ... is ascending with union J_inf, so J_inf = J_L
+for large L for EVERY component of EVERY character variety, with no hypothesis. The
+§5 novelty sentence ("finite-stabilization statement ... has no analogue") had the same
+flaw. Checked independently (J_L definition read from the source; the ACC argument
+re-derived), not adopted on the relay's word.
+**Status:** [Proved] (ACC); paper edited accordingly. New Remark 5.5 states the ACC point
+and names what is NOT automatic: the explicit identification J_inf = P_0 cap I(N) =
+<h,q>, and the certified length (L=3 for m003, L=4 for m006). Open questions now asks
+for the ideal and the least L, not mere existence of L. Novelty sentence reworded.
+**Also in this revision:** Remark 5.9 (Bezout route, kept as an independent second
+route; identities (26)-(27) re-verified by `m003_collision_ideal_certificate.py`, which
+also covers the m006 analogue -- table row now says so); m006 wording fixed (monic
+minimal polynomial of r over Q is X^2 - 3/2; 2X^2 - 3 is the primitive integral form);
+census remark keeps "J_L = K from L=5 on" (word universe excludes proper powers, so the
+enumeration never contains aa). Compiled clean, 14 pages, no undefined references.
+**Not established:** which other components meet N at a non-cyclotomic point.
+**Last verified:** Oct 2 2026
