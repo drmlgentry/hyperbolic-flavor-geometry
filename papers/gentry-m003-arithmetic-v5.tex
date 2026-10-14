@@ -31,13 +31,52 @@ and the Arithmetic of its $(-2,3)$ Filling}
 \small Independent Researcher, Seattle, Washington\\
 \small \texttt{drmlgentry@protonmail.com} \quad ORCID: 0009-0006-4550-2663}
 
-\date{September 2026}
+\date{October 2026}
+
+%% AGT requires keywords and at least one MSC code (submissions page).
+%% Codes below were checked against comparable published papers, not guessed.
+\newcommand{\mscline}{%
+  \textbf{MSC2020:} primary 57K31; secondary 57K32, 20H10, 13P10, 57-08.}
+\newcommand{\keywordline}{%
+  \textbf{Keywords:} character variety, trace field, hyperbolic
+  3-manifold, Dehn filling, trace identity, Gr\"obner basis.}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
+Let $N$ denote the line of $\SLtwo$-characters of the rank-two free group
+at which the second generator is sent to the identity. On $N$ the trace
+polynomial of a word $w$ depends only on $|e_a(w)|$, the absolute exponent
+sum of the first generator. We prove an intersection criterion: if a
+character subvariety $X$ meets $N$ at a point $(c,2,c)$ with
+$c=\lambda+\lambda^{-1}$ and $\lambda$ not a root of unity, then two word
+traces agreeing on all of $X$ have equal absolute exponent sums, and their
+difference vanishes identically on $N$. For the geometric component $X_0$
+of the $\SLtwo$-character variety of the census manifold $m003$ this
+determines the collision ideal exactly,
+\[
+J_\infty = J_3 = P_0\cap I(N) = \langle x^2-xz+y-2,\ \ yz-x-z\rangle ,
+\]
+so every trace identity holding on $X_0$ between words of arbitrary length
+is generated at word length at most three. We also determine the invariant
+trace field of the Dehn filling $m003(-2,3)$, a quartic field of
+discriminant $-283$, by exact elimination with certified interval
+arithmetic.
+\end{abstract}
+
+\medskip
+\noindent\mscline
+
+\noindent\keywordline
+
+\tableofcontents
+
+\section{Introduction}
+
+\subsection{Summary of results}
+
 We study trace identities restricted to a character subvariety of the
 rank-two free group, and for one such subvariety determine all of them.
 
@@ -49,9 +88,9 @@ $\tau_w(x,2,x) = S_{|e_a(w)|}(x)$,
 where $e_a$ is the exponent sum of $a$ and $S_0 = 2$, $S_1 = x$,
 $S_{n+1} = xS_n - S_{n-1}$. We show that if a character subvariety $X$
 meets $N$ at a point $p = (c,2,c)$ with $c = \lambda + \lambda^{-1}$ and
-$\lambda$ not a root of unity, then equality of two word traces anywhere
-on $X$ forces $|e_a(w)| = |e_a(v)|$, and hence forces their difference to
-vanish identically along all of $N$. A single non-cyclotomic intersection
+$\lambda$ not a root of unity, then any two word traces that agree on
+all of $X$ must satisfy $|e_a(w)| = |e_a(v)|$, and their difference then
+vanishes identically along all of $N$. A single non-cyclotomic intersection
 character therefore constrains collisions between words of every length.
 
 For the geometric component $X_0$ of the $\SLtwo$-character variety of
@@ -82,11 +121,6 @@ load-bearing step. Finally, a squared-trace degeneracy
 $\tr^2\rho(B) = \tr^2\rho(Abb)$ characterizes the $(-2,3)$ filling locus
 among irreducible projective characters; its mechanism is the exact word
 relation $BaBA \cdot B \cdot (BaBA)^{-1} = Abb^{-1}$ in $\pi_1(M)$.
-\end{abstract}
-
-\tableofcontents
-
-\section{Introduction}
 
 \subsection{Trace equality on a subvariety}
 
@@ -197,7 +231,9 @@ $0.981368\ldots$ We derive the surgery law
 $|H_1(m003(p,q);\Z)| = 5\,|2p+q|$ from abelianization and the peripheral
 words (Theorem~\ref{thm:surgery}), so that $H_1(M) \cong \Zfive$ is forced
 by the topology rather than imposed, and we determine
-$\kinv(M) \cong \Q[X]/(X^4+X^3-1)$
+\begin{equation}
+\kinv(M) \;\cong\; \Q[X]/(X^4+X^3-1)
+\end{equation}
 by exact elimination from the filled representation variety
 (Theorem~\ref{thm:itf}). These results supply the concrete arithmetic
 setting for the character-variety analysis, but are logically independent
@@ -549,9 +585,12 @@ a one-variable check of the same fact.
 
 \begin{proposition}[Ambient decomposition and Riley characterization]
 \label{prop:jd}
-Let $J_D = \langle D_1, D_2, D_3\rangle
-= \langle\, yz - x - z,\ \ (y+1)(x^2 + y - xz - 2)\,\rangle$. In the
-ambient Fricke $3$-space,
+Let
+\begin{equation*}
+J_D \;=\; \langle D_1, D_2, D_3\rangle
+\;=\; \langle\, yz - x - z,\ \ (y+1)(x^2 + y - xz - 2)\,\rangle .
+\end{equation*}
+In the ambient Fricke $3$-space,
 \begin{equation}
 \sqrt{J_D}
 = P_0 \,\cap\, \langle y+1,\ x+2z\rangle
@@ -1061,7 +1100,7 @@ All computations are exact or interval-certified as indicated.
 Scripts and logs are archived with SHA-256 hashes in the project
 repository.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Certificate inventory.}
 \resizebox{\textwidth}{!}{%
@@ -1095,6 +1134,17 @@ the structural results of Section~\ref{sec:atlas} were examined.
 
 \section*{Acknowledgments}
 
+%% ==================== RESOLVE BEFORE SUBMITTING ====================
+%% AGT policy: "AI use that contributes to the paper's arguments or
+%% citations must be acknowledged."  The wording below says "editorial
+%% support".  That is narrower than what occurred: AI assistance
+%% identified the length-three witness that strengthened Theorem
+%% \ref{thm:collision} from $J_5$ to $J_3$, drafted
+%% Remark \ref{rem:noeth}, and independently re-derived the trace
+%% polynomials, ideal identities and field identifications.  Rewrite this
+%% paragraph to state that accurately before submission, then delete this
+%% comment block.
+%% ===================================================================
 The author used AI language model assistance (Claude, Anthropic) for
 editorial support in preparing this manuscript. All mathematical
 content, computations, and scientific claims are the author's own
