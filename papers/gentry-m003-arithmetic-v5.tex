@@ -898,7 +898,7 @@ was also checked, as a regression test, for $(\alpha,\beta)\in\{(1,0),(0,1),
 We use only $\ell=e_a$.
 \end{remark}
 
-\begin{remark}[Fox-calculus reading of $X_0\cap N$]
+\begin{remark}[Fox-calculus reading of $X_0\cap N$]\label{rem:fox}
 For the relators $r=abAAbabbb$ ($m003$) and $r=ababbAAbb$ ($m006$) one
 has $e_a(r)=0$, and for the abelian character $\psi:a\mapsto t$, $b\mapsto1$
 the Fox derivatives satisfy $\partial r/\partial a\,(\psi)=0$ and
@@ -1134,22 +1134,43 @@ the structural results of Section~\ref{sec:atlas} were examined.
 
 \section*{Acknowledgments}
 
-%% ==================== RESOLVE BEFORE SUBMITTING ====================
-%% AGT policy: "AI use that contributes to the paper's arguments or
-%% citations must be acknowledged."  The wording below says "editorial
-%% support".  That is narrower than what occurred: AI assistance
-%% identified the length-three witness that strengthened Theorem
-%% \ref{thm:collision} from $J_5$ to $J_3$, drafted
-%% Remark \ref{rem:noeth}, and independently re-derived the trace
-%% polynomials, ideal identities and field identifications.  Rewrite this
-%% paragraph to state that accurately before submission, then delete this
-%% comment block.
-%% ===================================================================
-The author used AI language model assistance (Claude, Anthropic) for
-editorial support in preparing this manuscript. All mathematical
-content, computations, and scientific claims are the author's own
-work, independently verified using SnapPy \cite{SnapPy} and
-SageMath \cite{Sage}.
+%% DRAFT DISCLOSURE (AGT: AI use in aid of the arguments must be
+%% acknowledged). The AUTHOR must confirm the tool list and every stated
+%% contribution before submission, resolve the Codex line below, then
+%% delete these comments.
+The author used AI language-model assistance during this work. In
+accordance with the journal's disclosure policy, those contributions that
+bear on the arguments of this paper are itemized below.
+
+Claude (Anthropic), in conversational and agentic sessions, independently
+re-derived and verified the Fricke trace polynomials used throughout
+Section~\ref{sec:atlas}, the ideal identities of
+Theorem~\ref{thm:universal} and Proposition~\ref{prop:jd}, the
+intersection point and eigenvalue modulus of
+Theorem~\ref{thm:collision}, the B\'ezout identities of
+Remark~\ref{rem:bezout}, the field isomorphism and Galois group of
+Theorem~\ref{thm:itf}, and the Fox-derivative computation of
+Remark~\ref{rem:fox}. In the course of that verification it identified
+the word pair $(\mathtt{aa},\mathtt{baa})$, whose trace difference is
+exactly $h$; this strengthened Theorem~\ref{thm:collision} from
+$J_\infty = J_5$ to $J_\infty = J_3$ and removed a B\'ezout combination
+from its proof. It drafted Remark~\ref{rem:noeth}, and restructured the
+title, abstract and introduction of an earlier version.
+
+Successive drafts were audited by GPT-based assistants (OpenAI, used via
+SciSpace), which proposed foregrounding the collision theorem ahead of
+the surgery law and the trace-field computation, and which identified a
+misstatement of the hypothesis of Theorem~\ref{thm:collision} in an
+earlier abstract.
+%% ---- FILL IN OR DELETE: Codex (OpenAI) --------------------------------
+%% State plainly what Codex contributed to THIS paper, or leave it out.
+%% ------------------------------------------------------------------------
+
+The research programme, the selection of the problem, and the
+fundamental-group presentations are the author's own. The certificate
+scripts of Section~\ref{sec:repro} were written with AI assistance and
+run with SnapPy \cite{SnapPy} and SageMath \cite{Sage}; the author takes
+responsibility for every claim in the paper.
 
 \begin{thebibliography}{9}
 
