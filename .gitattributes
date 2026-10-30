@@ -16,3 +16,9 @@
 *.jfif binary
 *.zip binary
 *.exe binary
+
+# Atlas outputs whose SHA-256 hashes are recorded in reproduce/m003_atlas_manifest.json
+# were written with CRLF line endings; store the exact bytes so the manifest verifies.
+reproduce/m003_filling_summary.csv -text
+reproduce/m003_pair_atlas.csv -text
+reproduce/m003_word_atlas.csv -text
