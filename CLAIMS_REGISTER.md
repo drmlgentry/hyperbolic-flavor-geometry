@@ -860,3 +860,47 @@ census remark keeps "J_L = K from L=5 on" (word universe excludes proper powers,
 enumeration never contains aa). Compiled clean, 14 pages, no undefined references.
 **Not established:** which other components meet N at a non-cyclotomic point.
 **Last verified:** Oct 2 2026
+
+## 35. K_283 census base rate -- settled for H1=Z/5, resolved census-wide by commensurability class
+**Claim:** (a) Among the 134 closed H1=Z/5 census manifolds, m003(-2,3) is the
+only one with k_inv ≅ K_283. (b) Across the full 11,031-manifold
+OrientableClosedCensus, 28 manifolds have k_inv ≅ K_283: 19 arithmetic in at
+least 6 commensurability classes (11 of them Meyerhoff's own class, A0 ramified
+only at the two real places), and 9 non-arithmetic in 3 ramification groups.
+(c) Among m003 fillings with |p|,|q| <= 12 (176 hyperbolic slopes), K_283 occurs
+only at (-2,3) and its symmetric partner (-1,3), the same manifold.
+**Status:** [Computed]. Exhaustive over the stated census and slope bound.
+The class count is a lower bound: primes of equal norm (7, 13, 17) were not
+distinguished, so a single ramification row may hide more than one class.
+**What this does and does not show:** the field alone does not single out
+Meyerhoff -- 17 of the 28 are not commensurable with it. The pair (K_283, A0
+ramified only at the real places) together with arithmeticity does.
+**Confounds, stated rather than buried:**
+- m003(-2,3) is the minimum-volume member of the H1=Z/5 stratum, and low-degree
+  trace fields concentrate at low volume, so uniqueness there is partly a volume
+  effect.
+- k_inv is a commensurability invariant, so per-manifold counts overstate
+  independence. Quote 28 only with the class decomposition.
+- Cross-field context [Computed], exact: 362 of the 11,031 closed census
+  manifolds have a quartic invariant trace field, across 49 distinct fields.
+  Counts: K_283 (28), disc -2151 (26), -688 (24), 788 (22), -1588 (21),
+  -331 (19). K_283 leads by 28 to 26, which is not a meaningful margin, and
+  its 28 span at least 6 commensurability classes. The field is unremarkable
+  among quartics; no base-rate argument should rest on it. Residual gap: a
+  quartic field missed on every one of its manifolds by the identification
+  pass would not appear in the 49.
+- Supersedes the Sep 29 2026 partial scan (cusped-only, biased by
+  Galois-closure-degree and timeout failures).
+**Correction absorbed:** an earlier same-day "single commensurability class"
+conjecture was withdrawn. All 28 volumes are exact half-integer multiples of
+vol(Meyerhoff) to 60 digits, non-arithmetic ones included; by Borel this follows
+from K_283 having one complex place and carries no commensurability information.
+A volume or covolume ratio is never evidence of commensurability or covering.
+**Out of scope for gentry-m003-arithmetic-v5.tex:** the paper makes no base-rate
+claim and no result depends on this. The Meyerhoff identification stays out per
+entry 19.
+**Scripts:** reproduce/k283_census.py, k283_analyze.py, k283_m003_fillings.py,
+k283_quartic_exact.py (PARI + SnapPy); k283_quaternion.sage, k283_qcheck.sage (WSL sage).
+**Data:** k283_census.csv, k283_m003_fillings.csv, k283_quaternion.out,
+k283_quartic_exact.csv/.log; write-up k283_results.md.
+**Last verified:** Oct 29 2026
