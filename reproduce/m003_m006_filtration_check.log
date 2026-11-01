@@ -1,0 +1,23 @@
+
+===== m003 =====
+L=1: words<=L=4  colliding pairs=0  distinct nonzero diffs=0  J_L==K: False  J_L=(0)
+PASS  m003 L=1: (words, pairs, J_L==K) == (4, 0, False)
+L=2: words<=L=16  colliding pairs=0  distinct nonzero diffs=0  J_L==K: False  J_L=(0)
+PASS  m003 L=2: (words, pairs, J_L==K) == (16, 0, False)
+L=3: words<=L=52  colliding pairs=36  distinct nonzero diffs=2  J_L==K: True  J_L=[x**2 - x*z + y - 2, -x + y*z - z]
+PASS  m003 L=3: (words, pairs, J_L==K) == (52, 36, True)
+L=4: words<=L=160  colliding pairs=204  distinct nonzero diffs=4  J_L==K: True  J_L=[x**2 - x*z + y - 2, -x + y*z - z]
+PASS  m003 L=4: (words, pairs, J_L==K) == (160, 204, True)
+
+===== m006 =====
+L=1: words<=L=4  colliding pairs=0  distinct nonzero diffs=0  J_L==K: False  J_L=(0)
+PASS  m006 L=1: (words, pairs, J_L==K) == (4, 0, False)
+L=2: words<=L=16  colliding pairs=8  distinct nonzero diffs=1  J_L==K: False  J_L=[x - z]
+PASS  m006 L=2: (words, pairs, J_L==K) == (16, 8, False)
+L=3: words<=L=52  colliding pairs=48  distinct nonzero diffs=2  J_L==K: False  J_L=[x - z]
+PASS  m006 L=3: (words, pairs, J_L==K) == (52, 48, False)
+L=4: words<=L=160  colliding pairs=328  distinct nonzero diffs=5  J_L==K: True  J_L=[y**2*z**2 - y**2 - 2*y*z**2 + y + 2, x - z]
+PASS  m006 L=4: (words, pairs, J_L==K) == (160, 328, True)
+
+total 20s
+FILTRATION CHECK: PASS

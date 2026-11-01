@@ -22,3 +22,6 @@
 reproduce/m003_filling_summary.csv -text
 reproduce/m003_pair_atlas.csv -text
 reproduce/m003_word_atlas.csv -text
+
+# sha256sum -c needs LF line endings in the manifest
+reproduce/SHA256SUMS text eol=lf
